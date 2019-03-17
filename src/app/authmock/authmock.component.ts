@@ -11,9 +11,9 @@ import { SignUpService } from '../services/authentication/sign-up/sign-up.servic
 })
 export class AuthmockComponent implements OnInit {
 
-  private _profileService: ProfileService;
+  _profileService: ProfileService;
 
-  private _registration: Registration = new Registration(
+  _registration: Registration = new Registration(
     "+447783307487",
     "reddy.horcrux@gmail.com",
     "Sangram Reddy",
@@ -24,7 +24,7 @@ export class AuthmockComponent implements OnInit {
     "true",
     "true"
   );
-  private _userRegistered: Boolean = false;
+  _userRegistered: Boolean = false;
 
   private _signUpService: SignUpService
 
@@ -36,7 +36,7 @@ export class AuthmockComponent implements OnInit {
   ngOnInit() {
   }
 
-  private registerUser(){
+  registerUser(){
     this._registration.createAttributeList()
     this._signUpService.signUpData = {
       phone_number: this._registration.phone_number,

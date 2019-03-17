@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AuthenticationService } from '../base/authentication.service';
 import { ProfileService } from '../../profile/profile.service';
-import { RapidoCognitoService } from '../rapido-cognito/rapido-cognito.service';
+import { VirtueCognitoService } from '../virtue-cognito/virtue-cognito.service';
 import { SignUpInterface } from './sign-up.interface';
 import { Response } from '../../../utils/response';
 import { Constants } from 'src/app/utils/constants';
@@ -14,8 +14,8 @@ export class SignUpService extends AuthenticationService {
 
   private _signUpData: SignUpInterface
 
-  constructor(profileService: ProfileService, rapidoCognitoService: RapidoCognitoService) {
-    super(profileService, rapidoCognitoService)
+  constructor(profileService: ProfileService, virtueCognitoService: VirtueCognitoService) {
+    super(profileService, virtueCognitoService)
   }
 
   set signUpData(signUpData){

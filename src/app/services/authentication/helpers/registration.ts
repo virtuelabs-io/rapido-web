@@ -1,6 +1,5 @@
 import * as uuid from 'uuid';
 import { Schema } from '../base/schema.base';
-import { SchemaEnum } from './schema.enum';
 import { Constants } from 'src/app/utils/constants';
 
 export class Registration extends Schema {

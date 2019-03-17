@@ -5,7 +5,7 @@ import { Constants } from '../../../utils/constants';
 @Injectable({
   providedIn: 'root'
 })
-export class RapidoCognitoService {
+export class VirtueCognitoService {
 
   private _cognitoUserPool: CognitoUserPool
 

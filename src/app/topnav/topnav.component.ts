@@ -8,15 +8,10 @@ import { Constants } from '../utils/constants';
 })
 export class TopnavComponent implements OnInit {
 
-  private bannerName = Constants.RAPIDO_BUILD;
+  bannerName = Constants.RAPIDO_BUILD;
 
   constructor() { }
 
   ngOnInit() {
   }
-
-  private registerUser(){
-    alert("Registering user");
-  }
-
 }

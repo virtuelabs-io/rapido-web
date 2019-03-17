@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { RapidoCognitoService } from './rapido-cognito.service'
+import { VirtueCognitoService } from './virtue-cognito.service';
 
-describe('RapidoCognitoService', () => {
+describe('VirtueCognitoService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: RapidoCognitoService = TestBed.get(RapidoCognitoService);
+    const service: VirtueCognitoService = TestBed.get(VirtueCognitoService);
     expect(service).toBeTruthy();
   });
 });
