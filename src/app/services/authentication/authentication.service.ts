@@ -23,17 +23,23 @@ export class AuthenticationService {
   signUp(user: User){
     let userRegistered: Boolean = false;
     let cogUser;
-    this.userPool.signUp(user.phone_number, user.password, user.attributeList, null, function(err, result){
-      if(err){
-        console.log(err);
-      }
-      else {
-        cogUser = result.user;
-        console.log('Customer successfully registered with: ' + cogUser.getUsername());
-        userRegistered = true;
-      }
+    let usrData = new Promise((resolve, reject) => {
+      this.userPool.signUp(user.phone_number, user.password, user.attributeList, null, function(err, result){
+          if(err){
+            console.log(err);
+            reject(err);
+          }
+          else {
+            cogUser = result.user;
+            console.log('Customer successfully registered with: ' + cogUser.getUsername());
+            userRegistered = true;
+            resolve(result.user);
+          }
+        });
     });
-    this.cognitoUser = cogUser;
+    this.cognitoUser = usrData;
     return userRegistered;
   }
 }
+
+
