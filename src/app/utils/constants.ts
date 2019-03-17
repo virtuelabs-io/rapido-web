@@ -1,8 +1,7 @@
 export class Constants {
   public static RAPIDO_BUILD = 'Rapidobuild';
   public static CUSTOM = "custom:";
-  public static CLIENT_ID = "78puamedlno9gc1inlqqpv9f53";
-  public static USER_POOL_ID = "eu-west-2_iC3KLwaKK";
+  public static POOL_DATA = { UserPoolId : "eu-west-2_iC3KLwaKK", ClientId : "78puamedlno9gc1inlqqpv9f53" }
 
   public static PHONE_NUMBER = "phone_number";
   public static EMAIL = "email";
@@ -13,4 +12,7 @@ export class Constants {
   public static CUSTOM_COMM_VIA_EMAIL = "custom:commViaEmail";
   public static CUSTOM_COMM_VIA_SMS = "custom:commViaSMS";
   public static CUSTOM_PERSONALISATION = "custom:personalisation";
+
+  public static SUCCESSFUL_REGISTRATION = "User successfully registered";
+
 }

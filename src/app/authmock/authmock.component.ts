@@ -1,6 +1,8 @@
-import { AuthenticationService } from './../services/authentication/authentication.service';
+import { AuthenticationService } from '../services/authentication/base/authentication.service';
 import { Component, OnInit } from '@angular/core';
-import { Registration } from '../services/authentication/objects/registration';
+import { Registration } from '../services/authentication/helpers/registration';
+import { ProfileService } from '../services/profile/profile.service';
+import { SignUpService } from '../services/authentication/sign-up/sign-up.service';
 
 @Component({
   selector: 'app-authmock',
@@ -9,7 +11,9 @@ import { Registration } from '../services/authentication/objects/registration';
 })
 export class AuthmockComponent implements OnInit {
 
-  private registration: Registration = new Registration(
+  private _profileService: ProfileService;
+
+  private _registration: Registration = new Registration(
     "+447783307487",
     "reddy.horcrux@gmail.com",
     "Sangram Reddy",
@@ -20,24 +24,35 @@ export class AuthmockComponent implements OnInit {
     "true",
     "true"
   );
-  private userRegistered: Boolean = false;
+  private _userRegistered: Boolean = false;
 
-  private authenticationService: AuthenticationService;
+  private _signUpService: SignUpService
 
-  constructor(authenticationService: AuthenticationService) {
-    this.authenticationService = authenticationService;
+  constructor(signUpService: SignUpService, profileService: ProfileService) {
+    this._signUpService = signUpService
+    this._profileService = profileService
   }
 
   ngOnInit() {
   }
 
   private registerUser(){
-    this.registration.createAttributeList();
-    let user = {
-      phone_number: this.registration.phone_number,
-      password: this.registration.password,
-      attributeList: this.registration.attributeList
-    };
-    this.userRegistered = this.authenticationService.signUp(user);
+    this._registration.createAttributeList()
+    this._signUpService.signUpData = {
+      phone_number: this._registration.phone_number,
+      password: this._registration.password,
+      attributeList: this._registration.attributeList
+    }
+
+    const promise = this._signUpService.signUp()
+
+    promise.then(value => {
+      this._userRegistered = true;
+      console.log(value) // response from successfull resolve
+      console.log(this._profileService.cognitoUser); // updated user profile
+    }).catch(error => {
+      this._userRegistered = false;
+      console.log(error) // response from a graceful reject
+    })
   }
 }
