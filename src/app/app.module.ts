@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopnavComponent } from './topnav/topnav.component';
 import { AuthmockComponent } from './authmock/authmock.component';
+import { ButtonComponent } from './common/button/button.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopnavComponent,
-    AuthmockComponent
+    AuthmockComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,
