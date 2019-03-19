@@ -17,4 +17,7 @@ export class Constants {
 
   public static ERROR_RESEND_CONFIRMATIONN_CODE = "Error while resending confirmation code";
   public static SUCCESS_RESEND_CONFIRMATION_CODE = "Successfully resent confirmation code!";
+
+  public static ERROR_CONFIRMING_REGISTRATION = "Error while confirming registration";
+  public static SUCCESS_CONFIRMING_REGISTRATION = "Successfully confirmed registration!";
 }
