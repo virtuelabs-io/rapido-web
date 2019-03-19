@@ -58,4 +58,9 @@
     <button class="btn btn-primary" type="submit" (click)="registerUser()">Submit</button><br><br>
     <h5 *ngIf="_userRegistered">User registered</h5>
   </div>
+  <div class="col-md-12">
+    <h2>Resend confirmation code</h2><hr>
+    <button class="btn btn-primary" type="submit" (click)="resendConfirmationCode()">Submit</button><br><br>
+    <h5 *ngIf="_resentConfirmationCode">Confirmation code resent</h5>
+  </div>
 <div>

@@ -29,10 +29,8 @@ export class SignUpService extends AuthenticationService {
           if(err){
             reject(new Response( 1, err.message ))
           }
-          else {
-            feed._userProfile.cognitoUser = result.user
-            resolve( new Response( 0, Constants.SUCCESSFUL_REGISTRATION ))
-          }
+          feed._userProfile.cognitoUser = result.user
+          resolve( new Response( 0, Constants.SUCCESSFUL_REGISTRATION ))
         })
     })
   }

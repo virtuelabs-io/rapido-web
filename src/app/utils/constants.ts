@@ -13,6 +13,8 @@ export class Constants {
   public static CUSTOM_COMM_VIA_SMS = "custom:commViaSMS";
   public static CUSTOM_PERSONALISATION = "custom:personalisation";
 
-  public static SUCCESSFUL_REGISTRATION = "User successfully registered";
+  public static SUCCESSFUL_REGISTRATION = "User successfully registered!";
 
+  public static ERROR_RESEND_CONFIRMATIONN_CODE = "Error while resending confirmation code";
+  public static SUCCESS_RESEND_CONFIRMATION_CODE = "Successfully resent confirmation code!";
 }
