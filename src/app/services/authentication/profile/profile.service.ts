@@ -14,11 +14,11 @@ export class ProfileService {
     return this._cognitoUser
   }
 
-  set cognitoUser(cognitoUser){
+  set cognitoUser(cognitoUser: CognitoUser){
     this._cognitoUser = cognitoUser
   }
 
-  initializeProfile(iCognitoUserData: ICognitoUserData){
+  initializeProfileUsingUserData(iCognitoUserData: ICognitoUserData){
     this._cognitoUser = new CognitoUser(iCognitoUserData)
   }
 }

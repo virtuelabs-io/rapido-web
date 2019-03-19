@@ -23,4 +23,7 @@ export class Constants {
 
   public static ERROR_SIGN_IN = "Error signning you in";
   public static SUCCESS_SIGN_IN = "Signed in successfully!";
+
+  public static SESSION_RETRIEVED = "Session retrieved!";
+  public static SESSION_NOT_FOUND = "Session not found";
 }

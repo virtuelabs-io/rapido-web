@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Registration } from '../services/authentication/helpers/registration';
-import { ProfileService } from '../services/profile/profile.service';
+import { ProfileService } from '../services/authentication/profile/profile.service';
 import { SignUpService } from '../services/authentication/sign-up/sign-up.service';
 import { ResendConfirmationCodeService } from '../services/authentication/resend-confirmation-code/resend-confirmation-code.service';
 import { ConfirmRegistrationService } from '../services/authentication/confirm-registration/confirm-registration.service';

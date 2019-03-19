@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AuthenticationService } from '../base/authentication.service';
-import { ProfileService } from '../../profile/profile.service';
+import { ProfileService } from '../profile/profile.service';
 import { VirtueCognitoService } from '../virtue-cognito/virtue-cognito.service';
 import { SignInInterface } from './sign-in.interface';
 import { Response } from '../../../utils/response';
@@ -25,7 +25,6 @@ export class SignInService  extends AuthenticationService  {
 
   signIn(){
     this.initializeNewProfile()
-    console.log("Sign In", this._userProfile.cognitoUser)
     let feed = this
     return new Promise((resolve, reject) => {
       this._userProfile.cognitoUser.authenticateUser(new AuthenticationDetails(this._signInData), {
