@@ -9,6 +9,7 @@ import { AuthmockComponent } from './authmock/authmock.component';
 import { ButtonComponent } from './common/button/button.component';
 import { IconComponent } from './common/icons/icons.component';
 import { RegisterComponent } from './register/register.component';
+import { LogInComponent } from './log-in/log-in.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { RegisterComponent } from './register/register.component';
     AuthmockComponent,
     ButtonComponent,
     IconComponent,
-    RegisterComponent
+    RegisterComponent,
+    LogInComponent
   ],
   imports: [
     BrowserModule,
