@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { TopnavComponent } from './topnav/topnav.component';
 import { AuthmockComponent } from './authmock/authmock.component';
 import { ButtonComponent } from './common/button/button.component';
+import { IconComponent } from './common/icons/icons.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopnavComponent,
     AuthmockComponent,
-    ButtonComponent
+    ButtonComponent,
+    IconComponent
   ],
   imports: [
     BrowserModule,
