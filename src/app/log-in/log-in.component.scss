@@ -14,26 +14,28 @@
 .px-3 {
     padding-right: 16px!important;
 }
-.session-authentication .auth-form-header {
-    background-color: transparent;
-    border: 0;
-    color: #333;
-    margin-bottom: 15px;
-    text-align: center;
-    text-shadow: none;
+.session-authentication {
+    .auth-form-header {
+        background-color: transparent;
+        border: 0;
+        color: #333;
+        margin-bottom: 15px;
+        text-align: center;
+        text-shadow: none;
+    }
 }
 .auth-form-body {
     background-color: #fff;
     border: 1px solid #d8dee2;
-    // border-radius: 0 0 3px 3px;
-    // border-top: 0;
     font-size: 14px;
     padding: 20px;
     width: 300px;
 }
-.auth-form-body .input-block {
-    margin-bottom: 15px;
-    margin-top: 5px;
+.auth-form-body {
+    .input-block {
+        margin-bottom: 15px;
+        margin-top: 5px;
+    }
 }
 .input-block {
     display: block;
@@ -47,40 +49,34 @@
     border-radius: 3px;
     box-shadow: inset 0 1px 2px rgba(27,31,35,.075);
     color: #24292e;
-    //font-size: 16px;
     line-height: 20px;
     min-height: 34px;
     outline: none;
     padding: 6px 8px;
     vertical-align: middle;
 }
-.session-authentication .auth-form .btn {
-    margin-top: 20px;
+.session-authentication {
+    .auth-form {
+        .btn {
+            margin-top: 20px;
+        }
+    }
 }
 .btn-block {
     display: block;
     text-align: center;
     width: 100%;
 }
-.btn-primary {
-    // background-color: #28a745;
-    // background-image: linear-gradient(-180deg,#34d058,#28a745 90%);
-    // color: #fff;
-}
 .btn {
     -moz-appearance: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    // -webkit-appearance: none;
-    // -webkit-user-select: none;
-    // appearance: none;
     background-position: -1px -1px;
     background-repeat: repeat-x;
     background-size: 110% 110%;
     border: 1px solid rgba(27,31,35,.2);
     border-radius: .25em;
     cursor: pointer;
-    // display: inline-block;
     font-size: 14px;
     font-weight: 600;
     line-height: 20px;

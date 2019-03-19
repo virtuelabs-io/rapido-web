@@ -1,15 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopnavComponent } from './topnav/topnav.component';
 import { AuthmockComponent } from './authmock/authmock.component';
 import { ButtonComponent } from './common/button/button.component';
 import { IconComponent } from './common/icons/icons.component';
-import { RegisterComponent } from './register/register.component';
 import { LogInComponent } from './log-in/log-in.component';
+import { RoutingComponents } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -18,8 +17,8 @@ import { LogInComponent } from './log-in/log-in.component';
     AuthmockComponent,
     ButtonComponent,
     IconComponent,
-    RegisterComponent,
-    LogInComponent
+    LogInComponent,
+    RoutingComponents
   ],
   imports: [
     BrowserModule,
@@ -27,7 +26,7 @@ import { LogInComponent } from './log-in/log-in.component';
     FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  bootstrap: [ AppComponent ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }
