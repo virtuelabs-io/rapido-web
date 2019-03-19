@@ -15,10 +15,11 @@ export class ResendConfirmationCodeService extends AuthenticationService {
   }
 
   resendConfirmationCode(){
+    this.initializeNewProfile()
     return new Promise((resolve, reject) => {
       this._userProfile.cognitoUser.resendConfirmationCode(function(err, result) {
         if (err) {
-          reject( new Response( 1, Constants.ERROR_RESEND_CONFIRMATIONN_CODE))
+          reject( new Response( 1, Constants.ERROR_RESEND_CONFIRMATIONN_CODE, err))
         }
         resolve(new Response ( 0, Constants.SUCCESS_RESEND_CONFIRMATION_CODE, result))
       })

@@ -15,10 +15,11 @@ export class ConfirmRegistrationService extends AuthenticationService {
   }
 
   confirmRegistration(confirmationCode){
+    this.initializeNewProfile()
     return new Promise((resolve, reject) => {
       this._userProfile.cognitoUser.confirmRegistration(confirmationCode, true, function(err, result) {
         if (err) {
-          reject(new Response( 1, Constants.ERROR_CONFIRMING_REGISTRATION))
+          reject(new Response( 1, Constants.ERROR_CONFIRMING_REGISTRATION, err))
         }
         resolve(new Response( 0, Constants.SUCCESS_CONFIRMING_REGISTRATION))
       })

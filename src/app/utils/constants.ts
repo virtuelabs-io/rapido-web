@@ -20,4 +20,7 @@ export class Constants {
 
   public static ERROR_CONFIRMING_REGISTRATION = "Error while confirming registration";
   public static SUCCESS_CONFIRMING_REGISTRATION = "Successfully confirmed registration!";
+
+  public static ERROR_SIGN_IN = "Error signning you in";
+  public static SUCCESS_SIGN_IN = "Signed in successfully!";
 }
