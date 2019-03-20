@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TopnavComponent } from './topnav.component';
+import { ButtonComponent } from '../common/button/button.component';
 
 describe('TopnavComponent', () => {
   let component: TopnavComponent;
@@ -8,7 +9,7 @@ describe('TopnavComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TopnavComponent ]
+      declarations: [ TopnavComponent, ButtonComponent ]
     })
     .compileComponents();
   }));

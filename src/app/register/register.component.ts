@@ -1,10 +1,18 @@
 import { Component, OnInit, NgModule} from '@angular/core';
-import { MatStepperModule } from '@angular/material';
 import { Registration } from '../services/authentication/helpers/registration';
 import {FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule } from '@angular/material';
 
 @NgModule({
-  imports: [  FormBuilder, Validators, FormGroup ]
+  imports: [
+    FormBuilder,
+    Validators,
+    FormGroup,
+    MatStepperModule,
+    MatInputModule,
+    MatButtonModule,
+    MatAutocompleteModule
+  ]
 })
 @Component({
   selector: 'app-register',
@@ -39,6 +47,6 @@ export class RegisterComponent implements OnInit {
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
-  } 
+  }
 
 }

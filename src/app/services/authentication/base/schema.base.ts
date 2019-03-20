@@ -1,8 +1,6 @@
 import { CognitoUserAttribute } from 'amazon-cognito-identity-js';
-import { SchemaInterface } from '../helpers/schema.interface';
 
-
-export class Schema implements SchemaInterface {
+export class Schema {
 
   _attributeList;
 
