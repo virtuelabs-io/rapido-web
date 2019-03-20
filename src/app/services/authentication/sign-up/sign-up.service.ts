@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AuthenticationService } from '../base/authentication.service';
-import { ProfileService } from '../../profile/profile.service';
+import { ProfileService } from '../profile/profile.service';
 import { VirtueCognitoService } from '../virtue-cognito/virtue-cognito.service';
 import { SignUpInterface } from './sign-up.interface';
 import { Response } from '../../../utils/response';

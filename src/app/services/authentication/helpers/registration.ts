@@ -1,6 +1,7 @@
 import * as uuid from 'uuid';
 import { Schema } from '../base/schema.base';
-import { Constants } from 'src/app/utils/constants';
+import { ICognitoUserAttributeData } from 'amazon-cognito-identity-js';
+import { Constants } from '../../../utils/constants';
 
 export class Registration extends Schema {
 
@@ -108,5 +109,25 @@ export class Registration extends Schema {
     super.pushItemToAttributeList(super.createCognitoUserAttribute(Constants.CUSTOM_COMM_VIA_EMAIL, this._commViaEmail));
     super.pushItemToAttributeList(super.createCognitoUserAttribute(Constants.CUSTOM_COMM_VIA_SMS, this._commViaSMS));
     super.pushItemToAttributeList(super.createCognitoUserAttribute(Constants.CUSTOM_PERSONALISATION, this._personalisation));
+  }
+
+  createUpdateAttributeList(){
+    let eligibleFields = [ 'email', 'name', 'sendMePromotions', 'commViaEmail', 'commViaSMS', 'personalisation']
+    let updateAttributeList: ICognitoUserAttributeData[] = []
+    let keyName: string
+    eligibleFields.forEach(field => {
+      if(this[field] !== undefined){
+        if(field !== 'email' && field !== 'name'){
+          keyName = Constants.CUSTOM + field
+        } else {
+          keyName = field
+        }
+        updateAttributeList.push({
+          Name: keyName,
+          Value: this[field]
+        })
+      }
+    })
+    return updateAttributeList
   }
 }

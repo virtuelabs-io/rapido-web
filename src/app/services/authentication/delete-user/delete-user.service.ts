@@ -8,21 +8,20 @@ import { Constants } from '../../../utils/constants';
 @Injectable({
   providedIn: 'root'
 })
-export class ResendConfirmationCodeService extends AuthenticationService {
+export class DeleteUserService extends AuthenticationService {
 
   constructor(profileService: ProfileService, virtueCognitoService: VirtueCognitoService) {
     super(profileService, virtueCognitoService)
   }
 
-  resendConfirmationCode(){
-    this.initializeNewProfile()
+  deleteUser(){
     return new Promise((resolve, reject) => {
-      this._userProfile.cognitoUser.resendConfirmationCode(function(err, result) {
+      this._userProfile.cognitoUser.deleteUser(function(err, result) {
         if (err) {
-          reject( new Response( 1, Constants.ERROR_RESEND_CONFIRMATIONN_CODE, err))
+          reject(new Response( 1, err.message, err))
         }
-        resolve(new Response ( 0, Constants.SUCCESS_RESEND_CONFIRMATION_CODE, result))
-      })
+        resolve(new Response( 0, Constants.SUCCESSFULLY_DELETED_USER, result))
+      });
     })
   }
 }
