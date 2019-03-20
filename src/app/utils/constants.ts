@@ -1,7 +1,7 @@
 export class Constants {
   public static RAPIDO_BUILD = 'Rapidobuild';
   public static CUSTOM = "custom:";
-  public static POOL_DATA = { UserPoolId : "eu-west-2_iC3KLwaKK", ClientId : "78puamedlno9gc1inlqqpv9f53" }
+  public static POOL_DATA = { UserPoolId : "eu-west-2_XNt6gZnld", ClientId : "4q35br0bpdc6ooao08sjs5isqf" }
 
   public static PHONE_NUMBER = "phone_number";
   public static EMAIL = "email";
