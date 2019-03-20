@@ -6,6 +6,7 @@ import { ResendConfirmationCodeService } from '../services/authentication/resend
 import { ConfirmRegistrationService } from '../services/authentication/confirm-registration/confirm-registration.service';
 import { SignInService } from '../services/authentication/sign-in/sign-in.service';
 import { UpdateAttributeService } from '../services/authentication/update-attribute/update-attribute.service';
+import { ChangePasswordService } from '../services/authentication/change-password/change-password.service';
 
 @Component({
   selector: 'app-authmock',
@@ -17,6 +18,8 @@ export class AuthmockComponent implements OnInit {
   _profileService: ProfileService;
 
   _confirmationCode: string;
+
+  _newPassword: string = "Anirup1991";
 
   _registration: Registration = new Registration(
     "+447783307487",
@@ -35,12 +38,14 @@ export class AuthmockComponent implements OnInit {
   _confirmRegistrationResponse: Boolean = false;
   _signInResponse: Boolean = false;
   _updatedAttribute: Boolean = false;
+  _changedPassword: Boolean = false;
 
   private _signUpService: SignUpService
   private _resendConfirmationCodeService: ResendConfirmationCodeService
   private _confirmRegistrationService: ConfirmRegistrationService
   private _signInService: SignInService
   private _updateAttributeService: UpdateAttributeService
+  private _changePasswordService: ChangePasswordService
 
 
   constructor(
@@ -49,7 +54,8 @@ export class AuthmockComponent implements OnInit {
     resendConfirmationCodeService: ResendConfirmationCodeService,
     confirmRegistrationService: ConfirmRegistrationService,
     signInService: SignInService,
-    updateAttributeService: UpdateAttributeService
+    updateAttributeService: UpdateAttributeService,
+    changePasswordService: ChangePasswordService
     ) {
     this._signUpService = signUpService
     this._profileService = profileService
@@ -57,6 +63,7 @@ export class AuthmockComponent implements OnInit {
     this._confirmRegistrationService = confirmRegistrationService
     this._signInService = signInService
     this._updateAttributeService = updateAttributeService
+    this._changePasswordService = changePasswordService
   }
 
   ngOnInit() {
@@ -122,15 +129,27 @@ export class AuthmockComponent implements OnInit {
   }
 
   updateAttribute(){
-    console.log(this._registration)
     this._updateAttributeService.attributeList = this._registration.createUpdateAttributeList()
-    console.log(this._updateAttributeService.attributeList)
     const promise = this._updateAttributeService.updateAttributes()
     promise.then(value => {
       this._updatedAttribute = true;
       console.log(value) // response from successfull resolve
     }).catch(error => {
       this._updatedAttribute = false;
+      console.log(error) // response from a graceful reject
+    })
+  }
+
+  changePassword(){
+    this._changePasswordService.oldPassword = this._registration.password
+    this._changePasswordService.newPassword = this._newPassword
+    const promise = this._changePasswordService.changePassowrd()
+    promise.then(value => {
+      this._changedPassword = true;
+      this._registration.password = this._newPassword
+      console.log(value) // response from successfull resolve
+    }).catch(error => {
+      this._changedPassword = false;
       console.log(error) // response from a graceful reject
     })
   }

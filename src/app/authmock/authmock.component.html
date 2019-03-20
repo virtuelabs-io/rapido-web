@@ -144,4 +144,21 @@
     <button class="btn btn-primary" type="submit" (click)="updateAttribute()">Submit</button><br><br>
     <h5 *ngIf="_updatedAttribute">User attributes updated</h5>
   </div>
+  <div class="col-md-12">
+    <h2>Change password</h2><hr>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">Old Password</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.password">
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">New Password</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_newPassword">
+    </div>
+    <button class="btn btn-primary" type="submit" (click)="changePassword()">Submit</button><br><br>
+    <h5 *ngIf="_changedPassword">Password Changed</h5>
+  </div>
 <div>
