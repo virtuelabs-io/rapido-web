@@ -56,6 +56,125 @@
       <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.personalisation">
     </div>
     <button class="btn btn-primary" type="submit" (click)="registerUser()">Submit</button><br><br>
-    <h5 *ngIf="_userRegistered">User registered</h5>
+    <h5 *ngIf="_userRegisteredResponse">User registered</h5>
+  </div>
+  <div class="col-md-12">
+    <h2>Resend confirmation code</h2><hr>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.phone_number">
+    </div>
+    <button class="btn btn-primary" type="submit" (click)="resendConfirmationCode()">Submit</button><br><br>
+    <h5 *ngIf="_resentConfirmationCodeResponse">Confirmation code resent</h5>
+  </div>
+  <div class="col-md-12">
+    <h2>Confirm Registration</h2><hr>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.phone_number">
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">Confirmation Code</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_confirmationCode">
+    </div>
+    <button class="btn btn-primary" type="submit" (click)="confirmRegistration()">Submit</button><br><br>
+    <h5 *ngIf="_confirmRegistrationResponse">Registration confirmed</h5>
+  </div>
+  <div class="col-md-12">
+    <h2>Sign In</h2><hr>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.phone_number">
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">password</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.password">
+    </div>
+    <button class="btn btn-primary" type="submit" (click)="signIn()">Submit</button><br><br>
+    <h5 *ngIf="_signInResponse">User signed in</h5>
+  </div>
+  <div class="col-md-12">
+    <h2>Update Attributes</h2><hr>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">email</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.email">
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">name</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.name">
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">sendMePromotions</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.sendMePromotions">
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">commViaEmail</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.commViaEmail">
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">commViaSMS</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.commViaSMS">
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">personalisation</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.personalisation">
+    </div>
+    <button class="btn btn-primary" type="submit" (click)="updateAttribute()">Submit</button><br><br>
+    <h5 *ngIf="_updatedAttribute">User attributes updated</h5>
+  </div>
+  <div class="col-md-12">
+    <h2>Change password</h2><hr>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">Old Password</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.password">
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">New Password</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_newPassword">
+    </div>
+    <button class="btn btn-primary" type="submit" (click)="changePassword()">Submit</button><br><br>
+    <h5 *ngIf="_changedPassword">Password Changed</h5>
+  </div>
+  <div class="col-md-12">
+    <h2>Forgot Password</h2><hr>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.phone_number">
+    </div>
+    <button class="btn btn-primary" type="submit" (click)="forgotPassword()">Submit</button><br><br>
+    <h5 *ngIf="_forgottenPassword">Password Changed</h5>
+  </div>
+  <div class="col-md-12">
+    <h2>Delete User</h2><hr>
+    <button class="btn btn-primary" type="submit" (click)="deleteUser()">Submit</button><br><br>
+    <h5 *ngIf="_deletedUser">Deleted User</h5>
   </div>
 <div>
