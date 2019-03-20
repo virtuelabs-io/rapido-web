@@ -1,9 +1,10 @@
 import { Component, OnInit, NgModule} from '@angular/core';
 import { MatStepperModule } from '@angular/material';
+import { Registration } from '../services/authentication/helpers/registration';
 import {FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @NgModule({
-  imports: [ MatStepperModule, FormBuilder, Validators, FormGroup ]
+  imports: [  FormBuilder, Validators, FormGroup ]
 })
 @Component({
   selector: 'app-register',
@@ -14,6 +15,20 @@ export class RegisterComponent implements OnInit {
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
+
+  _registration: Registration = new Registration(
+    "+447783307487",
+    "reddy.horcrux@gmail.com",
+    "Sangram Reddy",
+    "Sangram1992",
+    "true",
+    "true",
+    "true",
+    "true",
+    "true"
+  );
+
+  _userRegisteredResponse: Boolean = false;
 
   constructor(private _formBuilder: FormBuilder) { }
 

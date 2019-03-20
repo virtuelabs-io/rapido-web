@@ -4,5 +4,10 @@
       color: green;
     }
   }
-  
-  
+.cb {
+  width: 50px;
+}
+.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+  background-color: black !important;
+  color: white;
+} 
