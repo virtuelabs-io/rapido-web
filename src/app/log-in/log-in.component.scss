@@ -167,3 +167,11 @@ ol, ul {
 mr-3 {
     margin-right: 16px!important;
 }
+.a-divider.a-divider-break {
+    text-align: center;
+    position: relative;
+    top: 2px;
+    padding-top: 1px;
+    margin-bottom: 14px;
+    line-height: 0;
+}
