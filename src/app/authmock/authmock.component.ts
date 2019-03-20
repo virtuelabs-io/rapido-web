@@ -8,6 +8,7 @@ import { SignInService } from '../services/authentication/sign-in/sign-in.servic
 import { UpdateAttributeService } from '../services/authentication/update-attribute/update-attribute.service';
 import { ChangePasswordService } from '../services/authentication/change-password/change-password.service';
 import { ForgotPasswordService } from '../services/authentication/forgot-password/forgot-password.service';
+import { DeleteUserService } from '../services/authentication/delete-user/delete-user.service';
 
 @Component({
   selector: 'app-authmock',
@@ -43,6 +44,7 @@ export class AuthmockComponent implements OnInit {
   _updatedAttribute: Boolean = false;
   _changedPassword: Boolean = false;
   _forgottenPassword: Boolean = false;
+  _deletedUser: Boolean = false;
 
   private _signUpService: SignUpService
   private _resendConfirmationCodeService: ResendConfirmationCodeService
@@ -51,6 +53,7 @@ export class AuthmockComponent implements OnInit {
   private _updateAttributeService: UpdateAttributeService
   private _changePasswordService: ChangePasswordService
   private _forgotPasswordService: ForgotPasswordService
+  private _deleteUserService: DeleteUserService
 
 
   constructor(
@@ -61,7 +64,8 @@ export class AuthmockComponent implements OnInit {
     signInService: SignInService,
     updateAttributeService: UpdateAttributeService,
     changePasswordService: ChangePasswordService,
-    forgotPasswordService: ForgotPasswordService
+    forgotPasswordService: ForgotPasswordService,
+    deleteUserService: DeleteUserService
     ) {
     this._signUpService = signUpService
     this._profileService = profileService
@@ -71,6 +75,7 @@ export class AuthmockComponent implements OnInit {
     this._updateAttributeService = updateAttributeService
     this._changePasswordService = changePasswordService
     this._forgotPasswordService = forgotPasswordService
+    this._deleteUserService = deleteUserService
   }
 
   ngOnInit() {
@@ -170,6 +175,17 @@ export class AuthmockComponent implements OnInit {
       console.log(value) // response from successfull resolve
     }).catch(error => {
       this._forgottenPassword = false;
+      console.log(error) // response from a graceful reject
+    })
+  }
+
+  deleteUser(){
+    const promise = this._deleteUserService.deleteUser()
+    promise.then(value => {
+      this._deletedUser = true;
+      console.log(value) // response from successfull resolve
+    }).catch(error => {
+      this._deletedUser = false;
       console.log(error) // response from a graceful reject
     })
   }

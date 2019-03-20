@@ -34,4 +34,6 @@ export class Constants {
 
   public static INPUT_VERIFICATION_CODE = "Please input verification code ";
   public static ENTER_NEW_PASSWORD = "Enter new password";
+
+  public static SUCCESSFULLY_DELETED_USER = "Deleted user successfully";
 }
