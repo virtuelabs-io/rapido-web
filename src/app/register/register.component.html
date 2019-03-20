@@ -1,0 +1,70 @@
+
+
+<!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+  </button> -->
+  <mat-vertical-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+        <ng-template matStepLabel>Sign Up/ Register</ng-template>
+      <div class="col-md-12">
+        
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">phoneNumber</span>
+          </div>
+          <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.phone_number">
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">email</span>
+          </div>
+          <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.email">
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">password</span>
+          </div>
+          <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.password">
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">name</span>
+          </div>
+          <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.name">
+        </div>
+        <div class="input-group mb-3">
+            <input type="checkbox" class="cb" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.acceptedTAndC">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">I agree to the Terms and Conditions</span>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+            <input type="checkbox" class="cb" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.sendMePromotions">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Use my data for Promotions, Personalisations and Communications</span>
+          </div>
+        </div>
+        <button class="btn btn-primary" mat-button matStepperNext type="submit">Submit</button><br><br>
+        <h5 *ngIf="_userRegisteredResponse">User registered</h5>
+      </div>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Mobile Number Verification</ng-template>
+        
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      You are now done.
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
+  

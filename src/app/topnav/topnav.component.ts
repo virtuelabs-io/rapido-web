@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { Constants } from '../utils/constants';
 import { SessionService } from '../services/authentication/session/session.service';
 import { ProfileService } from '../services/authentication/profile/profile.service';
@@ -11,6 +11,9 @@ import { ProfileService } from '../services/authentication/profile/profile.servi
 export class TopnavComponent implements OnInit {
 
   bannerName = Constants.RAPIDO_BUILD;
+  logInLabel = "Sign In";
+  cartLabel = "Cart";
+  add_circle = "add_circle";
 
   _profileService: ProfileService
 
