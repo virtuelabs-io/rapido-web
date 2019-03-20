@@ -30,4 +30,8 @@ export class Constants {
   public static SUCCESSFULLY_UPDATED_ATTRIBUTES = "Sussfully updated attributes!";
 
   public static PASSWORD_CHANGE_SUCCESS = "Password sucessfully changed!";
+  public static FORGOT_PASSWORD_SUCCESS = "Password successfully reset!";
+
+  public static INPUT_VERIFICATION_CODE = "Please input verification code ";
+  public static ENTER_NEW_PASSWORD = "Enter new password";
 }

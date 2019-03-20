@@ -161,4 +161,15 @@
     <button class="btn btn-primary" type="submit" (click)="changePassword()">Submit</button><br><br>
     <h5 *ngIf="_changedPassword">Password Changed</h5>
   </div>
+  <div class="col-md-12">
+    <h2>Forgot Password</h2><hr>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.phone_number">
+    </div>
+    <button class="btn btn-primary" type="submit" (click)="forgotPassword()">Submit</button><br><br>
+    <h5 *ngIf="_forgottenPassword">Password Changed</h5>
+  </div>
 <div>
