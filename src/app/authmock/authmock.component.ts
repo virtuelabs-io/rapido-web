@@ -5,6 +5,7 @@ import { SignUpService } from '../services/authentication/sign-up/sign-up.servic
 import { ResendConfirmationCodeService } from '../services/authentication/resend-confirmation-code/resend-confirmation-code.service';
 import { ConfirmRegistrationService } from '../services/authentication/confirm-registration/confirm-registration.service';
 import { SignInService } from '../services/authentication/sign-in/sign-in.service';
+import { UpdateAttributeService } from '../services/authentication/update-attribute/update-attribute.service';
 
 @Component({
   selector: 'app-authmock',
@@ -33,11 +34,13 @@ export class AuthmockComponent implements OnInit {
   _resentConfirmationCodeResponse: Boolean = false;
   _confirmRegistrationResponse: Boolean = false;
   _signInResponse: Boolean = false;
+  _updatedAttribute: Boolean = false;
 
   private _signUpService: SignUpService
   private _resendConfirmationCodeService: ResendConfirmationCodeService
   private _confirmRegistrationService: ConfirmRegistrationService
   private _signInService: SignInService
+  private _updateAttributeService: UpdateAttributeService
 
 
   constructor(
@@ -45,13 +48,15 @@ export class AuthmockComponent implements OnInit {
     profileService: ProfileService,
     resendConfirmationCodeService: ResendConfirmationCodeService,
     confirmRegistrationService: ConfirmRegistrationService,
-    signInService: SignInService
+    signInService: SignInService,
+    updateAttributeService: UpdateAttributeService
     ) {
     this._signUpService = signUpService
     this._profileService = profileService
     this._resendConfirmationCodeService = resendConfirmationCodeService,
     this._confirmRegistrationService = confirmRegistrationService
     this._signInService = signInService
+    this._updateAttributeService = updateAttributeService
   }
 
   ngOnInit() {
@@ -112,6 +117,20 @@ export class AuthmockComponent implements OnInit {
       console.log(value) // response from successfull resolve
     }).catch(error => {
       this._signInResponse = false;
+      console.log(error) // response from a graceful reject
+    })
+  }
+
+  updateAttribute(){
+    console.log(this._registration)
+    this._updateAttributeService.attributeList = this._registration.createUpdateAttributeList()
+    console.log(this._updateAttributeService.attributeList)
+    const promise = this._updateAttributeService.updateAttributes()
+    promise.then(value => {
+      this._updatedAttribute = true;
+      console.log(value) // response from successfull resolve
+    }).catch(error => {
+      this._updatedAttribute = false;
       console.log(error) // response from a graceful reject
     })
   }

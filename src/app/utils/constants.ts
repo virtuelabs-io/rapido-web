@@ -26,4 +26,6 @@ export class Constants {
 
   public static SESSION_RETRIEVED = "Session retrieved!";
   public static SESSION_NOT_FOUND = "Session not found";
+
+  public static SUCCESSFULLY_UPDATED_ATTRIBUTES = "Sussfully updated attributes!";
 }

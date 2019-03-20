@@ -10,7 +10,7 @@ import { AuthenticationDetails } from 'amazon-cognito-identity-js';
 @Injectable({
   providedIn: 'root'
 })
-export class SignInService  extends AuthenticationService  {
+export class SignInService extends AuthenticationService {
 
   private _signInData: SignInInterface
 
