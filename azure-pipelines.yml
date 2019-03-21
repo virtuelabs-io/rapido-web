@@ -65,11 +65,9 @@ steps:
 #     summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/rapido-web/index.html'
 #     reportDirectory: '$(System.DefaultWorkingDirectory)/coverage'
 
-- task: Npm@1
-  displayName: 'Prodbuild'
-  inputs:
-    command: custom
-    customCommand: 'prodbuild'
+- script: |
+    npm run prodbuild
+  displayName: 'Prod build'
 
 - script: |
     docker build -t $DOCKER_REPO/$(imageName):v$(major).$(minor).$(patch) .
