@@ -76,7 +76,6 @@ steps:
   displayName: 'Build docker image and tag it'
 
 - script: |
-    docker login -u $(dockerId) -p $DOCKER_PASSWORD
     docker push $DOCKER_REPO/$(imageName):v$(major).$(minor).$(patch)
     docker tag $DOCKER_REPO/$(imageName):v$(major).$(minor).$(patch) $DOCKER_REPO/$(imageName):latest
     docker push $DOCKER_REPO/$(imageName):latest
@@ -85,5 +84,6 @@ steps:
     AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
     AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
     DOCKER_REPO: $(DOCKER_REPO)
+    DOCKER_URI: $(DOCKER_REPO)
   displayName: 'Push Docker image'
 
