@@ -30,8 +30,9 @@ steps:
   displayName: 'Environment Preperation'
 
 - script: |
-    aws s3 cp s3://rapido-build-secrets-bucket/environment.staging.ts ./src/environment/environment.staging.ts
-    aws s3 cp s3://rapido-build-secrets-bucket/environment.prod.ts ./src/environment/environment.prod.ts
+    aws s3 cp s3://rapido-build-secrets-bucket/environment.staging.ts ./src/environment
+    aws s3 cp s3://rapido-build-secrets-bucket/environment.prod.ts ./src/environment
+    ls ./src/environment
   env:
     AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
     AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
