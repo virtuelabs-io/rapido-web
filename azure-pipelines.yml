@@ -33,8 +33,8 @@ steps:
     aws s3 cp s3://rapido-build-secrets-bucket/environment.staging.ts ./src/environment/environment.staging.ts
     aws s3 cp s3://rapido-build-secrets-bucket/environment.prod.ts ./src/environment/environment.prod.ts
   env:
-    AWS_ACCESS_KEY_ID: $(accessKeyId)
-    AWS_SECRET_ACCESS_KEY: $(secretAccessKey)
+    AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
+    AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
   displayName: 'Fetch secrets'
 
 - task: NodeTool@0
@@ -74,7 +74,7 @@ steps:
 - script: |
     docker build -t $DOCKER_REPO/$(imageName):v$(major).$(minor).$(patch) .
   env:
-    DOCKER_REPO: $(dockerRepo)
+    DOCKER_REPO: $(DOCKER_REPO)
   displayName: 'Build docker image and tag it'
 
 - script: |
@@ -84,8 +84,8 @@ steps:
     docker push $DOCKER_REPO/$(imageName):latest
   condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
   env:
-    AWS_ACCESS_KEY_ID: $(accessKeyId)
-    AWS_SECRET_ACCESS_KEY: $(secretAccessKey)
-    DOCKER_REPO: $(dockerRepo)
+    AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
+    AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
+    DOCKER_REPO: $(DOCKER_REPO)
   displayName: 'Push Docker image'
 
