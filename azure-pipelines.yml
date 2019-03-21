@@ -36,7 +36,7 @@ steps:
 - script: |
     aws s3 cp s3://rapido-build-secrets-bucket/environment.staging.ts ./src/environment/environment.staging.ts
     aws s3 cp s3://rapido-build-secrets-bucket/environment.prod.ts ./src/environment/environment.prod.ts
-  environment:
+  env:
     AWS_ACCESS_KEY_ID: $(accessKeyId)
     AWS_SECRET_ACCESS_KEY: $(secretAccessKey)
   displayName: 'Fetch secrets'
@@ -68,7 +68,7 @@ steps:
 
 - script: |
     docker build -t $DOCKER_REPO/$(imageName):v$(major).$(minor).$(patch) .
-  environment:
+  env:
     DOCKER_REPO: $(dockerRepo)
   displayName: 'Build docker image and tag it'
 
