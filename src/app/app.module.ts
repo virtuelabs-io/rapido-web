@@ -9,7 +9,7 @@ import { ButtonComponent } from './common/button/button.component';
 import { IconComponent } from './common/icons/icons.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { RoutingComponents } from './app-routing.module';
-import { MatStepperModule, MatButtonModule } from '@angular/material';
+import { MatStepperModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -17,7 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     TopnavComponent,
     AuthmockComponent,
-    ButtonComponent,  
+    ButtonComponent,
     IconComponent,
     LogInComponent,
     RoutingComponents

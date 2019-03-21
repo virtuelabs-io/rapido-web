@@ -1,7 +1,16 @@
+import { environment } from '../../environments/environment';
+
 export class Constants {
   public static RAPIDO_BUILD = 'Rapidobuild';
   public static CUSTOM = "custom:";
-  public static POOL_DATA = { UserPoolId : "eu-west-2_XNt6gZnld", ClientId : "4q35br0bpdc6ooao08sjs5isqf" }
+  public static POOL_DATA = {
+    UserPoolId : environment.userPoolId,
+    ClientId : environment.clientId
+  }
+  public static environment = {
+    name: environment.name,
+    production: environment.production
+  }
 
   public static PHONE_NUMBER = "phone_number";
   public static EMAIL = "email";
