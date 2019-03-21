@@ -57,6 +57,14 @@
                   "maximumError": "5mb"
                 }
               ]
+            },
+            "staging": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.staging.ts"
+                }
+              ]
             }
           }
         },
@@ -68,6 +76,9 @@
           "configurations": {
             "production": {
               "browserTarget": "rapido-web:build:production"
+            },
+            "staging": {
+              "browserTarget": "rapido-web:build:staging"
             }
           }
         },

@@ -1,21 +1,38 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
 import { TopnavComponent } from './topnav/topnav.component';
 import { AuthmockComponent } from './authmock/authmock.component';
-import { FormsModule } from '@angular/forms';
+import { ButtonComponent } from './common/button/button.component';
+import { IconComponent } from './common/icons/icons.component';
+import { LogInComponent } from './log-in/log-in.component';
+import { RoutingComponents } from './app-routing.module';
+import { MatStepperModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        FormsModule
+        FormsModule,
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatStepperModule,
+        ReactiveFormsModule
       ],
       declarations: [
         AppComponent,
         TopnavComponent,
-        AuthmockComponent
+        AuthmockComponent,
+        ButtonComponent,
+        IconComponent,
+        LogInComponent,
+        RoutingComponents
       ],
     }).compileComponents();
   }));

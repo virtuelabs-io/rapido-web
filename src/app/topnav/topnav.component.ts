@@ -2,7 +2,13 @@ import { Component, OnInit, NgModule } from '@angular/core';
 import { Constants } from '../utils/constants';
 import { SessionService } from '../services/authentication/session/session.service';
 import { ProfileService } from '../services/authentication/profile/profile.service';
+import { ButtonComponent } from '../common/button/button.component';
 
+@NgModule({
+  declarations: [
+    ButtonComponent
+  ]
+})
 @Component({
   selector: 'app-topnav',
   templateUrl: './topnav.component.html',

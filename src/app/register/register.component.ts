@@ -1,10 +1,17 @@
 import { Component, OnInit, NgModule} from '@angular/core';
-import { MatStepperModule } from '@angular/material';
 import { Registration } from '../services/authentication/helpers/registration';
 import {FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 @NgModule({
-  imports: [  FormBuilder, Validators, FormGroup ]
+  imports: [
+    FormBuilder,
+    Validators,
+    FormGroup,
+    MatStepperModule,
+    MatInputModule,
+    MatButtonModule,
+    MatAutocompleteModule
+  ]
 })
 @Component({
   selector: 'app-register',
@@ -70,12 +77,6 @@ export class RegisterComponent implements OnInit {
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
-    // this.ownerForm = new FormGroup({
-    //   email: new FormControl('', [Validators.required, Validators.maxLength(5)])
-    // });
   } 
-  // public hasError = (controlName: string, errorName: string) =>{
-  //   return this.ownerForm.controls[controlName].hasError(errorName);
-  // }
 
 }

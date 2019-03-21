@@ -1,3 +1,4 @@
+[![Build Status](https://dev.azure.com/reddyhorcrux/Rapidobuild.com/_apis/build/status/virtuelabs-io.rapido-web?branchName=master)](https://dev.azure.com/reddyhorcrux/Rapidobuild.com/_build/latest?definitionId=8&branchName=master)
 # RapidoWeb
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.6.
