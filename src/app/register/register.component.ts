@@ -18,19 +18,24 @@ export class RegisterComponent implements OnInit {
   secondFormGroup: FormGroup;
   hide = true;
 
-  email = new FormControl('', [Validators.required, Validators.email]);
-  getErrorMessage() {
-    return this.email.hasError('required') ? 'You must enter a value' :
-        this.email.hasError('email') ? 'Not a valid email' :
-            '';
-  }
-  mobileNumber = new FormControl('', [Validators.required, Validators.email]);
-  getMobileErrorMessage() {
-    return this.email.hasError('required') ? 'You must enter a value' :'';
-  }
+  // email = new FormControl('', [Validators.required, Validators.email]);
+  // getErrorMessage() {
+  //   return this.email.hasError('required') ? 'You must enter a value' :
+  //       this.email.hasError('email') ? 'Not a valid email' :
+  //           '';
+  // }
+  // mobileNumber = new FormControl('', [Validators.required, Validators.email]);
+  // getMobileErrorMessage() {
+  //   return this.email.hasError('required') ? 'You must enter a value Anirup' :'';
+  // }
+  // password = new FormControl('', [Validators.required, Validators.email]);
+  // getPasswordErrorMessage() {
+  //   return this.email.hasError('required') ? 'You must enter a value' :'';
+  // }
   profileForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl('')
+    mobileNumber: new FormControl(''),
+    lastName: new FormControl(''),
+    email: new FormControl('')
   });
   onSubmit() {
     // TODO: Use EventEmitter with form value
@@ -55,8 +60,9 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.profileForm = this._formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required]
+      mobileNumber: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: [ '', [ Validators.required, Validators.email ] ]
     });
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
@@ -65,11 +71,11 @@ export class RegisterComponent implements OnInit {
       secondCtrl: ['', Validators.required]
     });
     // this.ownerForm = new FormGroup({
-    //   address: new FormControl('', [Validators.required, Validators.maxLength(5)])
+    //   email: new FormControl('', [Validators.required, Validators.maxLength(5)])
     // });
   } 
-  public hasError = (controlName: string, errorName: string) =>{
-    return this.ownerForm.controls[controlName].hasError(errorName);
-  }
+  // public hasError = (controlName: string, errorName: string) =>{
+  //   return this.ownerForm.controls[controlName].hasError(errorName);
+  // }
 
 }
