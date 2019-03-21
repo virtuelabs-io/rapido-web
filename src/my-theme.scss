@@ -5,13 +5,10 @@
 @include mat-core();
 
 // Define your application's custom theme.
-$primary1: mat-palette($mat-green);
+$primary1: mat-palette($mat-red);
 $accent:  mat-palette($mat-pink, A200, A100, A400);
 $theme: mat-light-theme($primary1, $accent);
 
 // Include theme styles for Angular Material components.
 @include angular-material-theme($theme);
-
-// Include theme styles for your custom components.
-//@include candy-carousel-theme($theme);
 
