@@ -1,7 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
 import { AuthenticationService } from './authentication.service';
-import { environment as testEnvironment } from '../../../../environments/environment.test';
 import { ProfileService } from '../profile/profile.service';
 import { VirtueCognitoService } from '../virtue-cognito/virtue-cognito.service';
 import { CognitoUser } from 'amazon-cognito-identity-js';
@@ -18,8 +17,8 @@ describe('AuthenticationService', () => {
 
   it('Setter and getter for Username', () => {
     const service: AuthenticationService = TestBed.get(AuthenticationService);
-    service.username = testEnvironment.phone_number
-    expect(service.username).toEqual(testEnvironment.phone_number)
+    service.username = "+440000000000"
+    expect(service.username).toEqual("+440000000000")
   });
 
   it('prepareProfile test: Positive', () => {
@@ -34,13 +33,13 @@ describe('AuthenticationService', () => {
       }
     }
     let service = new TestAuthenticationService(new ProfileService(), new VirtueCognitoService())
-    service.username = testEnvironment.phone_number
+    service.username = "+440000000000"
     let cognitoUser = service.testPrepareProfile()
     expect(cognitoUser).toBeDefined()
     expect(cognitoUser).toEqual(jasmine.any(CognitoUser))
   });
 
-  it('prepareProfile test: Negitive', () => {
+  it('prepareProfile test: Negative', () => {
     class TestAuthenticationService extends AuthenticationService {
       constructor(profileService: ProfileService, virtueCognitoService: VirtueCognitoService) {
         super(profileService, virtueCognitoService)
@@ -71,13 +70,13 @@ describe('AuthenticationService', () => {
       }
     }
     let service = new TestAuthenticationService(new ProfileService(), new VirtueCognitoService())
-    service.username = testEnvironment.phone_number
+    service.username = "+440000000000"
     let cognitoUser = service.testInitializeNewProfile()
     expect(cognitoUser).toBeDefined()
     expect(cognitoUser).toEqual(jasmine.any(CognitoUser))
   });
 
-  it('initializeNewProfile test: Negitive', () => {
+  it('initializeNewProfile test: Negative', () => {
     class TestAuthenticationService extends AuthenticationService {
       constructor(profileService: ProfileService, virtueCognitoService: VirtueCognitoService) {
         super(profileService, virtueCognitoService)
