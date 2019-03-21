@@ -20,20 +20,14 @@ pr:
     - master
 
 steps:
-- task: NodeTool@0
+- task: UsePythonVersion@0
   inputs:
-    versionSpec: '8.x'
+    versionSpec: 3.6
+    architecture: 'x64'
 
 - script: |
-    pip install --upgrade pip
-    pip install setuptools
     pip install awscli
   displayName: 'Environment Preperation'
-
-- task: Npm@1
-  displayName: 'npm install'
-  inputs:
-    command: install
 
 - script: |
     aws s3 cp s3://rapido-build-secrets-bucket/environment.staging.ts ./src/environment/environment.staging.ts
@@ -42,6 +36,15 @@ steps:
     AWS_ACCESS_KEY_ID: $(accessKeyId)
     AWS_SECRET_ACCESS_KEY: $(secretAccessKey)
   displayName: 'Fetch secrets'
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: '8.x'
+
+- task: Npm@1
+  displayName: 'npm install'
+  inputs:
+    command: install
 
 - task: Npm@1
   displayName: 'npm test'
