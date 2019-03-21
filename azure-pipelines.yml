@@ -25,6 +25,8 @@ steps:
     versionSpec: '8.x'
 
 - script: |
+    pip install --upgrade pip
+    pip install setuptools
     pip install awscli
   displayName: 'Environment Preperation'
 
