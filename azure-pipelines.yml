@@ -9,7 +9,7 @@ trigger:
     - bug/*
 
 variables:
-  imageName: 'rapido-build-web'
+  imageName: 'rapido-web'
   major: 0
   minor: 0
   patch: 1
