@@ -30,40 +30,41 @@ steps:
   displayName: 'Environment Preperation'
 
 - script: |
+    rm -rf ./src/environments/environment.ts
     aws s3 cp s3://rapido-build-secrets-bucket/environment.staging.ts ./src/environments/environment.staging.ts
     aws s3 cp s3://rapido-build-secrets-bucket/environment.prod.ts ./src/environments/environment.prod.ts
+    aws s3 cp s3://rapido-build-secrets-bucket/environment.prod.ts ./src/environments/environment.ts
   env:
     AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
     AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
-  displayName: 'Fetch secrets'
+  displayName: 'Fetch secrets from AWS'
 
 - task: NodeTool@0
   inputs:
     versionSpec: '8.x'
+  displayName: 'Configuring the node tool'
 
 - task: Npm@1
-  displayName: 'npm install'
+  displayName: 'Install all node modules'
   inputs:
     command: install
 
-# - task: Npm@1
-#   displayName: 'npm test'
-#   inputs:
-#     command: custom
-#     customCommand: 'test'
+- script: |
+    npm run testheadless
+  displayName: 'Running tests'
 
-# - task: PublishTestResults@2
-#   inputs:
-#     testResultsFiles: '**/TESTS-*.xml'
-#     testRunTitle: 'Rapidobuild test results'
-#   condition: succeededOrFailed()
+- task: PublishTestResults@2
+  inputs:
+    testResultsFiles: '**/TESTS-*.xml'
+    testRunTitle: 'Rapidobuild test results'
+  condition: succeededOrFailed()
 
-# - task: PublishCodeCoverageResults@1
-#   displayName: 'Publishing code coverage'
-#   inputs:
-#     codeCoverageTool: Cobertura
-#     summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/rapido-web/index.html'
-#     reportDirectory: '$(System.DefaultWorkingDirectory)/coverage'
+- task: PublishCodeCoverageResults@1
+  displayName: 'Publishing code coverage'
+  inputs:
+    codeCoverageTool: Cobertura
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/rapido-web/index.html'
+    reportDirectory: '$(System.DefaultWorkingDirectory)/coverage'
 
 - script: |
     npm run prodbuild
@@ -85,5 +86,5 @@ steps:
     AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
     AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
     DOCKER_REPO: $(DOCKER_REPO)
-  displayName: 'Push Docker image'
+  displayName: 'Publish docker image to ECR'
 
