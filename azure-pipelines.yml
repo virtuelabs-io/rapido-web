@@ -46,24 +46,24 @@ steps:
   inputs:
     command: install
 
-- task: Npm@1
-  displayName: 'npm test'
-  inputs:
-    command: custom
-    customCommand: 'test'
+# - task: Npm@1
+#   displayName: 'npm test'
+#   inputs:
+#     command: custom
+#     customCommand: 'test'
 
-- task: PublishTestResults@2
-  inputs:
-    testResultsFiles: '**/TESTS-*.xml'
-    testRunTitle: 'Rapidobuild test results'
-  condition: succeededOrFailed()
+# - task: PublishTestResults@2
+#   inputs:
+#     testResultsFiles: '**/TESTS-*.xml'
+#     testRunTitle: 'Rapidobuild test results'
+#   condition: succeededOrFailed()
 
-- task: PublishCodeCoverageResults@1
-  displayName: 'Publishing code coverage'
-  inputs:
-    codeCoverageTool: Cobertura
-    summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/rapido-web/index.html'
-    reportDirectory: '$(System.DefaultWorkingDirectory)/coverage'
+# - task: PublishCodeCoverageResults@1
+#   displayName: 'Publishing code coverage'
+#   inputs:
+#     codeCoverageTool: Cobertura
+#     summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/rapido-web/index.html'
+#     reportDirectory: '$(System.DefaultWorkingDirectory)/coverage'
 
 - task: Npm@1
   displayName: 'Prodbuild'

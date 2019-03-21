@@ -6,8 +6,9 @@ export const environment = {
   production: false,
   name: "DEV",
   userPoolId : "xxxxxxxxxxxxxxx",
-  clientId : "xxxxxxxxxxxxxxxxx"
+  clientId : "xxxxxxxxxxxxxxxx"
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file
