@@ -7,3 +7,11 @@
 .cb {
   width: 50px;
 }
+.example-container {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+.example-container > * {
+  width: 100%;
+}
