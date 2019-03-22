@@ -6,11 +6,7 @@ import {FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
   imports: [
     FormBuilder,
     Validators,
-    FormGroup,
-    MatStepperModule,
-    MatInputModule,
-    MatButtonModule,
-    MatAutocompleteModule
+    FormGroup
   ]
 })
 @Component({
@@ -19,64 +15,66 @@ import {FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  public ownerForm: FormGroup;
-  isLinear = false;
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  hide = true;
 
-  // email = new FormControl('', [Validators.required, Validators.email]);
-  // getErrorMessage() {
-  //   return this.email.hasError('required') ? 'You must enter a value' :
-  //       this.email.hasError('email') ? 'Not a valid email' :
-  //           '';
-  // }
-  // mobileNumber = new FormControl('', [Validators.required, Validators.email]);
-  // getMobileErrorMessage() {
-  //   return this.email.hasError('required') ? 'You must enter a value Anirup' :'';
-  // }
-  // password = new FormControl('', [Validators.required, Validators.email]);
-  // getPasswordErrorMessage() {
-  //   return this.email.hasError('required') ? 'You must enter a value' :'';
-  // }
-  profileForm = new FormGroup({
-    mobileNumber: new FormControl(''),
-    lastName: new FormControl(''),
-    email: new FormControl('')
-  });
-  onSubmit() {
-    // TODO: Use EventEmitter with form value
-    alert("test");
-  }
+  registerFormGroup: FormGroup
+  codeConfirmationFormGroup: FormGroup
 
-  _registration: Registration = new Registration(
-    "+447783307487",
-    "reddy.horcrux@gmail.com",
-    "Sangram Reddy",
-    "Sangram1992",
-    "true",
-    "true",
-    "true",
-    "true",
-    "true"
-  );
-
-  _userRegisteredResponse: Boolean = false;
+  mobileNumber: FormControl
+  name: FormControl
+  email: FormControl
+  password: FormControl
+  confirmPassword: FormControl
+  termsAndConditions: FormControl
+  communications: FormControl
+  confirmationCode: FormControl
 
   constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.profileForm = this._formBuilder.group({
-      mobileNumber: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: [ '', [ Validators.required, Validators.email ] ]
-    });
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    });
-  } 
+
+    this.mobileNumber = new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')])
+    this.name = new FormControl('', [Validators.required, Validators.maxLength(20)])
+    this.email = new FormControl('', [Validators.required, Validators.email])
+    this.password = new FormControl('', [Validators.required])
+    this.confirmPassword = new FormControl('', [Validators.required])
+    this.termsAndConditions = new FormControl('', [Validators.required])
+    this.communications = new FormControl('', [Validators.required])
+    this.confirmationCode = new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')])
+
+    this.registerFormGroup = this._formBuilder.group({
+      mobileNumber: this.mobileNumber,
+      name: this.name,
+      email: this.email,
+      password: this.password,
+      confirmPassword: this.confirmPassword,
+      termsAndConditions: this.termsAndConditions,
+      communications: this.communications
+    })
+    this.codeConfirmationFormGroup = this._formBuilder.group({
+      mobileNumber: this.mobileNumber,
+      confirmationCode: this.confirmationCode
+    })
+  }
+
+  registerUser(){
+    console.log("Executed", this.registerFormGroup)
+  }
+
+  confirmUser(){
+
+  }
+
+  // getErrorMessage() {
+  //   this._registerFormGroup.get()
+  //   return this.email.hasError('required') ? 'You must enter a value' :
+  //       this.email.hasError('email') ? 'Not a valid email' :
+  //           '';
+  // }
+  // getMobileErrorMessage() {
+  //   return this.email.hasError('required') ? 'You must enter a value Anirup' :'';
+  // }
+  // getPasswordErrorMessage() {
+  //   return this.email.hasError('required') ? 'You must enter a value' :'';
+  // }
 
 }
