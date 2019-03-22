@@ -28,7 +28,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/my-theme.scss"
+              "src/assets/scss/rapido-material-theme.scss"
             ],
             "scripts": [],
             "es5BrowserSupport": true
