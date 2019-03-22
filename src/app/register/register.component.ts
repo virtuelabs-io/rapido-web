@@ -15,6 +15,10 @@ import {FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  public ownerForm: FormGroup;
+
+
+
 
   registerFormGroup: FormGroup
   codeConfirmationFormGroup: FormGroup
@@ -31,29 +35,42 @@ export class RegisterComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.ownerForm = new FormGroup({
+      name: new FormControl('', [Validators.required, Validators.maxLength(5)]),
+    //  dateOfBirth: new FormControl(new Date()),
+      address: new FormControl('', [Validators.required, Validators.maxLength(10)])
+    });
 
-    this.mobileNumber = new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')])
-    this.name = new FormControl('', [Validators.required, Validators.maxLength(20)])
-    this.email = new FormControl('', [Validators.required, Validators.email])
-    this.password = new FormControl('', [Validators.required])
-    this.confirmPassword = new FormControl('', [Validators.required])
-    this.termsAndConditions = new FormControl('', [Validators.required])
-    this.communications = new FormControl('', [Validators.required])
-    this.confirmationCode = new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')])
 
-    this.registerFormGroup = this._formBuilder.group({
-      mobileNumber: this.mobileNumber,
-      name: this.name,
-      email: this.email,
-      password: this.password,
-      confirmPassword: this.confirmPassword,
-      termsAndConditions: this.termsAndConditions,
-      communications: this.communications
+
+
+
+     this.mobileNumber = new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')])
+    // this.name = new FormControl('', [Validators.required, Validators.maxLength(20)])
+    // this.email = new FormControl('', [Validators.required, Validators.email])
+    // this.password = new FormControl('', [Validators.required])
+    // this.confirmPassword = new FormControl('', [Validators.required])
+    // this.termsAndConditions = new FormControl('', [Validators.required])
+    // this.communications = new FormControl('', [Validators.required])
+     this.confirmationCode = new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')])
+
+    this.registerFormGroup = new FormGroup({
+      mobileNumber: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')]),
+      name: new FormControl('', [Validators.required, Validators.maxLength(10)]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required]),
+      confirmPassword: new FormControl('', [Validators.required]),
+      termsAndConditions: new FormControl('', [Validators.required]),
+      communications: new FormControl('', [Validators.required])
     })
     this.codeConfirmationFormGroup = this._formBuilder.group({
       mobileNumber: this.mobileNumber,
       confirmationCode: this.confirmationCode
     })
+  }
+
+  public hasError = (controlName: string, errorName: string) =>{
+    return this.registerFormGroup.controls[controlName].hasError(errorName);
   }
 
   registerUser(){
