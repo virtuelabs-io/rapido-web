@@ -1,82 +1,50 @@
 <mat-vertical-stepper [linear]="true" #stepper>
     <mat-step [stepControl]="registerFormGroup">
         <ng-template matStepLabel><h4>Sign Up/ Register</h4></ng-template>
-        <!-- <form class="example-container" [formGroup]="registerFormGroup" (ngSubmit)="registerUser()">
-          <mat-form-field>
-            <input matInput placeholder="Mobile Number" formControlName="mobileNumber" [(ngModel)]="mobileNumber.value">
-            <mat-error *ngIf="mobileNumber.invalid">Error in Validation</mat-error>
-          </mat-form-field>
-          <mat-form-field class="example-full-width" hintLabel="Max 20 characters">
-            <input matInput #input placeholder="Name" formControlName="name">
-            <mat-hint align="end">{{input.value?.length || 0}}/20</mat-hint>
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput placeholder="Enter your email" formControlName="email">
-            <mat-error *ngIf="email.invalid">Error in Validation</mat-error>
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" [formControl]="password">
-            <mat-error *ngIf="password.invalid">Error in Validation</mat-error>
-            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </mat-form-field>
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Confirm Password" [type]="hide ? 'password' : 'text'" [formControl]="confirmPassword">
-          </mat-form-field>
-          <mat-checkbox class="example-margin" [formControl]="termsAndConditions">I agree to the Terms and Conditions</mat-checkbox>
-          <mat-checkbox class="example-margin" [formControl]="communications">Use my data for Promotions, Personalisations and Communications</mat-checkbox>
-          <button mat-flat-button matStepperNext color="primary" type="submit" [disabled]="!registerFormGroup.valid">Submit</button>
-        </form> -->
-
-        <form [formGroup]="registerFormGroup" class="example-container" novalidate (ngSubmit)="createOwner(registerFormGroup.value)">
+        <form [formGroup]="registerFormGroup" class="example-container" novalidate (ngSubmit)="createUser(registerFormGroup.value)">
           <!-- <mat-card-content> -->
               <mat-form-field>
                   <input matInput type="text" placeholder="Mobile Number" formControlName="mobileNumber" [(ngModel)]="mobileNumber.value">
                   <mat-hint align="end">Only Numbers</mat-hint>
                   <mat-error *ngIf="hasError('mobileNumber', 'required')">Name is required</mat-error>
                   <mat-error *ngIf="hasError('mobileNumber', 'pattern')">numbers</mat-error>
-                </mat-form-field>
-                 
-
-                 
-                <mat-form-field>
+              </mat-form-field>
+ 
+              <mat-form-field>
                   <input matInput type="text" placeholder="Name" formControlName="name">
                   <mat-hint align="end">Not more then 20 characters long.</mat-hint>
                   <mat-error *ngIf="hasError('name', 'required')">Address is required</mat-error>
                   <mat-error *ngIf="hasError('name', 'maxlength')">You have more than 20 characters</mat-error>
-                </mat-form-field>
+              </mat-form-field>
 
-
-                <mat-form-field>
+              <mat-form-field>
                     <input matInput placeholder="Enter your email" formControlName="email">
                     <mat-error *ngIf="hasError('email', 'required')">Email is required</mat-error>
                     <mat-error *ngIf="hasError('email', 'email')">Incorrect Email ID</mat-error>
-                </mat-form-field>
+              </mat-form-field>
 
-                  <mat-form-field>
+              <mat-form-field>
                       <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" formControlName="password">
                       <mat-error *ngIf="hasError('password', 'required')">Password is required</mat-error>
                       <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                  </mat-form-field>
+              </mat-form-field>
 
-                    <mat-form-field class="example-full-width">
+              <mat-form-field class="example-full-width">
                         <input matInput placeholder="Confirm Password" [type]="hide ? 'password' : 'text'" formControlName="confirmPassword">
                         <mat-error *ngIf="hasError('confirmPassword', 'required')">Password is required</mat-error>
-                    </mat-form-field>
+              </mat-form-field>
 
-                    
-
-                    <mat-checkbox required class="example-margin" #isActive="" formControlName="termsAndConditions">I agree to the Terms and Conditions</mat-checkbox>
-                    <mat-checkbox class="example-margin" formControlName="communications">Use my data for Promotions, Personalisations and Communications</mat-checkbox>
+              <mat-checkbox required class="example-margin" #isActive="" formControlName="termsAndConditions">I agree to the Terms and Conditions</mat-checkbox>
+              <mat-checkbox class="example-margin" formControlName="communications">Use my data for Promotions, Personalisations and Communications</mat-checkbox>
           <!-- </mat-card-content> -->
           <mat-card-actions align="center">
               <button mat-flat-button matStepperNext color="primary" type="submit" [disabled]="!registerFormGroup.valid">Submit</button>
-              <!-- <button type="button"> mat-raised-button color="warn" (click)="onCancel()">Cancel</button> -->
             </mat-card-actions>
         </form>
     </mat-step>
     <mat-step [stepControl]="codeConfirmationFormGroup">
       <ng-template matStepLabel><h4>Mobile Number Verification</h4></ng-template>
-      <form class="example-container" [formGroup]="codeConfirmationFormGroup" (ngSubmit)="confirmUser()">
+      <form class="example-container" [formGroup]="codeConfirmationFormGroup">
         <mat-form-field>
           <input matInput placeholder="Mobile Number" formControlName="mobileNumber" [(ngModel)]="mobileNumber.value">
           <mat-error *ngIf="mobileNumber.invalid">Error in Validation</mat-error>
@@ -85,6 +53,7 @@
           <input matInput placeholder="Confirmation code" formControlName="confirmationCode">
           <mat-error *ngIf="confirmationCode.invalid">Error in Validation</mat-error>
         </mat-form-field>
+        <button mat-flat-button color="primary">Resend Code</button>
         <button mat-flat-button matStepperNext color="primary" type="submit" [disabled]="!codeConfirmationFormGroup.valid">Submit</button>
       </form>
     </mat-step>
@@ -92,8 +61,10 @@
       <ng-template matStepLabel>Done</ng-template>
       You are now done.
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
+        <svg>
+          <use xlink:href="#check-mark" />
+        </svg>
       </div>
+      <button mat-flat-button routerLink="/sign-in"  color="primary" type="submit">Navigate to Sign In Page</button>
     </mat-step>
 </mat-vertical-stepper>
