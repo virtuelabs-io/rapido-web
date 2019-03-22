@@ -30,7 +30,7 @@
         <form [formGroup]="registerFormGroup" class="example-container" novalidate (ngSubmit)="createOwner(registerFormGroup.value)">
           <!-- <mat-card-content> -->
               <mat-form-field>
-                  <input matInput type="text" placeholder="Mobile Number" formControlName="mobileNumber">
+                  <input matInput type="text" placeholder="Mobile Number" formControlName="mobileNumber" [(ngModel)]="mobileNumber.value">
                   <mat-hint align="end">Only Numbers</mat-hint>
                   <mat-error *ngIf="hasError('mobileNumber', 'required')">Name is required</mat-error>
                   <mat-error *ngIf="hasError('mobileNumber', 'pattern')">numbers</mat-error>
@@ -40,9 +40,9 @@
                  
                 <mat-form-field>
                   <input matInput type="text" placeholder="Name" formControlName="name">
-                  <mat-hint align="end">Not more then 10 characters long.</mat-hint>
+                  <mat-hint align="end">Not more then 20 characters long.</mat-hint>
                   <mat-error *ngIf="hasError('name', 'required')">Address is required</mat-error>
-                  <mat-error *ngIf="hasError('name', 'maxlength')">You have more than 10 characters</mat-error>
+                  <mat-error *ngIf="hasError('name', 'maxlength')">You have more than 20 characters</mat-error>
                 </mat-form-field>
 
 
@@ -65,11 +65,11 @@
 
                     
 
-                    <mat-checkbox required class="example-margin" formControlName="termsAndConditions">I agree to the Terms and Conditions</mat-checkbox>
+                    <mat-checkbox required class="example-margin" #isActive="" formControlName="termsAndConditions">I agree to the Terms and Conditions</mat-checkbox>
                     <mat-checkbox class="example-margin" formControlName="communications">Use my data for Promotions, Personalisations and Communications</mat-checkbox>
           <!-- </mat-card-content> -->
           <mat-card-actions align="center">
-              <button mat-raised-button color="primary" [disabled]="!registerFormGroup.valid">Create</button>
+              <button mat-flat-button matStepperNext color="primary" type="submit" [disabled]="!registerFormGroup.valid">Submit</button>
               <!-- <button type="button"> mat-raised-button color="warn" (click)="onCancel()">Cancel</button> -->
             </mat-card-actions>
         </form>

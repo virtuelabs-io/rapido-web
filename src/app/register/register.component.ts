@@ -56,7 +56,7 @@ export class RegisterComponent implements OnInit {
 
     this.registerFormGroup = new FormGroup({
       mobileNumber: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')]),
-      name: new FormControl('', [Validators.required, Validators.maxLength(10)]),
+      name: new FormControl('', [Validators.required, Validators.maxLength(20)]),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required]),
       confirmPassword: new FormControl('', [Validators.required]),
@@ -64,9 +64,14 @@ export class RegisterComponent implements OnInit {
       communications: new FormControl('', [Validators.required])
     })
     this.codeConfirmationFormGroup = this._formBuilder.group({
-      mobileNumber: this.mobileNumber,
+      mobileNumber: [this.mobileNumber],
       confirmationCode: this.confirmationCode
     })
+    this.codeConfirmationFormGroup.get('mobileNumber').disable();
+    // this.codeConfirmationFormGroup = new FormGroup({
+    //   mobileNumber: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')]),
+    //   confirmationCode: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')])
+    // })
   }
 
   public hasError = (controlName: string, errorName: string) =>{
