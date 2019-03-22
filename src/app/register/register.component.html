@@ -12,7 +12,7 @@
  
               <mat-form-field>
                   <input matInput type="text" placeholder="Name" formControlName="name">
-                  <mat-hint align="end">Not more then 20 characters long.</mat-hint>
+                  <mat-hint align="end">Not more than 20 characters long.</mat-hint>
                   <mat-error *ngIf="hasError('name', 'required')">Address is required</mat-error>
                   <mat-error *ngIf="hasError('name', 'maxlength')">You have more than 20 characters</mat-error>
               </mat-form-field>
@@ -34,10 +34,10 @@
                         <mat-error *ngIf="hasError('confirmPassword', 'required')">Password is required</mat-error>
               </mat-form-field>
 
-              <mat-checkbox required class="example-margin" #isActive="" formControlName="termsAndConditions">I agree to the Terms and Conditions</mat-checkbox>
+              <mat-checkbox required class="example-margin" formControlName="termsAndConditions">I agree to the Terms and Conditions</mat-checkbox>
               <mat-checkbox class="example-margin" formControlName="communications">Use my data for Promotions, Personalisations and Communications</mat-checkbox>
           <!-- </mat-card-content> -->
-          <mat-card-actions align="center">
+            <mat-card-actions align="center">
               <button mat-flat-button matStepperNext color="primary" type="submit" [disabled]="!registerFormGroup.valid">Submit</button>
             </mat-card-actions>
         </form>

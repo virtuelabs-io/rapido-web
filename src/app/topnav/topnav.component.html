@@ -1,4 +1,31 @@
-<nav class="navbar fixed-top navbar-dark bg-primary">
+
+<mat-toolbar color="primary">
+  <mat-toolbar-row class="primary-top-nav">
+    <a class="navbar-brand rapido-banner">
+      {{bannerName}}
+      <a class="com">
+        .com
+      </a>
+    </a>
+    <span class="example-spacer"></span>
+    <a class="cart" routerLink="">
+      <svg>
+        <use xlink:href="#shopping-cart" />
+      </svg>
+  </a>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row>
+    <span>Second Line</span>
+    <span class="example-spacer"></span>
+    <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user</mat-icon>
+  </mat-toolbar-row>
+
+  
+</mat-toolbar>
+
+
+<!-- <nav class="navbar fixed-top navbar-dark bg-primary">
   <a class="navbar-brand rapido-banner">
     {{bannerName}}
     <a class="com">
@@ -12,4 +39,4 @@
         <use xlink:href="#shopping-cart" />
       </svg>
   </a>
-</nav>
+</nav> -->
