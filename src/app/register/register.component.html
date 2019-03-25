@@ -4,7 +4,8 @@
         <form [formGroup]="registerFormGroup" class="example-container" novalidate (ngSubmit)="createUser(registerFormGroup.value)">
           <!-- <mat-card-content> -->
               <mat-form-field class="col-lg-4" >
-                  <input matInput type="text" placeholder="Mobile Number" formControlName="mobileNumber" [(ngModel)]="mobileNumber.value">
+                  <span matPrefix>+44 &nbsp;</span>
+                  <input matInput maxlength="10" placeholder="Mobile Number" formControlName="mobileNumber" [(ngModel)]="mobileNumber.value">
                   <mat-hint align="end">Only Numbers</mat-hint>
                   <mat-error *ngIf="hasError('mobileNumber', 'required')">Name is required</mat-error>
                   <mat-error *ngIf="hasError('mobileNumber', 'pattern')">numbers</mat-error>
@@ -35,13 +36,14 @@
               <mat-form-field class="col-lg-4">
                         <input matInput placeholder="Confirm Password" [type]="hide ? 'password' : 'text'" formControlName="confirmPassword">
                         <mat-error *ngIf="hasError('confirmPassword', 'required')">Password is required</mat-error>
+                        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </mat-form-field>
               <div class="mt-2"></div>
 
               <mat-checkbox required class="example-margin" formControlName="termsAndConditions">I agree to the Terms and Conditions</mat-checkbox>
               <mat-checkbox class="example-margin" formControlName="communications">Use my data for Promotions, Personalisations and Communications</mat-checkbox>
           <!-- </mat-card-content> -->
-            <mat-card-actions align="center">
+            <mat-card-actions >
               <button mat-flat-button matStepperNext color="primary" type="submit" [disabled]="!registerFormGroup.valid">Submit</button>
             </mat-card-actions>
         </form>
