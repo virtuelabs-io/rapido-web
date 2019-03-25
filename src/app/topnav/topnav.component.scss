@@ -1,3 +1,4 @@
+@import "../../assets/scss/custom-bootstrap-variables.scss";
 .rapido-banner{
   font-size: 30px;
   font-weight: 700;
@@ -17,7 +18,7 @@
 }
 .cart{
   align-items: center;
-  width: 20%;
+  width: 20px;
   height: 64px;
   svg {
       margin: 12px 0px;
@@ -41,3 +42,72 @@
   box-shadow: 3px;
 }
 
+//  angular material nav bar scss :
+.mat-elevation-z6 {
+  box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+}
+app-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+.docs-navbar-header[_ngcontent-c1] {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 8px 16px;
+}
+app-navbar .docs-navbar, app-navbar .docs-navbar-header {
+  background: $primary;
+}
+.docs-navbar[_ngcontent-c1] {
+    display: flex;
+}
+.docs-navbar-link[_ngcontent-c1] {
+  text-decoration: inherit;
+  flex: 1;
+}
+.mat-button, .mat-flat-button, .mat-icon-button, .mat-stroked-button {
+  box-sizing: border-box;
+  position: relative;
+  // -webkit-user-select: none;
+  // -moz-user-select: none;
+  // -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  outline: 0;
+  border: none;
+  -webkit-tap-highlight-color: transparent;
+  display: inline-block;
+  white-space: nowrap;
+   text-decoration: none;
+  vertical-align: baseline;
+  text-align: center;
+  margin: 0;
+  min-width: 64px;
+  line-height: 36px;
+  padding: 0 16px;
+  border-radius: 4px;
+  overflow: visible;
+}
+.mat-button, .mat-icon-button, .mat-stroked-button {
+  color: inherit;
+  background: 0 0;
+}
+.mat-button, .mat-fab, .mat-flat-button, .mat-icon-button, .mat-mini-fab, .mat-raised-button, .mat-stroked-button {
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+.mat-button-focus-overlay {
+  opacity: 0;
+  transition: opacity .2s cubic-bezier(.35,0,.25,1),background-color .2s cubic-bezier(.35,0,.25,1);
+}
+.mat-button .mat-button-focus-overlay, .mat-icon-button .mat-button-focus-overlay {
+  opacity: 0;
+}
+.flex-spacer[_ngcontent-c1] {
+  flex-grow: 1;
+}

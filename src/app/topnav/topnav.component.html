@@ -1,5 +1,68 @@
 
-<mat-toolbar color="primary">
+<app-navbar class="mat-elevation-z6" _nghost-c1="">
+  <nav _ngcontent-c1="" class="docs-navbar-header">
+      <a class="navbar-brand rapido-banner">
+          {{bannerName}}
+          <a class="com">
+            .com
+          </a>
+      </a>
+    <div _ngcontent-c1="" class="flex-spacer"></div>
+      <app-button [label]="logInLabel" routerLink="/sign-in" [btnIcon]="add_circle"></app-button>
+      <a _ngcontent-c1="" class="cart docs-button docs-navbar-hide-small mat-button" routerLink="">
+          <svg>
+            <use xlink:href="#shopping-cart" />
+          </svg>
+      </a>
+      <a class="cart docs-button docs-navbar-hide-small mat-button" routerLink="">
+          <svg>
+            <use xlink:href="#man-user" />
+          </svg>
+      </a>
+    </nav>
+    <nav _ngcontent-c1="" class="docs-navbar docs-navbar-show-small"><!---->
+      <a _ngcontent-c1="" class="docs-navbar-link mat-button ng-star-inserted" mat-button="" tabindex="0" aria-disabled="false" href="/components">
+        <span class="mat-button-wrapper">Electricals</span>
+        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+        <div class="mat-button-focus-overlay"></div>
+      </a>
+      <a _ngcontent-c1="" class="docs-navbar-link mat-button ng-star-inserted" mat-button="" tabindex="0" aria-disabled="false" href="/cdk">
+        <span class="mat-button-wrapper">Plumbing</span>
+        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+        <div class="mat-button-focus-overlay"></div>
+      </a>
+      <a _ngcontent-c1="" class="docs-navbar-link mat-button" mat-button="" routerlink="guides" tabindex="0" aria-disabled="false" href="/guides">
+        <span class="mat-button-wrapper">Power Tools</span>
+        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+        <div class="mat-button-focus-overlay"></div>
+      </a>
+      <a _ngcontent-c1="" class="docs-navbar-link mat-button" mat-button="" routerlink="guides" tabindex="0" aria-disabled="false" href="/guides">
+        <span class="mat-button-wrapper">Security</span>
+        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+        <div class="mat-button-focus-overlay"></div>
+      </a>
+      <a _ngcontent-c1="" class="docs-navbar-link mat-button" mat-button="" routerlink="guides" tabindex="0" aria-disabled="false" href="/guides">
+        <span class="mat-button-wrapper">Screws</span>
+        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+        <div class="mat-button-focus-overlay"></div>
+      </a>
+    </nav>
+  </app-navbar>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <mat-toolbar color="primary">
   <mat-toolbar-row class="primary-top-nav">
     <a class="navbar-brand rapido-banner">
       {{bannerName}}
@@ -22,7 +85,7 @@
   </mat-toolbar-row>
 
   
-</mat-toolbar>
+</mat-toolbar> -->
 
 
 <!-- <nav class="navbar fixed-top navbar-dark bg-primary">

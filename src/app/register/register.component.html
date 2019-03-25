@@ -1,4 +1,4 @@
-<mat-vertical-stepper [linear]="true" #stepper>
+<mat-vertical-stepper [linear]="true" #stepper class="nav-bar-spacing">
     <mat-step [stepControl]="registerFormGroup">
         <ng-template matStepLabel><h4>Sign Up/ Register</h4></ng-template>
         <form [formGroup]="registerFormGroup" class="example-container" novalidate (ngSubmit)="createUser(registerFormGroup.value)">
