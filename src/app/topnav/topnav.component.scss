@@ -72,9 +72,6 @@ app-navbar .docs-navbar, app-navbar .docs-navbar-header {
 .mat-button, .mat-flat-button, .mat-icon-button, .mat-stroked-button {
   box-sizing: border-box;
   position: relative;
-  // -webkit-user-select: none;
-  // -moz-user-select: none;
-  // -ms-user-select: none;
   user-select: none;
   cursor: pointer;
   outline: 0;
@@ -110,4 +107,8 @@ app-navbar .docs-navbar, app-navbar .docs-navbar-header {
 }
 .flex-spacer[_ngcontent-c1] {
   flex-grow: 1;
+}
+.top-nav-pad-mar {
+  padding: 0px !important;
+ // margin: 0px !important;
 }
