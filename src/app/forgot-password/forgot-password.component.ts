@@ -23,6 +23,7 @@ export class ForgotPasswordComponent implements OnInit {
 
   registerFormGroup: FormGroup
   codeConfirmationFormGroup: FormGroup
+  newPasswordFormGroup: FormGroup
 
   mobileNumber: FormControl
   name: FormControl
@@ -36,15 +37,23 @@ export class ForgotPasswordComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit() {
-     this.mobileNumber = new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')])
-     this.confirmationCode = new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(6)])
+    this.mobileNumber = new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')])
+    this.confirmationCode = new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(6)])
+    this.password = new FormControl('', [Validators.required]);
+    this.confirmPassword = new FormControl('', [Validators.required]);
 
     this.registerFormGroup = new FormGroup({
       mobileNumber: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.min(1000000000), Validators.max(9999999999)])
     })
     this.codeConfirmationFormGroup = this._formBuilder.group({
-      mobileNumber: [this.mobileNumber],
+      mobileNumber: this.mobileNumber,
       confirmationCode: this.confirmationCode
+    })
+    this.newPasswordFormGroup = this._formBuilder.group({
+      
+
+      password: this.password,
+      confirmPassword: this.confirmPassword
     })
     this.codeConfirmationFormGroup.get('mobileNumber').disable();
 
