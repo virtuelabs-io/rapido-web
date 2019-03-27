@@ -35,7 +35,8 @@ export class RegisterComponent implements OnInit {
   hidePwd = true
   hideConfirmPwd = true
   _mobilePrefix = "+91"
-  _stepperIndex = 0; 
+  _stepperIndex = 0 
+  _regFailed = ""
 
   _registration: Registration = new Registration(
     // "7032908112",
@@ -101,6 +102,7 @@ export class RegisterComponent implements OnInit {
     }).catch(error => {
       this._userRegisteredResponse = false
       this._stepperIndex = 0
+      this._regFailed = error.data.message
       console.log(error) // response from a graceful reject
     })
   }

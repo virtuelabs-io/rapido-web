@@ -46,6 +46,11 @@
             <mat-card-actions >
               <button mat-flat-button color="primary" type="submit" [disabled]="!registerFormGroup.valid">Submit</button>
             </mat-card-actions>
+           
+            <div *ngIf='_regFailed' class="alert alert-danger" role="alert">
+              <h4 class="alert-heading">Error!</h4>
+              <p>{{ _regFailed}}</p>
+            </div>
         </form>
     </mat-step>
     <mat-step [stepControl]="codeConfirmationFormGroup">
