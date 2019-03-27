@@ -105,7 +105,7 @@ export class Registration extends Schema {
     super.pushItemToAttributeList(super.createCognitoUserAttribute(Constants.NAME, this._name));
     super.pushItemToAttributeList(super.createCognitoUserAttribute(Constants.CUSTOM_RAPIDO_ID, this._rapidoId));
     super.pushItemToAttributeList(super.createCognitoUserAttribute(Constants.CUSTOM_ACCEPTED_T_AND_C, this._acceptedTAndC.toString()));
-    super.pushItemToAttributeList(super.createCognitoUserAttribute(Constants.CUSTOM_SEND_ME_PROMOTIONS, this._sendMePromotions));
+    super.pushItemToAttributeList(super.createCognitoUserAttribute(Constants.CUSTOM_SEND_ME_PROMOTIONS, this._sendMePromotions.toString()));
     super.pushItemToAttributeList(super.createCognitoUserAttribute(Constants.CUSTOM_COMM_VIA_EMAIL, this._commViaEmail));
     super.pushItemToAttributeList(super.createCognitoUserAttribute(Constants.CUSTOM_COMM_VIA_SMS, this._commViaSMS));
     super.pushItemToAttributeList(super.createCognitoUserAttribute(Constants.CUSTOM_PERSONALISATION, this._personalisation));
