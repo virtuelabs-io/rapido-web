@@ -35,6 +35,7 @@ export class RegisterComponent implements OnInit {
   hidePwd = true
   hideConfirmPwd = true
   _mobilePrefix = "+91"
+  _stepperIndex = 0; 
 
   _registration: Registration = new Registration(
     // "7032908112",
@@ -94,10 +95,12 @@ export class RegisterComponent implements OnInit {
     const promise = this._signUpService.signUp()
     promise.then(value => {
       this._userRegisteredResponse = true
+      this._stepperIndex = 1
       console.log(value) // response from successfull resolve
       console.log(this._profileService.cognitoUser); // updated user profile
     }).catch(error => {
       this._userRegisteredResponse = false
+      this._stepperIndex = 0
       console.log(error) // response from a graceful reject
     })
   }
@@ -106,5 +109,8 @@ export class RegisterComponent implements OnInit {
     return this.registerFormGroup.controls[controlName].hasError(errorName);
   }
 
+  stepClick (evt) {
+    console.log(evt);
+  }  
 
 }
