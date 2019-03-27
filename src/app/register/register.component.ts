@@ -79,6 +79,7 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser(evt){
+    this._registration._attributeList.length = 0
     this._registration.createAttributeList()
     this._signUpService.signUpData = {
       phone_number: this._registration.phone_number,
