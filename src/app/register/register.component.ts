@@ -1,6 +1,8 @@
 import { Component, OnInit, NgModule} from '@angular/core';
 import { Registration } from '../services/authentication/helpers/registration';
 import {FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { SignUpService } from '../services/authentication/sign-up/sign-up.service';
+import { ProfileService } from '../services/authentication/profile/profile.service';
 
 @NgModule({
   imports: [
@@ -15,14 +17,12 @@ import {FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+
+  _profileService: ProfileService;
+
   public ownerForm: FormGroup;
-
-
-
-
   registerFormGroup: FormGroup
   codeConfirmationFormGroup: FormGroup
-
   mobileNumber: FormControl
   name: FormControl
   email: FormControl
@@ -32,7 +32,30 @@ export class RegisterComponent implements OnInit {
   communications: FormControl
   confirmationCode: FormControl
 
-  constructor(private _formBuilder: FormBuilder) { }
+  _registration: Registration = new Registration(
+    "7032908112",
+    "reddy.horcrux@gmail.com",
+    "Sangram Reddy",
+    "Anirup123",
+    "true",
+    "true",
+    "true",
+    "true",
+    "true"
+  );
+  
+  _userRegisteredResponse: Boolean = false;
+
+  private _signUpService: SignUpService
+
+  constructor(
+    private _formBuilder: FormBuilder,
+    signUpService: SignUpService,
+    profileService: ProfileService
+    ) { 
+    this._signUpService = signUpService
+    this._profileService = profileService
+  }
 
   ngOnInit() {
      this.mobileNumber = new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')])
@@ -53,6 +76,27 @@ export class RegisterComponent implements OnInit {
     })
     this.codeConfirmationFormGroup.get('mobileNumber').disable();
 
+  }
+
+  registerUser(evt){
+    this._registration.createAttributeList()
+    this._signUpService.signUpData = {
+      phone_number: this._registration.phone_number,
+      password: this._registration.password,
+      attributeList: this._registration.attributeList
+    }
+
+    const promise = this._signUpService.signUp()
+    promise.then(value => {
+      this._userRegisteredResponse = true;
+      console.log("ANirup's success response below")
+      console.log(value) // response from successfull resolve
+      console.log(this._profileService.cognitoUser); // updated user profile
+    }).catch(error => {
+      this._userRegisteredResponse = false;
+      console.log("ANirup's failed response below")
+      console.log(error) // response from a graceful reject
+    })
   }
 
   public hasError = (controlName: string, errorName: string) =>{

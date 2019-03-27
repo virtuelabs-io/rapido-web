@@ -1,18 +1,18 @@
 <mat-vertical-stepper [linear]="true" #stepper class="nav-bar-spacing">
     <mat-step [stepControl]="registerFormGroup">
         <ng-template matStepLabel><h4>Sign Up/ Register</h4></ng-template>
-        <form [formGroup]="registerFormGroup" class="example-container" novalidate (ngSubmit)="createUser(registerFormGroup.value)">
+        <form [formGroup]="registerFormGroup" class="example-container" novalidate (ngSubmit)="registerUser(registerFormGroup.value)">
           <!-- <mat-card-content> -->
               <mat-form-field class="col-lg-4" >
-                  <span matPrefix>+44 &nbsp;</span>
-                  <input matInput maxlength="10" placeholder="Mobile Number" formControlName="mobileNumber" [(ngModel)]="mobileNumber.value">
+                  <span matPrefix>+91 &nbsp;</span>
+                  <input matInput maxlength="10" placeholder="Mobile Number" formControlName="mobileNumber" [(ngModel)]="_registration.phone_number">
                   <mat-hint align="end">Only Numbers</mat-hint>
                   <mat-error *ngIf="hasError('mobileNumber', 'required')">Name is required</mat-error>
                   <mat-error *ngIf="hasError('mobileNumber', 'pattern')">numbers</mat-error>
               </mat-form-field>
               <div class="mt-2"></div>
               <mat-form-field class="col-lg-4" >
-                  <input matInput type="text" placeholder="Name" formControlName="name">
+                  <input matInput type="text" placeholder="Name" formControlName="name" [(ngModel)]="_registration.name">
                   <mat-hint align="end">Not more than 20 characters long.</mat-hint>
                   <mat-error *ngIf="hasError('name', 'required')">Address is required</mat-error>
                   <mat-error *ngIf="hasError('name', 'maxlength')">You have more than 20 characters</mat-error>
@@ -20,28 +20,28 @@
               <div class="mt-2"></div>
 
               <mat-form-field class="col-lg-4" >
-                    <input matInput placeholder="Enter your email" formControlName="email">
+                    <input matInput placeholder="Enter your email" formControlName="email" [(ngModel)]="_registration.email">
                     <mat-error *ngIf="hasError('email', 'required')">Email is required</mat-error>
                     <mat-error *ngIf="hasError('email', 'email')">Incorrect Email ID</mat-error>
               </mat-form-field>
               <div class="mt-2"></div>
 
               <mat-form-field class="col-lg-4" >
-                      <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" formControlName="password">
+                      <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" formControlName="password" [(ngModel)]="_registration.password">
                       <mat-error *ngIf="hasError('password', 'required')">Password is required</mat-error>
                       <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </mat-form-field>
               <div class="mt-2"></div>
 
               <mat-form-field class="col-lg-4">
-                        <input matInput placeholder="Confirm Password" [type]="hide ? 'password' : 'text'" formControlName="confirmPassword">
+                        <input matInput placeholder="Confirm Password" [type]="hide ? 'password' : 'text'" formControlName="confirmPassword" [(ngModel)]="_registration.confirmPassword">
                         <mat-error *ngIf="hasError('confirmPassword', 'required')">Password is required</mat-error>
                         <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </mat-form-field>
               <div class="mt-2"></div>
 
-              <mat-checkbox required class="example-margin" formControlName="termsAndConditions">I agree to the Terms and Conditions</mat-checkbox>
-              <mat-checkbox class="example-margin" formControlName="communications">Use my data for Promotions, Personalisations and Communications</mat-checkbox>
+              <mat-checkbox required class="example-margin" formControlName="termsAndConditions" [(ngModel)]="_registration.acceptedTAndC">I agree to the Terms and Conditions</mat-checkbox>
+              <mat-checkbox class="example-margin" formControlName="communications" [(ngModel)]="_registration._sendMePromotions">Use my data for Promotions, Personalisations and Communications</mat-checkbox>
           <!-- </mat-card-content> -->
             <mat-card-actions >
               <button mat-flat-button matStepperNext color="primary" type="submit" [disabled]="!registerFormGroup.valid">Submit</button>
@@ -60,7 +60,7 @@
           <mat-error *ngIf="confirmationCode.invalid">Error in Validation</mat-error>
         </mat-form-field>
         <button mat-flat-button color="primary">Resend Code</button>
-        <button mat-flat-button matStepperNext color="primary" type="submit" [disabled]="!codeConfirmationFormGroup.valid">Submit</button>
+        <button mat-flat-button matStepperNext color="primary" type="submit" (click)="registerUser()" [disabled]="!codeConfirmationFormGroup.valid">Submit</button>
       </form>
     </mat-step>
     <mat-step>
