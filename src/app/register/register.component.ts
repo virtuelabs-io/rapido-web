@@ -32,18 +32,20 @@ export class RegisterComponent implements OnInit {
   communications: FormControl
   confirmationCode: FormControl
 
-  hide = true
+  hidePwd = true
+  hideConfirmPwd = true
+  _mobilePrefix = "+91"
 
   _registration: Registration = new Registration(
-    "7032908112",
-    "reddy.horcrux@gmail.com",
-    "Sangram Reddy",
-    "Anirup123",
-    "true",
-    "true",
-    "true",
-    "true",
-    "true"
+    // "7032908112",
+    // "reddy.horcrux@gmail.com",
+    // "Sangram Reddy",
+    // "Anirup123",
+    // "true",
+    // "true",
+    // "true",
+    // "true",
+    // "true"
   );
   
   _userRegisteredResponse: Boolean = false;
