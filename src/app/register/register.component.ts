@@ -91,22 +91,17 @@ export class RegisterComponent implements OnInit {
 
     const promise = this._signUpService.signUp()
     promise.then(value => {
-      this._userRegisteredResponse = true;
-      console.log("ANirup's success response below")
+      this._userRegisteredResponse = true
       console.log(value) // response from successfull resolve
       console.log(this._profileService.cognitoUser); // updated user profile
     }).catch(error => {
-      this._userRegisteredResponse = false;
-      console.log("ANirup's failed response below")
+      this._userRegisteredResponse = false
       console.log(error) // response from a graceful reject
     })
   }
 
   public hasError = (controlName: string, errorName: string) =>{
     return this.registerFormGroup.controls[controlName].hasError(errorName);
-  }
-  createUser(evt){
-    console.log(evt);
   }
 
 
