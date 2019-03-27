@@ -9,7 +9,7 @@ import { ButtonComponent } from './common/button/button.component';
 import { IconComponent } from './common/icons/icons.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { RoutingComponents } from './app-routing.module';
-import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, MatIconModule, MatToolbarModule } from '@angular/material';
+import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, MatIconModule, MatToolbarModule, MatMenuModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
@@ -35,7 +35,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     MatCheckboxModule,
     MatButtonModule,
     MatIconModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [ AppComponent ],

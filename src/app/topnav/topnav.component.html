@@ -11,11 +11,17 @@
             <use xlink:href="#shopping-cart" />
           </svg>
       </a>
-      <a class="cart docs-button docs-navbar-hide-small mat-button" routerLink="">
+      <a class="cart docs-button docs-navbar-hide-small mat-button" routerLink="" [matMenuTriggerFor]="menu">
           <svg aria-hidden="true" aria-haspopup="true"> 
             <use xlink:href="#man-user" />
           </svg>
       </a>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>View Profile</button>
+        <button mat-menu-item>Update Profile</button>
+        <button mat-menu-item>My Orders</button>
+        <button mat-menu-item>Log Out</button>
+      </mat-menu>
       <!-- <version-picker _ngcontent-c1=""><button aria-haspopup="true" mat-button="" class="mat-button"><span class="mat-button-wrapper"> 7.3.5 <mat-icon class="mat-icon notranslate material-icons mat-icon-no-color" role="img" aria-hidden="true">arrow_drop_down</mat-icon></span><div class="mat-button-ripple mat-ripple" matripple=""></div><div class="mat-button-focus-overlay"></div></button><mat-menu class="ng-tns-c6-0"></mat-menu></version-picker> -->
     </nav>
     <nav _ngcontent-c1 class="docs-navbar docs-navbar-show-small">
@@ -48,7 +54,6 @@
 
 
 
-      <!-- <div id="cdk-overlay-1" class="cdk-overlay-pane" style="pointer-events: auto; position: static;"><div class="mat-menu-panel ng-trigger ng-trigger-transformMenu ng-tns-c6-0 mat-menu-after mat-menu-below mat-elevation-z4 ng-star-inserted" role="menu" tabindex="-1" style="transform-origin: left top;"><div class="mat-menu-content"><button class="mat-menu-item ng-star-inserted" mat-menu-item="" role="menuitem" tabindex="0" aria-disabled="false"> 5.2.5 <div class="mat-menu-ripple mat-ripple" matripple=""></div></button><button class="mat-menu-item ng-star-inserted" mat-menu-item="" role="menuitem" tabindex="0" aria-disabled="false"> 6.4.7 <div class="mat-menu-ripple mat-ripple" matripple=""></div></button><button class="mat-menu-item ng-star-inserted" mat-menu-item="" role="menuitem" tabindex="0" aria-disabled="false"> 7.2.0 <div class="mat-menu-ripple mat-ripple" matripple=""></div></button></div></div></div> -->
     </nav>
   </app-navbar>
 
