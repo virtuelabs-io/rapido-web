@@ -8,6 +8,8 @@ import { SignInService } from '../services/authentication/sign-in/sign-in.servic
 })
 export class LogInComponent implements OnInit {
   _signInResponse: Boolean = false;
+  _mobileNumber: string;
+  _password: string;
 
   private _signInService: SignInService
   constructor(
@@ -20,10 +22,9 @@ export class LogInComponent implements OnInit {
   }
 
   signIn(evt){
-    //this._signInService.createAttributeList()
     this._signInService.signInData = {
-      Username: '+917032908112',
-      Password: 'Anirup@123'
+      Username: this._mobileNumber,
+      Password: this._password
     }
 
     const promise = this._signInService.signIn()
