@@ -12,19 +12,22 @@
           </svg>
       </a>
       <a class="cart docs-button docs-navbar-hide-small mat-button" routerLink="" [matMenuTriggerFor]="menu">
-          <svg aria-hidden="true" aria-haspopup="true"> 
+          <svg aria-hidden="true" aria-haspopup="menu"> 
             <use xlink:href="#man-user" />
           </svg>
       </a>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>View Profile</button>
-        <button mat-menu-item>Update Profile</button>
-        <button mat-menu-item>My Orders</button>
-        <button mat-menu-item>Log Out</button>
+        <div>
+          <a class="dropdown-item" href="/">Signed In As
+            <strong>AnirupPat</strong>
+          </a> 
+        </div>
+        <div role="none" class="dropdown-divider"></div>
+        <a class="dropdown-item " href="/">Edit Profile</a>
+        <a class="dropdown-item " href="/log-out">Log Out</a>
       </mat-menu>
-      <!-- <version-picker _ngcontent-c1=""><button aria-haspopup="true" mat-button="" class="mat-button"><span class="mat-button-wrapper"> 7.3.5 <mat-icon class="mat-icon notranslate material-icons mat-icon-no-color" role="img" aria-hidden="true">arrow_drop_down</mat-icon></span><div class="mat-button-ripple mat-ripple" matripple=""></div><div class="mat-button-focus-overlay"></div></button><mat-menu class="ng-tns-c6-0"></mat-menu></version-picker> -->
-    </nav>
-    <nav _ngcontent-c1 class="docs-navbar docs-navbar-show-small">
+  </nav>
+  <nav _ngcontent-c1 class="docs-navbar docs-navbar-show-small">
       <a _ngcontent-c1 class="docs-navbar-link mat-button ng-star-inserted" mat-button="" tabindex="0" aria-disabled="false" href="/components">
         <span class="mat-button-wrapper">Electricals</span>
         <div class="mat-button-ripple mat-ripple" matripple=""></div>
@@ -54,8 +57,8 @@
 
 
 
-    </nav>
-  </app-navbar>
+  </nav>
+</app-navbar>
 
 
 

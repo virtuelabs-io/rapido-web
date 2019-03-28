@@ -112,3 +112,55 @@ app-navbar .docs-navbar, app-navbar .docs-navbar-header {
   padding: 0px !important;
  // margin: 0px !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.dropdown-menu-sw {
+  left: auto;
+  right: 0;
+}
+
+.dropdown-menu {
+  background-clip: padding-box;
+  background-color: #fff;
+  border: 1px solid rgba(27,31,35,.15);
+  border-radius: 4px;
+  box-shadow: 0 3px 12px rgba(27,31,35,.15);
+  left: 0;
+  list-style: none;
+  margin-top: 2px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  position: absolute;
+  top: 100%;
+  width: 160px;
+  z-index: 100;
+}
+.dropdown-divider {
+  background-color: #e1e4e8;
+  height: 1px;
+  margin: 8px 1px;
+}
+.dropdown-item {
+  color: #24292e;
+  display: block;
+  overflow: hidden;
+  padding: 4px 10px 4px 15px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+
