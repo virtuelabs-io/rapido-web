@@ -51,6 +51,7 @@ export class RegisterComponent implements OnInit {
   );
   
   _userRegisteredResponse: Boolean = false;
+  _progressSpinner: Boolean = false
 
   private _signUpService: SignUpService
 
@@ -85,6 +86,7 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser(evt){
+    this._progressSpinner = true
     this._registration._attributeList.length = 0
     this._registration.createAttributeList()
     this._signUpService.signUpData = {
@@ -96,11 +98,13 @@ export class RegisterComponent implements OnInit {
     const promise = this._signUpService.signUp()
     promise.then(value => {
       this._userRegisteredResponse = true
+      this._progressSpinner = false
       this._stepperIndex = 1
       console.log(value) // response from successfull resolve
       console.log(this._profileService.cognitoUser); // updated user profile
     }).catch(error => {
       this._userRegisteredResponse = false
+      this._progressSpinner = false
       this._stepperIndex = 0
       this._regFailed = error.data.message
       console.log(error) // response from a graceful reject
