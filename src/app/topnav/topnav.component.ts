@@ -15,6 +15,7 @@ export class TopnavComponent implements OnInit {
   logInLabel = "Sign In";
   cartLabel = "Cart";
   add_circle = "add_circle";
+  _width = window.innerWidth;
 
   _profileService: ProfileService
 
@@ -36,5 +37,10 @@ export class TopnavComponent implements OnInit {
 
   signOut(){
     this._profileService.cognitoUser.signOut()
+  }
+
+  whatClass(){
+    console.log(this._width)
+    return 'col-sm-6 d-none'
   }
 }

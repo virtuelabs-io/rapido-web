@@ -1,26 +1,26 @@
 
 <app-navbar class="mat-elevation-z6" _nghost-c1="">
   <nav _ngcontent-c1 class="docs-navbar-header top-nav-pad-mar col-lg-12">
-    <div class="col-lg-3 col-sm-12"><a class="navbar-brand rapido-banner">
+    <div class="col-lg-3 col-sm-6  w-50"><a class="navbar-brand rapido-banner">
           {{bannerName}}<a class="com">.com</a>
       </a>
     </div>
     <!-- <div _ngcontent-c1 class="flex-spacer"></div> -->
     
-    <div class="col-sm-6">
+    <div [ngClass]="'d-none col-sm-6'">
       <div class="right-inner-addon">
         <i class="icon-search"></i>
         <input type="search" class="form-control" placeholder="Search" />
       </div>
     </div>
-    <div class="col-lg-3">
+    <div class="col-lg-3 w-50">
       <app-button [label]="logInLabel" routerLink="/sign-in" [btnIcon]="add_circle"></app-button>
       <a _ngcontent-c1 class="cart docs-button docs-navbar-hide-small mat-button" routerLink="">
           <svg>
             <use xlink:href="#shopping-cart" />
           </svg>
       </a>
-      <a class="cart docs-button docs-navbar-hide-small mat-button" routerLink="" [matMenuTriggerFor]="menu">
+      <!-- <a class="cart docs-button docs-navbar-hide-small mat-button" routerLink="" [matMenuTriggerFor]="menu">
           <svg aria-hidden="true" aria-haspopup="menu"> 
             <use xlink:href="#man-user" />
           </svg>
@@ -34,7 +34,14 @@
         <div role="none" class="dropdown-divider"></div>
         <a class="dropdown-item " href="/my-profile">My Profile</a>
         <a class="dropdown-item " href="/log-out">Log Out</a>
-      </mat-menu>
+      </mat-menu> -->
+      <div>
+      
+    </div>
+    </div>
+    <div class="right-inner-addon col-lg-12  ">
+      <i class="icon-search"></i>
+      <input type="search" class="form-control" placeholder="Search" />
     </div>
   </nav>
   <div role="none" class="dropdown-divider2"></div>
