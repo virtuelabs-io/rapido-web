@@ -4,12 +4,14 @@ import { RegisterComponent } from './register/register.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { AuthmockComponent } from './authmock/authmock.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
 
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'sign-in', component: LogInComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'my-profile', component: MyProfileComponent },
   { path: '', component: AuthmockComponent}
 ];
 
@@ -22,5 +24,6 @@ export const RoutingComponents = [
   RegisterComponent,
   LogInComponent,
   ForgotPasswordComponent,
+  MyProfileComponent,
   AuthmockComponent
 ];

@@ -12,6 +12,7 @@ import { RoutingComponents } from './app-routing.module';
 import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, MatIconModule, MatToolbarModule, MatMenuModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     IconComponent,
     LogInComponent,
     RoutingComponents,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    MyProfileComponent
   ],
   imports: [
     BrowserModule,
