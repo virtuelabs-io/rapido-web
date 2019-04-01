@@ -1,7 +1,8 @@
-import { Component, OnInit, NgModule } from '@angular/core';
+import { Component, OnInit, NgModule, ChangeDetectorRef, OnDestroy} from '@angular/core';
 import { Constants } from '../utils/constants';
 import { SessionService } from '../services/authentication/session/session.service';
 import { ProfileService } from '../services/authentication/profile/profile.service';
+import {MediaMatcher} from '@angular/cdk/layout';
 
 @NgModule({})
 @Component({
@@ -10,6 +11,25 @@ import { ProfileService } from '../services/authentication/profile/profile.servi
   styleUrls: ['./topnav.component.scss']
 })
 export class TopnavComponent implements OnInit {
+
+  mobileQuery: MediaQueryList;
+  fillerNav = [
+    "My Profile",
+    "Departments",
+    "Log Out"
+    ];
+
+  fillerContent = Array.from({length: 50}, () =>
+     `Rapido Build`);
+
+  private _mobileQueryListener: () => void;
+
+  
+  ngOnDestroy(): void {
+    this.mobileQuery.removeListener(this._mobileQueryListener);
+  }
+
+  shouldRun = true//[/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
 
   bannerName = Constants.RAPIDO_BUILD;
   logInLabel = "Sign In";
@@ -21,10 +41,15 @@ export class TopnavComponent implements OnInit {
 
   private _sessionService: SessionService
 
-  constructor(sessionService: SessionService, profileService: ProfileService) {
+  constructor(sessionService: SessionService, profileService: ProfileService, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
     this._sessionService = sessionService
     this._profileService = profileService
+    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery.addListener(this._mobileQueryListener);
   }
+
+
 
   ngOnInit() {
     const promise = this._sessionService.retrieveSessionIfExists()
