@@ -3,7 +3,7 @@
     
 
     <app-navbar class="mat-elevation-z6" _nghost-c1="">
-        <nav _ngcontent-c1 class="docs-navbar-header top-nav-pad-mar ">
+        <nav _ngcontent-c1 class="docs-navbar-header top-nav-pad-mar">
 
           <div class="col-lg-12 col-sm-12 d-flex">
             <div class="d-lg-none d-md-block d-sm-block">
@@ -22,9 +22,9 @@
               <input type="search" class="form-control" placeholder="Search" />
             </div>
           </div>
-          <div class="col-lg-3 w-50">
+          <div class="col-lg-3">
             <app-button [label]="logInLabel" routerLink="/sign-in" [btnIcon]="add_circle"></app-button>
-            <a _ngcontent-c1 class="cart docs-button docs-navbar-hide-small mat-button" routerLink="">
+            <a _ngcontent-c1 class="cart docs-button docs-navbar-hide-small " routerLink="">
                 <svg>
                   <use xlink:href="#shopping-cart" />
                 </svg>
@@ -134,7 +134,7 @@
 
   </mat-toolbar>-->
 
-  <mat-sidenav-container class="example-sidenav-container"
+  <mat-sidenav-container class="example-sidenav-container d-lg-none d-md-block d-sm-block"
                          [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
                  [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
