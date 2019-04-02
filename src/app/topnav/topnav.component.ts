@@ -1,8 +1,8 @@
-import { Component, OnInit, NgModule, ChangeDetectorRef, OnDestroy} from '@angular/core';
-import { Constants } from '../utils/constants';
+import { Component, OnInit, NgModule } from '@angular/core';
+import {FormControl} from '@angular/forms';
 import { SessionService } from '../services/authentication/session/session.service';
 import { ProfileService } from '../services/authentication/profile/profile.service';
-import {MediaMatcher} from '@angular/cdk/layout';
+import { Constants } from '../utils/constants';
 
 @NgModule({})
 @Component({
@@ -12,44 +12,19 @@ import {MediaMatcher} from '@angular/cdk/layout';
 })
 export class TopnavComponent implements OnInit {
 
-  mobileQuery: MediaQueryList;
-  fillerNav = [
-    "My Profile",
-    "Departments",
-    "Log Out"
-    ];
+  bannerName: String = Constants.RAPIDO_BUILD
 
-  fillerContent = Array.from({length: 50}, () =>
-     `Rapido Build`);
-
-  private _mobileQueryListener: () => void;
-
-  
-  ngOnDestroy(): void {
-    this.mobileQuery.removeListener(this._mobileQueryListener);
-  }
-
-  shouldRun = true//[/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
-
-  bannerName = Constants.RAPIDO_BUILD;
-  logInLabel = "Sign In";
-  cartLabel = "Cart";
-  add_circle = "add_circle";
-  _width = window.innerWidth;
+  myControl = new FormControl();
+  options: string[] = ['One', 'Two', 'Three'];
 
   _profileService: ProfileService
 
   private _sessionService: SessionService
 
-  constructor(sessionService: SessionService, profileService: ProfileService, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+  constructor(sessionService: SessionService, profileService: ProfileService) {
     this._sessionService = sessionService
     this._profileService = profileService
-    this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener);
   }
-
-
 
   ngOnInit() {
     const promise = this._sessionService.retrieveSessionIfExists()
@@ -62,10 +37,5 @@ export class TopnavComponent implements OnInit {
 
   signOut(){
     this._profileService.cognitoUser.signOut()
-  }
-
-  whatClass(){
-    console.log(this._width)
-    return 'col-sm-6 d-none'
   }
 }
