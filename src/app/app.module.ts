@@ -13,6 +13,7 @@ import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, M
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
+import { ProductCardsComponent } from './product-cards/product-cards.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
     LogInComponent,
     RoutingComponents,
     ForgotPasswordComponent,
-    MyProfileComponent
+    MyProfileComponent,
+    ProductCardsComponent
   ],
   imports: [
     MatSidenavModule,
