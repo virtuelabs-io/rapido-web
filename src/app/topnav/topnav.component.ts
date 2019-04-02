@@ -57,7 +57,8 @@ export class TopnavComponent implements OnInit {
     const promise = this._sessionService.retrieveSessionIfExists()
     promise.then(value => {
       console.log(this._profileService.cognitoUser); 
-      this._name = this._profileService.cognitoUser.getUsername()
+      this._name = this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.name
+      
       this._signIn = "Signed In As"
       console.log(this._name)
       console.log(value)

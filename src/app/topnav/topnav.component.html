@@ -35,10 +35,9 @@
                 </svg>
             </a>
             <mat-menu #menu="matMenu">
-              <div>
-                <a class="dropdown-item" href="/">{{_signIn}}
-                  <strong>{{_name}}</strong>
-                </a> 
+              <div class="sign-in-class">
+                <div>{{_signIn}}</div>
+                <div><strong>{{_name}}</strong></div>
               </div>
               <div role="none" class="dropdown-divider"></div>
               <a class="dropdown-item " href="/my-profile">My Profile</a>
