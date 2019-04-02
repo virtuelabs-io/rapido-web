@@ -69,9 +69,13 @@
     }
   }
   .block-three {
-    margin-right:10px;
-    width: 30px;;
-    .cart{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 60px;
+    .rapido-icon{
       svg {
         margin: 12px 0px;
         width: 20px;
@@ -83,12 +87,25 @@
         }
       }
     }
+    .rapido-icon-hider {
+      display: block;
+    }
+    @media screen and (max-width: $small-device) {
+      .rapido-icon-hider {
+        display: none;
+      }
+    }
+
+  }
+
+  .rapido-icon-spacer {
+    margin: 0px 10px;
   }
 }
 
 .secondary-toolbar {
   display: none;
-  height: 30px;
+  height: 25px;
   .block-search {
     width:100%;
     ::-webkit-input-placeholder {

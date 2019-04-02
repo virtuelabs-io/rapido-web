@@ -1,6 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { SignInService } from '../services/authentication/sign-in/sign-in.service';
+import { ProfileService } from '../services/authentication/profile/profile.service';
+import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 
+@NgModule({
+  
+  
+})
 @Component({
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',
@@ -10,12 +17,18 @@ export class LogInComponent implements OnInit {
   _signInResponse: Boolean = false;
   _mobileNumber: string;
   _password: string;
+  _profileService: ProfileService;
+  // _matSnackBar: MatSnackBar;
 
   private _signInService: SignInService
   constructor(
-    signInService: SignInService
+    signInService: SignInService,
+    profileService: ProfileService,
+    private snackBar: MatSnackBar,
+    private router: Router
     ) { 
     this._signInService = signInService   
+    this._profileService = profileService
   }
 
   ngOnInit() {
@@ -29,10 +42,20 @@ export class LogInComponent implements OnInit {
 
     const promise = this._signInService.signIn()
     promise.then(value => {
+      console.log(this._profileService.cognitoUser);
       this._signInResponse = true;
       console.log(value) // response from successfull resolve
+      this.router.navigateByUrl('/');
+      this.snackBar.open("User Signed In Successfully", "", {
+        duration: 2000,
+      });
     }).catch(error => {
       this._signInResponse = false;
+      this.snackBar.open(error.data.message , "", {
+        duration: 2000,
+      });
+      this._password = ""
+      this._mobileNumber = ""
       console.log(error) // response from a graceful reject
     })
   }

@@ -5,6 +5,7 @@ import { LogInComponent } from './log-in/log-in.component';
 import { AuthmockComponent } from './authmock/authmock.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
+import { ProductCardsComponent } from './product-cards/product-cards.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'sign-in', component: LogInComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'my-profile', component: MyProfileComponent },
+  { path: 'product-cards', component: ProductCardsComponent },
   { path: '', component: AuthmockComponent}
 ];
 
@@ -25,5 +27,6 @@ export const RoutingComponents = [
   LogInComponent,
   ForgotPasswordComponent,
   MyProfileComponent,
+  ProductCardsComponent,
   AuthmockComponent
 ];

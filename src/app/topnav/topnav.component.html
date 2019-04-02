@@ -14,11 +14,33 @@
         </form>
       </div>
       <div class="block-three">
-        <a class="cart" routerLink="">
-          <svg>
-            <use xlink:href="#shopping-cart" />
-          </svg>
-        </a>
+        <div class="rapido-icon-spacer">
+          <a class="rapido-icon mat-button rapido-icon-hider" routerLink="" [matMenuTriggerFor]="menu">
+            <svg aria-hidden="true" aria-haspopup="menu">
+              <use xlink:href="#man-user"/>
+            </svg>
+          </a>
+        </div>
+        <mat-menu #menu="matMenu">
+          <div class="sign-in-class">
+            <div>Signed in as </div>
+            <div>
+              <strong>
+                Anirup
+              </strong>!
+            </div>
+          </div>
+          <div role="none" class="dropdown-divider"></div>
+          <a class="dropdown-item " href="/my-profile">My Profile</a>
+          <a class="dropdown-item " href="/log-out">Log Out</a>
+        </mat-menu>
+        <div class="rapido-icon-spacer">
+          <a class="rapido-icon" routerLink="">
+            <svg>
+              <use xlink:href="#shopping-cart" />
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </mat-toolbar-row>
