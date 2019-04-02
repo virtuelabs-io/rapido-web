@@ -45,4 +45,6 @@ export class Constants {
   public static ENTER_NEW_PASSWORD = "Enter new password";
 
   public static SUCCESSFULLY_DELETED_USER = "Deleted user successfully";
+
+  public static RETRY_TIMES = 2;
 }
