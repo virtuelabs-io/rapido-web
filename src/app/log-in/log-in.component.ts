@@ -17,6 +17,7 @@ export class LogInComponent implements OnInit {
   _signInResponse: Boolean = false;
   _mobileNumber: string;
   _password: string;
+  _progressSpinner: Boolean = false
   _profileService: ProfileService;
   // _matSnackBar: MatSnackBar;
 
@@ -35,6 +36,7 @@ export class LogInComponent implements OnInit {
   }
 
   signIn(evt){
+    this._progressSpinner = true
     this._signInService.signInData = {
       Username: this._mobileNumber,
       Password: this._password
@@ -42,6 +44,7 @@ export class LogInComponent implements OnInit {
 
     const promise = this._signInService.signIn()
     promise.then(value => {
+      this._progressSpinner = false
       console.log(this._profileService.cognitoUser);
       this._signInResponse = true;
       console.log(value) // response from successfull resolve
@@ -50,6 +53,7 @@ export class LogInComponent implements OnInit {
         duration: 2000,
       });
     }).catch(error => {
+      this._progressSpinner = false
       this._signInResponse = false;
       this.snackBar.open(error.data.message , "", {
         duration: 2000,
