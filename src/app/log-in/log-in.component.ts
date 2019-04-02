@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SignInService } from '../services/authentication/sign-in/sign-in.service';
+import { ProfileService } from '../services/authentication/profile/profile.service';
 
 @Component({
   selector: 'app-log-in',
@@ -10,12 +11,15 @@ export class LogInComponent implements OnInit {
   _signInResponse: Boolean = false;
   _mobileNumber: string;
   _password: string;
+  _profileService: ProfileService;
 
   private _signInService: SignInService
   constructor(
-    signInService: SignInService
+    signInService: SignInService,
+    profileService: ProfileService
     ) { 
     this._signInService = signInService   
+    this._profileService = profileService
   }
 
   ngOnInit() {
@@ -29,6 +33,7 @@ export class LogInComponent implements OnInit {
 
     const promise = this._signInService.signIn()
     promise.then(value => {
+      console.log(this._profileService.cognitoUser);
       this._signInResponse = true;
       console.log(value) // response from successfull resolve
     }).catch(error => {

@@ -12,6 +12,9 @@ import {MediaMatcher} from '@angular/cdk/layout';
 })
 export class TopnavComponent implements OnInit {
 
+  _profileService: ProfileService;
+  _signIn = ""
+  _name = ""
   mobileQuery: MediaQueryList;
   fillerNav = [
     "My Profile",
@@ -37,7 +40,6 @@ export class TopnavComponent implements OnInit {
   add_circle = "add_circle";
   _width = window.innerWidth;
 
-  _profileService: ProfileService
 
   private _sessionService: SessionService
 
@@ -54,6 +56,10 @@ export class TopnavComponent implements OnInit {
   ngOnInit() {
     const promise = this._sessionService.retrieveSessionIfExists()
     promise.then(value => {
+      console.log(this._profileService.cognitoUser); 
+      this._name = this._profileService.cognitoUser.getUsername()
+      this._signIn = "Signed In As"
+      console.log(this._name)
       console.log(value)
     }).catch(error => {
       console.log(error)

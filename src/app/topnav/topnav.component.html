@@ -29,21 +29,21 @@
                   <use xlink:href="#shopping-cart" />
                 </svg>
             </a>
-            <!-- <a class="cart docs-button docs-navbar-hide-small mat-button" routerLink="" [matMenuTriggerFor]="menu">
+            <a _ngcontent-c1 *ngIf="this._profileService.cognitoUser.getUsername()" class="cart docs-button docs-navbar-hide-small mat-button" routerLink="" [matMenuTriggerFor]="menu">
                 <svg aria-hidden="true" aria-haspopup="menu"> 
-                  <use xlink:href="#man-user" />
+                  <use xlink:href="#man-user"/>
                 </svg>
             </a>
             <mat-menu #menu="matMenu">
               <div>
-                <a class="dropdown-item" href="/">Signed In As
-                  <strong>AnirupPat</strong>
+                <a class="dropdown-item" href="/">{{_signIn}}
+                  <strong>{{_name}}</strong>
                 </a> 
               </div>
               <div role="none" class="dropdown-divider"></div>
               <a class="dropdown-item " href="/my-profile">My Profile</a>
               <a class="dropdown-item " href="/log-out">Log Out</a>
-            </mat-menu> -->
+            </mat-menu>
             <div>
             
           </div>
