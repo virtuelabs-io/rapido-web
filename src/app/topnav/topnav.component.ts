@@ -11,6 +11,8 @@ import { Constants } from '../utils/constants';
   styleUrls: ['./topnav.component.scss']
 })
 export class TopnavComponent implements OnInit {
+  signInTag: Boolean
+  userIcon: Boolean
   name: String = ""
   signIn: String = ""
   bannerName: String = Constants.RAPIDO_BUILD
@@ -30,6 +32,8 @@ export class TopnavComponent implements OnInit {
   ngOnInit() {
     const promise = this._sessionService.retrieveSessionIfExists()
     promise.then(value => {
+      this.signInTag = false
+      this.userIcon = true
       console.log(this._profileService.cognitoUser); 
       this.name = this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.name
       
@@ -37,6 +41,8 @@ export class TopnavComponent implements OnInit {
       console.log(this.name)
       console.log(value)
     }).catch(error => {
+      this.signInTag = true
+      this.userIcon = false
       console.log(error)
     })
   }

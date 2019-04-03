@@ -87,6 +87,24 @@
         }
       }
     }
+    .rapido-sign-in {
+      margin-top: 5px;
+      .tag {
+        font-weight: 400;
+        color: black;
+        font-size: smaller;
+        padding-top: 50px;
+        margin-top: 20px;
+      }
+      .rapido-icon-hider {
+        display: block;
+      }
+      @media screen and (max-width: $small-device) {
+        .rapido-icon-hider {
+          display: none;
+        }
+      }
+    }
     .rapido-icon-hider {
       display: block;
     }

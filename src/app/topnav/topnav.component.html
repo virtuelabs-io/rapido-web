@@ -14,9 +14,9 @@
         </form>
       </div>
       <div class="block-three">
-        <div class="rapido-icon-spacer">
-          <!-- <a class="rapido-icon mat-button rapido-icon-hider" href="/sign-in">Sign In</a> -->
-          <a *ngIf="true" class="rapido-icon mat-button rapido-icon-hider" routerLink="" [matMenuTriggerFor]="menu">
+        <div *ngIf="userIcon" class="rapido-icon-spacer">
+          
+          <a  class="rapido-icon mat-button rapido-icon-hider" routerLink="" [matMenuTriggerFor]="menu">
             <svg aria-hidden="true" aria-haspopup="menu">
               <use xlink:href="#man-user"/>
             </svg>
@@ -35,6 +35,9 @@
           <a class="dropdown-item " href="/my-profile">My Profile</a>
           <a class="dropdown-item " href="/log-out">Log Out</a>
         </mat-menu>
+        <div *ngIf="signInTag" class="rapido-sign-in">
+            <a class="tag" href="/sign-in">Sign In</a>
+        </div>
         <div class="rapido-icon-spacer">
           <a class="rapido-icon" routerLink="">
             <svg>
