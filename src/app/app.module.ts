@@ -15,6 +15,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { ProductCardsComponent } from './product-cards/product-cards.component';
 import { CardComponent } from './card/card.component';
+import { RatingComponent } from './rating/rating.component';
+import { ImagesComponent } from './images/images.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { CardComponent } from './card/card.component';
     ForgotPasswordComponent,
     MyProfileComponent,
     ProductCardsComponent,
-    CardComponent
+    CardComponent,
+    RatingComponent,
+    ImagesComponent
   ],
   imports: [
     MatSidenavModule,
