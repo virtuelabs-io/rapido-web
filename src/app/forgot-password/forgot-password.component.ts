@@ -78,7 +78,7 @@ export class ForgotPasswordComponent implements OnInit {
     promise.then(value => {
       this._forgottenPassword = true;
       this.success = true
-      // this.successResponse = value._message
+      this.successResponse = "Password Changed successfully !"// value.message
       console.log(value) // response from successfull resolve
     }).catch(error => {
       this._forgottenPassword = false;
