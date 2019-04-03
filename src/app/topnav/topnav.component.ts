@@ -47,7 +47,8 @@ export class TopnavComponent implements OnInit {
     })
   }
 
-  signOut(){
+  public signOut(){
+    alert('success')
     this._profileService.cognitoUser.signOut()
   }
 }

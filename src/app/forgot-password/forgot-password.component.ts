@@ -68,7 +68,7 @@ export class ForgotPasswordComponent implements OnInit {
 
   }
 
-  forgotPassword(){
+  forgotPassword() {
     this.error = false
     this.success = false
     this._forgotPasswordService.username = this.mobileNumber.value
