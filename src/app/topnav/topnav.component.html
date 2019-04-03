@@ -15,7 +15,8 @@
       </div>
       <div class="block-three">
         <div class="rapido-icon-spacer">
-          <a class="rapido-icon mat-button rapido-icon-hider" routerLink="" [matMenuTriggerFor]="menu">
+          <!-- <a class="rapido-icon mat-button rapido-icon-hider" href="/sign-in">Sign In</a> -->
+          <a *ngIf="true" class="rapido-icon mat-button rapido-icon-hider" routerLink="" [matMenuTriggerFor]="menu">
             <svg aria-hidden="true" aria-haspopup="menu">
               <use xlink:href="#man-user"/>
             </svg>
@@ -23,10 +24,10 @@
         </div>
         <mat-menu #menu="matMenu">
           <div class="sign-in-class">
-            <div>Signed in as </div>
+            <div>{{signIn}}</div>
             <div>
               <strong>
-                Anirup
+                {{name}}
               </strong>!
             </div>
           </div>

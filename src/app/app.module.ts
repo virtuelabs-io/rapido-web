@@ -44,7 +44,8 @@ import { ProductCardsComponent } from './product-cards/product-cards.component';
     MatIconModule,
     MatToolbarModule,
     MatMenuModule,
-    MatListModule
+    MatListModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [ AppComponent ],

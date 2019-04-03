@@ -11,7 +11,8 @@ import { Constants } from '../utils/constants';
   styleUrls: ['./topnav.component.scss']
 })
 export class TopnavComponent implements OnInit {
-
+  name: String = ""
+  signIn: String = ""
   bannerName: String = Constants.RAPIDO_BUILD
 
   myControl = new FormControl();
@@ -30,10 +31,10 @@ export class TopnavComponent implements OnInit {
     const promise = this._sessionService.retrieveSessionIfExists()
     promise.then(value => {
       console.log(this._profileService.cognitoUser); 
-      this._name = this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.name
+      this.name = this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.name
       
-      this._signIn = "Signed In As"
-      console.log(this._name)
+      this.signIn = "Signed In As"
+      console.log(this.name)
       console.log(value)
     }).catch(error => {
       console.log(error)

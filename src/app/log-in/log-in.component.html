@@ -6,12 +6,10 @@
     <div class="auth-form-header p-0 font">
     <h1>Sign in to Rapidobuild.com</h1>
   </div>
-  <div *ngIf='true' class="alert alert-danger error" role="alert">
-    <p>Incorrect Username or Password</p>
-    <button class="flash-close js-flash-close" type="button" aria-label="Dismiss this message">
-        <svg class="octicon octicon-x" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"></path></svg>
-      </button>
-    </div>
+    <div *ngIf="alertBox" class="alert alert-danger alert-dismissible">
+        <button class="close" type="button" data-dismiss="alert">×</button>
+        <strong>{{alertMsg}}</strong> <div id="Div2" runat="server"></div>
+      </div>
   <div class="auth-form-body mt-3">
     <label for="login_field">
       Mobile Number
