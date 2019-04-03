@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { ProductCardsComponent } from './product-cards/product-cards.component';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ProductCardsComponent } from './product-cards/product-cards.component';
     RoutingComponents,
     ForgotPasswordComponent,
     MyProfileComponent,
-    ProductCardsComponent
+    ProductCardsComponent,
+    CardComponent
   ],
   imports: [
     MatSidenavModule,
