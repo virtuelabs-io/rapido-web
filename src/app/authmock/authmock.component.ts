@@ -9,6 +9,8 @@ import { UpdateAttributeService } from '../services/authentication/update-attrib
 import { ChangePasswordService } from '../services/authentication/change-password/change-password.service';
 import { ForgotPasswordService } from '../services/authentication/forgot-password/forgot-password.service';
 import { DeleteUserService } from '../services/authentication/delete-user/delete-user.service';
+import { ProductsService } from '../services/products/products.service';
+import { Query } from '../services/products/query.interface';
 
 @Component({
   selector: 'app-authmock',
@@ -37,6 +39,13 @@ export class AuthmockComponent implements OnInit {
     "true"
   );
 
+  _query: Query = {
+    q: "watches",
+    size: 1,
+    cursor: null, // always use either cursor or start, but bot both
+    start: null // always use either cursor or start, but bot both
+  }
+
   _userRegisteredResponse: Boolean = false;
   _resentConfirmationCodeResponse: Boolean = false;
   _confirmRegistrationResponse: Boolean = false;
@@ -45,6 +54,7 @@ export class AuthmockComponent implements OnInit {
   _changedPassword: Boolean = false;
   _forgottenPassword: Boolean = false;
   _deletedUser: Boolean = false;
+  _productsFetched = false;
 
   private _signUpService: SignUpService
   private _resendConfirmationCodeService: ResendConfirmationCodeService
@@ -54,6 +64,7 @@ export class AuthmockComponent implements OnInit {
   private _changePasswordService: ChangePasswordService
   private _forgotPasswordService: ForgotPasswordService
   private _deleteUserService: DeleteUserService
+  private _productsService: ProductsService
 
 
   constructor(
@@ -65,7 +76,8 @@ export class AuthmockComponent implements OnInit {
     updateAttributeService: UpdateAttributeService,
     changePasswordService: ChangePasswordService,
     forgotPasswordService: ForgotPasswordService,
-    deleteUserService: DeleteUserService
+    deleteUserService: DeleteUserService,
+    productsService: ProductsService
     ) {
     this._signUpService = signUpService
     this._profileService = profileService
@@ -76,6 +88,7 @@ export class AuthmockComponent implements OnInit {
     this._changePasswordService = changePasswordService
     this._forgotPasswordService = forgotPasswordService
     this._deleteUserService = deleteUserService
+    this._productsService = productsService
   }
 
   ngOnInit() {
@@ -188,5 +201,13 @@ export class AuthmockComponent implements OnInit {
       this._deletedUser = false;
       console.log(error) // response from a graceful reject
     })
+  }
+
+  queryProducts(){
+    this._productsService.get(this._query)
+      .subscribe(data => {
+        console.log(data)
+        this._productsFetched = true;
+      })
   }
 }

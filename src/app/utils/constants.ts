@@ -9,7 +9,9 @@ export class Constants {
   }
   public static environment = {
     name: environment.name,
-    production: environment.production
+    production: environment.production,
+    productSearchEndPoint: environment.productSearchEndPoint,
+    version: environment.version
   }
 
   public static PHONE_NUMBER = "phone_number";
