@@ -15,6 +15,7 @@ export class ForgotPasswordService extends AuthenticationService {
   }
 
   forgotPassword(){
+    this.initializeNewProfile()
     let feed = this
     return new Promise((resolve, reject) => {
       this._userProfile.cognitoUser.forgotPassword({
