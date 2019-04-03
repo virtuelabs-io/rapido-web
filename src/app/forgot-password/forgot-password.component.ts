@@ -20,6 +20,10 @@ export class ForgotPasswordComponent implements OnInit {
   public ownerForm: FormGroup;
   private _forgotPasswordService: ForgotPasswordService
   _forgottenPassword: Boolean = false;
+  errorResponse: string = ''
+  successResponse: string = ''
+  error: Boolean = false;
+  success: Boolean = false;
 
 
   registerFormGroup: FormGroup
@@ -65,15 +69,21 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   forgotPassword(){
-    this._forgotPasswordService.username = '+917032908112'
+    this.error = false
+    this.success = false
+    this._forgotPasswordService.username = this.mobileNumber.value
+    console.log(this._forgotPasswordService.username)
     const promise = this._forgotPasswordService.forgotPassword()
     console.log(promise)
     promise.then(value => {
       this._forgottenPassword = true;
-      console.log("yeeppiieee success");
+      this.success = true
+      this.successResponse = value._message
       console.log(value) // response from successfull resolve
     }).catch(error => {
       this._forgottenPassword = false;
+      this.error = true
+      this.errorResponse = error._message 
       console.log(error) // response from a graceful reject
     })
   }
