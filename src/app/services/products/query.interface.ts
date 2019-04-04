@@ -3,5 +3,6 @@ export interface Query {
   size: number,
   cursor?: string,
   return?: string,
-  start?: number
+  start?: number,
+  sort?: string
 }

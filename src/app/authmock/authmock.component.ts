@@ -43,7 +43,8 @@ export class AuthmockComponent implements OnInit {
     q: "watches",
     size: 1,
     cursor: null, // always use either cursor or start, but bot both
-    start: null // always use either cursor or start, but bot both
+    start: null, // always use either cursor or start, but bot both
+    sort: null
   }
 
   _userRegisteredResponse: Boolean = false;
