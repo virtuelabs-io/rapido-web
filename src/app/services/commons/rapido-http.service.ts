@@ -10,7 +10,7 @@ import { ProfileService } from '../authentication/profile/profile.service';
 })
 export class RapidoHttpService<T> {
 
-  constructor(private _http: HttpClient, private _profileService: ProfileService) { }
+  constructor(protected _http: HttpClient, protected _profileService: ProfileService) { }
 
   getList(_url: string, _headers?: HttpHeaders): Observable<T[]>{
     return this._http.get<T[]>(_url, {
