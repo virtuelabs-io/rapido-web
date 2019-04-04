@@ -1,6 +1,7 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { Registration } from '../services/authentication/helpers/registration';
 import {FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { ForgotPasswordService } from '../services/authentication/forgot-password/forgot-password.service';
 
 @NgModule({
   imports: [
@@ -17,8 +18,12 @@ import {FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 export class ForgotPasswordComponent implements OnInit {
 
   public ownerForm: FormGroup;
-
-
+  private _forgotPasswordService: ForgotPasswordService
+  _forgottenPassword: Boolean = false;
+  errorResponse: string = ''
+  successResponse: string = ''
+  error: Boolean = false;
+  success: Boolean = false;
 
 
   registerFormGroup: FormGroup
@@ -34,17 +39,21 @@ export class ForgotPasswordComponent implements OnInit {
   communications: FormControl
   confirmationCode: FormControl
 
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder,
+    forgotPasswordService: ForgotPasswordService,
+    ) { 
+      this._forgotPasswordService = forgotPasswordService
+    }
 
   ngOnInit() {
-    this.mobileNumber = new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')])
+    this.mobileNumber = new FormControl('', [Validators.required]) // , Validators.pattern('^[0-9]+$')
     this.confirmationCode = new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(6)])
     this.password = new FormControl('', [Validators.required]);
     this.confirmPassword = new FormControl('', [Validators.required]);
 
     this.registerFormGroup = new FormGroup({
-      mobileNumber: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.min(1000000000), Validators.max(9999999999)])
-    })
+      mobileNumber: new FormControl('', [Validators.required,  ])
+    }) // ,Validators.pattern('^[0-9]+$'), Validators.min(1000000000), Validators.max(9999999999)
     this.codeConfirmationFormGroup = this._formBuilder.group({
       mobileNumber: this.mobileNumber,
       confirmationCode: this.confirmationCode
@@ -57,6 +66,26 @@ export class ForgotPasswordComponent implements OnInit {
     })
     this.codeConfirmationFormGroup.get('mobileNumber').disable();
 
+  }
+
+  forgotPassword() {
+    this.error = false
+    this.success = false
+    this._forgotPasswordService.username = this.mobileNumber.value
+    console.log(this._forgotPasswordService.username)
+    const promise = this._forgotPasswordService.forgotPassword()
+    console.log(promise)
+    promise.then(value => {
+      this._forgottenPassword = true;
+      this.success = true
+      this.successResponse = "Password Changed successfully !"// value.message
+      console.log(value) // response from successfull resolve
+    }).catch(error => {
+      this._forgottenPassword = false;
+      this.error = true
+      this.errorResponse = error._message 
+      console.log(error) // response from a graceful reject
+    })
   }
 
   public hasError = (controlName: string, errorName: string) =>{

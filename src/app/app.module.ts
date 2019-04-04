@@ -13,6 +13,8 @@ import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, M
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ProductCardsComponent } from './product-cards/product-cards.component';
 import { CardComponent } from './card/card.component';
 import { RatingComponent } from './rating/rating.component';

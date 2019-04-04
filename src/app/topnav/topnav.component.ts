@@ -1,8 +1,8 @@
-import { Component, OnInit, NgModule, ChangeDetectorRef, OnDestroy} from '@angular/core';
-import { Constants } from '../utils/constants';
+import { Component, OnInit, NgModule } from '@angular/core';
+import {FormControl} from '@angular/forms';
 import { SessionService } from '../services/authentication/session/session.service';
 import { ProfileService } from '../services/authentication/profile/profile.service';
-import {MediaMatcher} from '@angular/cdk/layout';
+import { Constants } from '../utils/constants';
 
 @NgModule({})
 @Component({
@@ -11,68 +11,44 @@ import {MediaMatcher} from '@angular/cdk/layout';
   styleUrls: ['./topnav.component.scss']
 })
 export class TopnavComponent implements OnInit {
+  signInTag: Boolean
+  userIcon: Boolean
+  name: String = ""
+  signIn: String = ""
+  bannerName: String = Constants.RAPIDO_BUILD
 
-  _profileService: ProfileService;
-  _signIn = ""
-  _name = ""
-  mobileQuery: MediaQueryList;
-  fillerNav = [
-    "My Profile",
-    "Departments",
-    "Log Out"
-    ];
+  myControl = new FormControl();
+  options: string[] = ['One', 'Two', 'Three'];
 
-  fillerContent = Array.from({length: 50}, () =>
-     `Rapido Build`);
-
-  private _mobileQueryListener: () => void;
-
-  
-  ngOnDestroy(): void {
-    this.mobileQuery.removeListener(this._mobileQueryListener);
-  }
-
-  shouldRun = true//[/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
-
-  bannerName = Constants.RAPIDO_BUILD;
-  logInLabel = "Sign In";
-  cartLabel = "Cart";
-  add_circle = "add_circle";
-  _width = window.innerWidth;
-
+  _profileService: ProfileService
 
   private _sessionService: SessionService
 
-  constructor(sessionService: SessionService, profileService: ProfileService, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+  constructor(sessionService: SessionService, profileService: ProfileService) {
     this._sessionService = sessionService
     this._profileService = profileService
-    this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener);
   }
-
-
 
   ngOnInit() {
     const promise = this._sessionService.retrieveSessionIfExists()
     promise.then(value => {
+      this.signInTag = false
+      this.userIcon = true
       console.log(this._profileService.cognitoUser); 
-      this._name = this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.name
+      this.name = this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.name
       
-      this._signIn = "Signed In As"
-      console.log(this._name)
+      this.signIn = "Signed In As"
+      console.log(this.name)
       console.log(value)
     }).catch(error => {
+      this.signInTag = true
+      this.userIcon = false
       console.log(error)
     })
   }
 
-  signOut(){
+  public signOut(){
+    alert('success')
     this._profileService.cognitoUser.signOut()
-  }
-
-  whatClass(){
-    console.log(this._width)
-    return 'col-sm-6 d-none'
   }
 }

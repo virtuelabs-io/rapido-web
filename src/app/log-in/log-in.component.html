@@ -6,8 +6,10 @@
     <div class="auth-form-header p-0 font">
     <h1>Sign in to Rapidobuild.com</h1>
   </div>
-  <div id="js-flash-container">
-  </div>
+    <div *ngIf="alertBox" class="alert alert-danger alert-dismissible">
+        <button class="close" type="button" data-dismiss="alert">×</button>
+        <strong>{{alertMsg}}</strong> <div id="Div2" runat="server"></div>
+      </div>
   <div class="auth-form-body mt-3">
     <label for="login_field">
       Mobile Number
@@ -18,7 +20,10 @@
     </label>
     <input type="password" [(ngModel)]="_password" name="password" id="password" class="form-control form-control input-block" tabindex="2">
     <input type="hidden" class="js-webauthn-support" name="webauthn-support" value="supported">
-    <input type="submit" (click)="signIn($event)" name="commit" value="Sign in" tabindex="3" class="btn btn-primary btn-block" data-disable-with="Signing in…">
+    <button type="submit" (click)="signIn($event)" name="commit" value="Sign in" tabindex="3" class="btn btn-primary btn-block" data-disable-with="Signing in…">
+      <span *ngIf="_progressSpinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      Submit
+      </button> 
   </div>
   </form>
   <!-- <div class="a-divider a-divider-break"><h5>New to Amazon?</h5>::after</div> -->
