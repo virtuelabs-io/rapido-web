@@ -1,4 +1,4 @@
-<mat-vertical-stepper [linear]="true" #stepper class="nav-bar-spacing" [selectedIndex]="stepperIndex" (selectionChange)="stepClick($event)">
+<mat-vertical-stepper [linear]="true" #stepper class="nav-bar-spacing" [selectedIndex]="stepperIndex">
     <mat-step [stepControl]="registerFormGroup">
         <ng-template matStepLabel><h4>Sign Up/ Register</h4></ng-template>
         <form [formGroup]="registerFormGroup" class="example-container" novalidate (ngSubmit)="registerUser(registerFormGroup.value)">
@@ -57,7 +57,7 @@
         </form>
     </mat-step>
     <mat-step [stepControl]="codeConfirmationFormGroup">
-        <div class="alert alert-success col-lg-4" role="alert">
+        <div *ngIf='otpSuccess' class="alert alert-success col-lg-4" role="alert">
             <h4 class="alert-heading">Success!</h4>
             <p>An OTP has been sent to the registered mobile number</p>
           </div>
@@ -68,17 +68,35 @@
           <mat-error *ngIf="mobileNumber.invalid">Error in Validation</mat-error>
         </mat-form-field>
         <mat-form-field class="col-lg-4" >
-          <input matInput placeholder="Confirmation code" formControlName="confirmationCode">
+          <input matInput placeholder="Confirmation code" formControlName="confirmationCode" [(ngModel)]="_confirmationCode">
           <mat-error *ngIf="confirmationCode.invalid">Error in Validation</mat-error>
         </mat-form-field>
         <mat-card-actions>
-          <button mat-flat-button color="primary">Resend Code</button>
-          <button mat-flat-button matStepperNext color="primary" type="submit" (click)="registerUser()" [disabled]="!codeConfirmationFormGroup.valid">Submit</button>
+          <button mat-flat-button color="primary" (click)="resendConfirmationCode()">
+              <span *ngIf="_progressSpinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Resend Code
+          </button>
+          <button mat-flat-button color="primary" type="submit" (click)="confirmRegistration()" [disabled]="!codeConfirmationFormGroup.valid">
+            <span *ngIf="_progressSpinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Submit
+          </button>
+          <div *ngIf='wrongCode' class="alert alert-danger col-lg-4" role="alert">
+            <h4 class="alert-heading">Error!</h4>
+            <p>{{wrongCodeMsg}}</p>
+          </div>
+          <div *ngIf='_resentConfirmationCodeResponse' class="alert alert-success col-lg-4" role="alert">
+            <h4 class="alert-heading">Success!</h4>
+            <p>An OTP has been re-sent to the registered mobile number</p>
+          </div>
       </mat-card-actions> 
       </form>
     </mat-step>
     <mat-step>
       <ng-template matStepLabel><h4>Done</h4></ng-template>
+      <div *ngIf="_confirmRegistrationResponse" class="alert alert-success col-lg-4" role="alert">
+        <h4 class="alert-heading">Success!</h4>
+        <p>Successfully confirmed registration!</p>
+      </div>
       <div>
         <svg class="imageWidth">
           <use xlink:href="#check-mark"/>
