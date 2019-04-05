@@ -19,6 +19,8 @@ import { ProductCardsComponent } from './product-cards/product-cards.component';
 import { CardComponent } from './card/card.component';
 import { RatingComponent } from './rating/rating.component';
 import { ImagesComponent } from './images/images.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -51,7 +53,8 @@ import { ImagesComponent } from './images/images.component';
     MatToolbarModule,
     MatMenuModule,
     MatListModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [ AppComponent ],
