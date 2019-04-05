@@ -11,6 +11,7 @@ import { ForgotPasswordService } from '../services/authentication/forgot-passwor
 import { DeleteUserService } from '../services/authentication/delete-user/delete-user.service';
 import { ProductsService } from '../services/products/products.service';
 import { Query } from '../services/products/query.interface';
+import { ProductsHierarchyService } from '../services/products/products-hierarchy.service';
 
 @Component({
   selector: 'app-authmock',
@@ -56,6 +57,7 @@ export class AuthmockComponent implements OnInit {
   _forgottenPassword: Boolean = false;
   _deletedUser: Boolean = false;
   _productsFetched = false;
+  _fetchedProductHierarchy = false;
 
   private _signUpService: SignUpService
   private _resendConfirmationCodeService: ResendConfirmationCodeService
@@ -66,6 +68,7 @@ export class AuthmockComponent implements OnInit {
   private _forgotPasswordService: ForgotPasswordService
   private _deleteUserService: DeleteUserService
   private _productsService: ProductsService
+  private _productHierarchyService: ProductsHierarchyService
 
 
   constructor(
@@ -78,7 +81,8 @@ export class AuthmockComponent implements OnInit {
     changePasswordService: ChangePasswordService,
     forgotPasswordService: ForgotPasswordService,
     deleteUserService: DeleteUserService,
-    productsService: ProductsService
+    productsService: ProductsService,
+    productHierarchyService: ProductsHierarchyService
     ) {
     this._signUpService = signUpService
     this._profileService = profileService
@@ -90,6 +94,7 @@ export class AuthmockComponent implements OnInit {
     this._forgotPasswordService = forgotPasswordService
     this._deleteUserService = deleteUserService
     this._productsService = productsService
+    this._productHierarchyService = productHierarchyService
   }
 
   ngOnInit() {
@@ -210,5 +215,13 @@ export class AuthmockComponent implements OnInit {
         console.log(data)
         this._productsFetched = true;
       })
+  }
+
+  getProductHierarchy(){
+    this._productHierarchyService.get()
+    .subscribe(data => {
+      console.log(data)
+      this._fetchedProductHierarchy = true;
+    })
   }
 }
