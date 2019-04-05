@@ -11,7 +11,8 @@ export class Constants {
     name: environment.name,
     production: environment.production,
     productSearchEndPoint: environment.productSearchEndPoint,
-    version: environment.version
+    version: environment.version,
+    staticAssets: environment.staticAssets
   }
 
   public static PHONE_NUMBER = "phone_number";
@@ -49,4 +50,6 @@ export class Constants {
   public static SUCCESSFULLY_DELETED_USER = "Deleted user successfully";
 
   public static RETRY_TIMES = 2;
+
+  public static PRODUCT_HIERARCHY = "/api-data/product-hierarchy.json";
 }

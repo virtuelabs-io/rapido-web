@@ -1,5 +1,10 @@
 <div class="container authmock-body">
   <div class="col-md-12">
+    <h2>Product Hierachy</h2><hr>
+    <button class="btn btn-primary" type="submit" (click)="getProductHierarchy()">Submit</button><br><br>
+    <h5 *ngIf="_fetchedProductHierarchy">Fetched Hierarchy</h5>
+  </div>
+  <div class="col-md-12">
     <h2>Product Query</h2><hr>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
