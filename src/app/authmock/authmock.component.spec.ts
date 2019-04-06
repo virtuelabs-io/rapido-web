@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AuthmockComponent } from './authmock.component';
 
@@ -10,7 +11,10 @@ describe('AuthmockComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ AuthmockComponent ],
-      imports: [FormsModule]
+      imports: [
+        FormsModule,
+        HttpClientModule
+      ]
     })
     .compileComponents();
   }));

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopnavComponent } from './topnav/topnav.component';
@@ -43,10 +44,11 @@ import { ProductCardsComponent } from './product-cards/product-cards.component';
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
-    MatMenuModule,
     MatListModule,
     MatSnackBarModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatMenuModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [ AppComponent ],
