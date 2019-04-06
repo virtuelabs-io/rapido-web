@@ -1,34 +1,55 @@
-<mat-accordion>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Personal data
-        </mat-panel-title>
-        <mat-panel-description>
-          Type your name and age
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-  
-      <mat-form-field>
-        <input matInput placeholder="First name">
+<mat-accordion class="example-headers-align">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Personal data
+      </mat-panel-title>
+      <mat-panel-description>
+        Basic User Details
+        <a (click)="edit()">
+          <mat-icon aria-hidden="true">info</mat-icon>
+        </a>
+        <!-- <button>
+          <mat-icon aria-hidden="true">edit</mat-icon>
+        </button> -->
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+      <mat-form-field class="col-lg-4">
+        <input matInput placeholder="User Name" [disabled]="viewMode" [(ngModel)]="attribute.phone_number">
       </mat-form-field>
-  
-      <mat-form-field>
-        <input matInput placeholder="Age">
+      <div class="mt-2"></div>
+      <mat-form-field class="col-lg-4">
+        <input matInput placeholder="Name" [disabled]="viewMode" [(ngModel)]="attribute.name">
       </mat-form-field>
-    </mat-expansion-panel>
-    <mat-expansion-panel (opened)="panelOpenState = true"
-                         (closed)="panelOpenState = false">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Self aware panel
-        </mat-panel-title>
-        <mat-panel-description>
-          Currently I am {{panelOpenState ? 'open' : 'closed'}}
-          <p>Name</p>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <p>I'm visible because I am open</p>
-    </mat-expansion-panel>
-  </mat-accordion>
-  
+      <div class="mt-2"></div>
+      <mat-form-field class="col-lg-4">
+        <input matInput placeholder="Email ID" [disabled]="viewMode" [(ngModel)]="attribute.email">
+      </mat-form-field>
+      <div class="mt-2"></div>
+      <!-- <a (click)="edit()">
+        <mat-icon aria-hidden="true">edit</mat-icon>
+        Edit
+      </a> -->
+      <button *ngIf="viewMode" mat-raised-button color="primary" (click)="edit()">
+        <mat-icon aria-hidden="true">edit</mat-icon> 
+        Edit
+      </button>
+      <button *ngIf="updateMode" mat-raised-button color="primary" (click)="update()">
+        <mat-icon aria-hidden="true">update</mat-icon> 
+        Update
+      </button>
+  </mat-expansion-panel>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Self aware panel
+      </mat-panel-title>
+      <mat-panel-description>
+        Currently I am {{panelOpenState ? 'open' : 'closed'}}
+        <p>Name</p>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>I'm visible because I am open</p>
+  </mat-expansion-panel>
+</mat-accordion>
