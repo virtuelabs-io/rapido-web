@@ -30,12 +30,24 @@ export class TopnavComponent implements OnInit {
   }
 
   ngOnInit() {
+    let localName = this.name
     const promise = this._sessionService.retrieveSessionIfExists()
     promise.then(value => {
       this.signInTag = false
       this.userIcon = true
       console.log(this._profileService.cognitoUser); 
-      this.name = this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.name
+      this._profileService.cognitoUser.getUserAttributes(function(err, result){
+        if (err) {
+        //  reject(new Response( 1, err.message, err ))
+        }
+        console.log('read me first')
+        console.log(result)
+        console.log(result[7].getValue())
+        console.log('my name')
+        console.log(localName)
+        localName = result[7].getValue()
+      })
+      this.name =  this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.name
       
       this.signIn = "Signed In As"
       console.log(this.name)
@@ -45,6 +57,8 @@ export class TopnavComponent implements OnInit {
       this.userIcon = false
       console.log(error)
     })
+
+    
   }
 
   public signOut(){
