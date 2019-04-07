@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../services/authentication/profile/profile.service';
 import { UpdateAttributeService } from '../services/authentication/update-attribute/update-attribute.service';
 import { Registration } from '../services/authentication/helpers/registration';
-
+import { DeleteUserService } from '../services/authentication/delete-user/delete-user.service';
 
 @Component({
   selector: 'app-my-profile',
@@ -16,6 +16,7 @@ export class MyProfileComponent implements OnInit {
   updateMode: Boolean = false
 
   _updatedAttribute: Boolean = false;
+  private _deleteUserService: DeleteUserService
 
   attribute = {
     phone_number: null,
@@ -32,10 +33,12 @@ export class MyProfileComponent implements OnInit {
   
   constructor(
     profileService: ProfileService,
-    updateAttributeService: UpdateAttributeService
+    updateAttributeService: UpdateAttributeService,
+    deleteUserService: DeleteUserService
   ) { 
     this._profileService = profileService
     this._updateAttributeService = updateAttributeService
+    this._deleteUserService = deleteUserService
   }
 
   ngOnInit() {
@@ -76,6 +79,16 @@ export class MyProfileComponent implements OnInit {
       console.log(value) // response from successfull resolve
     }).catch(error => {
       this._updatedAttribute = false;
+      console.log(error) // response from a graceful reject
+    })
+  }
+  deleteUser(){
+    const promise = this._deleteUserService.deleteUser()
+    promise.then(value => {
+      // this._deletedUser = true;
+      console.log(value) // response from successfull resolve
+    }).catch(error => {
+      // this._deletedUser = false;
       console.log(error) // response from a graceful reject
     })
   }
