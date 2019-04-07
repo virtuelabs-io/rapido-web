@@ -26,6 +26,10 @@
         <input matInput placeholder="Email ID" [disabled]="viewMode" [(ngModel)]="attribute.email">
       </mat-form-field>
       <div class="mt-2"></div>
+      <mat-checkbox required [disabled]="viewMode" class="example-margin">Send Me Promotions</mat-checkbox>
+      <div class="mt-2"></div>
+      <mat-checkbox required [disabled]="viewMode" class="example-margin">Communications via Email</mat-checkbox>
+      <div class="mt-2"></div>
       <!-- <a (click)="edit()">
         <mat-icon aria-hidden="true">edit</mat-icon>
         Edit

@@ -39,9 +39,16 @@ export class MyProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.attribute.name = this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.name
-    this.attribute.phone_number = this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.phone_number
-    this.attribute.email = this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.email
+    let localAttributes = this.attribute
+    this._profileService.cognitoUser.getUserAttributes(function(err, result){
+      if (err) {
+      //  reject(new Response( 1, err.message, err ))
+      }
+      console.log(result)
+      localAttributes.name = result[7].getValue()
+      localAttributes.phone_number = result[8].getValue()
+      localAttributes.email = result[10].getValue()
+    })
   }
   edit() {
     console.log(this._profileService)
