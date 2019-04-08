@@ -3,6 +3,8 @@ import { Registration } from '../services/authentication/helpers/registration';
 import {FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { SignUpService } from '../services/authentication/sign-up/sign-up.service';
 import { ProfileService } from '../services/authentication/profile/profile.service';
+import { ConfirmRegistrationService } from '../services/authentication/confirm-registration/confirm-registration.service';
+import { ResendConfirmationCodeService } from '../services/authentication/resend-confirmation-code/resend-confirmation-code.service';
 
 @NgModule({
   imports: [
@@ -19,6 +21,14 @@ import { ProfileService } from '../services/authentication/profile/profile.servi
 export class RegisterComponent implements OnInit {
 
   _profileService: ProfileService;
+  _confirmationCode: string;
+  private _confirmRegistrationService: ConfirmRegistrationService
+  private _resendConfirmationCodeService: ResendConfirmationCodeService
+  _confirmRegistrationResponse: Boolean = false;
+  wrongCode: Boolean = false
+  wrongCodeMsg: string = ""
+  otpSuccess: Boolean = false
+  _resentConfirmationCodeResponse: Boolean = false;
 
   public ownerForm: FormGroup;
   registerFormGroup: FormGroup
@@ -39,15 +49,15 @@ export class RegisterComponent implements OnInit {
   _regFailed = ""
 
   _registration: Registration = new Registration(
-    "7032908112",
-    "reddy.horcrux@gmail.com",
-    "Sangram Reddy",
-    "Anirup123",
-    "true",
-    "true",
-    "true",
-    "true",
-    "true"
+    // "7032908112",
+    // "reddy.horcrux@gmail.com",
+    // "Sangram Reddy",
+    // "Anirup123",
+    // "true",
+    // "true",
+    // "true",
+    // "true",
+    // "true"
   );
   
   _userRegisteredResponse: Boolean = false;
@@ -58,10 +68,14 @@ export class RegisterComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     signUpService: SignUpService,
-    profileService: ProfileService
+    profileService: ProfileService,
+    confirmRegistrationService: ConfirmRegistrationService,
+    resendConfirmationCodeService: ResendConfirmationCodeService
     ) { 
     this._signUpService = signUpService
     this._profileService = profileService
+    this._confirmRegistrationService = confirmRegistrationService
+    this._resendConfirmationCodeService = resendConfirmationCodeService
   }
 
   ngOnInit() {
@@ -100,12 +114,14 @@ export class RegisterComponent implements OnInit {
       this._userRegisteredResponse = true
       this._progressSpinner = false
       this._stepperIndex = 1
+      this.otpSuccess = true
       console.log(value) // response from successfull resolve
       console.log(this._profileService.cognitoUser); // updated user profile
     }).catch(error => {
       this._userRegisteredResponse = false
       this._progressSpinner = false
       this._stepperIndex = 0
+      this.otpSuccess= false
       this._regFailed = error.data.message
       console.log(error) // response from a graceful reject
     })
@@ -114,9 +130,40 @@ export class RegisterComponent implements OnInit {
   public hasError = (controlName: string, errorName: string) =>{
     return this.registerFormGroup.controls[controlName].hasError(errorName);
   }
+ 
+  confirmRegistration(){
+    this._progressSpinner = true
+    this._confirmRegistrationService.username = this._registration.phone_number
+    const promise = this._confirmRegistrationService.confirmRegistration(this._confirmationCode)
+    promise.then(value => {
+      this.wrongCode = false
+      this._stepperIndex = 2
+      this._progressSpinner = false
+      this._confirmRegistrationResponse = true;
+      console.log(value) // response from successfull resolve
+    }).catch(error => {
+      this.wrongCode = true
+      this._stepperIndex = 1
+      this.wrongCodeMsg = error.message
+      this._progressSpinner = false
+      this._confirmRegistrationResponse = false;
+      console.log(error) // response from a graceful reject
+    })
+  }
 
-  stepClick (evt) {
-    console.log(evt);
-  }  
+  resendConfirmationCode(){
+    this._progressSpinner = true
+    this._resendConfirmationCodeService.username = this._registration.phone_number
+    const promise = this._resendConfirmationCodeService.resendConfirmationCode()
+    promise.then(value => {
+      this._progressSpinner = false
+      this._resentConfirmationCodeResponse = true;
+      console.log(value) // response from successfull resolve
+    }).catch(error => {
+      this._progressSpinner = false
+      this._resentConfirmationCodeResponse = false;
+      console.log(error) // response from a graceful reject
+    })
+  }
 
 }

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopnavComponent } from './topnav/topnav.component';
@@ -9,7 +10,7 @@ import { ButtonComponent } from './common/button/button.component';
 import { IconComponent } from './common/icons/icons.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { RoutingComponents } from './app-routing.module';
-import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, MatSnackBarModule } from '@angular/material';
+import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, MatSnackBarModule, MatExpansionModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
@@ -51,10 +52,12 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
-    MatMenuModule,
     MatListModule,
     MatSnackBarModule,
-    NgbModule
+    NgbModule,
+    MatExpansionModule,
+    MatMenuModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [ AppComponent ],

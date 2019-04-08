@@ -9,7 +9,10 @@ export class Constants {
   }
   public static environment = {
     name: environment.name,
-    production: environment.production
+    production: environment.production,
+    productSearchEndPoint: environment.productSearchEndPoint,
+    version: environment.version,
+    staticAssets: environment.staticAssets
   }
 
   public static PHONE_NUMBER = "phone_number";
@@ -45,4 +48,8 @@ export class Constants {
   public static ENTER_NEW_PASSWORD = "Enter new password";
 
   public static SUCCESSFULLY_DELETED_USER = "Deleted user successfully";
+
+  public static RETRY_TIMES = 2;
+
+  public static PRODUCT_HIERARCHY = "/api-data/product-hierarchy.json";
 }

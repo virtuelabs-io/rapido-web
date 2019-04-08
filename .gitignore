@@ -48,3 +48,11 @@ Thumbs.db
 **/TESTS-*
 
 src/environments/
+
+src/environments/environment\.prod\.ts
+
+src/environment/environment\.staging\.ts
+
+src/environments/
+
+src/coverage/
