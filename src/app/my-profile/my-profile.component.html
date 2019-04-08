@@ -1,4 +1,4 @@
-<mat-accordion class="example-headers-align">
+<!-- <mat-accordion class="example-headers-align">
   <mat-expansion-panel [expanded]="0">
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -9,9 +9,6 @@
         <a (click)="edit()">
           <mat-icon aria-hidden="true">info</mat-icon>
         </a>
-        <!-- <button>
-          <mat-icon aria-hidden="true">edit</mat-icon>
-        </button> -->
       </mat-panel-description>
     </mat-expansion-panel-header>
       <mat-form-field class="col-lg-4">
@@ -64,4 +61,104 @@
       </button>
     </mat-action-row>
   </mat-expansion-panel>
-</mat-accordion>
+</mat-accordion> -->
+
+
+<div class="a-row a-spacing-base">
+  <h1>
+      Your Account
+  </h1>
+</div>
+<div class="row">
+  <div class="column" onclick="openTab('b1');">
+    <div class="a-row">
+      <div class="a-column a-span3">
+          <a  class="rapido-icon mat-button rapido-icon-hider" routerLink="" [matMenuTriggerFor]="menu">
+              <svg aria-hidden="true" aria-haspopup="menu">
+                <use xlink:href="#man-user"/>
+              </svg>
+            </a>
+        <!-- <img alt="Your Orders" src="https://images-na.ssl-images-amazon.com/images/G/31/x-locale/cs/ya/images/Box._CB529916278_.png"> -->
+      </div>
+      <div class="a-column a-span9 a-span-last">
+        <h2 class="a-spacing-none ya-card__heading--rich a-text-normal">
+            My Info
+        </h2>
+        <div>
+          <span class="smallFont">Basic User Details</span>
+        </div>
+    </div>
+    </div>
+  </div>
+  <div class="column" onclick="openTab('b1');">
+    <div class="a-row">
+      <div class="a-column a-span3">
+        <img alt="Your Orders" src="https://images-na.ssl-images-amazon.com/images/G/31/x-locale/cs/ya/images/Box._CB529916278_.png">
+      </div>
+      <div class="a-column a-span9 a-span-last">
+        <h2 class="a-spacing-none ya-card__heading--rich a-text-normal">
+            My Orders
+        </h2>
+        <div><span class="smallFont">Track, return, or buy things again</span></div>
+        
+    </div>
+    </div>
+  </div>
+  <div class="column" onclick="openTab('b1');">
+    <div class="a-row">
+      <div class="a-column a-span3">
+        <img alt="Your Orders" src="https://images-na.ssl-images-amazon.com/images/G/31/x-locale/cs/ya/images/Box._CB529916278_.png">
+      </div>
+      <div class="a-column a-span9 a-span-last">
+        <h2 class="a-spacing-none ya-card__heading--rich a-text-normal">
+            My Addresses
+        </h2>
+        <div><span class="smallFont">Edit Addresses for Orders</span></div>
+        
+    </div>
+    </div>
+  </div>
+  <div class="column" onclick="openTab('b1');">
+    <div class="a-row">
+      <div class="a-column a-span3">
+        <img alt="Your Orders" src="https://images-na.ssl-images-amazon.com/images/G/31/x-locale/cs/ya/images/Box._CB529916278_.png">
+      </div>
+      <div class="a-column a-span9 a-span-last">
+        <h2 class="a-spacing-none ya-card__heading--rich a-text-normal">
+            Payment Options
+        </h2>
+        <div><span class="smallFont">Edit Or Add Payment Methods</span></div>
+        
+    </div>
+    </div>
+  </div>
+  <div class="column" onclick="openTab('b1');">
+    <div class="a-row">
+      <div class="a-column a-span3">
+        <img alt="Your Orders" src="https://images-na.ssl-images-amazon.com/images/G/31/x-locale/cs/ya/images/Box._CB529916278_.png">
+      </div>
+      <div class="a-column a-span9 a-span-last">
+        <h2 class="a-spacing-none ya-card__heading--rich a-text-normal">
+            Log In and Security
+        </h2>
+        <div><span class="smallFont">Track, return, or buy things again</span></div>
+        
+    </div>
+    </div>
+  </div>
+  <div class="column" onclick="openTab('b1');">
+    <div class="a-row">
+      <div class="a-column a-span3">
+        <img alt="Your Orders" src="https://images-na.ssl-images-amazon.com/images/G/31/x-locale/cs/ya/images/Box._CB529916278_.png">
+      </div>
+      <div class="a-column a-span9 a-span-last">
+        <h2 class="a-spacing-none ya-card__heading--rich a-text-normal">
+            Your Orders
+        </h2>
+        <div><span class="smallFont">Track, return, or buy things again</span></div>
+        
+    </div>
+    </div>
+  </div>
+  
+</div>
