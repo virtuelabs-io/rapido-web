@@ -29,15 +29,15 @@
       <div class="mt-2"></div>
       <mat-action-row>
         <button *ngIf="viewMode" mat-raised-button color="primary" (click)="edit()">
-        <mat-icon aria-hidden="true">edit</mat-icon> 
+        <mat-icon aria-hidden="true">edit</mat-icon>
         Edit
       </button>
       <button *ngIf="updateMode" mat-raised-button color="primary" (click)="update()">
-        <mat-icon aria-hidden="true">update</mat-icon> 
+        <mat-icon aria-hidden="true">update</mat-icon>
         Update
       </button>
       </mat-action-row>
-      
+
   </mat-expansion-panel>
   <mat-expansion-panel (opened)="panelOpenState = true"
                        (closed)="panelOpenState = false">
@@ -69,121 +69,20 @@
       Your Account
   </h1>
 </div>
-<div class="row">
-  <div class="column" onclick="openTab('b1');">
-    <div class="a-row">
-      <div class="a-column a-span3">
-          <a  class="rapido-icon mat-button" routerLink="" [matMenuTriggerFor]="menu">
-              <svg aria-hidden="true" aria-haspopup="menu">
-                <use xlink:href="#man-user"/>
-              </svg>
-            </a>
-        <!-- <img alt="Your Orders" src="https://images-na.ssl-images-amazon.com/images/G/31/x-locale/cs/ya/images/Box._CB529916278_.png"> -->
-      </div>
-      <div class="a-column a-span9 a-span-last">
-        <h2 class="a-spacing-none ya-card__heading--rich a-text-normal">
-            My Info
-        </h2>
-        <div>
-          <span class="smallFont">Basic User Details</span>
-        </div>
+<div class="rapido-profile">
+  <div class="rapido-profile-item" *ngFor="let item of profileItems">
+    <div class="icon-div">
+      <a class="rapido-icon">
+        <svg aria-hidden="true" aria-haspopup="menu">
+          <use [attr.xlink:href]="item.icon"/>
+        </svg>
+      </a>
     </div>
+    <div class="content-div">
+      <h4>
+        {{ item.title }}
+      </h4>
+      <p>{{ item.description }}</p>
     </div>
   </div>
-  <div class="column" onclick="openTab('b1');">
-    <div class="a-row">
-        <div class="a-column a-span3">
-            <a  class="rapido-icon mat-button" routerLink="" [matMenuTriggerFor]="menu">
-                <svg aria-hidden="true" aria-haspopup="menu">
-                  <use xlink:href="#man-user"/>
-                </svg>
-              </a>
-          <!-- <img alt="Your Orders" src="https://images-na.ssl-images-amazon.com/images/G/31/x-locale/cs/ya/images/Box._CB529916278_.png"> -->
-        </div>
-      <div class="a-column a-span9 a-span-last">
-        <h2 class="a-spacing-none ya-card__heading--rich a-text-normal">
-            My Orders
-        </h2>
-        <div><span class="smallFont">Track, return, or buy things again</span></div>
-        
-    </div>
-    </div>
-  </div>
-  <div class="column" onclick="openTab('b1');">
-    <div class="a-row">
-        <div class="a-column a-span3">
-            <a  class="rapido-icon mat-button" routerLink="" [matMenuTriggerFor]="menu">
-                <svg aria-hidden="true" aria-haspopup="menu">
-                  <use xlink:href="#man-user"/>
-                </svg>
-              </a>
-          <!-- <img alt="Your Orders" src="https://images-na.ssl-images-amazon.com/images/G/31/x-locale/cs/ya/images/Box._CB529916278_.png"> -->
-        </div>
-      <div class="a-column a-span9 a-span-last">
-        <h2 class="a-spacing-none ya-card__heading--rich a-text-normal">
-            My Addresses
-        </h2>
-        <div><span class="smallFont">Edit Addresses for Orders</span></div>
-        
-    </div>
-    </div>
-  </div>
-  <div class="column" onclick="openTab('b1');">
-    <div class="a-row">
-        <div class="a-column a-span3">
-            <a  class="rapido-icon mat-button" routerLink="" [matMenuTriggerFor]="menu">
-                <svg aria-hidden="true" aria-haspopup="menu">
-                  <use xlink:href="#man-user"/>
-                </svg>
-              </a>
-          <!-- <img alt="Your Orders" src="https://images-na.ssl-images-amazon.com/images/G/31/x-locale/cs/ya/images/Box._CB529916278_.png"> -->
-        </div>
-      <div class="a-column a-span9 a-span-last">
-        <h2 class="a-spacing-none ya-card__heading--rich a-text-normal">
-            Payment Options
-        </h2>
-        <div><span class="smallFont">Edit Or Add Payment Methods</span></div>
-        
-    </div>
-    </div>
-  </div>
-  <div class="column" onclick="openTab('b1');">
-    <div class="a-row">
-        <div class="a-column a-span3">
-            <a  class="rapido-icon mat-button" routerLink="" [matMenuTriggerFor]="menu">
-                <svg aria-hidden="true" aria-haspopup="menu">
-                  <use xlink:href="#man-user"/>
-                </svg>
-              </a>
-          <!-- <img alt="Your Orders" src="https://images-na.ssl-images-amazon.com/images/G/31/x-locale/cs/ya/images/Box._CB529916278_.png"> -->
-        </div>
-      <div class="a-column a-span9 a-span-last">
-        <h2 class="a-spacing-none ya-card__heading--rich a-text-normal">
-             Security
-        </h2>
-        <div><span class="smallFont">Track, return, or buy things again</span></div>
-        
-    </div>
-    </div>
-  </div>
-  <div class="column" onclick="openTab('b1');">
-    <div class="a-row">
-      <div class="a-column a-span3">
-          <a  class="rapido-icon mat-button" routerLink="" [matMenuTriggerFor]="menu">
-              <svg aria-hidden="true" aria-haspopup="menu">
-                <use xlink:href="#man-user"/>
-              </svg>
-            </a>
-        <!-- <img alt="Your Orders" src="https://images-na.ssl-images-amazon.com/images/G/31/x-locale/cs/ya/images/Box._CB529916278_.png"> -->
-      </div>
-      <div class="a-column a-span9 a-span-last">
-        <h2 class="a-spacing-none ya-card__heading--rich a-text-normal">
-            Your Orders
-        </h2>
-        <div><span class="smallFont">Track, return, or buy things again</span></div>
-        
-    </div>
-    </div>
-  </div>
-  
 </div>

@@ -26,16 +26,49 @@ export class MyProfileComponent implements OnInit {
     commViaEmail: "false"
   }
 
+  profileItems = [
+    {
+      icon: "#man-user",
+      title: "Your Orders",
+      description: "Track, return or buy things again"
+    },
+    {
+      icon: "#check-mark",
+      title: "Payment",
+      description: "Track, return or buy things again"
+    },
+    {
+      icon: "#man-user",
+      title: "Delivery",
+      description: "Track, return or buy things again"
+    },
+    {
+      icon: "#man-user",
+      title: "Your Orders 2",
+      description: "Track, return or buy things again"
+    },
+    {
+      icon: "#man-user",
+      title: "Your Orders 3",
+      description: "Track, return or buy things again"
+    },
+    {
+      icon: "#man-user",
+      title: "Your Orders 4",
+      description: "Track, return or buy things again"
+    }
+  ]
+
     //private _commViaSMS?: string,
     //private _personalisation?: string,
 
   private _updateAttributeService: UpdateAttributeService
-  
+
   constructor(
     profileService: ProfileService,
     updateAttributeService: UpdateAttributeService,
     deleteUserService: DeleteUserService
-  ) { 
+  ) {
     this._profileService = profileService
     this._updateAttributeService = updateAttributeService
     this._deleteUserService = deleteUserService

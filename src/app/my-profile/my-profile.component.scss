@@ -1,99 +1,44 @@
-// .example-headers-align .mat-expansion-panel-header-title,
-// .example-headers-align .mat-expansion-panel-header-description {
-//   flex-basis: 0;
-// }
-
-// .example-headers-align .mat-expansion-panel-header-description {
-//   justify-content: space-between;
-//   align-items: center;
-// }
-
-// mat-form-field {
-//   margin-right: 12px;
-// }
-
-
 @import "../../assets/scss/custom-bootstrap-variables.scss";
 
-/* The grid: Three equal columns that floats next to each other */
-.column {
-  float: left;
-  width: 30%;
-  // padding: 50px;
-  padding: 14px 18px;
-  text-align: center;
-  font-size: 25px;
-  cursor: pointer;
-  color: black;
-  background-color: $primary;
-  margin-right: 20px;
-  margin-left: 20px;
-  margin-top: 20px;
-
-  border-radius: 4px;
-}
-.a-row {
-  width: 100%;
-}
-column, div.a-column {
-  margin-right: 2%;
-  float: left;
-  min-height: 1px;
-  overflow: visible;
-}
-
-.a-row .a-span3, .a-ws .a-row .a-ws-span3 {
-  width: 23.448%;
-}
-
-.a-ws div.a-column, div.a-column {
-  margin-right: 2%;
-  float: left;
-  min-height: 1px;
-  overflow: visible;
-}
-
-.a-column.a-span-last {
-  margin-right: 0;
-  float: right;
-}
-.a-row .a-span9, .a-ws .a-row .a-ws-span9 {
-  width: 74.448%;
-}
-
-.smallFont {
-  font-size: initial;
-}
-
-.containerTab {
-  padding: 20px;
-  color: $primary;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-
-.a-spacing-base, .a-ws .a-ws-spacing-base {
-  margin-bottom: 14px!important;
-}
-
-.a-row {
-  width: 100%;
-}
-.rapido-icon{
-  svg {
-    margin: 12px 0px;
-    width: 40px;
-    height: 40px;
-    // :hover {
-    //   transition: all .3s ease-in-out;
-    //   transform: scale(1.1);
-    //   transform-origin: 50% 50%;
-    // }
+.rapido-profile{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  width:100%;
+  padding: 2%;
+  .rapido-profile-item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding: 0% 2%;
+    background-color: $primary;
+    margin: 1%;
+    border-radius: 4px;
+    width: 31.25%;
+    justify-items: center;
+    min-width: 300px;
+    min-height: 125px;
+    .icon-div {
+      .rapido-icon{
+        svg {
+          margin: 30px 0px;
+          width: 70px;
+          height: 70px;
+        }
+      }
+    }
+    .content-div{
+      margin-left: 2%;
+      margin-right: 2%;
+      margin-top: 8%;
+      margin-bottom: 6%;
+      display: flex;
+      flex-direction: column;
+      justify-items: left;
+    }
+    @media screen and (max-width: $mobile-device) {
+      min-width: 100%;
+    }
   }
 }
