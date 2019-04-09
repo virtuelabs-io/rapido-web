@@ -70,7 +70,8 @@
   </h1>
 </div>
 <div class="rapido-profile">
-  <div class="rapido-profile-item" *ngFor="let item of profileItems" onclick="location.href='https://www.google.com'">
+  <a class="rapido-profile-item" *ngFor="let item of profileItems" href="profile/accountInfo" >
+    <!-- <a class="fill-div"></a> -->
     <div class="icon-div">
       <a class="rapido-icon">
         <svg aria-hidden="true" aria-haspopup="menu">
@@ -84,5 +85,5 @@
       </h4>
       <p>{{ item.description }}</p>
     </div>
-  </div>
+  </a>
 </div>

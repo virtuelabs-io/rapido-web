@@ -17,6 +17,7 @@ import { ProfileComponent } from './my-profile/profile.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ProductCardsComponent } from './product-cards/product-cards.component';
+import { AccountInfoComponent } from './account-info/account-info.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ProductCardsComponent } from './product-cards/product-cards.component';
     RoutingComponents,
     ForgotPasswordComponent,
     ProfileComponent,
-    ProductCardsComponent
+    ProductCardsComponent,
+    AccountInfoComponent
   ],
   imports: [
     MatSidenavModule,
