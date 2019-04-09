@@ -21,6 +21,7 @@ import { CardComponent } from './card/card.component';
 import { RatingComponent } from './rating/rating.component';
 import { ImagesComponent } from './images/images.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { FilterByComponent } from './filter-by/filter-by.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     ProductCardsComponent,
     CardComponent,
     RatingComponent,
-    ImagesComponent
+    ImagesComponent,
+    FilterByComponent
   ],
   imports: [
     MatSidenavModule,
