@@ -5,11 +5,11 @@ import { Registration } from '../services/authentication/helpers/registration';
 import { DeleteUserService } from '../services/authentication/delete-user/delete-user.service';
 
 @Component({
-  selector: 'app-my-profile',
-  templateUrl: './my-profile.component.html',
-  styleUrls: ['./my-profile.component.scss']
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.scss']
 })
-export class MyProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit {
   _profileService: ProfileService;
   panelOpenState = false
   viewMode: Boolean = true
@@ -75,16 +75,16 @@ export class MyProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    let localAttributes = this.attribute
-    this._profileService.cognitoUser.getUserAttributes(function(err, result){
-      if (err) {
-      //  reject(new Response( 1, err.message, err ))
-      }
-      console.log(result)
-      localAttributes.name = result[7].getValue()
-      localAttributes.phone_number = result[8].getValue()
-      localAttributes.email = result[10].getValue()
-    })
+    // let localAttributes = this.attribute
+    // this._profileService.cognitoUser.getUserAttributes(function(err, result){
+    //   if (err) {
+    //   //  reject(new Response( 1, err.message, err ))
+    //   }
+    //   console.log(result)
+    //   localAttributes.name = result[7].getValue()
+    //   localAttributes.phone_number = result[8].getValue()
+    //   localAttributes.email = result[10].getValue()
+    // })
   }
   edit() {
     console.log(this._profileService)

@@ -4,7 +4,7 @@ import { RegisterComponent } from './register/register.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { AuthmockComponent } from './authmock/authmock.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { MyProfileComponent } from './my-profile/my-profile.component';
+import { ProfileComponent } from './my-profile/profile.component';
 import { ProductCardsComponent } from './product-cards/product-cards.component';
 
 
@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'sign-in', component: LogInComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
-  { path: 'my-profile', component: MyProfileComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: 'product-cards', component: ProductCardsComponent },
   { path: '', component: AuthmockComponent}
 ];
@@ -26,7 +26,7 @@ export const RoutingComponents = [
   RegisterComponent,
   LogInComponent,
   ForgotPasswordComponent,
-  MyProfileComponent,
+  ProfileComponent,
   ProductCardsComponent,
   AuthmockComponent
 ];
