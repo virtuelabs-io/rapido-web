@@ -28,33 +28,33 @@ export class ProfileComponent implements OnInit {
 
   profileItems = [
     {
-      icon: "#man-user",
-      title: "Your Orders",
+      icon: "#shopping-bag",
+      title: "My Orders",
       description: "Track, return or buy things again"
     },
     {
-      icon: "#check-mark",
-      title: "Payment",
+      icon: "#black-and-white-credit-cards",
+      title: "My Payment",
       description: "Track, return or buy things again"
     },
     {
-      icon: "#man-user",
-      title: "Delivery",
+      icon: "#delivery-truck",
+      title: "My Delivery",
       description: "Track, return or buy things again"
     },
     {
-      icon: "#man-user",
-      title: "Your Orders 2",
+      icon: "#address",
+      title: "My Addresses",
       description: "Track, return or buy things again"
     },
     {
-      icon: "#man-user",
-      title: "Your Orders 3",
+      icon: "#log-in",
+      title: "My Details",
       description: "Track, return or buy things again"
     },
     {
-      icon: "#man-user",
-      title: "Your Orders 4",
+      icon: "#settings-work-tool",
+      title: "Account Settings",
       description: "Track, return or buy things again"
     }
   ]
