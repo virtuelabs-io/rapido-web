@@ -1,8 +1,43 @@
+@import "../../assets/scss/custom-bootstrap-variables.scss";
+
 div {
-    mat-toolbar{
-        .example-spacer {
-             flex: 1 1 auto;
+    div{
+        .titleBarLarge {
+                align-content: center;
+                align-items: center;
+                display: flex;
+                justify-content: space-between;
+                padding: 8px 20px;
+                color: rgba(0,0,0,.54);
+                background: rgba(0,0,0,.03);
+        }
+        @media screen and (max-width: $small-device) {
+            .titleBarLarge {
+              display: none;
+            }
+        }
+
+    }
+
+    div{
+        @media screen and (max-width: $small-device) {
+            .filtersL {
+              display: none;
+            }
+        }
+        div{
+            .titleBarSmall{
+                align-content: center;
+                align-items: center;
+                display: flex;
+                justify-content: space-around;
+                padding: 8px 20px;
+                color: rgba(0,0,0,.54);
+                background: rgba(0,0,0,.03);
+            }
         }
     }
+
 }
   
+

@@ -1,11 +1,13 @@
 
 <div class="">
   <div>
-      <mat-toolbar>
-        <span class="h4">1-16 of 822 results for </span>
-        <span class="h5 text-danger p-2"> "mac books pro" </span>
+      <div class="titleBarLarge">
+        <span class="h4">1-16 of 822 results for 
+          <span class="h5 text-danger p-2"> "mac books pro" </span>
+        </span>
         <span class="example-spacer"></span>
       <!-- <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user</mat-icon> -->
+      
       <mat-label>Sort by: </mat-label>
       <select matNativeControl>
           <option value="relevanceblender" selected="true">Featured</option>
@@ -14,38 +16,39 @@
           <option value="review-rank">Avg. Customer Review</option>
           <option value="date-desc-rank">Newest Arrivals</option>
       </select>
-          
-        </mat-toolbar>
+    </div>
+
+    
+    <!-- <div>
+      <span></span>
+      <span>
+          <button mat-icon-button>
+              <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>favorite
+          </button>
+      </span>
+    </div> -->
   </div>
     
 
   <div class="row">
       <div class="col-md-3">
-          <div *ngFor="let a of ['departments']" class="">
-              <div class="product-grid">
-                  <div class="card" style="width: 18rem;">
-                     
-                      <div class="card-body">
-                        <h5 class="card-title">Card title {{a}}</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <h5 class="card-title">Card title {{a}}</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <h5 class="card-title">Card title {{a}}</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <h5 class="card-title">Card title {{a}}</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <h5 class="card-title">Card title {{a}}</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <h5 class="card-title">Card title {{a}}</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                      </div>
-                    </div>
+        <div class="filtersL">
+          <div class="">
+              <div class="">
+                  Filter items
               </div>
           </div>
         </div>
+        </div>
+        
+        <div class="row justify-content-center">
 
-        <div class="row justify-content-center"  >
+            <div class="titleBarSmall">
+                <!-- <span class="h4">822</span> -->
+              <button>Filters></button>
+              <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user</mat-icon>
+            </div>
+
             <div *ngFor="let a of [1,2,3]" class="">
                 <div *ngFor="let a of [1,2,3]" class="">
                     <app-card></app-card>
