@@ -7,6 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountInfoComponent implements OnInit {
 
+  accountItems = [
+    {
+      key: "name",
+      value: "Anirup",
+      button: "Edit"
+    },
+    {
+      key: "Email",
+      value: "Anirup",
+      button: "Edit"
+    },
+    {
+      key: "Mobile Number",
+      value: "Anirup",
+      button: "Edit"
+    }
+    
+  ]
+
   constructor() { }
 
   ngOnInit() {

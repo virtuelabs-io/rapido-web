@@ -1,0 +1,45 @@
+@import "../../assets/scss/custom-bootstrap-variables.scss";
+
+.rapido-account-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: nowrap;
+    width: 100%;
+    .rapido-account-details {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        background-color: $primary;
+        float: left;
+        margin-top: 10px;
+        // margin-left: 25%;
+        // margin-right: 30%;
+        width: 50%;
+        .text-div {
+            display: flex;
+            flex-direction: column;
+            justify-items: left;
+            // padding-right: 70%;
+            margin-top: 2%;
+            margin-left: 1%;
+            width: 50%;
+        }
+        .button-div {
+            display: flex;
+            flex-direction: column;
+            // flex-wrap: nowrap;
+            justify-items: right;
+            padding-top: 2%;
+            margin-left: 30%;
+            // width: 50%;
+            button {
+                background-color: black;
+                color: $primary;
+            }
+        }
+        @media screen and (max-width: $mobile-device) {
+            min-width: 100%;
+          }
+    }
+}
