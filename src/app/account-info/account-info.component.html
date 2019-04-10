@@ -1,4 +1,4 @@
-<mat-accordion class="example-headers-align">
+<!-- <mat-accordion class="example-headers-align">
     <mat-expansion-panel [expanded]="0">
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -10,24 +10,32 @@
             <mat-icon aria-hidden="true">info</mat-icon>
           </a>
         </mat-panel-description>
-      </mat-expansion-panel-header>
-        <mat-form-field class="col-lg-4">
+      </mat-expansion-panel-header> -->
+      <div class="">
+        <h1>
+            Account Info
+        </h1>
+      </div>
+      <div class="rapido-account-info-div">
+        <mat-form-field class="col-lg-6">
           <input matInput placeholder="User Name" [disabled]="viewMode" [(ngModel)]="attribute.phone_number">
         </mat-form-field>
         <div class="mt-2"></div>
-        <mat-form-field class="col-lg-4">
+        <mat-form-field class="col-lg-6">
           <input matInput placeholder="Name" [disabled]="viewMode" [(ngModel)]="attribute.name">
         </mat-form-field>
         <div class="mt-2"></div>
-        <mat-form-field class="col-lg-4">
+        <mat-form-field class="col-lg-6">
           <input matInput placeholder="Email ID" [disabled]="viewMode" [(ngModel)]="attribute.email">
         </mat-form-field>
         <div class="mt-2"></div>
-        <mat-checkbox required [disabled]="viewMode" class="example-margin">Send Me Promotions</mat-checkbox>
+        
+          <mat-checkbox required [disabled]="viewMode" class="check-box-margin">Send Me Promotions</mat-checkbox>
+        
         <div class="mt-2"></div>
-        <mat-checkbox required [disabled]="viewMode" class="example-margin">Communications via Email</mat-checkbox>
+        <mat-checkbox required [disabled]="viewMode" class="check-box-margin">Communications via Email</mat-checkbox>
         <div class="mt-2"></div>
-        <mat-action-row>
+        <mat-action-row class="">
           <button *ngIf="viewMode" mat-raised-button color="primary" (click)="edit()">
           <mat-icon aria-hidden="true">edit</mat-icon>
           Edit
@@ -37,6 +45,6 @@
           Update
         </button>
         </mat-action-row>
-  
-    </mat-expansion-panel>
-  </mat-accordion> 
+      </div>  
+    <!-- </mat-expansion-panel>
+  </mat-accordion>  -->
