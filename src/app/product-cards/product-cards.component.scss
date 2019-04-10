@@ -2,22 +2,16 @@
 
 div {
     div{
+        .filterBtnS{
+            display: none;
+        }
         @media screen and (max-width: $small-device) {
-            .filtersL {
-              display: none;
+            .filterBtnS{
+                display: block;
+                padding-top: 20px;
             }
-        }
-        div{
-            /* .titleBarSmall{
-                align-content: center;
-                align-items: center;
-                display: flex;
-                justify-content: space-around;
-                padding: 8px 20px;
-                color: rgba(0,0,0,.54);
-                background: rgba(0,0,0,.03);
-            } */
-        }
+           }
+       
     }
 
 }
