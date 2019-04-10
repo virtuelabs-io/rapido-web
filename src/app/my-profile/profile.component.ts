@@ -35,7 +35,7 @@ export class ProfileComponent implements OnInit {
     {
       icon: "#black-and-white-credit-cards",
       title: "My Payment",
-      description: "Track, return or buy things again"
+      description: "Edit or add payment methods"
     },
     {
       icon: "#delivery-truck",
@@ -45,17 +45,17 @@ export class ProfileComponent implements OnInit {
     {
       icon: "#address",
       title: "My Addresses",
-      description: "Track, return or buy things again"
+      description: "Edit addresses for orders"
     },
     {
       icon: "#log-in",
       title: "My Details",
-      description: "Track, return or buy things again"
+      description: "Edit personal details"
     },
     {
       icon: "#settings-work-tool",
       title: "Account Settings",
-      description: "Track, return or buy things again"
+      description: "Set up your account"
     }
   ]
 
