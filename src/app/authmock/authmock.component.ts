@@ -50,7 +50,7 @@ export class AuthmockComponent implements OnInit {
 
   addressDetails: AddressDetails = new AddressDetails(
     "Full name",
-    1,
+    1, // check Constants.ADDRESS_TYPES for different types of addresses. Only those should be used
     "addr_1",
     "city",
     "county",
