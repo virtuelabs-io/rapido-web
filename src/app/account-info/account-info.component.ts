@@ -14,6 +14,8 @@ export class AccountInfoComponent implements OnInit {
   panelOpenState = false
   viewMode: Boolean = true
   updateMode: Boolean = false
+  deletedUser: Boolean = false
+  deleteUserMsg: string = ""
 
   _updatedAttribute: Boolean = false;
   private _deleteUserService: DeleteUserService
@@ -100,10 +102,11 @@ export class AccountInfoComponent implements OnInit {
   delete(){
     const promise = this._deleteUserService.deleteUser()
     promise.then(value => {
-      // this._deletedUser = true;
+      this.deletedUser = true;
+      this.deleteUserMsg = 'Deleted user successfully'
       console.log(value) // response from successfull resolve
     }).catch(error => {
-      // this._deletedUser = false;
+      this.deletedUser = false;
       console.log(error) // response from a graceful reject
     })
   }

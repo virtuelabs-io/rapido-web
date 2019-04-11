@@ -1,16 +1,3 @@
-<!-- <mat-accordion class="example-headers-align">
-    <mat-expansion-panel [expanded]="0">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Personal data
-        </mat-panel-title>
-        <mat-panel-description>
-          Basic User Details
-          <a (click)="edit()">
-            <mat-icon aria-hidden="true">info</mat-icon>
-          </a>
-        </mat-panel-description>
-      </mat-expansion-panel-header> -->
       <div class="">
         <h1>
           Account Info
@@ -61,10 +48,10 @@
           <div class="mt-2"></div>
           
         </div>
-        <div *ngIf='true' class="alert alert-success  col-lg-4" role="alert">
+        <div *ngIf='deletedUser' class="alert alert-success msg" role="alert">
             <h4 class="alert-heading">Success!</h4>
-            <p>An OTP has been re-sent to the registered mobile number</p>
+            <p>{{ deleteUserMsg }}</p>
         </div> 
     </div>
     <!-- </mat-expansion-panel>
-  </mat-accordion>  -->
+  </mat-accordion>  --> 

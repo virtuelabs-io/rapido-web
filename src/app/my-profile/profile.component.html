@@ -1,76 +1,10 @@
-<!-- <mat-accordion class="example-headers-align">
-  <mat-expansion-panel [expanded]="0">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Personal data
-      </mat-panel-title>
-      <mat-panel-description>
-        Basic User Details
-        <a (click)="edit()">
-          <mat-icon aria-hidden="true">info</mat-icon>
-        </a>
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-      <mat-form-field class="col-lg-4">
-        <input matInput placeholder="User Name" [disabled]="viewMode" [(ngModel)]="attribute.phone_number">
-      </mat-form-field>
-      <div class="mt-2"></div>
-      <mat-form-field class="col-lg-4">
-        <input matInput placeholder="Name" [disabled]="viewMode" [(ngModel)]="attribute.name">
-      </mat-form-field>
-      <div class="mt-2"></div>
-      <mat-form-field class="col-lg-4">
-        <input matInput placeholder="Email ID" [disabled]="viewMode" [(ngModel)]="attribute.email">
-      </mat-form-field>
-      <div class="mt-2"></div>
-      <mat-checkbox required [disabled]="viewMode" class="example-margin">Send Me Promotions</mat-checkbox>
-      <div class="mt-2"></div>
-      <mat-checkbox required [disabled]="viewMode" class="example-margin">Communications via Email</mat-checkbox>
-      <div class="mt-2"></div>
-      <mat-action-row>
-        <button *ngIf="viewMode" mat-raised-button color="primary" (click)="edit()">
-        <mat-icon aria-hidden="true">edit</mat-icon>
-        Edit
-      </button>
-      <button *ngIf="updateMode" mat-raised-button color="primary" (click)="update()">
-        <mat-icon aria-hidden="true">update</mat-icon>
-        Update
-      </button>
-      </mat-action-row>
-
-  </mat-expansion-panel>
-  <mat-expansion-panel (opened)="panelOpenState = true"
-                       (closed)="panelOpenState = false">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-       Delete User
-      </mat-panel-title>
-      <mat-panel-description>
-        Signing Off from RapidoBuild.com
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <p>You are valuable for us. Would like to serve to your needs.</p>
-    <p>Please write to us on your dissatisfaction.</p>
-    <div *ngIf="true" class="alert alert-success col-lg-4" role="alert">
-      <h4 class="alert-heading">Success!</h4>
-      <p>Successfully confirmed registration!</p>
-    </div>
-    <mat-action-row>
-      <button mat-raised-button color="primary" (click)="deleteUser()">
-        Delete
-      </button>
-    </mat-action-row>
-  </mat-expansion-panel>
-</mat-accordion> -->
-
-
 <div class="a-row a-spacing-base">
   <h1>
       My Account
   </h1>
 </div>
 <div class="rapido-profile">
-  <a class="rapido-profile-item" *ngFor="let item of profileItems" href="profile/accountInfo" >
+  <a class="rapido-profile-item" *ngFor="let item of profileItems" href="{{ item.route }}" >
     <!-- <a class="fill-div"></a> -->
     <div class="icon-div">
       <a class="rapido-icon">
