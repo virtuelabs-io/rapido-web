@@ -57,15 +57,15 @@ export class AccountInfoComponent implements OnInit {
 
   ngOnInit() {
     let localAttributes = this.attribute
-    // this._profileService.cognitoUser.getUserAttributes(function(err, result){
-    //   if (err) {
-    //   //  reject(new Response( 1, err.message, err ))
-    //   }
-    //   console.log(result)
-    //   localAttributes.name = result[7].getValue()
-    //   localAttributes.phone_number = result[8].getValue()
-    //   localAttributes.email = result[10].getValue()
-    // })
+    this._profileService.cognitoUser.getUserAttributes(function(err, result){
+      if (err) {
+      //  reject(new Response( 1, err.message, err ))
+      }
+      console.log(result)
+      localAttributes.name = result[3].getValue()
+      localAttributes.phone_number = result[5].getValue()
+      localAttributes.email = result[8].getValue()
+    })
   }
   edit() {
     console.log(this._profileService)
@@ -93,6 +93,17 @@ export class AccountInfoComponent implements OnInit {
       console.log(value) // response from successfull resolve
     }).catch(error => {
       this._updatedAttribute = false;
+      console.log(error) // response from a graceful reject
+    })
+  }
+
+  delete(){
+    const promise = this._deleteUserService.deleteUser()
+    promise.then(value => {
+      // this._deletedUser = true;
+      console.log(value) // response from successfull resolve
+    }).catch(error => {
+      // this._deletedUser = false;
       console.log(error) // response from a graceful reject
     })
   }

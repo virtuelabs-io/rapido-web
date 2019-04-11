@@ -44,5 +44,27 @@
         </button>
         </mat-action-row>
       </div>  
+      <div class="">
+        <h1>
+          Danger Zone 
+        </h1>
+      </div>
+      <div class="col-wrap rapido-account-info-div">
+        <div class=" delete-div">
+          <div class="text-spacing">
+            <strong>Delete this account</strong>
+            <p>Once you delete the account, there is no going back. Please be certain.</p>
+          </div>
+          <div class="button">
+              <button mat-raised-button color="primary" (click)="delete()">Delete Account</button>
+          </div> 
+          <div class="mt-2"></div>
+          
+        </div>
+        <div *ngIf='true' class="alert alert-success  col-lg-4" role="alert">
+            <h4 class="alert-heading">Success!</h4>
+            <p>An OTP has been re-sent to the registered mobile number</p>
+        </div> 
+    </div>
     <!-- </mat-expansion-panel>
   </mat-accordion>  -->
