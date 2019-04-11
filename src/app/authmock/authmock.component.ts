@@ -14,6 +14,8 @@ import { Query } from '../services/products/query.interface';
 import { ProductsHierarchyService } from '../services/products/products-hierarchy.service';
 import { CompanyDetails } from '../services/customer/company-details';
 import { CompanyDetailsService } from '../services/customer/company-details.service';
+import { AddressDetails } from '../services/customer/address-details';
+import { AddressDetailsService } from '../services/customer/address-details.service';
 
 @Component({
   selector: 'app-authmock',
@@ -32,6 +34,10 @@ export class AuthmockComponent implements OnInit {
 
   company_details_result: string;
 
+  address_details_id: number;
+
+  address_details_result: string;
+
   companyDetails: CompanyDetails = new CompanyDetails(
     "Sample pvt ltd",
     "addr_1",
@@ -39,7 +45,18 @@ export class AuthmockComponent implements OnInit {
     "county",
     "country",
     "postcode",
-    "addr_2",
+    "addr_2"
+  )
+
+  addressDetails: AddressDetails = new AddressDetails(
+    "Full name",
+    1,
+    "addr_1",
+    "city",
+    "county",
+    "country",
+    "postcode",
+    "addr_2"
   )
 
   _registration: Registration = new Registration(
@@ -84,6 +101,7 @@ export class AuthmockComponent implements OnInit {
   private _productsService: ProductsService
   private _productHierarchyService: ProductsHierarchyService
   private _companyDetailsService: CompanyDetailsService
+  private _addressDetailsService: AddressDetailsService
 
 
   constructor(
@@ -98,7 +116,8 @@ export class AuthmockComponent implements OnInit {
     deleteUserService: DeleteUserService,
     productsService: ProductsService,
     productHierarchyService: ProductsHierarchyService,
-    companyDetailsService: CompanyDetailsService
+    companyDetailsService: CompanyDetailsService,
+    addressDetailsService: AddressDetailsService
     ) {
     this._signUpService = signUpService
     this._profileService = profileService
@@ -112,6 +131,7 @@ export class AuthmockComponent implements OnInit {
     this._productsService = productsService
     this._productHierarchyService = productHierarchyService
     this._companyDetailsService = companyDetailsService
+    this._addressDetailsService = addressDetailsService
   }
 
   ngOnInit() {
@@ -272,6 +292,57 @@ export class AuthmockComponent implements OnInit {
     .subscribe(data => {
       console.log(data)
       this.company_details_result = "Sucessfully deleted customer company details and logged!";
+    })
+  }
+
+  getAddressDetails(){
+    this._addressDetailsService.getAddressDetails(this.address_details_id)
+    .subscribe(data => {
+      console.log(data)
+      this.address_details_result = "Sucessfully fetched address details and logged!";
+    })
+  }
+
+  getAddressDetailsList(){
+    this._addressDetailsService.getAddressDetailsList()
+    .subscribe(data => {
+      console.log(data)
+      if(data['length'] > 0){
+        this.address_details_id = data[0]['id']
+        console.log('Sucessfully updated the test id to: ' + String(this.address_details_id))
+      }
+      this.address_details_result = "Sucessfully fetched address details List and logged!";
+    })
+  }
+
+  postAddressDetails(){
+    this._addressDetailsService.postAddressDetails(this.addressDetails)
+    .subscribe(data => {
+      console.log(data)
+      if(data['insertId']){
+        this.address_details_id = data['insertId']
+        console.log('Sucessfully updated the test id to: ' + String(this.address_details_id))
+      }
+      this.address_details_result = "Sucessfully posted address company details and logged!";
+    })
+  }
+
+  putAddressDetails(){
+    this.addressDetails.full_name = "Updated full name"
+    this.addressDetails.id = this.address_details_id
+    this._addressDetailsService.putAddressDetails(this.addressDetails)
+    .subscribe(data => {
+      console.log(data)
+      this.address_details_result = "Sucessfully updated customer address details and logged!";
+    })
+  }
+
+  deleteAddressDetails(){
+    this._addressDetailsService.deleteAddressDetails(this.address_details_id)
+    .subscribe(data => {
+      console.log(data)
+      this.address_details_id = null
+      this.address_details_result = "Sucessfully deleted customer address details and logged!";
     })
   }
 }
