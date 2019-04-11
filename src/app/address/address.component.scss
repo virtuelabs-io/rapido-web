@@ -9,6 +9,8 @@
     height: 100%;
     padding: 2%;
     .rapido-add-address-icon {
+        margin-right: 1%;
+        margin-top: 1%;
         border-style: dashed;
         height: 266px;
         width: 320px;
@@ -18,14 +20,47 @@
         text-align: center;
         display: table-cell;
         vertical-align: middle;
+        .address-add-icon {
+            a {
+                svg {
+                    margin-top: 30%;
+                    width: 30px;
+                    height: 30px;
+                }
+            }
+        }
+        .text-div {
+            margin-top: 10px;
+            color: black;
+        }
     }
     .rapido-add-address-item {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: left;
+        margin-right: 1%;
+        margin-top: 1%;
         height: 266px;
         width: 320px;
+        border-radius: 6px;
         border-width: 1px;
         box-sizing: border-box;
         border-color: #C7C7C7;
         box-shadow: 0 2px 1px 0 rgba(0,0,0,.16);
         border-style: solid;
+        .address-text {
+            margin-top: 2%;
+            margin-left: 2%;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: left;
+
+        }
+        .card-actions {
+            margin-left: 10%;
+            margin-top: 10%;
+        }
     }
 }
