@@ -19,6 +19,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ProductCardsComponent } from './product-cards/product-cards.component';
 import { AccountInfoComponent } from './account-info/account-info.component';
 import { AddressComponent } from './address/address.component';
+import { AddAddressComponent } from './add-address/add-address.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { AddressComponent } from './address/address.component';
     ProfileComponent,
     ProductCardsComponent,
     AccountInfoComponent,
-    AddressComponent
+    AddressComponent,
+    AddAddressComponent
   ],
   imports: [
     MatSidenavModule,
