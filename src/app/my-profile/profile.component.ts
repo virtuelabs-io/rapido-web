@@ -24,8 +24,9 @@ export class ProfileComponent implements OnInit {
     },
     {
       icon: "#delivery-truck",
-      title: "My Delivery",
-      description: "Track, return or buy things again"
+      title: "My Delivery Addresses",
+      description: "Track, return or buy things again",
+      route: "profile/address"
     },
     {
       icon: "#settings-work-tool",

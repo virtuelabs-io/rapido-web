@@ -18,6 +18,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ProductCardsComponent } from './product-cards/product-cards.component';
 import { AccountInfoComponent } from './account-info/account-info.component';
+import { AddressComponent } from './address/address.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AccountInfoComponent } from './account-info/account-info.component';
     ForgotPasswordComponent,
     ProfileComponent,
     ProductCardsComponent,
-    AccountInfoComponent
+    AccountInfoComponent,
+    AddressComponent
   ],
   imports: [
     MatSidenavModule,

@@ -7,6 +7,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ProfileComponent } from './my-profile/profile.component';
 import { ProductCardsComponent } from './product-cards/product-cards.component';
 import { AccountInfoComponent } from './account-info/account-info.component';
+import { AddressComponent } from './address/address.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'product-cards', component: ProductCardsComponent },
   { path: 'profile/accountInfo', component: AccountInfoComponent },
+  { path: 'profile/address', component: AddressComponent },
   { path: '', component: AuthmockComponent}
 ];
 
@@ -31,5 +33,6 @@ export const RoutingComponents = [
   ProfileComponent,
   ProductCardsComponent,
   AccountInfoComponent,
+  AddressComponent,
   AuthmockComponent
 ];
