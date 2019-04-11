@@ -12,6 +12,8 @@ import { DeleteUserService } from '../services/authentication/delete-user/delete
 import { ProductsService } from '../services/products/products.service';
 import { Query } from '../services/products/query.interface';
 import { ProductsHierarchyService } from '../services/products/products-hierarchy.service';
+import { CompanyDetails } from '../services/customer/company-details';
+import { CompanyDetailsService } from '../services/customer/company-details.service';
 
 @Component({
   selector: 'app-authmock',
@@ -27,6 +29,18 @@ export class AuthmockComponent implements OnInit {
   _newPassword: string = "Rocky2011";
 
   _verificationCode: string;
+
+  company_details_result: string;
+
+  companyDetails: CompanyDetails = new CompanyDetails(
+    "Sample pvt ltd",
+    "addr_1",
+    "city",
+    "county",
+    "country",
+    "postcode",
+    "addr_2",
+  )
 
   _registration: Registration = new Registration(
     "+447783307487",
@@ -69,6 +83,7 @@ export class AuthmockComponent implements OnInit {
   private _deleteUserService: DeleteUserService
   private _productsService: ProductsService
   private _productHierarchyService: ProductsHierarchyService
+  private _companyDetailsService: CompanyDetailsService
 
 
   constructor(
@@ -82,7 +97,8 @@ export class AuthmockComponent implements OnInit {
     forgotPasswordService: ForgotPasswordService,
     deleteUserService: DeleteUserService,
     productsService: ProductsService,
-    productHierarchyService: ProductsHierarchyService
+    productHierarchyService: ProductsHierarchyService,
+    companyDetailsService: CompanyDetailsService
     ) {
     this._signUpService = signUpService
     this._profileService = profileService
@@ -95,6 +111,7 @@ export class AuthmockComponent implements OnInit {
     this._deleteUserService = deleteUserService
     this._productsService = productsService
     this._productHierarchyService = productHierarchyService
+    this._companyDetailsService = companyDetailsService
   }
 
   ngOnInit() {
@@ -222,6 +239,39 @@ export class AuthmockComponent implements OnInit {
     .subscribe(data => {
       console.log(data)
       this._fetchedProductHierarchy = true;
+    })
+  }
+
+  getCompanyDetails(){
+    this._companyDetailsService.getCompanyDetails()
+    .subscribe(data => {
+      console.log(data)
+      this.company_details_result = "Sucessfully fetched customer company details and logged!";
+    })
+  }
+
+  postCompanyDetails(){
+    this._companyDetailsService.postCompanyDetails(this.companyDetails)
+    .subscribe(data => {
+      console.log(data)
+      this.company_details_result = "Sucessfully posted customer company details and logged!";
+    })
+  }
+
+  putCompanyDetails(){
+    this.companyDetails.company_name = "Updated Company Pvt Ltd"
+    this._companyDetailsService.putCompanyDetails(this.companyDetails)
+    .subscribe(data => {
+      console.log(data)
+      this.company_details_result = "Sucessfully updated customer company details and logged!";
+    })
+  }
+
+  deleteCompanyDetails(){
+    this._companyDetailsService.deleteCompanyDetails()
+    .subscribe(data => {
+      console.log(data)
+      this.company_details_result = "Sucessfully deleted customer company details and logged!";
     })
   }
 }

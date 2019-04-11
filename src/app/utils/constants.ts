@@ -52,4 +52,6 @@ export class Constants {
   public static RETRY_TIMES = 2;
 
   public static PRODUCT_HIERARCHY = "/api-data/product-hierarchy.json";
+
+  public static CUSTOMER_APIS = environment.customer
 }

@@ -1,5 +1,13 @@
 <div class="container authmock-body">
   <div class="col-md-12">
+    <h2>Company Details</h2><hr>
+    <button class="btn btn-primary" type="submit" (click)="getCompanyDetails()">Get Company details</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="postCompanyDetails()">Post Company details</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="putCompanyDetails()">Put Company details</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="deleteCompanyDetails()">Delete Company details</button><br><br>
+    <h5>{{ company_details_result }}</h5>
+  </div>
+  <div class="col-md-12">
     <h2>Product Hierachy</h2><hr>
     <button class="btn btn-primary" type="submit" (click)="getProductHierarchy()">Submit</button><br><br>
     <h5 *ngIf="_fetchedProductHierarchy">Fetched Hierarchy</h5>
