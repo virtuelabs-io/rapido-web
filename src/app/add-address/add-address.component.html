@@ -1,3 +1,33 @@
-<p>
-  add-address works!
-</p>
+<div class="title-div">
+  <h4>
+    Add a new address
+  </h4>
+</div>
+<div class="add-address-main">
+  <form class="form-details" novalidate (ngSubmit)="registerUser(registerFormGroup.value)">
+    <mat-form-field>
+      <input matInput maxlength="15" placeholder="Mobile Number">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput maxlength="15" placeholder="Full Name">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput maxlength="15" placeholder="Pincode">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput maxlength="15" placeholder="Street Address">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput maxlength="15" placeholder="City">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput maxlength="15" placeholder="State">
+    </mat-form-field>
+    <mat-card-actions>
+      <button mat-flat-button color="primary" type="submit">
+          <!-- <span *ngIf="_progressSpinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> -->
+          Add Address
+      </button>
+    </mat-card-actions>
+  </form>
+</div>
