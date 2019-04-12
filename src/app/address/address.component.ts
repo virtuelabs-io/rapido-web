@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-address',
@@ -6,8 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./address.component.scss']
 })
 export class AddressComponent implements OnInit {
-
-  constructor() { }
+  example:string;
+  constructor(private router: Router) { 
+    const navigation = this.router.getCurrentNavigation();
+    const state = navigation.extras.state as {example: string};
+    if(state != undefined){
+      this.example = state.example;
+      console.log(this.example)
+    }
+   
+  }
 
   ngOnInit() {
   }
