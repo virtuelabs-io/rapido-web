@@ -52,4 +52,28 @@ export class Constants {
   public static RETRY_TIMES = 2;
 
   public static PRODUCT_HIERARCHY = "/api-data/product-hierarchy.json";
+
+  public static CUSTOMER_APIS = environment.customer
+
+  public static PAYMENT_TYPES = [
+    {
+      key: "Debit Card",
+      value: 1
+    },
+    {
+      key: "Credit Card",
+      value: 2
+    }
+  ]
+
+  public static ADDRESS_TYPES = [
+    {
+      key: "Billing",
+      value: 1
+    },
+    {
+      key: "Delivery",
+      value: 2
+    }
+  ]
 }

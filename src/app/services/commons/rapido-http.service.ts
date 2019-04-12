@@ -36,19 +36,8 @@ export class RapidoHttpService<T> {
     );
   }
 
-  postList(_url: string, _items: T[], _headers?: HttpHeaders): Observable<T[]>{
-    return this._http.post<T[]>(_url, _items, {
-      headers: _headers
-    }).pipe(
-      catchError(err => {
-        console.log('Error in processing request...', err);
-        return throwError(err);
-      })
-    );
-  }
-
-  post(_url: string, _item: T, _headers?: HttpHeaders): Observable<T>{
-    return this._http.post<T>(_url, _item, {
+  post(_url: string, _item: T, _headers?: HttpHeaders): Observable<any>{
+    return this._http.post<any>(_url, _item, {
       headers: _headers
     }).pipe(
       catchError(err => {
@@ -69,8 +58,8 @@ export class RapidoHttpService<T> {
     );
   }
 
-  put(_url: string, _item: T, _headers?: HttpHeaders): Observable<T>{
-    return this._http.put<T>(_url, _item, {
+  put(_url: string, _item: T, _headers?: HttpHeaders): Observable<any>{
+    return this._http.put<any>(_url, _item, {
       headers: _headers
     }).pipe(
       catchError(err => {
@@ -84,7 +73,7 @@ export class RapidoHttpService<T> {
     return new HttpHeaders().append('Content-Type', 'application/json');
   }
 
-  addAuthHeader(_headers: HttpHeaders): void{
-    _headers.append('Authorization', this._profileService.cognitoUser.getSignInUserSession().getIdToken().getJwtToken())
+  addAuthHeader(_headers: HttpHeaders): HttpHeaders{
+    return _headers.append('Authorization', this._profileService.cognitoUser.getSignInUserSession().getIdToken().getJwtToken())
   }
 }
