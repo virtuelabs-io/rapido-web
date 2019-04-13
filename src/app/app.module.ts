@@ -10,7 +10,7 @@ import { ButtonComponent } from './common/button/button.component';
 import { IconComponent } from './common/icons/icons.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { RoutingComponents } from './app-routing.module';
-import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, MatSnackBarModule, MatExpansionModule } from '@angular/material';
+import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, MatSnackBarModule, MatExpansionModule, MatDialogModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
@@ -23,6 +23,8 @@ import { ImagesComponent } from './images/images.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FilterByComponent } from './filter-by/filter-by.component';
 import { FilterbarComponent } from './filterbar/filterbar.component';
+import { DialogComponent } from './dialog/dialog.component';
+import { FilterMobileComponent } from './filter-mobile/filter-mobile.component';
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import { FilterbarComponent } from './filterbar/filterbar.component';
     RatingComponent,
     ImagesComponent,
     FilterByComponent,
-    FilterbarComponent
+    FilterbarComponent,
+    DialogComponent,
+    FilterMobileComponent
   ],
   imports: [
     MatSidenavModule,
@@ -61,7 +65,8 @@ import { FilterbarComponent } from './filterbar/filterbar.component';
     NgbModule,
     MatExpansionModule,
     MatMenuModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [ AppComponent ],

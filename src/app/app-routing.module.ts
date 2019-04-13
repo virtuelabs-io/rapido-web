@@ -6,6 +6,8 @@ import { AuthmockComponent } from './authmock/authmock.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { ProductCardsComponent } from './product-cards/product-cards.component';
+// import { DialogComponent } from './dialog/dialog.component';
+import { FilterMobileComponent } from './filter-mobile/filter-mobile.component';
 
 
 const routes: Routes = [
@@ -14,6 +16,8 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'my-profile', component: MyProfileComponent },
   { path: 'product-cards', component: ProductCardsComponent },
+  // { path: 'test', component: DialogComponent },
+  { path: 'filter-mobile', component: FilterMobileComponent },
   { path: '', component: AuthmockComponent}
 ];
 
@@ -28,5 +32,7 @@ export const RoutingComponents = [
   ForgotPasswordComponent,
   MyProfileComponent,
   ProductCardsComponent,
-  AuthmockComponent
+  AuthmockComponent,
+  // DialogComponent,
+  FilterMobileComponent
 ];

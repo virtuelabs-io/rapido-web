@@ -2,15 +2,38 @@
 <div class="">
   <div>
     <app-filterbar></app-filterbar>
-    <div class="filterBtnS">
-        <!-- <span class="h4">822</span> -->
-        <button>Filters></button>
-        <!-- <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user</mat-icon> -->
-    </div>
+    <section class="product-controls position-top m-2">
+
+        <div class="row mr-3">
+            <div class="" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+              <button class="btn" ngbDropdownToggle>Drop me</button>
+              <div class="dropdown-menu" ngbDropdownMenu>
+                <button ngbDropdownItem>Price: Low to High</button>
+                <button ngbDropdownItem>Avg. Customer Review</button>
+                <button ngbDropdownItem>Newest Arrivals</button>
+              </div>
+            </div>
+            <div class="m-1"></div>
+            <button type="button"  routerLink="/test" class="btn">Filter</button>
+          </div>
+     <!-- <div>
+          <select >
+              <option value="relevanceblender" selected="true">Sort By</option>
+              <option value="price-asc-rank">Price: Low to High</option>
+              <option value="price-desc-rank">Price: High to Low</option>
+              <option value="review-rank">Avg. Customer Review</option>
+              <option value="date-desc-rank">Newest Arrivals</option>
+          </select>
+      </div>
+      <div class="filterBtnS">
+        <button routerLink="/filter-mobile" >Filters></button>
+    </div> -->
+    </section>
+    
   </div>
     
 
-  <div class="row">
+  <div class="row position-top">
       <div class="col-md-2">
           <app-filter-by></app-filter-by>
         </div>
@@ -18,7 +41,7 @@
 
         
         
-        <!-- Cards List section starts -->
+        <!-- Cards List div starts -->
         <div class="row justify-content-center col-md-10">
             <!-- <div *ngFor="let a of [1,2,3,4]" class=""> -->
                 <div *ngFor="let a of [1,2,3,4,5,6,7,8,9,1,2,3,4,5,6,7,8,9,1,2,3,4,5,6,7,8,9]" class="">
@@ -27,7 +50,7 @@
             <!-- </div> -->
             <!-- <app-card imgSrc="https://cdn.aws.toolstation.com/images/141020-UK/160/17428.jpg"></app-card> -->
           </div>
-          <!-- Cards list section ends -->
+          <!-- Cards list div ends -->
 
   </div>
 
