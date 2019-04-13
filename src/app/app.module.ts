@@ -23,8 +23,9 @@ import { ImagesComponent } from './images/images.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FilterByComponent } from './filter-by/filter-by.component';
 import { FilterbarComponent } from './filterbar/filterbar.component';
-import { DialogComponent } from './dialog/dialog.component';
+// import { DialogComponent } from './dialog/dialog.component';
 import { FilterMobileComponent } from './filter-mobile/filter-mobile.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 
 @NgModule({
@@ -44,8 +45,9 @@ import { FilterMobileComponent } from './filter-mobile/filter-mobile.component';
     ImagesComponent,
     FilterByComponent,
     FilterbarComponent,
-    DialogComponent,
-    FilterMobileComponent
+    // DialogComponent,
+    FilterMobileComponent,
+    ProductDetailsComponent
   ],
   imports: [
     MatSidenavModule,

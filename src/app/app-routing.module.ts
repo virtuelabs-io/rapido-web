@@ -8,6 +8,7 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { ProductCardsComponent } from './product-cards/product-cards.component';
 // import { DialogComponent } from './dialog/dialog.component';
 import { FilterMobileComponent } from './filter-mobile/filter-mobile.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 
 const routes: Routes = [
@@ -15,10 +16,11 @@ const routes: Routes = [
   { path: 'sign-in', component: LogInComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'my-profile', component: MyProfileComponent },
-  { path: 'product-cards', component: ProductCardsComponent },
+  { path: 'products', component: ProductCardsComponent },
   // { path: 'test', component: DialogComponent },
   { path: 'filter-mobile', component: FilterMobileComponent },
-  { path: '', component: AuthmockComponent}
+  { path: '', component: AuthmockComponent},
+  { path: 'products/details/:id', component: ProductDetailsComponent}
 ];
 
 @NgModule({
@@ -34,5 +36,6 @@ export const RoutingComponents = [
   ProductCardsComponent,
   AuthmockComponent,
   // DialogComponent,
-  FilterMobileComponent
+  FilterMobileComponent,
+  ProductDetailsComponent
 ];
