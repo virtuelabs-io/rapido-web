@@ -19,7 +19,8 @@ export class AddAddressComponent implements OnInit {
       pincode: "560100",
       streetAdd: "B-104, Euphoria Corporate Leisure Apartments",
       city: "Bangalore",
-      state: "Karnataka"
+      state: "Karnataka",
+      country: "India"
 
     }
   

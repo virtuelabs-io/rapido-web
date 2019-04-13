@@ -19,14 +19,14 @@
       
     </div>
   </a>
-  <div class="rapido-add-address-item">
+  <div class="rapido-add-address-item" *ngFor="let address of address">
     <div class="address-text">
-      <strong>Ashok Kumar Patnaik</strong>
-      <br /><p>Duplex no. 242
-      <br /> Pristine Greens Pokhariput
-      <br /> BHUBANESWAR, ODISHA 751020 
-      <br /> India
-      <br /> Phone number: 9439324903</p>
+      <strong> {{ address.name }} </strong>
+      <br /><p>{{ address.streetAdd }}
+      <!-- <br /> Pristine Greens Pokhariput -->
+      <br /> {{ address.city }}, {{ address.state }} {{ address.pincode }} 
+      <br /> {{ address.country }}
+      <br /> Phone number: {{ address.mobileNumber }}</p>
 
       <!-- <strong>Ashok Kumar Patnaik</strong>
       <p>Duplex no. 242
