@@ -15,7 +15,8 @@ export class ProfileComponent implements OnInit {
     {
       icon: "#black-and-white-credit-cards",
       title: "My Payment",
-      description: "Edit or add payment methods"
+      description: "Edit or add payment methods",
+      route: "profile/payment"
     },
     {
       icon: "#address",
