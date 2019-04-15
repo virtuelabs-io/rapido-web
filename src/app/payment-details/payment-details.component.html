@@ -1,3 +1,80 @@
-<p>
-  payment-details works!
-</p>
+<div class="">
+  <h1>
+    My Payment
+  </h1>
+</div>
+<div class="rapido-add-address">
+  <a class="rapido-add-address-icon">
+    <div class="address-add-icon">
+      <a class="" href="profile/address/newAddress">
+        <svg aria-hidden="true" aria-haspopup="menu">
+            <use xlink:href="#add"/>
+        </svg>
+      </a>
+    </div>
+    <div class="text-div">
+        <p>Add Payment</p>
+    </div>
+    <div class="content-div">
+      
+    </div>
+  </a>
+  <div class="rapido-add-address-item" *ngFor="let address of address">
+    <div class="address-text">
+      <strong> {{ address.name }} </strong>
+      <br /><p>{{ address.streetAdd }}
+      <!-- <br /> Pristine Greens Pokhariput -->
+      <br /> {{ address.city }}, {{ address.state }} {{ address.pincode }} 
+      <br /> {{ address.country }}
+      <br /> Phone number: {{ address.mobileNumber }}</p>
+
+      <!-- <strong>Ashok Kumar Patnaik</strong>
+      <p>Duplex no. 242
+      <br /> Pristine Greens Pokhariput
+      <br /> BHUBANESWAR, ODISHA 751020 
+      <br /> India
+      <br /> Phone number: 9439324903</p> -->
+    </div>
+    <div class="card-actions">
+      <a href="">Edit</a> |
+      <a href="">Delete</a> |
+      <a href="">Set As Default</a>
+    </div>
+  </div>
+  <div class="rapido-add-address-item">
+      <div class="icon-div">
+        <a class="rapido-icon">
+          <svg aria-hidden="true" aria-haspopup="menu">
+            <use [attr.xlink:href]=""/>
+          </svg>
+        </a>
+      </div>
+      <div class="content-div">
+        
+      </div>
+    </div>
+  <div class="rapido-add-address-item">
+      <div class="icon-div">
+        <a class="rapido-icon">
+          <svg aria-hidden="true" aria-haspopup="menu">
+            <use [attr.xlink:href]=""/>
+          </svg>
+        </a>
+      </div>
+      <div class="content-div">
+        
+      </div>
+    </div>
+  <div class="rapido-add-address-item">
+      <div class="icon-div">
+        <a class="rapido-icon">
+          <svg aria-hidden="true" aria-haspopup="menu">
+            <use [attr.xlink:href]=""/>
+          </svg>
+        </a>
+      </div>
+      <div class="content-div">
+        
+      </div>
+    </div>
+</div>
