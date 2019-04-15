@@ -10,6 +10,7 @@ import { AccountInfoComponent } from './account-info/account-info.component';
 import { AddressComponent } from './address/address.component';
 import { AddAddressComponent } from './add-address/add-address.component';
 import { PaymentDetailsComponent } from './payment-details/payment-details.component';
+import { AddPaymentComponent } from './add-payment/add-payment.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'profile/address', component: AddressComponent },
   { path: 'profile/address/newAddress', component: AddAddressComponent },
   { path: 'profile/payment', component: PaymentDetailsComponent },
+  { path: 'profile/payment/newPayment', component: AddPaymentComponent },
   { path: '', component: AuthmockComponent}
 ];
 
@@ -40,5 +42,6 @@ export const RoutingComponents = [
   AddressComponent,
   AddAddressComponent,
   PaymentDetailsComponent,
+  AddPaymentComponent,
   AuthmockComponent
 ];

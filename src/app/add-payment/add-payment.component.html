@@ -1,0 +1,25 @@
+<div class="title-div">
+  <h1>
+    Card Details
+  </h1>
+</div>
+<div class="new-payment-method">
+  <form class="form-details" novalidate (ngSubmit)="addAddress()">
+    <mat-form-field>
+      <input matInput maxlength="15" placeholder="Name On Card">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput maxlength="15" placeholder="Card Number">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput maxlength="15" placeholder="Expiry">
+    </mat-form-field>
+    <mat-card-actions>
+      <button mat-flat-button color="primary" type="submit">
+          <!-- <span *ngIf="_progressSpinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> -->
+          Add your card
+      </button>
+    </mat-card-actions>
+  </form>
+
+  </div>

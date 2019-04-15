@@ -1,0 +1,27 @@
+@import "../../assets/scss/custom-bootstrap-variables.scss";
+
+.new-payment-method {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width:800px;
+    margin:0 auto;
+    border-style: solid;
+    padding: 2%;
+    .form-details {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        margin-left: 30%;
+        margin-right: 20%;
+        margin-bottom: 1%;
+        @media screen and (max-width: $mobile-device) {
+            min-width: 100%;
+            margin-left: 1%;
+        }
+    }
+    @media screen and (max-width: $mobile-device) {
+        width: 100%;
+    }
+}
