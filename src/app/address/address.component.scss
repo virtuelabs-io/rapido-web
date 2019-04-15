@@ -60,8 +60,16 @@
 
         }
         .card-actions {
-            margin-left: 10%;
-            margin-top: 10%;
+            // margin-left: 10%;
+            // margin-top: 10%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: left;
+            a {
+                margin-left: 10px;
+                margin-right: 10px;
+            }
         }
     }
 }

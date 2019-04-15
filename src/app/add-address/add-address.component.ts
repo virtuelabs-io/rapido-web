@@ -14,13 +14,12 @@ import { Router, NavigationExtras } from '@angular/router';
 export class AddAddressComponent implements OnInit {
   addressItems = 
     {
-      mobileNumber: "7032908112",
-      name: "Anirup Patnaik",
-      pincode: "560100",
-      streetAdd: "B-104, Euphoria Corporate Leisure Apartments",
-      city: "Bangalore",
-      state: "Karnataka",
-      country: "India"
+      organisation: "Anirup Patnaik",
+      add1: "46 Broadway",
+      add2: "Address Line 2",
+      town_city: "Pontypridd",
+      postcode: "CF37 1BD",
+      country: "United Kingdom"
 
     }
   

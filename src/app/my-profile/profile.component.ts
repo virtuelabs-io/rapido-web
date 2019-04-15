@@ -19,13 +19,13 @@ export class ProfileComponent implements OnInit {
       route: "profile/payment"
     },
     {
-      icon: "#address",
-      title: "To Be Added",
-      description: "To Be Added"
+      icon: "#company-details", 
+      title: "Company Details",
+      description: "Add your company details"
     },
     {
       icon: "#delivery-truck",
-      title: "My Delivery Addresses",
+      title: "My Addresses",
       description: "Track, return or buy things again",
       route: "profile/address"
     },

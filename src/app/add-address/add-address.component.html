@@ -6,33 +6,24 @@
 <div class="add-address-main">
   <form class="form-details" novalidate (ngSubmit)="addAddress()">
     <mat-form-field>
-      <input matInput maxlength="15" placeholder="Mobile Number" [(ngModel)]="addressItems.mobileNumber"
+      <input matInput maxlength="15" placeholder="Name" [(ngModel)]="addressItems.organisation"
       [ngModelOptions]="{standalone: true}">
     </mat-form-field>
     <mat-form-field>
-      <input matInput maxlength="15" placeholder="Full Name" [(ngModel)]="addressItems.name"
+      <input matInput maxlength="15" placeholder="Address Line 1" [(ngModel)]="addressItems.add1"
       [ngModelOptions]="{standalone: true}">
     </mat-form-field>
     <mat-form-field>
-      <input matInput maxlength="15" placeholder="Pincode" [(ngModel)]="addressItems.pincode"
+      <input matInput maxlength="15" placeholder="Address Line 2" [(ngModel)]="addressItems.add2"
       [ngModelOptions]="{standalone: true}">
     </mat-form-field>
     <mat-form-field>
-      <input matInput maxlength="45" placeholder="Street Address" [(ngModel)]="addressItems.streetAdd"
+      <input matInput maxlength="45" placeholder="Town / City" [(ngModel)]="addressItems.town_city"
       [ngModelOptions]="{standalone: true}">
     </mat-form-field>
     <mat-form-field>
-      <input matInput maxlength="15" placeholder="City" [(ngModel)]="addressItems.city"
+      <input matInput maxlength="15" placeholder="Postcode" [(ngModel)]="addressItems.postcode"
       [ngModelOptions]="{standalone: true}">
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>State</mat-label>
-        <mat-select>
-          <mat-option>None</mat-option>
-          <mat-option value="option1">Karnataka</mat-option>
-          <mat-option value="option2">Option 2</mat-option>
-          <mat-option value="option3">Option 3</mat-option>
-        </mat-select>
     </mat-form-field>
     <mat-form-field>
       <input matInput maxlength="15" placeholder="Country" [(ngModel)]="addressItems.country"

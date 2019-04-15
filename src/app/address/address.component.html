@@ -21,12 +21,12 @@
   </a>
   <div class="rapido-add-address-item" *ngFor="let address of address">
     <div class="address-text">
-      <strong> {{ address.name }} </strong>
-      <br /><p>{{ address.streetAdd }}
+      <strong> {{ address.organisation }} </strong>
+      <br /><p>{{ address.add1 }}
       <!-- <br /> Pristine Greens Pokhariput -->
-      <br /> {{ address.city }}, {{ address.state }} {{ address.pincode }} 
+      <br /> {{ address.add2 }}
+      <br /> {{ address.town_city }}, {{ address.postcode }} 
       <br /> {{ address.country }}
-      <br /> Phone number: {{ address.mobileNumber }}</p>
 
       <!-- <strong>Ashok Kumar Patnaik</strong>
       <p>Duplex no. 242
@@ -37,8 +37,7 @@
     </div>
     <div class="card-actions">
       <a href="">Edit</a> |
-      <a href="">Delete</a> |
-      <a href="">Set As Default</a>
+      <a href="">Delete</a>
     </div>
   </div>
   <div class="rapido-add-address-item">
