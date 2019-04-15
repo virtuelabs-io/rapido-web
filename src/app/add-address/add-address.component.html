@@ -1,39 +1,41 @@
-<div class="title-div">
-  <h4>
-    Add a new address
-  </h4>
-</div>
-<div class="add-address-main">
-  <form class="form-details" novalidate (ngSubmit)="addAddress()">
-    <mat-form-field>
-      <input matInput maxlength="15" placeholder="Name" [(ngModel)]="addressItems.organisation"
-      [ngModelOptions]="{standalone: true}">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput maxlength="15" placeholder="Address Line 1" [(ngModel)]="addressItems.add1"
-      [ngModelOptions]="{standalone: true}">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput maxlength="15" placeholder="Address Line 2" [(ngModel)]="addressItems.add2"
-      [ngModelOptions]="{standalone: true}">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput maxlength="45" placeholder="Town / City" [(ngModel)]="addressItems.town_city"
-      [ngModelOptions]="{standalone: true}">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput maxlength="15" placeholder="Postcode" [(ngModel)]="addressItems.postcode"
-      [ngModelOptions]="{standalone: true}">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput maxlength="15" placeholder="Country" [(ngModel)]="addressItems.country"
-      [ngModelOptions]="{standalone: true}">
-    </mat-form-field>
-    <mat-card-actions>
-      <button mat-flat-button color="primary" type="submit">
-          <!-- <span *ngIf="_progressSpinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> -->
-          Add Address
-      </button>
-    </mat-card-actions>
-  </form>
+<div class="main-div">
+  <div class="title-div">
+    <h4>
+      Add a new address
+    </h4>
+  </div>
+  <div class="add-address-main">
+    <form class="form-details" novalidate (ngSubmit)="addAddress()">
+      <mat-form-field>
+        <input matInput maxlength="15" placeholder="Name" [(ngModel)]="addressItems.organisation"
+        [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput maxlength="15" placeholder="Address Line 1" [(ngModel)]="addressItems.add1"
+        [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput maxlength="15" placeholder="Address Line 2" [(ngModel)]="addressItems.add2"
+        [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput maxlength="45" placeholder="Town / City" [(ngModel)]="addressItems.town_city"
+        [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput maxlength="15" placeholder="Postcode" [(ngModel)]="addressItems.postcode"
+        [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput maxlength="15" placeholder="Country" [(ngModel)]="addressItems.country"
+        [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+      <mat-card-actions>
+        <button mat-flat-button color="primary" type="submit">
+            <!-- <span *ngIf="_progressSpinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> -->
+            Add Address
+        </button>
+      </mat-card-actions>
+    </form>
+  </div>
 </div>

@@ -1,27 +1,30 @@
 @import "../../assets/scss/custom-bootstrap-variables.scss";
 
-.add-address-main {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: center;
-    width:800px;
-    margin:0 auto;
-    border-style: solid;
-    .form-details {
+.main-div {
+    .add-address-main {
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
         justify-content: center;
-        margin-left: 30%;
-        margin-right: 20%;
-        margin-bottom: 1%;
-        @media screen and (max-width: $mobile-device) {
-            min-width: 100%;
-            margin-left: 1%;
+        width:800px;
+        margin:0 auto;
+        border-style: solid;
+        border-radius: 10px;
+        .form-details {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+            margin-left: 30%;
+            margin-right: 20%;
+            margin-bottom: 1%;
+            @media screen and (max-width: $mobile-device) {
+                min-width: 100%;
+                margin-left: 1%;
+            }
         }
-    }
-    @media screen and (max-width: $mobile-device) {
-        width: 100%;
+        @media screen and (max-width: $mobile-device) {
+            width: 100%;
+        }
     }
 }
