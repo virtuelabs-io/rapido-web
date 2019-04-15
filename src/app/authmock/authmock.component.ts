@@ -12,6 +12,12 @@ import { DeleteUserService } from '../services/authentication/delete-user/delete
 import { ProductsService } from '../services/products/products.service';
 import { Query } from '../services/products/query.interface';
 import { ProductsHierarchyService } from '../services/products/products-hierarchy.service';
+import { CompanyDetails } from '../services/customer/company-details';
+import { CompanyDetailsService } from '../services/customer/company-details.service';
+import { AddressDetails } from '../services/customer/address-details';
+import { AddressDetailsService } from '../services/customer/address-details.service';
+import { PaymentDetails } from '../services/customer/payment-details';
+import { PaymentDetailsService } from '../services/customer/payment-details.service';
 
 @Component({
   selector: 'app-authmock',
@@ -27,6 +33,46 @@ export class AuthmockComponent implements OnInit {
   _newPassword: string = "Rocky2011";
 
   _verificationCode: string;
+
+  company_details_result: string;
+
+  address_details_id: number;
+
+  payment_details_id: number;
+
+  address_details_result: string;
+
+  payment_details_result: string;
+
+  companyDetails: CompanyDetails = new CompanyDetails(
+    "Sample pvt ltd",
+    "addr_1",
+    "city",
+    "county",
+    "country",
+    "postcode",
+    "addr_2"
+  )
+
+  addressDetails: AddressDetails = new AddressDetails(
+    "Full name",
+    1, // check Constants.ADDRESS_TYPES for different types of addresses. Only those should be used
+    "addr_1",
+    "city",
+    "county",
+    "country",
+    "postcode",
+    "addr_2"
+  )
+
+  paymentDetails: PaymentDetails = new PaymentDetails(
+    "Name on card",
+    "1234567666664444", 
+    "01",
+    "2019",
+    5, // Id should be an existing address id
+    1 // check Constants.PAYMENT_TYPES for different types of addresses. Only those should be used
+  )
 
   _registration: Registration = new Registration(
     "+447783307487",
@@ -69,6 +115,9 @@ export class AuthmockComponent implements OnInit {
   private _deleteUserService: DeleteUserService
   private _productsService: ProductsService
   private _productHierarchyService: ProductsHierarchyService
+  private _companyDetailsService: CompanyDetailsService
+  private _addressDetailsService: AddressDetailsService
+  private _paymentDetailsService: PaymentDetailsService
 
 
   constructor(
@@ -82,7 +131,10 @@ export class AuthmockComponent implements OnInit {
     forgotPasswordService: ForgotPasswordService,
     deleteUserService: DeleteUserService,
     productsService: ProductsService,
-    productHierarchyService: ProductsHierarchyService
+    productHierarchyService: ProductsHierarchyService,
+    companyDetailsService: CompanyDetailsService,
+    addressDetailsService: AddressDetailsService,
+    paymentDetailsService: PaymentDetailsService
     ) {
     this._signUpService = signUpService
     this._profileService = profileService
@@ -95,6 +147,9 @@ export class AuthmockComponent implements OnInit {
     this._deleteUserService = deleteUserService
     this._productsService = productsService
     this._productHierarchyService = productHierarchyService
+    this._companyDetailsService = companyDetailsService
+    this._addressDetailsService = addressDetailsService
+    this._paymentDetailsService = paymentDetailsService
   }
 
   ngOnInit() {
@@ -222,6 +277,141 @@ export class AuthmockComponent implements OnInit {
     .subscribe(data => {
       console.log(data)
       this._fetchedProductHierarchy = true;
+    })
+  }
+
+  getCompanyDetails(){
+    this._companyDetailsService.getCompanyDetails()
+    .subscribe(data => {
+      console.log(data)
+      this.company_details_result = "Sucessfully fetched customer company details and logged!";
+    })
+  }
+
+  postCompanyDetails(){
+    this._companyDetailsService.postCompanyDetails(this.companyDetails)
+    .subscribe(data => {
+      console.log(data)
+      this.company_details_result = "Sucessfully posted customer company details and logged!";
+    })
+  }
+
+  putCompanyDetails(){
+    this.companyDetails.company_name = "Updated Company Pvt Ltd"
+    this._companyDetailsService.putCompanyDetails(this.companyDetails)
+    .subscribe(data => {
+      console.log(data)
+      this.company_details_result = "Sucessfully updated customer company details and logged!";
+    })
+  }
+
+  deleteCompanyDetails(){
+    this._companyDetailsService.deleteCompanyDetails()
+    .subscribe(data => {
+      console.log(data)
+      this.company_details_result = "Sucessfully deleted customer company details and logged!";
+    })
+  }
+
+  getAddressDetails(){
+    this._addressDetailsService.getAddressDetails(this.address_details_id)
+    .subscribe(data => {
+      console.log(data)
+      this.address_details_result = "Sucessfully fetched address details and logged!";
+    })
+  }
+
+  getAddressDetailsList(){
+    this._addressDetailsService.getAddressDetailsList()
+    .subscribe(data => {
+      console.log(data)
+      if(data['length'] > 0){
+        this.address_details_id = data[0]['id']
+        console.log('Sucessfully updated the address test id to: ' + String(this.address_details_id))
+      }
+      this.address_details_result = "Sucessfully fetched address details List and logged!";
+    })
+  }
+
+  postAddressDetails(){
+    this._addressDetailsService.postAddressDetails(this.addressDetails)
+    .subscribe(data => {
+      console.log(data)
+      if(data['insertId']){
+        this.address_details_id = data['insertId']
+        console.log('Sucessfully updated the address test id to: ' + String(this.address_details_id))
+      }
+      this.address_details_result = "Sucessfully posted address company details and logged!";
+    })
+  }
+
+  putAddressDetails(){
+    this.addressDetails.full_name = "Updated full name"
+    this.addressDetails.id = this.address_details_id
+    this._addressDetailsService.putAddressDetails(this.addressDetails)
+    .subscribe(data => {
+      console.log(data)
+      this.address_details_result = "Sucessfully updated customer address details and logged!";
+    })
+  }
+
+  deleteAddressDetails(){
+    this._addressDetailsService.deleteAddressDetails(this.address_details_id)
+    .subscribe(data => {
+      console.log(data)
+      this.address_details_id = null
+      this.address_details_result = "Sucessfully deleted customer address details and logged!";
+    })
+  }
+
+  getPaymentDetails(){
+    this._paymentDetailsService.getPaymentDetails(this.payment_details_id)
+    .subscribe(data => {
+      console.log(data)
+      this.payment_details_result = "Sucessfully fetched payment details and logged!";
+    })
+  }
+
+  getPaymentDetailsList(){
+    this._paymentDetailsService.getPaymentDetailsList()
+    .subscribe(data => {
+      console.log(data)
+      if(data['length'] > 0){
+        this.payment_details_id = data[0]['id']
+        console.log('Sucessfully updated the payment test id to: ' + String(this.payment_details_id))
+      }
+      this.payment_details_result = "Sucessfully fetched payment details List and logged!";
+    })
+  }
+
+  postPaymentDetails(){
+    this._paymentDetailsService.postPaymentDetails(this.paymentDetails)
+    .subscribe(data => {
+      console.log(data)
+      if(data['insertId']){
+        this.payment_details_id = data['insertId']
+        console.log('Sucessfully updated the test id to: ' + String(this.payment_details_id))
+      }
+      this.payment_details_result = "Sucessfully posted address company details and logged!";
+    })
+  }
+
+  putPaymentDetails(){
+    this.paymentDetails.name_on_card = "Updated name on card"
+    this.paymentDetails.id = this.payment_details_id
+    this._paymentDetailsService.putPaymentDetails(this.paymentDetails)
+    .subscribe(data => {
+      console.log(data)
+      this.payment_details_result = "Sucessfully updated customer payment details and logged!";
+    })
+  }
+
+  deletePaymentDetails(){
+    this._paymentDetailsService.deletePaymentDetails(this.payment_details_id)
+    .subscribe(data => {
+      console.log(data)
+      this.payment_details_id = null
+      this.payment_details_result = "Sucessfully deleted customer payment details and logged!";
     })
   }
 }
