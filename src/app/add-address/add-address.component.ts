@@ -12,6 +12,7 @@ import { AddressDetailsService } from '../services/customer/address-details.serv
 export class AddAddressComponent implements OnInit {
   address_details_id: number;
   address_details_result: string;
+  name: string = ""
   addressItems = 
     {
       organisation: "",
@@ -22,16 +23,18 @@ export class AddAddressComponent implements OnInit {
       country: "United Kingdom"
 
     }
-    addressDetails: AddressDetails = new AddressDetails(
-      this.addressItems.organisation,
-      1, // check Constants.ADDRESS_TYPES for different types of addresses. Only those should be used
-      this.addressItems.add1,
-      this.addressItems.town_city,
-      "county",
-      this.addressItems.country,
-      this.addressItems.postcode,
-      this.addressItems.add2
-    )  
+    addressDetails: AddressDetails;
+
+      // this.name,
+      // // this.addressItems.organisation,
+      // 1, // check Constants.ADDRESS_TYPES for different types of addresses. Only those should be used
+      // this.addressItems.add1,
+      // this.addressItems.town_city,
+      // "county",
+      // this.addressItems.country,
+      // this.addressItems.postcode,
+      // this.addressItems.add2
+    
   
     private _addressDetailsService: AddressDetailsService
     constructor( private router: Router,
@@ -44,7 +47,19 @@ export class AddAddressComponent implements OnInit {
   }
   addAddress() {
     // this.addressDetails = this.addressItems
-    console.log(this.addressItems.organisation)
+    // console.log(this.addressItems.organisation)
+    this.addressDetails = new AddressDetails(
+      
+      this.addressItems.organisation,
+      1, // check Constants.ADDRESS_TYPES for different types of addresses. Only those should be used
+      this.addressItems.add1,
+      this.addressItems.town_city,
+      "county",
+      this.addressItems.country,
+      this.addressItems.postcode,
+      this.addressItems.add2
+    )
+    console.log(this.addressDetails)
     this._addressDetailsService.postAddressDetails(this.addressDetails)
     .subscribe(data => {
       console.log(data)
