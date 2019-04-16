@@ -26,7 +26,9 @@ import { FilterbarComponent } from './filterbar/filterbar.component';
 // import { DialogComponent } from './dialog/dialog.component';
 import { FilterMobileComponent } from './filter-mobile/filter-mobile.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ImageZoomComponent } from './image-zoom/image-zoom.component';
 
+import { NgxImageZoomModule } from 'ngx-image-zoom';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     FilterbarComponent,
     // DialogComponent,
     FilterMobileComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    ImageZoomComponent
   ],
   imports: [
     MatSidenavModule,
@@ -68,7 +71,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     MatExpansionModule,
     MatMenuModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    NgxImageZoomModule.forRoot() 
   ],
   providers: [],
   bootstrap: [ AppComponent ],
