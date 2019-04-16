@@ -1,22 +1,59 @@
 @import "../../assets/scss/custom-bootstrap-variables.scss";
 
 .main-div {
+    display: flex;
+    flex-direction : row;
+    flex-wrap: wrap;
+    justify-content: center;
+    // border-style: solid;
+    border-radius: 10px;
+    .search-text-div {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: left;
+        width: 30%;
+        margin-left: 10%;
+        p {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: left;
+            margin-top: 10%;
+        }
+        .search-postcode-div {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: left;
+            input {
+                width: 40%;
+                border: solid;
+            }
+        }
+        @media screen and (max-width: $mobile-device) {
+            width: 100%;
+            margin-right: 10%;
+          }
+    }
     .add-address-main {
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
         justify-content: center;
-        width:800px;
-        margin:0 auto;
-        border-style: solid;
+        // width:800px;
+        // margin:0 auto;
+        margin-left: 10%;
+        // border-style: solid;
         border-radius: 10px;
+        width: 50%;
         .form-details {
             display: flex;
             flex-direction: column;
             flex-wrap: nowrap;
             justify-content: center;
-            margin-left: 30%;
-            margin-right: 20%;
+            margin-left: 10%;
+            // margin-right: 20%;
             margin-bottom: 1%;
             @media screen and (max-width: $mobile-device) {
                 min-width: 100%;

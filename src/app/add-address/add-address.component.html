@@ -1,8 +1,17 @@
 <div class="main-div">
-  <div class="title-div">
-    <h4>
+  <div class="search-text-div">
+    <h3>
       Add a new address
-    </h4>
+    </h3>
+    <p>
+      Rapidobuild helps you to build without a real headache of the building materials..
+      Sothe saying goes on "you build and we deliver" 
+      We know how you value time and to help you save time is our sole motto..!
+    </p>
+    <div class="search-postcode-div">
+      <input matInput maxlength="10" placeholder="postcode">
+      <button mat-flat-button color="primary" type="submit">Find Address</button>
+    </div>
   </div>
   <div class="add-address-main">
     <form class="form-details" novalidate (ngSubmit)="addAddress()">
