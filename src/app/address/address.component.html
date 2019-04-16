@@ -21,11 +21,11 @@
   </a>
   <div class="rapido-add-address-item" *ngFor="let address of address">
     <div class="address-text">
-      <strong> {{ address.organisation }} </strong>
-      <br /><p>{{ address.add1 }}
+      <strong> {{ address.full_name }} </strong>
+      <br /><p>{{ address.addr_1 }}
       <!-- <br /> Pristine Greens Pokhariput -->
-      <br /> {{ address.add2 }}
-      <br /> {{ address.town_city }}, {{ address.postcode }} 
+      <br /> {{ address.addr_2 }}
+      <br /> {{ address.city }}, {{ address.postcode }} 
       <br /> {{ address.country }}
 
       <!-- <strong>Ashok Kumar Patnaik</strong>
@@ -40,40 +40,7 @@
       <a href="">Delete</a>
     </div>
   </div>
-  <div class="rapido-add-address-item">
-      <div class="icon-div">
-        <a class="rapido-icon">
-          <svg aria-hidden="true" aria-haspopup="menu">
-            <use [attr.xlink:href]=""/>
-          </svg>
-        </a>
-      </div>
-      <div class="content-div">
-        
-      </div>
-    </div>
-  <div class="rapido-add-address-item">
-      <div class="icon-div">
-        <a class="rapido-icon">
-          <svg aria-hidden="true" aria-haspopup="menu">
-            <use [attr.xlink:href]=""/>
-          </svg>
-        </a>
-      </div>
-      <div class="content-div">
-        
-      </div>
-    </div>
-  <div class="rapido-add-address-item">
-      <div class="icon-div">
-        <a class="rapido-icon">
-          <svg aria-hidden="true" aria-haspopup="menu">
-            <use [attr.xlink:href]=""/>
-          </svg>
-        </a>
-      </div>
-      <div class="content-div">
-        
-      </div>
-    </div>
+
+
+
 </div>

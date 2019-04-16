@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AddressDetailsService } from '../services/customer/address-details.service';
 
 @Component({
   selector: 'app-address',
@@ -7,28 +8,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./address.component.scss']
 })
 export class AddressComponent implements OnInit {
-  address = [
-    // {
-    //   mobileNumber: "7032908112",
-    //   name: "Anirup Patnaik",
-    //   pincode: "560100",
-    //   streetAdd: "B-104, Euphoria Corporate Leisure Apartments",
-    //   city: "Bangalore",
-    //   state: "Karnataka",
-    //   country: "India"
-    // },
-    // {
-    //   mobileNumber: "7032908112",
-    //   name: "Anirup Patnaik",
-    //   pincode: "560100",
-    //   streetAdd: "B-104, Euphoria Corporate Leisure Apartments",
-    //   city: "Bangalore",
-    //   state: "Karnataka",
-    //   country: "India"
-    // }
-]
+  address_details_id: number;
+  address_details_result: string;
+  private _addressDetailsService: AddressDetailsService
+  address: any
+//   address = [
+  
+// ]
   example:any;
-  constructor(private router: Router) { 
+  constructor( 
+    private router: Router,
+    addressDetailsService: AddressDetailsService
+  ) { 
+    this._addressDetailsService = addressDetailsService
     const navigation = this.router.getCurrentNavigation();
     const state = navigation.extras.state as {example: string};
     if(state != undefined){
@@ -41,8 +33,17 @@ export class AddressComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.example)
-    // this.address = this.example
+    this._addressDetailsService.getAddressDetailsList()
+    .subscribe(data => {
+      console.log(data)
+      if(data['length'] > 0){
+        this.address_details_id = data[0]['id']
+        this.address = data
+        console.log("find address below")
+        console.log('Sucessfully updated the address test id to: ' + String(this.address_details_id))
+      }
+      this.address_details_result = "Sucessfully fetched address details List and logged!";
+    })
   }
 
 }
