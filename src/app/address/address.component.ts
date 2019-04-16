@@ -27,7 +27,7 @@ export class AddressComponent implements OnInit {
       this.example = state.example;
       // console.log(this.example)
 
-      this.address[0] = this.example
+      // this.address[0] = this.example
     }
    
   }

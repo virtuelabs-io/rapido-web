@@ -8,17 +8,13 @@ import { AddressDetailsService } from '../services/customer/address-details.serv
   templateUrl: './add-address.component.html',
   styleUrls: ['./add-address.component.scss']
 })
-// export interface Food {
-//   value: string;
-//   viewValue: string;
-// }
 
 export class AddAddressComponent implements OnInit {
   address_details_id: number;
   address_details_result: string;
   addressItems = 
     {
-      organisation: "Anirup Patnaik",
+      organisation: "",
       add1: "46 Broadway",
       add2: "Address Line 2",
       town_city: "Pontypridd",
@@ -47,6 +43,8 @@ export class AddAddressComponent implements OnInit {
   ngOnInit() {
   }
   addAddress() {
+    // this.addressDetails = this.addressItems
+    console.log(this.addressItems.organisation)
     this._addressDetailsService.postAddressDetails(this.addressDetails)
     .subscribe(data => {
       console.log(data)
