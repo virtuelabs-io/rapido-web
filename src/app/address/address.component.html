@@ -23,7 +23,6 @@
     <div class="address-text">
       <strong> {{ address.full_name }} </strong>
       <br /><p>{{ address.addr_1 }}
-      <!-- <br /> Pristine Greens Pokhariput -->
       <br /> {{ address.addr_2 }}
       <br /> {{ address.city }}, {{ address.postcode }} 
       <br /> {{ address.country }}
@@ -36,8 +35,8 @@
       <br /> Phone number: 9439324903</p> -->
     </div>
     <div class="card-actions">
-      <a href="">Edit</a> |
-      <a href="">Delete</a>
+      <a>Edit</a> |
+      <a (click)="addressDelete(address.id)">Delete</a>
     </div>
   </div>
 

@@ -67,8 +67,14 @@
             flex-wrap: wrap;
             justify-content: left;
             a {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: left;
                 margin-left: 10px;
                 margin-right: 10px;
+                cursor: pointer;
+                color: $primary;
             }
         }
     }
