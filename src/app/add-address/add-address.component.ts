@@ -57,5 +57,8 @@ export class AddAddressComponent implements OnInit {
     // const navigationExtras: NavigationExtras = {state: {example: 'This is an example'}};
     this.router.navigate(['profile/address']);
   }
-
+  cancelAddAddress() {
+    console.log("lets cancel this operation")
+    this.router.navigate(['profile/address']);
+  }
 }

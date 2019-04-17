@@ -14,7 +14,7 @@
     </div>
   </div>
   <div class="add-address-main">
-    <form class="form-details" novalidate (ngSubmit)="addAddress()">
+    <form class="form-details" novalidate>
       <mat-form-field>
         <input matInput maxlength="15" placeholder="Name" [(ngModel)]="addressItems.organisation"
         [ngModelOptions]="{standalone: true}">
@@ -40,10 +40,13 @@
         [ngModelOptions]="{standalone: true}">
       </mat-form-field>
       <mat-card-actions>
-        <button mat-flat-button color="primary" type="submit">
+        <button class="spacing" mat-flat-button color="primary" type="submit" (click)="addAddress()">
             <!-- <span *ngIf="_progressSpinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> -->
             Add Address
         </button>
+        <button mat-flat-button color="primary" (click)="cancelAddAddress()">
+          Cancel
+      </button>
       </mat-card-actions>
     </form>
   </div>
