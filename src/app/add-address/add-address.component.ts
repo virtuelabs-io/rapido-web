@@ -24,18 +24,6 @@ export class AddAddressComponent implements OnInit {
 
     }
     addressDetails: AddressDetails;
-
-      // this.name,
-      // // this.addressItems.organisation,
-      // 1, // check Constants.ADDRESS_TYPES for different types of addresses. Only those should be used
-      // this.addressItems.add1,
-      // this.addressItems.town_city,
-      // "county",
-      // this.addressItems.country,
-      // this.addressItems.postcode,
-      // this.addressItems.add2
-    
-  
     private _addressDetailsService: AddressDetailsService
     constructor( private router: Router,
                addressDetailsService: AddressDetailsService
@@ -46,10 +34,7 @@ export class AddAddressComponent implements OnInit {
   ngOnInit() {
   }
   addAddress() {
-    // this.addressDetails = this.addressItems
-    // console.log(this.addressItems.organisation)
-    this.addressDetails = new AddressDetails(
-      
+    this.addressDetails = new AddressDetails(  
       this.addressItems.organisation,
       1, // check Constants.ADDRESS_TYPES for different types of addresses. Only those should be used
       this.addressItems.add1,
