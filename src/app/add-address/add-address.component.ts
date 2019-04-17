@@ -69,8 +69,8 @@ export class AddAddressComponent implements OnInit {
       }
       this.address_details_result = "Sucessfully posted address company details and logged!";
     })
-    const navigationExtras: NavigationExtras = {state: {example: 'This is an example'}};
-    this.router.navigate(['profile/address'], { state: { example: this.addressItems } });
+    // const navigationExtras: NavigationExtras = {state: {example: 'This is an example'}};
+    this.router.navigate(['profile/address']);
   }
 
 }

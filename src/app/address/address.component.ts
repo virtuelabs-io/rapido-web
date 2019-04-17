@@ -22,13 +22,22 @@ export class AddressComponent implements OnInit {
   ) { 
     this._addressDetailsService = addressDetailsService
     const navigation = this.router.getCurrentNavigation();
-    const state = navigation.extras.state as {example: string};
-    if(state != undefined){
-      this.example = state.example;
-      // console.log(this.example)
+    // const state = navigation.extras.state as {example: string};
+    // if(state != undefined){
+    //   this.example = state.example;
+    // }
 
-      // this.address[0] = this.example
-    }
+    this._addressDetailsService.getAddressDetailsList()
+    .subscribe(data => {
+      console.log(data)
+      if(data['length'] > 0){
+        this.address_details_id = data[0]['id']
+        this.address = data
+        console.log("find address below")
+        console.log('Sucessfully updated the address test id to: ' + String(this.address_details_id))
+      }
+      this.address_details_result = "Sucessfully fetched address details List and logged!";
+    })
    
   }
 
