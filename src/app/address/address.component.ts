@@ -54,9 +54,8 @@ export class AddressComponent implements OnInit {
       this.address_details_result = "Sucessfully fetched address details List and logged!";
     })
   }
-  addressDelete(evt) {
-    console.log(evt)
-    this._addressDetailsService.deleteAddressDetails(evt)
+  addressDelete(id) {
+    this._addressDetailsService.deleteAddressDetails(id)
     .subscribe(data => {
       console.log(data)
       this.address_details_id = null
@@ -64,6 +63,8 @@ export class AddressComponent implements OnInit {
     })
     this.router.navigate(['profile']);
   }
-
+  addressEdit(id) {
+    this.router.navigate(['profile/address/editAddress', id]);
+  }
 
 }

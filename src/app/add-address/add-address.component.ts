@@ -14,20 +14,20 @@ export class AddAddressComponent implements OnInit {
   address_details_result: string;
   name: string = ""
   addressItems = 
-    {
-      organisation: "",
-      add1: "46 Broadway",
-      add2: "Address Line 2",
-      town_city: "Pontypridd",
-      postcode: "CF37 1BD",
-      country: "United Kingdom"
+  {
+    organisation: "",
+    add1: "46 Broadway",
+    add2: "Address Line 2",
+    town_city: "Pontypridd",
+    postcode: "CF37 1BD",
+    country: "United Kingdom"
 
-    }
-    addressDetails: AddressDetails;
-    private _addressDetailsService: AddressDetailsService
-    constructor( private router: Router,
+  }
+  addressDetails: AddressDetails;
+  private _addressDetailsService: AddressDetailsService
+  constructor( private router: Router,
                addressDetailsService: AddressDetailsService
-    ) { 
+  ) { 
       this._addressDetailsService = addressDetailsService
     }
 
