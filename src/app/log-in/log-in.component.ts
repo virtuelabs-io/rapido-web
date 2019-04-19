@@ -36,6 +36,9 @@ export class LogInComponent implements OnInit {
   ngOnInit() {
   }
   
+  closeAlert(e){
+    this.alertBox = false;
+  }
 
   signIn(evt){
     this._progressSpinner = true

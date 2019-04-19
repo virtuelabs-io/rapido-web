@@ -6,7 +6,7 @@
     <div class="auth-form-header p-0 font">
     <h1>Sign in to Rapidobuild.com</h1>
   </div>
-    <div *ngIf="alertBox" class="alert alert-danger alert-dismissible">
+    <div *ngIf="alertBox" (click)="closeAlert($event)" class="alert alert-danger alert-dismissible" role="alert">
         <button class="close" type="button" data-dismiss="alert">×</button>
         <strong>{{alertMsg}}</strong> <div id="Div2" runat="server"></div>
       </div>
