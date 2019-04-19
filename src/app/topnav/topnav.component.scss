@@ -38,16 +38,16 @@
   .block-two {
     width:100%;
     ::-webkit-input-placeholder {
-      text-align: center;
+      text-align: left;
     }
     :-moz-placeholder { /* Firefox 18- */
-      text-align: center;
+      text-align: left;
     }
     ::-moz-placeholder {  /* Firefox 19+ */
-      text-align: center;
+      text-align: left;
     }
     :-ms-input-placeholder {
-      text-align: center;
+      text-align: left;
     }
     input {
       margin-left: 10%;
@@ -59,7 +59,7 @@
       padding-left: 10px;
       padding-right: 10px;
       outline: none;
-      text-align: center !important;
+      text-align: left !important;
     }
     @media screen and (max-width: $small-device) {
       visibility: hidden;
@@ -138,16 +138,16 @@
   .block-search {
     width:100%;
     ::-webkit-input-placeholder {
-      text-align: center;
+      text-align: left;
     }
     :-moz-placeholder { /* Firefox 18- */
-      text-align: center;
+      text-align: left;
     }
     ::-moz-placeholder {  /* Firefox 19+ */
-      text-align: center;
+      text-align: left;
     }
     :-ms-input-placeholder {
-      text-align: center;
+      text-align: left;
     }
     input {
       margin-left: 10%;
@@ -159,7 +159,7 @@
       padding-left: 10px;
       padding-right: 10px;
       outline: none;
-      text-align: center !important;
+      text-align: left !important;
     }
   }
   @media screen and (max-width: $small-device) {

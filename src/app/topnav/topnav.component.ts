@@ -65,4 +65,12 @@ export class TopnavComponent implements OnInit {
     alert('success')
     this._profileService.cognitoUser.signOut()
   }
+
+  searchProducts(e){
+    console.log(e)
+  } 
+  
+  liveSearch(e){
+    console.log(e)
+  } 
 }
