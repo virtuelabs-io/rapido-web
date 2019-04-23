@@ -1,3 +1,38 @@
-<p>
-  company-details works!
-</p>
+<div class="">
+  <h4>
+    My Company Details
+  </h4>
+</div>
+<div class="rapido-add-company">
+  <a class="rapido-add-company-icon">
+    <div class="company-add-icon">
+      <a class="" href="profile/companyDetails/newDetails">
+        <svg aria-hidden="true" aria-haspopup="menu">
+            <use xlink:href="#add"/>
+        </svg>
+      </a>
+    </div>
+    <div class="text-div">
+        <p>Add Company Details</p>  
+    </div>
+    <div class="content-div">
+      
+    </div>
+  </a>
+  <div class="rapido-add-company-item" *ngFor="let address of address">
+    <div class="address-text">
+      <strong> {{ address.full_name }} </strong>
+      <br /><p>{{ address.addr_1 }}
+      <br /> {{ address.addr_2 }}
+      <br /> {{ address.city }}, {{ address.postcode }} 
+      <br /> {{ address.country }}
+    </div>
+    <div class="card-actions">
+      <a (click)="addressEdit(address.id)">Edit</a> |
+      <a (click)="addressDelete(address.id)">Delete</a>
+    </div>
+  </div>
+
+
+
+</div>

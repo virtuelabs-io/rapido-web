@@ -13,6 +13,7 @@ import { PaymentDetailsComponent } from './payment-details/payment-details.compo
 import { AddPaymentComponent } from './add-payment/add-payment.component';
 import { EditAddressComponent } from './edit-address/edit-address.component';
 import { CompanyDetailsComponent } from './company-details/company-details.component';
+import { AddCompanyDetailsComponent } from './add-company-details/add-company-details.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'profile/payment', component: PaymentDetailsComponent },
   { path: 'profile/payment/newPayment', component: AddPaymentComponent },
   { path: 'profile/companyDetails', component: CompanyDetailsComponent },
+  { path: 'profile/companyDetails/newDetails', component: AddCompanyDetailsComponent },
   { path: '', component: AuthmockComponent}
 ];
 
@@ -49,5 +51,6 @@ export const RoutingComponents = [
   AddPaymentComponent,
   EditAddressComponent,
   CompanyDetailsComponent,
+  AddCompanyDetailsComponent,
   AuthmockComponent
 ];

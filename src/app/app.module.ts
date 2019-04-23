@@ -24,6 +24,7 @@ import { PaymentDetailsComponent } from './payment-details/payment-details.compo
 import { AddPaymentComponent } from './add-payment/add-payment.component';
 import { EditAddressComponent } from './edit-address/edit-address.component';
 import { CompanyDetailsComponent } from './company-details/company-details.component';
+import { AddCompanyDetailsComponent } from './add-company-details/add-company-details.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { CompanyDetailsComponent } from './company-details/company-details.compo
     PaymentDetailsComponent,
     AddPaymentComponent,
     EditAddressComponent,
-    CompanyDetailsComponent
+    CompanyDetailsComponent,
+    AddCompanyDetailsComponent
   ],
   imports: [
     MatSidenavModule,
