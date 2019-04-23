@@ -21,7 +21,8 @@ export class ProfileComponent implements OnInit {
     {
       icon: "#company-details", 
       title: "Company Details",
-      description: "Add your company details"
+      description: "Add your company details",
+      route: "profile/companyDetails"
     },
     {
       icon: "#delivery-truck",
