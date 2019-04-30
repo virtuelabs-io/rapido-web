@@ -3,6 +3,7 @@ import {FormControl} from '@angular/forms';
 import { SessionService } from '../services/authentication/session/session.service';
 import { ProfileService } from '../services/authentication/profile/profile.service';
 import { Constants } from '../utils/constants';
+import { Location } from '@angular/common';
 
 @NgModule({})
 @Component({
@@ -20,18 +21,11 @@ export class TopnavComponent implements OnInit {
   myControl = new FormControl();
   options: string[] = ['One', 'Two', 'Three'];
 
-  _profileService: ProfileService
-
-  private _sessionService: SessionService
-
-  constructor(sessionService: SessionService, profileService: ProfileService) {
-    this._sessionService = sessionService
-    this._profileService = profileService
-  }
-
+  constructor(private _sessionService: SessionService, private _profileService: ProfileService, private _location: Location) {}
   ngOnInit() {
     let localName = this.name
     const promise = this._sessionService.retrieveSessionIfExists()
+    console.log(this._location.path())
     promise.then(value => {
       this.signInTag = false
       this.userIcon = true
