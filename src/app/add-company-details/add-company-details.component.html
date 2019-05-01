@@ -16,33 +16,33 @@
   <div class="add-address-main">
     <form class="form-details" novalidate>
       <mat-form-field>
-        <input matInput maxlength="15" placeholder="Organisation's Name"
-        >
+        <input matInput maxlength="15" placeholder="Organisation" [(ngModel)]="companyItems.organisation"
+        [ngModelOptions]="{standalone: true}">
       </mat-form-field>
       <mat-form-field>
-        <input matInput maxlength="15" placeholder="Address Line 1"
-        >
+        <input matInput maxlength="15" placeholder="Address Line 1" [(ngModel)]="companyItems.add1"
+        [ngModelOptions]="{standalone: true}">
       </mat-form-field>
       <mat-form-field>
-        <input matInput maxlength="15" placeholder="Address Line 2"
-        >
+        <input matInput maxlength="15" placeholder="Address Line 2" [(ngModel)]="companyItems.add2"
+        [ngModelOptions]="{standalone: true}">
       </mat-form-field>
       <mat-form-field>
-        <input matInput maxlength="45" placeholder="Town / City"
-        >
+        <input matInput maxlength="45" placeholder="Town / City" [(ngModel)]="companyItems.town_city"
+        [ngModelOptions]="{standalone: true}">
       </mat-form-field>
       <mat-form-field>
-        <input matInput maxlength="15" placeholder="Postcode"
-      >
+        <input matInput maxlength="15" placeholder="Postcode" [(ngModel)]="companyItems.postcode"
+        [ngModelOptions]="{standalone: true}">
       </mat-form-field>
       <mat-form-field>
-        <input matInput maxlength="15" placeholder="Country"
-     >
+        <input matInput maxlength="15" placeholder="Country" [(ngModel)]="companyItems.country"
+        [ngModelOptions]="{standalone: true}">
       </mat-form-field>
       <mat-card-actions>
-        <button class="spacing" mat-flat-button color="primary" type="submit" (click)="addAddress()">
+        <button class="spacing" mat-flat-button color="primary" type="submit" (click)="postCompanyDetails()">
             <!-- <span *ngIf="_progressSpinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> -->
-            Add Address
+            Add Company
         </button>
         <button mat-flat-button color="primary" (click)="cancelAddAddress()">
           Cancel
