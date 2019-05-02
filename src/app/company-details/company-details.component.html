@@ -4,7 +4,7 @@
   </h4>
 </div>
 <div class="rapido-add-company">
-  <a class="rapido-add-company-icon">
+  <a *ngIf="hide_plus_card" class="rapido-add-company-icon">
     <div class="company-add-icon">
       <a class="" href="profile/companyDetails/newDetails">
         <svg aria-hidden="true" aria-haspopup="menu">
@@ -19,13 +19,13 @@
       
     </div>
   </a>
-  <div class="rapido-add-company-item" *ngFor="let address of address">
+  <div class="rapido-add-company-item">
     <div class="address-text">
-      <strong> {{ address.full_name }} </strong>
-      <br /><p>{{ address.addr_1 }}
-      <br /> {{ address.addr_2 }}
-      <br /> {{ address.city }}, {{ address.postcode }} 
-      <br /> {{ address.country }}
+      <strong> {{ companyItems.organisation }} </strong>
+      <br /><p>{{ companyItems.add1 }}
+      <br /> {{ companyItems.add2 }}
+      <br /> {{ companyItems.town_city }}, {{ address.postcode }} 
+      <br /> {{ companyItems.country }}
     </div>
     <div class="card-actions">
       <a (click)="addressEdit(address.id)">Edit</a> |
