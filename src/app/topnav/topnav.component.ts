@@ -18,7 +18,7 @@ export class TopnavComponent implements OnInit {
   bannerName: String = Constants.RAPIDO_BUILD
 
   myControl = new FormControl();
-  options: string[] = ['One', 'Two', 'Three'];
+  // options: string[] = ['One', 'Two', 'Three'];
 
   _profileService: ProfileService
 
