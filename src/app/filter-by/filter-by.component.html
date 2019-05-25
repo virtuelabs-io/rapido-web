@@ -5,8 +5,8 @@
         </div>
        <div>
             <ul class="list-group">
-                    <li *ngFor="let list of ['Automotive','Bathroom','Lighting','etc']" class="list-group-item">
-                        <a data-routing="off" class="a-link-normal s-navigation-item" href="/">
+                    <li *ngFor="let list of ['Automotive','Bathroom','Lighting','etc']" class="list-group-item" routerLink="/products/details/1">
+                        <a data-routing="off" class="a-link-normal s-navigation-item" >
                             <span class="a-size-base a-color-base text-dark">{{list}}</span>
                         </a>
                     </li>
