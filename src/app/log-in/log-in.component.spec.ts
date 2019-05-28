@@ -22,4 +22,8 @@ describe('LogInComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Header title present', () => {
+    expect(component.headerText).toEqual('Sign in to Rapidobuild.com');
+  });
 });

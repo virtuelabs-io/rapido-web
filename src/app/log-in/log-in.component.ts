@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./log-in.component.scss']
 })
 export class LogInComponent implements OnInit {
+  headerText: string = "Sign in to Rapidobuild.com"
   alertBox: boolean = false
   alertMsg: string = ""
   _signInResponse: Boolean = false;
