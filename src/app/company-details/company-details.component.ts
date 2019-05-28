@@ -9,12 +9,14 @@ import { CompanyDetailsService } from '../services/customer/company-details.serv
 })
 export class CompanyDetailsComponent implements OnInit {
   hide_plus_card: Boolean = true
+  company_details_result: string
+  company_detail_not_reg: Boolean = false
   companyItems = 
   {
     organisation: "",
-    add1: "",
-    add2: "",
-    town_city: "",
+    addr_1: "",
+    addr_2: "",
+    city: "",
     postcode: "",
     country: "",
     customer_id:""
@@ -32,15 +34,24 @@ export class CompanyDetailsComponent implements OnInit {
     .subscribe(data => {
       console.log("company details fetched !")
       console.log(data)
-      this.companyItems.add1 = data.addr_1
-      this.companyItems.add2 = data.addr_2
-      this.companyItems.town_city = data.city
+      this.companyItems.addr_1 = data.addr_1
+      this.companyItems.addr_2 = data.addr_2
+      this.companyItems.city = data.city
       this.companyItems.organisation = data.company_name
       this.companyItems.country = data.country
-      //this.companyItems.add1 = data.county
+      //this.companyItems.county = data.county
       this.companyItems.customer_id = data.customer_id
       this.companyItems.postcode = data.postcode
       this.hide_plus_card = false
+      this.company_detail_not_reg = true
+    })
+  }
+
+  deleteCompanyDetails(){
+    this._companyDetailsService.deleteCompanyDetails()
+    .subscribe(data => {
+      console.log(data)
+      this.company_details_result = "Sucessfully deleted customer company details and logged!";
     })
   }
 

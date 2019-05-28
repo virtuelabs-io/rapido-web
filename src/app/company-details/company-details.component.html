@@ -19,17 +19,17 @@
       
     </div>
   </a>
-  <div class="rapido-add-company-item">
+  <div *ngIf="company_detail_not_reg" class="rapido-add-company-item">
     <div class="address-text">
       <strong> {{ companyItems.organisation }} </strong>
-      <br /><p>{{ companyItems.add1 }}
-      <br /> {{ companyItems.add2 }}
-      <br /> {{ companyItems.town_city }}, {{ address.postcode }} 
+      <br /><p>{{ companyItems.addr_1 }}
+      <br /> {{ companyItems.addr_2 }}
+      <br /> {{ companyItems.city }}, {{ companyItems.postcode }} 
       <br /> {{ companyItems.country }}
     </div>
     <div class="card-actions">
       <a (click)="addressEdit(address.id)">Edit</a> |
-      <a (click)="addressDelete(address.id)">Delete</a>
+      <a (click)="deleteCompanyDetails()">Delete</a>
     </div>
   </div>
 
