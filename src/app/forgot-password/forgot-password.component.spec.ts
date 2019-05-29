@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { MatStepperModule } from '@angular/material/stepper';
 import { ForgotPasswordComponent } from './forgot-password.component';
+import { FormGroup, FormsModule } from '@angular/forms';
 
 describe('ForgotPasswordComponent', () => {
   let component: ForgotPasswordComponent;
@@ -8,6 +9,7 @@ describe('ForgotPasswordComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ MatStepperModule, FormsModule ],
       declarations: [ ForgotPasswordComponent ]
     })
     .compileComponents();

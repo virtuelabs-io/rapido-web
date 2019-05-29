@@ -74,6 +74,10 @@ export class RapidoHttpService<T> {
   }
 
   addAuthHeader(_headers: HttpHeaders): HttpHeaders{
-    return _headers.append('Authorization', this._profileService.cognitoUser.getSignInUserSession().getIdToken().getJwtToken())
+    if(this._profileService.cognitoUser) {
+      return _headers.append('Authorization', this._profileService.cognitoUser.getSignInUserSession().getIdToken().getJwtToken())
+    } else {
+      return _headers.append('Authorization', '')
+    }
   }
 }

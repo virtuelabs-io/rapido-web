@@ -1,7 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { MatMenuModule } from '@angular/material/menu';
 import { TopnavComponent } from './topnav.component';
 import { ButtonComponent } from '../common/button/button.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterModule } from '@angular/router';
+import { Location } from '@angular/common';
 
 describe('TopnavComponent', () => {
   let component: TopnavComponent;
@@ -9,6 +12,7 @@ describe('TopnavComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ MatMenuModule, MatToolbarModule, RouterModule.forRoot([]) ],
       declarations: [ TopnavComponent, ButtonComponent ]
     })
     .compileComponents();
