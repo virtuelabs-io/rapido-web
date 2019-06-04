@@ -1,7 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatStepperModule } from '@angular/material/stepper';
 import { ForgotPasswordComponent } from './forgot-password.component';
-import { FormGroup, FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+
+import { MatFormFieldModule, MatCardModule, MatInputModule, MatStepperModule } from '@angular/material';
 
 describe('ForgotPasswordComponent', () => {
   let component: ForgotPasswordComponent;
@@ -9,7 +13,7 @@ describe('ForgotPasswordComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ MatStepperModule, FormsModule ],
+      imports: [ MatStepperModule, ReactiveFormsModule, FormsModule, MatFormFieldModule, MatCardModule, RouterTestingModule, HttpClientModule, MatInputModule, BrowserAnimationsModule ],
       declarations: [ ForgotPasswordComponent ]
     })
     .compileComponents();
