@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormsModule } from '@angular/forms';
 import { LogInComponent } from './log-in.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('LogInComponent', () => {
   let component: LogInComponent;
@@ -8,6 +9,7 @@ describe('LogInComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ FormsModule, RouterTestingModule ],
       declarations: [ LogInComponent ]
     })
     .compileComponents();
@@ -21,5 +23,9 @@ describe('LogInComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('Header title present', () => {
+    expect(component.headerText).toEqual('Sign in to Rapidobuild.com');
   });
 });
