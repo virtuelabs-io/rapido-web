@@ -55,25 +55,10 @@ export class Constants {
 
   public static CUSTOMER_APIS = environment.customer
 
-  public static PAYMENT_TYPES = [
-    {
-      key: "Debit Card",
-      value: 1
-    },
-    {
-      key: "Credit Card",
-      value: 2
-    }
-  ]
-
   public static ADDRESS_TYPES = [
     {
-      key: "Billing",
-      value: 1
-    },
-    {
       key: "Delivery",
-      value: 2
+      value: 1
     }
   ]
 }

@@ -17,15 +17,6 @@
     <h5>{{ address_details_result }}</h5>
   </div>
   <div class="col-md-12">
-    <h2>Payment Details</h2><hr>
-    <button class="btn btn-primary" type="submit" (click)="getPaymentDetailsList()">Get Payment details List</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="getPaymentDetails()">Get Payment details</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="postPaymentDetails()">Post Payment details</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="putPaymentDetails()">Put Payment details</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="deletePaymentDetails()">Delete Payment details</button><br><br>
-    <h5>{{ payment_details_result }}</h5>
-  </div>
-  <div class="col-md-12">
     <h2>Product Hierachy</h2><hr>
     <button class="btn btn-primary" type="submit" (click)="getProductHierarchy()">Submit</button><br><br>
     <h5 *ngIf="_fetchedProductHierarchy">Fetched Hierarchy</h5>

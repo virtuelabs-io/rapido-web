@@ -16,8 +16,6 @@ import { CompanyDetails } from '../services/customer/company-details';
 import { CompanyDetailsService } from '../services/customer/company-details.service';
 import { AddressDetails } from '../services/customer/address-details';
 import { AddressDetailsService } from '../services/customer/address-details.service';
-import { PaymentDetails } from '../services/customer/payment-details';
-import { PaymentDetailsService } from '../services/customer/payment-details.service';
 
 @Component({
   selector: 'app-authmock',
@@ -38,11 +36,7 @@ export class AuthmockComponent implements OnInit {
 
   address_details_id: number;
 
-  payment_details_id: number;
-
   address_details_result: string;
-
-  payment_details_result: string;
 
   companyDetails: CompanyDetails = new CompanyDetails(
     "Sample pvt ltd",
@@ -63,15 +57,6 @@ export class AuthmockComponent implements OnInit {
     "country",
     "postcode",
     "addr_2"
-  )
-
-  paymentDetails: PaymentDetails = new PaymentDetails(
-    "Name on card",
-    "1234567666664444", 
-    "01",
-    "2019",
-    5, // Id should be an existing address id
-    1 // check Constants.PAYMENT_TYPES for different types of addresses. Only those should be used
   )
 
   _registration: Registration = new Registration(
@@ -117,7 +102,6 @@ export class AuthmockComponent implements OnInit {
   private _productHierarchyService: ProductsHierarchyService
   private _companyDetailsService: CompanyDetailsService
   private _addressDetailsService: AddressDetailsService
-  private _paymentDetailsService: PaymentDetailsService
 
 
   constructor(
@@ -133,8 +117,7 @@ export class AuthmockComponent implements OnInit {
     productsService: ProductsService,
     productHierarchyService: ProductsHierarchyService,
     companyDetailsService: CompanyDetailsService,
-    addressDetailsService: AddressDetailsService,
-    paymentDetailsService: PaymentDetailsService
+    addressDetailsService: AddressDetailsService
     ) {
     this._signUpService = signUpService
     this._profileService = profileService
@@ -149,7 +132,6 @@ export class AuthmockComponent implements OnInit {
     this._productHierarchyService = productHierarchyService
     this._companyDetailsService = companyDetailsService
     this._addressDetailsService = addressDetailsService
-    this._paymentDetailsService = paymentDetailsService
   }
 
   ngOnInit() {
@@ -361,57 +343,6 @@ export class AuthmockComponent implements OnInit {
       console.log(data)
       this.address_details_id = null
       this.address_details_result = "Sucessfully deleted customer address details and logged!";
-    })
-  }
-
-  getPaymentDetails(){
-    this._paymentDetailsService.getPaymentDetails(this.payment_details_id)
-    .subscribe(data => {
-      console.log(data)
-      this.payment_details_result = "Sucessfully fetched payment details and logged!";
-    })
-  }
-
-  getPaymentDetailsList(){
-    this._paymentDetailsService.getPaymentDetailsList()
-    .subscribe(data => {
-      console.log(data)
-      if(data['length'] > 0){
-        this.payment_details_id = data[0]['id']
-        console.log('Sucessfully updated the payment test id to: ' + String(this.payment_details_id))
-      }
-      this.payment_details_result = "Sucessfully fetched payment details List and logged!";
-    })
-  }
-
-  postPaymentDetails(){
-    this._paymentDetailsService.postPaymentDetails(this.paymentDetails)
-    .subscribe(data => {
-      console.log(data)
-      if(data['insertId']){
-        this.payment_details_id = data['insertId']
-        console.log('Sucessfully updated the test id to: ' + String(this.payment_details_id))
-      }
-      this.payment_details_result = "Sucessfully posted address company details and logged!";
-    })
-  }
-
-  putPaymentDetails(){
-    this.paymentDetails.name_on_card = "Updated name on card"
-    this.paymentDetails.id = this.payment_details_id
-    this._paymentDetailsService.putPaymentDetails(this.paymentDetails)
-    .subscribe(data => {
-      console.log(data)
-      this.payment_details_result = "Sucessfully updated customer payment details and logged!";
-    })
-  }
-
-  deletePaymentDetails(){
-    this._paymentDetailsService.deletePaymentDetails(this.payment_details_id)
-    .subscribe(data => {
-      console.log(data)
-      this.payment_details_id = null
-      this.payment_details_result = "Sucessfully deleted customer payment details and logged!";
     })
   }
 }
