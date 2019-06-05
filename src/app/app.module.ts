@@ -12,6 +12,10 @@ import { LogInComponent } from './log-in/log-in.component';
 import { RoutingComponents } from './app-routing.module';
 import { MatStepperModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { NgxStripeModule } from 'ngx-stripe';
+import { Constants } from './utils/constants';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +25,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ButtonComponent,
     IconComponent,
     LogInComponent,
-    RoutingComponents
+    RoutingComponents,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +35,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     MatStepperModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxStripeModule.forRoot(Constants.environment.stripePublicKey)
   ],
   providers: [],
   bootstrap: [ AppComponent ],
