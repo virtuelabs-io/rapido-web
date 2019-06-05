@@ -12,9 +12,12 @@ export class Constants {
     production: environment.production,
     productSearchEndPoint: environment.productSearchEndPoint,
     version: environment.version,
-    staticAssets: environment.staticAssets
+    staticAssets: environment.staticAssets,
+    stripePublicKey: environment.payment.publicKey
   }
 
+  public static DEFAULT_PHONE_CODE = "+44";
+  public static DEFAULT_CURRENCY_CODE = "gbp";
   public static PHONE_NUMBER = "phone_number";
   public static EMAIL = "email";
   public static NAME = "name";
@@ -54,6 +57,7 @@ export class Constants {
   public static PRODUCT_HIERARCHY = "/api-data/product-hierarchy.json";
 
   public static CUSTOMER_APIS = environment.customer
+  public static PAYMENT_APIS = environment.payment
 
   public static ADDRESS_TYPES = [
     {
