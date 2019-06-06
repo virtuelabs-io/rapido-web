@@ -37,14 +37,29 @@ describe('LogInComponent', () => {
   }));
 
   it('should set busy indicator to true on form submit', async(() => {
-    component._mobileNumber = '7032908112';
-    component._password = 'Anirup@123';
-    component.signIn('evt');
-    expect(component._progressSpinner).toBeTruthy();
+    component.mobileNumber = '7032908112';
+    component.password = 'Anirup@123';
+    component.signIn();
+    expect(component.progressSpinner).toBeTruthy();
   }));
 
   it('should contain the prefix for mobile number', async(() => {
     expect(component.countryCode).toContain('+');
     expect(component.countryCode.length).toEqual(3);
+  }));
+
+  it('should throw error alert for missing mobile number', async(() => {
+    component.signIn();
+    expect(component.alertMsg).toEqual("No Mobile Number Found");
+    expect(component.alertBox).toBeTruthy();
+    expect(component.progressSpinner).toBeFalsy();
+  }));
+
+  it('should throw error alert for missing password', async(() => {
+    component.mobileNumber = "7032908112";
+    component.signIn();
+    expect(component.alertMsg).toEqual("Please enter password");
+    expect(component.alertBox).toBeTruthy();
+    expect(component.progressSpinner).toBeFalsy();
   }));
 });

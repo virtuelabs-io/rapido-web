@@ -18,9 +18,9 @@ export class LogInComponent implements OnInit {
   alertMsg: string = ""
   _signInResponse: Boolean = false;
   countryCode: string = "+91";
-  _mobileNumber: string;
-  _password: string;
-  _progressSpinner: Boolean = false
+  mobileNumber: string;
+  password: string;
+  progressSpinner: Boolean = false
   _profileService: ProfileService;
 
   private _signInService: SignInService
@@ -36,41 +36,41 @@ export class LogInComponent implements OnInit {
   ngOnInit() {
   }
   
-  closeAlert(e){
+  closeAlert() {
     this.alertBox = false;
   }
 
-  signIn(evt){
-    this._progressSpinner = true
-    if(this._mobileNumber && this._password) {
+  signIn() {
+    this.progressSpinner = true
+    if(this.mobileNumber && this.password) {
       this._signInService.signInData = {
-        Username: this.countryCode+this._mobileNumber,
-        Password: this._password
+        Username: [this.countryCode,this.mobileNumber].join(""),
+        Password: this.password
       }
   
       const promise = this._signInService.signIn()
       promise.then(value => {
-        this._progressSpinner = false
+        this.progressSpinner = false
         console.log(this._profileService.cognitoUser);
         this._signInResponse = true;
         console.log(value) // response from successfull resolve
         this.router.navigateByUrl('/');
       }).catch(error => {
-        this._progressSpinner = false
+        this.progressSpinner = false
         this._signInResponse = false;
         this.alertBox = true;
         this.alertMsg = error.data.message
-        this._password = ""
+        this.password = ""
         console.log(error) // response from a graceful reject
       })
     }
     else {
-      this._progressSpinner = false;
+      this.progressSpinner = false;
       this.alertBox = true;
-      if(!this._mobileNumber) {
+      if(!this.mobileNumber) {
         this.alertMsg = "No Mobile Number Found";
       }
-      else {
+      else if(!this.password) {
         this.alertMsg = "Please enter password";
       }
       
