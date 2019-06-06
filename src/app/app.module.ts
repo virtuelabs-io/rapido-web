@@ -36,7 +36,7 @@ import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, M
     MatStepperModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxStripeModule.forRoot(Constants.environment.stripePublicKey)
+    NgxStripeModule.forRoot(Constants.environment.stripePublicKey),
     HttpClientModule,
     MatMenuModule,
     MatInputModule,
