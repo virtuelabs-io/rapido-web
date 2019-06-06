@@ -25,7 +25,21 @@ describe('LogInComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Header title present', () => {
+  it('Header title present', async(() => {
     expect(component.headerText).toEqual('Sign in to Rapidobuild.com');
-  });
+  }));
+
+  it('should render title in h1 tag', async(() => {
+    const fixture = TestBed.createComponent(LogInComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h1').textContent).toContain('Sign in to Rapidobuild.com');
+  }));
+
+  it('should set busy indicator to true on form submit', async(() => {
+    component._mobileNumber = '+917032908112';
+    component._password = 'Anirup@123';
+    component.signIn('evt');
+    expect(component._progressSpinner).toBeTruthy();
+  }));
 });
