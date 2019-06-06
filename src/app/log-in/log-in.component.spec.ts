@@ -37,9 +37,14 @@ describe('LogInComponent', () => {
   }));
 
   it('should set busy indicator to true on form submit', async(() => {
-    component._mobileNumber = '+917032908112';
+    component._mobileNumber = '7032908112';
     component._password = 'Anirup@123';
     component.signIn('evt');
     expect(component._progressSpinner).toBeTruthy();
+  }));
+
+  it('should contain the prefix for mobile number', async(() => {
+    expect(component.countryCode).toContain('+');
+    expect(component.countryCode.length).toEqual(3);
   }));
 });

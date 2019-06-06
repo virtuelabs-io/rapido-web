@@ -42,26 +42,40 @@ export class LogInComponent implements OnInit {
 
   signIn(evt){
     this._progressSpinner = true
-    this._signInService.signInData = {
-      Username: this._mobileNumber,
-      Password: this._password
+    if(this._mobileNumber && this._password) {
+      this._signInService.signInData = {
+        Username: this.countryCode+this._mobileNumber,
+        Password: this._password
+      }
+  
+      const promise = this._signInService.signIn()
+      promise.then(value => {
+        this._progressSpinner = false
+        console.log(this._profileService.cognitoUser);
+        this._signInResponse = true;
+        console.log(value) // response from successfull resolve
+        this.router.navigateByUrl('/');
+      }).catch(error => {
+        this._progressSpinner = false
+        this._signInResponse = false;
+        this.alertBox = true;
+        this.alertMsg = error.data.message
+        this._password = ""
+        console.log(error) // response from a graceful reject
+      })
     }
-
-    const promise = this._signInService.signIn()
-    promise.then(value => {
-      this._progressSpinner = false
-      console.log(this._profileService.cognitoUser);
-      this._signInResponse = true;
-      console.log(value) // response from successfull resolve
-      this.router.navigateByUrl('/');
-    }).catch(error => {
-      this._progressSpinner = false
-      this._signInResponse = false;
+    else {
+      this._progressSpinner = false;
       this.alertBox = true;
-      this.alertMsg = error.data.message
-      this._password = ""
-      console.log(error) // response from a graceful reject
-    })
+      if(!this._mobileNumber) {
+        this.alertMsg = "No Mobile Number Found";
+      }
+      else {
+        this.alertMsg = "Please enter password";
+      }
+      
+    }
+    
   }
 
 }
