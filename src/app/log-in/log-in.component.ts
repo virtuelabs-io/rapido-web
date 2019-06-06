@@ -1,7 +1,6 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { SignInService } from '../services/authentication/sign-in/sign-in.service';
 import { ProfileService } from '../services/authentication/profile/profile.service';
-// import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 
 @NgModule({
@@ -18,6 +17,7 @@ export class LogInComponent implements OnInit {
   alertBox: boolean = false
   alertMsg: string = ""
   _signInResponse: Boolean = false;
+  countryCode: string = "+91";
   _mobileNumber: string;
   _password: string;
   _progressSpinner: Boolean = false
@@ -27,7 +27,6 @@ export class LogInComponent implements OnInit {
   constructor(
     signInService: SignInService,
     profileService: ProfileService,
-    // private snackBar: MatSnackBar,
     private router: Router
     ) { 
     this._signInService = signInService   
@@ -55,19 +54,12 @@ export class LogInComponent implements OnInit {
       this._signInResponse = true;
       console.log(value) // response from successfull resolve
       this.router.navigateByUrl('/');
-      // this.snackBar.open("User Signed In Successfully", "", {
-      //   duration: 2000,
-      // });
     }).catch(error => {
       this._progressSpinner = false
       this._signInResponse = false;
       this.alertBox = true;
       this.alertMsg = error.data.message
-      // this.snackBar.open(error.data.message , "", {
-      //   duration: 2000,
-      // });
       this._password = ""
-      // this._mobileNumber = ""
       console.log(error) // response from a graceful reject
     })
   }
