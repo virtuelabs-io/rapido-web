@@ -11,6 +11,9 @@ import { IconComponent } from './common/icons/icons.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { RoutingComponents } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { NgxStripeModule } from 'ngx-stripe';
+import { Constants } from './utils/constants';
 import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, MatSnackBarModule, MatExpansionModule, MatSelectModule } from '@angular/material';
 
 
@@ -22,7 +25,8 @@ import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, M
     ButtonComponent,
     IconComponent,
     LogInComponent,
-    RoutingComponents
+    RoutingComponents,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +35,8 @@ import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, M
     BrowserAnimationsModule,
     MatStepperModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    NgxStripeModule.forRoot(Constants.environment.stripePublicKey)
     HttpClientModule,
     MatMenuModule,
     MatInputModule,
