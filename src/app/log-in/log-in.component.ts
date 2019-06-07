@@ -3,10 +3,6 @@ import { SignInService } from '../services/authentication/sign-in/sign-in.servic
 import { ProfileService } from '../services/authentication/profile/profile.service';
 import { Router } from '@angular/router';
 
-@NgModule({
-  
-  
-})
 @Component({
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',
@@ -47,13 +43,11 @@ export class LogInComponent implements OnInit {
         Username: [ this.countryCode,this.mobileNumber ].join(""),
         Password: this.password
       }
-  
       const promise = this._signInService.signIn()
       promise.then(value => {
         this.progressSpinner = false
         console.log(this._profileService.cognitoUser);
         this._signInResponse = true;
-        console.log(value) // response from successfull resolve
         this.router.navigateByUrl('/');
       }).catch(error => {
         this.progressSpinner = false
@@ -61,7 +55,6 @@ export class LogInComponent implements OnInit {
         this.alertBox = true;
         this.alertMsg = error.data.message
         this.password = ""
-        console.log(error) // response from a graceful reject
       })
     }
     else {
@@ -75,10 +68,7 @@ export class LogInComponent implements OnInit {
       }
       else if(!this.password) {
         this.alertMsg = "Please enter password";
-      }
-      
+      } 
     }
-    
   }
-
 }

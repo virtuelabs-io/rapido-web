@@ -7,7 +7,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
-  { path: 'sign-in', component: LogInComponent },
+  { path: 'signIn', component: LogInComponent },
   { path: 'checkout', component: CheckoutComponent},
   { path: '', component: AuthmockComponent},
 ];
