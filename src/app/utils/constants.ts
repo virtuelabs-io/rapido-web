@@ -27,6 +27,11 @@ export class Constants {
   public static CUSTOM_COMM_VIA_EMAIL = "custom:commViaEmail";
   public static CUSTOM_COMM_VIA_SMS = "custom:commViaSMS";
   public static CUSTOM_PERSONALISATION = "custom:personalisation";
+  public static LOGIN_RAPIDOBUILD = "Sign in to Rapidobuild.com";
+
+  public static NO_MOBILE_NUMBER = "Please enter mobile number";
+  public static NO_PASSWORD = "Please enter password";
+  public static INVALID_MOBILE_NUMBER = "Not a valid number";
 
   public static SUCCESSFUL_REGISTRATION = "User successfully registered!";
 

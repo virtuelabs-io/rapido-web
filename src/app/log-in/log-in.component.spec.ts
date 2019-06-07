@@ -1,11 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { LogInComponent } from './log-in.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { Router } from '@angular/router';
+import { Location } from "@angular/common";
 
 describe('LogInComponent', () => {
   let component: LogInComponent;
   let fixture: ComponentFixture<LogInComponent>;
+  let router: Router;
+  let location: Location;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -13,6 +17,9 @@ describe('LogInComponent', () => {
       declarations: [ LogInComponent ]
     })
     .compileComponents();
+    router = TestBed.get(Router);
+    location = TestBed.get(Location);
+    router.initialNavigation();
   }));
 
   beforeEach(() => {
@@ -36,11 +43,14 @@ describe('LogInComponent', () => {
     expect(compiled.querySelector('h1').textContent).toContain('Sign in to Rapidobuild.com');
   }));
 
-  it('should set busy indicator to true on form submit', async(() => {
+  it('user logs in successfully', async(() => {
     component.mobileNumber = '7032908112';
     component.password = 'Anirup@123';
     component.signIn();
     expect(component.progressSpinner).toBeTruthy();
+    router.navigate(["/"]).then(() => {
+      expect(location.path()).toBe("/");
+    });
   }));
 
   it('should contain the prefix for mobile number', async(() => {
@@ -50,7 +60,7 @@ describe('LogInComponent', () => {
 
   it('should throw error alert for missing mobile number', async(() => {
     component.signIn();
-    expect(component.alertMsg).toEqual("No Mobile Number Found");
+    expect(component.alertMsg).toEqual("Please enter mobile number");
     expect(component.alertBox).toBeTruthy();
     expect(component.progressSpinner).toBeFalsy();
   }));

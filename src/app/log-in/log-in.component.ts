@@ -2,6 +2,7 @@ import { Component, OnInit, NgModule } from '@angular/core';
 import { SignInService } from '../services/authentication/sign-in/sign-in.service';
 import { ProfileService } from '../services/authentication/profile/profile.service';
 import { Router } from '@angular/router';
+import { Constants } from '../utils/constants';
 
 @Component({
   selector: 'app-log-in',
@@ -9,11 +10,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./log-in.component.scss']
 })
 export class LogInComponent implements OnInit {
-  headerText: string = "Sign in to Rapidobuild.com"
+  headerText: string = Constants.LOGIN_RAPIDOBUILD
   alertBox: boolean = false
   alertMsg: string = ""
   _signInResponse: Boolean = false;
-  countryCode: string = "+91";
+  countryCode: string = Constants.DEFAULT_PHONE_CODE;
   mobileNumber: string;
   password: string;
   progressSpinner: Boolean = false
@@ -40,7 +41,7 @@ export class LogInComponent implements OnInit {
     this.progressSpinner = true
     if(this.mobileNumber && this.password && this.mobileNumber.length === 10) {
       this._signInService.signInData = {
-        Username: [ this.countryCode,this.mobileNumber ].join(""),
+        Username: [ Constants.DEFAULT_PHONE_CODE,this.mobileNumber ].join(""),
         Password: this.password
       }
       const promise = this._signInService.signIn()
@@ -61,13 +62,13 @@ export class LogInComponent implements OnInit {
       this.progressSpinner = false;
       this.alertBox = true;
       if(!this.mobileNumber) {
-        this.alertMsg = "No Mobile Number Found";
+        this.alertMsg = Constants.NO_MOBILE_NUMBER;
       }
       else if(this.mobileNumber.length !== 10) {
-        this.alertMsg = "Not a valid number";
+        this.alertMsg = Constants.INVALID_MOBILE_NUMBER;
       }
       else if(!this.password) {
-        this.alertMsg = "Please enter password";
+        this.alertMsg = Constants.NO_PASSWORD;
       } 
     }
   }
