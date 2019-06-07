@@ -42,9 +42,9 @@ export class LogInComponent implements OnInit {
 
   signIn() {
     this.progressSpinner = true
-    if(this.mobileNumber && this.password) {
+    if(this.mobileNumber && this.password && this.mobileNumber.length === 10) {
       this._signInService.signInData = {
-        Username: [this.countryCode,this.mobileNumber].join(""),
+        Username: [ this.countryCode,this.mobileNumber ].join(""),
         Password: this.password
       }
   
@@ -69,6 +69,9 @@ export class LogInComponent implements OnInit {
       this.alertBox = true;
       if(!this.mobileNumber) {
         this.alertMsg = "No Mobile Number Found";
+      }
+      else if(this.mobileNumber.length !== 10) {
+        this.alertMsg = "Not a valid number";
       }
       else if(!this.password) {
         this.alertMsg = "Please enter password";

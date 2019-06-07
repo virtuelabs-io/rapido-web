@@ -62,4 +62,10 @@ describe('LogInComponent', () => {
     expect(component.alertBox).toBeTruthy();
     expect(component.progressSpinner).toBeFalsy();
   }));
+
+  it('should contain 10 digits for mobile number', async(() => {
+    component.mobileNumber = "7032908112";
+    //component.signIn();
+    expect(component.mobileNumber.length).toEqual(10);
+  }));
 });

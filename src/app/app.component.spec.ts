@@ -28,7 +28,7 @@ describe('AppComponent', () => {
         BrowserAnimationsModule,
         MatStepperModule,
         ReactiveFormsModule,
-        NgxStripeModule.forRoot(Constants.environment.stripePublicKey)
+        NgxStripeModule.forRoot(Constants.environment.stripePublicKey),
         ReactiveFormsModule,
         MatMenuModule,
         MatToolbarModule,
