@@ -4,12 +4,9 @@ import { TopnavComponent } from './topnav.component';
 import { ButtonComponent } from '../common/button/button.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
-// import { Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-// import { DebugContext } from '@angular/core/src/view';
 import { DebugElement, Input } from '@angular/core';
 import { By } from '@angular/platform-browser';
-
 
 describe('TopnavComponent', () => {
   let component: TopnavComponent;
@@ -37,14 +34,14 @@ describe('TopnavComponent', () => {
 
   it('should have title name as RapidoBuild', () => {
     expect(component.bannerName).toEqual('Rapidobuild');
-  });
+  }); // replace with banner
   
   it('should have search input box', () => {
     fixture = TestBed.createComponent(TopnavComponent);
     component = fixture.componentInstance;
     de = fixture.debugElement.query(By.css('form'));
     ele = de.nativeElement;
-    let input = ele.getElementsByTagName('input')
+    let input = ele.getElementsByTagName('input');
     expect(input).toBeTruthy();
   });
 

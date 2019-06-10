@@ -1,168 +1,169 @@
 @import "../../assets/scss/custom-bootstrap-variables.scss";
-
 .block {
-  display: flex;
-  flex-direction: row;
-  justify-items: center;
-  flex-wrap: nowrap;
-  width:100%;
-  .block-one {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    .fa {
-      visibility: hidden;
-    }
-    .rapido-banner{
-      font-size: 22px;
-      font-weight: 700;
-      display: table-cell;
-      vertical-align: middle;
-
-      .com{
-        display: inline-block;
-        font-size: 15px;
-        font-weight: 400;
-      }
-    }
-    .navbar {
-      padding: 0rem 0.5rem;
-    }
-    @media screen and (max-width: $small-device) {
-      .fa {
-        margin: 10.5px 15px;
-        visibility: visible;
-      }
-    }
-  }
-  .block-two {
-    width:100%;
-    ::-webkit-input-placeholder {
-      text-align: left;
-    }
-    :-moz-placeholder { /* Firefox 18- */
-      text-align: left;
-    }
-    ::-moz-placeholder {  /* Firefox 19+ */
-      text-align: left;
-    }
-    :-ms-input-placeholder {
-      text-align: left;
-    }
-    input {
-      margin-left: 10%;
-      margin-right: 10%;
-      margin-top: 4px;
-      width: 80%;
-      border-color: $primary;
-      border-radius: 20px;
-      padding-left: 10px;
-      padding-right: 10px;
-      outline: none;
-      text-align: left !important;
-    }
-    @media screen and (max-width: $small-device) {
-      visibility: hidden;
-      .fa {
-        margin: 10.5px 15px;
-      }
-    }
-  }
-  .block-three {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    margin-right: 10px;
-    margin-left: 10px;
-    width: 60px;
-    .rapido-icon{
-      svg {
-        margin: 12px 0px;
-        width: 20px;
-        height: 20px;
-        :hover {
-          transition: all .3s ease-in-out;
-          transform: scale(1.1);
-          transform-origin: 50% 50%;
-        }
-      }
-    }
-    .rapido-sign-in {
-      margin-top: 5px;
-      .tag {
-        font-weight: 400;
-        color: black;
-        font-size: smaller;
-        padding-top: 50px;
-        margin-top: 20px;
-
-        .rapido-icon-hider {
-          display: block;
-        }
-        @media screen and (max-width: $small-device) {
-          .rapido-icon-hider {
-            display: none;
-          }
-        }
-      }
-      // .rapido-icon-hider {
-      //   display: block;
-      // }
-      // @media screen and (max-width: $small-device) {
-      //   .rapido-icon-hider {
-      //     display: none;
-      //   }
-      // }
-    }
-    .rapido-icon-hider {
-      display: block;
-    }
-    @media screen and (max-width: $small-device) {
-      .rapido-icon-hider {
-        display: none;
-      }
-    }
-
-  }
-
-  .rapido-icon-spacer {
-    margin: 0px 10px;
-  }
+	display: flex;
+	flex-direction: row;
+	justify-items: center;
+	flex-wrap: nowrap;
+	width: 100%;
+	.block-one {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		.fa {
+			visibility: hidden;
+		}
+		.rapido-banner {
+			font-size: 22px;
+			font-weight: 700;
+			display: table-cell;
+			vertical-align: middle;
+			.com {
+				display: inline-block;
+				font-size: 15px;
+				font-weight: 400;
+			}
+		}
+		.navbar {
+			padding: 0rem 0.5rem;
+		}
+		@media screen and (max-width: $small-device) {
+			.fa {
+				margin: 10.5px 15px;
+				visibility: visible;
+			}
+		}
+	}
+	.block-two {
+		width: 100%;
+		 ::-webkit-input-placeholder {
+			text-align: left;
+		}
+		 :-moz-placeholder {
+			/* Firefox 18- */
+			text-align: left;
+		}
+		 ::-moz-placeholder {
+			/* Firefox 19+ */
+			text-align: left;
+		}
+		 :-ms-input-placeholder {
+			text-align: left;
+		}
+		input {
+			margin-left: 10%;
+			margin-right: 10%;
+			margin-top: 4px;
+			width: 80%;
+			border-color: $primary;
+			border-radius: 20px;
+			padding-left: 10px;
+			padding-right: 10px;
+			outline: none;
+			text-align: left !important;
+		}
+		@media screen and (max-width: $small-device) {
+			visibility: hidden;
+			.fa {
+				margin: 10.5px 15px;
+			}
+		}
+	}
+	.block-three {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		margin-right: 10px;
+		margin-left: 10px;
+		width: 60px;
+		.rapido-icon {
+			svg {
+				margin: 12px 0px;
+				width: 20px;
+				height: 20px;
+				 :hover {
+					transition: all .3s ease-in-out;
+					transform: scale(1.1);
+					transform-origin: 50% 50%;
+				}
+			}
+		}
+		.rapido-sign-in {
+			margin-top: 5px;
+			.tag {
+				font-weight: 400;
+				color: black;
+				font-size: smaller;
+				padding-top: 50px;
+				margin-top: 20px;
+				.rapido-icon-hider {
+					display: block;
+				}
+				@media screen and (max-width: $small-device) {
+					.rapido-icon-hider {
+						display: none;
+					}
+				}
+			}
+			// .rapido-icon-hider {
+			//   display: block;
+			// }
+			// @media screen and (max-width: $small-device) {
+			//   .rapido-icon-hider {
+			//     display: none;
+			//   }
+			// }
+		}
+		.rapido-icon-hider {
+			display: block;
+		}
+		@media screen and (max-width: $small-device) {
+			.rapido-icon-hider {
+				display: none;
+			}
+		}
+	}
+	.rapido-icon-spacer {
+		margin: 0px 10px;
+	}
 }
+
 .sign-in-class {
-  padding-left: 10px;
+	padding-left: 10px;
 }
+
 .secondary-toolbar {
-  display: none;
-  height: 25px;
-  .block-search {
-    width:100%;
-    ::-webkit-input-placeholder {
-      text-align: left;
-    }
-    :-moz-placeholder { /* Firefox 18- */
-      text-align: left;
-    }
-    ::-moz-placeholder {  /* Firefox 19+ */
-      text-align: left;
-    }
-    :-ms-input-placeholder {
-      text-align: left;
-    }
-    input {
-      margin-left: 10%;
-      margin-right: 10%;
-      margin-top: 4px;
-      width: 80%;
-      border-color: $primary;
-      border-radius: 20px;
-      padding-left: 10px;
-      padding-right: 10px;
-      outline: none;
-      text-align: left !important;
-    }
-  }
-  @media screen and (max-width: $small-device) {
-    display: block;
-  }
+	display: none;
+	height: 25px;
+	.block-search {
+		width: 100%;
+		 ::-webkit-input-placeholder {
+			text-align: left;
+		}
+		 :-moz-placeholder {
+			/* Firefox 18- */
+			text-align: left;
+		}
+		 ::-moz-placeholder {
+			/* Firefox 19+ */
+			text-align: left;
+		}
+		 :-ms-input-placeholder {
+			text-align: left;
+		}
+		input {
+			margin-left: 10%;
+			margin-right: 10%;
+			margin-top: 4px;
+			width: 80%;
+			border-color: $primary;
+			border-radius: 20px;
+			padding-left: 10px;
+			padding-right: 10px;
+			outline: none;
+			text-align: left !important;
+		}
+	}
+	@media screen and (max-width: $small-device) {
+		display: block;
+	}
 }
