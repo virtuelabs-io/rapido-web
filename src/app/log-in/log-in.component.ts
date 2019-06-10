@@ -37,14 +37,14 @@ export class LogInComponent implements OnInit {
     this.alertBox = false;
   }
 
-  signIn() {
+  login() {
     this.progressSpinner = true
     if(this.mobileNumber && this.password && this.mobileNumber.length === 10) {
       this._signInService.signInData = {
         Username: [ Constants.DEFAULT_PHONE_CODE,this.mobileNumber ].join(""),
         Password: this.password
       }
-      const promise = this._signInService.signIn()
+      const promise = this._signInService.login()
       promise.then(value => {
         this.progressSpinner = false
         console.log(this._profileService.cognitoUser);

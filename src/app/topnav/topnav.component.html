@@ -23,7 +23,7 @@
            </div>
            <mat-menu #menu="matMenu">
               <div class="sign-in-class">
-                 <div>{{signIn}}</div>
+                 <div>{{loggedInAs}}</div>
                  <div>
                     <strong>
                     {{name}}
@@ -32,10 +32,13 @@
               </div>
               <div role="none" class="dropdown-divider"></div>
               <a class="dropdown-item " href="/profile">My Profile</a>
-              <a class="dropdown-item " onclick='signOut()'>Log Out</a>
+              <div (click)="signOut()">
+                 <a class="dropdown-item">Log Out</a>
+              </div>
+              
            </mat-menu>
-           <div *ngIf="signInTag" aria-label="Menu" class="rapido-sign-in" routerLink="/signIn">
-              <a class="tag">Sign In</a>
+           <div *ngIf="isSignedIn" aria-label="Menu" class="rapido-sign-in" routerLink="/login">
+              <a class="tag">Log In</a>
            </div>
            <div class="rapido-icon-spacer">
               <a class="rapido-icon" routerLink="">

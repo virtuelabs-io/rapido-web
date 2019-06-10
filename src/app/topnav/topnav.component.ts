@@ -12,10 +12,10 @@ import { Location } from '@angular/common';
   styleUrls: ['./topnav.component.scss']
 })
 export class TopnavComponent implements OnInit {
-  signInTag: Boolean
+  isSignedIn: Boolean
   userIcon: Boolean
   name: String = ""
-  signIn: String = ""
+  loggedInAs: String = ""
   bannerName: String = Constants.RAPIDO_BUILD
   myControl = new FormControl();
 
@@ -29,7 +29,7 @@ export class TopnavComponent implements OnInit {
     const promise = this._sessionService.retrieveSessionIfExists()
     // console.log(this._location.path())
     promise.then(value => {
-      this.signInTag = false
+      this.isSignedIn = false
       this.userIcon = true
       this._profileService.cognitoUser.getUserAttributes(function(err, result){
         if (err) {
@@ -39,14 +39,14 @@ export class TopnavComponent implements OnInit {
       })
       this.name =  this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.name
       
-      this.signIn = "Signed In As"
+      this.loggedInAs = Constants.LOGGED_IN_AS;
     }).catch(error => {
-      this.signInTag = true
+      this.isSignedIn = true
       this.userIcon = false
     })
   }
 
-  public signOut(){
+ signOut(){
     this._profileService.cognitoUser.signOut()
   }
 

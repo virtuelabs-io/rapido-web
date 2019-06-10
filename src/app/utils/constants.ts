@@ -27,7 +27,7 @@ export class Constants {
   public static CUSTOM_COMM_VIA_EMAIL = "custom:commViaEmail";
   public static CUSTOM_COMM_VIA_SMS = "custom:commViaSMS";
   public static CUSTOM_PERSONALISATION = "custom:personalisation";
-  public static LOGIN_RAPIDOBUILD = "Sign in to Rapidobuild.com";
+  public static LOGIN_RAPIDOBUILD = "Log In to Rapidobuild.com";
 
   public static NO_MOBILE_NUMBER = "Please enter mobile number";
   public static NO_PASSWORD = "Please enter password";
@@ -41,8 +41,11 @@ export class Constants {
   public static ERROR_CONFIRMING_REGISTRATION = "Error while confirming registration";
   public static SUCCESS_CONFIRMING_REGISTRATION = "Successfully confirmed registration!";
 
+  // Top Nav Bar
   public static ERROR_SIGN_IN = "Error signning you in";
-  public static SUCCESS_SIGN_IN = "Signed in successfully!";
+  public static SUCCESS_SIGN_IN = "Logged in successfully!";
+  public static LOGGED_IN_AS = "Logged In As";
+
 
   public static SESSION_RETRIEVED = "Session retrieved!";
   public static SESSION_NOT_FOUND = "Session not found";
