@@ -1,13 +1,26 @@
 .authmock-body {
-    margin-top: 90px;
-    h5 {
-      color: green;
-    }
+  margin-top: 90px;
+  h5 {
+    color: green;
   }
-.cb {
-  width: 50px;
 }
-.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
-  background-color: black !important;
-  color: white;
-} 
+.cb {
+width: 50px;
+}
+.example-container {
+display: flex;
+flex-direction: column;
+// width: 30%;
+}
+.example-container > * {
+width: 100%;
+}
+.nav-bar-spacing {
+padding-top: 30px;
+}
+.imageWidth {
+width: 80px !important;
+}
+.button-spacing {
+padding-bottom: 20px;
+}
