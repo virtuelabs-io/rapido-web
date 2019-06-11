@@ -3,6 +3,7 @@ import { SignInService } from '../services/authentication/sign-in/sign-in.servic
 import { ProfileService } from '../services/authentication/profile/profile.service';
 import { Router } from '@angular/router';
 import { Constants } from '../utils/constants';
+import { LoginStateService } from '../shared-services/login-state/login-state.service';
 
 @Component({
   selector: 'app-log-in',
@@ -24,15 +25,16 @@ export class LogInComponent implements OnInit {
   constructor(
     signInService: SignInService,
     profileService: ProfileService,
-    private router: Router
-    ) { 
-    this._signInService = signInService   
+    private router: Router,
+    private loginStateService: LoginStateService
+    ) {
+    this._signInService = signInService
     this._profileService = profileService
   }
 
   ngOnInit() {
   }
-  
+
   closeAlert() {
     this.alertBox = false;
   }
@@ -53,6 +55,7 @@ export class LogInComponent implements OnInit {
         this.progressSpinner = false
         console.log(this._profileService.cognitoUser);
         this._signInResponse = true;
+        this.loginStateService.changeState(true);
         this.router.navigateByUrl('/');
       }).catch(error => {
         this.progressSpinner = false
@@ -73,7 +76,7 @@ export class LogInComponent implements OnInit {
       }
       else if(!this.password) {
         this.alertMsg = Constants.NO_PASSWORD;
-      } 
+      }
     }
   }
 }

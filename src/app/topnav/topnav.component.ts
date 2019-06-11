@@ -4,6 +4,7 @@ import { SessionService } from '../services/authentication/session/session.servi
 import { ProfileService } from '../services/authentication/profile/profile.service';
 import { Constants } from '../utils/constants';
 import { Location } from '@angular/common';
+import { LoginStateService } from '../shared-services/login-state/login-state.service';
 
 @NgModule({})
 @Component({
@@ -19,11 +20,12 @@ export class TopnavComponent implements OnInit {
   bannerName: String = Constants.RAPIDO_BUILD
   myControl = new FormControl();
 
-  constructor( 
-               private _sessionService: SessionService, 
-               private _profileService: ProfileService, 
-               private _location: Location ) {}
-  
+  constructor(
+               private _sessionService: SessionService,
+               private _profileService: ProfileService,
+               private _location: Location,
+               private loginStateService: LoginStateService ) {}
+
   ngOnInit() {
     let localName = this.name
     const promise = this._sessionService.retrieveSessionIfExists()
@@ -38,23 +40,34 @@ export class TopnavComponent implements OnInit {
         localName = result[7].getValue()
       })
       this.name =  this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.name
-      
+
       this.loggedInAs = Constants.LOGGED_IN_AS;
     }).catch(error => {
       this.isSignedIn = true
       this.userIcon = false
     })
+
+    this.loginStateService.currentState.subscribe(state => {
+      if (state) {
+        this.isSignedIn = false
+        this.userIcon = true
+      } else {
+        this.isSignedIn = true
+        this.userIcon = false
+      }
+    })
   }
 
  signOut(){
     this._profileService.cognitoUser.signOut()
+    this.loginStateService.changeState(false)
   }
 
   searchProducts(e){
     console.log(e)
-  } 
-  
+  }
+
   liveSearch(e){
     console.log(e)
-  } 
+  }
 }
