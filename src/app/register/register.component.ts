@@ -79,14 +79,14 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
-     this.mobileNumber = new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')])
+     this.mobileNumber = new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'),Validators.min(1000000000), Validators.max(9999999999)])
      this.confirmationCode = new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(6)])
 
     this.registerFormGroup = new FormGroup({
-      mobileNumber: new FormControl('', [Validators.required ]), // Validators.pattern('^[0-9]+$'),Validators.min(1000000000), Validators.max(9999999999)
-      name: new FormControl('', [Validators.required, Validators.maxLength(20)]),
+      mobileNumber: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'),Validators.min(1000000000), Validators.max(9999999999) ]), // Validators.pattern('^[0-9]+$'),Validators.min(1000000000), Validators.max(9999999999)
+      name: new FormControl('', [Validators.required, Validators.maxLength(20), Validators.minLength(3), Validators.pattern('^[A-Za-z]+$')]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required, Validators.pattern( '^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!^\d\w].{8,}$')]),
       confirmPassword: new FormControl('', [Validators.required]),
       termsAndConditions: new FormControl('', [Validators.required]),
       communications: new FormControl('', [Validators.required])
