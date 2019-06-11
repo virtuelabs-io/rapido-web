@@ -37,6 +37,10 @@ export class LogInComponent implements OnInit {
     this.alertBox = false;
   }
 
+  navigateToForgotPassword() {
+    this.router.navigateByUrl('/forgotpassword');
+  }
+
   login() {
     this.progressSpinner = true
     if(this.mobileNumber && this.password && this.mobileNumber.length === 10) {

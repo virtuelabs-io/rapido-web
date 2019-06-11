@@ -15,6 +15,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { Constants } from './utils/constants';
 import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, MatSnackBarModule, MatExpansionModule, MatSelectModule } from '@angular/material';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, M
     IconComponent,
     LogInComponent,
     RoutingComponents,
-    CheckoutComponent
+    CheckoutComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
