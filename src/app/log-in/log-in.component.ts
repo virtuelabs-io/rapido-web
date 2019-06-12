@@ -33,6 +33,7 @@ export class LogInComponent implements OnInit {
   }
 
   ngOnInit() {
+   this.loginStateService.changeState(false);
   }
 
   closeAlert() {
@@ -47,6 +48,7 @@ export class LogInComponent implements OnInit {
     this.progressSpinner = true
     if(this.mobileNumber && this.password && this.mobileNumber.length === 10) {
       this._signInService.signInData = {
+      //  Username: "+917032908112",
         Username: [ Constants.DEFAULT_PHONE_CODE,this.mobileNumber ].join(""),
         Password: this.password
       }

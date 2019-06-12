@@ -4,6 +4,7 @@ import { SessionService } from '../services/authentication/session/session.servi
 import { ProfileService } from '../services/authentication/profile/profile.service';
 import { Constants } from '../utils/constants';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 import { LoginStateService } from '../shared-services/login-state/login-state.service';
 
 @NgModule({})
@@ -24,6 +25,7 @@ export class TopnavComponent implements OnInit {
                private _sessionService: SessionService,
                private _profileService: ProfileService,
                private _location: Location,
+               private router: Router,
                private loginStateService: LoginStateService ) {}
 
   ngOnInit() {
@@ -51,9 +53,25 @@ export class TopnavComponent implements OnInit {
       if (state) {
         this.isSignedIn = false
         this.userIcon = true
+        if(!this.name) {
+          this._profileService.cognitoUser.getUserAttributes(function(err, result){
+            if (err) {
+            //  reject(new Response( 1, err.message, err ))
+            }
+            localName = result[7].getValue()
+          })
+          this.name =  this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.name
+          this.loggedInAs = Constants.LOGGED_IN_AS;
+        }
       } else {
-        this.isSignedIn = true
-        this.userIcon = false
+        if(this.router.url == '/login') {
+          this.isSignedIn = false
+          this.userIcon = false
+        }
+        else {
+          this.isSignedIn = true
+          this.userIcon = false
+        }
       }
     })
   }

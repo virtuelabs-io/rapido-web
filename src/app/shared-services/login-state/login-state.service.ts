@@ -11,7 +11,7 @@ export class LoginStateService {
 
   constructor() {}
 
-  changeState(state: Boolean){
+  changeState(state: Boolean) {
     this.userSignedIn.next(state)
   }
 
