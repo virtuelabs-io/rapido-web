@@ -22,16 +22,15 @@ export class TopnavComponent implements OnInit {
   myControl = new FormControl();
 
   constructor(
-               private _sessionService: SessionService,
-               private _profileService: ProfileService,
-               private _location: Location,
-               private router: Router,
-               private loginStateService: LoginStateService ) {}
+    private _sessionService: SessionService,
+    private _profileService: ProfileService,
+    private _location: Location,
+    private router: Router,
+    private loginStateService: LoginStateService ) {}
 
   ngOnInit() {
     let localName = this.name
     const promise = this._sessionService.retrieveSessionIfExists()
-    // console.log(this._location.path())
     promise.then(value => {
       this.isSignedIn = false
       this.userIcon = true
