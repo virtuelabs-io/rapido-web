@@ -17,6 +17,7 @@ export class Constants {
   }
 
   public static DEFAULT_PHONE_CODE = "+44";
+  public static INDIA_PHONE_CODE = "+91";
   public static DEFAULT_CURRENCY_CODE = "gbp";
   public static PHONE_NUMBER = "phone_number";
   public static EMAIL = "email";
@@ -32,6 +33,7 @@ export class Constants {
   public static NO_MOBILE_NUMBER = "Please enter mobile number";
   public static NO_PASSWORD = "Please enter password";
   public static INVALID_MOBILE_NUMBER = "Not a valid number";
+  public static PASSWORD_CHANGED_SUCCESS_MESSAGE = "Password Changed successfully ";
 
   public static SUCCESSFUL_REGISTRATION = "User successfully registered!";
 

@@ -28,4 +28,9 @@ describe('ForgotPasswordComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Submit Button should be disabled when mobile number not entered', async(() => {
+    component.ngOnInit();
+    expect(component.registerFormGroup.valid).toBeFalsy();
+  }));
 });
