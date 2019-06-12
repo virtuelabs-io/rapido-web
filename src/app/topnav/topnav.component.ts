@@ -1,9 +1,7 @@
 import { Component, OnInit, NgModule } from '@angular/core';
-import {FormControl} from '@angular/forms';
 import { SessionService } from '../services/authentication/session/session.service';
 import { ProfileService } from '../services/authentication/profile/profile.service';
 import { Constants } from '../utils/constants';
-import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { LoginStateService } from '../shared-services/login-state/login-state.service';
 
@@ -14,77 +12,33 @@ import { LoginStateService } from '../shared-services/login-state/login-state.se
   styleUrls: ['./topnav.component.scss']
 })
 export class TopnavComponent implements OnInit {
-  isSignedIn: Boolean
-  userIcon: Boolean
-  name: String = ""
-  loggedInAs: String = ""
+  isSignedIn: Boolean = false
+  name: String
   bannerName: String = Constants.RAPIDO_BUILD
-  myControl = new FormControl();
 
-  constructor(
-    private _sessionService: SessionService,
-    private _profileService: ProfileService,
-    private _location: Location,
-    private router: Router,
-    private loginStateService: LoginStateService ) {}
+  constructor(private _sessionService: SessionService,
+              private _profileService: ProfileService,
+              public router: Router, // used in html
+              private _loginStateService: LoginStateService) {}
 
   ngOnInit() {
-    let localName = this.name
     const promise = this._sessionService.retrieveSessionIfExists()
-    promise.then(value => {
-      this.isSignedIn = false
-      this.userIcon = true
-      this._profileService.cognitoUser.getUserAttributes(function(err, result){
-        if (err) {
-        //  reject(new Response( 1, err.message, err ))
-        }
-        localName = result[7].getValue()
-      })
-      this.name =  this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.name
-
-      this.loggedInAs = Constants.LOGGED_IN_AS;
+    promise.then( _ => {
+      this._loginStateService.changeState(true);
     }).catch(error => {
-      this.isSignedIn = true
-      this.userIcon = false
+      // TODO: Handle error using toast message
+      this.isSignedIn = false
     })
-
-    this.loginStateService.currentState.subscribe(state => {
+    this._loginStateService.currentState.subscribe(state => {
+      this.isSignedIn = state
       if (state) {
-        this.isSignedIn = false
-        this.userIcon = true
-        if(!this.name) {
-          this._profileService.cognitoUser.getUserAttributes(function(err, result){
-            if (err) {
-            //  reject(new Response( 1, err.message, err ))
-            }
-            localName = result[7].getValue()
-          })
-          this.name =  this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.name
-          this.loggedInAs = Constants.LOGGED_IN_AS;
-        }
-      } else {
-        if(this.router.url == '/login') {
-          this.isSignedIn = false
-          this.userIcon = false
-        }
-        else {
-          this.isSignedIn = true
-          this.userIcon = false
-        }
+        this.name =  this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.name
       }
     })
   }
 
- signOut(){
+  signOut() {
     this._profileService.cognitoUser.signOut()
-    this.loginStateService.changeState(false)
-  }
-
-  searchProducts(e){
-    console.log(e)
-  }
-
-  liveSearch(e){
-    console.log(e)
+    this._loginStateService.changeState(false)
   }
 }
