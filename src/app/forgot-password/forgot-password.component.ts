@@ -18,7 +18,6 @@ import { Constants } from '../utils/constants';
 })
 export class ForgotPasswordComponent implements OnInit {
 
-  public ownerForm: FormGroup;
   private _forgotPasswordService: ForgotPasswordService
   _forgottenPassword: Boolean = false;
   errorResponse: string = ''
@@ -28,19 +27,8 @@ export class ForgotPasswordComponent implements OnInit {
   countryCode: string = Constants.INDIA_PHONE_CODE;
   //countryCode: string = Constants.DEFAULT_PHONE_CODE;
 
-  registerFormGroup: FormGroup
-  codeConfirmationFormGroup: FormGroup
-  newPasswordFormGroup: FormGroup
-
-  mobileNumber: FormControl
-  name: FormControl
-  email: FormControl
-  password: FormControl
-  confirmPassword: FormControl
-  termsAndConditions: FormControl
-  communications: FormControl
-  confirmationCode: FormControl
-
+  registerFormGroup: FormGroup //
+  mobileNumber: FormControl //
   constructor(private _formBuilder: FormBuilder,
     forgotPasswordService: ForgotPasswordService,
     ) { 
@@ -48,31 +36,17 @@ export class ForgotPasswordComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.mobileNumber = new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$') ]) 
-    this.confirmationCode = new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(6)])
-    this.password = new FormControl('', [Validators.required]);
-    this.confirmPassword = new FormControl('', [Validators.required]);
-
     this.registerFormGroup = new FormGroup({
       mobileNumber: new FormControl('', [ Validators.required, Validators.pattern('^[0-9]+$'), Validators.min(1000000000), Validators.max(9999999999) ])
     })
-    this.codeConfirmationFormGroup = this._formBuilder.group({
-      mobileNumber: this.mobileNumber,
-      confirmationCode: this.confirmationCode
-    })
-    this.newPasswordFormGroup = this._formBuilder.group({
-      password: this.password,
-      confirmPassword: this.confirmPassword
-    })
-    this.codeConfirmationFormGroup.get('mobileNumber').disable();
   }
 
   forgotPassword() {
     this.error = false
     this.success = false
-    this._forgotPasswordService.username = [ this.countryCode ,this.mobileNumber.value ].join("");
+    this._forgotPasswordService.username = [this.countryCode ,this.registerFormGroup.value.mobileNumber].join("");
     const promise = this._forgotPasswordService.forgotPassword()
-    promise.then(value => {
+    promise.then( _ => {
       this._forgottenPassword = true;
       this.success = true
       this.successResponse = Constants.PASSWORD_CHANGED_SUCCESS_MESSAGE// value.message
