@@ -73,14 +73,6 @@ describe('LogInComponent', () => {
     expect(component.progressSpinner).toBeFalsy();
   }));
 
-  /*it('should navigate to forgot password component', async(() => {
-    component.navigateToForgotPassword();
-    const router = TestBed.get(Router);
-    console.log(location.path());
-    console.log(router);
-    expect(location.path()).toBe("/");
-  })); */
-
   it('should contain 10 digits for mobile number', async(() => {
     component.mobileNumber = "7032908112";
     //component.login();

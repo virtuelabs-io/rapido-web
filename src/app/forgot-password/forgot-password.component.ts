@@ -54,7 +54,7 @@ export class ForgotPasswordComponent implements OnInit {
     this.confirmPassword = new FormControl('', [Validators.required]);
 
     this.registerFormGroup = new FormGroup({
-      mobileNumber: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.min(1000000000), Validators.max(9999999999) ])
+      mobileNumber: new FormControl('', [ Validators.required, Validators.pattern('^[0-9]+$'), Validators.min(1000000000), Validators.max(9999999999) ])
     })
     this.codeConfirmationFormGroup = this._formBuilder.group({
       mobileNumber: this.mobileNumber,

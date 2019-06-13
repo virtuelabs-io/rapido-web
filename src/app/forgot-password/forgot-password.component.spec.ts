@@ -33,4 +33,11 @@ describe('ForgotPasswordComponent', () => {
     component.ngOnInit();
     expect(component.registerFormGroup.valid).toBeFalsy();
   }));
+
+  it('Mobile number should contain only digits', async(() => {
+    component.mobileNumber.setValue("7032908112");
+    component.ngOnInit();
+    component.forgotPassword();
+    expect(component.registerFormGroup.valid).toBeTruthy();
+  }));
 });
