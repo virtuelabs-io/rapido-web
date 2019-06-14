@@ -32,19 +32,15 @@ describe('LogInComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Header title present', async(() => {
-    expect(component.headerText).toEqual('Log In to Rapidobuild.com');
-  }));
-
   it('should render title in h1 tag', async(() => {
     const fixture = TestBed.createComponent(LogInComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Log In to Rapidobuild.com');
+    expect(compiled.querySelector('h1').textContent).toContain('Log in to Rapidobuild.com');
   }));
 
   it('user logs in successfully', async(() => {
-    component.mobileNumber = '7032908112';
+    component.mobileNumber = '1234567890';
     component.password = 'Anirup@123';
     component.login();
     expect(component.progressSpinner).toBeTruthy();
@@ -66,7 +62,7 @@ describe('LogInComponent', () => {
   }));
 
   it('should throw error alert for missing password', async(() => {
-    component.mobileNumber = "7032908112";
+    component.mobileNumber = "1234567890";
     component.login();
     expect(component.alertMsg).toEqual("Please enter password");
     expect(component.alertBox).toBeTruthy();
@@ -74,7 +70,7 @@ describe('LogInComponent', () => {
   }));
 
   it('should contain 10 digits for mobile number', async(() => {
-    component.mobileNumber = "7032908112";
+    component.mobileNumber = "1234567890";
     //component.login();
     expect(component.mobileNumber.length).toEqual(10);
   }));

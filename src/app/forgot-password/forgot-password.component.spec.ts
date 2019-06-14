@@ -27,27 +27,31 @@ describe('ForgotPasswordComponent', () => {
     component.registerFormGroup = new FormGroup({
       mobileNumber: new FormControl('', [ Validators.required, Validators.pattern('^[0-9]+$'), Validators.min(1000000000), Validators.max(9999999999) ])
     })
-    fixture.detectChanges();
+    fixture.detectChanges()
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(component).toBeTruthy()
   });
 
   it('Submit Button should be disabled when mobile number not entered', async(() => {
     component.ngOnInit();
-    expect(component.registerFormGroup.valid).toBeFalsy();
+    expect(component.registerFormGroup.valid).toBeFalsy()
+    expect(component.registerFormGroup.controls['mobileNumber'].hasError('required')).toBeTruthy()
   }));
 
   it('Mobile number is mandatory', async(() => {
-    component.registerFormGroup.value.mobileNumber = "";
-    expect(component.registerFormGroup.controls['mobileNumber'].hasError('required')).toBeTruthy();
+    component.registerFormGroup.controls['mobileNumber'].setValue("1234567890")
+    expect(component.registerFormGroup.controls['mobileNumber'].hasError('required')).toBeFalsy()
   }));
 
-  it('Mobile number is entered', async(() => {
-    component.registerFormGroup.value.mobileNumber = "7032908112";
-    expect(component.registerFormGroup.valid).toBeTruthy();
-  //  console.log(component.registerFormGroup.controls['mobileNumber'].hasError('required'));
-  //  expect(component.registerFormGroup.controls['mobileNumber'].hasError('required')).toBeFalsy();
+  it('Mobile number should not contain characters', async(() => {
+    component.registerFormGroup.controls['mobileNumber'].setValue("asd")
+    expect(component.registerFormGroup.controls['mobileNumber'].hasError('pattern')).toBeTruthy()
+  }));
+
+  it('Mobile number should not contain 10 digits', async(() => {
+    component.registerFormGroup.controls['mobileNumber'].setValue("12345")
+    expect(component.registerFormGroup.controls['mobileNumber'].hasError('min')).toBeTruthy()
   }));
 });

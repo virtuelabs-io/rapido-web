@@ -11,7 +11,6 @@ import { LoginStateService } from '../shared-services/login-state/login-state.se
   styleUrls: ['./log-in.component.scss']
 })
 export class LogInComponent implements OnInit {
-  headerText: string = Constants.LOGIN_RAPIDOBUILD
   alertBox: boolean = false
   alertMsg: string = ""
   _signInResponse: Boolean = false;
@@ -48,7 +47,7 @@ export class LogInComponent implements OnInit {
     this.progressSpinner = true
     if(this.mobileNumber && this.password && this.mobileNumber.length === 10) {
       this._signInService.signInData = {
-      //  Username: "+917032908112",
+      //  Username: "+911234567890",
         Username: [ Constants.DEFAULT_PHONE_CODE,this.mobileNumber ].join(""),
         Password: this.password
       }
