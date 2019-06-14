@@ -17,18 +17,15 @@ import { Constants } from '../utils/constants';
   styleUrls: ['./forgot-password.component.scss']
 })
 export class ForgotPasswordComponent implements OnInit {
-
   private _forgotPasswordService: ForgotPasswordService
-  _forgottenPassword: Boolean = false;
   errorResponse: string = ''
   successResponse: string = ''
-  error: Boolean = false;
-  success: Boolean = false;
-  countryCode: string = Constants.INDIA_PHONE_CODE;
-  //countryCode: string = Constants.DEFAULT_PHONE_CODE;
-
-  registerFormGroup: FormGroup //
-  mobileNumber: FormControl //
+  error: Boolean = false
+  success: Boolean = false
+  countryCode: string = Constants.INDIA_PHONE_CODE
+  //countryCode: string = Constants.DEFAULT_PHONE_CODE
+  registerFormGroup: FormGroup 
+  mobileNumber: FormControl
   constructor(private _formBuilder: FormBuilder,
     forgotPasswordService: ForgotPasswordService,
     ) { 
@@ -47,11 +44,9 @@ export class ForgotPasswordComponent implements OnInit {
     this._forgotPasswordService.username = [this.countryCode ,this.registerFormGroup.value.mobileNumber].join("");
     const promise = this._forgotPasswordService.forgotPassword()
     promise.then( _ => {
-      this._forgottenPassword = true;
       this.success = true
-      this.successResponse = Constants.PASSWORD_CHANGED_SUCCESS_MESSAGE// value.message
+      this.successResponse = Constants.PASSWORD_CHANGED_SUCCESS_MESSAGE // value.message
     }).catch(error => {
-      this._forgottenPassword = false;
       this.error = true
       this.errorResponse = error._message 
     })

@@ -34,16 +34,20 @@ describe('ForgotPasswordComponent', () => {
     expect(component).toBeTruthy();
   });
 
-
   it('Submit Button should be disabled when mobile number not entered', async(() => {
     component.ngOnInit();
     expect(component.registerFormGroup.valid).toBeFalsy();
   }));
 
-  it('Mobile number should contain only digits', async(() => {
-    component.mobileNumber.setValue("7032908112");
-    component.ngOnInit();
-    component.forgotPassword();
+  it('Mobile number is mandatory', async(() => {
+    component.registerFormGroup.value.mobileNumber = "";
+    expect(component.registerFormGroup.controls['mobileNumber'].hasError('required')).toBeTruthy();
+  }));
+
+  it('Mobile number is entered', async(() => {
+    component.registerFormGroup.value.mobileNumber = "7032908112";
     expect(component.registerFormGroup.valid).toBeTruthy();
+  //  console.log(component.registerFormGroup.controls['mobileNumber'].hasError('required'));
+  //  expect(component.registerFormGroup.controls['mobileNumber'].hasError('required')).toBeFalsy();
   }));
 });
