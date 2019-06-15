@@ -8,8 +8,8 @@
            </a>
         </div>
         <div class="block-two">
-           <form (submit)="searchProducts($event)">
-              <input type="text" (keyup)="liveSearch($event)" placeholder="Search for materials..." name="search"  >
+           <form >
+              <input type="text" placeholder="Search for materials..." name="search"  >
               <button type="submit" style="display:none">hidden submit</button>
            </form>
         </div>
@@ -37,10 +37,10 @@
               </div>
 
            </mat-menu>
-           <div *ngIf="!isSignedIn && router.url != '/login'" aria-label="Menu" class="rapido-sign-in">
+           <div *ngIf="!isSignedIn && router.url != '/login'" aria-label="Menu" class="rapido-sign-in mr-3">
               <a routerLink="/login" class="tag">Log in</a>
            </div>
-           <div class="rapido-icon-spacer">
+           <div class="rapido-icon-spacer  ml-4">
               <a class="rapido-icon" routerLink="">
                  <svg>
                     <use xlink:href="#shopping-cart" />

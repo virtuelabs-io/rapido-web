@@ -47,12 +47,11 @@ export class LogInComponent implements OnInit {
     this.progressSpinner = true
     if(this.mobileNumber && this.password && this.mobileNumber.length === 10) {
       this._signInService.signInData = {
-      //  Username: "+911234567890",
         Username: [ Constants.DEFAULT_PHONE_CODE,this.mobileNumber ].join(""),
         Password: this.password
       }
-      const promise = this._signInService.login()
-      promise.then(value => {
+      this._signInService.login().
+      then(value => {
         this.progressSpinner = false
         console.log(this._profileService.cognitoUser);
         this._signInResponse = true;
