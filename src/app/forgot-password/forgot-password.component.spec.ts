@@ -50,7 +50,7 @@ describe('ForgotPasswordComponent', () => {
     expect(component.registerFormGroup.controls['mobileNumber'].hasError('pattern')).toBeTruthy()
   }));
 
-  it('Mobile number should not contain 10 digits', async(() => {
+  it('Mobile number should contain 10 digits', async(() => {
     component.registerFormGroup.controls['mobileNumber'].setValue("12345")
     expect(component.registerFormGroup.controls['mobileNumber'].hasError('min')).toBeTruthy()
   }));

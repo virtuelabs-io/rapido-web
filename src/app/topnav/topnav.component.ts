@@ -4,6 +4,7 @@ import { ProfileService } from '../services/authentication/profile/profile.servi
 import { Constants } from '../utils/constants';
 import { Router } from '@angular/router';
 import { LoginStateService } from '../shared-services/login-state/login-state.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @NgModule({})
 @Component({
@@ -15,10 +16,12 @@ export class TopnavComponent implements OnInit {
   isSignedIn: Boolean = false
   name: String
   bannerName: String = Constants.RAPIDO_BUILD
+  durationInSeconds = 5;
 
   constructor(private _sessionService: SessionService,
               private _profileService: ProfileService,
               public router: Router, // used in html
+              private _snackBar: MatSnackBar,
               private _loginStateService: LoginStateService) {}
 
   ngOnInit() {
@@ -26,7 +29,7 @@ export class TopnavComponent implements OnInit {
     promise.then( _ => {
       this._loginStateService.changeState(true);
     }).catch(error => {
-      // TODO: Handle error using toast message
+      this.openSnackBar(error.message);
       this.isSignedIn = false
     })
     this._loginStateService.currentState.subscribe(state => {
@@ -40,5 +43,11 @@ export class TopnavComponent implements OnInit {
   signOut() {
     this._profileService.cognitoUser.signOut()
     this._loginStateService.changeState(false)
+  }
+
+  openSnackBar(message) {
+    message && this._snackBar.open(message,  undefined , {
+      duration: 4000,
+   });
   }
 }
