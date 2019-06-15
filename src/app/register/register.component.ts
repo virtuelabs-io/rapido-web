@@ -21,13 +21,9 @@ import { ResendConfirmationCodeService } from '../services/authentication/resend
 export class RegisterComponent implements OnInit {
 
   _profileService: ProfileService;
-  _confirmationCode: string ="";
   private _confirmRegistrationService: ConfirmRegistrationService
   private _resendConfirmationCodeService: ResendConfirmationCodeService
   _confirmRegistrationResponse: Boolean = false;
-  wrongCode: Boolean = false
-  wrongCodeMsg: string = ""
-  otpSuccess: Boolean = false
   _resentConfirmationCodeResponse: Boolean = false;
 
   public ownerForm: FormGroup;
@@ -40,28 +36,22 @@ export class RegisterComponent implements OnInit {
   confirmPassword: FormControl
   termsAndConditions: FormControl
   communications: FormControl
-  confirmationCode: FormControl
 
-  hidePwd = true
-  hideConfirmPwd = true
   _mobilePrefix = "+91"
-  _stepperIndex = 0 
+  _stepperIndex = 1 
   _regFailed = ""
+  confirmationCode: string ="";
 
-  _registration: Registration = new Registration(
-    // "7032908112",
-    // "reddy.horcrux@gmail.com",
-    // "Sangram Reddy",
-    // "Anirup123",
-    // "true",
-    // "true",
-    // "true",
-    // "true",
-    // "true"
-  );
-  
+  _registration: Registration = new Registration();
   _userRegisteredResponse: Boolean = false;
-  _progressSpinner: Boolean = false
+  progressSpinner: Boolean = false
+
+  // UI toggle variables
+  hidePwd = true  // 
+  hideConfirmPwd = true
+  wrongCodeMsg: string = ""
+  otpSuccess: Boolean = false
+
 
   private _signUpService: SignUpService
 
@@ -91,14 +81,6 @@ export class RegisterComponent implements OnInit {
       termsAndConditions: new FormControl(false, Validators.pattern('true')),
       communications: new FormControl(false)
     })
-
-    // stepper 2# -> codeConfirmationFormGroup  
-    /* this.codeConfirmationFormGroup = this._formBuilder.group({
-      mobileNumberConfirm:  new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'),Validators.min(1000000000), Validators.max(9999999999)]),
-      confirmationCode: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(6)])
-    })
-    this.codeConfirmationFormGroup.get('mobileNumberConfirm').disable(); */
-
   }
 
   validateAreEqual(fieldControl: FormControl) {
@@ -110,7 +92,8 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser(formData){
-    this._progressSpinner = true
+    this.resetResponseMessages()
+    this.progressSpinner = true
     this._registration = new Registration(
       '+91'+formData.mobileNumber,
       formData.email,
@@ -132,37 +115,19 @@ export class RegisterComponent implements OnInit {
     this._signUpService.signUp().
     then(value => {
       this._userRegisteredResponse = true
-      this._progressSpinner = false
+      this.progressSpinner = false
       this._stepperIndex = 1
       this.otpSuccess = true
-      console.log(value) // response from successfull resolve
-      console.log(this._profileService.cognitoUser); // updated user profile
     }).catch(error => {
       this._userRegisteredResponse = false
-      this._progressSpinner = false
+      this.progressSpinner = false
       this._stepperIndex = 0
       this.otpSuccess= false
       this._regFailed = error.data.message
       console.log(error) // response from a graceful reject
     })
 
-    // const promise = this._signUpService.signUp()
-    // promise.then(value => {
-    //   this._userRegisteredResponse = true
-    //   this._progressSpinner = false
-    //   this._stepperIndex = 1
-    //   this.otpSuccess = true
-    //   console.log(value) // response from successfull resolve
-    //   console.log(this._profileService.cognitoUser); // updated user profile
-    // }).catch(error => {
-    //   this._userRegisteredResponse = false
-    //   this._progressSpinner = false
-    //   this._stepperIndex = 0
-    //   this.otpSuccess= false
-    //   this._regFailed = error.data.message
-    //   console.log(error) // response from a graceful reject
-    // })
-  }
+   }
 
   public hasError = (controlName: string, errorName: string) =>{
     return this.registerFormGroup.controls[controlName].hasError(errorName)
@@ -173,36 +138,43 @@ export class RegisterComponent implements OnInit {
   }
  
   confirmRegistration(){
-    this._progressSpinner = true
+    this.resetResponseMessages()
+    this.progressSpinner = true
     this._confirmRegistrationService.username = this._registration.phone_number
-    this._confirmRegistrationService.confirmRegistration(this._confirmationCode).
+    this._confirmRegistrationService.confirmRegistration(this.confirmationCode).
     then( _ => {
-      this.wrongCode = false
       this._stepperIndex = 2
-      this._progressSpinner = false
+      this.progressSpinner = false
       this._confirmRegistrationResponse = true
     }).catch(error => {
-      this.wrongCode = true
       this._stepperIndex = 1
       this.wrongCodeMsg = error._data.message || error.message
-      this._progressSpinner = false
+      this.progressSpinner = false
       this._confirmRegistrationResponse = false
     })
   }
 
   resendConfirmationCode(){
-    this._progressSpinner = true
+    this.resetResponseMessages()
+    this.progressSpinner = true
     this._resendConfirmationCodeService.username = this._registration.phone_number
     const promise = this._resendConfirmationCodeService.resendConfirmationCode()
     promise.then(value => {
-      this._progressSpinner = false
+      this.progressSpinner = false
       this._resentConfirmationCodeResponse = true;
-      console.log(value) // response from successfull resolve
     }).catch(error => {
-      this._progressSpinner = false
+      this.progressSpinner = false
       this._resentConfirmationCodeResponse = false;
-      console.log(error) // response from a graceful reject
+      this.wrongCodeMsg = error._data.message || error.message
     })
+  }
+
+  resetResponseMessages(){
+    this._confirmRegistrationResponse = null
+    this._resentConfirmationCodeResponse = null
+    this.wrongCodeMsg = null
+    this._regFailed = null
+    this.otpSuccess = null
   }
 
 }
