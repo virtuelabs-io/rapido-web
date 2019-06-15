@@ -15,7 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { Constants } from './utils/constants';
-import { MatMenuModule , MatToolbarModule, MatFormFieldModule, MatIconModule, MatCheckboxModule, MatCardModule, MatExpansionModule } from '@angular/material';
+import { MatMenuModule , MatToolbarModule, MatFormFieldModule, MatIconModule, MatCheckboxModule, MatCardModule, MatExpansionModule, MatSnackBarModule } from '@angular/material';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -36,7 +36,8 @@ describe('AppComponent', () => {
         MatIconModule,
         MatCheckboxModule,
         MatCardModule,
-        MatExpansionModule
+        MatExpansionModule,
+        MatSnackBarModule
       ],
       declarations: [
         AppComponent,

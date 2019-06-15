@@ -1,8 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatMenuModule } from '@angular/material/menu';
+import { MatMenuModule, MatToolbarModule, MatSnackBarModule } from '@angular/material';
 import { TopnavComponent } from './topnav.component';
 import { ButtonComponent } from '../common/button/button.component';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { DebugElement, Input } from '@angular/core';
@@ -16,7 +15,7 @@ describe('TopnavComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ MatMenuModule, MatToolbarModule, FormsModule, RouterModule.forRoot([]) ],
+      imports: [ MatMenuModule, MatToolbarModule, FormsModule, MatSnackBarModule, RouterModule.forRoot([]) ],
       declarations: [ TopnavComponent, ButtonComponent ]
     })
     .compileComponents();
