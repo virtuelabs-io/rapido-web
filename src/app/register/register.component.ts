@@ -79,24 +79,34 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
-     this.mobileNumber = new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'),Validators.min(1000000000), Validators.max(9999999999)])
-     this.confirmationCode = new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(6)])
-
     this.registerFormGroup = new FormGroup({
       mobileNumber: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'),Validators.min(1000000000), Validators.max(9999999999) ]), // Validators.pattern('^[0-9]+$'),Validators.min(1000000000), Validators.max(9999999999)
-      name: new FormControl('', [Validators.required, Validators.maxLength(20), Validators.minLength(3), Validators.pattern('^[A-Za-z]+$')]),
+      name: new FormControl('', [Validators.required, Validators.maxLength(20), Validators.minLength(3), Validators.pattern('[a-zA-Z][a-zA-Z ]+')]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.pattern( '^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!^\d\w].{8,}$')]),
-      confirmPassword: new FormControl('', [Validators.required]),
-      termsAndConditions: new FormControl('', [Validators.required]),
-      communications: new FormControl('', [Validators.required])
+      password: new FormControl('', [Validators.required]), // Validators.pattern('^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!^\d\w].{8,25}$')
+      confirmPassword: new FormControl(
+        '', [Validators.compose(
+            [Validators.required, this.validateAreEqual.bind(this)]
+        )]),
+      termsAndConditions: new FormControl(false, Validators.pattern('true')),
+      communications: new FormControl(false)
     })
-    this.codeConfirmationFormGroup = this._formBuilder.group({
-      mobileNumber: [this.mobileNumber],
-      confirmationCode: this.confirmationCode
-    })
-    this.codeConfirmationFormGroup.get('mobileNumber').disable();
 
+    // stepper 2# -> codeConfirmationFormGroup  
+    this.codeConfirmationFormGroup = this._formBuilder.group({
+      mobileNumberConfirm:  new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'),Validators.min(1000000000), Validators.max(9999999999)]),
+      confirmationCode: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(6)])
+    })
+    this.codeConfirmationFormGroup.get('mobileNumberConfirm').disable();
+
+  }
+
+  validateAreEqual(fieldControl: FormControl) {
+    let confirmValue = fieldControl && fieldControl.value
+    let pwdValue = this.registerFormGroup && this.registerFormGroup.controls && this.registerFormGroup.controls['password'].value
+    return  confirmValue === pwdValue ? null : {
+        NotEqual: true
+    };
   }
 
   registerUser(evt){
@@ -109,8 +119,8 @@ export class RegisterComponent implements OnInit {
       attributeList: this._registration.attributeList
     }
 
-    const promise = this._signUpService.signUp()
-    promise.then(value => {
+    this._signUpService.signUp().
+    then(value => {
       this._userRegisteredResponse = true
       this._progressSpinner = false
       this._stepperIndex = 1
@@ -125,6 +135,23 @@ export class RegisterComponent implements OnInit {
       this._regFailed = error.data.message
       console.log(error) // response from a graceful reject
     })
+
+    // const promise = this._signUpService.signUp()
+    // promise.then(value => {
+    //   this._userRegisteredResponse = true
+    //   this._progressSpinner = false
+    //   this._stepperIndex = 1
+    //   this.otpSuccess = true
+    //   console.log(value) // response from successfull resolve
+    //   console.log(this._profileService.cognitoUser); // updated user profile
+    // }).catch(error => {
+    //   this._userRegisteredResponse = false
+    //   this._progressSpinner = false
+    //   this._stepperIndex = 0
+    //   this.otpSuccess= false
+    //   this._regFailed = error.data.message
+    //   console.log(error) // response from a graceful reject
+    // })
   }
 
   public hasError = (controlName: string, errorName: string) =>{
