@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
   hidePwd = true
   hideConfirmPwd = true
   _mobilePrefix = "+91"
-  _stepperIndex = 0 
+  _stepperIndex = 1 
   _regFailed = ""
 
   _registration: Registration = new Registration(
@@ -109,8 +109,18 @@ export class RegisterComponent implements OnInit {
     };
   }
 
-  registerUser(evt){
+  registerUser(formData){
     this._progressSpinner = true
+    this._registration = new Registration(
+      '+91'+formData.mobileNumber,
+      formData.email,
+      formData.name,
+      formData.password,
+      formData.termsAndConditions.toString(),
+      formData.communications.toString(),
+      "true",
+      "true"
+    );
     this._registration._attributeList.length = 0
     this._registration.createAttributeList()
     this._signUpService.signUpData = {
@@ -155,7 +165,11 @@ export class RegisterComponent implements OnInit {
   }
 
   public hasError = (controlName: string, errorName: string) =>{
-    return this.registerFormGroup.controls[controlName].hasError(errorName);
+    return this.registerFormGroup.controls[controlName].hasError(errorName)
+  }
+  
+  public passwordMismatch = (password: string, confirmPassword: string) =>{
+    return password !== confirmPassword
   }
  
   confirmRegistration(){
