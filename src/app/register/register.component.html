@@ -95,12 +95,12 @@
       
       <!-- Mobile Number read only -->
       <mat-form-field class="col-lg-4" >
-        <input matInput placeholder="Mobile Number" [(ngModel)]="_registration.phone_number" name="first">
+        <input matInput placeholder="Mobile Number" disabled [(ngModel)]="_registration.phone_number" name="mobile-number">
       </mat-form-field>
 
       <!-- Confirmation code input -->
         <div class="ml-3 opacity5">Enter OTP</div>
-          <input class="partitioned ml-3" matInput maxlength="6" placeholder="" [(ngModel)]="_confirmationCode" name="first">
+          <input class="partitioned ml-3" matInput maxlength="6" placeholder="" [(ngModel)]="_confirmationCode" name="otp-code">
         <div class="mb-5"></div>
       
         <!-- <div class="divOuter">
@@ -111,14 +111,15 @@
       
         <mat-card-actions>
         
+          <!-- Action buttons -->
         <div class="flex">
           <button mat-flat-button class="width8" color="primary" (click)="resendConfirmationCode()">
-              <span *ngIf="_progressSpinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              <span *ngIf="_progressSpinner && !_confirmationCode" class="spinner-border spinner-border-sm" aria-hidden="true"></span>
             Resend Code
           </button>
             <div class="mx-2"></div>
-          <button mat-flat-button class="width8" color="primary" type="submit" (click)="confirmRegistration()" [disabled]="!codeConfirmationFormGroup.valid">
-            <span *ngIf="_progressSpinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          <button mat-flat-button class="width8" color="primary" (click)="confirmRegistration()" [disabled]="!_confirmationCode">
+            <span *ngIf="_progressSpinner" class="spinner-border spinner-border-sm" aria-hidden="true"></span>
             Submit
           </button>
         </div>

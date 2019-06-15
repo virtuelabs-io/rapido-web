@@ -21,7 +21,7 @@ import { ResendConfirmationCodeService } from '../services/authentication/resend
 export class RegisterComponent implements OnInit {
 
   _profileService: ProfileService;
-  _confirmationCode: string;
+  _confirmationCode: string ="";
   private _confirmRegistrationService: ConfirmRegistrationService
   private _resendConfirmationCodeService: ResendConfirmationCodeService
   _confirmRegistrationResponse: Boolean = false;
@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
   hidePwd = true
   hideConfirmPwd = true
   _mobilePrefix = "+91"
-  _stepperIndex = 1 
+  _stepperIndex = 0 
   _regFailed = ""
 
   _registration: Registration = new Registration(
@@ -93,11 +93,11 @@ export class RegisterComponent implements OnInit {
     })
 
     // stepper 2# -> codeConfirmationFormGroup  
-    this.codeConfirmationFormGroup = this._formBuilder.group({
+    /* this.codeConfirmationFormGroup = this._formBuilder.group({
       mobileNumberConfirm:  new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'),Validators.min(1000000000), Validators.max(9999999999)]),
       confirmationCode: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(6)])
     })
-    this.codeConfirmationFormGroup.get('mobileNumberConfirm').disable();
+    this.codeConfirmationFormGroup.get('mobileNumberConfirm').disable(); */
 
   }
 
@@ -175,20 +175,18 @@ export class RegisterComponent implements OnInit {
   confirmRegistration(){
     this._progressSpinner = true
     this._confirmRegistrationService.username = this._registration.phone_number
-    const promise = this._confirmRegistrationService.confirmRegistration(this._confirmationCode)
-    promise.then(value => {
+    this._confirmRegistrationService.confirmRegistration(this._confirmationCode).
+    then( _ => {
       this.wrongCode = false
       this._stepperIndex = 2
       this._progressSpinner = false
-      this._confirmRegistrationResponse = true;
-      console.log(value) // response from successfull resolve
+      this._confirmRegistrationResponse = true
     }).catch(error => {
       this.wrongCode = true
       this._stepperIndex = 1
-      this.wrongCodeMsg = error.message
+      this.wrongCodeMsg = error._data.message || error.message
       this._progressSpinner = false
-      this._confirmRegistrationResponse = false;
-      console.log(error) // response from a graceful reject
+      this._confirmRegistrationResponse = false
     })
   }
 
