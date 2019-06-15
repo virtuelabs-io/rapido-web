@@ -13,57 +13,46 @@ import { ResendConfirmationCodeService } from '../services/authentication/resend
     FormGroup
   ]
 })
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
+
 export class RegisterComponent implements OnInit {
 
-  _profileService: ProfileService;
+  // Service classes
   private _confirmRegistrationService: ConfirmRegistrationService
   private _resendConfirmationCodeService: ResendConfirmationCodeService
+  private _signUpService: SignUpService
+  _registration: Registration = new Registration();
+
+  // response data/flag to show/handle in UI
   _confirmRegistrationResponse: Boolean = false;
   _resentConfirmationCodeResponse: Boolean = false;
-
-  public ownerForm: FormGroup;
-  registerFormGroup: FormGroup
-  codeConfirmationFormGroup: FormGroup
-  mobileNumber: FormControl
-  name: FormControl
-  email: FormControl
-  password: FormControl
-  confirmPassword: FormControl
-  termsAndConditions: FormControl
-  communications: FormControl
-
-  _mobilePrefix = "+91"
-  _stepperIndex = 1 
-  _regFailed = ""
-  confirmationCode: string ="";
-
-  _registration: Registration = new Registration();
   _userRegisteredResponse: Boolean = false;
-  progressSpinner: Boolean = false
+
+  registerFormGroup: FormGroup // UI reactive Form Group variable 
+  mobilePrefix = "+91"
+  stepperIndex = 0   // Set default active stepper
+  regFailed = ""
+  confirmationCode: string = "";
 
   // UI toggle variables
-  hidePwd = true  // 
-  hideConfirmPwd = true
+  hidePwd = true  // to show password
+  hideConfirmPwd = true // to hide password
   wrongCodeMsg: string = ""
   otpSuccess: Boolean = false
-
-
-  private _signUpService: SignUpService
+  progressSpinner: Boolean = false
 
   constructor(
     private _formBuilder: FormBuilder,
     signUpService: SignUpService,
-    profileService: ProfileService,
     confirmRegistrationService: ConfirmRegistrationService,
     resendConfirmationCodeService: ResendConfirmationCodeService
     ) { 
     this._signUpService = signUpService
-    this._profileService = profileService
     this._confirmRegistrationService = confirmRegistrationService
     this._resendConfirmationCodeService = resendConfirmationCodeService
   }
@@ -116,14 +105,14 @@ export class RegisterComponent implements OnInit {
     then(value => {
       this._userRegisteredResponse = true
       this.progressSpinner = false
-      this._stepperIndex = 1
+      this.stepperIndex = 1
       this.otpSuccess = true
     }).catch(error => {
       this._userRegisteredResponse = false
       this.progressSpinner = false
-      this._stepperIndex = 0
+      this.stepperIndex = 0
       this.otpSuccess= false
-      this._regFailed = error.data.message
+      this.regFailed = error.data.message
       console.log(error) // response from a graceful reject
     })
 
@@ -143,11 +132,11 @@ export class RegisterComponent implements OnInit {
     this._confirmRegistrationService.username = this._registration.phone_number
     this._confirmRegistrationService.confirmRegistration(this.confirmationCode).
     then( _ => {
-      this._stepperIndex = 2
+      this.stepperIndex = 2
       this.progressSpinner = false
       this._confirmRegistrationResponse = true
     }).catch(error => {
-      this._stepperIndex = 1
+      this.stepperIndex = 1
       this.wrongCodeMsg = error._data.message || error.message
       this.progressSpinner = false
       this._confirmRegistrationResponse = false
@@ -173,7 +162,7 @@ export class RegisterComponent implements OnInit {
     this._confirmRegistrationResponse = null
     this._resentConfirmationCodeResponse = null
     this.wrongCodeMsg = null
-    this._regFailed = null
+    this.regFailed = null
     this.otpSuccess = null
   }
 
