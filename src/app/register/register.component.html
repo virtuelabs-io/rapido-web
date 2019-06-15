@@ -47,7 +47,7 @@
             <input matInput placeholder="Enter your password" [type]="hidePwd ? 'password' : 'text'" formControlName="password">
             <mat-hint align="end">Minimum 8 characters at least 1 Alphabet and 1 Number with Optional Special Chars </mat-hint>           
             <mat-error *ngIf="hasError('password', 'required')">Password is required</mat-error>
-            <!-- <mat-error *ngIf="hasError('name', 'pattern')">Password doesn't match Minimum 8 characters at least 1 Alphabet and 1 Number with Optional Special Chars </mat-error> -->
+            <mat-error *ngIf="hasError('password', 'pattern')">Password doesn't match the criteria </mat-error>
             <mat-icon matSuffix (click)="hidePwd = !hidePwd">{{hidePwd ? 'visibility_off' : 'visibility'}}</mat-icon>
         </mat-form-field>
         
@@ -76,9 +76,9 @@
           </mat-card-actions>
          
           <!-- Backend service error message -->
-          <div *ngIf='regFailed' class="alert alert-danger col-lg-4" role="alert">
+          <div *ngIf='regFailedResponse' class="alert alert-danger col-lg-4" role="alert">
             <h4 class="alert-heading">Error!</h4>
-            <p>{{ regFailed}}</p>
+            <p>{{ regFailedResponse}}</p>
           </div>
       </form>
       <!-- stepper 1: sign up/ register ends -->
@@ -138,7 +138,7 @@
   </mat-step>
   <mat-step>
     <ng-template matStepLabel><h4>Done</h4></ng-template>
-    <div *ngIf="_confirmRegistrationResponse" class="alert alert-success col-lg-4" role="alert">
+    <div *ngIf="registrationConfirmed" class="alert alert-success col-lg-4" role="alert">
       <h4 class="alert-heading">Success!</h4>
       <p>Successfully confirmed registration!</p>
     </div>
