@@ -22,8 +22,8 @@ export class ForgotPasswordComponent implements OnInit {
   successResponse: string = ''
   error: Boolean = false
   success: Boolean = false
-  countryCode: string = Constants.INDIA_PHONE_CODE
-  //countryCode: string = Constants.DEFAULT_PHONE_CODE
+  //countryCode: string = Constants.INDIA_PHONE_CODE
+  countryCode: string = Constants.DEFAULT_PHONE_CODE
   registerFormGroup: FormGroup 
   mobileNumber: FormControl
   constructor(private _formBuilder: FormBuilder,
