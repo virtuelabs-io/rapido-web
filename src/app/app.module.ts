@@ -10,11 +10,12 @@ import { ButtonComponent } from './common/button/button.component';
 import { IconComponent } from './common/icons/icons.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { RoutingComponents } from './app-routing.module';
-import { MatStepperModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { Constants } from './utils/constants';
+import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, MatSnackBarModule, MatExpansionModule, MatSelectModule } from '@angular/material';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { Constants } from './utils/constants';
     IconComponent,
     LogInComponent,
     RoutingComponents,
-    CheckoutComponent
+    CheckoutComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,20 @@ import { Constants } from './utils/constants';
     MatStepperModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxStripeModule.forRoot(Constants.environment.stripePublicKey)
+    NgxStripeModule.forRoot(Constants.environment.stripePublicKey),
+    HttpClientModule,
+    MatMenuModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatButtonModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatListModule,
+    MatSnackBarModule,
+    MatExpansionModule,
+    MatMenuModule,
+    MatSelectModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [ AppComponent ],
