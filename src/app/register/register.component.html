@@ -86,7 +86,7 @@
   </mat-step>
 
   <!-- stepper 2: Confirm OTP  -->
-  <mat-step [stepControl]="codeConfirmationFormGroup">
+  <mat-step [stepControl]="registerFormGroup">
       <div *ngIf='otpSuccess' class="alert alert-success col-lg-4" role="alert">
           <h4 class="alert-heading">Success!</h4>
           <p>An OTP has been sent to the registered mobile number</p>
