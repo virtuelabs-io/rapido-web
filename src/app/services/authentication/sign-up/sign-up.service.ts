@@ -28,10 +28,12 @@ export class SignUpService extends AuthenticationService {
       this._cognitoUserPool.signUp( feed._signUpData.phone_number, feed._signUpData.password, feed._signUpData.attributeList, null, function(err, result){
           if(err){
             reject(new Response( 1, err.message, err ))
+          }else{
+            feed._userProfile.cognitoUser = result.user
+            feed._username = result.user.getUsername()
+            resolve( new Response( 0, Constants.SUCCESSFUL_REGISTRATION, result ))
           }
-          feed._userProfile.cognitoUser = result.user
-          feed._username = result.user.getUsername()
-          resolve( new Response( 0, Constants.SUCCESSFUL_REGISTRATION, result ))
+          
         })
     })
   }

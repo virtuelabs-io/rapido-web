@@ -1,13 +1,65 @@
 .authmock-body {
-    margin-top: 90px;
-    h5 {
-      color: green;
-    }
+  margin-top: 90px;
+  h5 {
+    color: green;
   }
-.cb {
-  width: 50px;
 }
-.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
-  background-color: black !important;
-  color: white;
-} 
+.cb {
+width: 50px;
+}
+.form-container {
+display: flex;
+flex-direction: column;
+// width: 30%;
+}
+.form-container > * {
+width: 100%;
+}
+.nav-bar-spacing {
+padding-top: 30px;
+}
+.imageWidth {
+width: 80px !important;
+}
+.button-spacing {
+padding-bottom: 20px;
+}
+
+.flex{
+  display: flex;
+}
+
+.width8{
+  width: 110px;
+}
+
+/* input class */
+.partitioned {
+    padding-left: 15px;
+    letter-spacing: 40px;
+    border: 0;
+    background-image: linear-gradient(to left, black 70%, rgba(255, 255, 255, 0) 0%);   
+    background-position: bottom;   
+    background-size: 50px 1px;   
+    background-repeat: repeat-x;   
+    background-position-x: 35px;   
+    width: 300px !important;
+}
+
+.partitioned:focus{
+  outline: none;
+}
+
+.opacity5{
+  opacity: 0.5;
+}
+
+/* .divInner{
+  left: 0;
+  position: sticky;
+}
+
+.divOuter{
+  width: 190px; 
+  overflow: hidden;
+} */
