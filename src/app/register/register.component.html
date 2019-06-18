@@ -5,7 +5,7 @@
     <!-- stepper 1: sign up/ register starts -->
       <ng-template matStepLabel><h4>Sign Up/ Register</h4></ng-template>
       <form [formGroup]="registerFormGroup" 
-              class="example-container" 
+              class="form-container" 
               autocomplete="off"
               novalidate 
               (ngSubmit)="registerUser(registerFormGroup.value)" >
@@ -92,7 +92,7 @@
           <p>An OTP has been sent to the registered mobile number</p>
         </div>
     <ng-template matStepLabel><h4>Mobile Number Verification</h4></ng-template>
-    <form class="example-container" >
+    <form class="form-container" >
       
       <!-- Mobile Number read only -->
       <mat-form-field class="col-lg-4" >
