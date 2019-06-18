@@ -12,7 +12,7 @@
             
         <!--Mobile Number-->
         <mat-form-field class="col-lg-4">
-            <span matPrefix>{{mobilePrefix}} &nbsp;</span>
+            <span matPrefix>{{countryCode}} &nbsp;</span>
             <input matInput maxlength="15" placeholder="Enter mobile number" formControlName="mobileNumber" >
             <mat-hint align="end">Only numbers</mat-hint>
             <mat-error *ngIf="hasError('mobileNumber', 'required')">Mobile number is required</mat-error>
@@ -24,9 +24,9 @@
         <!--Name-->
         <mat-form-field class="col-lg-4">
             <input matInput type="text" placeholder="Enter name" formControlName="name" >
-            <mat-hint align="end">Not more than 20 characters long.</mat-hint>
+            <mat-hint align="end">Not more than 60 characters long.</mat-hint>
             <mat-error *ngIf="hasError('name', 'required')">Name is required</mat-error>
-            <mat-error *ngIf="hasError('name', 'maxlength')">You have entered more than 20 characters</mat-error>
+            <mat-error *ngIf="hasError('name', 'maxlength')">You have entered more than 60 characters</mat-error>
             <mat-error *ngIf="hasError('name', 'minlength')">Name should contain minimum three characters</mat-error>
             <mat-error *ngIf="hasError('name', 'pattern')">Name should contain only alphabets</mat-error>
         </mat-form-field>

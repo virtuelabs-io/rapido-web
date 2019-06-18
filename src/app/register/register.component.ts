@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { SignUpService } from '../services/authentication/sign-up/sign-up.service';
 import { ConfirmRegistrationService } from '../services/authentication/confirm-registration/confirm-registration.service';
 import { ResendConfirmationCodeService } from '../services/authentication/resend-confirmation-code/resend-confirmation-code.service';
+import { Constants } from '../utils/constants';
 
 @NgModule({
 	imports: [
@@ -32,7 +33,7 @@ export class RegisterComponent implements OnInit {
 	_resentConfirmationCodeResponse: Boolean = false;
 
 	registerFormGroup: FormGroup // UI reactive Form Group variable 
-	mobilePrefix = "+91"
+	countryCode: string = Constants.DEFAULT_PHONE_CODE
 	stepperIndex = 0 // Set default active stepper
 	regFailedResponse = ""
 	confirmationCode: string = "";
@@ -58,7 +59,7 @@ export class RegisterComponent implements OnInit {
     // Instantiating form group and setting default values for reg form
 		this.registerFormGroup = new FormGroup({
 			mobileNumber: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.min(1000000000), Validators.max(9999999999)]), // Validators.pattern('^[0-9]+$'),Validators.min(1000000000), Validators.max(9999999999)
-			name: new FormControl('', [Validators.required, Validators.maxLength(20), Validators.minLength(3), Validators.pattern('[a-zA-Z][a-zA-Z ]+')]),
+			name: new FormControl('', [Validators.required, Validators.maxLength(60), Validators.minLength(3), Validators.pattern('[a-zA-Z][a-zA-Z ]+')]),
 			email: new FormControl('', [Validators.required, Validators.email]),
 			password: new FormControl('', [Validators.required, Validators.pattern('^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$')]), 
 			confirmPassword: new FormControl(
@@ -76,7 +77,7 @@ export class RegisterComponent implements OnInit {
     this.progressSpinner = true
     // mapping input values
 		this._registration = new Registration(
-			['+91' , formData.mobileNumber].join(""),
+			[this.countryCode , formData.mobileNumber].join(""),
 			formData.email,
 			formData.name,
 			formData.password,

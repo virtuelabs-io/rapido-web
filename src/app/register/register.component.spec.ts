@@ -66,9 +66,15 @@ describe('RegisterComponent', () => {
     expect(component.registerFormGroup.controls['name'].hasError('minlength')).toBeTruthy()
   }));
 
-  it('Name should not contain more than 20 characters', async(() => {
-    component.registerFormGroup.controls['name'].setValue("abcdefg")
-    expect(component.registerFormGroup.controls['name'].hasError('minlength')).toBeFalsy()
+  it('Name should not contain less tha 3 characters', async(() => {
+    component.registerFormGroup.controls['name'].setValue("ab")
+    expect(component.registerFormGroup.controls['name'].hasError('minlength')).toBeTruthy()
+  }));
+
+  it('Name should not contain more than 60 characters', async(() => {
+    let name = 'random name having more than sicty characters, rapidobuild.com'
+    component.registerFormGroup.controls['name'].setValue(name)
+    expect(component.registerFormGroup.controls['name'].hasError('maxlength')).toBeTruthy()
   }));
 
   it('Email should match the pattern', async(() => {
