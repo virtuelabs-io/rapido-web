@@ -180,13 +180,13 @@ export class AuthmockComponent implements OnInit {
     })
   }
 
-  signIn(){
+  login(){
     this._signInService.signInData = {
       Username: this._registration.phone_number,
       Password: this._registration.password
     }
 
-    const promise = this._signInService.signIn()
+    const promise = this._signInService.login()
     promise.then(value => {
       this._signInResponse = true;
       console.log(value) // response from successfull resolve

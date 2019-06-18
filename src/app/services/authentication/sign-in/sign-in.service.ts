@@ -23,7 +23,7 @@ export class SignInService extends AuthenticationService {
     this._username = signInData.Username
   }
 
-  signIn(){
+  login(){
     this.initializeNewProfile()
     let feed = this
     return new Promise((resolve, reject) => {

@@ -144,7 +144,7 @@
     <h5 *ngIf="_confirmRegistrationResponse">Registration confirmed</h5>
   </div>
   <div class="col-md-12">
-    <h2>Sign In</h2><hr>
+    <h2>Log In</h2><hr>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
@@ -157,7 +157,7 @@
       </div>
       <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.password">
     </div>
-    <button class="btn btn-primary" type="submit" (click)="signIn()">Submit</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="login()">Submit</button><br><br>
     <h5 *ngIf="_signInResponse">User signed in</h5>
   </div>
   <div class="col-md-12">

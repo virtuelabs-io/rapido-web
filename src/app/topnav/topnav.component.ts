@@ -1,45 +1,53 @@
 import { Component, OnInit, NgModule } from '@angular/core';
-import { Constants } from '../utils/constants';
 import { SessionService } from '../services/authentication/session/session.service';
 import { ProfileService } from '../services/authentication/profile/profile.service';
-import { ButtonComponent } from '../common/button/button.component';
+import { Constants } from '../utils/constants';
+import { Router } from '@angular/router';
+import { LoginStateService } from '../shared-services/login-state/login-state.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
-@NgModule({
-  declarations: [
-    ButtonComponent
-  ]
-})
+@NgModule({})
 @Component({
   selector: 'app-topnav',
   templateUrl: './topnav.component.html',
   styleUrls: ['./topnav.component.scss']
 })
 export class TopnavComponent implements OnInit {
+  isSignedIn: Boolean = false
+  name: String
+  bannerName: String = Constants.RAPIDO_BUILD
+  durationInSeconds = 5;
 
-  bannerName = Constants.RAPIDO_BUILD;
-  logInLabel = "Sign In";
-  cartLabel = "Cart";
-  add_circle = "add_circle";
-
-  _profileService: ProfileService
-
-  private _sessionService: SessionService
-
-  constructor(sessionService: SessionService, profileService: ProfileService) {
-    this._sessionService = sessionService
-    this._profileService = profileService
-  }
+  constructor(private _sessionService: SessionService,
+              private _profileService: ProfileService,
+              public router: Router, // used in html
+              private _snackBar: MatSnackBar,
+              private _loginStateService: LoginStateService) {}
 
   ngOnInit() {
     const promise = this._sessionService.retrieveSessionIfExists()
-    promise.then(value => {
-      console.log(value)
+    promise.then( _ => {
+      this._loginStateService.changeState(true);
     }).catch(error => {
-      console.log(error)
+      this.openSnackBar(error.message);
+      this.isSignedIn = false
+    })
+    this._loginStateService.currentState.subscribe(state => {
+      this.isSignedIn = state
+      if (state) {
+        this.name =  this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.name
+      }
     })
   }
 
-  signOut(){
+  signOut() {
     this._profileService.cognitoUser.signOut()
+    this._loginStateService.changeState(false)
+  }
+
+  openSnackBar(message) {
+    message && this._snackBar.open(message,  undefined , {
+      duration: 4000,
+   });
   }
 }

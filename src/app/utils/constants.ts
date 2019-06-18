@@ -17,6 +17,7 @@ export class Constants {
   }
 
   public static DEFAULT_PHONE_CODE = "+44";
+  public static INDIA_PHONE_CODE = "+91";
   public static DEFAULT_CURRENCY_CODE = "gbp";
   public static PHONE_NUMBER = "phone_number";
   public static EMAIL = "email";
@@ -28,6 +29,11 @@ export class Constants {
   public static CUSTOM_COMM_VIA_SMS = "custom:commViaSMS";
   public static CUSTOM_PERSONALISATION = "custom:personalisation";
 
+  public static NO_MOBILE_NUMBER = "Please enter mobile number";
+  public static NO_PASSWORD = "Please enter password";
+  public static INVALID_MOBILE_NUMBER = "Not a valid number";
+  public static PASSWORD_CHANGED_SUCCESS_MESSAGE = "Password Changed successfully ";
+
   public static SUCCESSFUL_REGISTRATION = "User successfully registered!";
 
   public static ERROR_RESEND_CONFIRMATIONN_CODE = "Error while resending confirmation code";
@@ -36,8 +42,11 @@ export class Constants {
   public static ERROR_CONFIRMING_REGISTRATION = "Error while confirming registration";
   public static SUCCESS_CONFIRMING_REGISTRATION = "Successfully confirmed registration!";
 
+  // Top Nav Bar
   public static ERROR_SIGN_IN = "Error signning you in";
-  public static SUCCESS_SIGN_IN = "Signed in successfully!";
+  public static SUCCESS_SIGN_IN = "Logged in successfully!";
+  public static LOGGED_IN_AS = "Logged In As";
+
 
   public static SESSION_RETRIEVED = "Session retrieved!";
   public static SESSION_NOT_FOUND = "Session not found";
