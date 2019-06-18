@@ -70,6 +70,10 @@ export class RegisterComponent implements OnInit {
 
   // Onclick register/submit of first stepper section
 	registerUser(formData) {
+    if(this.passwordMismatch()){
+      this.regFailedResponse = Constants.PASSWORD_MISMATCH_ERROR
+      throw Error(Constants.PASSWORD_MISMATCH_ERROR)
+    }
 		this.resetResponseMessages()
     this.progressSpinner = true
     // mapping input values
@@ -111,14 +115,13 @@ export class RegisterComponent implements OnInit {
 	}
 
   // show/hide password mismatch error message
-	public passwordMismatch = (password: string, confirmPassword: string) => {
-		return this.registerFormGroup.controls[password].value !== this.registerFormGroup.controls[confirmPassword].value
+	public passwordMismatch = () => {
+		return this.registerFormGroup.controls['password'].value !== this.registerFormGroup.controls['confirmPassword'].value
 	}
 
-
   // Confirm password and password matching custom validator
-	validateAreEqual(fieldControl: FormControl) {
-		let confirmValue = fieldControl && fieldControl.value
+	validateAreEqual() {
+		let confirmValue = this.registerFormGroup && this.registerFormGroup.controls && this.registerFormGroup.controls['confirmPassword'].value
 		let pwdValue = this.registerFormGroup && this.registerFormGroup.controls && this.registerFormGroup.controls['password'].value
 		return confirmValue === pwdValue ? null : {
 			NotEqual: true
