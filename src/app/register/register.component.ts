@@ -22,28 +22,25 @@ import { Constants } from '../utils/constants';
 
 export class RegisterComponent implements OnInit {
 
+	// response data/flag to show/handle in UI
+	registrationConfirmed: Boolean = false;
+	_resentConfirmationCodeResponse: Boolean = false;
+	countryCode: string = Constants.DEFAULT_PHONE_CODE
+	stepperIndex: number = 0 // Set default active stepper
+	regFailedResponse: string = ""
+	confirmationCode: string = "";
+	// UI toggle variables
+	hidePwd: Boolean = true // to show password
+	hideConfirmPwd: Boolean = true // to hide password
+	wrongCodeMsg: string = ""
+	otpSuccess: Boolean = false
+	progressSpinner: Boolean = false //TODO: make it button specific.
 	// Service classes
 	private _confirmRegistrationService: ConfirmRegistrationService
 	private _resendConfirmationCodeService: ResendConfirmationCodeService
 	private _signUpService: SignUpService
 	_registration: Registration = new Registration();
-
-	// response data/flag to show/handle in UI
-	registrationConfirmed: Boolean = false;
-	_resentConfirmationCodeResponse: Boolean = false;
-
 	registerFormGroup: FormGroup // UI reactive Form Group variable 
-	countryCode: string = Constants.DEFAULT_PHONE_CODE
-	stepperIndex = 0 // Set default active stepper
-	regFailedResponse = ""
-	confirmationCode: string = "";
-
-	// UI toggle variables
-	hidePwd = true // to show password
-	hideConfirmPwd = true // to hide password
-	wrongCodeMsg: string = ""
-	otpSuccess: Boolean = false
-	progressSpinner: Boolean = false
 
 	constructor(
 		signUpService: SignUpService,
