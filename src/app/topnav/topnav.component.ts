@@ -2,7 +2,9 @@ import { Component, OnInit, NgModule } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import { SessionService } from '../services/authentication/session/session.service';
 import { ProfileService } from '../services/authentication/profile/profile.service';
+import { ProductsService } from '../services/products/products.service';
 import { Constants } from '../utils/constants';
+import { Query } from '../services/products/query.interface';
 
 @NgModule({})
 @Component({
@@ -20,13 +22,24 @@ export class TopnavComponent implements OnInit {
   myControl = new FormControl();
   // options: string[] = ['One', 'Two', 'Three'];
 
-  _profileService: ProfileService
-
+  private  _profileService: ProfileService
   private _sessionService: SessionService
+  private _productsService: ProductsService
 
-  constructor(sessionService: SessionService, profileService: ProfileService) {
+  _query: Query = {
+    q: "watches",
+    size: 1,
+    cursor: null, // always use either cursor or start, but bot both
+    start: null, // always use either cursor or start, but bot both
+    sort: null
+  }
+
+  constructor(sessionService: SessionService,
+    productsService: ProductsService, 
+    profileService: ProfileService) {
     this._sessionService = sessionService
     this._profileService = profileService
+    this._productsService = productsService
   }
 
   ngOnInit() {
@@ -59,6 +72,16 @@ export class TopnavComponent implements OnInit {
     })
 
     
+  }
+
+  onSearch(e){
+    debugger
+    this._productsService.get(this._query)
+      .subscribe(data => {
+        console.log(data)
+        
+        // this._productsFetched = true;
+      })
   }
 
   public signOut(){
