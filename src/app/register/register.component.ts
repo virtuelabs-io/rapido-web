@@ -70,11 +70,11 @@ export class RegisterComponent implements OnInit {
 
   // Onclick register/submit of first stepper section
 	registerUser(formData) {
-    if(this.passwordMismatch()){
+    if(this.passwordMismatch()) {
       this.regFailedResponse = Constants.PASSWORD_MISMATCH_ERROR
       throw Error(Constants.PASSWORD_MISMATCH_ERROR)
     }
-		this.resetResponseMessages()
+	this.resetResponseMessages()
     this.progressSpinner = true
     // mapping input values
 		this._registration = new Registration(

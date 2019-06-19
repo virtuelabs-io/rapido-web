@@ -1,65 +1,63 @@
-.authmock-body {
-  margin-top: 90px;
-  h5 {
-    color: green;
+@import "../../assets/scss/custom-bootstrap-variables.scss";
+.main-div {
+  display: flex;
+  flex-direction : row;
+  flex-wrap: wrap;
+  justify-content: left;
+  margin-top: 5%;
+  .nav-bar-spacing {
+    padding-top: 30px;
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      .button-spacing {
+        padding-bottom: 20px;
+      }
+      .text-wrap {
+        display: flex;
+      //  flex-direction: column;
+        flex-wrap: wrap;
+      }
+    }
+    .margin-top {
+      margin-top: 2%;
+    }
+    .form-container2 {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      .opacity5 {
+        opacity: 0.5;
+      }
+      .partitioned {
+        padding-left: 15px;
+        letter-spacing: 40px;
+        border: 0;
+        background-image: linear-gradient(to left, black 70%, rgba(255, 255, 255, 0) 0%);   
+        background-position: bottom;   
+        background-size: 50px 1px;   
+        background-repeat: repeat-x;   
+        background-position-x: 35px;   
+        width: 300px !important;
+      }
+      .partitioned:focus {
+        outline: none;
+      }
+      .flex-button {
+        display: flex;
+        .width8{
+          width: 110px;
+        }
+      }
+    }
+    @media screen and (max-width: $mobile-device) {
+     // width: 100%;
+      min-width: 100%;
+    }
+  }
+  @media screen and (max-width: $mobile-device) {
+   // width: 100%;
+    min-width: 100%;
   }
 }
-.cb {
-width: 50px;
-}
-.form-container {
-display: flex;
-flex-direction: column;
-// width: 30%;
-}
-.form-container > * {
-width: 100%;
-}
-.nav-bar-spacing {
-padding-top: 30px;
-}
-.imageWidth {
-width: 80px !important;
-}
-.button-spacing {
-padding-bottom: 20px;
-}
-
-.flex{
-  display: flex;
-}
-
-.width8{
-  width: 110px;
-}
-
-/* input class */
-.partitioned {
-    padding-left: 15px;
-    letter-spacing: 40px;
-    border: 0;
-    background-image: linear-gradient(to left, black 70%, rgba(255, 255, 255, 0) 0%);   
-    background-position: bottom;   
-    background-size: 50px 1px;   
-    background-repeat: repeat-x;   
-    background-position-x: 35px;   
-    width: 300px !important;
-}
-
-.partitioned:focus{
-  outline: none;
-}
-
-.opacity5{
-  opacity: 0.5;
-}
-
-/* .divInner{
-  left: 0;
-  position: sticky;
-}
-
-.divOuter{
-  width: 190px; 
-  overflow: hidden;
-} */
