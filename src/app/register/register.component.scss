@@ -6,7 +6,6 @@
   justify-content: left;
   margin-top: 5%;
   .nav-bar-spacing {
-  //  padding-top: 30px;
     .form-container {
       display: flex;
       flex-direction: column;
@@ -16,12 +15,12 @@
       }
       .text-wrap {
         display: flex;
-      //  flex-direction: column;
         flex-wrap: wrap;
       }
     }
     .margin-top {
       margin-top: 2%;
+      
     }
     .form-container2 {
       display: flex;

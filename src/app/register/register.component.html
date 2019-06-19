@@ -79,9 +79,9 @@
             </mat-card-actions>
            
             <!-- Backend service error message -->
-            <div *ngIf='regFailedResponse' class="alert-danger-background " role="alert">
-              <h4 class="alert-danger-text">Error!</h4>
-              <p class="alert-danger-text">{{ regFailedResponse}}</p>
+            <div *ngIf='regFailedResponse' class="alert-danger-background" role="alert">
+              <h4 class="alert-danger-text text-align">Error!</h4>
+              <p class="alert-danger-text text-align">{{ regFailedResponse}}</p>
             </div>
         </form>
         <!-- stepper 1: sign up/ register ends -->
@@ -90,9 +90,9 @@
     <!-- stepper 2: Confirm OTP  -->
     <mat-step [stepControl]="registerFormGroup">
         <div *ngIf='otpSuccess' class="alert-danger-background margin-top" role="alert">
-            <h4 class="alert-success-text">Success!</h4>
-            <p class="alert-success-text">An OTP has been sent to the registered mobile number</p>
-          </div>
+            <h4 class="alert-success-text text-align">Success!</h4>
+            <p class="alert-success-text text-align">An OTP has been sent to the registered mobile number</p>
+        </div>
       <ng-template matStepLabel><h4 class="mat-checkbox-layout">Mobile Number Verification</h4></ng-template>
       <form class="form-container2" >
         
@@ -120,23 +120,23 @@
             </button>
           </div>
           
-          <div *ngIf='wrongCodeMsg' class="alert alert-danger" role="alert">
-            <h4 class="alert-heading">Error!</h4>
-            <p>{{wrongCodeMsg}}</p>
+          <div *ngIf='wrongCodeMsg' class="alert-danger-background" role="alert">
+            <h4 class="alert-danger-text text-align">Error!</h4>
+            <p class="alert-danger-text text-align">{{wrongCodeMsg}}</p>
           </div>
   
-          <div *ngIf='_resentConfirmationCodeResponse' class="alert alert-success" role="alert">
-            <h4 class="alert-heading">Success!</h4>
-            <p>An OTP has been re-sent to the registered mobile number</p>
+          <div *ngIf='_resentConfirmationCodeResponse' class="alert-danger-background" role="alert">
+            <h4 class="alert-success-text text-align">Success!</h4>
+            <p class="alert-success-text text-align">An OTP has been re-sent to the registered mobile number</p>
           </div>
       </mat-card-actions> 
       </form>
     </mat-step>
     <mat-step>
       <ng-template matStepLabel><h4>Done</h4></ng-template>
-      <div *ngIf="registrationConfirmed" class="alert alert-success " role="alert">
-        <h4 class="alert-heading">Success!</h4>
-        <p>Successfully confirmed registration!</p>
+      <div *ngIf="registrationConfirmed" class="alert-danger-background" role="alert">
+        <h4 class="alert-success-text text-align">Success!</h4>
+        <p class="alert-success-text text-align">Successfully confirmed registration!</p>
       </div>
       <div>
       </div>
