@@ -14,7 +14,7 @@ export class LogInComponent implements OnInit {
   alertBox: boolean = false
   alertMsg: string = ""
   _signInResponse: Boolean = false;
-  countryCode: string = Constants.DEFAULT_PHONE_CODE;
+  countryCode: string = Constants.INDIA_PHONE_CODE; //Constants.DEFAULT_PHONE_CODE;
   mobileNumber: string;
   password: string;
   progressSpinner: Boolean = false
@@ -47,7 +47,7 @@ export class LogInComponent implements OnInit {
     this.progressSpinner = true
     if(this.mobileNumber && this.password && this.mobileNumber.length === 10) {
       this._signInService.signInData = {
-        Username: [ Constants.DEFAULT_PHONE_CODE,this.mobileNumber ].join(""),
+        Username: [ this.countryCode,this.mobileNumber ].join(""),
         Password: this.password
       }
       this._signInService.login().
