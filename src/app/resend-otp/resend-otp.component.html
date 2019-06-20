@@ -21,7 +21,11 @@
     </mat-step>
 
     <mat-step [stepControl]="otpReqFormGroup">
-        <ng-template matStepLabel><h4>OTP Validation</h4></ng-template>
+      <div *ngIf='otpSuccess' class="alert-danger-background margin-top" role="alert">
+        <h4 class="alert-success-text text-align">Success!</h4>
+        <p class="alert-success-text text-align">An OTP has been sent to the registered mobile number</p>
+      </div>
+      <ng-template matStepLabel><h4>OTP Validation</h4></ng-template>
           <form
             class="form-container"
             autocomplete="off"
@@ -34,7 +38,7 @@
                   <span *ngIf="progressSpinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
               </button>
             </mat-card-actions>         
-          </form>
+          </form>  
       </mat-step>
   </mat-vertical-stepper>  
 </div>

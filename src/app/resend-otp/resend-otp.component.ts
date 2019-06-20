@@ -23,6 +23,7 @@ export class ResendOtpComponent implements OnInit {
   stepperIndex: number = 0
   confirmationCode: string = ""
   mobileNumber:string = ""
+  otpSuccess: Boolean = false
   progressSpinner: Boolean = false
   wrongCodeMsg: string = ""
   _resentConfirmationCodeResponse: Boolean = false;
@@ -69,14 +70,16 @@ export class ResendOtpComponent implements OnInit {
   resendConfirmationCode() {
 	//	this.resetResponseMessages()
 		this.progressSpinner = true
-		this._resendConfirmationCodeService.username = [ this.countryCode , this.mobileNumber ].join("");
+		this._resendConfirmationCodeService.username = [ this.countryCode , this.mobileNumber ].join("")
 		const promise = this._resendConfirmationCodeService.resendConfirmationCode()
 		promise.then( _ => {
+      this.otpSuccess = true
 			this.progressSpinner = false
-			this._resentConfirmationCodeResponse = true;
+			this._resentConfirmationCodeResponse = true
 		}).catch(error => {
+      this.otpSuccess = false
 			this.progressSpinner = false
-			this._resentConfirmationCodeResponse = false;
+			this._resentConfirmationCodeResponse = false
 			this.wrongCodeMsg = error._data.message || error.message
 		})
 	}
