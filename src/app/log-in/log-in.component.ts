@@ -4,6 +4,7 @@ import { ProfileService } from '../services/authentication/profile/profile.servi
 import { Router } from '@angular/router';
 import { Constants } from '../utils/constants';
 import { LoginStateService } from '../shared-services/login-state/login-state.service';
+import { ResendOtpService } from '../shared-services/resend-otp/resend-otp.services';
 
 @Component({
   selector: 'app-log-in',
@@ -25,7 +26,8 @@ export class LogInComponent implements OnInit {
     signInService: SignInService,
     profileService: ProfileService,
     private router: Router,
-    private loginStateService: LoginStateService
+    private loginStateService: LoginStateService,
+    private resendOtpService : ResendOtpService
     ) {
     this._signInService = signInService
     this._profileService = profileService
@@ -65,6 +67,7 @@ export class LogInComponent implements OnInit {
         this.password = ""
 
         if(error.code === 1) {
+          this.resendOtpService.changeState("7032908112");
           this.router.navigateByUrl('/resendotp');
         }
       })

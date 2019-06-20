@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ResendOtpService } from '../shared-services/resend-otp/resend-otp.services';
 
 @Component({
   selector: 'app-resend-otp',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResendOtpComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _resendOtpService : ResendOtpService
+  ) { }
 
   ngOnInit() {
+    this._resendOtpService.currentState.subscribe(state => {
+      console.log(state)
+    })
+
+
+    
+    
   }
 
 }
