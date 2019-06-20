@@ -24,6 +24,7 @@ export class ResendOtpComponent implements OnInit {
   confirmationCode: string = ""
   mobileNumber:string = ""
   otpSuccess: Boolean = false
+  otpFail: string = ""
   progressSpinner: Boolean = false
   wrongCodeMsg: string = ""
   _resentConfirmationCodeResponse: Boolean = false;
@@ -77,7 +78,7 @@ export class ResendOtpComponent implements OnInit {
 			this.progressSpinner = false
 			this._resentConfirmationCodeResponse = true
 		}).catch(error => {
-      this.otpSuccess = false
+      this.otpFail = error.data.message
 			this.progressSpinner = false
 			this._resentConfirmationCodeResponse = false
 			this.wrongCodeMsg = error._data.message || error.message

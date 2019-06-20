@@ -4,6 +4,9 @@
     flex-direction: row;
     flex-wrap: wrap;
     margin-top: 5%;
+    .margin-top {
+      margin-top: 2%;
+    }
     .form-container {
         display: flex;
         flex-direction: column;
@@ -18,15 +21,17 @@
             background-repeat: repeat-x;   
             background-position-x: 35px;   
             width: 300px !important;
-          }
-          .partitioned:focus {
-            outline: none;
-          }
-          .button-spacing {
-              margin-top: 2%;
-          }
+        }
+        .partitioned:focus {
+          outline: none;
+        }
+        .button-spacing {
+          margin-top: 2%;
+        }
+        
     }
-    .margin-top {
-      margin-top: 2%;
+  @media screen and (max-width: $mobile-device) {
+    overflow: hidden;
+    width: 90%;
   }
 }

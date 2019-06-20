@@ -1,7 +1,7 @@
 <div class="main-div">
   <mat-vertical-stepper [linear]="false" #stepper class="nav-bar-spacing" [selectedIndex]="stepperIndex">
     <mat-step [stepControl]="otpReqFormGroup">
-      <ng-template matStepLabel><h4>Mobile Number Confirmation</h4></ng-template>
+      <ng-template matStepLabel><h4 class="mat-checkbox-layout">Mobile Number Confirmation</h4></ng-template>
         <form
           class="form-container" 
           autocomplete="off"
@@ -12,12 +12,16 @@
               <input matInput  disabled placeholder="Mobile number" [(ngModel)]="mobileNumber" name="mobile-number">
             </mat-form-field>   
           <mat-card-actions class="button-spacing">
-            <button mat-flat-button  color="primary" type="submit" [disabled]="!otpReqFormGroup.valid">
+            <button mat-flat-button  color="primary" type="submit" [disabled]="!mobileNumber">
                 Request OTP
                 <span *ngIf="progressSpinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
             </button>
           </mat-card-actions>         
         </form>
+        <div *ngIf='otpFail' class="alert-danger-background margin-top" role="alert">
+          <h4 class="alert-danger-text text-align">Error!</h4>
+          <p class="alert-danger-text text-align">{{otpFail}}</p>
+        </div>
     </mat-step>
 
     <mat-step [stepControl]="otpReqFormGroup">
