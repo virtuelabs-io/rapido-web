@@ -16,6 +16,7 @@ import { NgxStripeModule } from 'ngx-stripe';
 import { Constants } from './utils/constants';
 import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, MatSnackBarModule, MatExpansionModule, MatSelectModule } from '@angular/material';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResendOtpComponent } from './resend-otp/resend-otp.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     LogInComponent,
     RoutingComponents,
     CheckoutComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ResendOtpComponent
   ],
   imports: [
     MatSidenavModule,

@@ -63,6 +63,10 @@ export class LogInComponent implements OnInit {
         this.alertBox = true;
         this.alertMsg = error.data.message
         this.password = ""
+
+        if(error.code === 1) {
+          this.router.navigateByUrl('/resendotp');
+        }
       })
     }
     else {
