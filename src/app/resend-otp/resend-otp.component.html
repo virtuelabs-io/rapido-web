@@ -1,3 +1,40 @@
-<p>
-  resend-otp works!
-</p>
+<div class="main-div">
+  <mat-vertical-stepper [linear]="false" #stepper class="nav-bar-spacing" [selectedIndex]="stepperIndex">
+    <mat-step [stepControl]="otpReqFormGroup">
+      <ng-template matStepLabel><h4>Mobile Number Confirmation</h4></ng-template>
+        <form
+          class="form-container" 
+          autocomplete="off"
+          novalidate
+          (ngSubmit)="resendConfirmationCode()">
+          <mat-form-field>
+              <span matPrefix>{{countryCode}} &nbsp;</span>
+              <input matInput  disabled placeholder="Mobile number" [(ngModel)]="mobileNumber" name="mobile-number">
+            </mat-form-field>   
+          <mat-card-actions class="button-spacing">
+            <button mat-flat-button  color="primary" type="submit" [disabled]="!otpReqFormGroup.valid">
+                Request OTP
+                <span *ngIf="progressSpinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            </button>
+          </mat-card-actions>         
+        </form>
+    </mat-step>
+
+    <mat-step [stepControl]="otpReqFormGroup">
+        <ng-template matStepLabel><h4>OTP Validation</h4></ng-template>
+          <form
+            class="form-container"
+            autocomplete="off"
+            novalidate>
+            <div>Enter OTP</div>
+              <input class="partitioned" maxlength="6" placeholder="" [(ngModel)]="confirmationCode" name="otp-code">   
+            <mat-card-actions class="button-spacing">
+              <button mat-flat-button  color="primary" type="submit" (click)="confirmRegistration()">
+                  Confirm OTP
+                  <span *ngIf="progressSpinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              </button>
+            </mat-card-actions>         
+          </form>
+      </mat-step>
+  </mat-vertical-stepper>  
+</div>

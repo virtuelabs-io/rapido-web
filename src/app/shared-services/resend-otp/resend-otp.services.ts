@@ -6,13 +6,13 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ResendOtpService {
 
-  private userSignedIn = new BehaviorSubject<string>("");
-  currentState = this.userSignedIn.asObservable();
+  private mobileNumber = new BehaviorSubject<string>("");
+  currentNumber = this.mobileNumber.asObservable();
 
   constructor() {}
 
-  changeState(value: string) {
-    this.userSignedIn.next(value)
+  changeNumber(value: string) {
+    this.mobileNumber.next(value)
   }
 
 }

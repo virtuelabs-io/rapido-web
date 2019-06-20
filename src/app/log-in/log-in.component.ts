@@ -67,7 +67,7 @@ export class LogInComponent implements OnInit {
         this.password = ""
 
         if(error.code === 1) {
-          this.resendOtpService.changeState("7032908112");
+          this.resendOtpService.changeNumber("7032908112");
           this.router.navigateByUrl('/resendotp');
         }
       })
