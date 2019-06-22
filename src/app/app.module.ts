@@ -11,16 +11,30 @@ import { IconComponent } from './common/icons/icons.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { RoutingComponents } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, MatSnackBarModule, MatExpansionModule, MatSelectModule } from '@angular/material';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+// import { MyProfileComponent } from './my-profile/my-profile.component';
+// import {MatAutocompleteModule} from '@angular/material/autocomplete';
+// import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { ProductCardsComponent } from './product-cards/product-cards.component';
+import { CardComponent } from './card/card.component';
+import { RatingComponent } from './rating/rating.component';
+// import { ImagesComponent } from './images/images.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { FilterByComponent } from './filter-by/filter-by.component';
+import { FilterbarComponent } from './filterbar/filterbar.component';
+// import { DialogComponent } from './dialog/dialog.component';
+import { FilterMobileComponent } from './filter-mobile/filter-mobile.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ImageZoomComponent } from './image-zoom/image-zoom.component';
+import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { Constants } from './utils/constants';
-import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, MatSnackBarModule, MatExpansionModule, MatSelectModule } from '@angular/material';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
     TopnavComponent,
     AuthmockComponent,
     ButtonComponent,
@@ -28,7 +42,19 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     LogInComponent,
     RoutingComponents,
     CheckoutComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    AppComponent,
+    // MyProfileComponent,
+    ProductCardsComponent,
+    CardComponent,
+    RatingComponent,
+    // ImagesComponent,
+    FilterByComponent,
+    FilterbarComponent,
+    // DialogComponent,
+    FilterMobileComponent,
+    ProductDetailsComponent,
+    ImageZoomComponent
   ],
   imports: [
     MatSidenavModule,
@@ -49,7 +75,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     MatMenuModule,
     MatSelectModule,
     HttpClientModule,
-    NgxStripeModule.forRoot(Constants.environment.stripePublicKey),
+    // NgxStripeModule.forRoot(Constants.environment.stripePublicKey),
     HttpClientModule,
     MatMenuModule,
     MatInputModule,
@@ -62,7 +88,27 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     MatExpansionModule,
     MatMenuModule,
     MatSelectModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatSidenavModule,
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatStepperModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatButtonModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatListModule,
+    MatSnackBarModule,
+    NgbModule,
+    MatExpansionModule,
+    MatMenuModule,
+    HttpClientModule,
+    // MatDialogModule,
+    NgxImageZoomModule.forRoot() 
   ],
   providers: [],
   bootstrap: [ AppComponent ],

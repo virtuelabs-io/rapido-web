@@ -3,15 +3,24 @@ import { Routes, RouterModule } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { AuthmockComponent } from './authmock/authmock.component';
-import { CheckoutComponent } from './checkout/checkout.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+// import { MyProfileComponent } from './my-profile/my-profile.component';
+import { ProductCardsComponent } from './product-cards/product-cards.component';
+// import { DialogComponent } from './dialog/dialog.component';
+import { FilterMobileComponent } from './filter-mobile/filter-mobile.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
-  { path: 'login', component: LogInComponent },
-  { path: 'checkout', component: CheckoutComponent},
-  { path: 'forgotpassword', component: ForgotPasswordComponent},
+  { path: 'sign-in', component: LogInComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  // { path: 'my-profile', component: MyProfileComponent },
+  { path: 'products', component: ProductCardsComponent },
+  // { path: 'test', component: DialogComponent },
+  { path: 'filter-mobile', component: FilterMobileComponent },
   { path: '', component: AuthmockComponent},
+  { path: 'products/details/:id', component: ProductDetailsComponent}
 ];
 
 @NgModule({
@@ -23,5 +32,10 @@ export const RoutingComponents = [
   RegisterComponent,
   LogInComponent,
   ForgotPasswordComponent,
-  AuthmockComponent
+  // MyProfileComponent,
+  ProductCardsComponent,
+  AuthmockComponent,
+  // DialogComponent,
+  FilterMobileComponent,
+  ProductDetailsComponent
 ];

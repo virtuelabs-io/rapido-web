@@ -1,0 +1,21 @@
+@import "../../assets/scss/custom-bootstrap-variables.scss";
+
+.pdmain{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    flex-wrap: wrap;
+    @media screen and (max-width: $mobile-device) {
+        width: 100%;
+    }
+    .imgZoom{
+        width: 50%;
+        height: 600px;
+    }
+  }
+
+.spacer{
+    margin-right: 10px;
+}
+
+

@@ -1,0 +1,17 @@
+@import "../../assets/scss/custom-bootstrap-variables.scss";
+
+div {
+        @media screen and (max-width: $small-device) {
+              display: none;
+        }
+        div {
+              div {
+                    ul{
+                          li:hover{
+                                background: $primary;
+                          }
+                    }
+              }
+        }
+    }
+

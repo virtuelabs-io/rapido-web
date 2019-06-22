@@ -45,6 +45,11 @@ export class TopnavComponent implements OnInit {
     this._loginStateService.changeState(false)
   }
 
+  onSearch(e){
+    debugger
+    console.log(e.currentTarget.value)
+  }
+
   openSnackBar(message) {
     message && this._snackBar.open(message,  undefined , {
       duration: 4000,

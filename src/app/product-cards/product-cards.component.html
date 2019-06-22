@@ -1,0 +1,54 @@
+
+<div class="">
+  <div>
+    <app-filterbar></app-filterbar>
+    <section class="product-controls position-top m-2">
+
+        <div class="row mr-3">
+            <div class="" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+              <button class="btn" ngbDropdownToggle>Drop me</button>
+              <div class="dropdown-menu" ngbDropdownMenu>
+                <button ngbDropdownItem>Price: Low to High</button>
+                <button ngbDropdownItem>Avg. Customer Review</button>
+                <button ngbDropdownItem>Newest Arrivals</button>
+              </div>
+            </div>
+            <div class="m-1"></div>
+            <button type="button"  routerLink="/filter-mobile" class="btn">Filter</button>
+          </div>
+     <!-- <div>
+          <select >
+              <option value="relevanceblender" selected="true">Sort By</option>
+              <option value="price-asc-rank">Price: Low to High</option>
+              <option value="price-desc-rank">Price: High to Low</option>
+              <option value="review-rank">Avg. Customer Review</option>
+              <option value="date-desc-rank">Newest Arrivals</option>
+          </select>
+      </div>
+      <div class="filterBtnS">
+        <button routerLink="/filter-mobile" >Filters></button>
+    </div> -->
+    </section>
+    
+  </div>
+    
+
+  <div class="row position-top">
+      <div class="col-md-2">
+          <app-filter-by></app-filter-by>
+        </div>
+        
+
+        
+        
+        <!-- Cards List div starts -->
+        <div class="row justify-content-center col-md-10" >
+                <div *ngFor="let a of [1,2,3,4,5,6,7,8,9,1,2,3,4,5,6,7,8,9,1,2,3,4,5,6,7,8,9]" class="">
+                    <app-card></app-card>
+                </div>
+          </div>
+          <!-- Cards list div ends -->
+
+  </div>
+
+</div>
