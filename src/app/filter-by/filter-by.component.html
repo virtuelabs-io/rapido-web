@@ -1,16 +1,24 @@
 <div class="">
     <div class="filtersL">
-        <div class="font-weight-bolder">
-            Department
-        </div>
-       <div>
-            <ul class="list-group">
-                    <li *ngFor="let list of ['Automotive','Bathroom','Lighting','etc']" class="list-group-item" routerLink="/products/details/1">
-                        <a data-routing="off" class="a-link-normal s-navigation-item" >
-                            <span class="a-size-base a-color-base text-dark">{{list}}</span>
-                        </a>
-                    </li>
-            </ul>
-       </div>
+            <mat-accordion multi="true" displayMode="flat" >
+                    <mat-expansion-panel expanded="false" *ngFor="let panel of ['categories','filters','sort']" >
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            {{panel}}
+                        </mat-panel-title>
+                        <!-- <mat-panel-description>
+                          Type your name and age
+                        </mat-panel-description> -->
+                      </mat-expansion-panel-header>
+                        <mat-nav-list>
+                            <mat-list-item *ngFor="let link of ['paints','buckets','cement']">
+                               <a matLine >link</a>
+                               <!-- <button mat-icon-button (click)="showInfo(link)">
+                                  <mat-icon>info</mat-icon>
+                               </button> -->
+                            </mat-list-item>
+                          </mat-nav-list>
+                        </mat-expansion-panel>
+                    </mat-accordion>
     </div>
  </div>   

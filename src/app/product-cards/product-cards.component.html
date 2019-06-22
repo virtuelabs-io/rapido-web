@@ -34,8 +34,8 @@
   </div>
     
 
-  <div class="row position-top">
-      <div class="col-md-2">
+  <div class="row position-top ">
+      <div class="col-md-3 ml-4">
           <app-filter-by></app-filter-by>
         </div>
         
@@ -43,7 +43,7 @@
         
         
         <!-- Cards List div starts -->
-        <div class="row justify-content-center col-md-10" >
+        <div class="row justify-content-center col-md-9" >
                 <div *ngFor="let item of productList" class="">
                     <app-card [itemList]=item></app-card>
                 </div>
