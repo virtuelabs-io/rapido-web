@@ -1,5 +1,5 @@
 <div class="main-div">
-  <mat-vertical-stepper [linear]="false" #stepper class="nav-bar-spacing" [selectedIndex]="stepperIndex">
+  <mat-vertical-stepper [linear]="true" #stepper class="nav-bar-spacing" [selectedIndex]="stepperIndex">
     <mat-step [stepControl]="otpReqFormGroup">
       <ng-template matStepLabel><h4 class="mat-checkbox-layout">Mobile Number Confirmation</h4></ng-template>
         <form
@@ -12,7 +12,7 @@
               <input matInput  disabled placeholder="Mobile number" [(ngModel)]="mobileNumber" name="mobile-number">
             </mat-form-field>   
           <mat-card-actions class="button-spacing">
-            <button mat-flat-button  color="primary" type="submit" [disabled]="!mobileNumber">
+            <button mat-flat-button  class='loginButton' color="primary" type="submit" [disabled]="!mobileNumber">
                 Request OTP
                 <span *ngIf="progressSpinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
             </button>
@@ -43,6 +43,17 @@
               </button>
             </mat-card-actions>         
           </form>  
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel><h4>Done</h4></ng-template>
+        <div *ngIf="otpConfirmed" class="alert-danger-background" role="alert">
+          <h4 class="alert-success-text text-align">Success!</h4>
+          <p class="alert-success-text text-align">Successfully confirmed registration!</p>
+        </div>
+        <div>
+        </div>
+        <button mat-flat-button routerLink="/login"  color="primary" type="submit">Log In</button>
       </mat-step>
   </mat-vertical-stepper>  
 </div>

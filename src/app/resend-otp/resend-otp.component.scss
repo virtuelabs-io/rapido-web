@@ -11,6 +11,9 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    .loginButton {
+      color: $primary;
+    }
     .partitioned {
       padding-left: 15px;
       letter-spacing: 40px;

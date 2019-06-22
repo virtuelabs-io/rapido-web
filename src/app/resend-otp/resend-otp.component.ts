@@ -19,6 +19,7 @@ import { ConfirmRegistrationService } from '../services/authentication/confirm-r
 })
 
 export class ResendOtpComponent implements OnInit {
+  otpConfirmed: Boolean = false
   countryCode: string = "+91"
   stepperIndex: number = 0
   confirmationCode: string = ""
@@ -59,12 +60,12 @@ export class ResendOtpComponent implements OnInit {
 		then( _ => {
 			this.stepperIndex = 2
 			this.progressSpinner = false
-		//	this.registrationConfirmed = true
+			this.otpConfirmed = true
 		}).catch(error => {
 			this.stepperIndex = 1
 			this.wrongCodeMsg = error._data.message || error.message
 			this.progressSpinner = false
-		//	this.registrationConfirmed = false
+			this.otpConfirmed = false
 		})
   }
   
@@ -74,10 +75,12 @@ export class ResendOtpComponent implements OnInit {
 		this._resendConfirmationCodeService.username = [ this.countryCode , this.mobileNumber ].join("")
 		const promise = this._resendConfirmationCodeService.resendConfirmationCode()
 		promise.then( _ => {
+      this.stepperIndex = 1
       this.otpSuccess = true
 			this.progressSpinner = false
 			this._resentConfirmationCodeResponse = true
 		}).catch(error => {
+      this.stepperIndex = 0
       this.otpFail = error.data.message
 			this.progressSpinner = false
 			this._resentConfirmationCodeResponse = false

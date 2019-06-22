@@ -39,16 +39,6 @@ describe('LogInComponent', () => {
     expect(compiled.querySelector('h1').textContent).toContain('Log in to Rapidobuild.com');
   }));
 
-  it('user logs in successfully', async(() => {
-    component.mobileNumber = '1234567890';
-    component.password = 'Anirup@123';
-    component.login();
-    expect(component.progressSpinner).toBeTruthy();
-    router.navigate(["/"]).then(() => {
-      expect(location.path()).toBe("/");
-    });
-  }));
-
   it('should contain the prefix for mobile number', async(() => {
     expect(component.countryCode).toContain('+');
     expect(component.countryCode.length).toEqual(3);
