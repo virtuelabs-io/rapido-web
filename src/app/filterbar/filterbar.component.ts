@@ -7,10 +7,12 @@ import { Component, OnInit, Input  } from '@angular/core';
 })
 export class FilterbarComponent implements OnInit {
 
-  @Input() searchedText:string
+  @Input() searchedText:string=""
+  // @Input() responseData:Object
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

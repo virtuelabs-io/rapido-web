@@ -1,7 +1,8 @@
 
 <div class="">
   <div>
-    <app-filterbar [searchedText]=searchedText [responseData]=responseData></app-filterbar>
+
+    <app-filterbar *ngIf="productList && productList.length" [searchedText]=searchedText [responseData]=responseData></app-filterbar>
     <section class="product-controls position-top m-2">
 
       <!-- small device -->
@@ -35,7 +36,7 @@
     
 
   <div class="row position-top ">
-      <div class="col-md-3 ml-4">
+      <div class="col-md-3 ml-4 mt-2">
           <app-filter-by></app-filter-by>
         </div>
         

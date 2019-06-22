@@ -38,6 +38,9 @@ export class ProductCardsComponent implements OnInit {
             this.responseData = data
             if(data && data.hits && data.hits.hit)
             this.productList = data.hits.hit
+            for(let i=1; i<20; i++){
+              this.productList.push(data.hits.hit[0])
+            }
           })
       }
     })
