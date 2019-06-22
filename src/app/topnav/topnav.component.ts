@@ -4,6 +4,7 @@ import { ProfileService } from '../services/authentication/profile/profile.servi
 import { Constants } from '../utils/constants';
 import { Router } from '@angular/router';
 import { LoginStateService } from '../shared-services/login-state/login-state.service';
+import { SearchItemService } from '../shared-services/search-item/search-item.services';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @NgModule({})
@@ -15,6 +16,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class TopnavComponent implements OnInit {
   isSignedIn: Boolean = false
   name: String
+  searchedText: string = 'watches'
   bannerName: String = Constants.RAPIDO_BUILD
   durationInSeconds = 5;
 
@@ -22,6 +24,7 @@ export class TopnavComponent implements OnInit {
               private _profileService: ProfileService,
               public router: Router, // used in html
               private _snackBar: MatSnackBar,
+              private _searchItemService: SearchItemService,
               private _loginStateService: LoginStateService) {}
 
   ngOnInit() {
@@ -46,8 +49,9 @@ export class TopnavComponent implements OnInit {
   }
 
   onSearch(e){
-    debugger
-    console.log(e.currentTarget.value)
+    // obj check later
+    if(this.searchedText)
+    this._searchItemService.changeState(this.searchedText);
   }
 
   openSnackBar(message) {

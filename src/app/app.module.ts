@@ -19,7 +19,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ProductCardsComponent } from './product-cards/product-cards.component';
 import { CardComponent } from './card/card.component';
 import { RatingComponent } from './rating/rating.component';
-// import { ImagesComponent } from './images/images.component';
+import { ImagesComponent } from './images/images.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FilterByComponent } from './filter-by/filter-by.component';
 import { FilterbarComponent } from './filterbar/filterbar.component';
@@ -48,7 +48,7 @@ import { Constants } from './utils/constants';
     ProductCardsComponent,
     CardComponent,
     RatingComponent,
-    // ImagesComponent,
+    ImagesComponent,
     FilterByComponent,
     FilterbarComponent,
     // DialogComponent,

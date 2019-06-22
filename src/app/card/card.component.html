@@ -1,12 +1,13 @@
-<div  [routerLink]="['/products/details','1']" class="card m-2" style="width: 17rem;">
-  <app-images></app-images>
+<div class="card m-2" style="width: 17rem;">
+    <!-- [routerLink]="['/products/details','1']" -->
+  <app-images [imgSrc]=itemDetails.images></app-images>
   <div class="card-body">
       <h6 class="">
         <a class="" >
-          <span class="">iBall M500 14-inch Laptop Cobalt Blue</span>
+          <span class="">{{itemDetails.name}}</span>
         </a>
       </h6>
-       <app-rating currentRate="3"></app-rating>
+       <app-rating [currentRate]=itemDetails.rating></app-rating>
        <div>
          <span aria-hidden="true" class="text-danger">
              <span class="a-price-symbol">₹</span>
@@ -14,7 +15,7 @@
           </span>
           <span aria-hidden="true" class="small m-2">
             <span class="a-price-symbol">₹</span>
-            <s class="a-price-whole">2,599</s>
+            <s class="a-price-whole">{{itemDetails.price}}</s>
           </span>
          <span class="small m-2">
             <span>Save ₹1,170 (45%)</span>

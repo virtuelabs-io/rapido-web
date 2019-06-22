@@ -1,9 +1,10 @@
 
 <div class="">
   <div>
-    <app-filterbar></app-filterbar>
+    <app-filterbar [searchedText]=searchedText [responseData]=responseData></app-filterbar>
     <section class="product-controls position-top m-2">
 
+      <!-- small device -->
         <div class="row mr-3">
             <div class="" ngbDropdown role="group" aria-label="Button group with nested dropdown">
               <button class="btn" ngbDropdownToggle>Drop me</button>
@@ -43,8 +44,8 @@
         
         <!-- Cards List div starts -->
         <div class="row justify-content-center col-md-10" >
-                <div *ngFor="let a of [1,2,3,4,5,6,7,8,9,1,2,3,4,5,6,7,8,9,1,2,3,4,5,6,7,8,9]" class="">
-                    <app-card></app-card>
+                <div *ngFor="let item of productList" class="">
+                    <app-card [itemList]=item></app-card>
                 </div>
           </div>
           <!-- Cards list div ends -->

@@ -12,6 +12,7 @@ export class RatingComponent implements OnInit {
    }
 
   ngOnInit() {
+    // console.log(this.currentRate)
   }
 
 }
