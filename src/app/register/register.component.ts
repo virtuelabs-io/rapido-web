@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
 	// response data/flag to show/handle in UI
 	registrationConfirmed: Boolean = false;
 	_resentConfirmationCodeResponse: Boolean = false;
-	countryCode: string = Constants.INDIA_PHONE_CODE //Constants.DEFAULT_PHONE_CODE
+	countryCode: string = Constants.DEFAULT_PHONE_CODE //Constants.DEFAULT_PHONE_CODE
 	stepperIndex: number = 0 // Set default active stepper
 	regFailedResponse: string = ""
 	confirmationCode: string = "";

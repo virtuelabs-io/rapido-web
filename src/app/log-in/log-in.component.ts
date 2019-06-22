@@ -15,7 +15,7 @@ export class LogInComponent implements OnInit {
   alertBox: boolean = false
   alertMsg: string = ""
   _signInResponse: Boolean = false;
-  countryCode: string = Constants.INDIA_PHONE_CODE; //Constants.DEFAULT_PHONE_CODE;
+  countryCode: string = Constants.DEFAULT_PHONE_CODE; //Constants.DEFAULT_PHONE_CODE;
   mobileNumber: string;
   password: string;
   progressSpinner: Boolean = false
@@ -65,9 +65,8 @@ export class LogInComponent implements OnInit {
         this.alertBox = true;
         this.alertMsg = error.data.message
         this.password = ""
-
         if(error.code === 1) {
-          this.resendOtpService.changeNumber("7032908112");
+          this.resendOtpService.changeNumber(this.mobileNumber);
           this.router.navigateByUrl('/resendotp');
         }
       })

@@ -3,6 +3,7 @@ import { ResendOtpService } from '../shared-services/resend-otp/resend-otp.servi
 import {FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ResendConfirmationCodeService } from '../services/authentication/resend-confirmation-code/resend-confirmation-code.service';
 import { ConfirmRegistrationService } from '../services/authentication/confirm-registration/confirm-registration.service';
+import { Constants } from '../utils/constants';
 
 @NgModule({
 	imports: [
@@ -20,7 +21,7 @@ import { ConfirmRegistrationService } from '../services/authentication/confirm-r
 
 export class ResendOtpComponent implements OnInit {
   otpConfirmed: Boolean = false
-  countryCode: string = "+91"
+  countryCode: string = Constants.DEFAULT_PHONE_CODE
   stepperIndex: number = 0
   confirmationCode: string = ""
   mobileNumber:string = ""
@@ -53,7 +54,6 @@ export class ResendOtpComponent implements OnInit {
   }
 
   confirmRegistration() {
-	//	this.resetResponseMessages()
 		this.progressSpinner = true
 		this._confirmRegistrationService.username = [ this.countryCode , this.mobileNumber ].join("")// setting payload
 		this._confirmRegistrationService.confirmRegistration(this.confirmationCode).
@@ -70,7 +70,6 @@ export class ResendOtpComponent implements OnInit {
   }
   
   resendConfirmationCode() {
-	//	this.resetResponseMessages()
 		this.progressSpinner = true
 		this._resendConfirmationCodeService.username = [ this.countryCode , this.mobileNumber ].join("")
 		const promise = this._resendConfirmationCodeService.resendConfirmationCode()
