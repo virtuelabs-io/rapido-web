@@ -1,153 +1,146 @@
-<mat-vertical-stepper [linear]="true" #stepper class="nav-bar-spacing" [selectedIndex]="stepperIndex">
+<div class="main-div">
+  <mat-vertical-stepper [linear]="true" #stepper class="nav-bar-spacing" [selectedIndex]="stepperIndex">
   
-  <mat-step [stepControl]="registerFormGroup">
-   
-    <!-- stepper 1: sign up/ register starts -->
-      <ng-template matStepLabel><h4>Sign Up/ Register</h4></ng-template>
-      <form [formGroup]="registerFormGroup" 
-              class="form-container" 
-              autocomplete="off"
-              novalidate 
-              (ngSubmit)="registerUser(registerFormGroup.value)" >
+    <mat-step [stepControl]="registerFormGroup">
+     
+      <!-- stepper 1: sign up/ register starts -->
+        <ng-template matStepLabel><h4>Sign Up/ Register</h4></ng-template>
+        <form [formGroup]="registerFormGroup" 
+                class="form-container" 
+                autocomplete="off"
+                novalidate 
+                (ngSubmit)="registerUser(registerFormGroup.value)" >
+              
+          <!--Mobile Number-->
+          <mat-form-field>
+              <span matPrefix>{{countryCode}} &nbsp;</span>
+              <input matInput maxlength="15" placeholder="Enter mobile number" formControlName="mobileNumber" >
+              <mat-hint align="end">Only numbers</mat-hint>
+              <mat-error *ngIf="hasError('mobileNumber', 'required')">Mobile number is required</mat-error>
+              <mat-error *ngIf="hasError('mobileNumber', 'pattern') || hasError('mobileNumber', 'min') || hasError('mobileNumber', 'max') ">Invalid entry</mat-error>
+          </mat-form-field>
+              
+            <div class=""></div>
             
-        <!--Mobile Number-->
-        <mat-form-field class="col-lg-4">
-            <span matPrefix>{{countryCode}} &nbsp;</span>
-            <input matInput maxlength="15" placeholder="Enter mobile number" formControlName="mobileNumber" >
-            <mat-hint align="end">Only numbers</mat-hint>
-            <mat-error *ngIf="hasError('mobileNumber', 'required')">Mobile number is required</mat-error>
-            <mat-error *ngIf="hasError('mobileNumber', 'pattern') || hasError('mobileNumber', 'min') || hasError('mobileNumber', 'max') ">Invalid entry</mat-error>
-        </mat-form-field>
-            
-          <div class="mt-2"></div>
+          <!--Name-->
+          <mat-form-field class="">
+              <input matInput type="text" placeholder="Enter name" formControlName="name" >
+              <mat-hint align="end">Not more than 60 characters long.</mat-hint>
+              <mat-error *ngIf="hasError('name', 'required')">Name is required</mat-error>
+              <mat-error *ngIf="hasError('name', 'maxlength')">You have entered more than 60 characters</mat-error>
+              <mat-error *ngIf="hasError('name', 'minlength')">Name should contain minimum three characters</mat-error>
+              <mat-error *ngIf="hasError('name', 'pattern')">Name should contain only alphabets</mat-error>
+          </mat-form-field>
+              
+            <div class=""></div>
+  
+          <!--Email Address-->
+          <mat-form-field class="">
+              <input matInput placeholder="Enter your email" formControlName="email" >
+              <mat-error *ngIf="hasError('email', 'required')">Email is required</mat-error>
+              <mat-error *ngIf="hasError('email', 'email')">Incorrect email ID</mat-error>
+          </mat-form-field>
           
-        <!--Name-->
-        <mat-form-field class="col-lg-4">
-            <input matInput type="text" placeholder="Enter name" formControlName="name" >
-            <mat-hint align="end">Not more than 60 characters long.</mat-hint>
-            <mat-error *ngIf="hasError('name', 'required')">Name is required</mat-error>
-            <mat-error *ngIf="hasError('name', 'maxlength')">You have entered more than 60 characters</mat-error>
-            <mat-error *ngIf="hasError('name', 'minlength')">Name should contain minimum three characters</mat-error>
-            <mat-error *ngIf="hasError('name', 'pattern')">Name should contain only alphabets</mat-error>
-        </mat-form-field>
+            <div class=""></div>
+  
+          <!--Password-->
+          <mat-form-field class="">
+              <input matInput placeholder="Enter your password" [type]="hidePwd ? 'password' : 'text'" formControlName="password">
+              <mat-hint align="end">Minimum 8 characters at least 1 Alphabet, 1 Number and with atleast one Special Chars </mat-hint>           
+              <mat-error *ngIf="passwordMismatch()">Password Mismatch</mat-error>            
+              <mat-error *ngIf="hasError('password', 'required')">Password is required</mat-error>
+              <mat-error *ngIf="hasError('password', 'pattern')">Password doesn't match the criteria </mat-error>
+              <mat-icon matSuffix (click)="hidePwd = !hidePwd">{{hidePwd ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </mat-form-field>
+          
+            <div class=""></div>
+          <!--Confirm Password-->
+          <mat-form-field class="">
+              <input matInput placeholder="Confirm Password" [type]="hideConfirmPwd ? 'password' : 'text'" formControlName="confirmPassword" >
+              <mat-error *ngIf="hasError('confirmPassword', 'required')">Confirm password is required</mat-error>
+              <mat-error *ngIf="passwordMismatch()">Password Mismatch</mat-error>
+              <mat-icon matSuffix (click)="hideConfirmPwd = !hideConfirmPwd">{{hideConfirmPwd ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </mat-form-field>
+          
+            <div class=""></div>
+  
+            <!-- Terms and Conditions -->
             
-          <div class="mt-2"></div>
-
-        <!--Email Address-->
-        <mat-form-field class="col-lg-4">
-            <input matInput placeholder="Enter your email" formControlName="email" >
-            <mat-error *ngIf="hasError('email', 'required')">Email is required</mat-error>
-            <mat-error *ngIf="hasError('email', 'email')">Incorrect email ID</mat-error>
-        </mat-form-field>
-        
-          <div class="mt-2"></div>
-
-        <!--Password-->
-        <mat-form-field class="col-lg-4">
-            <input matInput placeholder="Enter your password" [type]="hidePwd ? 'password' : 'text'" formControlName="password">
-            <mat-hint align="end">Minimum 8 characters at least 1 Alphabet, 1 Number and with atleast one Special Chars </mat-hint>           
-            <mat-error *ngIf="passwordMismatch()">Password Mismatch</mat-error>            
-            <mat-error *ngIf="hasError('password', 'required')">Password is required</mat-error>
-            <mat-error *ngIf="hasError('password', 'pattern')">Password doesn't match the criteria </mat-error>
-            <mat-icon matSuffix (click)="hidePwd = !hidePwd">{{hidePwd ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </mat-form-field>
-        
-          <div class="mt-2"></div>
-        <!--Confirm Password-->
-        <mat-form-field class="col-lg-4">
-            <input matInput placeholder="Confirm Password" [type]="hideConfirmPwd ? 'password' : 'text'" formControlName="confirmPassword" >
-            <mat-error *ngIf="hasError('confirmPassword', 'required')">Confirm password is required</mat-error>
-            <mat-error *ngIf="passwordMismatch()">Password Mismatch</mat-error>
-            <mat-icon matSuffix (click)="hideConfirmPwd = !hideConfirmPwd">{{hideConfirmPwd ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </mat-form-field>
-        
-          <div class="mt-2"></div>
-
-          <!-- Terms and Conditions -->
-            <mat-checkbox formControlName="termsAndConditions" class="example-margin" >I agree to the Terms and Conditions</mat-checkbox>
+              <mat-checkbox class="text-wrap" formControlName="termsAndConditions">I agree to the Terms and Conditions</mat-checkbox>
+              
+            <!-- Promotions / Communications-->
+              <mat-checkbox class="text-wrap" formControlName="communications">Use my data for Promotions, Personalisations and Communications</mat-checkbox>
             
-          <!-- Promotions / Communications-->
-            <mat-checkbox formControlName="communications" class="example-margin" >Use my data for Promotions, Personalisations and Communications</mat-checkbox>
-
-          <mat-card-actions class="button-spacing">
-            <button mat-flat-button color="primary" type="submit" [disabled]="!registerFormGroup.valid">
-                <span *ngIf="progressSpinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                Submit
+            <mat-card-actions class="button-spacing">
+              <button mat-flat-button color="primary" type="submit" [disabled]="!registerFormGroup.valid">
+                  <span *ngIf="progressSpinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                  Submit
+              </button>
+            </mat-card-actions>
+           
+            <!-- Backend service error message -->
+            <div *ngIf='regFailedResponse' class="alert-danger-background" role="alert">
+              <h4 class="alert-danger-text text-align">Error!</h4>
+              <p class="alert-danger-text text-align">{{ regFailedResponse}}</p>
+            </div>
+        </form>
+        <!-- stepper 1: sign up/ register ends -->
+    </mat-step>
+  
+    <!-- stepper 2: Confirm OTP  -->
+    <mat-step [stepControl]="registerFormGroup">
+        <div *ngIf='otpSuccess' class="alert-danger-background margin-top" role="alert">
+            <h4 class="alert-success-text text-align">Success!</h4>
+            <p class="alert-success-text text-align">An OTP has been sent to the registered mobile number</p>
+        </div>
+      <ng-template matStepLabel><h4 class="mat-checkbox-layout">Mobile Number Verification</h4></ng-template>
+      <form class="form-container2" >
+        
+        <!-- Mobile Number read only -->
+        <mat-form-field>
+          <input matInput placeholder="Mobile Number" disabled [(ngModel)]="_registration.phone_number" name="mobile-number">
+        </mat-form-field>
+  
+        <!-- Confirmation code input -->
+          <div class="opacity5">Enter OTP</div>
+            <input class="partitioned" matInput maxlength="6" placeholder="" [(ngModel)]="confirmationCode" name="otp-code">
+          <div></div>
+          <mat-card-actions class="margin-top">
+          
+            <!-- Action buttons -->
+          <div class="flex-button">
+            <button mat-flat-button class="width8" color="primary" (click)="resendConfirmationCode()">
+                <span *ngIf="progressSpinner && !confirmationCode" class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+              Resend Code
             </button>
-          </mat-card-actions>
-         
-          <!-- Backend service error message -->
-          <div *ngIf='regFailedResponse' class="alert alert-danger col-lg-4" role="alert">
-            <h4 class="alert-heading">Error!</h4>
-            <p>{{ regFailedResponse}}</p>
+              <div></div>
+            <button mat-flat-button class="width8" color="primary" (click)="confirmRegistration()" [disabled]="confirmationCode.length!=6">
+              <span *ngIf="progressSpinner" class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+              Submit
+            </button>
+          </div>  
+          
+          <div *ngIf='wrongCodeMsg' class="alert-danger-background" role="alert">
+            <h4 class="alert-danger-text text-align">Error!</h4>
+            <p class="alert-danger-text text-align">{{wrongCodeMsg}}</p>
           </div>
+  
+          <div *ngIf='_resentConfirmationCodeResponse' class="alert-danger-background" role="alert">
+            <h4 class="alert-success-text text-align">Success!</h4>
+            <p class="alert-success-text text-align">An OTP has been re-sent to the registered mobile number</p>
+          </div>
+      </mat-card-actions> 
       </form>
-      <!-- stepper 1: sign up/ register ends -->
-  </mat-step>
-
-  <!-- stepper 2: Confirm OTP  -->
-  <mat-step [stepControl]="registerFormGroup">
-      <div *ngIf='otpSuccess' class="alert alert-success col-lg-4" role="alert">
-          <h4 class="alert-heading">Success!</h4>
-          <p>An OTP has been sent to the registered mobile number</p>
-        </div>
-    <ng-template matStepLabel><h4>Mobile Number Verification</h4></ng-template>
-    <form class="form-container" >
-      
-      <!-- Mobile Number read only -->
-      <mat-form-field class="col-lg-4" >
-        <input matInput placeholder="Mobile Number" disabled [(ngModel)]="_registration.phone_number" name="mobile-number">
-      </mat-form-field>
-
-      <!-- Confirmation code input -->
-        <div class="ml-3 opacity5">Enter OTP</div>
-          <input class="partitioned ml-3" matInput maxlength="6" placeholder="" [(ngModel)]="confirmationCode" name="otp-code">
-        <div class="mb-5"></div>
-      
-        <!-- <div class="divOuter">
-          <div class="divInner">
-            <input class="partitioned m-4" maxlength="6" placeholder="" [(ngModel)]="confirmationCode" name="first">
-          </div>
-        </div> -->
-      
-        <mat-card-actions>
-        
-          <!-- Action buttons -->
-        <div class="flex">
-          <button mat-flat-button class="width8" color="primary" (click)="resendConfirmationCode()">
-              <span *ngIf="progressSpinner && !confirmationCode" class="spinner-border spinner-border-sm" aria-hidden="true"></span>
-            Resend Code
-          </button>
-            <div class="mx-2"></div>
-          <button mat-flat-button class="width8" color="primary" (click)="confirmRegistration()" [disabled]="confirmationCode.length!=6">
-            <span *ngIf="progressSpinner" class="spinner-border spinner-border-sm" aria-hidden="true"></span>
-            Submit
-          </button>
-        </div>
-        
-        <div *ngIf='wrongCodeMsg' class="alert alert-danger col-lg-4 mt-3" role="alert">
-          <h4 class="alert-heading">Error!</h4>
-          <p>{{wrongCodeMsg}}</p>
-        </div>
-
-        <div *ngIf='_resentConfirmationCodeResponse' class="alert alert-success col-lg-4 mt-3" role="alert">
-          <h4 class="alert-heading">Success!</h4>
-          <p>An OTP has been re-sent to the registered mobile number</p>
-        </div>
-    </mat-card-actions> 
-    </form>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel><h4>Done</h4></ng-template>
-    <div *ngIf="registrationConfirmed" class="alert alert-success col-lg-4" role="alert">
-      <h4 class="alert-heading">Success!</h4>
-      <p>Successfully confirmed registration!</p>
-    </div>
-    <div>
-      <svg class="imageWidth">
-        <use xlink:href="#check-mark"/>
-      </svg>
-    </div>
-    <button mat-flat-button routerLink="/sign-in"  color="primary" type="submit">Navigate to Sign In Page</button>
-  </mat-step>
-</mat-vertical-stepper>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel><h4>Done</h4></ng-template>
+      <div *ngIf="registrationConfirmed" class="alert-danger-background" role="alert">
+        <h4 class="alert-success-text text-align">Success!</h4>
+        <p class="alert-success-text text-align">Successfully confirmed registration!</p>
+      </div>
+      <div>
+      </div>
+      <button mat-flat-button routerLink="/login"  color="primary" type="submit">Log In</button>
+    </mat-step>
+  </mat-vertical-stepper>
+</div>

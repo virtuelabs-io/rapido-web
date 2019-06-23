@@ -1,63 +1,63 @@
 <mat-toolbar color="primary">
-  <mat-toolbar-row class="main-toolbar">
-     <div class="block">
-        <div class="block-one" routerLink="/">
-           <i class="fa fa-bars" aria-hidden="true"></i>
-           <a class="navbar-brand rapido-banner">
-            {{bannerName}}<a class="com">.com</a>
-           </a>
-        </div>
-        <div class="block-two">
-           <form >
-              <input type="text" placeholder="Search for materials..." name="search"  >
-              <button type="submit" style="display:none">hidden submit</button>
-           </form>
-        </div>
-        <div class="block-three">
-           <div *ngIf="isSignedIn" class="rapido-icon-spacer">
-              <a  class="rapido-icon mat-button rapido-icon-hider" routerLink="" [matMenuTriggerFor]="menu">
-                 <svg aria-hidden="true" aria-haspopup="menu">
-                    <use xlink:href="#man-user"/>
-                 </svg>
-              </a>
-           </div>
-           <mat-menu #menu="matMenu">
-              <div class="sign-in-class">
-                 <div>Hi</div>
-                 <div>
-                    <strong>
-                    {{name}}
-                    </strong>!
-                 </div>
-              </div>
-              <div role="none" class="dropdown-divider"></div>
-              <a class="dropdown-item " href="/profile">My Profile</a>
-              <div (click)="signOut()">
-                 <a class="dropdown-item">Log Out</a>
-              </div>
-
-           </mat-menu>
-           <div *ngIf="!isSignedIn && router.url != '/login'" aria-label="Menu" class="rapido-sign-in mr-3">
-              <a routerLink="/login" class="tag">Log in</a>
-           </div>
-           <div class="rapido-icon-spacer  ml-4">
-              <a class="rapido-icon" routerLink="">
-                 <svg>
-                    <use xlink:href="#shopping-cart" />
-                 </svg>
-              </a>
-           </div>
-        </div>
-     </div>
-  </mat-toolbar-row>
-  <mat-toolbar-row class="secondary-toolbar">
-     <div class="block">
-        <div class="block-search">
-           <form>
-              <input type="text" placeholder="Search for materials..." name="search">
-              <button type="submit" style="display:none">hidden submit</button>
-           </form>
-        </div>
-     </div>
-  </mat-toolbar-row>
-</mat-toolbar>
+   <mat-toolbar-row class="main-toolbar">
+      <div class="block">
+         <div class="block-one" routerLink="/">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+            <a class="navbar-brand rapido-banner">
+             {{bannerName}}<a class="com">.com</a>
+            </a>
+         </div>
+         <div class="block-two">
+            <form >
+               <input type="text" placeholder="Search for materials..." name="search"  >
+               <button type="submit" style="display:none">hidden submit</button>
+            </form>
+         </div>
+         <div class="block-three">
+            <div *ngIf="isSignedIn" class="rapido-icon-spacer">
+               <a  class="rapido-icon mat-button rapido-icon-hider" routerLink="" [matMenuTriggerFor]="menu">
+                  <svg aria-hidden="true" aria-haspopup="menu">
+                     <use xlink:href="#man-user"/>
+                  </svg>
+               </a>
+            </div>
+            <mat-menu #menu="matMenu">
+               <div class="sign-in-class">
+                  <div>Hi</div>
+                  <div>
+                     <strong>
+                     {{name}}
+                     </strong>!
+                  </div>
+               </div>
+               <div role="none" class="dropdown-divider"></div>
+               <a class="dropdown-item " href="/profile">My Profile</a>
+               <div (click)="signOut()">
+                  <a class="dropdown-item">Log Out</a>
+               </div>
+ 
+            </mat-menu>
+            <div *ngIf="!isSignedIn && router.url != '/login'" aria-label="Menu" class="rapido-sign-in mr-3">
+               <a routerLink="/login" class="tag">Log in</a>
+            </div>
+            <div class="rapido-icon-spacer">
+               <a class="rapido-icon" routerLink="">
+                  <svg>
+                     <use xlink:href="#shopping-cart" />
+                  </svg>
+               </a>
+            </div>
+         </div>
+      </div>
+   </mat-toolbar-row>
+   <mat-toolbar-row class="secondary-toolbar">
+      <div class="block">
+         <div class="block-search">
+            <form>
+               <input type="text" placeholder="Search for materials..." name="search">
+               <button type="submit" style="display:none">hidden submit</button>
+            </form>
+         </div>
+      </div>
+   </mat-toolbar-row>
+ </mat-toolbar>
