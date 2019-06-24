@@ -1,19 +1,22 @@
 <div class="">
+  <section>
+   
     <div class="filtersL">
-            <mat-accordion multi="true" displayMode="flat" >
-             
-                    <mat-expansion-panel expanded="false" *ngFor="let panel of ['categories','filters','sort']" >
+            <mat-accordion multi="true" displayMode="flat" *ngFor="let item of filterData">
+              <div class="h5 mt-4">{{item.headerText}}</div>
+                    <mat-expansion-panel expanded="false" *ngFor="let panelList of item.panel" >
                       <mat-expansion-panel-header>
                         <mat-panel-title>
-                            {{panel}}
+                            {{panelList.panelTitle}}
                         </mat-panel-title>
                         <!-- <mat-panel-description>
                           Type your name and age
                         </mat-panel-description> -->
                       </mat-expansion-panel-header>
                         <mat-nav-list>
-                            <mat-list-item *ngFor="let link of ['cat1','cat2','cat3']">
-                               <a matLine >link</a>
+                            <mat-list-item *ngFor="let panelData of panelList.panelData">
+                              <!-- this can be custom component[ex: rating/pricing] -->
+                               <a matLine >{{panelData}}</a>
                                <!-- <button mat-icon-button (click)="showInfo(link)">
                                   <mat-icon>info</mat-icon>
                                </button> -->
@@ -21,5 +24,26 @@
                           </mat-nav-list>
                         </mat-expansion-panel>
                     </mat-accordion>
+            
+            
+           <!-- <mat-accordion multi="true" displayMode="flat" >
+              Filter By:
+                    <mat-expansion-panel expanded="false" *ngFor="let panel of ['categories']" >
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            {{panel}}
+                        </mat-panel-title>
+                        
+                      </mat-expansion-panel-header>
+                        <mat-nav-list>
+                            <mat-list-item *ngFor="let link of ['cat1','cat2','cat3']">
+                               <a matLine >link</a>
+                               
+                            </mat-list-item>
+                          </mat-nav-list>
+                        </mat-expansion-panel>
+                    </mat-accordion> -->
     </div>
+     
+  </section>
  </div>   

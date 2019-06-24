@@ -9,9 +9,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeftSectionComponent implements OnInit {
 
+  filterData: Object 
   constructor() { }
 
   ngOnInit() {
+    this.filterData = [
+                      {
+                        'headerText':'show result for',
+                         'panel':[ {
+                           'panelTitle':'painting',
+                           'panelType':'Link',
+                           'panelData':[]
+                        }]
+                      },
+                      {
+                        'headerText':'filtr by',
+                         'panel':[ 
+                           {
+                          'panelTitle':'average rating',
+                          'panelType':'rating',
+                          'panelData':['1','2','3','4','5']
+                       },
+                        {
+                          'panelTitle':'price',
+                          'panelType':'price',
+                          'panelData':['range1','range2']
+                       }]
+                      }
+         ]
   }
 
 }
