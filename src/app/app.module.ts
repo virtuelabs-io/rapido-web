@@ -21,7 +21,7 @@ import { CardComponent } from './card/card.component';
 import { RatingComponent } from './rating/rating.component';
 import { ImagesComponent } from './images/images.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { FilterByComponent } from './filter-by/filter-by.component';
+import { LeftSectionComponent } from './leftsection/leftsection.component';
 import { FilterbarComponent } from './filterbar/filterbar.component';
 // import { DialogComponent } from './dialog/dialog.component';
 import { FilterMobileComponent } from './filter-mobile/filter-mobile.component';
@@ -49,7 +49,7 @@ import { Constants } from './utils/constants';
     CardComponent,
     RatingComponent,
     ImagesComponent,
-    FilterByComponent,
+    LeftSectionComponent,
     FilterbarComponent,
     // DialogComponent,
     FilterMobileComponent,

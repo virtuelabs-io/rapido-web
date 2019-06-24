@@ -27,7 +27,7 @@ export class ProductCardsComponent implements OnInit {
         this.searchedText = state
         this._query = {
           q: this.searchedText,
-          size: 1,
+          size: 10,
           cursor: null, // always use either cursor or start, but not both
           start: null, // always use either cursor or start, but not both
           sort: null
@@ -38,7 +38,7 @@ export class ProductCardsComponent implements OnInit {
             this.responseData = data
             if(data && data.hits && data.hits.hit)
             this.productList = data.hits.hit
-            for(let i=1; i<20; i++){
+            for(let i=1; i<15; i++){
               this.productList.push(data.hits.hit[0])
             }
           })

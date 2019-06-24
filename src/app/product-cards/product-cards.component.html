@@ -37,14 +37,14 @@
 
   <div class="row position-top ">
       <div class="col-md-3 ml-4 mt-2">
-          <app-filter-by></app-filter-by>
+          <app-leftsection></app-leftsection>
         </div>
         
 
         
         
         <!-- Cards List div starts -->
-        <div class="row justify-content-center col-md-9" >
+        <div class="row itemListCls col-md-9" >
                 <div *ngFor="let item of productList" class="">
                     <app-card [itemList]=item></app-card>
                 </div>

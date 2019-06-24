@@ -16,7 +16,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class TopnavComponent implements OnInit {
   isSignedIn: Boolean = false
   name: String
-  searchedText: string = 'watches'
+  searchedText: string = ''
   bannerName: String = Constants.RAPIDO_BUILD
   durationInSeconds = 5;
 
