@@ -8,6 +8,7 @@ import { AddressDetailsService } from '../services/customer/address-details.serv
   styleUrls: ['./address.component.scss']
 })
 export class AddressComponent implements OnInit {
+  showSpinner: Boolean = false
   address_details_id: number;
   address_details_result: string;
   private _addressDetailsService: AddressDetailsService
@@ -42,6 +43,10 @@ export class AddressComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.showSpinner = true
+    // setTimeout(() => {
+    //   this.showSpinner = false
+    // }, 5000)
     this._addressDetailsService.getAddressDetailsList()
     .subscribe(data => {
       console.log(data)
@@ -52,6 +57,7 @@ export class AddressComponent implements OnInit {
         console.log('Sucessfully updated the address test id to: ' + String(this.address_details_id))
       }
       this.address_details_result = "Sucessfully fetched address details List and logged!";
+      this.showSpinner = false
     })
   }
   addressDelete(id) {
