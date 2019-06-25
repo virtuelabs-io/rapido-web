@@ -17,6 +17,7 @@ import { Constants } from './utils/constants';
 import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, MatSnackBarModule, MatExpansionModule, MatSelectModule } from '@angular/material';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResendOtpComponent } from './resend-otp/resend-otp.component';
+import { ProfileComponent } from './my-profile/profile.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { ResendOtpComponent } from './resend-otp/resend-otp.component';
     RoutingComponents,
     CheckoutComponent,
     ForgotPasswordComponent,
-    ResendOtpComponent
+    ResendOtpComponent,
+    ProfileComponent
   ],
   imports: [
     MatSidenavModule,
