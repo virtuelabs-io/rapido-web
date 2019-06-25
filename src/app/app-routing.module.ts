@@ -7,6 +7,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResendOtpComponent } from './resend-otp/resend-otp.component';
 import { ProfileComponent } from './my-profile/profile.component';
+import { AddressComponent } from './address/address.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent},
   { path: 'forgotpassword', component: ForgotPasswordComponent},
   { path: 'resendotp', component: ResendOtpComponent},
-  { path: 'myprofile', component: ProfileComponent},
+  { path: 'profile', component: ProfileComponent},
+  { path: 'profile/address', component: AddressComponent},
   { path: '', component: AuthmockComponent},
 ];
 
@@ -29,5 +31,6 @@ export const RoutingComponents = [
   ForgotPasswordComponent,
   ResendOtpComponent,
   ProfileComponent,
+  AddressComponent,
   AuthmockComponent
 ];

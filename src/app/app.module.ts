@@ -18,6 +18,7 @@ import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, M
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResendOtpComponent } from './resend-otp/resend-otp.component';
 import { ProfileComponent } from './my-profile/profile.component';
+import { AddressComponent } from './address/address.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { ProfileComponent } from './my-profile/profile.component';
     CheckoutComponent,
     ForgotPasswordComponent,
     ResendOtpComponent,
-    ProfileComponent
+    ProfileComponent,
+    AddressComponent
   ],
   imports: [
     MatSidenavModule,
