@@ -5,7 +5,7 @@ import { LogInComponent } from './log-in/log-in.component';
 import { AuthmockComponent } from './authmock/authmock.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 // import { MyProfileComponent } from './my-profile/my-profile.component';
-import { ProductCardsComponent } from './product-cards/product-cards.component';
+import { ProductResultsComponent } from './productresults/productresults.component';
 // import { DialogComponent } from './dialog/dialog.component';
 import { FilterMobileComponent } from './filter-mobile/filter-mobile.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'sign-in', component: LogInComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   // { path: 'my-profile', component: MyProfileComponent },
-  { path: 'products', component: ProductCardsComponent },
+  { path: 'products', component: ProductResultsComponent },
   // { path: 'test', component: DialogComponent },
   { path: 'filter-mobile', component: FilterMobileComponent },
   { path: '', component: AuthmockComponent},
@@ -33,7 +33,7 @@ export const RoutingComponents = [
   LogInComponent,
   ForgotPasswordComponent,
   // MyProfileComponent,
-  ProductCardsComponent,
+  ProductResultsComponent,
   AuthmockComponent,
   // DialogComponent,
   FilterMobileComponent,

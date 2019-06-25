@@ -23,7 +23,7 @@ export class LeftSectionComponent implements OnInit {
                         }]
                       },
                       {
-                        'headerText':'filtr by',
+                        'headerText':'filter by',
                          'panel':[ 
                            {
                           'panelTitle':'average rating',

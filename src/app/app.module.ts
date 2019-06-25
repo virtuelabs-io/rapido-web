@@ -11,18 +11,20 @@ import { IconComponent } from './common/icons/icons.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { RoutingComponents } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, MatSnackBarModule, MatExpansionModule, MatSelectModule } from '@angular/material';
+import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, 
+          MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, 
+          MatSnackBarModule, MatExpansionModule, MatSelectModule, MatPaginatorModule } from '@angular/material';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 // import { MyProfileComponent } from './my-profile/my-profile.component';
 // import {MatAutocompleteModule} from '@angular/material/autocomplete';
 // import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { ProductCardsComponent } from './product-cards/product-cards.component';
+import { ProductResultsComponent } from './ProductResults/ProductResults.component';
 import { CardComponent } from './card/card.component';
 import { RatingComponent } from './rating/rating.component';
 import { ImagesComponent } from './images/images.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { LeftSectionComponent } from './leftsection/leftsection.component';
-import { FilterbarComponent } from './filterbar/filterbar.component';
+import { ProductControlsComponent } from './ProductControls/ProductControls.component';
 // import { DialogComponent } from './dialog/dialog.component';
 import { FilterMobileComponent } from './filter-mobile/filter-mobile.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
@@ -45,12 +47,12 @@ import { Constants } from './utils/constants';
     ForgotPasswordComponent,
     AppComponent,
     // MyProfileComponent,
-    ProductCardsComponent,
+    ProductResultsComponent,
     CardComponent,
     RatingComponent,
     ImagesComponent,
     LeftSectionComponent,
-    FilterbarComponent,
+    ProductControlsComponent,
     // DialogComponent,
     FilterMobileComponent,
     ProductDetailsComponent,
@@ -74,6 +76,7 @@ import { Constants } from './utils/constants';
     MatExpansionModule,
     MatMenuModule,
     MatSelectModule,
+    MatPaginatorModule,
     HttpClientModule,
     // NgxStripeModule.forRoot(Constants.environment.stripePublicKey),
     HttpClientModule,
@@ -88,6 +91,7 @@ import { Constants } from './utils/constants';
     MatExpansionModule,
     MatMenuModule,
     MatSelectModule,
+    MatPaginatorModule,
     MatSidenavModule,
     MatSidenavModule,
     BrowserModule,

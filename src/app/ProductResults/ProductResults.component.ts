@@ -5,11 +5,11 @@ import { Query } from '../services/products/query.interface';
 
 
 @Component({
-  selector: 'app-product-cards',
-  templateUrl: './product-cards.component.html',
-  styleUrls: ['./product-cards.component.scss']
+  selector: 'app-productresults',
+  templateUrl: './productresults.component.html',
+  styleUrls: ['./productresults.component.scss']
 })
-export class ProductCardsComponent implements OnInit {
+export class ProductResultsComponent implements OnInit {
 
   private _productsService: ProductsService
   searchedText: string = ""
