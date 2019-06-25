@@ -1,0 +1,22 @@
+<div class="a-row a-spacing-base">
+  <h1>
+      My Account
+  </h1>
+</div>
+<div class="rapido-profile">
+  <a class="rapido-profile-item" *ngFor="let item of profileItems" href="{{ item.route }}" >
+    <div class="icon-div">
+      <a class="rapido-icon">
+        <svg aria-hidden="true" aria-haspopup="menu">
+          <use [attr.xlink:href]="item.icon"/>
+        </svg>
+      </a>
+    </div>
+    <div class="content-div">
+      <h4>
+        {{ item.title }}
+      </h4>
+      <p>{{ item.description }}</p>
+    </div>
+  </a>
+</div>
