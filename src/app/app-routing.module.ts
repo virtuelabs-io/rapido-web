@@ -8,6 +8,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ResendOtpComponent } from './resend-otp/resend-otp.component';
 import { ProfileComponent } from './my-profile/profile.component';
 import { AddressComponent } from './address/address.component';
+import { AddAddressComponent } from './add-address/add-address.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'resendotp', component: ResendOtpComponent},
   { path: 'profile', component: ProfileComponent},
   { path: 'profile/address', component: AddressComponent},
+  { path: 'profile/address/newAddress', component: AddAddressComponent},
   { path: '', component: AuthmockComponent},
 ];
 
@@ -32,5 +34,6 @@ export const RoutingComponents = [
   ResendOtpComponent,
   ProfileComponent,
   AddressComponent,
+  AddAddressComponent,
   AuthmockComponent
 ];

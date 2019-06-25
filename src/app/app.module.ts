@@ -19,6 +19,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ResendOtpComponent } from './resend-otp/resend-otp.component';
 import { ProfileComponent } from './my-profile/profile.component';
 import { AddressComponent } from './address/address.component';
+import { AddAddressComponent } from './add-address/add-address.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { AddressComponent } from './address/address.component';
     ForgotPasswordComponent,
     ResendOtpComponent,
     ProfileComponent,
-    AddressComponent
+    AddressComponent,
+    AddAddressComponent
   ],
   imports: [
     MatSidenavModule,
