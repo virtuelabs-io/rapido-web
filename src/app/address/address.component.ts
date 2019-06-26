@@ -19,6 +19,7 @@ export class AddressComponent implements OnInit {
     addressDetailsService: AddressDetailsService
   ) {
     this._addressDetailsService = addressDetailsService
+    this.showSpinner = true
     this.getAddressList()
   }
 
@@ -26,7 +27,7 @@ export class AddressComponent implements OnInit {
     this.showSpinner = true
     this._addressDetailsService.getAddressDetailsList()
     .subscribe(data => {
-      if(data['length'] > 0){
+      if(data['length'] > 0) {
         this.address_details_id = data[0]['id']
         this.address = data
       }
@@ -38,8 +39,12 @@ export class AddressComponent implements OnInit {
   getAddressList() {
     this._addressDetailsService.getAddressDetailsList()
     .subscribe(data => {
-      if(data['length'] > 0){
+      this.showSpinner = false
+      if(data['length'] > 0) {
         this.address_details_id = data[0]['id']
+        this.address = data
+      }
+      else if(data['length'] === 0) {
         this.address = data
       }
       this.address_details_result = "Sucessfully fetched address details List and logged!";
@@ -47,6 +52,7 @@ export class AddressComponent implements OnInit {
   }
 
   addressDelete(id) {
+    this.showSpinner = true
     this._addressDetailsService.deleteAddressDetails(id)
     .subscribe(data => {
       this.address_details_id = null
