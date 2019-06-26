@@ -25,7 +25,6 @@ export class EditAddressComponent implements OnInit {
   }
   addressDetails: AddressDetails;
   private _addressDetailsService: AddressDetailsService
-  public addressId;
   constructor(
     private actRoute: ActivatedRoute,
     private router: Router,
