@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationExtras } from '@angular/router';
+import { Router } from '@angular/router';
 import { AddressDetails } from '../services/customer/address-details';
 import { AddressDetailsService } from '../services/customer/address-details.service';
 
@@ -58,7 +58,6 @@ export class AddAddressComponent implements OnInit {
     this.router.navigate(['profile/address']);
   }
   cancelAddAddress() {
-    console.log("lets cancel this operation")
     this.router.navigate(['profile/address']);
   }
 }

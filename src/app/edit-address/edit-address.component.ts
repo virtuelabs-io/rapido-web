@@ -10,18 +10,10 @@ import { parse } from 'url';
   styleUrls: ['./edit-address.component.scss']
 })
 export class EditAddressComponent implements OnInit {
-  public addressId;
-  constructor(
-    private router: ActivatedRoute,
-    addressDetailsService: AddressDetailsService
-  ) {
-    this._addressDetailsService = addressDetailsService 
-  }
   address_details_id: number;
   address_details_result: string;
   name: string = ""
-  addressItems = 
-  {
+  addressItems = {
     organisation: "",
     add1: "",
     add2: "",
@@ -30,18 +22,24 @@ export class EditAddressComponent implements OnInit {
     country: "",
     address_type_id:0,
     id: 0
-
   }
   addressDetails: AddressDetails;
   private _addressDetailsService: AddressDetailsService
+  public addressId;
+  constructor(
+    private actRoute: ActivatedRoute,
+    private router: Router,
+    addressDetailsService: AddressDetailsService
+  ) {
+    this._addressDetailsService = addressDetailsService 
+  }
   
   ngOnInit() {
-    let id = parseInt(this.router.snapshot.paramMap.get('id'))
+    let id = parseInt(this.actRoute.snapshot.paramMap.get('id'))
     console.log(id)
 
     this._addressDetailsService.getAddressDetails(id)
     .subscribe(data => {
-      console.log(data)
       this.addressItems.organisation = data.full_name
       this.addressItems.add1 = data.addr_1
       this.addressItems.add2 = data.addr_2
@@ -54,7 +52,7 @@ export class EditAddressComponent implements OnInit {
     })
   }
   saveAddress() {
-    let SId: string = this.addressItems.id.toString()
+    let id: string = this.addressItems.id.toString()
     console.log(this.addressItems)
     this.addressDetails = new AddressDetails(  
       this.addressItems.organisation,
@@ -65,7 +63,7 @@ export class EditAddressComponent implements OnInit {
       this.addressItems.country,
       this.addressItems.postcode,
       this.addressItems.add2,
-      SId
+      id
     )
     
     this.addressDetails.full_name = this.addressItems.organisation
@@ -78,7 +76,12 @@ export class EditAddressComponent implements OnInit {
     this.addressDetails.address_type_id = this.addressItems.address_type_id
     this._addressDetailsService.putAddressDetails(this.addressDetails)
     .subscribe(data => {
-      this.address_details_result = "Sucessfully updated customer address details and logged!";
+      this.router.navigate(['profile/address'])
+      this.address_details_result = "Sucessfully updated customer address details and logged!"
     })
+  }
+
+  cancelAddAddress() {
+    this.router.navigate(['profile/address'])
   }
 }
