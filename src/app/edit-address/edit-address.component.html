@@ -1,0 +1,53 @@
+<div class="main-div">
+  <div class="search-text-div">
+    <h3>
+      Edit Address
+    </h3>
+    <p>
+      Rapidobuild helps you to build without a real headache of the building materials..
+      Sothe saying goes on "you build and we deliver" 
+      We know how you value time and to help you save time is our sole motto..!
+    </p>
+    <div class="search-postcode-div">
+      <input matInput maxlength="10" placeholder="postcode">
+      <button mat-flat-button color="primary" type="submit">Find Address</button>
+    </div>
+  </div>
+  <div class="add-address-main">
+    <form class="form-details" novalidate>
+      <mat-form-field>
+        <input matInput maxlength="15" placeholder="Name" [(ngModel)]="addressItems.organisation"
+        [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput maxlength="15" placeholder="Address Line 1" [(ngModel)]="addressItems.add1"
+        [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput maxlength="15" placeholder="Address Line 2" [(ngModel)]="addressItems.add2"
+        [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput maxlength="45" placeholder="Town / City" [(ngModel)]="addressItems.town_city"
+        [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput maxlength="15" placeholder="Postcode" [(ngModel)]="addressItems.postcode"
+        [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput maxlength="15" placeholder="Country" [(ngModel)]="addressItems.country"
+        [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+      <mat-card-actions>
+        <button class="spacing" mat-flat-button color="primary" type="submit" (click)="saveAddress()">
+            <!-- <span *ngIf="_progressSpinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> -->
+            Save Address
+        </button>
+        <button mat-flat-button color="primary" (click)="cancelAddAddress()">
+          Cancel
+      </button>
+      </mat-card-actions>
+    </form>
+  </div>
+</div>
