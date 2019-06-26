@@ -16,11 +16,6 @@ export class EditAddressComponent implements OnInit {
     addressDetailsService: AddressDetailsService
   ) {
     this._addressDetailsService = addressDetailsService 
-    // const navigation = this.router.getCurrentNavigation();
-    // const state = navigation.extras.state as {example: string};
-    // if(state != undefined){
-    //   // this.example = state.example;
-    // }
   }
   address_details_id: number;
   address_details_result: string;
@@ -55,8 +50,6 @@ export class EditAddressComponent implements OnInit {
       this.addressItems.country = data.country
       this.addressItems.address_type_id = data.address_type_id
       this.addressItems.id = data.id
-      console.log(this.addressItems)
-      // this.addressItems = data  
       this.address_details_result = "Sucessfully fetched address details and logged!";
     })
   }
@@ -74,11 +67,7 @@ export class EditAddressComponent implements OnInit {
       this.addressItems.add2,
       SId
     )
-
-
-
-
-
+    
     this.addressDetails.full_name = this.addressItems.organisation
     this.addressDetails.id = this.addressItems.id
     this.addressDetails.addr_1 = this.addressItems.add1
@@ -89,7 +78,6 @@ export class EditAddressComponent implements OnInit {
     this.addressDetails.address_type_id = this.addressItems.address_type_id
     this._addressDetailsService.putAddressDetails(this.addressDetails)
     .subscribe(data => {
-      console.log(data)
       this.address_details_result = "Sucessfully updated customer address details and logged!";
     })
   }
