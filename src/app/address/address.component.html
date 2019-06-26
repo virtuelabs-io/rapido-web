@@ -1,45 +1,47 @@
-<div class="">
-  <h4>
-    My Addresses
-  </h4>
-</div>
-<div class="rapido-add-address">
-  <a class="rapido-add-address-icon">
-    <div class="address-add-icon">
-      <a class="" href="profile/address/newAddress">
-        <svg aria-hidden="true" aria-haspopup="menu">
-            <use xlink:href="#add"/>
-        </svg>
-      </a>
-    </div>
-    <div class="text-div">
-        <p>Add Address</p>
-    </div>
-    <div>
-      <mat-spinner *ngIf="showSpinner"></mat-spinner>
-    </div>
-    <div class="content-div">
-      
-    </div>
-  </a>
-  <div class="rapido-add-address-item" *ngFor="let address of address">
-    <div class="address-text">
-      <strong> {{ address.full_name }} </strong>
-      <br /><p>{{ address.addr_1 }}
-      <br /> {{ address.addr_2 }}
-      <br /> {{ address.city }}, {{ address.postcode }} 
-      <br /> {{ address.country }}
-
-      <!-- <strong>Ashok Kumar Patnaik</strong>
-      <p>Duplex no. 242
-      <br /> Pristine Greens Pokhariput
-      <br /> BHUBANESWAR, ODISHA 751020 
-      <br /> India
-      <br /> Phone number: 9439324903</p> -->
-    </div>
-    <div class="card-actions">
-      <a (click)="addressEdit(address.id)">Edit</a> |
-      <a (click)="addressDelete(address.id)">Delete</a>
+<div class="main-div">
+  <div class="title-div">
+    <h4>
+      My Addresses
+    </h4>
+  </div>
+  <div class="rapido-add-address">
+    <a class="rapido-add-address-icon">
+      <div class="address-add-icon">
+        <a class="" href="profile/address/newAddress">
+          <svg aria-hidden="true" aria-haspopup="menu">
+              <use xlink:href="#add"/>
+          </svg>
+        </a>
+      </div>
+      <div class="text-div">
+          <p>Add Address</p>
+      </div>
+      <div>
+        <mat-spinner *ngIf="showSpinner"></mat-spinner>
+      </div>
+      <div class="content-div">
+        
+      </div>
+    </a>
+    <div class="rapido-add-address-item" *ngFor="let address of address">
+      <div class="address-text">
+        <strong> {{ address.full_name }} </strong>
+        <br /><p>{{ address.addr_1 }}
+        <br /> {{ address.addr_2 }}
+        <br /> {{ address.city }}, {{ address.postcode }} 
+        <br /> {{ address.country }}
+  
+        <!-- <strong>Ashok Kumar Patnaik</strong>
+        <p>Duplex no. 242
+        <br /> Pristine Greens Pokhariput
+        <br /> BHUBANESWAR, ODISHA 751020 
+        <br /> India
+        <br /> Phone number: 9439324903</p> -->
+      </div>
+      <div class="card-actions">
+        <a (click)="addressEdit(address.id)">Edit</a> |
+        <a (click)="addressDelete(address.id)">Delete</a>
+      </div>
     </div>
   </div>
 </div>
