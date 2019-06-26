@@ -10,9 +10,7 @@ import { parse } from 'url';
   styleUrls: ['./edit-address.component.scss']
 })
 export class EditAddressComponent implements OnInit {
-  address_details_id: number;
-  address_details_result: string;
-  name: string = ""
+  showSpinner: Boolean = false
   addressItems = {
     organisation: "",
     add1: "",
@@ -23,7 +21,7 @@ export class EditAddressComponent implements OnInit {
     address_type_id:0,
     id: 0
   }
-  addressDetails: AddressDetails;
+  addressDetails: AddressDetails
   private _addressDetailsService: AddressDetailsService
   constructor(
     private actRoute: ActivatedRoute,
@@ -34,11 +32,13 @@ export class EditAddressComponent implements OnInit {
   }
   
   ngOnInit() {
+    this.showSpinner = true
     let id = parseInt(this.actRoute.snapshot.paramMap.get('id'))
     console.log(id)
 
     this._addressDetailsService.getAddressDetails(id)
     .subscribe(data => {
+      this.showSpinner = false
       this.addressItems.organisation = data.full_name
       this.addressItems.add1 = data.addr_1
       this.addressItems.add2 = data.addr_2
@@ -47,10 +47,10 @@ export class EditAddressComponent implements OnInit {
       this.addressItems.country = data.country
       this.addressItems.address_type_id = data.address_type_id
       this.addressItems.id = data.id
-      this.address_details_result = "Sucessfully fetched address details and logged!";
     })
   }
   saveAddress() {
+    this.showSpinner = true
     let id: string = this.addressItems.id.toString()
     console.log(this.addressItems)
     this.addressDetails = new AddressDetails(  
@@ -74,9 +74,9 @@ export class EditAddressComponent implements OnInit {
     this.addressDetails.country = this.addressItems.country
     this.addressDetails.address_type_id = this.addressItems.address_type_id
     this._addressDetailsService.putAddressDetails(this.addressDetails)
-    .subscribe(data => {
+    .subscribe( _ => {
+      this.showSpinner = false
       this.router.navigate(['profile/address'])
-      this.address_details_result = "Sucessfully updated customer address details and logged!"
     })
   }
 
