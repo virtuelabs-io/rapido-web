@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AddressDetails } from '../services/customer/address-details';
 import { AddressDetailsService } from '../services/customer/address-details.service';
 import { parse } from 'url';
+import {FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-address',
@@ -23,6 +24,8 @@ export class EditAddressComponent implements OnInit {
   }
   addressDetails: AddressDetails
   private _addressDetailsService: AddressDetailsService
+  addressFormGroup: FormGroup // UI reactive Form Group variable
+
   constructor(
     private actRoute: ActivatedRoute,
     private router: Router,
@@ -32,6 +35,15 @@ export class EditAddressComponent implements OnInit {
   }
   
   ngOnInit() {
+    this.addressFormGroup = new FormGroup({
+      name: new FormControl('', [Validators.required]),
+      add1: new FormControl('', [Validators.required]),
+      add2: new FormControl('', [Validators.required]),
+      town_city: new FormControl('', [Validators.required]),
+      postCode: new FormControl('', [Validators.required]),
+      country: new FormControl('', [Validators.required])
+    })
+    
     this.showSpinner = true
     let id = parseInt(this.actRoute.snapshot.paramMap.get('id'))
     console.log(id)
@@ -83,4 +95,8 @@ export class EditAddressComponent implements OnInit {
   cancelAddAddress() {
     this.router.navigate(['profile/address'])
   }
+
+  public hasError = (controlName: string, errorName: string) => {
+		return this.addressFormGroup.controls[controlName].hasError(errorName)
+	}
 }

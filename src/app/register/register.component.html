@@ -14,7 +14,7 @@
           <!--Mobile Number-->
           <mat-form-field>
               <span matPrefix>{{countryCode}} &nbsp;</span>
-              <input matInput maxlength="15" placeholder="Enter mobile number" formControlName="mobileNumber" >
+              <input matInput maxlength="15" placeholder="Enter mobile number" formControlName="mobileNumber">
               <mat-hint align="end">Only numbers</mat-hint>
               <mat-error *ngIf="hasError('mobileNumber', 'required')">Mobile number is required</mat-error>
               <mat-error *ngIf="hasError('mobileNumber', 'pattern') || hasError('mobileNumber', 'min') || hasError('mobileNumber', 'max') ">Invalid entry</mat-error>
