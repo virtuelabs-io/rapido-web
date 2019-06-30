@@ -32,8 +32,8 @@ export class LeftSectionComponent implements OnInit {
                        },
                         {
                           'panelTitle':'price',
-                          'panelType':'price',
-                          'panelData':['range1','range2']
+                          'panelType':'priceType',
+                          'panelData':[]
                        }]
                       }
          ]

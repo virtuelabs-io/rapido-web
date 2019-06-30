@@ -14,9 +14,13 @@
                         </mat-panel-description> -->
                       </mat-expansion-panel-header>
                         <mat-nav-list>
+                          <div *ngIf='panelList && panelList.panelType && panelList.panelType=="priceType"'>
+                             <range-slider></range-slider>
+                          </div>
                             <mat-list-item *ngFor="let panelData of panelList.panelData">
                               <!-- this can be custom component[ex: rating/pricing] -->
                                <a matLine >{{panelData}}</a>
+                               
                                <!-- <button mat-icon-button (click)="showInfo(link)">
                                   <mat-icon>info</mat-icon>
                                </button> -->

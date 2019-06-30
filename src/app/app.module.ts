@@ -33,6 +33,8 @@ import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { Constants } from './utils/constants';
+import { Ng5SliderModule } from 'ng5-slider';
+import { RangeSliderComponent } from './range-slider/range-slider.component';
 
 
 @NgModule({
@@ -56,7 +58,8 @@ import { Constants } from './utils/constants';
     // DialogComponent,
     FilterMobileComponent,
     ProductDetailsComponent,
-    ImageZoomComponent
+    ImageZoomComponent,
+    RangeSliderComponent
   ],
   imports: [
     MatSidenavModule,
@@ -112,6 +115,7 @@ import { Constants } from './utils/constants';
     MatMenuModule,
     HttpClientModule,
     // MatDialogModule,
+    Ng5SliderModule,
     NgxImageZoomModule.forRoot() 
   ],
   providers: [],
