@@ -5,26 +5,26 @@
             <mat-accordion multi="true" displayMode="flat" *ngFor="let item of filterData">
               <div class="h5 mt-4">{{item.headerText}}</div>
                     <mat-expansion-panel expanded="false" *ngFor="let panelList of item.panel" >
-                      <mat-expansion-panel-header>
+                      <mat-expansion-panel-header >
                         <mat-panel-title>
                             {{panelList.panelTitle}}
                         </mat-panel-title>
                       </mat-expansion-panel-header>
                         <mat-nav-list [ngSwitch]="panelList.panelType">
-                          <div *ngSwitchCase="'priceslider'">
-                             <range-slider></range-slider>
-                          </div>
-                          <div *ngSwitchCase="'rating'">
-                             <app-rating currentRate='1'></app-rating>
-                             <app-rating currentRate='2'></app-rating>
-                             <app-rating currentRate='3'></app-rating>
-                             <app-rating currentRate='4'></app-rating>
-                             <app-rating currentRate='5'></app-rating>
-                          </div>
                           <div *ngSwitchCase="'link'">
                             <mat-list-item *ngFor="let panelData of panelList.panelData">
                                <a matLine>{{panelData}}</a>
                             </mat-list-item>
+                          </div>
+                          <div *ngSwitchCase="'rating'">
+                             <mat-list-item *ngFor='let val of panelList.panelData'>
+                               <a matLine>
+                                 <app-rating [currentRate]='val'></app-rating>
+                               </a>
+                             </mat-list-item>
+                          </div>
+                          <div *ngSwitchCase="'priceslider'">
+                             <range-slider [rangeData]='panelList.panelData'></range-slider>
                           </div>
                             
                           </mat-nav-list>

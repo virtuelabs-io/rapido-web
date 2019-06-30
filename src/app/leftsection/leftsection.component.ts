@@ -11,13 +11,16 @@ export class LeftSectionComponent implements OnInit {
 
   filterData: Object 
   constructor() { }
-
+  fnPriceQuoteHandler: Function;
+  
   ngOnInit() {
+    this.fnPriceQuoteHandler= 
+              obj => this.priceQuoteHandler(obj);
     this.filterData = [
                       {
                         'headerText':'show result for',
                          'panel':[ {
-                           'panelTitle':'painting',
+                           'panelTitle':'watches',
                            'panelType':'link',
                            'panelData':['Sand','Tools']
                         }]
@@ -28,15 +31,20 @@ export class LeftSectionComponent implements OnInit {
                            {
                           'panelTitle':'rating',
                           'panelType':'rating',
-                          'panelData':[]
+                          'panelData':["1","2","3","4","5"]
                        },
                         {
                           'panelTitle':'price',
                           'panelType':'priceslider',
-                          'panelData':[]
+                          'panelData':{'callbackFunction':this.fnPriceQuoteHandler,
+                                        'maxValue':500
+                                        }
                        }]
                       }
          ]
+  }
+  priceQuoteHandler(e){
+    console.log(e)
   }
 
 }
