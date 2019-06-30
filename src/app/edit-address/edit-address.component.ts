@@ -12,16 +12,6 @@ import {FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 })
 export class EditAddressComponent implements OnInit {
   showSpinner: Boolean = false
-  addressItems = {
-    organisation: "",
-    add1: "",
-    add2: "",
-    town_city: "",
-    postcode: "",
-    country: "",
-    address_type_id:0,
-    id: 0
-  }
   addressDetails: AddressDetails
   private _addressDetailsService: AddressDetailsService
   addressFormGroup: FormGroup // UI reactive Form Group variable
@@ -41,51 +31,41 @@ export class EditAddressComponent implements OnInit {
       add2: new FormControl('', [Validators.required]),
       town_city: new FormControl('', [Validators.required]),
       postCode: new FormControl('', [Validators.required]),
-      country: new FormControl('', [Validators.required])
+      country: new FormControl('', [Validators.required]),
+      address_type_id: new FormControl('', [Validators.required]),
+      id: new FormControl('', [Validators.required]),
+      county: new FormControl(''),
+      customer_id: new FormControl('')
     })
-    
     this.showSpinner = true
     let id = parseInt(this.actRoute.snapshot.paramMap.get('id'))
-    console.log(id)
-
     this._addressDetailsService.getAddressDetails(id)
     .subscribe(data => {
       this.showSpinner = false
-      this.addressFormGroup.value.name = "Anirup_Match"
-      this.addressItems.organisation = data.full_name
-      this.addressItems.add1 = data.addr_1
-      this.addressItems.add2 = data.addr_2
-      this.addressItems.town_city = data.city
-      this.addressItems.postcode = data.postcode
-      this.addressItems.country = data.country
-      this.addressItems.address_type_id = data.address_type_id
-      this.addressItems.id = data.id
+      this.addressFormGroup.controls["name"].setValue(data.full_name)
+      this.addressFormGroup.controls["add1"].setValue(data.addr_1)
+      this.addressFormGroup.controls["add2"].setValue(data.addr_2)
+      this.addressFormGroup.controls["town_city"].setValue(data.city)
+      this.addressFormGroup.controls["postCode"].setValue(data.postcode)
+      this.addressFormGroup.controls["country"].setValue(data.country)
+      this.addressFormGroup.controls["address_type_id"].setValue(data.address_type_id)
+      this.addressFormGroup.controls["id"].setValue(data.id)
     })
   }
   saveAddress() {
     this.showSpinner = true
-    let id: string = this.addressItems.id.toString()
-    console.log(this.addressItems)
     this.addressDetails = new AddressDetails(  
-      this.addressItems.organisation,
-      this.addressItems.address_type_id, // check Constants.ADDRESS_TYPES for different types of addresses. Only those should be used
-      this.addressItems.add1,
-      this.addressItems.town_city,
-      "county",
-      this.addressItems.country,
-      this.addressItems.postcode,
-      this.addressItems.add2,
-      id
+      this.addressFormGroup.value.name,
+      this.addressFormGroup.value.address_type_id,
+      this.addressFormGroup.value.add1,
+      this.addressFormGroup.value.town_city,
+      this.addressFormGroup.value.county,
+      this.addressFormGroup.value.country,
+      this.addressFormGroup.value.postCode,
+      this.addressFormGroup.value.add2,
+      this.addressFormGroup.value.customer_id,
+      this.addressFormGroup.value.id
     )
-    
-    this.addressDetails.full_name = this.addressItems.organisation
-    this.addressDetails.id = this.addressItems.id
-    this.addressDetails.addr_1 = this.addressItems.add1
-    this.addressDetails.addr_2 = this.addressItems.add2
-    this.addressDetails.city = this.addressItems.town_city
-    this.addressDetails.postcode = this.addressItems.postcode
-    this.addressDetails.country = this.addressItems.country
-    this.addressDetails.address_type_id = this.addressItems.address_type_id
     this._addressDetailsService.putAddressDetails(this.addressDetails)
     .subscribe( _ => {
       this.showSpinner = false
