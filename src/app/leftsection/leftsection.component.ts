@@ -18,21 +18,21 @@ export class LeftSectionComponent implements OnInit {
                         'headerText':'show result for',
                          'panel':[ {
                            'panelTitle':'painting',
-                           'panelType':'Link',
-                           'panelData':[]
+                           'panelType':'link',
+                           'panelData':['Sand','Tools']
                         }]
                       },
                       {
                         'headerText':'filter by',
                          'panel':[ 
                            {
-                          'panelTitle':'average rating',
+                          'panelTitle':'rating',
                           'panelType':'rating',
-                          'panelData':['1','2','3','4','5']
+                          'panelData':[]
                        },
                         {
                           'panelTitle':'price',
-                          'panelType':'priceType',
+                          'panelType':'priceslider',
                           'panelData':[]
                        }]
                       }

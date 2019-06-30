@@ -9,22 +9,24 @@
                         <mat-panel-title>
                             {{panelList.panelTitle}}
                         </mat-panel-title>
-                        <!-- <mat-panel-description>
-                          Type your name and age
-                        </mat-panel-description> -->
                       </mat-expansion-panel-header>
-                        <mat-nav-list>
-                          <div *ngIf='panelList && panelList.panelType && panelList.panelType=="priceType"'>
+                        <mat-nav-list [ngSwitch]="panelList.panelType">
+                          <div *ngSwitchCase="'priceslider'">
                              <range-slider></range-slider>
                           </div>
+                          <div *ngSwitchCase="'rating'">
+                             <app-rating currentRate='1'></app-rating>
+                             <app-rating currentRate='2'></app-rating>
+                             <app-rating currentRate='3'></app-rating>
+                             <app-rating currentRate='4'></app-rating>
+                             <app-rating currentRate='5'></app-rating>
+                          </div>
+                          <div *ngSwitchCase="'link'">
                             <mat-list-item *ngFor="let panelData of panelList.panelData">
-                              <!-- this can be custom component[ex: rating/pricing] -->
-                               <a matLine >{{panelData}}</a>
-                               
-                               <!-- <button mat-icon-button (click)="showInfo(link)">
-                                  <mat-icon>info</mat-icon>
-                               </button> -->
+                               <a matLine>{{panelData}}</a>
                             </mat-list-item>
+                          </div>
+                            
                           </mat-nav-list>
                         </mat-expansion-panel>
                     </mat-accordion>
