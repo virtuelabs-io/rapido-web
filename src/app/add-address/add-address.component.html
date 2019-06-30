@@ -19,7 +19,7 @@
   <div class="add-address-main">
     <form class="form-details" [formGroup]="addressFormGroup" novalidate>
       <mat-form-field>
-        <input matInput placeholder="Name" [(ngModel)]="addressItems.organisation" formControlName="name">
+        <input matInput placeholder="Name" [(ngModel)]="addressItems.name" formControlName="name">
         <mat-error *ngIf="hasError('name', 'required')">Name is required</mat-error>
       </mat-form-field>
       <mat-form-field>
@@ -43,7 +43,7 @@
         <mat-error *ngIf="hasError('country', 'required')">Country is required</mat-error>
       </mat-form-field>
       <mat-card-actions>
-        <button class="spacing" mat-flat-button color="primary" type="submit" [disabled]="!addressFormGroup.valid" (click)="addAddress()">
+        <button class="spacing" mat-flat-button color="primary" type="submit" [disabled]="!addressFormGroup.valid" (click)="addAddress(addressFormGroup.value)">
             <!-- <span *ngIf="_progressSpinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> -->
             Add Address
         </button>

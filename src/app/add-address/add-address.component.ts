@@ -17,7 +17,7 @@ export class AddAddressComponent implements OnInit {
   showSpinner: Boolean = false
   addressItems = 
   {
-    organisation: "",
+    name: "",
     add1: "46 Broadway",
     add2: "Address Line 2",
     town_city: "Pontypridd",
@@ -45,17 +45,17 @@ export class AddAddressComponent implements OnInit {
       country: new FormControl('', [Validators.required])
     })
   }
-  addAddress() {
+  addAddress(formData) {
     this.showSpinner = true
     this.addressDetails = new AddressDetails(  
-      this.addressItems.organisation,
+      formData.name,
       1, // check Constants.ADDRESS_TYPES for different types of addresses. Only those should be used
-      this.addressItems.add1,
-      this.addressItems.town_city,
+      formData.add1,
+      formData.town_city,
       "county",
-      this.addressItems.country,
-      this.addressItems.postcode,
-      this.addressItems.add2
+      formData.country,
+      formData.postcode,
+      formData.add2
     )
     console.log(this.addressDetails)
     this._addressDetailsService.postAddressDetails(this.addressDetails)
