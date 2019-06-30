@@ -51,6 +51,7 @@ export class EditAddressComponent implements OnInit {
     this._addressDetailsService.getAddressDetails(id)
     .subscribe(data => {
       this.showSpinner = false
+      this.addressFormGroup.value.name = "Anirup_Match"
       this.addressItems.organisation = data.full_name
       this.addressItems.add1 = data.addr_1
       this.addressItems.add2 = data.addr_2

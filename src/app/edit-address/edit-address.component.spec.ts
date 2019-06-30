@@ -1,12 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditAddressComponent } from './edit-address.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { MatInputModule } from '@angular/material';
+import { MatProgressSpinnerModule, MatFormFieldModule,  MatInputModule } from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
-import {MatFormFieldModule} from '@angular/material/form-field';
 
 describe('EditAddressComponent', () => {
   let component: EditAddressComponent;
@@ -14,7 +13,7 @@ describe('EditAddressComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ BrowserAnimationsModule, HttpClientModule, MatCardModule, FormsModule, RouterTestingModule, MatFormFieldModule, MatInputModule ],
+      imports: [ ReactiveFormsModule, MatProgressSpinnerModule, BrowserAnimationsModule, HttpClientModule, MatCardModule, FormsModule, RouterTestingModule, MatFormFieldModule, MatInputModule ],
       declarations: [ EditAddressComponent ]
     })
     .compileComponents();
@@ -29,4 +28,20 @@ describe('EditAddressComponent', () => {
   it('should not create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Mandatory fields during registration', async(() => {
+    component.addressFormGroup.controls['name'].setValue("Sam")
+    component.addressFormGroup.controls['add1'].setValue("xyz")
+    component.addressFormGroup.controls['add2'].setValue("abc cdf")
+    component.addressFormGroup.controls['town_city'].setValue("Charles Land")
+    component.addressFormGroup.controls['postCode'].setValue("12345")
+    component.addressFormGroup.controls['country'].setValue("UK")
+
+    expect(component.addressFormGroup.controls['name'].hasError('required')).toBeFalsy()
+    expect(component.addressFormGroup.controls['add1'].hasError('required')).toBeFalsy()
+    expect(component.addressFormGroup.controls['add2'].hasError('required')).toBeFalsy()
+    expect(component.addressFormGroup.controls['town_city'].hasError('required')).toBeFalsy()
+    expect(component.addressFormGroup.controls['postCode'].hasError('required')).toBeFalsy()
+    expect(component.addressFormGroup.controls['country'].hasError('required')).toBeFalsy()
+  }));
 });

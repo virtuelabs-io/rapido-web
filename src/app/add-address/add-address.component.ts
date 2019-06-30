@@ -11,21 +11,11 @@ import {FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 })
 
 export class AddAddressComponent implements OnInit {
-  address_details_id: number;
-  address_details_result: string;
+  address_details_id: number
+  address_details_result: string
   name: string = ""
   showSpinner: Boolean = false
-  addressItems = 
-  {
-    name: "",
-    add1: "46 Broadway",
-    add2: "Address Line 2",
-    town_city: "Pontypridd",
-    postcode: "CF37 1BD",
-    country: "United Kingdom"
-
-  }
-  addressDetails: AddressDetails;
+  addressDetails: AddressDetails
   private _addressDetailsService: AddressDetailsService
   addressFormGroup: FormGroup // UI reactive Form Group variable
 
@@ -67,7 +57,6 @@ export class AddAddressComponent implements OnInit {
       }
       this.address_details_result = "Sucessfully posted address company details and logged!";
     })
-    // const navigationExtras: NavigationExtras = {state: {example: 'This is an example'}};
     this.router.navigate(['profile/address']);
   }
   cancelAddAddress() {
