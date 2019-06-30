@@ -6,8 +6,8 @@ import { Query } from '../services/products/query.interface';
 
 @Component({
   selector: 'app-productresults',
-  templateUrl: './productresults.component.html',
-  styleUrls: ['./productresults.component.scss']
+  templateUrl: './ProductResults.component.html',
+  styleUrls: ['./ProductResults.component.scss']
 })
 export class ProductResultsComponent implements OnInit {
 

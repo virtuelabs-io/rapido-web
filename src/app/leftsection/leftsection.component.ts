@@ -31,7 +31,7 @@ export class LeftSectionComponent implements OnInit {
                            {
                           'panelTitle':'rating',
                           'panelType':'rating',
-                          'panelData':["1","2","3","4","5"]
+                          'panelData':["4","3","2","1"]
                        },
                         {
                           'panelTitle':'price',
@@ -45,6 +45,9 @@ export class LeftSectionComponent implements OnInit {
   }
   priceQuoteHandler(e){
     console.log(e)
+  }
+  onPressRating(value){
+    console.log(value)
   }
 
 }

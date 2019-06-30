@@ -5,7 +5,7 @@ import { LogInComponent } from './log-in/log-in.component';
 import { AuthmockComponent } from './authmock/authmock.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 // import { MyProfileComponent } from './my-profile/my-profile.component';
-import { ProductResultsComponent } from './productresults/productresults.component';
+import { ProductResultsComponent } from './ProductResults/ProductResults.component';
 // import { DialogComponent } from './dialog/dialog.component';
 import { FilterMobileComponent } from './filter-mobile/filter-mobile.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';

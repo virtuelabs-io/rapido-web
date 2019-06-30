@@ -9,19 +9,20 @@ import { Options, LabelType, ChangeContext, PointerType } from 'ng5-slider';
 })
 export class RangeSliderComponent {
   // @Output() lastPrice: EventEmitter <any> = new EventEmitter();
+  selectedMinVal: number 
+  selectedMaxVal: number 
   @Input() rangeData: any;
   // @Input() rangeData.callbackFunction: any;
-  minValue: number = 0;
-  // maxValue: number = rangeData.maxValue;
+  minValue: number = 0
   options: Options = {
     floor: 0,
     ceil: 500,
     translate: (value: number, label: LabelType): string => {
       switch (label) {
         case LabelType.Low:
-          return '<b>Min price:</b> #' + value;
+          return '<b>Min :</b> #' + value;
         case LabelType.High:
-          return '<b>Max price:</b> #' + value;
+          return '<b>Max :</b> #' + value;
         default:
           return '$' + value;
       }
@@ -31,18 +32,18 @@ export class RangeSliderComponent {
     alert(event)
     // this.rangeData.callbackFunction(event);
 }
-onLowValueChange(changeContext: ChangeContext): void {
-  console.log(changeContext);
-  // this.logText += `onUserChangeStart(${this.getChangeContextString(changeContext)})\n`;
-}
-onHighValueChange(changeContext: ChangeContext): void {
-  console.log(changeContext);
-  // this.logText += `onUserChangeStart(${this.getChangeContextString(changeContext)})\n`;
-}
 
-getChangeContextString(changeContext: ChangeContext): string {
-  return `{pointerType: ${changeContext.pointerType === PointerType.Min ? 'Min' : 'Max'}, ` +
-         `value: ${changeContext.value}, ` +
-         `highValue: ${changeContext.highValue}}`;
-}
+  userChangeEnd(changeContext: ChangeContext): void {
+    console.log(changeContext.highValue,changeContext.value);
+    this.selectedMinVal = changeContext.value
+    this.selectedMaxVal = changeContext.highValue
+    console.log(this.rangeData)
+    this.rangeData.callbackFunction({
+      min:this.selectedMinVal,max:this.selectedMaxVal
+    })
+//     highValue: 305
+// pointerType: 1
+// value: 
+    // this.logText += `onUserChangeStart(${this.getChangeContextString(changeContext)})\n`;
+  }
 }
