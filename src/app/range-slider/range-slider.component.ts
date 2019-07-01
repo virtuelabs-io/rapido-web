@@ -8,12 +8,9 @@ import { Options, LabelType, ChangeContext, PointerType } from 'ng5-slider';
   styleUrls: ['./range-slider.component.scss']
 })
 export class RangeSliderComponent {
-  // @Output() lastPrice: EventEmitter <any> = new EventEmitter();
   selectedMinVal: number 
   selectedMaxVal: number 
   @Input() rangeData: any;
-  // @Input() rangeData.callbackFunction: any;
-  minValue: number = 0
   options: Options = {
     floor: 0,
     ceil: 500,
@@ -28,22 +25,16 @@ export class RangeSliderComponent {
       }
     }
   };
-  callback(event): void {
-    alert(event)
-    // this.rangeData.callbackFunction(event);
-}
 
   userChangeEnd(changeContext: ChangeContext): void {
     console.log(changeContext.highValue,changeContext.value);
     this.selectedMinVal = changeContext.value
     this.selectedMaxVal = changeContext.highValue
-    console.log(this.rangeData)
-    this.rangeData.callbackFunction({
+  }
+
+    onSubmitPriceFilter (){
+    this.rangeData.fnPriceFilterHandler({
       min:this.selectedMinVal,max:this.selectedMaxVal
     })
-//     highValue: 305
-// pointerType: 1
-// value: 
-    // this.logText += `onUserChangeStart(${this.getChangeContextString(changeContext)})\n`;
   }
 }

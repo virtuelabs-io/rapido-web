@@ -12,7 +12,7 @@
                       </mat-expansion-panel-header>
                         <mat-nav-list [ngSwitch]="panelList.panelType">
                           <div *ngSwitchCase="'link'">
-                            <mat-list-item *ngFor="let panelData of panelList.panelData">
+                            <mat-list-item (click)="onPressItem(panelData)" *ngFor="let panelData of panelList.panelData">
                                <a matLine>{{panelData}}</a>
                             </mat-list-item>
                           </div>
@@ -21,7 +21,6 @@
                               <!-- Based on rating value filters are applied -->
                                <a matLine >
                                  <app-rating [currentRate]='val'></app-rating>
-                                 <!-- <span>&up</span> -->
                                </a>
                              </mat-list-item>
                           </div>
@@ -32,25 +31,7 @@
                           </mat-nav-list>
                         </mat-expansion-panel>
                     </mat-accordion>
-            
-            
-           <!-- <mat-accordion multi="true" displayMode="flat" >
-              Filter By:
-                    <mat-expansion-panel expanded="false" *ngFor="let panel of ['categories']" >
-                      <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            {{panel}}
-                        </mat-panel-title>
-                        
-                      </mat-expansion-panel-header>
-                        <mat-nav-list>
-                            <mat-list-item *ngFor="let link of ['cat1','cat2','cat3']">
-                               <a matLine >link</a>
-                               
-                            </mat-list-item>
-                          </mat-nav-list>
-                        </mat-expansion-panel>
-                    </mat-accordion> -->
+
     </div>
      
   </section>

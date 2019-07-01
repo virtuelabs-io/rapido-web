@@ -11,11 +11,11 @@ export class LeftSectionComponent implements OnInit {
 
   filterData: Object 
   constructor() { }
-  fnPriceQuoteHandler: Function;
+  fnPriceFilterHandler: Function;
   
   ngOnInit() {
-    this.fnPriceQuoteHandler= 
-              obj => this.priceQuoteHandler(obj);
+    this.fnPriceFilterHandler= 
+              obj => this.priceFilterData(obj);
     this.filterData = [
                       {
                         'headerText':'show result for',
@@ -36,18 +36,23 @@ export class LeftSectionComponent implements OnInit {
                         {
                           'panelTitle':'price',
                           'panelType':'priceslider',
-                          'panelData':{'callbackFunction':this.fnPriceQuoteHandler,
-                                        'maxValue':500
-                                        }
+                          'panelData':{
+                            'fnPriceFilterHandler':this.fnPriceFilterHandler,
+                            'maxValue':500,
+                            'minValue':500
+                          }
                        }]
                       }
          ]
   }
-  priceQuoteHandler(e){
-    console.log(e)
+  priceFilterData(range){
+    console.log(range.min,range.max)
   }
   onPressRating(value){
     console.log(value)
+  }
+  onPressItem(eve){
+    console.log(eve)
   }
 
 }
