@@ -35,6 +35,10 @@
         <mat-error *ngIf="hasError('town_city', 'required')">Town/City is required</mat-error>
       </mat-form-field>
       <mat-form-field>
+        <input matInput placeholder="County"  formControlName="county">
+        <mat-error *ngIf="hasError('county', 'required')">County is required</mat-error>
+      </mat-form-field>
+      <mat-form-field>
         <input matInput placeholder="Postcode"  formControlName="postCode">
         <mat-error *ngIf="hasError('postCode', 'required')">Post Code is required</mat-error>
       </mat-form-field>

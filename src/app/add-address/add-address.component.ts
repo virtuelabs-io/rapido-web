@@ -33,6 +33,7 @@ export class AddAddressComponent implements OnInit {
       add2: new FormControl('', [Validators.required]),
       town_city: new FormControl('', [Validators.required]),
       postCode: new FormControl('', [Validators.required]),
+      county: new FormControl('', [Validators.required]),
       country: new FormControl('', [Validators.required])
     })
   }
@@ -44,9 +45,9 @@ export class AddAddressComponent implements OnInit {
       1, // check Constants.ADDRESS_TYPES for different types of addresses. Only those should be used
       formData.add1,
       formData.town_city,
-      "county",
+      formData.county,
       formData.country,
-      formData.postcode,
+      formData.postCode,
       formData.add2
     )
     console.log(this.addressDetails)

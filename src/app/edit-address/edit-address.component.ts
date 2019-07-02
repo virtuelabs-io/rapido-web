@@ -35,7 +35,7 @@ export class EditAddressComponent implements OnInit {
       postCode: new FormControl('', [Validators.required]),
       country: new FormControl('', [Validators.required]),
       address_type_id: new FormControl(1, [Validators.required]),
-      county: new FormControl('')
+      county: new FormControl('', [Validators.required])
     })
     this.showSpinner = true
     this.id = parseInt(this.actRoute.snapshot.paramMap.get('id'))
@@ -49,6 +49,7 @@ export class EditAddressComponent implements OnInit {
       this.addressFormGroup.controls["town_city"].setValue(data.city)
       this.addressFormGroup.controls["postCode"].setValue(data.postcode)
       this.addressFormGroup.controls["country"].setValue(data.country)
+      this.addressFormGroup.controls["county"].setValue(data.county)
       this.addressFormGroup.controls["address_type_id"].setValue(data.address_type_id)
     })
   }
