@@ -49,9 +49,8 @@ export class TopnavComponent implements OnInit {
   }
 
   onSearch(e){
-    // obj check later
     if(this.searchedText)
-    this._searchItemService.changeState(this.searchedText);
+    this._searchItemService.changeState(this.searchedText)
   }
 
   openSnackBar(message) {

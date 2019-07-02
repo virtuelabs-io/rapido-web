@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import {MatExpansionModule} from '@angular/material/expansion';
-
+import { SearchItemService } from '../shared-services/search-item/search-item.services';
 
 @Component({
   selector: 'app-leftsection',
@@ -10,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class LeftSectionComponent implements OnInit {
 
   filterData: Object 
-  constructor() { }
+  constructor(private _searchItemService: SearchItemService ) { }
   fnPriceFilterHandler: Function;
   
   ngOnInit() {
@@ -49,10 +48,16 @@ export class LeftSectionComponent implements OnInit {
     console.log(range.min,range.max)
   }
   onPressRating(value){
-    console.log(value)
+    
+    this.changeQuery({q:'watches',sort:'desc'})
   }
   onPressItem(eve){
     console.log(eve)
   }
+  changeQuery(queryObj){
+      this._searchItemService.changeState(queryObj)
+  }
+
+
 
 }
