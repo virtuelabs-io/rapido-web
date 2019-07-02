@@ -9,8 +9,7 @@ import { AddressDetailsService } from '../services/customer/address-details.serv
 })
 export class AddressComponent implements OnInit {
   showSpinner: Boolean = false
-  address_details_id: number;
-  address_details_result: string;
+  address_details_id: number
   private _addressDetailsService: AddressDetailsService
   address: any
   example:any;
@@ -31,7 +30,6 @@ export class AddressComponent implements OnInit {
         this.address_details_id = data[0]['id']
         this.address = data
       }
-      this.address_details_result = "Sucessfully fetched address details List and logged!";
       this.showSpinner = false
     })
   }
@@ -47,7 +45,6 @@ export class AddressComponent implements OnInit {
       else if(data['length'] === 0) {
         this.address = data
       }
-      this.address_details_result = "Sucessfully fetched address details List and logged!";
     })
   }
 
@@ -56,7 +53,6 @@ export class AddressComponent implements OnInit {
     this._addressDetailsService.deleteAddressDetails(id)
     .subscribe(data => {
       this.address_details_id = null
-      this.address_details_result = "Sucessfully deleted customer address details and logged!";
       this.getAddressList()
     })
   }

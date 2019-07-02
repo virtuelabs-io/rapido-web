@@ -13,7 +13,6 @@ import { Constants } from '../utils/constants';
 
 export class AddAddressComponent implements OnInit {
   address_details_id: number
-  address_details_result: string
   name: string = ""
   showSpinner: Boolean = false
   addressDetails: AddressDetails
@@ -54,11 +53,9 @@ export class AddAddressComponent implements OnInit {
     this._addressDetailsService.postAddressDetails(this.addressDetails)
     .subscribe(data => {
       console.log(data)
-      if(data['insertId']){
+      if(data['insertId']) {
         this.address_details_id = data['insertId']
-        console.log('Sucessfully updated the address test id to: ' + String(this.address_details_id))
       }
-      this.address_details_result = "Sucessfully posted address company details and logged!";
     })
     this.router.navigate(['profile/address']);
   }
