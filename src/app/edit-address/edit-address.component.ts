@@ -11,6 +11,8 @@ import {FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
   styleUrls: ['./edit-address.component.scss']
 })
 export class EditAddressComponent implements OnInit {
+  id: number = 0
+  customer_id: string = ""
   showSpinner: Boolean = false
   addressDetails: AddressDetails
   private _addressDetailsService: AddressDetailsService
@@ -32,15 +34,14 @@ export class EditAddressComponent implements OnInit {
       town_city: new FormControl('', [Validators.required]),
       postCode: new FormControl('', [Validators.required]),
       country: new FormControl('', [Validators.required]),
-      address_type_id: new FormControl(0, [Validators.required]),
-      id: new FormControl(0, [Validators.required]),
-      county: new FormControl(''),
-      customer_id: new FormControl('')
+      address_type_id: new FormControl(1, [Validators.required]),
+      county: new FormControl('')
     })
     this.showSpinner = true
-    let id = parseInt(this.actRoute.snapshot.paramMap.get('id'))
-    this._addressDetailsService.getAddressDetails(id)
+    this.id = parseInt(this.actRoute.snapshot.paramMap.get('id'))
+    this._addressDetailsService.getAddressDetails(this.id)
     .subscribe(data => {
+      this.customer_id = data.customer_id
       this.showSpinner = false
       this.addressFormGroup.controls["name"].setValue(data.full_name)
       this.addressFormGroup.controls["add1"].setValue(data.addr_1)
@@ -49,24 +50,22 @@ export class EditAddressComponent implements OnInit {
       this.addressFormGroup.controls["postCode"].setValue(data.postcode)
       this.addressFormGroup.controls["country"].setValue(data.country)
       this.addressFormGroup.controls["address_type_id"].setValue(data.address_type_id)
-      this.addressFormGroup.controls["id"].setValue(data.id)
     })
   }
   saveAddress() {
-    let id: number = parseInt(this.addressFormGroup.value.id)
     let address_type_id: number = parseInt(this.addressFormGroup.value.address_type_id)
     this.showSpinner = true
     this.addressDetails = new AddressDetails(  
       this.addressFormGroup.value.name,
-      address_type_id,
+      this.addressFormGroup.value.address_type_id,
       this.addressFormGroup.value.add1,
       this.addressFormGroup.value.town_city,
       this.addressFormGroup.value.county,
       this.addressFormGroup.value.country,
       this.addressFormGroup.value.postCode,
       this.addressFormGroup.value.add2,
-      this.addressFormGroup.value.customer_id,
-      id
+      this.customer_id,
+      this.id
     )
     this._addressDetailsService.putAddressDetails(this.addressDetails)
     .subscribe( _ => {
