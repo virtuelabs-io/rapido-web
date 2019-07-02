@@ -54,7 +54,6 @@ export class EditAddressComponent implements OnInit {
     })
   }
   saveAddress() {
-    let address_type_id: number = parseInt(this.addressFormGroup.value.address_type_id)
     this.showSpinner = true
     this.addressDetails = new AddressDetails(  
       this.addressFormGroup.value.name,

@@ -33,6 +33,7 @@ describe('AddAddressComponent', () => {
     component.addressFormGroup.controls['add1'].setValue("xyz")
     component.addressFormGroup.controls['add2'].setValue("abc cdf")
     component.addressFormGroup.controls['town_city'].setValue("Charles Land")
+    component.addressFormGroup.controls['county'].setValue("UK COunty")
     component.addressFormGroup.controls['postCode'].setValue("12345")
     component.addressFormGroup.controls['country'].setValue("UK")
 
@@ -41,6 +42,7 @@ describe('AddAddressComponent', () => {
     expect(component.addressFormGroup.controls['add2'].hasError('required')).toBeFalsy()
     expect(component.addressFormGroup.controls['town_city'].hasError('required')).toBeFalsy()
     expect(component.addressFormGroup.controls['postCode'].hasError('required')).toBeFalsy()
+    expect(component.addressFormGroup.controls['county'].hasError('required')).toBeFalsy()
     expect(component.addressFormGroup.controls['country'].hasError('required')).toBeFalsy()
   }));
 });
