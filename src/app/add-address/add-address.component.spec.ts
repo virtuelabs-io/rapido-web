@@ -28,7 +28,7 @@ describe('AddAddressComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Mandatory fields during registration', async(() => {
+  it('Mandatory fields during add Address', async(() => {
     component.addressFormGroup.controls['name'].setValue("Sam")
     component.addressFormGroup.controls['add1'].setValue("xyz")
     component.addressFormGroup.controls['add2'].setValue("abc cdf")

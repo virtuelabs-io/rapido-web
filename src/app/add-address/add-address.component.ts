@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AddressDetails } from '../services/customer/address-details';
 import { AddressDetailsService } from '../services/customer/address-details.service';
 import {FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Constants } from '../utils/constants';
 
 @Component({
   selector: 'app-add-address',
@@ -39,6 +40,7 @@ export class AddAddressComponent implements OnInit {
     this.showSpinner = true
     this.addressDetails = new AddressDetails(  
       formData.name,
+      //Constants.ADDRESS_TYPES[0].value,
       1, // check Constants.ADDRESS_TYPES for different types of addresses. Only those should be used
       formData.add1,
       formData.town_city,

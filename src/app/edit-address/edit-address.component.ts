@@ -32,8 +32,8 @@ export class EditAddressComponent implements OnInit {
       town_city: new FormControl('', [Validators.required]),
       postCode: new FormControl('', [Validators.required]),
       country: new FormControl('', [Validators.required]),
-      address_type_id: new FormControl('', [Validators.required]),
-      id: new FormControl('', [Validators.required]),
+      address_type_id: new FormControl(0, [Validators.required]),
+      id: new FormControl(0, [Validators.required]),
       county: new FormControl(''),
       customer_id: new FormControl('')
     })
@@ -53,10 +53,12 @@ export class EditAddressComponent implements OnInit {
     })
   }
   saveAddress() {
+    let id: number = parseInt(this.addressFormGroup.value.id)
+    let address_type_id: number = parseInt(this.addressFormGroup.value.address_type_id)
     this.showSpinner = true
     this.addressDetails = new AddressDetails(  
       this.addressFormGroup.value.name,
-      this.addressFormGroup.value.address_type_id,
+      address_type_id,
       this.addressFormGroup.value.add1,
       this.addressFormGroup.value.town_city,
       this.addressFormGroup.value.county,
@@ -64,7 +66,7 @@ export class EditAddressComponent implements OnInit {
       this.addressFormGroup.value.postCode,
       this.addressFormGroup.value.add2,
       this.addressFormGroup.value.customer_id,
-      this.addressFormGroup.value.id
+      id
     )
     this._addressDetailsService.putAddressDetails(this.addressDetails)
     .subscribe( _ => {
