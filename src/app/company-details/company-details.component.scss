@@ -34,6 +34,9 @@
             margin-top: 10px;
             color: black;
         }
+        .spinner-div {
+            margin-left: 40%;
+        }
     }
     .rapido-add-company-item {
         display: flex;
@@ -58,9 +61,10 @@
             flex-wrap: wrap;
             justify-content: left;
         }
+        .spinner-div {
+            margin-left: 40%;
+        }
         .card-actions {
-            // margin-left: 10%;
-            // margin-top: 10%;
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;

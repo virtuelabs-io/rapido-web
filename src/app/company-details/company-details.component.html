@@ -15,8 +15,8 @@
     <div class="text-div">
         <p>Add Company Details</p>  
     </div>
-    <div class="content-div">
-      
+    <div class="spinner-div">
+      <mat-spinner strokeWidth="4" [diameter]="50" *ngIf="showSpinner"></mat-spinner>
     </div>
   </a>
   <div *ngIf="company_detail_not_reg" class="rapido-add-company-item">
@@ -27,6 +27,9 @@
       <br /> {{ companyItems.city }}
       <br /> {{ companyItems.county }}, {{ companyItems.postcode }}
       <br /> {{ companyItems.country }}
+    </div>
+    <div class="spinner-div">
+      <mat-spinner strokeWidth="4" [diameter]="50" *ngIf="showSpinner"></mat-spinner>
     </div>
     <div class="card-actions">
       <a (click)="addressEdit(address.id)">Edit</a> |

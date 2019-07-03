@@ -8,22 +8,11 @@ import { CompanyDetailsService } from '../services/customer/company-details.serv
   styleUrls: ['./company-details.component.scss']
 })
 export class CompanyDetailsComponent implements OnInit {
+  showSpinner: Boolean = false
   hide_plus_card: Boolean = true
   company_details_result: string
   company_detail_not_reg: Boolean = false
   companyItems: any
-  /*companyItems = 
-  {
-    company_name: "",
-    addr_1: "",
-    addr_2: "",
-    city: "",
-    postcode: "",
-    country: "",
-    county:"",
-    customer_id:""
-
-  }*/
   private _companyDetailsService: CompanyDetailsService
   constructor(
     companyDetailsService: CompanyDetailsService
@@ -39,17 +28,10 @@ export class CompanyDetailsComponent implements OnInit {
   getCompanyDetails() {
     this._companyDetailsService.getCompanyDetails()
     .subscribe(data => {
+      this.showSpinner = false
       console.log("company details fetched !")
       console.log(data)
       this.companyItems = data
-     /* this.companyItems.addr_1 = data.addr_1
-      this.companyItems.addr_2 = data.addr_2
-      this.companyItems.city = data.city
-      this.companyItems.company_name = data.company_name
-      this.companyItems.country = data.country
-      this.companyItems.county = data.county
-      this.companyItems.customer_id = data.customer_id
-      this.companyItems.postcode = data.postcode*/
       if(!data) {
         this.hide_plus_card = true
         this.company_detail_not_reg = false
@@ -58,11 +40,11 @@ export class CompanyDetailsComponent implements OnInit {
         this.hide_plus_card = false
         this.company_detail_not_reg = true
       }
-      
     })
   }
 
   deleteCompanyDetails() {
+    this.showSpinner = true
     this._companyDetailsService.deleteCompanyDetails()
     .subscribe(data => {
       this.getCompanyDetails()
