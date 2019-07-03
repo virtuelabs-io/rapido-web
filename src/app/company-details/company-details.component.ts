@@ -11,45 +11,61 @@ export class CompanyDetailsComponent implements OnInit {
   hide_plus_card: Boolean = true
   company_details_result: string
   company_detail_not_reg: Boolean = false
-  companyItems = 
+  companyItems: any
+  /*companyItems = 
   {
-    organisation: "",
+    company_name: "",
     addr_1: "",
     addr_2: "",
     city: "",
     postcode: "",
     country: "",
+    county:"",
     customer_id:""
 
-  }
+  }*/
   private _companyDetailsService: CompanyDetailsService
   constructor(
     companyDetailsService: CompanyDetailsService
   ) { 
     this._companyDetailsService = companyDetailsService
+    this.getCompanyDetails()
   }
 
   ngOnInit() {
+    this.getCompanyDetails()
+  }
+
+  getCompanyDetails() {
     this._companyDetailsService.getCompanyDetails()
     .subscribe(data => {
       console.log("company details fetched !")
       console.log(data)
-      this.companyItems.addr_1 = data.addr_1
+      this.companyItems = data
+     /* this.companyItems.addr_1 = data.addr_1
       this.companyItems.addr_2 = data.addr_2
       this.companyItems.city = data.city
-      this.companyItems.organisation = data.company_name
+      this.companyItems.company_name = data.company_name
       this.companyItems.country = data.country
-      //this.companyItems.county = data.county
+      this.companyItems.county = data.county
       this.companyItems.customer_id = data.customer_id
-      this.companyItems.postcode = data.postcode
-      this.hide_plus_card = false
-      this.company_detail_not_reg = true
+      this.companyItems.postcode = data.postcode*/
+      if(!data) {
+        this.hide_plus_card = true
+        this.company_detail_not_reg = false
+      }
+      else {
+        this.hide_plus_card = false
+        this.company_detail_not_reg = true
+      }
+      
     })
   }
 
-  deleteCompanyDetails(){
+  deleteCompanyDetails() {
     this._companyDetailsService.deleteCompanyDetails()
     .subscribe(data => {
+      this.getCompanyDetails()
       console.log(data)
       this.company_details_result = "Sucessfully deleted customer company details and logged!";
     })

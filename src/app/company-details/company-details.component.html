@@ -21,10 +21,11 @@
   </a>
   <div *ngIf="company_detail_not_reg" class="rapido-add-company-item">
     <div class="address-text">
-      <strong> {{ companyItems.organisation }} </strong>
+      <strong> {{ companyItems.company_name }} </strong>
       <br /><p>{{ companyItems.addr_1 }}
       <br /> {{ companyItems.addr_2 }}
-      <br /> {{ companyItems.city }}, {{ companyItems.postcode }} 
+      <br /> {{ companyItems.city }}
+      <br /> {{ companyItems.county }}, {{ companyItems.postcode }}
       <br /> {{ companyItems.country }}
     </div>
     <div class="card-actions">
