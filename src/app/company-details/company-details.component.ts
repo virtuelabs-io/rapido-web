@@ -22,6 +22,7 @@ export class CompanyDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.showSpinner = true
     this.getCompanyDetails()
   }
 
@@ -45,6 +46,7 @@ export class CompanyDetailsComponent implements OnInit {
 
   deleteCompanyDetails() {
     this.showSpinner = true
+    this.hide_plus_card = true
     this._companyDetailsService.deleteCompanyDetails()
     .subscribe(data => {
       this.getCompanyDetails()
