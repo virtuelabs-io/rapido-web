@@ -23,11 +23,11 @@
     <div class="rapido-add-address-item" *ngFor="let address of address">
       <div class="address-text">
         <strong> {{ address.full_name }} </strong>
-        <br /><p>{{ address.addr_1 }}
-        <br /> {{ address.addr_2 }}
-        <br /> {{ address.city }} 
-        <br /> {{ address.county }}, {{ address.postcode }}
-        <br /> {{ address.country }}
+        <br/><p>{{ address.addr_1 }}
+        <br/> {{ address.addr_2 }}
+        <br/> {{ address.city }} 
+        <br/> {{ address.county }}, {{ address.postcode }}
+        <br/> {{ address.country }}
       </div>
       <div class="card-actions">
         <a (click)="addressEdit(address.id)">Edit</a> |

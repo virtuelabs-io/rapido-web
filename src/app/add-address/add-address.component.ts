@@ -49,10 +49,8 @@ export class AddAddressComponent implements OnInit {
       formData.postCode,
       formData.add2
     )
-    console.log(this.addressDetails)
     this._addressDetailsService.postAddressDetails(this.addressDetails)
     .subscribe(data => {
-      console.log(data)
       if(data['insertId']) {
         this.address_details_id = data['insertId']
       }
