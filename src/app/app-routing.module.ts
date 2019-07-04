@@ -7,6 +7,9 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResendOtpComponent } from './resend-otp/resend-otp.component';
 import { ProfileComponent } from './my-profile/profile.component';
+import { AddressComponent } from './address/address.component';
+import { AddAddressComponent } from './add-address/add-address.component';
+import { EditAddressComponent } from './edit-address/edit-address.component';
 import { CompanyDetailsComponent } from './company-details/company-details.component';
 import { AddCompanyDetailsComponent } from './add-company-details/add-company-details.component';
 
@@ -16,6 +19,10 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent},
   { path: 'forgotpassword', component: ForgotPasswordComponent},
   { path: 'resendotp', component: ResendOtpComponent},
+  { path: 'profile', component: ProfileComponent},
+  { path: 'profile/address', component: AddressComponent},
+  { path: 'profile/address/newAddress', component: AddAddressComponent},
+  { path: 'profile/address/editAddress/:id', component: EditAddressComponent},
   { path: 'myprofile', component: ProfileComponent},
   { path: 'profile/companyDetails', component: CompanyDetailsComponent },
   { path: 'profile/companyDetails/newDetails', component: AddCompanyDetailsComponent },
@@ -35,5 +42,8 @@ export const RoutingComponents = [
   ProfileComponent,
   CompanyDetailsComponent,
   AddCompanyDetailsComponent,
+  AddressComponent,
+  AddAddressComponent,
+  EditAddressComponent,
   AuthmockComponent
 ];

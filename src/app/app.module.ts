@@ -14,12 +14,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { Constants } from './utils/constants';
-import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, MatSnackBarModule, MatExpansionModule, MatSelectModule } from '@angular/material';
+import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, MatSnackBarModule, MatExpansionModule, MatSelectModule, MatProgressSpinnerModule } from '@angular/material';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResendOtpComponent } from './resend-otp/resend-otp.component';
 import { ProfileComponent } from './my-profile/profile.component';
 import { CompanyDetailsComponent } from './company-details/company-details.component';
 import { AddCompanyDetailsComponent } from './add-company-details/add-company-details.component';
+import { AddressComponent } from './address/address.component';
+import { AddAddressComponent } from './add-address/add-address.component';
+import { EditAddressComponent } from './edit-address/edit-address.component';
 
 
 @NgModule({
@@ -36,7 +39,11 @@ import { AddCompanyDetailsComponent } from './add-company-details/add-company-de
     ResendOtpComponent,
     ProfileComponent,
     CompanyDetailsComponent,
-    AddCompanyDetailsComponent
+    AddCompanyDetailsComponent,
+    ProfileComponent,
+    AddressComponent,
+    AddAddressComponent,
+    EditAddressComponent
   ],
   imports: [
     MatSidenavModule,
@@ -69,6 +76,7 @@ import { AddCompanyDetailsComponent } from './add-company-details/add-company-de
     MatSnackBarModule,
     MatExpansionModule,
     MatMenuModule,
+    MatProgressSpinnerModule,
     MatSelectModule,
     MatSidenavModule
   ],
