@@ -42,10 +42,8 @@ export class AddCompanyDetailsComponent implements OnInit {
       formData.county,
       formData.country,
       formData.postCode,
-      formData.add2,
-      ""
+      formData.add2
     )
-    console.log(this.companyDetails)
     this._companyDetailsService.postCompanyDetails(this.companyDetails)
     .subscribe(data => {
       this.router.navigate(['profile/companyDetails']);
