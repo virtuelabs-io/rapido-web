@@ -12,7 +12,7 @@ describe('EditCompanyDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ BrowserAnimationsModule, MatInputModule, HttpClientModule, RouterTestingModule, MatCardModule, MatFormFieldModule,ReactiveFormsModule, MatProgressSpinnerModule, FormsModule  ],
+      imports: [ BrowserAnimationsModule, MatInputModule, HttpClientModule, RouterTestingModule, MatCardModule, MatFormFieldModule,ReactiveFormsModule, MatProgressSpinnerModule, FormsModule ],
       declarations: [ EditCompanyDetailsComponent ]
     })
     .compileComponents();

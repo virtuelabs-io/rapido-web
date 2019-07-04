@@ -60,7 +60,7 @@ export class EditCompanyDetailsComponent implements OnInit {
     )
     this._companyDetailsService.putCompanyDetails(this.companyDetails)
     .subscribe(data => {
-      this.router.navigate(['profile/companyDetails']);
+      this.router.navigate(['profile/companyDetails'])
     })
   }
 

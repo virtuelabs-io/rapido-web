@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 export class CompanyDetailsComponent implements OnInit {
   showSpinner: Boolean = false
   hide_plus_card: Boolean = true
-  company_details_result: string
   company_detail_not_reg: Boolean = false
   companyItems: any
   private _companyDetailsService: CompanyDetailsService
@@ -50,12 +49,11 @@ export class CompanyDetailsComponent implements OnInit {
     this._companyDetailsService.deleteCompanyDetails()
     .subscribe(data => {
       this.getCompanyDetails()
-      this.company_details_result = "Sucessfully deleted customer company details and logged!";
     })
   }
 
   addressEdit() {
-    this.router.navigate(['profile/companyDetails/edit']);
+    this.router.navigate(['profile/companyDetails/edit'])
   }
 
 }
