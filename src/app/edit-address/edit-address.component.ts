@@ -27,6 +27,7 @@ export class EditAddressComponent implements OnInit {
   }
   
   ngOnInit() {
+    this.showSpinner = true
     this.addressFormGroup = new FormGroup({
       name: new FormControl('', [Validators.required]),
       add1: new FormControl('', [Validators.required]),
@@ -37,7 +38,6 @@ export class EditAddressComponent implements OnInit {
       address_type_id: new FormControl(1, [Validators.required]),
       county: new FormControl('', [Validators.required])
     })
-    this.showSpinner = true
     this.id = parseInt(this.actRoute.snapshot.paramMap.get('id'))
     this._addressDetailsService.getAddressDetails(this.id)
     .subscribe(data => {
