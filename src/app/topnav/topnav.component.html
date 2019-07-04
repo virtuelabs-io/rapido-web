@@ -53,7 +53,7 @@
   <mat-toolbar-row class="secondary-toolbar">
      <div class="block">
         <div class="block-search">
-           <form>
+           <form (ngSubmit)="onSearch($event)">
               <input type="text" placeholder="Search for materials..." name="search" [(ngModel)]="searchedText">
               <button type="submit" style="display:none">hidden submit</button>
            </form>

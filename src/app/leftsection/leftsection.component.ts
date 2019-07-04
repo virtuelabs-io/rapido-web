@@ -38,7 +38,7 @@ export class LeftSectionComponent implements OnInit {
                           'panelData':{
                             'fnPriceFilterHandler':this.fnPriceFilterHandler,
                             'maxValue':500,
-                            'minValue':500
+                            'minValue':0
                           }
                        }]
                       }

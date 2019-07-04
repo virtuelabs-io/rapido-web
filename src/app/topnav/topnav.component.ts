@@ -22,7 +22,7 @@ export class TopnavComponent implements OnInit {
 
   constructor(private _sessionService: SessionService,
               private _profileService: ProfileService,
-              public router: Router, // used in html
+              public router: Router, 
               private _snackBar: MatSnackBar,
               private _searchItemService: SearchItemService,
               private _loginStateService: LoginStateService) {}
@@ -49,8 +49,11 @@ export class TopnavComponent implements OnInit {
   }
 
   onSearch(e){
-    if(this.searchedText)
-    this._searchItemService.changeState(this.searchedText)
+    if(this.searchedText){
+      this.router.navigateByUrl('/products')
+      this._searchItemService.changeState(this.searchedText)
+    }
+    
   }
 
   openSnackBar(message) {

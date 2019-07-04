@@ -14,11 +14,12 @@ div {
        
     }
     .itemListCls{
-        justify-content: center !important;
-    }
-    
-
+        @media screen and (max-width: $small-device) {
+            justify-content: center;
+        }
+    } 
 }
+
 
 .product-controls {
     background: #e4e4e4;
