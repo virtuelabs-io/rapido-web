@@ -1,6 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { SearchItemService } from '../shared-services/search-item/search-item.services';
 import { ProductsService } from '../services/products/products.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
+export interface DialogData {
+  animal: string;
+  name: string;
+}
 
 @Component({
   selector: 'app-productresults',
@@ -12,8 +18,9 @@ export class ProductResultsComponent implements OnInit {
   private _productsService: ProductsService
   searchedText: string = ""
   responseData: Object
-  productList: Array<{id: number, fields: Object}>;
+  public productList: Array<{id: number, fields: Object}>
   constructor(private _searchItemService: SearchItemService,
+              public dialog: MatDialog,
               productsService: ProductsService) { 
                 this._productsService = productsService
               }
@@ -41,5 +48,33 @@ export class ProductResultsComponent implements OnInit {
       
       })
     }
+
+    openDialog(): void {
+      debugger
+      const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+        // width: '250px',
+        // data: {name: 'this.name', animal: 'this.animal'}
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        // this.animal = result;
+      });
+    }
   }
 
+  @Component({
+    selector: 'dialog-overview-example-dialog',
+    template: 'hi<app-leftsection></app-leftsection>',
+  })
+  export class DialogOverviewExampleDialog {
+  
+    constructor(
+      public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+      @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+  
+    onNoClick(): void {
+      this.dialogRef.close();
+    }
+  
+  }

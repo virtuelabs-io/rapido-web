@@ -13,12 +13,13 @@ import { RoutingComponents } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, 
           MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, 
-          MatSnackBarModule, MatExpansionModule, MatSelectModule, MatPaginatorModule } from '@angular/material';
+          MatSnackBarModule, MatExpansionModule, MatSelectModule, MatPaginatorModule, MatDialogModule } from '@angular/material';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 // import { MyProfileComponent } from './my-profile/my-profile.component';
 // import {MatAutocompleteModule} from '@angular/material/autocomplete';
 // import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ProductResultsComponent } from './ProductResults/ProductResults.component';
+import { DialogOverviewExampleDialog } from './ProductResults/ProductResults.component';
 import { CardComponent } from './card/card.component';
 import { RatingComponent } from './rating/rating.component';
 import { ImagesComponent } from './images/images.component';
@@ -55,11 +56,12 @@ import { RangeSliderComponent } from './range-slider/range-slider.component';
     ImagesComponent,
     LeftSectionComponent,
     ProductControlsComponent,
-    // DialogComponent,
+    // MatDialogModule,
     FilterMobileComponent,
     ProductDetailsComponent,
     ImageZoomComponent,
-    RangeSliderComponent
+    RangeSliderComponent,
+    DialogOverviewExampleDialog
   ],
   imports: [
     MatSidenavModule,
@@ -114,10 +116,11 @@ import { RangeSliderComponent } from './range-slider/range-slider.component';
     MatExpansionModule,
     MatMenuModule,
     HttpClientModule,
-    // MatDialogModule,
+    MatDialogModule,
     Ng5SliderModule,
     NgxImageZoomModule.forRoot() 
   ],
+  entryComponents: [DialogOverviewExampleDialog],
   providers: [],
   bootstrap: [ AppComponent ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
