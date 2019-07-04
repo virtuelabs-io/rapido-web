@@ -65,7 +65,12 @@ export class ProductResultsComponent implements OnInit {
 
   @Component({
     selector: 'dialog-overview-example-dialog',
-    template: 'hi<app-leftsection></app-leftsection>',
+    template: `
+    <mat-dialog-content>
+      <i class="fa fa-times hidden-lg hidden-md" (click)="onNoClick()"></i>
+      <app-leftsection></app-leftsection>
+    </mat-dialog-content>
+    `,
   })
   export class DialogOverviewExampleDialog {
   

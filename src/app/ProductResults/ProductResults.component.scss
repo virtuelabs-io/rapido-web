@@ -13,6 +13,15 @@ div {
            }
        
     }
+    div {
+        div{
+            @media screen and (max-width: $small-device) {
+                app-leftsection{
+                    display: none;
+                }
+               }
+        }
+    }
     .itemListCls{
         @media screen and (max-width: $small-device) {
             justify-content: center;
