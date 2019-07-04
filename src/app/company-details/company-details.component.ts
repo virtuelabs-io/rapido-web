@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CompanyDetails } from '../services/customer/company-details';
 import { CompanyDetailsService } from '../services/customer/company-details.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-company-details',
@@ -15,6 +16,7 @@ export class CompanyDetailsComponent implements OnInit {
   companyItems: any
   private _companyDetailsService: CompanyDetailsService
   constructor(
+    private router: Router,
     companyDetailsService: CompanyDetailsService
   ) { 
     this._companyDetailsService = companyDetailsService
@@ -53,6 +55,10 @@ export class CompanyDetailsComponent implements OnInit {
       console.log(data)
       this.company_details_result = "Sucessfully deleted customer company details and logged!";
     })
+  }
+
+  addressEdit() {
+    this.router.navigate(['profile/companyDetails/edit']);
   }
 
 }

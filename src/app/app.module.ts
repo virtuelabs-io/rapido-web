@@ -23,6 +23,7 @@ import { AddCompanyDetailsComponent } from './add-company-details/add-company-de
 import { AddressComponent } from './address/address.component';
 import { AddAddressComponent } from './add-address/add-address.component';
 import { EditAddressComponent } from './edit-address/edit-address.component';
+import { EditCompanyDetailsComponent } from './edit-company-details/edit-company-details.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { EditAddressComponent } from './edit-address/edit-address.component';
     ProfileComponent,
     AddressComponent,
     AddAddressComponent,
-    EditAddressComponent
+    EditAddressComponent,
+    EditCompanyDetailsComponent
   ],
   imports: [
     MatSidenavModule,
