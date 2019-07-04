@@ -47,7 +47,7 @@
         <mat-error *ngIf="hasError('country', 'required')">Country is required</mat-error>
       </mat-form-field>
       <mat-card-actions>
-        <button class="spacing" mat-flat-button color="primary" type="submit" [disabled]="!addressFormGroup.valid" (click)="postCompanyDetails(addressFormGroup.value)">
+        <button class="spacing" mat-flat-button color="primary" type="submit" [disabled]="!addressFormGroup.valid" (click)="putCompanyDetails(addressFormGroup.value)">
             <!-- <span *ngIf="_progressSpinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> -->
             Add Company
         </button>
