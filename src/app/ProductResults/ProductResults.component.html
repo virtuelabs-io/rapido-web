@@ -2,23 +2,25 @@
   <div>
 
     <app-productcontrols *ngIf="productList && productList.length" [searchedText]=searchedText [responseData]=responseData></app-productcontrols>
-    <section class="product-controls position-top m-2">
+    
 
       <!-- small device -->
+      <section class="product-controls position-top m-2">
         <div class="row mr-3">
-            <div class="" ngbDropdown role="group" aria-label="Button group with nested dropdown">
-              <button class="btn" ngbDropdownToggle>Drop me</button>
-              <div class="dropdown-menu" ngbDropdownMenu>
-                <button ngbDropdownItem>Price: Low to High</button>
-                <button ngbDropdownItem>Avg. Customer Review</button>
-                <button ngbDropdownItem>Newest Arrivals</button>
-              </div>
+            <div >
+              <select matNativeControl class="bg-transparent border-0">
+                  <option value="relevanceblender" selected="true">Sort by:</option>
+                  <option value="relevanceblender">Featured</option>
+                  <option value="price-asc-rank">Price: Low to High</option>
+                  <option value="price-desc-rank">Price: High to Low</option>
+                  <option value="review-rank">Avg. Customer Review</option>
+                  <option value="date-desc-rank">Newest Arrivals</option>
+              </select>
             </div>
             <div class="m-1"></div>
             <button type="button"  routerLink="/filter-mobile" class="btn">Filter</button>
-          </div>
-    </section>
-    
+        </div>
+      </section>
   </div>
     
 
