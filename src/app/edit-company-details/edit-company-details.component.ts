@@ -64,6 +64,10 @@ export class EditCompanyDetailsComponent implements OnInit {
     })
   }
 
+  cancelAddAddress() {
+    this.router.navigate(['profile/companyDetails']);
+  }
+
   public hasError = (controlName: string, errorName: string) => {
 		return this.addressFormGroup.controls[controlName].hasError(errorName)
 	}
