@@ -14,10 +14,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { Constants } from './utils/constants';
-import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, MatSnackBarModule, MatExpansionModule, MatSelectModule } from '@angular/material';
+import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, MatSnackBarModule, MatExpansionModule, MatSelectModule, MatProgressSpinnerModule } from '@angular/material';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResendOtpComponent } from './resend-otp/resend-otp.component';
 import { ProfileComponent } from './my-profile/profile.component';
+import { AddressComponent } from './address/address.component';
+import { AddAddressComponent } from './add-address/add-address.component';
+import { EditAddressComponent } from './edit-address/edit-address.component';
 
 
 @NgModule({
@@ -32,7 +35,10 @@ import { ProfileComponent } from './my-profile/profile.component';
     CheckoutComponent,
     ForgotPasswordComponent,
     ResendOtpComponent,
-    ProfileComponent
+    ProfileComponent,
+    AddressComponent,
+    AddAddressComponent,
+    EditAddressComponent
   ],
   imports: [
     MatSidenavModule,
@@ -65,6 +71,7 @@ import { ProfileComponent } from './my-profile/profile.component';
     MatSnackBarModule,
     MatExpansionModule,
     MatMenuModule,
+    MatProgressSpinnerModule,
     MatSelectModule,
     MatSidenavModule
   ],
