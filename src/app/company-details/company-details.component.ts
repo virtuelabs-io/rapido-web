@@ -32,8 +32,6 @@ export class CompanyDetailsComponent implements OnInit {
     this._companyDetailsService.getCompanyDetails()
     .subscribe(data => {
       this.showSpinner = false
-      console.log("company details fetched !")
-      console.log(data)
       this.companyItems = data
       if(!data) {
         this.hide_plus_card = true
@@ -52,7 +50,6 @@ export class CompanyDetailsComponent implements OnInit {
     this._companyDetailsService.deleteCompanyDetails()
     .subscribe(data => {
       this.getCompanyDetails()
-      console.log(data)
       this.company_details_result = "Sucessfully deleted customer company details and logged!";
     })
   }

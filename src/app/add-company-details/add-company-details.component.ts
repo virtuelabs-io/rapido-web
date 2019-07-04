@@ -49,7 +49,6 @@ export class AddCompanyDetailsComponent implements OnInit {
     this._companyDetailsService.postCompanyDetails(this.companyDetails)
     .subscribe(data => {
       this.router.navigate(['profile/companyDetails']);
-      console.log(data)
       this.company_details_result = "Sucessfully posted customer company details and logged!";
     })
   }

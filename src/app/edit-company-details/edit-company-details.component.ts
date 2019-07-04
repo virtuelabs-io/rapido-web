@@ -35,8 +35,6 @@ export class EditCompanyDetailsComponent implements OnInit {
     })
     this._companyDetailsService.getCompanyDetails()
     .subscribe(data => {
-      console.log(data)
-     // this.company_details_result = "Sucessfully fetched customer company details and logged!";
       this.addressFormGroup.controls["name"].setValue(data.company_name)
       this.addressFormGroup.controls["add1"].setValue(data.addr_1)
       this.addressFormGroup.controls["add2"].setValue(data.addr_2)
@@ -63,8 +61,6 @@ export class EditCompanyDetailsComponent implements OnInit {
     this._companyDetailsService.putCompanyDetails(this.companyDetails)
     .subscribe(data => {
       this.router.navigate(['profile/companyDetails']);
-      console.log(data)
-     // this.company_details_result = "Sucessfully updated customer company details and logged!";
     })
   }
 

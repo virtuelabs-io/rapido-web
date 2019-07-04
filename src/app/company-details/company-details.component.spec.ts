@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { CompanyDetailsComponent } from './company-details.component';
+import { MatProgressSpinnerModule } from '@angular/material';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('CompanyDetailsComponent', () => {
   let component: CompanyDetailsComponent;
@@ -8,7 +10,7 @@ describe('CompanyDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ HttpClientModule ],
+      imports: [ RouterTestingModule, HttpClientModule, MatProgressSpinnerModule ],
       declarations: [ CompanyDetailsComponent ]
     })
     .compileComponents();
