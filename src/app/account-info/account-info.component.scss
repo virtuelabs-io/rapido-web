@@ -4,19 +4,21 @@
     display: flex;
     flex-direction : row;
     flex-wrap: wrap;
-    //justify-content: center;
+    justify-content: center;
+    margin-left: 2%;
+    margin-right: 2%;
     .title-div {
         width:800px;
-        margin:0 auto;
+        margin-top: 3%;
+        border-bottom: 1px solid #e1e4e8;
     }
     .rapido-account-info-div {
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
         justify-content: center;
-        border-style: dashed;
         width:800px;
-        margin:0 auto;
+        margin-top: 2%;
         .check-box-margin {
             margin-left: 1%;
         }
@@ -33,9 +35,6 @@
         flex-direction: column !important;
         flex-wrap: nowrap;
         margin-top: 2%;
-        border-width:2px;
-        border-color: red;
-        border-style: inset;
         .delete-div {
             display: flex;
             flex-direction: row;
@@ -62,6 +61,7 @@
         }
     }
     @media screen and (max-width: $mobile-device) {
-        width: 90%;
+       margin-left: 2%;
+       margin-right: 2%;
     }
 }
