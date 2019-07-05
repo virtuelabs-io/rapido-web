@@ -9,6 +9,7 @@ import { Query } from '../../services/products/query.interface';
 export class SearchItemService {
 
   _query: Query
+  private responsePoductList = new BehaviorSubject<object>({});
   private searchItemText = new BehaviorSubject<Query>({
     q: '',
     size: 10,
@@ -18,6 +19,7 @@ export class SearchItemService {
     sort: null
   });
   currentState = this.searchItemText.asObservable();
+  responsePoductListState = this.responsePoductList.asObservable();
 
   constructor() {}
 
@@ -30,6 +32,10 @@ export class SearchItemService {
       sort: state.sort || null
     }
     this.searchItemText.next(this._query)
+  }
+
+  changeResponsePoductListState(respData) {
+    this.responsePoductList.next(respData)
   }
 
 }

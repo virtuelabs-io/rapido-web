@@ -20,7 +20,8 @@
                              <mat-list-item (click)="onPressRating(val)" *ngFor='let val of panelList.panelData'>
                               <!-- Based on rating value filters are applied -->
                                <a matLine >
-                                 <app-rating [currentRate]='val'></app-rating>
+                                 <app-rating [currentRate]='val'></app-rating> 
+                                 <span  class='ml-2' >{{val}} Stars &Up</span>
                                </a>
                              </mat-list-item>
                           </div>

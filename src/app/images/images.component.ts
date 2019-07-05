@@ -13,7 +13,7 @@ export class ImagesComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.imgSrc)
+    // console.log(this.imgSrc)
   }
 
 }

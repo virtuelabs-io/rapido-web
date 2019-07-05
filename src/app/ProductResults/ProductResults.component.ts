@@ -36,6 +36,7 @@ export class ProductResultsComponent implements OnInit {
                 throw Error('error')
               }
               this.responseData = data
+              this._searchItemService.changeResponsePoductListState(data)
               if(data && data.hits && data.hits.hit)
               this.productList = data.hits.hit
               for(let i=1; i<15; i++){
@@ -50,9 +51,9 @@ export class ProductResultsComponent implements OnInit {
     }
 
     openDialog(): void {
-      debugger
       const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-        // width: '250px',
+        // width: 'auto',
+        // height:'auto'
         // data: {name: 'this.name', animal: 'this.animal'}
       });
   

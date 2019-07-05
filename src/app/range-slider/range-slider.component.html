@@ -4,16 +4,19 @@
             (userChangeEnd)="userChangeEnd($event)"
             ></ng5-slider>
 
-    <form class="ais-price-ranges--form" (ngSubmit)="onSubmitPriceFilter()">
-        <label class="ais-price-ranges--label">
-            <span class="ais-price-ranges--currency">£ </span>
-            <input class="ais-price-ranges--input" type="number" [value]="selectedMinVal">
+    <form class="ml-4" (ngSubmit)="onSubmitPriceFilter()">
+        <div>
+            <label class="">
+            <span class=""> £</span>
+            <input class="" type="number" [value]="selectedMinVal">
         </label>
-            <span class="ais-price-ranges--separator"> to </span>
-        <label class="ais-price-ranges--label">
-            <span class="ais-price-ranges--currency">£ </span>
-            <input class="ais-price-ranges--input" type="number" [value]="selectedMaxVal">
+            <span class="mr-2">  to  </span>
+        <label class="">
+            <span class=""> £</span>
+            <input class="" type="number" [value]="selectedMaxVal">
         </label>
         
-        <button class="ais-price-ranges--button btn btn-primary" type="submit">Go</button>
+        <button class="btn font-weight-bold btn-primary rounded-pill" type="submit">Go</button>
+        </div>
+        
     </form>
