@@ -1,0 +1,67 @@
+@import "../../assets/scss/custom-bootstrap-variables.scss";
+
+.main-div {
+    display: flex;
+    flex-direction : row;
+    flex-wrap: wrap;
+    //justify-content: center;
+    .title-div {
+        width:800px;
+        margin:0 auto;
+    }
+    .rapido-account-info-div {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        border-style: dashed;
+        width:800px;
+        margin:0 auto;
+        .check-box-margin {
+            margin-left: 1%;
+        }
+        mat-action-row {
+            margin-left: 1%;
+            margin-bottom: 1%;
+        }
+        @media screen and (max-width: $mobile-device) {
+            width: 100%;
+        }
+    }
+    .col-wrap {
+        display: flex;
+        flex-direction: column !important;
+        flex-wrap: nowrap;
+        margin-top: 2%;
+        border-width:2px;
+        border-color: red;
+        border-style: inset;
+        .delete-div {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: left;
+            .text-spacing {
+                padding-top: 10px;
+                padding-left: 1%;
+            }
+            .button {
+                padding-top: 10px;
+                margin-left: 15%;
+            }
+        }
+        .msg {
+            width: 50%;
+            @media screen and (max-width: $mobile-device) {
+                width: 100%;
+            }    
+    
+        }
+        @media screen and (max-width: $mobile-device) {
+            width: 100%;
+        }
+    }
+    @media screen and (max-width: $mobile-device) {
+        width: 90%;
+    }
+}

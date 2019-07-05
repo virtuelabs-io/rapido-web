@@ -1,0 +1,50 @@
+<div class="main-div">
+  <div class="title-div">
+    <h1>
+      Account Info
+    </h1>
+  </div>
+  <div class="rapido-account-info-div">
+    <mat-form-field>
+      <input matInput placeholder="User Name" [disabled]="viewMode" [(ngModel)]="attribute.phone_number">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Name" [disabled]="viewMode" [(ngModel)]="attribute.name">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Email ID" [disabled]="viewMode" [(ngModel)]="attribute.email">
+    </mat-form-field>
+    <mat-checkbox required [disabled]="viewMode" class="check-box-margin">Send Me Promotions</mat-checkbox>
+    <mat-checkbox required [disabled]="viewMode" class="check-box-margin">Communications via Email</mat-checkbox>
+    <mat-action-row>
+      <button *ngIf="viewMode" mat-raised-button color="primary" (click)="edit()">
+      <mat-icon aria-hidden="true">edit</mat-icon>
+      Edit
+    </button>
+    <button *ngIf="updateMode" mat-raised-button color="primary" (click)="update()">
+      <mat-icon aria-hidden="true">update</mat-icon>
+      Update
+    </button>
+    </mat-action-row>
+  </div>  
+  <div class="title-div">
+    <h1>
+      Danger Zone 
+    </h1>
+  </div>
+  <div class="col-wrap rapido-account-info-div">
+    <div class=" delete-div">
+      <div class="text-spacing">
+        <strong>Delete this account</strong>
+        <p>Once you delete the account, there is no going back. Please be certain.</p>
+      </div>
+      <div class="button">
+          <button mat-raised-button color="primary" (click)="delete()">Delete Account</button>
+      </div>
+    </div>
+    <div *ngIf='deletedUser' class="alert alert-success msg" role="alert">
+        <h4 class="alert-heading">Success!</h4>
+        <p>{{ deleteUserMsg }}</p>
+    </div> 
+  </div>
+</div>
