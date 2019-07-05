@@ -27,25 +27,6 @@ export class AccountInfoComponent implements OnInit {
     sendMePromotions: "false",
     commViaEmail: "false"
   }
-
-  accountItems = [
-    {
-      key: "name",
-      value: "Anirup",
-      button: "Edit"
-    },
-    {
-      key: "Email",
-      value: "Anirup",
-      button: "Edit"
-    },
-    {
-      key: "Mobile Number",
-      value: "Anirup",
-      button: "Edit"
-    }
-    
-  ]
   private _updateAttributeService: UpdateAttributeService
   constructor(
     profileService: ProfileService,
@@ -60,13 +41,18 @@ export class AccountInfoComponent implements OnInit {
   ngOnInit() {
     let localAttributes = this.attribute
     this._profileService.cognitoUser.getUserAttributes(function(err, result){
-      if (err) {
-      //  reject(new Response( 1, err.message, err ))
+      
+      for(var i = 0; i < result.length; i++) {
+        if(result[i].Name === "name") {
+          localAttributes.name = result[i].getValue()
+        }
+        else if(result[i].Name === "phone_number") {
+          localAttributes.phone_number = result[i].getValue()
+        }
+        else if(result[i].Name === "email") {
+          localAttributes.email = result[i].getValue()
+        }
       }
-      console.log(result)
-      localAttributes.name = result[3].getValue()
-      localAttributes.phone_number = result[5].getValue()
-      localAttributes.email = result[8].getValue()
     })
   }
   edit() {
