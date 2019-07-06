@@ -50,6 +50,10 @@ export class AccountInfoComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.fetchUserProfile()
+  }
+
+  fetchUserProfile() {
     let localAttributes = this.attribute
     this._profileService.cognitoUser.getUserAttributes(function(err, result) {
       for(var i = 0; i < result.length; i++) {
@@ -95,6 +99,7 @@ export class AccountInfoComponent implements OnInit {
     this._updateAttributeService.attributeList = registrationUpdate.createUpdateAttributeList()
     const promise = this._updateAttributeService.updateAttributes()
     promise.then(value => {
+      this.fetchUserProfile()
       this.updateButton = false
       this.updatedAttribute = true
       this.viewMode = true
