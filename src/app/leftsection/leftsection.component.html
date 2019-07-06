@@ -16,6 +16,11 @@
                                <a matLine>{{panelData}}</a>
                             </mat-list-item>
                           </div>
+                          <div *ngSwitchCase="'sort'">
+                            <mat-list-item (click)="onPressSort(iterator.key)" *ngFor="let iterator of panelList.panelData">
+                               <a matLine>{{iterator.desc}}</a>
+                            </mat-list-item>
+                          </div>
                           <div *ngSwitchCase="'rating'">
                              <mat-list-item (click)="onPressRating(val)" *ngFor='let val of panelList.panelData'>
                               <!-- Based on rating value filters are applied -->

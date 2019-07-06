@@ -39,9 +39,9 @@ export class ProductResultsComponent implements OnInit {
               this._searchItemService.changeResponsePoductListState(data)
               if(data && data.hits && data.hits.hit)
               this.productList = data.hits.hit
-              for(let i=1; i<15; i++){
+              /* for(let i=1; i<15; i++){
                 this.productList.push(data.hits.hit[0])
-              }
+              } */
             }
             
        })

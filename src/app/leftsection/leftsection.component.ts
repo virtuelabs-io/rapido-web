@@ -58,16 +58,21 @@ export class LeftSectionComponent implements OnInit {
                        },
                        {
                         'panelTitle':'Sort by',
-                        'panelType':'link',
-                        'panelData':['Price: Low to High','Price: High to Low','Avg. Customer Review','Newest Arrivals']
-                       }
+                        'panelType':'sort',
+                        'panelData':[
+                          {desc:'Price: Low to High', key:'price asc'},
+                          {desc:'Price: High to Low', key:'price desc'},
+                          {desc:'Avg. Customer Review', key:'rating asc'},
+                          {desc:'Newest Arrivals', key:'date asc'}
+                        ]
+                      }
                       ]}
                       /* {
-                        'headerText':'Sort by',
+                        'headertext':'sort by',
                          'panel':[ {
-                           'panelTitle':'',
-                           'panelType':'link',
-                           'panelData':['Price: Low to High','Price: High to Low','Avg. Customer Review','Newest Arrivals']
+                           'paneltitle':'',
+                           'paneltype':'link',
+                           'paneldata':['price: low to high','price: high to low','avg. customer review','newest arrivals']
                         }]
                       } */
          ]
@@ -76,14 +81,19 @@ export class LeftSectionComponent implements OnInit {
   priceFilterData(range){
     console.log(range.min,range.max)
   }
+
   onPressRating(value){
-    
     this.changeQuery({q:'watches',sort:'desc'})
   }
-  onPressItem(eve){
-    
-    (eve)
+
+  onPressSort(data){
+    this.changeQuery({sort:data})
   }
+
+  onPressItem(data){
+    console.log(data.panelType)
+  }
+
   changeQuery(queryObj){
       this._searchItemService.changeState(queryObj)
   }
