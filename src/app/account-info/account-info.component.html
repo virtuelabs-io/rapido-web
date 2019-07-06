@@ -26,6 +26,7 @@
     <button *ngIf="updateMode" mat-raised-button color="primary" (click)="update()">
       <mat-icon aria-hidden="true">update</mat-icon>
       Update
+      <span *ngIf="updateButton" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
     </button>
     </mat-action-row>
   </div>

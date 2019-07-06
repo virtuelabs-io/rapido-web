@@ -17,6 +17,7 @@ export class AccountInfoComponent implements OnInit {
   updateMode: Boolean = false
   deletedUser: Boolean = false
   deleteButton: Boolean = false
+  updateButton: Boolean = false
   deleteUserMsg: string = ""
 
   _updatedAttribute: Boolean = false;
@@ -76,8 +77,7 @@ export class AccountInfoComponent implements OnInit {
   }
 
   update() {
-    this.viewMode = true
-    this.updateMode = false
+    this.updateButton = true
     let registrationUpdate: Registration = new Registration(
       this.attribute.phone_number,
       this.attribute.email,
@@ -89,14 +89,17 @@ export class AccountInfoComponent implements OnInit {
       this.attribute.commViaSMSB.toString(),
       this.attribute.personalisationB.toString(),
       ""
-
     )
     this._updateAttributeService.attributeList = registrationUpdate.createUpdateAttributeList()
     const promise = this._updateAttributeService.updateAttributes()
     promise.then(value => {
-      this._updatedAttribute = true;
+      this.updateButton = false
+      this._updatedAttribute = true
+      this.viewMode = true
+      this.updateMode = false
     }).catch(error => {
-      this._updatedAttribute = false;
+      this.updateButton = false
+      this._updatedAttribute = false
     })
   }
 
