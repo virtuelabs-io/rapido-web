@@ -54,7 +54,6 @@ export class AccountInfoComponent implements OnInit {
       }
       if(localAttributes.sendMePromotions == "true") {
         localAttributes.sendMePromotionsB = true
-      //  localAttributes.sendMePromotions = Boolean("true")
       }
       if(localAttributes.commViaEmail == "true") {
         localAttributes.commViaEmailB = true
@@ -66,7 +65,6 @@ export class AccountInfoComponent implements OnInit {
         localAttributes.personalisationB = true
       }
     })
-   
   }
 
   edit() {

@@ -33,7 +33,7 @@
     .col-wrap {
         display: flex;
         flex-direction: column !important;
-        flex-wrap: nowrap;
+        flex-wrap: wrap !important;
         margin-top: 2%;
         .delete-div {
             display: flex;
@@ -47,6 +47,12 @@
             .button {
                 padding-top: 10px;
                 margin-left: 15%;
+                @media screen and (max-width: $mobile-device) {
+                    margin-left: 0%;
+                }
+            }
+            @media screen and (max-width: $mobile-device) {
+                flex-wrap: wrap;
             }
         }
         .msg {
