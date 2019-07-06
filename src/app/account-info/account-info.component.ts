@@ -71,7 +71,6 @@ export class AccountInfoComponent implements OnInit {
   }
 
   edit() {
-    console.log(this._profileService)
     this.viewMode = false
     this.updateMode = true
   }
@@ -79,8 +78,6 @@ export class AccountInfoComponent implements OnInit {
   update() {
     this.viewMode = true
     this.updateMode = false
-
-    console.log(this.attribute)
     let registrationUpdate: Registration = new Registration(
       this.attribute.phone_number,
       this.attribute.email,
@@ -98,10 +95,8 @@ export class AccountInfoComponent implements OnInit {
     const promise = this._updateAttributeService.updateAttributes()
     promise.then(value => {
       this._updatedAttribute = true;
-      console.log(value) // response from successfull resolve
     }).catch(error => {
       this._updatedAttribute = false;
-      console.log(error) // response from a graceful reject
     })
   }
 
@@ -113,11 +108,9 @@ export class AccountInfoComponent implements OnInit {
       this.deletedUser = true
       this.deleteUserMsg = 'Deleted user successfully'
       this.loginStateService.changeState(false)
-      console.log(value) // response from successfull resolve
     }).catch(error => {
       this.deleteButton = false
       this.deletedUser = false
-      console.log(error) // response from a graceful reject
     })
   }
 }
