@@ -21,11 +21,17 @@ export class AccountInfoComponent implements OnInit {
   private _deleteUserService: DeleteUserService
 
   attribute = {
-    phone_number: null,
-    name: null,
-    email: null,
-    sendMePromotions: "false",
-    commViaEmail: "false"
+    phone_number: "",
+    name: "",
+    email: "",
+    sendMePromotions: "",
+    commViaEmail: "",
+    commViaSMS: "",
+    personalisation: "",
+    sendMePromotionsB: false,
+    commViaEmailB: false,
+    commViaSMSB: false,
+    personalisationB: false
   }
   private _updateAttributeService: UpdateAttributeService
   constructor(
@@ -40,26 +46,35 @@ export class AccountInfoComponent implements OnInit {
 
   ngOnInit() {
     let localAttributes = this.attribute
-    this._profileService.cognitoUser.getUserAttributes(function(err, result){
-      
+    this._profileService.cognitoUser.getUserAttributes(function(err, result) {
       for(var i = 0; i < result.length; i++) {
-        if(result[i].Name === "name") {
-          localAttributes.name = result[i].getValue()
-        }
-        else if(result[i].Name === "phone_number") {
-          localAttributes.phone_number = result[i].getValue()
-        }
-        else if(result[i].Name === "email") {
-          localAttributes.email = result[i].getValue()
+        if (localAttributes[result[i]["Name"].replace("custom:", "")] != null) {
+          localAttributes[result[i]["Name"].replace("custom:", "")] = result[i].getValue()
         }
       }
+      if(localAttributes.sendMePromotions == "true") {
+        localAttributes.sendMePromotionsB = true
+      //  localAttributes.sendMePromotions = Boolean("true")
+      }
+      if(localAttributes.commViaEmail == "true") {
+        localAttributes.commViaEmailB = true
+      }
+      if(localAttributes.commViaSMS == "true") {
+        localAttributes.commViaSMSB = true
+      }
+      if(localAttributes.personalisation == "true") {
+        localAttributes.personalisationB = true
+      }
     })
+   
   }
+
   edit() {
     console.log(this._profileService)
     this.viewMode = false
     this.updateMode = true
   }
+
   update() {
     this.viewMode = true
     this.updateMode = false
@@ -70,8 +85,12 @@ export class AccountInfoComponent implements OnInit {
       this.attribute.email,
       this.attribute.name,
       "",
-      this.attribute.sendMePromotions,
-      this.attribute.commViaEmail
+      "",
+      this.attribute.sendMePromotionsB.toString(),
+      this.attribute.commViaEmailB.toString(),
+      this.attribute.commViaSMSB.toString(),
+      this.attribute.personalisationB.toString(),
+      ""
 
     )
     this._updateAttributeService.attributeList = registrationUpdate.createUpdateAttributeList()
@@ -85,7 +104,7 @@ export class AccountInfoComponent implements OnInit {
     })
   }
 
-  delete(){
+  delete() {
     const promise = this._deleteUserService.deleteUser()
     promise.then(value => {
       this.deletedUser = true;
@@ -96,5 +115,4 @@ export class AccountInfoComponent implements OnInit {
       console.log(error) // response from a graceful reject
     })
   }
-
 }
