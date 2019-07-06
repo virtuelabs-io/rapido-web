@@ -3,6 +3,7 @@ import { ProfileService } from '../services/authentication/profile/profile.servi
 import { UpdateAttributeService } from '../services/authentication/update-attribute/update-attribute.service';
 import { Registration } from '../services/authentication/helpers/registration';
 import { DeleteUserService } from '../services/authentication/delete-user/delete-user.service';
+import { LoginStateService } from '../shared-services/login-state/login-state.service';
 
 @Component({
   selector: 'app-account-info',
@@ -37,6 +38,7 @@ export class AccountInfoComponent implements OnInit {
   constructor(
     profileService: ProfileService,
     updateAttributeService: UpdateAttributeService,
+    private loginStateService: LoginStateService,
     deleteUserService: DeleteUserService
   ) {
     this._profileService = profileService
@@ -107,6 +109,7 @@ export class AccountInfoComponent implements OnInit {
     promise.then(value => {
       this.deletedUser = true;
       this.deleteUserMsg = 'Deleted user successfully'
+      this.loginStateService.changeState(false);
       console.log(value) // response from successfull resolve
     }).catch(error => {
       this.deletedUser = false;
