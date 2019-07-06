@@ -35,18 +35,21 @@
     </h2>
   </div>
   <div class="col-wrap rapido-account-info-div">
-    <div class=" delete-div">
+    <div class="delete-div">
       <div class="text-spacing">
         <strong>Delete this account</strong>
         <p>Once you delete the account, there is no going back. Please be certain.</p>
       </div>
       <div class="button">
-          <button mat-raised-button color="primary" (click)="delete()">Delete Account</button>
+        <button mat-raised-button color="primary" (click)="delete()">
+          <span *ngIf="deleteButton" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          Delete Account
+        </button>
       </div>
     </div>
-    <div *ngIf='deletedUser' class="alert alert-success msg" role="alert">
-        <h4 class="alert-heading">Success!</h4>
-        <p>{{ deleteUserMsg }}</p>
+    <div *ngIf='deletedUser' class="alert-danger-background msg" role="alert">
+        <h4 class="alert-success-text text-align">Success!</h4>
+        <p class="alert-success-text text-align">{{ deleteUserMsg }}</p>
     </div> 
   </div>
 </div>
