@@ -29,6 +29,10 @@
       <span *ngIf="updateButton" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
     </button>
     </mat-action-row>
+    <div *ngIf='updatedAttribute' class="alert-danger-background msg" role="alert">
+        <h4 class="alert-success-text text-align">Success!</h4>
+        <p class="alert-success-text text-align">Profile Successfully Updated</p>
+    </div>
   </div>
   <div class="title-div">
     <h2>

@@ -20,7 +20,7 @@ export class AccountInfoComponent implements OnInit {
   updateButton: Boolean = false
   deleteUserMsg: string = ""
 
-  _updatedAttribute: Boolean = false;
+  updatedAttribute: Boolean = false;
   private _deleteUserService: DeleteUserService
 
   attribute = {
@@ -74,6 +74,7 @@ export class AccountInfoComponent implements OnInit {
   edit() {
     this.viewMode = false
     this.updateMode = true
+    this.updatedAttribute = false
   }
 
   update() {
@@ -94,12 +95,12 @@ export class AccountInfoComponent implements OnInit {
     const promise = this._updateAttributeService.updateAttributes()
     promise.then(value => {
       this.updateButton = false
-      this._updatedAttribute = true
+      this.updatedAttribute = true
       this.viewMode = true
       this.updateMode = false
     }).catch(error => {
       this.updateButton = false
-      this._updatedAttribute = false
+      this.updatedAttribute = false
     })
   }
 
