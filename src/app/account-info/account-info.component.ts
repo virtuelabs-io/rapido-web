@@ -16,11 +16,12 @@ export class AccountInfoComponent implements OnInit {
   viewMode: Boolean = true
   updateMode: Boolean = false
   deletedUser: Boolean = false
+  failedToDelete: Boolean = false
   deleteButton: Boolean = false
   updateButton: Boolean = false
   deleteUserMsg: string = ""
-
-  updatedAttribute: Boolean = false;
+  updatedAttribute: Boolean = false
+  failedToUpdate: Boolean = false
   private _deleteUserService: DeleteUserService
 
   attribute = {
@@ -98,9 +99,11 @@ export class AccountInfoComponent implements OnInit {
       this.updatedAttribute = true
       this.viewMode = true
       this.updateMode = false
+      this.failedToUpdate = false
     }).catch(error => {
       this.updateButton = false
       this.updatedAttribute = false
+      this.failedToUpdate = true
     })
   }
 
@@ -108,6 +111,7 @@ export class AccountInfoComponent implements OnInit {
     this.deleteButton = true
     const promise = this._deleteUserService.deleteUser()
     promise.then(value => {
+      this.failedToDelete = false
       this.deleteButton = false
       this.deletedUser = true
       this.deleteUserMsg = 'Deleted user successfully'
@@ -115,6 +119,7 @@ export class AccountInfoComponent implements OnInit {
     }).catch(error => {
       this.deleteButton = false
       this.deletedUser = false
+      this.failedToDelete = true
     })
   }
 }
