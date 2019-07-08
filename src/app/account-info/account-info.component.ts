@@ -99,7 +99,7 @@ export class AccountInfoComponent implements OnInit {
     this._updateAttributeService.attributeList = registrationUpdate.createUpdateAttributeList()
     const promise = this._updateAttributeService.updateAttributes()
     promise.then(value => {
-      this.fetchUserProfile()
+      this.fetchUserProfile() // to set value returned from the service
       this.updateButton = false
       this.updatedAttribute = true
       this.viewMode = true
