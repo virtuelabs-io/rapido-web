@@ -13,6 +13,7 @@ import { EditAddressComponent } from './edit-address/edit-address.component';
 import { CompanyDetailsComponent } from './company-details/company-details.component';
 import { AddCompanyDetailsComponent } from './add-company-details/add-company-details.component';
 import { EditCompanyDetailsComponent } from './edit-company-details/edit-company-details.component';
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'profile/companyDetails', component: CompanyDetailsComponent },
   { path: 'profile/companyDetails/newDetails', component: AddCompanyDetailsComponent },
   { path: 'profile/companyDetails/edit', component: EditCompanyDetailsComponent },
+  { path: 'cart', component: CartComponent },
   { path: '', component: AuthmockComponent},
 ];
 
@@ -48,5 +50,6 @@ export const RoutingComponents = [
   AddAddressComponent,
   EditAddressComponent,
   EditCompanyDetailsComponent,
+  CartComponent,
   AuthmockComponent
 ];

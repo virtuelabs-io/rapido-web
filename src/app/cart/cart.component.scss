@@ -1,0 +1,17 @@
+.main-div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .cart-items {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 80%;
+    }
+    .cart-amount {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 20%;
+    }
+}
