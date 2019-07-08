@@ -25,6 +25,9 @@
               </div>
               <div class="item-desc">
                 <p><strong>{{ item.title }}</strong></p>
+                <div>
+                    <a routerLink="">Delete</a>
+                </div>
               </div>
               <div class="item-price">
                 <p>{{ item.amount }}</p>
@@ -37,10 +40,15 @@
         </div>
   </div>
   <div class="cart-amount">
-      <p>
-          Rapidobuild helps you to build without a real headache of the building materials..
-          Sothe saying goes on "you build and we deliver" 
-          We know how you value time and to help you save time is our sole motto..!
-        </p>
+    <div class="card-amount-inner">
+      <div class="card-amount-title">
+        <span>
+          <strong>Subtotal (4 items):</strong>26,104.00
+        </span>
+      </div>
+        <div class="card-amount-checkout">
+            <button mat-button class="checkout-button">Proceed to checkout</button>
+        </div>
+    </div>
 </div>
 </div>
