@@ -58,7 +58,7 @@
                     .item-price {
                         padding-left: 2%;
                         width: 25%;
-                        color: red;
+                        color: #B12704;
                     }
                     .item-quantity {
                         width: 20%;
@@ -105,6 +105,9 @@
             .card-amount-title {
                 margin-left: 5%;
                 margin-top: 5%;
+                .span-class {
+                    color: #B12704;
+                }
             }
             .card-amount-checkout {
                 margin-left: 10%;

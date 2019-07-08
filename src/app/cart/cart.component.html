@@ -30,7 +30,9 @@
                 </div>
               </div>
               <div class="item-price">
-                <p>{{ item.amount }}</p>
+                <p>
+                  <strong>{{ item.amount }}</strong>
+                </p>
               </div>
               <div class="item-quantity">
                 <input type="text" maxlength="3" value="{{ item.qunatity }}" autocomplete="off" name="quantityBox" class="item-quntity-input" aria-label="Quantity">
@@ -43,7 +45,11 @@
     <div class="card-amount-inner">
       <div class="card-amount-title">
         <span>
-          <strong>Subtotal (4 items): </strong>£26,104.00
+          <strong>Subtotal (4 items): </strong>
+          £
+        </span>
+        <span class="span-class">  
+          <strong>26,104.00</strong>
         </span>
       </div>
         <div class="card-amount-checkout">
