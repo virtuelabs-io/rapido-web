@@ -6,31 +6,35 @@
     flex-wrap: wrap;
     .title-div {
         margin-top: 2%;
-        width: 100%;
+        margin-left: 2%;
+        width: 65%;
         height: 20%;
         @media screen and (max-width: $mobile-device) {
             height: 40%;
+          //  width: 100%;
         }
     }
     .cart-columns {
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
-        width: 100%;
+        width: 65%;
+        margin-left: 2%;
         border-bottom: 1px solid #e1e4e8;
         .cart-col-price {
-            margin-left: 47%;
+            margin-left: 56%;
         }
         .cart-col-quan {
-            margin-left: 18%;
+            margin-left: 21%;
         }
     }
-    .cart-items-amount {
+    .cart-items-main {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        width: 70%;
         .cart-items {
-            width: 70%;
+            //width: 70%;
             margin-right: 5%;
             margin-left: 5%;
             .cart-items-list {
@@ -60,23 +64,28 @@
                 }
             }
         }
-        .cart-amount {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            width: 16%;
-            margin-top: 1%;
-            margin-left: 1%;
-            margin-right: 1%;
-            border-radius: 6px;
-            border-width: 1px;
-            box-sizing: border-box;
-            border-color: #C7C7C7;
-            box-shadow: 0 2px 1px 0 rgba(0,0,0,.16);
-            border-style: solid;
-            @media screen and (max-width: $mobile-device) {
-                width: 100%;
-            }
+        @media screen and (max-width: $mobile-device) {
+            width: 100%;
+        }
+    }
+    .cart-amount {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 28%;
+        height: 400px;
+        margin-top: 1%;
+        margin-left: 1%;
+        margin-right: 1%;
+        border-radius: 6px;
+        border-width: 1px;
+        box-sizing: border-box;
+        border-color: #C7C7C7;
+        box-shadow: 0 2px 1px 0 rgba(0,0,0,.16);
+        border-style: solid;
+        @media screen and (max-width: $mobile-device) {
+            height: 100px;
+            width: 100%;
         }
     }
     @media screen and (max-width: $mobile-device) {
