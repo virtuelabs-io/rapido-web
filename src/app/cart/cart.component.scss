@@ -11,7 +11,6 @@
         height: 20%;
         @media screen and (max-width: $mobile-device) {
             height: 40%;
-          //  width: 100%;
         }
     }
     .cart-columns {
@@ -22,10 +21,16 @@
         margin-left: 2%;
         border-bottom: 1px solid #e1e4e8;
         .cart-col-price {
-            margin-left: 56%;
+            margin-left: 63%;
         }
         .cart-col-quan {
             margin-left: 21%;
+            @media screen and (max-width: $mobile-device) {
+                margin-left: 15%;
+               }
+        }
+        @media screen and (max-width: $mobile-device) {
+            width: 90%;
         }
     }
     .cart-items-main {
@@ -34,7 +39,6 @@
         flex-wrap: wrap;
         width: 70%;
         .cart-items {
-            //width: 70%;
             margin-right: 5%;
             margin-left: 5%;
             .cart-items-list {
@@ -53,6 +57,7 @@
                     width: 40%;
                 }
                 .item-price {
+                    padding-left: 2%;
                     width: 30%;
                     color: red;
                 }
@@ -84,7 +89,7 @@
         box-shadow: 0 2px 1px 0 rgba(0,0,0,.16);
         border-style: solid;
         @media screen and (max-width: $mobile-device) {
-            height: 100px;
+            height: 200px;
             width: 100%;
         }
     }
