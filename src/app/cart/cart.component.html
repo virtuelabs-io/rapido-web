@@ -1,28 +1,26 @@
 <div class="main-div">
-  <div class="cart-items">
-    <!-- <p>
-          Rapidobuild helps you to build without a real headache of the building materials..
-          Sothe saying goes on "you build and we deliver" 
-          We know how you value time and to help you save time is our sole motto..!
-    </p> -->
+  <div class="cart-items" *ngFor="let item of cartItems">
     <div class="title-div">
-        <h4>
-            Shopping Cart
-          </h4>
+      <h4>
+        Shopping Cart
+      </h4>
     </div>
     <div class="item-thumbnail">
-      <p>Image</p>
+        <a>
+            <svg aria-hidden="true" aria-haspopup="menu" class="rapido-icon">
+              <use [attr.xlink:href]="item.icon"/>
+            </svg>
+          </a>
     </div>
     <div class="item-desc">
-        <p>Item Desc</p>
+      <p>{{ item.title }}</p>
     </div>
     <div class="item-price">
-        <p>10,000</p>
+      <p>{{ item.amount }}</p>
     </div>
     <div class="item-quantity">
-        <p>2</p>
+      <p>{{ item.qunatity }}</p>
     </div>
-
   </div>
   <div class="cart-amount">
       <p>
