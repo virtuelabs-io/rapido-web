@@ -4,75 +4,75 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    .title-div {
-        margin-top: 2%;
-        margin-left: 2%;
+    .cart-div {
         width: 65%;
-        height: 20%;
-        @media screen and (max-width: $mobile-device) {
-            height: 40%;
+        .title-div {
+            margin-top: 2%;
+            margin-left: 2%;
         }
-    }
-    .cart-columns {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        width: 65%;
-        margin-left: 2%;
-        border-bottom: 1px solid #e1e4e8;
-        .cart-col-price {
-            margin-left: 63%;
-        }
-        .cart-col-quan {
-            margin-left: 21%;
+        .cart-columns {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            margin-left: 2%;
+            border-bottom: 1px solid #e1e4e8;
+            .cart-col-price {
+                margin-left: 60%;
+            }
+            .cart-col-quan {
+                margin-left: 20%;
+                @media screen and (max-width: $mobile-device) {
+                    margin-left: 15%;
+                   }
+            }
             @media screen and (max-width: $mobile-device) {
-                margin-left: 15%;
-               }
+                width: 90%;
+            }
         }
-        @media screen and (max-width: $mobile-device) {
-            width: 90%;
-        }
-    }
-    .cart-items-main {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        width: 70%;
-        .cart-items {
-            margin-right: 5%;
-            margin-left: 5%;
-            .cart-items-list {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-                margin-top: 2%;
-                border-bottom: 1px solid #e1e4e8;
-                .item-thumbnail {
-                    width: 20%;
-                    .rapido-icon {
+        .cart-items-main {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            .cart-items {
+                margin-right: 5%;
+                margin-left: 5%;
+                .cart-items-list {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    margin-top: 2%;
+                    border-bottom: 1px solid #e1e4e8;
+                    .item-thumbnail {
+                        width: 20%;
+                        .rapido-icon {
+                            width: 40%;
+                        }
+                    }
+                    .item-desc {
                         width: 40%;
                     }
-                }
-                .item-desc {
-                    width: 40%;
-                }
-                .item-price {
-                    padding-left: 2%;
-                    width: 30%;
-                    color: red;
-                }
-                .item-quantity {
-                    width: 10%;
-                    .item-quntity-input {
-                        width: 60%;
+                    .item-price {
+                        padding-left: 2%;
+                        width: 30%;
+                        color: red;
+                    }
+                    .item-quantity {
+                        width: 10%;
+                        .item-quntity-input {
+                            width: 60%;
+                        }
                     }
                 }
             }
+            @media screen and (max-width: $mobile-device) {
+                width: 100%;
+            }
         }
         @media screen and (max-width: $mobile-device) {
-            width: 100%;
-        }
+            width: 100%
+          }
     }
+    
     .cart-amount {
         display: flex;
         flex-direction: row;
