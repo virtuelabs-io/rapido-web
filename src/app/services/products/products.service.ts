@@ -19,6 +19,7 @@ export class ProductsService {
         queryKeys.push(key+"="+String(_query[key]))
       }
     }
+    // queryKeys[0] = `q=(field=name 'watches')`
     return queryKeys.join("&")
   }
 

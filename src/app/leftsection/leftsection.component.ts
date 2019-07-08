@@ -82,7 +82,8 @@ export class LeftSectionComponent implements OnInit {
     console.log(range.min,range.max)
   }
 
-  onPressRating(value){
+  onPressRating(range){
+    // q=(and (term field=name 'watches') (range field=rating {,2000]))
     this.changeQuery({q:'watches',sort:'desc'})
   }
 
