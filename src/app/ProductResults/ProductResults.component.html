@@ -1,23 +1,9 @@
 <div class="">
   <div>
-
     <app-productcontrols *ngIf="productList && productList.length" [searchedText]=searchedText [responseData]=responseData></app-productcontrols>
-    
-
       <!-- small device filter control starts -->
       <section class="product-controls position-top mr-2 ml-2 rounded-pill">
         <div class="mx-auto">
-            <!-- <div >
-              <select matNativeControl class="bg-transparent border-0">
-                  <option value="relevanceblender" selected="true">Sort by:</option>
-                  <option value="relevanceblender">Featured</option>
-                  <option value="price-asc-rank">Price: Low to High</option>
-                  <option value="price-desc-rank">Price: High to Low</option>
-                  <option value="review-rank">Avg. Customer Review</option>
-                  <option value="date-desc-rank">Newest Arrivals</option>
-              </select>
-            </div> -->
-            <!-- <div class="m-1"></div> -->
             <button type="button" (click)="openDialog()" class="btn ">Filter Controls</button>
         </div>
       </section>
@@ -28,16 +14,17 @@
   <div class="row position-top ">
       <div class="col-md-3 ml-4 mt-2">
           <app-leftsection [responseData]=responseData></app-leftsection>
-        </div>
-        
-
-        
-        
+      </div>
         <!-- Cards List div starts -->
         <div class="row itemListCls col-md-9" >
                 <div *ngFor="let item of productList" class="">
                     <app-card [itemList]=item></app-card>
                 </div>
+                <mat-paginator [length]="length"
+                              [pageSize]="pageSize"
+                              [pageSizeOptions]="pageSizeOptions"
+                              (page)="onPressPageEvent($event)">
+                </mat-paginator>
           </div>
           <!-- Cards list div ends -->
 

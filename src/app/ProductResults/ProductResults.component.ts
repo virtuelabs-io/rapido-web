@@ -2,6 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { SearchItemService } from '../shared-services/search-item/search-item.services';
 import { ProductsService } from '../services/products/products.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {PageEvent} from '@angular/material/paginator';
+
 
 export interface DialogData {
   animal: string;
@@ -14,6 +16,14 @@ export interface DialogData {
   styleUrls: ['./ProductResults.component.scss']
 })
 export class ProductResultsComponent implements OnInit {
+
+  // MatPaginator Inputs
+  length = 100;
+  pageSize = 10;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
+
+  // MatPaginator Output
+  pageEvent: PageEvent;
 
   private _productsService: ProductsService
   searchedText: string = ""
@@ -48,6 +58,14 @@ export class ProductResultsComponent implements OnInit {
       }
       
       })
+    }
+
+    onPressPageEvent(e){
+console.log(e)
+    }
+
+    setPageSizeOptions(setPageSizeOptionsInput: string) {
+      this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
     }
 
     openDialog(): void {
