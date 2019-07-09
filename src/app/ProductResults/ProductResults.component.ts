@@ -19,8 +19,8 @@ export class ProductResultsComponent implements OnInit {
 
   // MatPaginator Inputs
   length = 100;
-  pageSize = 10;
-  pageSizeOptions: number[] = [5, 10, 25, 100];
+  pageSize = 15;
+  pageSizeOptions: number[] = [5, 15, 30,45, 90];
 
   // MatPaginator Output
   pageEvent: PageEvent;
@@ -29,6 +29,7 @@ export class ProductResultsComponent implements OnInit {
   searchedText: string = ""
   responseData: Object
   public productList: Array<{id: number, fields: Object}>
+  public productListBind: Array<{id: number, fields: Object}>
   constructor(private _searchItemService: SearchItemService,
               public dialog: MatDialog,
               productsService: ProductsService) { 
@@ -49,9 +50,10 @@ export class ProductResultsComponent implements OnInit {
               this._searchItemService.changeResponsePoductListState(data)
               if(data && data.hits && data.hits.hit)
               this.productList = data.hits.hit
-              /* for(let i=1; i<15; i++){
+              for(let i=1; i<150; i++){
                 this.productList.push(data.hits.hit[0])
-              } */
+              }
+              this.productListBind =this.productList.slice(0,this.pageSize);
             }
             
        })
@@ -60,8 +62,9 @@ export class ProductResultsComponent implements OnInit {
       })
     }
 
-    onPressPageEvent(e){
-console.log(e)
+    onPageChange(evt){
+      console.log(evt)
+      this.productListBind = this.productList.slice(evt.pageIndex * evt.pageSize,evt.pageSize+(evt.pageIndex * evt.pageSize));
     }
 
     setPageSizeOptions(setPageSizeOptionsInput: string) {

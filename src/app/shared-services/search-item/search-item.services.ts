@@ -9,7 +9,7 @@ import { Query } from '../../services/products/query.interface';
 export class SearchItemService {
 
   _query: Query = { q: '',
-    size: 10,
+    size: 15,
     cursor: null,
     return: null,
     start: null,

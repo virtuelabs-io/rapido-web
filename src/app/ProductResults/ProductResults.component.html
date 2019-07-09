@@ -17,13 +17,13 @@
       </div>
         <!-- Cards List div starts -->
         <div class="row itemListCls col-md-9" >
-                <div *ngFor="let item of productList" class="">
+                <div *ngFor="let item of productListBind" class="">
                     <app-card [itemList]=item></app-card>
                 </div>
                 <mat-paginator [length]="length"
                               [pageSize]="pageSize"
                               [pageSizeOptions]="pageSizeOptions"
-                              (page)="onPressPageEvent($event)">
+                              (page)="pageEvent = onPageChange($event)">
                 </mat-paginator>
           </div>
           <!-- Cards list div ends -->
