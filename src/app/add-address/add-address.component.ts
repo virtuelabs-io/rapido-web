@@ -4,6 +4,7 @@ import { AddressDetails } from '../services/customer/address-details';
 import { AddressDetailsService } from '../services/customer/address-details.service';
 import {FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Constants } from '../utils/constants';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-add-address',
@@ -20,7 +21,8 @@ export class AddAddressComponent implements OnInit {
   addressFormGroup: FormGroup // UI reactive Form Group variable
 
   constructor( private router: Router,
-               addressDetailsService: AddressDetailsService
+               addressDetailsService: AddressDetailsService,
+               private location: Location
   ) { 
       this._addressDetailsService = addressDetailsService
     }
@@ -53,12 +55,15 @@ export class AddAddressComponent implements OnInit {
     .subscribe(data => {
       if(data['insertId']) {
         this.address_details_id = data['insertId']
+        this.location.back();
       }
     })
-    this.router.navigate(['profile/address']);
+    //this.location.back();
+   // this.router.navigate(['profile/address']);
   }
   cancelAddAddress() {
-    this.router.navigate(['profile/address']);
+    this.location.back();
+   // this.router.navigate(['profile/address']);
   }
 
   public hasError = (controlName: string, errorName: string) => {

@@ -7,7 +7,6 @@ import { Constants } from '../utils/constants';
 import { Router } from '@angular/router';
 import { AddressDetailsService } from '../services/customer/address-details.service';
 
-
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -70,5 +69,17 @@ export class CheckoutComponent implements OnInit {
         this.address = data
       }
     })
+  }
+
+  addressDelete(id) {
+    this.showSpinner = true
+    this._addressDetailsService.deleteAddressDetails(id)
+    .subscribe(data => {
+      this.address_details_id = null
+      this.getAddressList()
+    })
+  }
+  addressEdit(id) {
+    this.router.navigate(['profile/address/editAddress', id])
   }
 }
