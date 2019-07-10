@@ -28,6 +28,8 @@ export class AddAddressComponent implements OnInit {
     }
 
   ngOnInit() {
+    console.log(this.router)
+    console.log(this.location)
     this.addressFormGroup = new FormGroup({
       name: new FormControl('', [Validators.required]),
       add1: new FormControl('', [Validators.required]),
@@ -55,11 +57,13 @@ export class AddAddressComponent implements OnInit {
     .subscribe(data => {
       if(data['insertId']) {
         this.address_details_id = data['insertId']
-        this.location.back();
+        this.router.navigate(['cart/checkout']);
+     //   this.location.back();
       }
     })
     //this.location.back();
    // this.router.navigate(['profile/address']);
+   
   }
   cancelAddAddress() {
     this.location.back();

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ChargeService } from '../services/payment/charge.service';
 import { StripeService, Elements, Element as StripeElement, ElementsOptions } from "ngx-stripe";
@@ -7,6 +7,14 @@ import { Constants } from '../utils/constants';
 import { Router } from '@angular/router';
 import { AddressDetailsService } from '../services/customer/address-details.service';
 
+@NgModule({
+	imports: [
+		FormBuilder,
+		Validators,
+		FormGroup
+	]
+})
+
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -14,8 +22,7 @@ import { AddressDetailsService } from '../services/customer/address-details.serv
 })
 export class CheckoutComponent implements OnInit {
   isLinear = false;
-  firstFormGroup: FormGroup
-  secondFormGroup: FormGroup
+
   
   showSpinner: Boolean = false
   address_details_id: number
@@ -23,6 +30,7 @@ export class CheckoutComponent implements OnInit {
   address: any
   example:any
   
+  registerFormGroup: FormGroup // UI reactive Form Group variable 
 
   constructor(
    // private fb: FormBuilder, // by Sangram
@@ -39,12 +47,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    });
+
 
     this.showSpinner = true
     this._addressDetailsService.getAddressDetailsList()

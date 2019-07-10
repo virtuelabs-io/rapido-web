@@ -2,58 +2,51 @@
   {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
 </button>
 <mat-horizontal-stepper [linear]="isLinear" #stepper>
-  <mat-step [stepControl]="firstFormGroup">
+  <mat-step [stepControl]="registerFormGroup">
       <ng-template matStepLabel>Fill out your address</ng-template>
-    <div class="main-div">
-      <div class="title-div">
-        <h4>
-          My Addresses
-        </h4>
-      </div>
-      <div class="rapido-add-address">
-        <a class="rapido-add-address-icon">
-          <div class="address-add-icon">
-            <a class="" href="profile/address/newAddress">
-              <svg aria-hidden="true" aria-haspopup="menu">
-                  <use xlink:href="#add"/>
-              </svg>
-            </a>
-          </div>
-          <div class="text-div">
-              <p>Add Address</p>
-          </div>
-          <div class="spinner-div">
-              <mat-spinner strokeWidth="4" [diameter]="50" *ngIf="showSpinner"></mat-spinner>
-          </div>
-        </a>
-        <div class="rapido-add-address-item" *ngFor="let address of address">
-          <div class="address-text">
-            <strong> {{ address.full_name }} </strong>
-            <br/><p>{{ address.addr_1 }}
-            <br/> {{ address.addr_2 }}
-            <br/> {{ address.city }} 
-            <br/> {{ address.county }}, {{ address.postcode }}
-            <br/> {{ address.country }}
-          </div>
-          <div class="card-actions">
-            <a (click)="addressEdit(address.id)">Edit</a> |
-            <a (click)="addressDelete(address.id)">Delete</a>
-          </div>
-        </div>
-      </div>
-    </div>
+      <form class="form-container">
+                <div class="main-div">
+                    <div class="title-div">
+                      <h4>
+                        My Addresses
+                      </h4>
+                    </div>
+                    <div class="rapido-add-address">
+                      <a class="rapido-add-address-icon">
+                        <div class="address-add-icon">
+                          <a class="" href="profile/address/newAddress">
+                            <svg aria-hidden="true" aria-haspopup="menu">
+                                <use xlink:href="#add"/>
+                            </svg>
+                          </a>
+                        </div>
+                        <div class="text-div">
+                            <p>Add Address</p>
+                        </div>
+                        <div class="spinner-div">
+                            <mat-spinner strokeWidth="4" [diameter]="50" *ngIf="showSpinner"></mat-spinner>
+                        </div>
+                      </a>
+                      <div class="rapido-add-address-item" *ngFor="let address of address">
+                        <div class="address-text">
+                          <strong> {{ address.full_name }} </strong>
+                          <br/><p>{{ address.addr_1 }}
+                          <br/> {{ address.addr_2 }}
+                          <br/> {{ address.city }} 
+                          <br/> {{ address.county }}, {{ address.postcode }}
+                          <br/> {{ address.country }}
+                        </div>
+                        <div class="card-actions">
+                          <a (click)="addressEdit(address.id)">Edit</a> |
+                          <a (click)="addressDelete(address.id)">Delete</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+      </form>          
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Select Delivery Address</ng-template>
-      <mat-form-field>
-        <input matInput placeholder="Address" formControlName="secondCtrl" required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
+  <mat-step [stepControl]="registerFormGroup">
+    
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>
