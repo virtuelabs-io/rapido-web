@@ -4,6 +4,8 @@ import { ChargeService } from '../services/payment/charge.service';
 import { StripeService, Elements, Element as StripeElement, ElementsOptions } from "ngx-stripe";
 import { Charge } from '../services/payment/charge';
 import { Constants } from '../utils/constants';
+import { Router } from '@angular/router';
+import { AddressDetailsService } from '../services/customer/address-details.service';
 
 
 @Component({
@@ -12,98 +14,61 @@ import { Constants } from '../utils/constants';
   styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent implements OnInit {
-
-  elements: Elements;
-  card: StripeElement;
-  chargeResult: string;
-
-  _charge: Charge = new Charge()
-
-  sample: string = "details"
-
-  // optional parameters
-  elementsOptions: ElementsOptions = {
-    locale: 'en'
-  };
-
-  payment: FormGroup;
+  isLinear = false;
+  firstFormGroup: FormGroup
+  secondFormGroup: FormGroup
+  
+  showSpinner: Boolean = false
+  address_details_id: number
+  private _addressDetailsService: AddressDetailsService
+  address: any
+  example:any
+  
 
   constructor(
-    private fb: FormBuilder,
+   // private fb: FormBuilder, // by Sangram
+    private _formBuilder: FormBuilder,
     private stripeService: StripeService,
-    private chargeService: ChargeService
-  ) {
+    private chargeService: ChargeService,
 
+    private router: Router,
+    addressDetailsService: AddressDetailsService
+  ) {
+    this._addressDetailsService = addressDetailsService
+    this.showSpinner = true
+    this.getAddressList()
   }
 
   ngOnInit() {
-    this.payment = this.fb.group({
-      name: ['', [Validators.required]]
+    this.firstFormGroup = this._formBuilder.group({
+      firstCtrl: ['', Validators.required]
     });
-    this.stripeService.elements(this.elementsOptions)
-      .subscribe(elements => {
-        this.elements = elements;
-        // Only mount the element the first time
-        if (!this.card) {
-          this.card = this.elements.create('card', {
-            style: {
-              base: {
-                color: '#32325d',
-                fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-                fontSmoothing: 'antialiased',
-                fontSize: '16px',
-                '::placeholder': {
-                  color: '#aab7c4'
-                }
-              },
-              invalid: {
-                color: '#fa755a',
-                iconColor: '#fa755a'
-              }
-            }
-          });
-          this.card.mount('#card-element');
-        }
-      });
-  }
+    this.secondFormGroup = this._formBuilder.group({
+      secondCtrl: ['', Validators.required]
+    });
 
-  customerNameUpdater(value: string) {
-    this._charge.name = value
-  }
-
-  amountUpdater(value: number) {
-    this._charge.amount = value
-  }
-
-  chargeDescriptionUpdater(value: string) {
-    this._charge.description = value
-  }
-
-  receiptEmailUpdater(value: string) {
-    this._charge.receiptEmail = value
-  }
-
-  buy() {
-    const name = this._charge.name
-    this.stripeService
-      .createToken(this.card, { name })
-      .subscribe(result => {
-        if (result.token) {
-          console.log(result.token);
-          this._charge.token = result.token.id
-          console.log(this._charge)
-          this.charge(this._charge)
-        } else if (result.error) {
-          console.log(result.error.message);
-        }
-      });
-  }
-
-  charge(charge: Charge){
-    const promise = this.chargeService.chargeCustomer(charge)
+    this.showSpinner = true
+    this._addressDetailsService.getAddressDetailsList()
     .subscribe(data => {
-      console.log(data)
-      this.chargeResult = JSON.stringify(data)
+      if(data['length'] > 0) {
+        this.address_details_id = data[0]['id']
+        this.address = data
+      }
+      this.showSpinner = false
+    })
+  }
+
+  getAddressList() {
+    this._addressDetailsService.getAddressDetailsList()
+    .subscribe(data => {
+      this.showSpinner = false
+      if(data['length'] > 0) {
+        this.address_details_id = data[0]['id']
+        this.address = data
+      }
+      else if(data['length'] === 0) {
+        this.address = data
+      }
     })
   }
 }

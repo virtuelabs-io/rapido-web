@@ -1,33 +1,66 @@
-<div class="container checkout-body">
-  <form novalidate (ngSubmit)="buy()" [formGroup]="payment">
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">Full Name</span>
+<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+  {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+</button>
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+      <ng-template matStepLabel>Fill out your address</ng-template>
+    <div class="main-div">
+      <div class="title-div">
+        <h4>
+          My Addresses
+        </h4>
       </div>
-      <input #customerName (keyup)="customerNameUpdater(customerName.value)" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-    </div>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+      <div class="rapido-add-address">
+        <a class="rapido-add-address-icon">
+          <div class="address-add-icon">
+            <a class="" href="profile/address/newAddress">
+              <svg aria-hidden="true" aria-haspopup="menu">
+                  <use xlink:href="#add"/>
+              </svg>
+            </a>
+          </div>
+          <div class="text-div">
+              <p>Add Address</p>
+          </div>
+          <div class="spinner-div">
+              <mat-spinner strokeWidth="4" [diameter]="50" *ngIf="showSpinner"></mat-spinner>
+          </div>
+        </a>
+        <div class="rapido-add-address-item" *ngFor="let address of address">
+          <div class="address-text">
+            <strong> {{ address.full_name }} </strong>
+            <br/><p>{{ address.addr_1 }}
+            <br/> {{ address.addr_2 }}
+            <br/> {{ address.city }} 
+            <br/> {{ address.county }}, {{ address.postcode }}
+            <br/> {{ address.country }}
+          </div>
+          <div class="card-actions">
+            <a (click)="addressEdit(address.id)">Edit</a> |
+            <a (click)="addressDelete(address.id)">Delete</a>
+          </div>
+        </div>
       </div>
-      <input #receiptEmail (keyup)="receiptEmailUpdater(receiptEmail.value)" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
     </div>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">Order Description</span>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Select Delivery Address</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Address" formControlName="secondCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
       </div>
-      <input #chargeDescription (keyup)="chargeDescriptionUpdater(chargeDescription.value)" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    You are now done.
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
     </div>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">Amount (£)</span>
-      </div>
-      <input #amount (keyup)="amountUpdater(amount.value)" type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-    </div>
-    <h6>Credit or Debit card</h6>
-    <div id="card-element" class="field"></div><br>
-    <button class="btn btn-primary" type="submit">Pay £{{ amount.value }}</button>
-  </form>
-  <br>
-  <p>{{ chargeResult }}</p>
-<div>
+  </mat-step>
+</mat-horizontal-stepper>

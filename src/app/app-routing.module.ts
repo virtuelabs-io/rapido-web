@@ -18,7 +18,6 @@ import { CartComponent } from './cart/cart.component';
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LogInComponent },
-  { path: 'checkout', component: CheckoutComponent},
   { path: 'forgotpassword', component: ForgotPasswordComponent},
   { path: 'resendotp', component: ResendOtpComponent},
   { path: 'profile', component: ProfileComponent},
@@ -30,6 +29,7 @@ const routes: Routes = [
   { path: 'profile/companyDetails/newDetails', component: AddCompanyDetailsComponent },
   { path: 'profile/companyDetails/edit', component: EditCompanyDetailsComponent },
   { path: 'cart', component: CartComponent },
+  { path: 'cart/checkout', component: CheckoutComponent},
   { path: '', component: AuthmockComponent},
 ];
 
