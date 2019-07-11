@@ -49,8 +49,6 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    
     this.showSpinner = true
     this._addressDetailsService.getAddressDetailsList()
     .subscribe(data => {
@@ -89,6 +87,7 @@ export class CheckoutComponent implements OnInit {
       this.getAddressList()
     })
   }
+  
   addressEdit(id) {
     this.router.navigate(['profile/address/editAddress', id])
   }

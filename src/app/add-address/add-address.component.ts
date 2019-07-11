@@ -61,7 +61,10 @@ export class AddAddressComponent implements OnInit {
     .subscribe(data => {
       if(data['insertId']) {
         this.address_details_id = data['insertId']
-        if(this._previousRoute.value == 'cart') {
+        this.location.back();
+  // lets this code be commented. Dont remove this..
+        
+      /*  if(this._previousRoute.value == 'cart') {
           this.router.navigate(['cart/checkout']);
         }
         else if(this._previousRoute.value == 'profile') {
@@ -69,16 +72,9 @@ export class AddAddressComponent implements OnInit {
         }
         else if(this._previousRoute.value == '') {
           this.location.back();
-        }
-        
-
-        
-     //   this.location.back();
+        }*/
       }
-    })
-    //this.location.back();
-   // this.router.navigate(['profile/address']);
-   
+    })   
   }
   cancelAddAddress() {
     this.location.back();
