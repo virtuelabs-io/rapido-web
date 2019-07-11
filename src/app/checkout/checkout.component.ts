@@ -23,7 +23,7 @@ import { RouteService } from '../shared-services/route/route.service';
 })
 export class CheckoutComponent implements OnInit {
   isLinear = false;
-
+  stepperIndex: number = 0
   
   showSpinner: Boolean = false
   address_details_id: number
@@ -87,8 +87,12 @@ export class CheckoutComponent implements OnInit {
       this.getAddressList()
     })
   }
-  
+
   addressEdit(id) {
     this.router.navigate(['profile/address/editAddress', id])
+  }
+
+  confirmDeliveryAddress() {
+    this.stepperIndex = 1
   }
 }
