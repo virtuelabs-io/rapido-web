@@ -3,7 +3,7 @@
 </button>
 <mat-horizontal-stepper [linear]="isLinear" #stepper>
   <mat-step [stepControl]="registerFormGroup">
-      <ng-template matStepLabel>Fill out your address</ng-template>
+      <ng-template matStepLabel>Select Delivery Address</ng-template>
       <form class="form-container">
                 <div class="main-div">
                     <div class="title-div">
@@ -37,8 +37,9 @@
                           <br/> {{ address.country }}
                         </div>
                         <div class="card-actions">
-                          <a (click)="addressEdit(address.id)">Edit</a> |
-                          <a (click)="addressDelete(address.id)">Delete</a>
+                          <button mat-flat-button color="primary" class="delivery-add-button" (click)="confirmRegistration()">
+                             Deliver to this Address
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -46,7 +47,7 @@
       </form>          
   </mat-step>
   <mat-step [stepControl]="registerFormGroup">
-    
+    <ng-template matStepLabel>Add Payment Details</ng-template>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>

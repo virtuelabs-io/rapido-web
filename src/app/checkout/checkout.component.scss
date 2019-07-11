@@ -72,16 +72,11 @@
                 display: flex;
                 flex-direction: row;
                 flex-wrap: wrap;
-                justify-content: left;
-                a {
-                    display: flex;
-                    flex-direction: row;
-                    flex-wrap: wrap;
-                    justify-content: left;
-                    margin-left: 10px;
-                    margin-right: 10px;
-                    cursor: pointer;
-                    color: $primary;
+                justify-content: center;
+                .delivery-add-button {
+                    width: 100%;
+                    margin-left: 2%;
+                    margin-right: 2%;
                 }
             }
         }
