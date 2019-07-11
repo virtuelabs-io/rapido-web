@@ -32,7 +32,7 @@ export class RangeSliderComponent {
     this.selectedMaxVal = changeContext.highValue
   }
 
-    onSubmitPriceFilter (){
+  onSubmitPriceFilter (){
     this.rangeData.fnPriceFilterHandler({
       min:this.selectedMinVal,max:this.selectedMaxVal
     })

@@ -38,8 +38,8 @@ export class ProductResultsComponent implements OnInit {
 
   ngOnInit() {
     this._searchItemService.currentState.subscribe(query => {
-      if (query.q){
-        this.searchedText = query.q
+      if (query.q && query.searchedText){
+        this.searchedText = query.searchedText
         this._productsService.get(query).
          subscribe(data => {
             if(data){
@@ -50,10 +50,10 @@ export class ProductResultsComponent implements OnInit {
               this._searchItemService.changeResponsePoductListState(data)
               if(data && data.hits && data.hits.hit)
               this.productList = data.hits.hit
-              for(let i=1; i<150; i++){
-                this.productList.push(data.hits.hit[0])
-              }
-              this.productListBind =this.productList.slice(0,this.pageSize);
+              // for(let i=1; i<150; i++){
+              //   this.productList.push(data.hits.hit[0])
+              // }
+              this.productListBind =this.productList//.slice(0,this.pageSize);
             }
             
        })

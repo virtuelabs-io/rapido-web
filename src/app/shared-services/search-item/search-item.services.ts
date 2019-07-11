@@ -8,12 +8,15 @@ import { Query } from '../../services/products/query.interface';
 })
 export class SearchItemService {
 
-  _query: Query = { q: '',
+  _query: Query = {
+    q: '',
+    searchedText: '',
     size: 15,
     cursor: null,
     return: null,
     start: null,
-    sort: null
+    sort: null,
+    parser:'structured'
   }
   private responsePoductList = new BehaviorSubject<object>({});
   private searchItemText = new BehaviorSubject<Query>(this._query);
@@ -23,14 +26,6 @@ export class SearchItemService {
   constructor() {}
 
   changeState(state: any) {
-    console.log({...this.searchItemText.value, ...state})
-    // this._query = {
-    //   q: state.q || this.searchItemText.value.q,
-    //   size: state.size || 10,
-    //   cursor: state.size || null, // always use either cursor or start, but not both
-    //   start: state.start || null, // always use either cursor or start, but not both
-    //   sort: state.sort || null
-    // }
     this.searchItemText.next({...this.searchItemText.value, ...state})
   }
 

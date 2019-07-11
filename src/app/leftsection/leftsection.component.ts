@@ -13,13 +13,17 @@ export class LeftSectionComponent implements OnInit {
   constructor(private _searchItemService: SearchItemService ) { }
   fnPriceFilterHandler: Function;
   tags = []
+  searchedText: string = ""
 
   ngOnInit() {
     // if(this.responseData)
     this._searchItemService.responsePoductListState.subscribe(respData => {
       this.updateProductControls(respData)
     })
-    
+    this._searchItemService.currentState.subscribe(query => {
+      if (query.searchedText){
+        this.searchedText = query.searchedText
+      }})
   }
 
   updateProductControls(respData){
@@ -34,9 +38,9 @@ export class LeftSectionComponent implements OnInit {
                       {
                         'headerText':'Show result for',
                          'panel':[ {
-                           'panelTitle':'watches',
+                           'panelTitle':this.searchedText,
                            'panelType':'link',
-                           'panelData':['watche1','watch2']//this.tags
+                           'panelData':this.tags
                         }]
                       },
                       {
@@ -79,12 +83,17 @@ export class LeftSectionComponent implements OnInit {
   }
 
   priceFilterData(range){
-    console.log(range.min,range.max)
+    // console.log(range.min,range.max)
+    this.changeQuery({
+        q:`(and ${this.searchedText} (range field=price [${range.min},${range.max}]))`,
+        searchedText:this.searchedText
+      })
   }
 
-  onPressRating(range){
-    // q=(and (term field=name 'watches') (range field=rating {,2000]))
-    this.changeQuery({q:'watches',sort:'desc'})
+  onPressRating(val){
+    this.changeQuery({
+      q:`(and ${this.searchedText} (range field=rating [${val},${val+1}]))`
+    })
   }
 
   onPressSort(data){
@@ -92,7 +101,9 @@ export class LeftSectionComponent implements OnInit {
   }
 
   onPressItem(data){
-    console.log(data.panelType)
+    this.changeQuery({
+      q:data
+    })
   }
 
   changeQuery(queryObj){
