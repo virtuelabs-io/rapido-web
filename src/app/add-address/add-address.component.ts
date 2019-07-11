@@ -14,7 +14,7 @@ import { RouteService } from '../shared-services/route/route.service';
 })
 
 export class AddAddressComponent implements OnInit {
-  _previousRoute: string = ""
+  _previousRoute: any = ""
   address_details_id: number
   name: string = ""
   showSpinner: Boolean = false
@@ -32,9 +32,8 @@ export class AddAddressComponent implements OnInit {
 
   ngOnInit() {
 
-    this.RouteService.previousRoute.subscribe(state => {
-      this._previousRoute = state
-    })
+    this._previousRoute = this.RouteService.getRoute()
+
     this.addressFormGroup = new FormGroup({
       name: new FormControl('', [Validators.required]),
       add1: new FormControl('', [Validators.required]),
@@ -62,12 +61,16 @@ export class AddAddressComponent implements OnInit {
     .subscribe(data => {
       if(data['insertId']) {
         this.address_details_id = data['insertId']
-        if(this._previousRoute == 'cart') {
+        if(this._previousRoute.value == 'cart') {
           this.router.navigate(['cart/checkout']);
         }
-        else if(this._previousRoute == 'profile') {
+        else if(this._previousRoute.value == 'profile') {
           this.router.navigate(['profile/address']);
         }
+        else if(this._previousRoute.value == '') {
+          this.location.back();
+        }
+        
 
         
      //   this.location.back();

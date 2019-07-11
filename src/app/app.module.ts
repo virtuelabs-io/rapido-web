@@ -25,6 +25,7 @@ import { AddAddressComponent } from './add-address/add-address.component';
 import { EditAddressComponent } from './edit-address/edit-address.component';
 import { EditCompanyDetailsComponent } from './edit-company-details/edit-company-details.component';
 import { CartComponent } from './cart/cart.component';
+import { RouteService } from '../app/shared-services/route/route.service';
 
 
 @NgModule({
@@ -88,4 +89,15 @@ import { CartComponent } from './cart/cart.component';
   bootstrap: [ AppComponent ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(
+    private RouteService : RouteService
+   ) {
+   }
+
+   ngOnInit() {
+    this.RouteService.previousRoute.subscribe(state => {
+      this.RouteService.changeRoute(state)
+    })
+   }
+}

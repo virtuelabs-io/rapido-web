@@ -6,12 +6,16 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class RouteService {
 
-  private route = new BehaviorSubject<string>("");
+  private route = new BehaviorSubject<any>("");
   previousRoute = this.route.asObservable();
 
   constructor() {}
 
   changeRoute(value: string) {
     this.route.next(value)
+  }
+
+  getRoute() {
+    return this.route;
   }
 }
