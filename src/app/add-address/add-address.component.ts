@@ -5,6 +5,7 @@ import { AddressDetailsService } from '../services/customer/address-details.serv
 import {FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Constants } from '../utils/constants';
 import { Location } from '@angular/common';
+import { RouteService } from '../shared-services/route/route.service';
 
 @Component({
   selector: 'app-add-address',
@@ -13,6 +14,7 @@ import { Location } from '@angular/common';
 })
 
 export class AddAddressComponent implements OnInit {
+  _previousRoute: string = ""
   address_details_id: number
   name: string = ""
   showSpinner: Boolean = false
@@ -22,14 +24,17 @@ export class AddAddressComponent implements OnInit {
 
   constructor( private router: Router,
                addressDetailsService: AddressDetailsService,
-               private location: Location
+               private location: Location,
+               private RouteService: RouteService
   ) { 
       this._addressDetailsService = addressDetailsService
     }
 
   ngOnInit() {
-    console.log(this.router)
-    console.log(this.location)
+
+    this.RouteService.previousRoute.subscribe(state => {
+      this._previousRoute = state
+    })
     this.addressFormGroup = new FormGroup({
       name: new FormControl('', [Validators.required]),
       add1: new FormControl('', [Validators.required]),
@@ -57,7 +62,14 @@ export class AddAddressComponent implements OnInit {
     .subscribe(data => {
       if(data['insertId']) {
         this.address_details_id = data['insertId']
-        this.router.navigate(['cart/checkout']);
+        if(this._previousRoute == 'cart') {
+          this.router.navigate(['cart/checkout']);
+        }
+        else if(this._previousRoute == 'profile') {
+          this.router.navigate(['profile/address']);
+        }
+
+        
      //   this.location.back();
       }
     })

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AddressDetailsService } from '../services/customer/address-details.service';
+import { RouteService } from '../shared-services/route/route.service';
 
 @Component({
   selector: 'app-address',
@@ -15,7 +16,8 @@ export class AddressComponent implements OnInit {
   example:any;
   constructor( 
     private router: Router,
-    addressDetailsService: AddressDetailsService
+    addressDetailsService: AddressDetailsService,
+    private RouteService : RouteService,
   ) {
     this._addressDetailsService = addressDetailsService
     this.showSpinner = true
@@ -43,7 +45,7 @@ export class AddressComponent implements OnInit {
         this.address = data
       }
       else if(data['length'] === 0) {
-        this.address = data
+        this.address = data 
       }
     })
   }
@@ -58,5 +60,10 @@ export class AddressComponent implements OnInit {
   }
   addressEdit(id) {
     this.router.navigate(['profile/address/editAddress', id])
+  }
+
+  newAddress() {
+    this.RouteService.changeRoute('profile');
+    this.router.navigate(['profile/address/newAddress']);
   }
 }
