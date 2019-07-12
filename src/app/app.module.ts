@@ -26,6 +26,7 @@ import { EditAddressComponent } from './edit-address/edit-address.component';
 import { EditCompanyDetailsComponent } from './edit-company-details/edit-company-details.component';
 import { CartComponent } from './cart/cart.component';
 import { RouteService } from '../app/shared-services/route/route.service';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { RouteService } from '../app/shared-services/route/route.service';
     AddAddressComponent,
     EditAddressComponent,
     EditCompanyDetailsComponent,
-    CartComponent
+    CartComponent,
+    FooterComponent
   ],
   imports: [
     MatSidenavModule,

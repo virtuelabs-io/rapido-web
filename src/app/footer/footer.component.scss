@@ -1,0 +1,19 @@
+@import "../../assets/scss/custom-bootstrap-variables.scss";
+
+.main {
+    background-color: black;
+}
+a {
+    color: white;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+h5 {
+    color: $primary;
+}
+
+.nav-footer-line {
+    border-top: 1px solid #3a4553;
+    margin-top: 40px;
+}
