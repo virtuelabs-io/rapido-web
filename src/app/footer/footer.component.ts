@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Constants } from '../utils/constants';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -11,9 +12,10 @@ export class FooterComponent implements OnInit {
   name: String
   bannerName: String = Constants.RAPIDO_BUILD
   durationInSeconds = 5;
-  constructor() { }
+  constructor(
+    private router: Router
 
-  ngOnInit() {
-  }
+  ) { }
 
+  ngOnInit() {} 
 }

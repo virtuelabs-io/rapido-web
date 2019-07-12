@@ -27,7 +27,7 @@ import { EditCompanyDetailsComponent } from './edit-company-details/edit-company
 import { CartComponent } from './cart/cart.component';
 import { RouteService } from '../app/shared-services/route/route.service';
 import { FooterComponent } from './footer/footer.component';
-
+import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 
 @NgModule({
   declarations: [
@@ -85,7 +85,8 @@ import { FooterComponent } from './footer/footer.component';
     MatMenuModule,
     MatProgressSpinnerModule,
     MatSelectModule,
-    MatSidenavModule
+    MatSidenavModule,
+    NgxPageScrollCoreModule
   ],
   providers: [],
   bootstrap: [ AppComponent ],
