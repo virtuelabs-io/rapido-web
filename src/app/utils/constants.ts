@@ -47,7 +47,6 @@ export class Constants {
   public static SUCCESS_SIGN_IN = "Logged in successfully!";
   public static LOGGED_IN_AS = "Logged In As";
 
-
   public static SESSION_RETRIEVED = "Session retrieved!";
   public static SESSION_NOT_FOUND = "Session not found";
 
@@ -67,6 +66,7 @@ export class Constants {
 
   public static CUSTOMER_APIS = environment.customer
   public static PAYMENT_APIS = environment.payment
+  public static CART_APIS = environment.cart
 
   public static ADDRESS_TYPES = [
     {
@@ -74,4 +74,17 @@ export class Constants {
       value: 1
     }
   ]
+
+  public static ORDER_STATUS = {
+    "1": "Incomplete",
+    "2": "Payed",
+    "3": "Delivered",
+    "4": "Cancled",
+    "5": "Returned"
+  }
+
+  public static COUNTRY_CODES = {
+    "1": "United Kingdom"
+  }
+
 }
