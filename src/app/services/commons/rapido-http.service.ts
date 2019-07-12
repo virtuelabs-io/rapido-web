@@ -47,6 +47,17 @@ export class RapidoHttpService<T> {
     );
   }
 
+  postList(_url: string, _item: Array<T>, _headers?: HttpHeaders): Observable<any>{
+    return this._http.post<any>(_url, _item, {
+      headers: _headers
+    }).pipe(
+      catchError(err => {
+        console.log('Error in processing request...', err);
+        return throwError(err);
+      })
+    );
+  }
+
   delete(_url: string, _headers?: HttpHeaders): Observable<{}>{
     return this._http.delete<{}>(_url,{
       headers: _headers

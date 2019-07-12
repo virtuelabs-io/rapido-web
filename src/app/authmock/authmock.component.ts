@@ -16,6 +16,8 @@ import { CompanyDetails } from '../services/customer/company-details';
 import { CompanyDetailsService } from '../services/customer/company-details.service';
 import { AddressDetails } from '../services/customer/address-details';
 import { AddressDetailsService } from '../services/customer/address-details.service';
+import { CartService } from '../services/cart/cart.service';
+import { CartItem } from '../services/cart/cart-item';
 
 @Component({
   selector: 'app-authmock',
@@ -37,6 +39,8 @@ export class AuthmockComponent implements OnInit {
   address_details_id: number;
 
   address_details_result: string;
+
+  cart_item_result: string;
 
   companyDetails: CompanyDetails = new CompanyDetails(
     "Sample pvt ltd",
@@ -90,6 +94,8 @@ export class AuthmockComponent implements OnInit {
   _productsFetched = false;
   _fetchedProductHierarchy = false;
 
+  _cart_item_id: number;
+
   private _signUpService: SignUpService
   private _resendConfirmationCodeService: ResendConfirmationCodeService
   private _confirmRegistrationService: ConfirmRegistrationService
@@ -102,7 +108,7 @@ export class AuthmockComponent implements OnInit {
   private _productHierarchyService: ProductsHierarchyService
   private _companyDetailsService: CompanyDetailsService
   private _addressDetailsService: AddressDetailsService
-
+  private _cartService: CartService
 
   constructor(
     signUpService: SignUpService,
@@ -117,7 +123,8 @@ export class AuthmockComponent implements OnInit {
     productsService: ProductsService,
     productHierarchyService: ProductsHierarchyService,
     companyDetailsService: CompanyDetailsService,
-    addressDetailsService: AddressDetailsService
+    addressDetailsService: AddressDetailsService,
+    cartService: CartService
     ) {
     this._signUpService = signUpService
     this._profileService = profileService
@@ -132,6 +139,7 @@ export class AuthmockComponent implements OnInit {
     this._productHierarchyService = productHierarchyService
     this._companyDetailsService = companyDetailsService
     this._addressDetailsService = addressDetailsService
+    this._cartService = cartService
   }
 
   ngOnInit() {
@@ -343,6 +351,92 @@ export class AuthmockComponent implements OnInit {
       console.log(data)
       this.address_details_id = null
       this.address_details_result = "Sucessfully deleted customer address details and logged!";
+    })
+  }
+
+  makeCartItem(): CartItem {
+    this._cart_item_id = Math.floor(Math.random() * 100) + 1
+    let cartItem: CartItem = new CartItem()
+    cartItem.product_id = this._cart_item_id
+    cartItem.quantity = Math.floor(Math.random() * 10) + 1
+    cartItem.in_cart = true
+    console.log("Created product with id:", cartItem.product_id)
+    return cartItem
+  }
+
+  updateCartItem(product_id: number): CartItem {
+    let cartItem: CartItem = new CartItem()
+    cartItem.product_id = product_id
+    cartItem.quantity = Math.floor(Math.random() * 10) + 1
+    cartItem.in_cart = true
+    console.log("Updated product with id:", cartItem.product_id)
+    return cartItem
+  }
+
+  getCartItems(){
+    this._cartService.getCartItems()
+    .subscribe(data => {
+      console.log(data)
+      this.cart_item_result = "Sucessfully fetched cart items and logged!";
+    })
+  }
+
+  getInCartItems(){
+    this._cartService.getInCartItems()
+    .subscribe(data => {
+      console.log(data)
+      this.cart_item_result = "Sucessfully fetched InCartItems and logged!";
+    })
+  }
+
+  getSavedForLaterCartItems(){
+    this._cartService.getSavedForLaterCartItems()
+    .subscribe(data => {
+      console.log(data)
+      this.cart_item_result = "Sucessfully fetched SavedForLaterCartItems and logged!";
+    })
+  }
+
+  postCartItem(){
+    this._cartService.postCartItem(this.makeCartItem())
+    .subscribe(data => {
+      console.log(data)
+      this.cart_item_result = "Sucessfully posted cart item and logged!";
+    })
+  }
+
+  postCartItems(){
+    this._cartService.getInCartItems()
+    .subscribe(data => {
+      console.log("Data before change", data)
+      console.log(data)
+      let items = [];
+      let ele: any;
+      for (ele in data) {
+        items.push(this.updateCartItem(data[ele].product_id))
+      }
+      console.log("Data after change", items)
+      this._cartService.postCartItemList(items)
+      .subscribe(data2 => {
+        console.log("Cart confirmed data", data2)
+        this.cart_item_result = "Sucessfully posted cart items and logged!";
+      })
+    })
+  }
+
+  deleteInCartItems(){
+    this._cartService.deleteInCartItems()
+    .subscribe(data => {
+      console.log(data)
+      this.cart_item_result = "Sucessfully deleted in cart items and logged!";
+    })
+  }
+
+  deleteCartItem(){
+    this._cartService.deleteCartItem(this._cart_item_id)
+    .subscribe(data => {
+      console.log(data)
+      this.cart_item_result = "Sucessfully deleted item and logged!";
     })
   }
 }
