@@ -21,7 +21,7 @@ import { Constants } from '../utils/constants';
 
 export class ResendOtpComponent implements OnInit {
   otpConfirmed: Boolean = false
-  countryCode: string = Constants.INDIA_PHONE_CODE
+  countryCode: string = Constants.DEFAULT_PHONE_CODE
   stepperIndex: number = 0
   confirmationCode: string = ""
   mobileNumber:string = ""
