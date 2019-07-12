@@ -425,7 +425,7 @@ export class AuthmockComponent implements OnInit {
   }
 
   deleteInCartItems(){
-    this._cartService.deleteInCartItem()
+    this._cartService.deleteInCartItems()
     .subscribe(data => {
       console.log(data)
       this.cart_item_result = "Sucessfully deleted in cart items and logged!";

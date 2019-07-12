@@ -38,7 +38,7 @@ export class CartService extends RapidoHttpService<CartItem> {
     return this.delete([Constants.CART_APIS.api, 'item',String(product_id)].join("/"),this.addAuthHeader(this.initializeHeaders()))
   }
 
-  deleteInCartItem(){
+  deleteInCartItems(){
     return this.delete([Constants.CART_APIS.api, 'in-items'].join("/"),this.addAuthHeader(this.initializeHeaders()))
   }
 }
