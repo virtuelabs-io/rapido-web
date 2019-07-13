@@ -30,6 +30,7 @@ import { FooterComponent } from './footer/footer.component';
 import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 import { AccountInfoComponent } from './account-info/account-info.component';
 import { TermsConditionsComponent } from './terms-conditions/terms-conditions.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { TermsConditionsComponent } from './terms-conditions/terms-conditions.co
     FooterComponent,
     EditCompanyDetailsComponent,
     AccountInfoComponent,
-    TermsConditionsComponent
+    TermsConditionsComponent,
+    PrivacyPolicyComponent
   ],
   imports: [
     MatSidenavModule,
