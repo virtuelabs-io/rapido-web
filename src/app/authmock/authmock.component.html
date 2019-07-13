@@ -1,5 +1,16 @@
 <div class="container authmock-body">
   <div class="col-md-12">
+    <h2>Cart Items</h2><hr>
+    <button class="btn btn-primary" type="submit" (click)="getCartItems()">getCartItems</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="getInCartItems()">getInCartItems</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="getSavedForLaterCartItems()">getSavedForLaterCartItems</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="postCartItems()">postCartItems</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="postCartItem()">postCartItem</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="deleteInCartItems()">deleteInCartItems</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="deleteCartItem()">deleteCartItem</button><br><br>
+    <h5>{{ cart_item_result }}</h5>
+  </div>
+  <div class="col-md-12">
     <h2>Company Details</h2><hr>
     <button class="btn btn-primary" type="submit" (click)="getCompanyDetails()">Get Company details</button><br><br>
     <button class="btn btn-primary" type="submit" (click)="postCompanyDetails()">Post Company details</button><br><br>
@@ -52,6 +63,18 @@
         <span class="input-group-text" id="inputGroup-sizing-default">sort</span>
       </div>
       <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_query.sort">
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">return</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_query.return">
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">q.parser</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_query.qdotparser">
     </div>
     <button class="btn btn-primary" type="submit" (click)="queryProducts()">Submit</button><br><br>
     <h5 *ngIf="_productsFetched">Products fetched</h5>

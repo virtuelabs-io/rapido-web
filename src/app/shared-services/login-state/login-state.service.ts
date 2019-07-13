@@ -14,5 +14,4 @@ export class LoginStateService {
   changeState(state: Boolean) {
     this.userSignedIn.next(state)
   }
-
 }

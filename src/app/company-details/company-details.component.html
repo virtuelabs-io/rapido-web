@@ -1,0 +1,36 @@
+<div class="">
+  <h4>
+    My Company Details
+  </h4>
+</div>
+<div class="rapido-add-company">
+  <a *ngIf="hide_plus_card" class="rapido-add-company-icon">
+    <div class="company-add-icon">
+      <a class="" href="profile/companyDetails/newDetails">
+        <svg aria-hidden="true" aria-haspopup="menu">
+            <use xlink:href="#add"/>
+        </svg>
+      </a>
+    </div>
+    <div class="text-div">
+        <p>Add Company Details</p>  
+    </div>
+    <div class="spinner-div">
+      <mat-spinner strokeWidth="4" [diameter]="50" *ngIf="showSpinner"></mat-spinner>
+    </div>
+  </a>
+  <div *ngIf="company_detail_not_reg" class="rapido-add-company-item">
+    <div class="address-text">
+      <strong> {{ companyItems.company_name }} </strong>
+      <br/><p>{{ companyItems.addr_1 }}
+      <br/> {{ companyItems.addr_2 }}
+      <br/> {{ companyItems.city }}
+      <br/> {{ companyItems.county }}, {{ companyItems.postcode }}
+      <br/> {{ companyItems.country }}
+      </div>
+    <div class="card-actions">
+      <a (click)="addressEdit()">Edit</a> |
+      <a (click)="deleteCompanyDetails()">Delete</a>
+    </div>
+  </div>
+</div>

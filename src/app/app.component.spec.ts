@@ -12,6 +12,10 @@ import { LogInComponent } from './log-in/log-in.component';
 import { RoutingComponents } from './app-routing.module';
 import { MatStepperModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { NgxStripeModule } from 'ngx-stripe';
+import { Constants } from './utils/constants';
+import { MatProgressSpinnerModule, MatMenuModule , MatToolbarModule, MatFormFieldModule, MatIconModule, MatCheckboxModule, MatCardModule, MatExpansionModule, MatSnackBarModule } from '@angular/material';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -23,7 +27,19 @@ describe('AppComponent', () => {
         AppRoutingModule,
         BrowserAnimationsModule,
         MatStepperModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        NgxStripeModule.forRoot(Constants.environment.stripePublicKey),
+        ReactiveFormsModule,
+        MatMenuModule,
+        MatToolbarModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatCheckboxModule,
+        MatCardModule,
+        MatExpansionModule,
+        MatSnackBarModule,
+        MatProgressSpinnerModule,
+        CheckoutComponent
       ],
       declarations: [
         AppComponent,

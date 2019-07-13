@@ -32,3 +32,23 @@ $rapido-web-theme: mat-light-theme($rapido-web-primary, $rapido-web-accent, $rap
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.alert-danger-background {
+    background-color: #262626 !important;
+}
+
+.alert-danger-text {
+    color: #fba0a0 !important;
+}
+
+.alert-success-text {
+    color: #b3ead2 !important;
+}
+
+.alert-warning-text {
+    color: #fdeda6 !important;
+}
+
+.mat-checkbox-layout { white-space: normal !important; }
+.text-align {
+    text-align: center;
+}

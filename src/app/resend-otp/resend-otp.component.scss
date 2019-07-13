@@ -1,0 +1,39 @@
+@import "../../assets/scss/custom-bootstrap-variables.scss";
+.main-div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 5%;
+  .margin-top {
+    margin-top: 2%;
+  }
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    .loginButton {
+      background-color: $primary;
+    }
+    .partitioned {
+      padding-left: 15px;
+      letter-spacing: 40px;
+      border: 0;
+      background-image: linear-gradient(to left, black 70%, rgba(255, 255, 255, 0) 0%);   
+      background-position: bottom;   
+      background-size: 50px 1px;   
+      background-repeat: repeat-x;   
+      background-position-x: 35px;   
+      width: 300px !important;
+    }
+    .partitioned:focus {
+      outline: none;
+    }
+    .button-spacing {
+      margin-top: 2%;
+    } 
+  }
+  @media screen and (max-width: $mobile-device) {
+    overflow: hidden;
+    width: 90%;
+  }
+}

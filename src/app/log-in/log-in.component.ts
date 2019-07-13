@@ -4,6 +4,7 @@ import { ProfileService } from '../services/authentication/profile/profile.servi
 import { Router } from '@angular/router';
 import { Constants } from '../utils/constants';
 import { LoginStateService } from '../shared-services/login-state/login-state.service';
+import { ResendOtpService } from '../shared-services/resend-otp/resend-otp.services';
 
 @Component({
   selector: 'app-log-in',
@@ -14,7 +15,7 @@ export class LogInComponent implements OnInit {
   alertBox: boolean = false
   alertMsg: string = ""
   _signInResponse: Boolean = false;
-  countryCode: string = Constants.DEFAULT_PHONE_CODE;
+  countryCode: string = Constants.DEFAULT_PHONE_CODE; //Constants.DEFAULT_PHONE_CODE;
   mobileNumber: string;
   password: string;
   progressSpinner: Boolean = false
@@ -25,7 +26,8 @@ export class LogInComponent implements OnInit {
     signInService: SignInService,
     profileService: ProfileService,
     private router: Router,
-    private loginStateService: LoginStateService
+    private loginStateService: LoginStateService,
+    private resendOtpService : ResendOtpService
     ) {
     this._signInService = signInService
     this._profileService = profileService
@@ -47,7 +49,7 @@ export class LogInComponent implements OnInit {
     this.progressSpinner = true
     if(this.mobileNumber && this.password && this.mobileNumber.length === 10) {
       this._signInService.signInData = {
-        Username: [ Constants.DEFAULT_PHONE_CODE,this.mobileNumber ].join(""),
+        Username: [ this.countryCode,this.mobileNumber ].join(""),
         Password: this.password
       }
       this._signInService.login().
@@ -63,6 +65,10 @@ export class LogInComponent implements OnInit {
         this.alertBox = true;
         this.alertMsg = error.data.message
         this.password = ""
+        if(error.data.code === "UserNotConfirmedException") {
+          this.resendOtpService.changeNumber(this.mobileNumber);
+          this.router.navigateByUrl('/resendotp');
+        }
       })
     }
     else {

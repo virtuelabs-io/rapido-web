@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
 	// response data/flag to show/handle in UI
 	registrationConfirmed: Boolean = false;
 	_resentConfirmationCodeResponse: Boolean = false;
-	countryCode: string = Constants.DEFAULT_PHONE_CODE
+	countryCode: string = Constants.DEFAULT_CURRENCY_CODE
 	stepperIndex: number = 0 // Set default active stepper
 	regFailedResponse: string = ""
 	confirmationCode: string = "";
@@ -70,11 +70,11 @@ export class RegisterComponent implements OnInit {
 
   // Onclick register/submit of first stepper section
 	registerUser(formData) {
-    if(this.passwordMismatch()){
+    if(this.passwordMismatch()) {
       this.regFailedResponse = Constants.PASSWORD_MISMATCH_ERROR
       throw Error(Constants.PASSWORD_MISMATCH_ERROR)
     }
-		this.resetResponseMessages()
+	this.resetResponseMessages()
     this.progressSpinner = true
     // mapping input values
 		this._registration = new Registration(

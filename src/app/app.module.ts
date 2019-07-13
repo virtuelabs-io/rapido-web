@@ -13,7 +13,8 @@ import { RoutingComponents } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, 
           MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, 
-          MatSnackBarModule, MatExpansionModule, MatSelectModule, MatPaginatorModule, MatDialogModule } from '@angular/material';
+          MatSnackBarModule, MatExpansionModule, MatSelectModule, MatPaginatorModule, 
+          MatProgressSpinnerModule, MatDialogModule } from '@angular/material';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 // import { MyProfileComponent } from './my-profile/my-profile.component';
 // import {MatAutocompleteModule} from '@angular/material/autocomplete';
@@ -36,6 +37,15 @@ import { NgxStripeModule } from 'ngx-stripe';
 import { Constants } from './utils/constants';
 import { Ng5SliderModule } from 'ng5-slider';
 import { RangeSliderComponent } from './range-slider/range-slider.component';
+import { ResendOtpComponent } from './resend-otp/resend-otp.component';
+import { ProfileComponent } from './my-profile/profile.component';
+import { CompanyDetailsComponent } from './company-details/company-details.component';
+import { AddCompanyDetailsComponent } from './add-company-details/add-company-details.component';
+import { AddressComponent } from './address/address.component';
+import { AddAddressComponent } from './add-address/add-address.component';
+import { EditAddressComponent } from './edit-address/edit-address.component';
+import { EditCompanyDetailsComponent } from './edit-company-details/edit-company-details.component';
+import { AccountInfoComponent } from './account-info/account-info.component';
 
 
 @NgModule({
@@ -61,10 +71,19 @@ import { RangeSliderComponent } from './range-slider/range-slider.component';
     ProductDetailsComponent,
     ImageZoomComponent,
     RangeSliderComponent,
-    DialogOverviewExampleDialog
+    DialogOverviewExampleDialog,
+    ResendOtpComponent,
+    ProfileComponent,
+    CompanyDetailsComponent,
+    AddCompanyDetailsComponent,
+    ProfileComponent,
+    AddressComponent,
+    AddAddressComponent,
+    EditAddressComponent,
+    EditCompanyDetailsComponent,
+    AccountInfoComponent
   ],
-  imports: [
-    MatSidenavModule,
+  imports: [MatSidenavModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -84,38 +103,8 @@ import { RangeSliderComponent } from './range-slider/range-slider.component';
     MatPaginatorModule,
     HttpClientModule,
     // NgxStripeModule.forRoot(Constants.environment.stripePublicKey),
-    HttpClientModule,
-    MatMenuModule,
-    MatInputModule,
-    MatCheckboxModule,
-    MatButtonModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatListModule,
-    MatSnackBarModule,
-    MatExpansionModule,
-    MatMenuModule,
-    MatSelectModule,
-    MatPaginatorModule,
-    MatSidenavModule,
-    MatSidenavModule,
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    MatStepperModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatCheckboxModule,
-    MatButtonModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatListModule,
-    MatSnackBarModule,
+    MatProgressSpinnerModule,
     NgbModule,
-    MatExpansionModule,
-    MatMenuModule,
-    HttpClientModule,
     MatDialogModule,
     Ng5SliderModule,
     NgxImageZoomModule.forRoot() 

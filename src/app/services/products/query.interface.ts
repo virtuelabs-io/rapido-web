@@ -7,4 +7,5 @@ export interface Query {
   sort?: string,
   parser?:string,
   searchedText?:string
+  qdotparser?: string
 }
