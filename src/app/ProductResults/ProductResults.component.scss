@@ -4,6 +4,10 @@ div {
     div{
         section{
             display: none;
+            background: #e4e4e4;
+            padding: 10px;
+            position: relative;
+            top: 1.5rem;
         }
         @media screen and (max-width: $small-device) {
             section{
@@ -14,6 +18,8 @@ div {
        
     }
     div {
+        // position: relative;
+        // top: 1.5rem;
         div{
             @media screen and (max-width: $small-device) {
                 app-leftsection{
@@ -29,15 +35,5 @@ div {
     } 
 }
 
-
-.product-controls {
-    background: #e4e4e4;
-    padding: 10px;
-}
-
-.position-top {
-    position: relative;
-    top: 1.5rem;
-}
 
 

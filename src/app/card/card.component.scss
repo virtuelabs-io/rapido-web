@@ -1,6 +1,8 @@
 @import "../../assets/scss/custom-bootstrap-variables.scss";
 
 div {
+    border: none !important;
+    width: 17rem;
     div {
         h6{
             overflow: hidden;
