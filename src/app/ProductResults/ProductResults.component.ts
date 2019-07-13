@@ -38,7 +38,7 @@ export class ProductResultsComponent implements OnInit {
 
   ngOnInit() {
     this._searchItemService.currentState.subscribe(query => {
-      debugger
+      
       if (query.q && query.searchedText){
         this.searchedText = query.searchedText
         this._productsService.get(query).
@@ -96,7 +96,7 @@ export class ProductResultsComponent implements OnInit {
     template: `
     <mat-dialog-content>
       <i class="fa fa-times hidden-lg hidden-md" (click)="onNoClick()"></i>
-      <app-leftsection [responseData]=responseData></app-leftsection>
+      <app-leftsection></app-leftsection>
     </mat-dialog-content>
     `,
   })

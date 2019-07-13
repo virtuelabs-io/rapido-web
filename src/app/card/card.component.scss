@@ -3,6 +3,12 @@
 div {
     div {
         h6{
+            overflow: hidden;
+            display: -webkit-box;
+            /* autoprefixer: off */
+            -webkit-box-orient: vertical;
+            /* autoprefixer: on */
+            -webkit-line-clamp:3; 
             a{
                 color: $black;
                 font-weight: bold;
