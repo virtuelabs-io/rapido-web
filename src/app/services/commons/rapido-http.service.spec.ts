@@ -144,6 +144,44 @@ class UserService extends RapidoHttpService<User>{
     )
   );
   it(
+    'POST entity list',
+    fakeAsync(
+      inject(
+        [HttpTestingController, ProfileService, HttpClient],
+        (backend: HttpTestingController, profileService: ProfileService, httpClient: HttpClient) => {
+
+          // Set up
+          const url = "https://rapidobuild.com/api/user/"
+          const user = new User("rocky")
+          const service = new UserService(httpClient, profileService)
+          const responseObject = {
+            body: [ user, user ],
+            status: 201
+          };
+          let response = null;
+          // End Setup
+
+          service.postList(url, [ user, user ]).subscribe(
+            (receivedResponse: any) => {
+              response = receivedResponse;
+            },
+            (error: any) => {}
+          );
+
+          const requestWrapper = backend.expectOne({url: url});
+          requestWrapper.flush(responseObject);
+
+          tick();
+
+          expect(requestWrapper.request.method).toEqual('POST');
+          expect(response.body[0].name).toEqual("rocky");
+          expect(response.body[1].name).toEqual("rocky");
+          expect(response.status).toBe(201);
+        }
+      )
+    )
+  );
+  it(
     'PUT entity',
     fakeAsync(
       inject(
@@ -326,6 +364,45 @@ class UserService extends RapidoHttpService<User>{
 
           expect(requestWrapper.request.method).toEqual('POST');
           expect(response.body.name).toEqual("rocky");
+          expect(response.status).toBe(201);
+        }
+      )
+    )
+  );
+  it(
+    'POST entity list with header',
+    fakeAsync(
+      inject(
+        [HttpTestingController, ProfileService, HttpClient],
+        (backend: HttpTestingController, profileService: ProfileService, httpClient: HttpClient) => {
+
+          // Set up
+          const url = "https://rapidobuild.com/api/user/"
+          const user = new User("rocky")
+          const service = new UserService(httpClient, profileService)
+          const responseObject = {
+            body: [ user, user ],
+            status: 201
+          };
+          let response = null;
+          const httpHeaders: HttpHeaders = service.initializeHeaders()
+          // End Setup
+
+          service.postList(url, [ user, user ], httpHeaders).subscribe(
+            (receivedResponse: any) => {
+              response = receivedResponse;
+            },
+            (error: any) => {}
+          );
+
+          const requestWrapper = backend.expectOne({url: url});
+          requestWrapper.flush(responseObject);
+
+          tick();
+
+          expect(requestWrapper.request.method).toEqual('POST');
+          expect(response.body[0].name).toEqual("rocky");
+          expect(response.body[1].name).toEqual("rocky");
           expect(response.status).toBe(201);
         }
       )

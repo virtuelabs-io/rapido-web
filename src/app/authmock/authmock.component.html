@@ -1,5 +1,16 @@
 <div class="container authmock-body">
   <div class="col-md-12">
+    <h2>Cart Items</h2><hr>
+    <button class="btn btn-primary" type="submit" (click)="getCartItems()">getCartItems</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="getInCartItems()">getInCartItems</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="getSavedForLaterCartItems()">getSavedForLaterCartItems</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="postCartItems()">postCartItems</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="postCartItem()">postCartItem</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="deleteInCartItems()">deleteInCartItems</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="deleteCartItem()">deleteCartItem</button><br><br>
+    <h5>{{ cart_item_result }}</h5>
+  </div>
+  <div class="col-md-12">
     <h2>Company Details</h2><hr>
     <button class="btn btn-primary" type="submit" (click)="getCompanyDetails()">Get Company details</button><br><br>
     <button class="btn btn-primary" type="submit" (click)="postCompanyDetails()">Post Company details</button><br><br>
