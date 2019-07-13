@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService } from '../services/cart/cart.service';
+import { Constants } from '../utils/constants';
 
 @Component({
   selector: 'app-cart',
@@ -6,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
+  _imageUrl: string = Constants.environment.staticAssets
   cartItems = [
-    {
-      icon: "#shopping-bag",
+    
+   /* {
+      icon: "https://s3.eu-west-2.amazonaws.com/rapido-build-assets-bucket/images/products/1/image1.jpg",
       title: "ROMEX SUPER Youth Club Sir and Her Stunning Combo Analogue Black Dial Men and Women's Watch",
       amount: "21,995.00",
       qunatity: "2"
@@ -24,11 +28,39 @@ export class CartComponent implements OnInit {
       title: "Macbook Pro 12-inch",
       amount: "21,995.00",
       qunatity: "1"
-    }
+    } */
   ]
-  constructor() { }
+
+  private _cartService: CartService
+  constructor(
+    cartService: CartService
+  ) { 
+    this._cartService = cartService
+  }
 
   ngOnInit() {
+    this.getCartItems()
+  }
+
+  getCartItems() {
+    this._cartService.getCartItems()
+    .then((data: any) => {
+      for(var i = 0; i < data.length; i++) {
+        if(data[i].cartItem.in_cart) {
+          this.cartItems.push(
+            {
+              icon: this._imageUrl+data[i].itemDetails.images[0],
+              title: data[i].itemDetails.name,
+              amount: data[i].itemDetails.price,
+              qunatity: data[i].cartItem.quantity
+            } 
+          )
+        }
+        
+      }
+      
+      console.log(data)
+    })
   }
 
 }
