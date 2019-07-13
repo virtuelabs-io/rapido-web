@@ -28,6 +28,7 @@ import { CartComponent } from './cart/cart.component';
 import { RouteService } from '../app/shared-services/route/route.service';
 import { FooterComponent } from './footer/footer.component';
 import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
+import { AccountInfoComponent } from './account-info/account-info.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,9 @@ import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
     EditAddressComponent,
     EditCompanyDetailsComponent,
     CartComponent,
-    FooterComponent
+    FooterComponent,
+    EditCompanyDetailsComponent,
+    AccountInfoComponent
   ],
   imports: [
     MatSidenavModule,

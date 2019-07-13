@@ -34,7 +34,7 @@ export class ProfileComponent implements OnInit {
       icon: "#settings-work-tool",
       title: "Account Settings",
       description: "Set up your account",
-      route: "profile/accountInfo"
+      route: "profile/account"
     },
     {
       icon: "#log-in",

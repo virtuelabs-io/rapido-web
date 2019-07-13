@@ -65,7 +65,7 @@ export class LogInComponent implements OnInit {
         this.alertBox = true;
         this.alertMsg = error.data.message
         this.password = ""
-        if(error.code === 1) {
+        if(error.data.code === "UserNotConfirmedException") {
           this.resendOtpService.changeNumber(this.mobileNumber);
           this.router.navigateByUrl('/resendotp');
         }
