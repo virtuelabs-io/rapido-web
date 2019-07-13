@@ -16,7 +16,7 @@ export class ProductsService {
     let queryKeys: string[] = [];
     for(let key in _query){
       if(_query[key] != null ){
-        queryKeys.push(key+"="+String(_query[key]))
+        queryKeys.push(key.replace("qdot", "q.")+"="+String(_query[key]))
       }
     }
     return queryKeys.join("&")

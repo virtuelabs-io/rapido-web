@@ -4,5 +4,6 @@ export interface Query {
   cursor?: string,
   return?: string,
   start?: number,
-  sort?: string
+  sort?: string,
+  qdotparser?: string
 }
