@@ -15,6 +15,7 @@ import { AddCompanyDetailsComponent } from './add-company-details/add-company-de
 import { EditCompanyDetailsComponent } from './edit-company-details/edit-company-details.component';
 import { CartComponent } from './cart/cart.component';
 import { AccountInfoComponent } from './account-info/account-info.component';
+import { TermsConditionsComponent } from './terms-conditions/terms-conditions.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'cart/checkout', component: CheckoutComponent},
   { path: 'profile/account', component: AccountInfoComponent },
+  { path: 'terms', component: TermsConditionsComponent },
   { path: '', component: AuthmockComponent},
 ];
 
@@ -54,5 +56,6 @@ export const RoutingComponents = [
   EditCompanyDetailsComponent,
   CartComponent,
   AccountInfoComponent,
+  TermsConditionsComponent,
   AuthmockComponent
 ];
