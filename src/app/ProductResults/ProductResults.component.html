@@ -20,14 +20,17 @@
                 <div *ngFor="let item of productListBind" class="">
                     <app-card [itemList]=item></app-card>
                 </div>
-                <mat-paginator [length]="length"
-                              [pageSize]="pageSize"
-                              [pageSizeOptions]="pageSizeOptions"
-                              (page)="pageEvent = onPageChange($event)">
-                </mat-paginator>
-          </div>
+        </div>
           <!-- Cards list div ends -->
-
+          <div class='m-auto'>
+            <mat-paginator 
+                [length]="length"
+                [pageSize]="pageSize"
+                [pageSizeOptions]="pageSizeOptions"
+                (page)="pageEvent = onPageChange($event)">
+            </mat-paginator>
+          </div>
+        
   </div>
 
 </div>

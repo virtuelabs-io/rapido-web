@@ -52,8 +52,9 @@ export class TopnavComponent implements OnInit {
     if(this.searchedText){
       this.router.navigateByUrl('/products')
       this._searchItemService.changeState({
-        q:this.searchedText,
-        searchedText: this.searchedText
+        q: this.searchedText,
+        searchedText: this.searchedText,
+        start: 0
       })
     }
     

@@ -20,7 +20,7 @@ export class ProductResultsComponent implements OnInit {
   // MatPaginator Inputs
   length = 100;
   pageSize = 15;
-  pageSizeOptions: number[] = [5, 15, 30,45, 90];
+  pageSizeOptions: number[] = [15];
 
   // MatPaginator Output
   pageEvent: PageEvent;
@@ -38,6 +38,7 @@ export class ProductResultsComponent implements OnInit {
 
   ngOnInit() {
     this._searchItemService.currentState.subscribe(query => {
+      debugger
       if (query.q && query.searchedText){
         this.searchedText = query.searchedText
         this._productsService.get(query).
@@ -50,9 +51,10 @@ export class ProductResultsComponent implements OnInit {
               this._searchItemService.changeResponsePoductListState(data)
               if(data && data.hits && data.hits.hit)
               this.productList = data.hits.hit
-              // for(let i=1; i<150; i++){
-              //   this.productList.push(data.hits.hit[0])
-              // }
+              /* for(let i=1; i<15; i++){
+                this.productList.push(data.hits.hit[0])
+              } */
+              this.length = data.hits && data.hits.found
               this.productListBind =this.productList//.slice(0,this.pageSize);
             }
             
@@ -64,7 +66,11 @@ export class ProductResultsComponent implements OnInit {
 
     onPageChange(evt){
       console.log(evt)
-      this.productListBind = this.productList.slice(evt.pageIndex * evt.pageSize,evt.pageSize+(evt.pageIndex * evt.pageSize));
+      this._searchItemService.changeState({
+        // q:this.searchedText,
+        start: evt.pageIndex * evt.pageSize
+      })
+      // this.productListBind = this.productList.slice(evt.pageIndex * evt.pageSize, evt.pageSize+(evt.pageIndex * evt.pageSize));
     }
 
     setPageSizeOptions(setPageSizeOptionsInput: string) {
@@ -90,7 +96,7 @@ export class ProductResultsComponent implements OnInit {
     template: `
     <mat-dialog-content>
       <i class="fa fa-times hidden-lg hidden-md" (click)="onNoClick()"></i>
-      <app-leftsection></app-leftsection>
+      <app-leftsection [responseData]=responseData></app-leftsection>
     </mat-dialog-content>
     `,
   })
