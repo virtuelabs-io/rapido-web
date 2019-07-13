@@ -9,6 +9,10 @@ a {
     background-color: transparent;
 }
 
+a:hover { 
+    color: $primary;
+  }
+
 h5 {
     color: white;
 }
