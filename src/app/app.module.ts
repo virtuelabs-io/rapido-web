@@ -31,6 +31,7 @@ import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 import { AccountInfoComponent } from './account-info/account-info.component';
 import { TermsConditionsComponent } from './terms-conditions/terms-conditions.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
     EditCompanyDetailsComponent,
     AccountInfoComponent,
     TermsConditionsComponent,
-    PrivacyPolicyComponent
+    PrivacyPolicyComponent,
+    AboutUsComponent
   ],
   imports: [
     MatSidenavModule,
