@@ -64,6 +64,18 @@
       </div>
       <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_query.sort">
     </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">return</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_query.return">
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">q.parser</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_query.qdotparser">
+    </div>
     <button class="btn btn-primary" type="submit" (click)="queryProducts()">Submit</button><br><br>
     <h5 *ngIf="_productsFetched">Products fetched</h5>
   </div>

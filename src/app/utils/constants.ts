@@ -64,6 +64,14 @@ export class Constants {
 
   public static PRODUCT_HIERARCHY = "/api-data/product-hierarchy.json";
 
+  public static SEARCH_QUERY = {
+    term: "(term field=_id $)",
+    openBracketOr: "(or",
+    closeBracket: ")",
+    cartReturnFields: ["price", "name", "images", "currency", "offer"].join(","),
+    structuredParser: "structured"
+  }
+
   public static CUSTOMER_APIS = environment.customer
   public static PAYMENT_APIS = environment.payment
   public static CART_APIS = environment.cart

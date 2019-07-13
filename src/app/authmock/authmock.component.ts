@@ -18,6 +18,7 @@ import { AddressDetails } from '../services/customer/address-details';
 import { AddressDetailsService } from '../services/customer/address-details.service';
 import { CartService } from '../services/cart/cart.service';
 import { CartItem } from '../services/cart/cart-item';
+import { CartItemDetails } from '../services/cart/cart-item-details';
 
 @Component({
   selector: 'app-authmock',
@@ -79,8 +80,10 @@ export class AuthmockComponent implements OnInit {
     q: "watches",
     size: 1,
     cursor: null, // always use either cursor or start, but bot both
+    return: null,
     start: null, // always use either cursor or start, but bot both
-    sort: null
+    sort: null,
+    qdotparser: null
   }
 
   _userRegisteredResponse: Boolean = false;
@@ -375,7 +378,7 @@ export class AuthmockComponent implements OnInit {
 
   getCartItems(){
     this._cartService.getCartItems()
-    .subscribe(data => {
+    .then((data: any) => {
       console.log(data)
       this.cart_item_result = "Sucessfully fetched cart items and logged!";
     })
@@ -383,7 +386,7 @@ export class AuthmockComponent implements OnInit {
 
   getInCartItems(){
     this._cartService.getInCartItems()
-    .subscribe(data => {
+    .then((data: any) => {
       console.log(data)
       this.cart_item_result = "Sucessfully fetched InCartItems and logged!";
     })
@@ -391,7 +394,7 @@ export class AuthmockComponent implements OnInit {
 
   getSavedForLaterCartItems(){
     this._cartService.getSavedForLaterCartItems()
-    .subscribe(data => {
+    .then((data: any) => {
       console.log(data)
       this.cart_item_result = "Sucessfully fetched SavedForLaterCartItems and logged!";
     })
@@ -407,13 +410,13 @@ export class AuthmockComponent implements OnInit {
 
   postCartItems(){
     this._cartService.getInCartItems()
-    .subscribe(data => {
+    .then((data: any) => {
       console.log("Data before change", data)
       console.log(data)
       let items = [];
       let ele: any;
       for (ele in data) {
-        items.push(this.updateCartItem(data[ele].product_id))
+        items.push(this.updateCartItem(data[ele].cartItem.product_id))
       }
       console.log("Data after change", items)
       this._cartService.postCartItemList(items)
