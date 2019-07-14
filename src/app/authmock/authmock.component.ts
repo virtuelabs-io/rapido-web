@@ -359,9 +359,7 @@ export class AuthmockComponent implements OnInit {
 
   makeCartItem(): CartItem {
     this._cart_item_id = Math.floor(Math.random() * 10)
-    if(this._cart_item_id < 1) {
-      this._cart_item_id += 1
-    }
+    this._cart_item_id = this._cart_item_id < 1 ? this._cart_item_id+1 : this._cart_item_id
     let cartItem: CartItem = new CartItem()
     cartItem.product_id = this._cart_item_id
     cartItem.quantity = Math.floor(Math.random() * 10) + 1
