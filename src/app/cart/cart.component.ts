@@ -43,12 +43,14 @@ export class CartComponent implements OnInit {
   }
 
   getCartItems() {
+    this.cartItems = []
     this._cartService.getCartItems()
     .then((data: any) => {
       for(var i = 0; i < data.length; i++) {
         if(data[i].cartItem.in_cart) {
           this.cartItems.push(
             {
+              id: data[i].cartItem.product_id,
               icon: this._imageUrl+data[i].itemDetails.images[0],
               title: data[i].itemDetails.name,
               amount: data[i].itemDetails.price,
@@ -58,9 +60,15 @@ export class CartComponent implements OnInit {
         }
         
       }
-      
       console.log(data)
     })
   }
 
+  deleteCartItem(id) {
+    this._cartService.deleteCartItem(id)
+    .subscribe(data => {
+      console.log(data)
+      this.getCartItems()
+    })
+  } 
 }

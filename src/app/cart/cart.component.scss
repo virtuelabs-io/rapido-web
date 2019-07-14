@@ -47,6 +47,10 @@
                     flex-wrap: wrap;
                     margin-top: 2%;
                     border-bottom: 1px solid #e1e4e8;
+                    a {
+                        cursor: pointer;
+                        color: $primary;
+                    }
                     .item-thumbnail {
                         width: 20%;
                         .image {

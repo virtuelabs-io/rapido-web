@@ -22,7 +22,7 @@
               <div class="item-desc">
                 <p><strong>{{ item.title }}</strong></p>
                 <div>
-                    <a routerLink="">Delete</a>
+                    <a (click)="deleteCartItem(item.id)">Delete</a>
                 </div>
               </div>
               <div class="item-price">
