@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Constants } from '../../../src/app/utils/constants';
 
 @Component({
   selector: 'app-images',
@@ -7,13 +8,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ImagesComponent implements OnInit {
 
-  @Input() imgSrcTest:string = "https://cdn.aws.toolstation.com/images/141020-UK/250/88614.jpg"
   @Input() imgSrc
-  //160/17428.jpg
   constructor() { }
 
   ngOnInit() {
-    // console.log(this.imgSrc)
+    this.imgSrc = Constants.environment.staticAssets + this.imgSrc[0]
+    console.log(this.imgSrc)
   }
 
 }
