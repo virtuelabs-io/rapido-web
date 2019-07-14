@@ -23,7 +23,7 @@
                 <p><strong>{{ item.title }}</strong></p>
                 <div>
                     <a (click)="deleteCartItem(item.id)">Delete</a> |
-                    <a (click)="saveForLater(item.id, item.qunatity)">Save for Later</a>
+                    <a (click)="saveForLater(item.id, item.qunatity, false)">Save for Later</a>
                 </div>
               </div>
               <div class="item-price">
@@ -60,21 +60,25 @@
   </div>
 
 
-
-  <div class="cart-div">
+  <div *ngIf="!laterUse" class="no-save-for-later-text">
+    <h4>
+      No items saved for later
+    </h4>
+  </div>
+  <div *ngIf="laterUse" class="cart-div">
     <div class="title-div">
       <h4>
         Saved for later
       </h4>
     </div>
-    <div class="cart-columns">
+    <div  class="cart-columns">
       <div class="cart-col-price">
         <span>Price(£)</span>
       </div>
       <div class="cart-col-quan">
         <span>Quantity</span>
       </div>
-      </div>
+    </div>
         <div class="cart-items-main">
           <div class="cart-items">
             <div class="cart-items-list" *ngFor="let item of saveforLater">
@@ -85,7 +89,7 @@
                 <p><strong>{{ item.title }}</strong></p>
                 <div>
                     <a (click)="deleteCartItem(item.id)">Delete</a> |
-                    <a (click)="saveForLater(item.id, item.qunatity)">Save for Later</a>
+                    <a (click)="saveForLater(item.id, item.qunatity, true)">Move to Cart</a>
                 </div>
               </div>
               <div class="item-price">

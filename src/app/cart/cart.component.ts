@@ -12,6 +12,7 @@ export class CartComponent implements OnInit {
   _imageUrl: string = Constants.environment.staticAssets
   cartItems = []
   saveforLater = []
+  laterUse: Boolean = false
   private _cartService: CartService
   constructor(
     cartService: CartService
@@ -25,6 +26,7 @@ export class CartComponent implements OnInit {
 
   getCartItems() {
     this.cartItems = []
+    this.saveforLater = []
     this._cartService.getCartItems()
     .then((data: any) => {
       for(var i = 0; i < data.length; i++) {
@@ -38,6 +40,7 @@ export class CartComponent implements OnInit {
           })
         }
         else {
+          this.laterUse = true
           this.saveforLater.push({
             id: data[i].cartItem.product_id,
             icon: this._imageUrl+data[i].itemDetails.images[0],
@@ -47,6 +50,9 @@ export class CartComponent implements OnInit {
           })
         }
       }
+      if(!this.saveforLater.length) {
+        this.laterUse = false
+      }
     })
   }
 
@@ -55,13 +61,14 @@ export class CartComponent implements OnInit {
     .subscribe(data => {
       this.getCartItems()
     })
-  } 
+  }
 
-  saveForLater(id, quantity) {
+// true - save for later , false - move to cart
+  saveForLater(id, quantity, bol) {
     let cartItem: CartItem = new CartItem()
     cartItem.product_id = id
     cartItem.quantity = quantity
-    cartItem.in_cart = false
+    cartItem.in_cart = bol
     this._cartService.postCartItem(cartItem)
     .subscribe(data => {
       this.getCartItems()
