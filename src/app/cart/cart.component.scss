@@ -9,6 +9,9 @@
         .title-div {
             margin-top: 2%;
             margin-left: 2%;
+            .title-no-item-text {
+                text-align: center;
+            }
         }
         .cart-columns {
             display: flex;
