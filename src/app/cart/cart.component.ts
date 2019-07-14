@@ -12,6 +12,7 @@ export class CartComponent implements OnInit {
   _imageUrl: string = Constants.environment.staticAssets
   cartItems = []
   saveforLater = []
+  inCart: Boolean
   laterUse: Boolean = false
   private _cartService: CartService
   constructor(
@@ -31,6 +32,7 @@ export class CartComponent implements OnInit {
     .then((data: any) => {
       for(var i = 0; i < data.length; i++) {
         if(data[i].cartItem.in_cart) {
+          this.inCart = true
           this.cartItems.push({
             id: data[i].cartItem.product_id,
             icon: this._imageUrl+data[i].itemDetails.images[0],
@@ -52,6 +54,9 @@ export class CartComponent implements OnInit {
       }
       if(!this.saveforLater.length) {
         this.laterUse = false
+      }
+      if(!this.cartItems.length) {
+        this.inCart = false
       }
     })
   }

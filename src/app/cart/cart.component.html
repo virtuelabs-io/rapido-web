@@ -4,16 +4,19 @@
       <h4>
         Shopping Cart
       </h4>
+      <h5 *ngIf="!inCart">
+        No Items in Cart
+      </h5>
     </div>
-    <div class="cart-columns">
+    <div *ngIf="inCart" class="cart-columns">
       <div class="cart-col-price">
         <span>Price(£)</span>
       </div>
       <div class="cart-col-quan">
         <span>Quantity</span>
       </div>
-      </div>
-        <div class="cart-items-main">
+    </div>
+    <div *ngIf="inCart" class="cart-items-main">
           <div class="cart-items">
             <div class="cart-items-list" *ngFor="let item of cartItems">
               <div class="item-thumbnail">
@@ -36,13 +39,13 @@
               </div>
             </div>
           </div>    
-        </div>
+    </div>
   </div>
 
   
 
 
-  <div class="cart-amount">
+  <div *ngIf="inCart" class="cart-amount">
     <div class="card-amount-inner">
       <div class="card-amount-title">
         <span>
