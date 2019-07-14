@@ -22,7 +22,8 @@
               <div class="item-desc">
                 <p><strong>{{ item.title }}</strong></p>
                 <div>
-                    <a (click)="deleteCartItem(item.id)">Delete</a>
+                    <a (click)="deleteCartItem(item.id)">Delete</a> |
+                    <a (click)="saveForLater(item.id, item.qunatity)">Save for Later</a>
                 </div>
               </div>
               <div class="item-price">
@@ -37,6 +38,10 @@
           </div>    
         </div>
   </div>
+
+  
+
+
   <div class="cart-amount">
     <div class="card-amount-inner">
       <div class="card-amount-title">
@@ -52,5 +57,47 @@
             <button mat-button routerLink="/cart/checkout" class="checkout-button">Proceed to Buy</button>
         </div>
     </div>
-</div>
+  </div>
+
+
+
+  <div class="cart-div">
+    <div class="title-div">
+      <h4>
+        Saved for later
+      </h4>
+    </div>
+    <div class="cart-columns">
+      <div class="cart-col-price">
+        <span>Price(£)</span>
+      </div>
+      <div class="cart-col-quan">
+        <span>Quantity</span>
+      </div>
+      </div>
+        <div class="cart-items-main">
+          <div class="cart-items">
+            <div class="cart-items-list" *ngFor="let item of saveforLater">
+              <div class="item-thumbnail">
+                <img class="image" src="{{ item.icon }}">
+              </div>
+              <div class="item-desc">
+                <p><strong>{{ item.title }}</strong></p>
+                <div>
+                    <a (click)="deleteCartItem(item.id)">Delete</a> |
+                    <a (click)="saveForLater(item.id, item.qunatity)">Save for Later</a>
+                </div>
+              </div>
+              <div class="item-price">
+                <p>
+                  <strong>{{ item.amount }}</strong>
+                </p>
+              </div>
+              <div class="item-quantity">
+                <input type="text" maxlength="3" value="{{ item.qunatity }}" autocomplete="off" name="quantityBox" class="item-quntity-input" aria-label="Quantity">
+              </div>
+            </div>
+          </div>    
+        </div>
+  </div>
 </div>
