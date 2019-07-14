@@ -87,7 +87,7 @@ export class Constants {
     "1": "Incomplete",
     "2": "Payed",
     "3": "Delivered",
-    "4": "Cancled",
+    "4": "Cancelled",
     "5": "Returned"
   }
 
