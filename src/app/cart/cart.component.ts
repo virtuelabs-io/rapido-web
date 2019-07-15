@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart/cart.service';
 import { Constants } from '../utils/constants';
 import { CartItem } from '../services/cart/cart-item';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-cart',
@@ -14,9 +15,11 @@ export class CartComponent implements OnInit {
   saveforLater = []
   inCart: Boolean
   laterUse: Boolean = false
+  _snackBarMsg: string = ""
   private _cartService: CartService
   constructor(
-    cartService: CartService
+    cartService: CartService,
+    private _snackBar: MatSnackBar
   ) { 
     this._cartService = cartService
   }
@@ -62,8 +65,12 @@ export class CartComponent implements OnInit {
   }
 
   deleteCartItem(id) {
+    this._snackBarMsg = "Item has been deleted !"
     this._cartService.deleteCartItem(id)
     .subscribe(data => {
+      this._snackBar.open(this._snackBarMsg, "", {
+        duration: 5000
+      });
       this.getCartItems()
     })
   }
@@ -74,8 +81,17 @@ export class CartComponent implements OnInit {
     cartItem.product_id = id
     cartItem.quantity = quantity
     cartItem.in_cart = bol
+    if(bol) {
+      this._snackBarMsg = "Item has been moved to cart"
+    }
+    else {
+      this._snackBarMsg = "Item has been saved for later"
+    }
     this._cartService.postCartItem(cartItem)
-    .subscribe(data => {
+    .subscribe(_ => {
+      this._snackBar.open(this._snackBarMsg, "", {
+        duration: 5000
+      });
       this.getCartItems()
     })
   }
