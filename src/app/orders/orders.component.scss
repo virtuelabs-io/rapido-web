@@ -17,7 +17,6 @@
         flex-wrap: nowrap;
         margin-left: 15%;
         margin-right: 15%;
-       // margin-top: 2%;
         margin-bottom: 2%;
         border-width: 2px;
         border-radius: 6px;
@@ -25,10 +24,45 @@
         border-color: #C7C7C7;
         box-shadow: 0 2px 1px 0 rgba(0,0,0,.16);
         border-style: solid;
+        height: 340px;
         .order-card-header {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             flex-wrap: nowrap;
+            background: linear-gradient(to bottom,rgba(0,0,0,.14),rgba(0,0,0,.03) 3px,transparent);
+            height: 20%;
+            border-bottom: 1px solid #e1e4e8;
+            .date-div {
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                margin-top: 1%;
+                margin-left: 1%;
+                width: 25%;
+                font-size: 13px;
+                .label {
+                    text-transform: uppercase;
+                    @media screen and (max-width: $mobile-device) {
+                        width: 40%;
+                        /* text-align: right; */
+                        margin-right: 2%;
+                        
+                    }
+                }
+                @media screen and (max-width: $mobile-device) {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    width: 100%;
+                    
+                }
+            }
+            @media screen and (max-width: $mobile-device) {
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                height: 30%;
+            }
         }
         @media screen and (max-width: $mobile-device) {
             margin-left: 5%;
@@ -37,6 +71,5 @@
         }
     }
     @media screen and (max-width: $mobile-device) {
-      
     }
 }
