@@ -72,7 +72,7 @@
             flex-direction: row;
             flex-wrap: wrap;
             margin: 1%;
-            .item-detail {
+            .item {
                 display: flex;
                 flex-direction: column;
                 flex-wrap: nowrap;
@@ -81,6 +81,20 @@
                     .status-label {
                         font-weight: 700!important;
                         font-size: 17px!important;
+                    }
+                }
+                .item-detail {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    .item-image {
+                        width: 25%;
+                        img {
+                            width: 60%;
+                        }
+                    }
+                    .item-desc-price {
+                        width: 75%;
                     }
                 }
                 @media screen and (max-width: $mobile-device) {
