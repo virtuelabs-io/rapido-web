@@ -41,7 +41,6 @@ export class ProductResultsComponent implements OnInit {
       
       if (query.q && query.searchedText){
         this.searchedText = query.searchedText
-        // delete query.searchedText
         this._productsService.get(query).
          subscribe(data => {
             if(data){
@@ -52,9 +51,6 @@ export class ProductResultsComponent implements OnInit {
               this._searchItemService.changeResponsePoductListState(data)
               if(data && data.hits && data.hits.hit)
               this.productList = data.hits.hit
-              /* for(let i=1; i<15; i++){
-                this.productList.push(data.hits.hit[0])
-              } */
               this.length = data.hits && data.hits.found
               this.productListBind =this.productList//.slice(0,this.pageSize);
             }
@@ -68,10 +64,8 @@ export class ProductResultsComponent implements OnInit {
     onPageChange(evt){
       console.log(evt)
       this._searchItemService.changeState({
-        // q:this.searchedText,
         start: evt.pageIndex * evt.pageSize
       })
-      // this.productListBind = this.productList.slice(evt.pageIndex * evt.pageSize, evt.pageSize+(evt.pageIndex * evt.pageSize));
     }
 
     setPageSizeOptions(setPageSizeOptionsInput: string) {
@@ -80,14 +74,10 @@ export class ProductResultsComponent implements OnInit {
 
     openDialog(): void {
       const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-        // width: 'auto',
-        // height:'auto'
-        // data: {name: 'this.name', animal: 'this.animal'}
       });
   
       dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
-        // this.animal = result;
+        // console.log('The dialog was closed');
       });
     }
   }

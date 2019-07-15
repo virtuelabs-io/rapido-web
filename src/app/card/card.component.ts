@@ -9,6 +9,7 @@ export class CardComponent implements OnInit {
 
   itemDetails: Object
   @Input() itemList//:Object<{fields:Object}>
+  Math = window.Math
   constructor() { }
 
   ngOnInit() {
