@@ -24,7 +24,7 @@
         border-color: white;
         box-shadow: 0 2px 1px 0 rgba(0,0,0,.16);
         border-style: solid;
-        height: 340px;
+       // height: 340px;
         .order-card-header {
             display: flex;
             flex-direction: row;
@@ -76,7 +76,7 @@
                 display: flex;
                 flex-direction: column;
                 flex-wrap: nowrap;
-                width: 80%;
+                width: 75%;
                 .item-status {
                     .status-label {
                         font-weight: 700!important;
@@ -87,6 +87,7 @@
                     display: flex;
                     flex-direction: row;
                     flex-wrap: nowrap;
+                    border-bottom: 1px solid #e1e4e8;
                     .item-image {
                         width: 25%;
                         img {
@@ -106,11 +107,15 @@
                 flex-direction: column;
                 flex-wrap: nowrap;
                 width: 20%;
+                margin-left: 5%;
+                margin-top: 20%;
                 .feedback-button {
                     background-color: $primary;
                 }
                 @media screen and (max-width: $mobile-device) {
                     width: 100%;
+                    margin-top: 0%;
+                    margin-left: 0%;
                 }
             }
         }
