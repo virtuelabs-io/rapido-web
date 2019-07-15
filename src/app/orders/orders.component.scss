@@ -67,10 +67,42 @@
                 height: 30%;
             }
         }
+        .order-card-items {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            margin: 1%;
+            .item-detail {
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                width: 80%;
+                .item-status {
+                    .status-label {
+                        font-weight: 700!important;
+                        font-size: 17px!important;
+                    }
+                }
+                @media screen and (max-width: $mobile-device) {
+                    width: 100%;
+                }
+            }
+            .item-action {
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                width: 20%;
+                .feedback-button {
+                    background-color: $primary;
+                }
+                @media screen and (max-width: $mobile-device) {
+                    width: 100%;
+                }
+            }
+        }
         @media screen and (max-width: $mobile-device) {
             margin-left: 5%;
-            margin-right: 5%;
-            
+            margin-right: 5%; 
         }
     }
     @media screen and (max-width: $mobile-device) {
