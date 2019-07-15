@@ -1,8 +1,18 @@
 <div class="container authmock-body">
   <div class="col-md-12">
+    <h2>Orders</h2><hr>
+    <button class="btn btn-primary" type="submit" (click)="createOrder()">createOrder</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="confirmOrder()">confirmOrder</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="getOrder()">getOrder</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="getOrders()">getOrders</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="cancelOrder()">cancelOrder</button><br><br>
+    <h5>{{ order_result }}</h5>
+  </div>
+  <div class="col-md-12">
     <h2>Cart Items</h2><hr>
     <button class="btn btn-primary" type="submit" (click)="getCartItems()">getCartItems</button><br><br>
     <button class="btn btn-primary" type="submit" (click)="getInCartItems()">getInCartItems</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="getCountOfInCartItems()">getCountOfInCartItems</button><br><br>
     <button class="btn btn-primary" type="submit" (click)="getSavedForLaterCartItems()">getSavedForLaterCartItems</button><br><br>
     <button class="btn btn-primary" type="submit" (click)="postCartItems()">postCartItems</button><br><br>
     <button class="btn btn-primary" type="submit" (click)="postCartItem()">postCartItem</button><br><br>
