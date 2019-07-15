@@ -28,9 +28,7 @@ export class LeftSectionComponent implements OnInit {
 
   updateProductControls(respData){
     let {hits} = respData
-    if(hits){
-    console.log(hits.hit)
-    console.log(hits.hit[0].fields.tags)
+    if(hits && hits.hit ){
     this.tags = hits.hit[0].fields.tags
   }
     this.fnPriceFilterHandler= obj => this.priceFilterData(obj);
@@ -71,33 +69,31 @@ export class LeftSectionComponent implements OnInit {
                         ]
                       }
                       ]}
-                      /* {
-                        'headertext':'sort by',
-                         'panel':[ {
-                           'paneltitle':'',
-                           'paneltype':'link',
-                           'paneldata':['price: low to high','price: high to low','avg. customer review','newest arrivals']
-                        }]
-                      } */
          ]
   }
 
   priceFilterData(range){
-    // console.log(range.min,range.max)
     this.changeQuery({
-        q:`(and ${this.searchedText} (range field=price [${range.min},${range.max}]))`,
-        searchedText:this.searchedText
+        q:`(and '${this.searchedText}' (range field=price [${range.min},${range.max}]))`,
+        searchedText:this.searchedText,
+        qdotparser:'structured',
+        parser:null
       })
   }
 
   onPressRating(val){
     this.changeQuery({
-      q:`(and ${this.searchedText} (range field=rating [${val},${val+1}]))`
+      q:`(and '${this.searchedText}' (range field=rating [${val},${Number(val)+1}]))`,
+      qdotparser:'structured',
+      parser:null
     })
   }
 
   onPressSort(data){
-    this.changeQuery({sort:data})
+    this.changeQuery({
+      sort:data,
+      qdotparser: null
+    })
   }
 
   onPressItem(data){

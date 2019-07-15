@@ -41,6 +41,7 @@ export class ProductResultsComponent implements OnInit {
       
       if (query.q && query.searchedText){
         this.searchedText = query.searchedText
+        // delete query.searchedText
         this._productsService.get(query).
          subscribe(data => {
             if(data){
