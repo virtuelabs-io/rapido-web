@@ -18,6 +18,7 @@ import { AccountInfoComponent } from './account-info/account-info.component';
 import { TermsConditionsComponent } from './terms-conditions/terms-conditions.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { OrdersComponent } from './orders/orders.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: 'terms', component: TermsConditionsComponent },
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
   { path: 'aboutus', component: AboutUsComponent },
+  { path: 'orders', component: OrdersComponent },
   { path: '', component: AuthmockComponent},
 ];
 
@@ -63,5 +65,6 @@ export const RoutingComponents = [
   TermsConditionsComponent,
   PrivacyPolicyComponent,
   AboutUsComponent,
+  OrdersComponent,
   AuthmockComponent
 ];

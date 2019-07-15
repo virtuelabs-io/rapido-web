@@ -1,0 +1,42 @@
+@import "../../assets/scss/custom-bootstrap-variables.scss";
+
+.main-div {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    .title-div {
+        margin-top: 5%;
+        margin-left: 15%;
+        @media screen and (max-width: $mobile-device) {
+             margin-left: 5%;    
+         }
+    }
+    .order-card {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        margin-left: 15%;
+        margin-right: 15%;
+       // margin-top: 2%;
+        margin-bottom: 2%;
+        border-width: 2px;
+        border-radius: 6px;
+        box-sizing: border-box;
+        border-color: #C7C7C7;
+        box-shadow: 0 2px 1px 0 rgba(0,0,0,.16);
+        border-style: solid;
+        .order-card-header {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+        }
+        @media screen and (max-width: $mobile-device) {
+            margin-left: 5%;
+            margin-right: 5%;
+            
+        }
+    }
+    @media screen and (max-width: $mobile-device) {
+      
+    }
+}
