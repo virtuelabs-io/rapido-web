@@ -114,8 +114,18 @@
         border-color: #C7C7C7;
         box-shadow: 0 2px 1px 0 rgba(0,0,0,.16);
         border-style: solid;
+        .card-info {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 2%;
+            margin-left: 2%;
+            margin-right: 2%;
+            .green-text {
+                font-size: 14px;
+                color: green;
+            }
+        }
         .card-amount-inner {
-            margin-top: 20%;
             width: 100%;
             height: 40%;
             background-color: #f3f3f3!important;
@@ -136,12 +146,11 @@
                 }
             }
             @media screen and (max-width: $mobile-device) {
-                margin-top: 0%;
-                height: 100%;
+                height: 90px;
             }
         }
         @media screen and (max-width: $mobile-device) {
-            height: 100px;
+            height: 150px;
             width: 100%;
             margin-left: 2%;
             margin-right: 2%;
