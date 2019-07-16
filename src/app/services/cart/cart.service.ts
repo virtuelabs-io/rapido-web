@@ -62,6 +62,15 @@ export class CartService extends RapidoHttpService<CartItem> {
     });
   }
 
+  getCountOfInCartItems(){
+    return new Promise(resolve=>{
+      this.getList([Constants.CART_APIS.api, 'in-cart-items'].join("/"),this.addAuthHeader(this.initializeHeaders()))
+        .subscribe(data => {
+          resolve(data.length)
+        })
+    });
+  }
+
   getSavedForLaterCartItems(){
     return new Promise(resolve=>{
       let cartItemsObject;
