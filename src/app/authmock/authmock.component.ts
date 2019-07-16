@@ -462,7 +462,7 @@ export class AuthmockComponent implements OnInit {
   }
 
   createOrder(){
-    this.order.delivery_address_id = 1
+    this.order.delivery_address_id = 2
     this._orderService.createOrder(this.order)
     .then((data: any) => {
       console.log(data)

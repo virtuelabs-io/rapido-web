@@ -2,23 +2,23 @@
   <div class="title-div">
     <h4>Your Orders</h4>
   </div>
-  <div class="order-card">
+  <div class="order-card" *ngFor="let order of orders">
     <div class="order-card-header">
       <div class="date-div">
         <span class="label">Order placed: </span>
-        <span>12 July 2019</span>
+        <span>{{order.date}}</span>
       </div>
       <div class="date-div">
           <span class="label">Total: </span>
-          <span>1299.00</span>
+          <span>{{order.currency}} {{order.price}}</span>
       </div>
       <div class="date-div">
           <span class="label">Ship To: </span>
-          <span>Anirup Patnaik</span>
+          <span>{{order.shipTo}}</span>
       </div>
       <div class="date-div">
           <span class="label">Order#: </span>
-          <span>1404-6097289-5243513</span>
+          <span>{{order.id}}</span>
       </div>
     </div>
     <div class="order-card-items">
@@ -26,95 +26,23 @@
         <div class="item-status">
           <span class="status-label">Delivered</span>
         </div>
-        
-        <div class="item-detail">
+        <div class="item-detail" *ngFor="let item of order.items">
           <div class="item-image">
-              <img class="image" src="https://s3.eu-west-2.amazonaws.com/rapido-build-assets-bucket/images/products/2/image1.jpg">
+              <img class="image" src="{{item.pic}}">
           </div>
           <div class="item-desc-price">
-            <span>Aeidess Tempered Glass for Apple iPhone Xs/X (Black)-Edge to Edge Full Screen Coverage</span>
+            <span>{{item.desc}}</span>
             <span>
-              <span>£</span>
-            <span class="price-tag">1000</span>
+              <span>{{item.currency}}</span>
+            <span class="price-tag">{{item.unitPrice}}</span>
             </span>
           </div>
         </div>
-
-
-        <div class="item-detail">
-            <div class="item-image">
-                <img class="image" src="https://s3.eu-west-2.amazonaws.com/rapido-build-assets-bucket/images/products/2/image1.jpg">
-            </div>
-            <div class="item-desc-price">
-              <span>Aeidess Tempered Glass for Apple iPhone Xs/X (Black)-Edge to Edge Full Screen Coverage</span>
-              <span>
-                <span>£</span>
-              <span class="price-tag">1000</span>
-              </span>
-            </div>
-          </div>
-
-          <div class="item-detail">
-              <div class="item-image">
-                  <img class="image" src="https://s3.eu-west-2.amazonaws.com/rapido-build-assets-bucket/images/products/2/image1.jpg">
-              </div>
-              <div class="item-desc-price">
-                <span>Aeidess Tempered Glass for Apple iPhone Xs/X (Black)-Edge to Edge Full Screen Coverage</span>
-                <span>
-                  <span>£</span>
-                <span class="price-tag">1000</span>
-                </span>
-              </div>
-            </div>  
-
-            <div class="item-detail">
-                <div class="item-image">
-                    <img class="image" src="https://s3.eu-west-2.amazonaws.com/rapido-build-assets-bucket/images/products/2/image1.jpg">
-                </div>
-                <div class="item-desc-price">
-                  <span>Aeidess Tempered Glass for Apple iPhone Xs/X (Black)-Edge to Edge Full Screen Coverage</span>
-                  <span>
-                    <span>£</span>
-                  <span class="price-tag">1000</span>
-                  </span>
-                </div>
-              </div> 
       </div>
-
-      
-
-
       <div class="item-action">
           <button mat-button class="action-but">Order Details</button>
           <button mat-button class="action-but">Cancel Order</button>
       </div>
-      
     </div>
   </div>
-
-
-
-
-  <div class="order-card">
-      <div class="order-card-header">
-        <div class="date-div">
-          <span class="label">Order placed: </span>
-          <span> 12 July 2019</span>
-        </div>
-        <div class="date-div">
-            <span class="label">Total: </span>
-            <span> 1299.00</span>
-        </div>
-        <div class="date-div">
-            <span class="label">Ship To: </span>
-            <span> Anirup Patnaik</span>
-        </div>
-        <div class="date-div">
-            <span class="label">Order#: </span>
-            <span> 1404-6097289-5243513</span>
-        </div>
-      </div>
-    </div>
-
-  
 </div>
