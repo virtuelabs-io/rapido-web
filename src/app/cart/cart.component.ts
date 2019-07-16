@@ -12,6 +12,8 @@ import {MatSnackBar} from '@angular/material';
 export class CartComponent implements OnInit {
   _imageUrl: string = Constants.environment.staticAssets
   cartItems = []
+  cartAmount: number = 0
+  inCartItems: number = 0
   saveforLater = []
   inCart: Boolean
   laterUse: Boolean = false
@@ -36,6 +38,7 @@ export class CartComponent implements OnInit {
       for(var i = 0; i < data.length; i++) {
         if(data[i].cartItem.in_cart) {
           this.inCart = true
+          this.cartAmount = parseInt(data[i].itemDetails.price) * data[i].cartItem.quantity
           this.cartItems.push({
             id: data[i].cartItem.product_id,
             icon: this._imageUrl+data[i].itemDetails.images[0],
@@ -61,6 +64,7 @@ export class CartComponent implements OnInit {
       if(!this.cartItems.length) {
         this.inCart = false
       }
+      this.inCartItems = this.cartItems.length
     })
   }
 
