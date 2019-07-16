@@ -80,7 +80,8 @@
                 .item-status {
                     .status-label {
                         font-weight: 700!important;
-                        font-size: 17px!important;
+                        font-size: 20px!important;
+                        color: green;
                     }
                 }
                 .item-detail {
@@ -88,14 +89,22 @@
                     flex-direction: row;
                     flex-wrap: nowrap;
                     border-bottom: 1px solid #e1e4e8;
+                    margin-bottom: 2%;
                     .item-image {
                         width: 25%;
+                        padding: 2%;
                         img {
                             width: 60%;
                         }
                     }
                     .item-desc-price {
+                        display: flex;
+                        flex-direction: column;
+                        flex-wrap: nowrap;
                         width: 75%;
+                        .price-tag {
+                            color: red;
+                        }
                     }
                 }
                 @media screen and (max-width: $mobile-device) {
@@ -108,9 +117,10 @@
                 flex-wrap: nowrap;
                 width: 20%;
                 margin-left: 5%;
-                margin-top: 20%;
-                .feedback-button {
+              //  margin-top: 20%;
+                .action-but {
                     background-color: $primary;
+                    margin-top: 2%;
                 }
                 @media screen and (max-width: $mobile-device) {
                     width: 100%;
