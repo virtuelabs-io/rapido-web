@@ -28,6 +28,7 @@ export class ProductResultsComponent implements OnInit {
   private _productsService: ProductsService
   searchedText: string = ""
   responseData: Object
+  noResultsFound: boolean = false
   public productList: Array<{id: number, fields: Object}>
   public productListBind: Array<{id: number, fields: Object}>
   constructor(private _searchItemService: SearchItemService,
@@ -45,6 +46,9 @@ export class ProductResultsComponent implements OnInit {
             if(data){
               if(data.error){
                 throw Error('error')
+              }
+              if(data.hits.found < 0){
+                this.noResultsFound = true
               }
               this.responseData = data
               this._searchItemService.changeResponsePoductListState(data)

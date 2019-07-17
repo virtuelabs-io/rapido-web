@@ -92,7 +92,8 @@ export class LeftSectionComponent implements OnInit {
   onPressSort(data){
     this.changeQuery({
       sort:data,
-      qdotparser: null
+      qdotparser: null,
+      q:this.searchedText
     })
   }
 

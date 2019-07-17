@@ -1,4 +1,7 @@
-<div class="">
+<div *ngIf="noResultsFound">
+  No results found
+</div>
+<div class="" *ngIf="!noResultsFound">
   <div>
     <app-productcontrols *ngIf="productList && productList.length" [searchedText]=searchedText [responseData]=responseData></app-productcontrols>
       <!-- small device filter control starts -->

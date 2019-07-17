@@ -54,7 +54,10 @@ export class TopnavComponent implements OnInit {
       this._searchItemService.changeState({
         q: this.searchedText,
         searchedText: this.searchedText,
-        start: 0
+        start: 0,
+        sort: null,
+        cursor: null,
+        return: null,
       })
     }
     
