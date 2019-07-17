@@ -26,7 +26,7 @@
                 <p><strong>{{ item.title }}</strong></p>
                 <div>
                     <a (click)="deleteCartItem(item.id)">Delete</a> |
-                    <a (click)="saveForLater(item.id, item.qunatity, false)">Save for Later</a>
+                    <a (click)="saveForLater(item.id, item.quantity, false)">Save for Later</a>
                 </div>
               </div>
               <div class="item-price">
@@ -35,7 +35,7 @@
                 </p>
               </div>
               <div class="item-quantity">
-                <input type="text" maxlength="3" value="{{ item.qunatity }}" autocomplete="off" name="quantityBox" class="item-quntity-input" aria-label="Quantity">
+                <input type="text" maxlength="3" value="{{ item.quantity }}" autocomplete="off" name="quantityBox" class="item-quntity-input" aria-label="Quantity">
               </div>
             </div>
           </div>    
@@ -65,7 +65,7 @@
         </span>
       </div>
         <div class="card-amount-checkout">
-            <button mat-button routerLink="/cart/checkout" class="checkout-button">Proceed to Buy</button>
+            <button mat-button (click)="postCartItems()" class="checkout-button">Proceed to Buy</button>
         </div>
     </div>
   </div>
@@ -100,7 +100,7 @@
                 <p><strong>{{ item.title }}</strong></p>
                 <div>
                     <a (click)="deleteCartItem(item.id)">Delete</a> |
-                    <a (click)="saveForLater(item.id, item.qunatity, true)">Move to Cart</a>
+                    <a (click)="saveForLater(item.id, item.quantity, true)">Move to Cart</a>
                 </div>
               </div>
               <div class="item-price">
@@ -109,7 +109,7 @@
                 </p>
               </div>
               <div class="item-quantity">
-                <input type="text" maxlength="3" value="{{ item.qunatity }}" autocomplete="off" name="quantityBox" class="item-quntity-input" aria-label="Quantity">
+                <input type="text" maxlength="3" value="{{ item.quantity }}" autocomplete="off" name="quantityBox" class="item-quntity-input" aria-label="Quantity">
               </div>
             </div>
           </div>    

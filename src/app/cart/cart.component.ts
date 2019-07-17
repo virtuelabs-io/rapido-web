@@ -3,6 +3,7 @@ import { CartService } from '../services/cart/cart.service';
 import { Constants } from '../utils/constants';
 import { CartItem } from '../services/cart/cart-item';
 import {MatSnackBar} from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -12,7 +13,7 @@ import {MatSnackBar} from '@angular/material';
 export class CartComponent implements OnInit {
   _imageUrl: string = Constants.environment.staticAssets
   cartItems = []
-  cartAmount: number = 0
+  cartAmount: any = 0
   inCartItems: number = 0
   saveforLater = []
   inCart: Boolean
@@ -21,7 +22,8 @@ export class CartComponent implements OnInit {
   private _cartService: CartService
   constructor(
     cartService: CartService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private router: Router
   ) { 
     this._cartService = cartService
   }
@@ -38,13 +40,13 @@ export class CartComponent implements OnInit {
       for(var i = 0; i < data.length; i++) {
         if(data[i].cartItem.in_cart) {
           this.inCart = true
-          this.cartAmount = parseInt(data[i].itemDetails.price) * data[i].cartItem.quantity
+          this.cartAmount = (parseFloat(data[i].itemDetails.price) * data[i].cartItem.quantity).toFixed(2)
           this.cartItems.push({
             id: data[i].cartItem.product_id,
             icon: this._imageUrl+data[i].itemDetails.images[0],
             title: data[i].itemDetails.name,
             amount: data[i].itemDetails.price,
-            qunatity: data[i].cartItem.quantity
+            quantity: data[i].cartItem.quantity
           })
         }
         else {
@@ -54,7 +56,7 @@ export class CartComponent implements OnInit {
             icon: this._imageUrl+data[i].itemDetails.images[0],
             title: data[i].itemDetails.name,
             amount: data[i].itemDetails.price,
-            qunatity: data[i].cartItem.quantity
+            quantity: data[i].cartItem.quantity
           })
         }
       }
@@ -98,5 +100,26 @@ export class CartComponent implements OnInit {
       });
       this.getCartItems()
     })
+  }
+
+  updateCartItem(product_id: number, quant: number, in_cart: boolean): CartItem {
+    let cartItem: CartItem = new CartItem()
+    cartItem.product_id = product_id
+    cartItem.quantity = quant
+    cartItem.in_cart = in_cart
+    console.log("Updated product with id:", cartItem.product_id)
+    return cartItem
+  }
+
+  postCartItems() {
+    let items = [];
+    for(var i = 0; i < this.cartItems.length; i++) {
+      items.push(this.updateCartItem(this.cartItems[i].id, this.cartItems[i].quantity, true))
+    }
+    this._cartService.postCartItemList(items)
+      .subscribe(data2 => {
+        console.log("Cart confirmed data", data2)
+        this.router.navigate(['cart/checkout']);
+      })
   }
 }
