@@ -8,33 +8,38 @@ import { Options, LabelType, ChangeContext, PointerType } from 'ng5-slider';
   styleUrls: ['./range-slider.component.scss']
 })
 export class RangeSliderComponent {
+  @Input() rangeData: any;
   selectedMinVal: number 
   selectedMaxVal: number 
-  @Input() rangeData: any;
-  options: Options = {
-    floor: 0,
-    ceil: 500,
-    translate: (value: number, label: LabelType): string => {
-      switch (label) {
-        case LabelType.Low:
-          return '<b>Min :</b> £' + value;
-        case LabelType.High:
-          return '<b>Max :</b> £' + value + '+';
-        default:
-          return '$' + value;
-      }
-    }
-  };
-
-  userChangeEnd(changeContext: ChangeContext): void {
-    console.log(changeContext.highValue,changeContext.value);
-    this.selectedMinVal = changeContext.value
-    this.selectedMaxVal = changeContext.highValue
+  ngOnInit() {
+    this.selectedMinVal = this.rangeData.minValue
+    this.selectedMaxVal = this.rangeData.maxValue
   }
+  // options: Options = {
+  //   floor: 0,
+  //   ceil: 500,
+  //   translate: (value: number, label: LabelType): string => {
+  //     switch (label) {
+  //       case LabelType.Low:
+  //         return '<b>Min :</b> £' + value;
+  //       case LabelType.High:
+  //         return '<b>Max :</b> £' + value + '+';
+  //       default:
+  //         return '$' + value;
+  //     }
+  //   }
+  // }
 
-  onSubmitPriceFilter (){
+  // userChangeEnd(changeContext: ChangeContext): void {
+  //   this.selectedMinVal = changeContext.value
+  //   this.selectedMaxVal = changeContext.highValue
+  // }
+
+  onSubmitPriceFilter (evt){
+    console.log(this.rangeData)
+    console.log(this.selectedMaxVal, this.selectedMinVal)
     this.rangeData.fnPriceFilterHandler({
-      min:this.selectedMinVal,max:this.selectedMaxVal
+      min:this.selectedMinVal, max:this.selectedMaxVal
     })
   }
 }

@@ -1,19 +1,19 @@
-<ng5-slider [(value)]="rangeData.minValue" 
+<!-- <ng5-slider [(value)]="rangeData.minValue" 
             [(highValue)]="rangeData.maxValue" 
             [options]="options"
             (userChangeEnd)="userChangeEnd($event)"
-            ></ng5-slider>
+            ></ng5-slider> -->
 
-    <form class="ml-4" (ngSubmit)="onSubmitPriceFilter()">
+    <form class="pl-4" (ngSubmit)="onSubmitPriceFilter()">
         <div>
             <label class="">
             <span class=""> £</span>
-            <input class="" type="number" [(value)]="selectedMinVal">
+            <input class="" type="number" [(ngModel)]="selectedMinVal" [minlength]="selectedMinVal" name="min">
         </label>
-            <span class="mr-2">  to  </span>
-        <label class="">
+            <span class="pr-1">  to  </span>
+        <label class="pr-2">
             <span class=""> £</span>
-            <input class="" type="number" [(value)]="selectedMaxVal">
+            <input class="" type="number" [(ngModel)]="selectedMaxVal" [maxlength]="selectedMaxVal" name="max">
         </label>
         
         <button class="btn font-weight-bold btn-primary rounded-pill" type="submit">Go</button>

@@ -3,14 +3,16 @@ form {
     div{
         label{
             input{
-            width: 60px;
-            margin-left: 4px;
-            padding-right: 0;
-            margin-right: 0.5rem !important;
+            width: 45px;
+            border-radius: 15px; 
+            padding-left: 2px;
+            text-align: center;
+            // padding-right: 2;
+            // margin-right: 0.5rem !important;
         }
         }
     button{
-        font-size: 0.65rem;
+        font-size: 0.55rem;
     }
     }
 }

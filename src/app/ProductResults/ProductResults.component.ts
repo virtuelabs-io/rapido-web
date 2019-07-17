@@ -38,7 +38,6 @@ export class ProductResultsComponent implements OnInit {
 
   ngOnInit() {
     this._searchItemService.currentState.subscribe(query => {
-      
       if (query.q && query.searchedText){
         this.searchedText = query.searchedText
         this._productsService.get(query).
@@ -52,12 +51,10 @@ export class ProductResultsComponent implements OnInit {
               if(data && data.hits && data.hits.hit)
               this.productList = data.hits.hit
               this.length = data.hits && data.hits.found
-              this.productListBind =this.productList//.slice(0,this.pageSize);
+              this.productListBind =this.productList
             }
-            
        })
       }
-      
       })
     }
 
