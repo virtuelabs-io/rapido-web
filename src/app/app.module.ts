@@ -33,6 +33,7 @@ import { TermsConditionsComponent } from './terms-conditions/terms-conditions.co
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { OrdersComponent } from './orders/orders.component';
+import { PaymentsComponent } from './payments/payments.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { OrdersComponent } from './orders/orders.component';
     TermsConditionsComponent,
     PrivacyPolicyComponent,
     AboutUsComponent,
-    OrdersComponent
+    OrdersComponent,
+    PaymentsComponent
   ],
   imports: [
     MatSidenavModule,
