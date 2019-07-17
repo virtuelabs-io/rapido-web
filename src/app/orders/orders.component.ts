@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrdersService } from '../services/orders/orders.service';
 import { Constants } from '../utils/constants';
+import { Order } from '../services/orders/order';
 
 @Component({
   selector: 'app-orders',
@@ -11,7 +12,9 @@ export class OrdersComponent implements OnInit {
   private _orderService: OrdersService
   _imageUrl: string = Constants.environment.staticAssets
   orders = []
-  
+  cancelledStatus = Constants.ORDER_STATUS[4]
+  order: Order = new Order()
+
   constructor(
     orderService: OrdersService
   ) { 
@@ -59,6 +62,16 @@ export class OrdersComponent implements OnInit {
           }
         }
       }
+    })
+  }
+
+  cancelOrder(id) {
+    this.order.order_id = id
+    console.log("Canceling order for:", this.order.order_id)
+    this._orderService.cancelOrder(this.order.order_id)
+    .subscribe(data => {
+      console.log(data)
+      this.getOrders()
     })
   }
 }
