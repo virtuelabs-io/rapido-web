@@ -86,14 +86,17 @@
                 width: 100%;
             }
         }
-        .terms-conditions {
-            margin-top: 2%;
-            margin-left: 2%;
-            margin-right: 2%; 
-        }
         @media screen and (max-width: $mobile-device) {
             width: 100%
           }
+    }
+    .terms-conditions {
+        margin-top: 2%;
+        margin-left: 2%;
+        margin-right: 2%;
+        span {
+            font-size: 12px;
+        }
     }
     .no-save-for-later-text {
         margin-top: 2%;
