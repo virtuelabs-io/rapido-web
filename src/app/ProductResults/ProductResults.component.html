@@ -5,11 +5,11 @@
   <div>
     <app-productcontrols *ngIf="productList && productList.length" [searchedText]=searchedText [responseData]=responseData></app-productcontrols>
       <!-- small device filter control starts -->
-      <section class="product-controls position-top mr-2 ml-2 rounded-pill">
-        <div class="mx-auto">
-            <button type="button" (click)="openDialog()" class="btn ">Filter Controls</button>
+      <!-- <section class="product-controls position-top mr-2 ml-2 "> -->
+        <div class="btnLeft pt-4 pr-3">
+            <button type="button" (click)="openDialog()" class="btn rounded-pill">Filter Controls</button>
         </div>
-      </section>
+      <!-- </section> -->
       <!-- small device filter control ends-->
   </div>
     

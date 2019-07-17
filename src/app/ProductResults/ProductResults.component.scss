@@ -2,15 +2,19 @@
 
 div {
     div{
-        section{
+        div{
             display: none;
-            background: #e4e4e4;
-            padding: 10px;
-            position: relative;
-            top: 1.5rem;
+            // background: #e4e4e4;
+            // padding: 10px;
+            // position: relative;
+            // top: 1.5rem;
+            button{
+                background: $black;
+                color: $white;
+            }
         }
         @media screen and (max-width: $small-device) {
-            section{
+            div{
                 display: flex;
                 padding-top: 20px;
             }
@@ -35,5 +39,9 @@ div {
     } 
 }
 
-
+.btnLeft{
+    display: flex;
+    justify-content: flex-end;
+    align-items:center; 
+}
 

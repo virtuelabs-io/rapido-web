@@ -5,10 +5,6 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import {PageEvent} from '@angular/material/paginator';
 
 
-export interface DialogData {
-  animal: string;
-  name: string;
-}
 
 @Component({
   selector: 'app-productresults',
@@ -63,7 +59,6 @@ export class ProductResultsComponent implements OnInit {
     }
 
     onPageChange(evt){
-      console.log(evt)
       this._searchItemService.changeState({
         start: evt.pageIndex * evt.pageSize
       })
@@ -75,11 +70,13 @@ export class ProductResultsComponent implements OnInit {
 
     openDialog(): void {
       const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+        height: '80%',
+        width: '80%',
       });
   
-      dialogRef.afterClosed().subscribe(result => {
-        // console.log('The dialog was closed');
-      });
+      // dialogRef.afterClosed().subscribe(result => {
+      //   console.log('The dialog was closed');
+      // });
     }
   }
 
@@ -95,8 +92,7 @@ export class ProductResultsComponent implements OnInit {
   export class DialogOverviewExampleDialog {
   
     constructor(
-      public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-      @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+      public dialogRef: MatDialogRef<DialogOverviewExampleDialog>) {}
   
     onNoClick(): void {
       this.dialogRef.close();
