@@ -35,7 +35,7 @@ import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { Constants } from './utils/constants';
-import { Ng5SliderModule } from 'ng5-slider';
+// import { Ng5SliderModule } from 'ng5-slider';
 import { RangeSliderComponent } from './range-slider/range-slider.component';
 import { ResendOtpComponent } from './resend-otp/resend-otp.component';
 import { ProfileComponent } from './my-profile/profile.component';
@@ -106,7 +106,7 @@ import { AccountInfoComponent } from './account-info/account-info.component';
     MatProgressSpinnerModule,
     NgbModule,
     MatDialogModule,
-    Ng5SliderModule,
+    // Ng5SliderModule,
     NgxImageZoomModule.forRoot() 
   ],
   entryComponents: [FilterControlsDialog],
