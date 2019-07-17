@@ -7,6 +7,8 @@ import { Constants } from '../utils/constants';
 import { Router } from '@angular/router';
 import { AddressDetailsService } from '../services/customer/address-details.service';
 import { RouteService } from '../shared-services/route/route.service';
+import { OrdersService } from '../services/orders/orders.service';
+import { Order } from '../services/orders/order';
 
 @NgModule({
 	imports: [
@@ -24,7 +26,7 @@ import { RouteService } from '../shared-services/route/route.service';
 export class CheckoutComponent implements OnInit {
   isLinear = false;
   stepperIndex: number = 0
-  
+  order: Order = new Order()
   showSpinner: Boolean = false
   address_details_id: number
   private _addressDetailsService: AddressDetailsService
@@ -32,6 +34,7 @@ export class CheckoutComponent implements OnInit {
   example:any
   
   registerFormGroup: FormGroup // UI reactive Form Group variable 
+  private _orderService: OrdersService
 
   constructor(
    // private fb: FormBuilder, // by Sangram
@@ -39,11 +42,13 @@ export class CheckoutComponent implements OnInit {
     private stripeService: StripeService,
     private chargeService: ChargeService,
     private RouteService : RouteService,
+    orderService: OrdersService,
 
     private router: Router,
     addressDetailsService: AddressDetailsService
   ) {
     this._addressDetailsService = addressDetailsService
+    this._orderService = orderService
     this.showSpinner = true
     this.getAddressList()
   }
@@ -79,20 +84,14 @@ export class CheckoutComponent implements OnInit {
     })
   }
 
-  addressDelete(id) {
-    this.showSpinner = true
-    this._addressDetailsService.deleteAddressDetails(id)
-    .subscribe(data => {
-      this.address_details_id = null
-      this.getAddressList()
+  createOrder(id) {
+    console.log(id)
+    this.order.delivery_address_id = id
+    this._orderService.createOrder(this.order)
+    .then((data: any) => {
+      console.log(data)
+      this.order.order_id = data[0]['orderItem']['id']
+      this.stepperIndex = 1
     })
-  }
-
-  addressEdit(id) {
-    this.router.navigate(['profile/address/editAddress', id])
-  }
-
-  confirmDeliveryAddress() {
-    this.stepperIndex = 1
   }
 }

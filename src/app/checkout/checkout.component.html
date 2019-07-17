@@ -34,7 +34,7 @@
                           <br/> {{ address.country }}
                         </div>
                         <div class="card-actions">
-                          <button mat-flat-button color="primary" class="delivery-add-button" (click)="confirmDeliveryAddress()">
+                          <button mat-flat-button color="primary" class="delivery-add-button" (click)="createOrder(address.id)">
                              Deliver to this Address
                           </button>
                         </div>
