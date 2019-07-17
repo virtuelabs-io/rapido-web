@@ -102,6 +102,12 @@
                         flex-direction: column;
                         flex-wrap: nowrap;
                         width: 75%;
+                        a {
+                            color: black;
+                        }
+                        a:hover { 
+                            color: $primary;
+                        }
                         .price-tag {
                             color: red;
                         }
