@@ -11,6 +11,7 @@ export class OrdersComponent implements OnInit {
   private _orderService: OrdersService
   _imageUrl: string = Constants.environment.staticAssets
   orders = []
+  
   constructor(
     orderService: OrdersService
   ) { 
@@ -41,6 +42,7 @@ export class OrdersComponent implements OnInit {
           price: data[i].orderItem.order_price,
           shipTo: data[i].orderItem.full_name,
           currency: data[i].itemDetails.currency,
+          category: Constants.ORDER_STATUS[data[i].orderItem.order_status_id],
           items: []
         })
       }
