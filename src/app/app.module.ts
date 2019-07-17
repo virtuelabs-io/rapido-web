@@ -20,7 +20,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 // import {MatAutocompleteModule} from '@angular/material/autocomplete';
 // import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ProductResultsComponent } from './ProductResults/ProductResults.component';
-import { DialogOverviewExampleDialog } from './ProductResults/ProductResults.component';
+import { FilterControlsDialog } from './ProductResults/ProductResults.component';
 import { CardComponent } from './card/card.component';
 import { RatingComponent } from './rating/rating.component';
 import { ImagesComponent } from './images/images.component';
@@ -71,7 +71,7 @@ import { AccountInfoComponent } from './account-info/account-info.component';
     ProductDetailsComponent,
     ImageZoomComponent,
     RangeSliderComponent,
-    DialogOverviewExampleDialog,
+    FilterControlsDialog,
     ResendOtpComponent,
     ProfileComponent,
     CompanyDetailsComponent,
@@ -109,7 +109,7 @@ import { AccountInfoComponent } from './account-info/account-info.component';
     Ng5SliderModule,
     NgxImageZoomModule.forRoot() 
   ],
-  entryComponents: [DialogOverviewExampleDialog],
+  entryComponents: [FilterControlsDialog],
   providers: [],
   bootstrap: [ AppComponent ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

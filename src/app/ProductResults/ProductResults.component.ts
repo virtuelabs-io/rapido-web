@@ -69,7 +69,7 @@ export class ProductResultsComponent implements OnInit {
     }
 
     openDialog(): void {
-      const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      const dialogRef = this.dialog.open(FilterControlsDialog, {
         height: '80%',
         width: '80%',
       });
@@ -84,17 +84,17 @@ export class ProductResultsComponent implements OnInit {
     selector: 'dialog-overview-example-dialog',
     template: `
     <mat-dialog-content>
-      <i class="fa fa-times hidden-lg hidden-md" (click)="onNoClick()"></i>
-      <app-leftsection></app-leftsection>
+      <i class="fa fa-times hidden-lg hidden-md" (click)="closeDialog()"></i>
+      <app-leftsection [closeDialog]=dialogRef></app-leftsection>
     </mat-dialog-content>
     `,
   })
-  export class DialogOverviewExampleDialog {
   
-    constructor(
-      public dialogRef: MatDialogRef<DialogOverviewExampleDialog>) {}
+  export class FilterControlsDialog {
+    // dialogRef: any
+    constructor(public dialogRef: MatDialogRef<FilterControlsDialog>) {}
   
-    onNoClick(): void {
+    closeDialog(): void {
       this.dialogRef.close();
     }
   

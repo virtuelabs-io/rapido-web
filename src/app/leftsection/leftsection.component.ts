@@ -8,7 +8,7 @@ import { SearchItemService } from '../shared-services/search-item/search-item.se
 })
 export class LeftSectionComponent implements OnInit {
 
-  // @Input() responseData:Object
+  @Input() closeDialog:any
   filterData: Object 
   constructor(private _searchItemService: SearchItemService ) { }
   fnPriceFilterHandler: Function;
@@ -16,7 +16,6 @@ export class LeftSectionComponent implements OnInit {
   searchedText: string = ""
 
   ngOnInit() {
-    // if(this.responseData)
     this._searchItemService.responsePoductListState.subscribe(respData => {
       this.updateProductControls(respData)
     })
@@ -105,6 +104,7 @@ export class LeftSectionComponent implements OnInit {
 
   changeQuery(queryObj){
       this._searchItemService.changeState(queryObj)
+      if(this.closeDialog) this.closeDialog.close()
   }
 
 }
