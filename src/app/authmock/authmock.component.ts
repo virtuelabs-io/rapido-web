@@ -19,6 +19,8 @@ import { AddressDetailsService } from '../services/customer/address-details.serv
 import { CartService } from '../services/cart/cart.service';
 import { CartItem } from '../services/cart/cart-item';
 import { CartItemDetails } from '../services/cart/cart-item-details';
+import { OrdersService } from '../services/orders/orders.service';
+import { Order } from '../services/orders/order';
 
 @Component({
   selector: 'app-authmock',
@@ -42,6 +44,8 @@ export class AuthmockComponent implements OnInit {
   address_details_result: string;
 
   cart_item_result: string;
+
+  order_result: string;
 
   companyDetails: CompanyDetails = new CompanyDetails(
     "Sample pvt ltd",
@@ -75,6 +79,8 @@ export class AuthmockComponent implements OnInit {
     "true",
     "true"
   );
+
+  order: Order = new Order()
 
   _query: Query = {
     q: "watches",
@@ -112,6 +118,7 @@ export class AuthmockComponent implements OnInit {
   private _companyDetailsService: CompanyDetailsService
   private _addressDetailsService: AddressDetailsService
   private _cartService: CartService
+  private _orderService: OrdersService
 
   constructor(
     signUpService: SignUpService,
@@ -127,7 +134,8 @@ export class AuthmockComponent implements OnInit {
     productHierarchyService: ProductsHierarchyService,
     companyDetailsService: CompanyDetailsService,
     addressDetailsService: AddressDetailsService,
-    cartService: CartService
+    cartService: CartService,
+    orderService: OrdersService
     ) {
     this._signUpService = signUpService
     this._profileService = profileService
@@ -143,6 +151,7 @@ export class AuthmockComponent implements OnInit {
     this._companyDetailsService = companyDetailsService
     this._addressDetailsService = addressDetailsService
     this._cartService = cartService
+    this._orderService = orderService
   }
 
   ngOnInit() {
@@ -358,7 +367,8 @@ export class AuthmockComponent implements OnInit {
   }
 
   makeCartItem(): CartItem {
-    this._cart_item_id = Math.floor(Math.random() * 100) + 1
+    this._cart_item_id = Math.floor(Math.random() * 10)
+    this._cart_item_id = this._cart_item_id < 1 ? this._cart_item_id+1 : this._cart_item_id
     let cartItem: CartItem = new CartItem()
     cartItem.product_id = this._cart_item_id
     cartItem.quantity = Math.floor(Math.random() * 10) + 1
@@ -389,6 +399,14 @@ export class AuthmockComponent implements OnInit {
     .then((data: any) => {
       console.log(data)
       this.cart_item_result = "Sucessfully fetched InCartItems and logged!";
+    })
+  }
+
+  getCountOfInCartItems(){
+    this._cartService.getCountOfInCartItems()
+    .then((data: any) => {
+      console.log(data)
+      this.cart_item_result = "Sucessfully fetched getCountOfInCartItems and logged!";
     })
   }
 
@@ -440,6 +458,52 @@ export class AuthmockComponent implements OnInit {
     .subscribe(data => {
       console.log(data)
       this.cart_item_result = "Sucessfully deleted item and logged!";
+    })
+  }
+
+  createOrder(){
+    this.order.delivery_address_id = 1
+    this._orderService.createOrder(this.order)
+    .then((data: any) => {
+      console.log(data)
+      this.order.order_id = data[0]['orderItem']['id']
+      this.order_result = "Sucessfully created order and logged!";
+    })
+  }
+
+  confirmOrder(){
+    this.order.charge_id = "ch_authmock"
+    console.log("Confirming order for:", this.order)
+    this._orderService.confirmOrder(this.order)
+    .then((data: any) => {
+      console.log(data)
+      this.order_result = "Sucessfully confirmed order and logged!";
+    })
+  }
+
+  cancelOrder(){
+    console.log("Canceling order for:", this.order.order_id)
+    this._orderService.cancelOrder(this.order.order_id)
+    .subscribe(data => {
+      console.log(data)
+      this.order_result = "Sucessfully cancled order and logged!";
+    })
+  }
+
+  getOrder(){
+    console.log("Fetching order for:", this.order.order_id)
+    this._orderService.getOrder(this.order.order_id)
+    .then((data: any) => {
+      console.log(data)
+      this.order_result = "Sucessfully fetched order and logged!";
+    })
+  }
+
+  getOrders(){
+    this._orderService.getOrders()
+    .then((data: any) => {
+      console.log(data)
+      this.order_result = "Sucessfully fetched orders and logged!";
     })
   }
 }

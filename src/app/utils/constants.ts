@@ -69,12 +69,14 @@ export class Constants {
     openBracketOr: "(or",
     closeBracket: ")",
     cartReturnFields: ["price", "name", "images", "currency", "offer"].join(","),
+    orderReturnFields: ["name", "images", "currency"].join(","),
     structuredParser: "structured"
   }
 
   public static CUSTOMER_APIS = environment.customer
   public static PAYMENT_APIS = environment.payment
   public static CART_APIS = environment.cart
+  public static ORDERS_APIS = environment.orders
 
   public static ADDRESS_TYPES = [
     {
@@ -87,7 +89,7 @@ export class Constants {
     "1": "Incomplete",
     "2": "Payed",
     "3": "Delivered",
-    "4": "Cancled",
+    "4": "Cancelled",
     "5": "Returned"
   }
 
