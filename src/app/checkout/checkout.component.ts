@@ -186,7 +186,7 @@ export class CheckoutComponent implements OnInit {
     this._charge.amount = this.orderItems[0].orderPrice
     this._charge.description = ['Rapidobuild Order',' #', this.orderItems[0].id].join("")
     this._charge.receiptEmail = this.registeredEmail
-
+    //this._charge.order_id = this.orderItems[0].id
     const name = this._charge.name
     this.stripeService
       .createToken(this.card, { name })
