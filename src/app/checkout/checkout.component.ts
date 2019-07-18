@@ -9,6 +9,8 @@ import { AddressDetailsService } from '../services/customer/address-details.serv
 import { RouteService } from '../shared-services/route/route.service';
 import { OrdersService } from '../services/orders/orders.service';
 import { Order } from '../services/orders/order';
+import { LoginStateService } from '../shared-services/login-state/login-state.service';
+import { ProfileService } from '../services/authentication/profile/profile.service';
 
 @NgModule({
 	imports: [
@@ -26,6 +28,9 @@ import { Order } from '../services/orders/order';
 export class CheckoutComponent implements OnInit {
   _imageUrl: string = Constants.environment.staticAssets
   isLinear = false;
+  registeredEmail: string = ""
+  _logInName: string
+  amount: any
   orderItems = []
   orderAddress = {
     addr_1: "",
@@ -45,7 +50,16 @@ export class CheckoutComponent implements OnInit {
   private _addressDetailsService: AddressDetailsService
   address: any
   example:any
-  
+  payment: FormGroup;
+  // optional parameters
+  elementsOptions: ElementsOptions = {
+    locale: 'en'
+  };
+  elements: Elements;
+  card: StripeElement;
+  chargeResult: string;
+  _charge: Charge = new Charge()
+
   registerFormGroup: FormGroup // UI reactive Form Group variable 
   private _orderService: OrdersService
 
@@ -56,7 +70,9 @@ export class CheckoutComponent implements OnInit {
     private chargeService: ChargeService,
     private RouteService : RouteService,
     orderService: OrdersService,
-
+    private _loginStateService: LoginStateService,
+    private _profileService: ProfileService,
+    private fb: FormBuilder,
     private router: Router,
     addressDetailsService: AddressDetailsService
   ) {
@@ -76,6 +92,42 @@ export class CheckoutComponent implements OnInit {
       }
       this.showSpinner = false
     })
+
+    this._loginStateService.currentState.subscribe(state => {
+      if (state) {
+        this.registeredEmail = this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.email
+        this._logInName = this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.name
+      }
+    })
+
+    this.payment = this.fb.group({
+      name: ['', [Validators.required]]
+    });
+    this.stripeService.elements(this.elementsOptions)
+      .subscribe(elements => {
+        this.elements = elements;
+        // Only mount the element the first time
+        if (!this.card) {
+          this.card = this.elements.create('card', {
+            style: {
+              base: {
+                color: '#32325d',
+                fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                fontSmoothing: 'antialiased',
+                fontSize: '16px',
+                '::placeholder': {
+                  color: '#aab7c4'
+                }
+              },
+              invalid: {
+                color: '#fa755a',
+                iconColor: '#fa755a'
+              }
+            }
+          });
+          this.card.mount('#card-element');
+        }
+      });
   }
 
   newAddress() {
@@ -107,7 +159,7 @@ export class CheckoutComponent implements OnInit {
 
       for(var i = 0; i < data.length; i++) {
         this.orderItems.push({
-          id: data[i].orderItem.product_id,
+          id: data[i].orderItem.id,
           pic: this._imageUrl+data[i].itemDetails.images[0],
           title: data[i].itemDetails.name,
           unitPrice: data[i].orderItem.unit_price,
@@ -115,7 +167,7 @@ export class CheckoutComponent implements OnInit {
           orderPrice: data[i].orderItem.order_price
         })
       }
-
+      this.amount = data[0].orderItem.order_price
       this.orderAddress.addr_1 = data[0].orderItem.addr_1
       this.orderAddress.addr_2 = data[0].orderItem.addr_2
       this.orderAddress.address_type_id = data[0].orderItem.address_type_id
@@ -126,6 +178,35 @@ export class CheckoutComponent implements OnInit {
       this.orderAddress.full_name = data[0].orderItem.full_name
       this.orderAddress.postcode = data[0].orderItem.postcode
       this.stepperIndex = 1
+    })
+  }
+
+  buy() {
+    this._charge.name = this._logInName
+    this._charge.amount = this.orderItems[0].orderPrice
+    this._charge.description = ['Rapidobuild Order',' #', this.orderItems[0].id].join("")
+    this._charge.receiptEmail = this.registeredEmail
+
+    const name = this._charge.name
+    this.stripeService
+      .createToken(this.card, { name })
+      .subscribe(result => {
+        if (result.token) {
+          console.log(result.token);
+          this._charge.token = result.token.id
+          console.log(this._charge)
+          this.charge(this._charge)
+        } else if (result.error) {
+          console.log(result.error.message);
+        }
+      });
+  }
+
+  charge(charge: Charge) {
+    const promise = this.chargeService.chargeCustomer(charge)
+    .subscribe(data => {
+      console.log(data)
+      this.chargeResult = JSON.stringify(data)
     })
   }
 }
