@@ -227,6 +227,17 @@
                 }
             }
         }
+        .pay-div {
+            border-top: 3px solid #e1e4e8;
+            h4 {
+                margin-top: 2%;
+            }
+            .payment-det {
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+            }
+        }
     }
 }
 
