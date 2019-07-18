@@ -29,7 +29,7 @@ export class SearchItemService {
     this.searchItemText.next({...this.searchItemText.value, ...state})
   }
 
-  changeResponsePoductListState(respData) {
+  changeRespProdListState(respData) {
     this.responsePoductList.next(respData)
   }
 

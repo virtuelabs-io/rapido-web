@@ -5,7 +5,7 @@ import { LogInComponent } from './log-in/log-in.component';
 import { AuthmockComponent } from './authmock/authmock.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 // import { MyProfileComponent } from './my-profile/my-profile.component';
-import { ProductResultsComponent } from './ProductResults/ProductResults.component';
+import { ProductResultsComponent } from './product-results/product-results.component';
 // import { DialogComponent } from './dialog/dialog.component';
 import { FilterMobileComponent } from './filter-mobile/filter-mobile.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
@@ -50,10 +50,8 @@ export const RoutingComponents = [
   RegisterComponent,
   LogInComponent,
   ForgotPasswordComponent,
-  // MyProfileComponent,
   ProductResultsComponent,
   AuthmockComponent,
-  // DialogComponent,
   FilterMobileComponent,
   ProductDetailsComponent,
   ResendOtpComponent,

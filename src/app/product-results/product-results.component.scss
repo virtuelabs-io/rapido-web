@@ -2,7 +2,7 @@
 
 div {
     div{
-        div{
+        section{
             display: none;
             // background: #e4e4e4;
             // padding: 10px;
@@ -14,7 +14,7 @@ div {
             }
         }
         @media screen and (max-width: $small-device) {
-            div{
+            section{
                 display: flex;
                 padding-top: 20px;
             }

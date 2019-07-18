@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { WindowService } from '../services/window.service';
+
 
 @Component({
   selector: 'app-card',
@@ -7,15 +9,16 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CardComponent implements OnInit {
 
-  itemDetails: Object
-  @Input() itemList//:Object<{fields:Object}>
-  Math = window.Math
-  constructor() { }
+  itemDetails: any
+  Math: any;
+  @Input() itemList
+  constructor(private win: WindowService) { }
 
   ngOnInit() {
     if(this.itemList){
       this.itemDetails = this.itemList.fields
     }
+    // this.Math = this.win.windowRef && this.win.windowRef.Math
   }
 
 }

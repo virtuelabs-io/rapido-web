@@ -1,15 +1,13 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { SearchItemService } from '../shared-services/search-item/search-item.services';
 import { ProductsService } from '../services/products/products.service';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {PageEvent} from '@angular/material/paginator';
-
-
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-productresults',
-  templateUrl: './ProductResults.component.html',
-  styleUrls: ['./ProductResults.component.scss']
+  templateUrl: './product-results.component.html',
+  styleUrls: ['./product-results.component.scss']
 })
 export class ProductResultsComponent implements OnInit {
 
@@ -47,7 +45,7 @@ export class ProductResultsComponent implements OnInit {
                 this.noResultsFound = true
               }
               this.responseData = data
-              this._searchItemService.changeResponsePoductListState(data)
+              this._searchItemService.changeRespProdListState(data)
               if(data && data.hits && data.hits.hit)
               this.productList = data.hits.hit
               this.length = data.hits && data.hits.found

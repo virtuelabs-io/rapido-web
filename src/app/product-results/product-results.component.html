@@ -1,15 +1,13 @@
-<div *ngIf="noResultsFound">
-  No results found
-</div>
-<div class="" *ngIf="!noResultsFound">
+
+<div class="">
   <div>
     <app-productcontrols *ngIf="productList && productList.length" [searchedText]=searchedText [responseData]=responseData></app-productcontrols>
       <!-- small device filter control starts -->
-      <!-- <section class="product-controls position-top mr-2 ml-2 "> -->
+      <section>
         <div class="btnLeft pt-4 pr-3">
             <button type="button" (click)="openDialog()" class="btn rounded-pill">Filter Controls</button>
         </div>
-      <!-- </section> -->
+      </section>
       <!-- small device filter control ends-->
   </div>
     

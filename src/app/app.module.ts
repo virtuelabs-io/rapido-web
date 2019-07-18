@@ -16,18 +16,14 @@ import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule,
           MatSnackBarModule, MatExpansionModule, MatSelectModule, MatPaginatorModule, 
           MatProgressSpinnerModule, MatDialogModule } from '@angular/material';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-// import { MyProfileComponent } from './my-profile/my-profile.component';
-// import {MatAutocompleteModule} from '@angular/material/autocomplete';
-// import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { ProductResultsComponent } from './ProductResults/ProductResults.component';
-import { FilterControlsDialog } from './ProductResults/ProductResults.component';
+import { ProductResultsComponent } from './product-results/product-results.component';
+import { FilterControlsDialog } from './product-results/product-results.component';
 import { CardComponent } from './card/card.component';
 import { RatingComponent } from './rating/rating.component';
 import { ImagesComponent } from './images/images.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { LeftSectionComponent } from './leftsection/leftsection.component';
-import { ProductControlsComponent } from './ProductControls/ProductControls.component';
-// import { DialogComponent } from './dialog/dialog.component';
+import { ProductControlsComponent } from './product-controls/product-controls.component';
 import { FilterMobileComponent } from './filter-mobile/filter-mobile.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ImageZoomComponent } from './image-zoom/image-zoom.component';
@@ -66,7 +62,6 @@ import { AccountInfoComponent } from './account-info/account-info.component';
     ImagesComponent,
     LeftSectionComponent,
     ProductControlsComponent,
-    // MatDialogModule,
     FilterMobileComponent,
     ProductDetailsComponent,
     ImageZoomComponent,
@@ -102,7 +97,6 @@ import { AccountInfoComponent } from './account-info/account-info.component';
     MatSelectModule,
     MatPaginatorModule,
     HttpClientModule,
-    // NgxStripeModule.forRoot(Constants.environment.stripePublicKey),
     MatProgressSpinnerModule,
     NgbModule,
     MatDialogModule,

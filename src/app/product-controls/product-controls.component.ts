@@ -3,8 +3,8 @@ import {PageEvent} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-productcontrols',
-  templateUrl: './productcontrols.component.html',
-  styleUrls: ['./productcontrols.component.scss']
+  templateUrl: './product-controls.component.html',
+  styleUrls: ['./product-controls.component.scss']
 })
 export class ProductControlsComponent implements OnInit {
 
