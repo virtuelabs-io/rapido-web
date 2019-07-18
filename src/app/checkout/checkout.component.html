@@ -1,52 +1,57 @@
 <mat-horizontal-stepper [linear]="isLinear" #stepper [selectedIndex]="stepperIndex">
+  <!-- Delivery address step-->
   <mat-step [stepControl]="registerFormGroup">
-      <ng-template matStepLabel>Select Delivery Address</ng-template>
-      <form class="form-container">
-                <div class="main-div">
-                    <div class="title-div">
-                      <h4>
-                        My Addresses
-                      </h4>
-                    </div>
-                    <div class="rapido-add-address">
-                      <a class="rapido-add-address-icon">
-                        <div class="address-add-icon">
-                          <a class="" (click)="newAddress()">
-                            <svg aria-hidden="true" aria-haspopup="menu">
-                                <use xlink:href="#add"/>
-                            </svg>
-                          </a>
-                        </div>
-                        <div class="text-div">
-                            <p>Add Address</p>
-                        </div>
-                        <div class="spinner-div">
-                            <mat-spinner strokeWidth="4" [diameter]="50" *ngIf="showSpinner"></mat-spinner>
-                        </div>
-                      </a>
-                      <div class="rapido-add-address-item" *ngFor="let address of address">
-                        <div class="address-text">
-                          <strong> {{ address.full_name }} </strong>
-                          <br/><p>{{ address.addr_1 }}
-                          <br/> {{ address.addr_2 }}
-                          <br/> {{ address.city }} 
-                          <br/> {{ address.county }}, {{ address.postcode }}
-                          <br/> {{ address.country }}
-                        </div>
-                        <div class="card-actions">
-                          <button mat-flat-button color="primary" class="delivery-add-button" (click)="createOrder(address.id)">
-                             Deliver to this Address
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-      </form>          
+    <ng-template matStepLabel>Select Delivery Address</ng-template>
+    <form class="form-container">
+      <div class="address-div">
+        <div class="title-div">
+          <h4>
+            My Addresses
+          </h4>
+        </div>
+        <div class="rapido-add-address">
+          <a class="rapido-add-address-icon">
+            <div class="address-add-icon">
+              <a class="" (click)="newAddress()">
+                <svg aria-hidden="true" aria-haspopup="menu">
+                  <use xlink:href="#add"/>
+                </svg>
+              </a>
+            </div>
+            <div class="text-div">
+              <p>Add Address</p>
+            </div>
+            <div class="spinner-div">
+              <mat-spinner strokeWidth="4" [diameter]="50" *ngIf="showSpinner"></mat-spinner>
+            </div>
+          </a>
+          <div class="rapido-add-address-item" *ngFor="let address of address">
+            <div class="address-text">
+              <strong> {{ address.full_name }} </strong>
+              <br/><p>{{ address.addr_1 }}
+              <br/> {{ address.addr_2 }}
+              <br/> {{ address.city }} 
+              <br/> {{ address.county }}, {{ address.postcode }}
+              <br/> {{ address.country }}
+            </div>
+            <div class="card-actions">
+              <button mat-flat-button color="primary" class="delivery-add-button" (click)="createOrder(address.id)">
+                Deliver to this Address
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>          
   </mat-step>
+
+  <!-- payment step -->
   <mat-step [stepControl]="registerFormGroup">
     <ng-template matStepLabel>Make a Payment</ng-template>
-    <app-payments></app-payments>
+    
   </mat-step>
+
+  <!--Summary Step-->
   <mat-step>
     <ng-template matStepLabel>Summary</ng-template>
     You are now done.
