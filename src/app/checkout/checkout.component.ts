@@ -24,7 +24,9 @@ import { Order } from '../services/orders/order';
   styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent implements OnInit {
+  _imageUrl: string = Constants.environment.staticAssets
   isLinear = false;
+  orderItems = []
   stepperIndex: number = 0
   order: Order = new Order()
   showSpinner: Boolean = false
@@ -91,6 +93,18 @@ export class CheckoutComponent implements OnInit {
     .then((data: any) => {
       console.log(data)
       this.order.order_id = data[0]['orderItem']['id']
+
+      for(var i = 0; i < data.length; i++) {
+        this.orderItems.push({
+          id: data[i].orderItem.product_id,
+          pic: this._imageUrl+data[i].itemDetails.images[0],
+          title: data[i].itemDetails.name,
+          unitPrice: data[i].orderItem.unit_price,
+          quantity: data[i].orderItem.quantity,
+          orderPrice: data[i].orderItem.order_price
+        })
+      }
+
       this.stepperIndex = 1
     })
   }

@@ -123,8 +123,58 @@
                     @media screen and (max-width: $mobile-device) {
                         width: 90%;
                     }
+                }
+                .order-items-main {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    .order-items {
+                        width: 100%;
+                        margin-right: 5%;
+                        margin-left: 5%;
+                        .order-items-list {
+                            display: flex;
+                            flex-direction: row;
+                            flex-wrap: wrap;
+                            margin-top: 2%;
+                            border-bottom: 1px solid #e1e4e8;
+                            a {
+                                cursor: pointer;
+                                color: $primary;
+                            }
+                            .item-thumbnail {
+                                width: 20%;
+                                padding: 2%;
+        
+                                .image {
+                                    width: 90%;
+                                }
+                            }
+                            .item-desc {
+                                width: 35%;
+                            }
+                            .item-price {
+                                padding-left: 2%;
+                                width: 25%;
+                                color: #B12704;
+                            }
+                            .item-quantity {
+                                width: 20%;
+                                .item-quntity-input {
+                                    width: 60%;
+                                    border: 1px solid #666;
+                                    border-radius: 30px;
+                                    padding: 8px 5px 8px 20px;
+                                    width: 70px;
+                                }
+                            }
+                        }
+                    }
+                    @media screen and (max-width: $mobile-device) {
+                        width: 100%;
                     }
                 }
+            }
             .cart-amount {
                 display: flex;
                 flex-direction: column;
