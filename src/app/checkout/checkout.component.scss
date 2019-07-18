@@ -161,13 +161,10 @@
                             .item-quantity {
                                 width: 20%;
                                 text-align: left;
-                                padding-left: 5%;
-                                .item-quntity-input {
-                                    width: 60%;
-                                    border: 1px solid #666;
-                                    border-radius: 30px;
-                                    padding: 8px 5px 8px 20px;
-                                    width: 70px;
+                                padding-left: 2%;
+                                padding-right: 2%;
+                                @media screen and (max-width: $small-device) {
+                                    padding-left: 10%;
                                 }
                             }
                         }
@@ -195,6 +192,24 @@
                 border-color: #C7C7C7;
                 box-shadow: 0 2px 1px 0 rgba(0,0,0,.16);
                 border-style: solid;
+                .add-title-div {
+                    background-color: black;
+                    height: 20%;
+                    .title-div {
+                        margin-top: 5%;
+                        margin-bottom: 2%;
+                        text-align: center;
+                        color: white;
+                        @media screen and (max-width: $small-device) {
+                            margin-top: 3%;
+                            margin-bottom: 1%;
+                            font-size: 14px;
+                        }
+                    }
+                    @media screen and (max-width: $small-device) {
+                        height: 40px;   
+                    }
+                }
                 .address-text {
                     margin-top: 2%;
                     margin-left: 2%;
