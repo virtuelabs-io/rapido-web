@@ -55,7 +55,6 @@ import { AccountInfoComponent } from './account-info/account-info.component';
     CheckoutComponent,
     ForgotPasswordComponent,
     AppComponent,
-    // MyProfileComponent,
     ProductResultsComponent,
     CardComponent,
     RatingComponent,

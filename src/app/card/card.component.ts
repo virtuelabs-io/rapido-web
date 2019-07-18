@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { WindowService } from '../services/window.service';
 
-
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
