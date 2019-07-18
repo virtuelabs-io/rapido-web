@@ -62,6 +62,9 @@ export class OrdersComponent implements OnInit {
           }
         }
       }
+      this.orders.sort(function(a, b){
+        return b.id-a.id //sort by date ascending
+    })
     })
   }
 
