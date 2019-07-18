@@ -79,6 +79,10 @@ export class CheckoutComponent implements OnInit {
     this._charge.description = value
   }
 
+  orderIdUpdater(value: number) {
+    this._charge.order_id = value
+  }
+
   receiptEmailUpdater(value: string) {
     this._charge.receiptEmail = value
   }
