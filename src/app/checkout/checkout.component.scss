@@ -160,6 +160,8 @@
                             }
                             .item-quantity {
                                 width: 20%;
+                                text-align: left;
+                                padding-left: 5%;
                                 .item-quntity-input {
                                     width: 60%;
                                     border: 1px solid #666;
@@ -173,6 +175,9 @@
                     @media screen and (max-width: $mobile-device) {
                         width: 100%;
                     }
+                }
+                @media screen and (max-width: $mobile-device) {
+                    width: 100%;
                 }
             }
             .cart-amount {
