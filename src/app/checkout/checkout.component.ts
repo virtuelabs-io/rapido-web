@@ -204,7 +204,7 @@ export class CheckoutComponent implements OnInit {
 
   charge(charge: Charge) {
     const promise = this.chargeService.chargeCustomer(charge)
-    .subscribe(data => {
+    .then(data => {
       console.log(data)
       this.chargeResult = JSON.stringify(data)
     })
