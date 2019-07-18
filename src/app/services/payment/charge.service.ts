@@ -4,17 +4,77 @@ import { Charge } from './charge';
 import { HttpClient } from '@angular/common/http';
 import { ProfileService } from '../authentication/profile/profile.service';
 import { Constants } from '../../utils/constants';
+import { Query } from '../products/query.interface';
+import { ProductsService } from '../products/products.service';
+import { OrderItemDetails } from '../orders/order-item-details';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChargeService extends RapidoHttpService<Charge> {
 
-  constructor(protected _http: HttpClient, protected _profileService: ProfileService) {
+  private _productService: ProductsService
+
+  constructor(protected _http: HttpClient, protected _profileService: ProfileService, productService: ProductsService) {
     super(_http, _profileService)
+    this._productService = productService
   }
 
   chargeCustomer(charge: Charge){
-    return this.post([Constants.PAYMENT_APIS.api,"charge"].join("/"), charge, this.addAuthHeader(this.initializeHeaders()))
+    return new Promise(resolve=>{
+      let orderItemsObject;
+      this.post([Constants.PAYMENT_APIS.api,"charge"].join("/"), charge, this.addAuthHeader(this.initializeHeaders()))
+        .subscribe(data => {
+          if (data[0].length > 0){
+            orderItemsObject = this.formatOrderItems(data[0])
+            this.getProductDetails(data[0])
+              .subscribe(productDetails => {
+                resolve(this.prepareCartItemDetailsList(
+                  productDetails,
+                  orderItemsObject
+                ))
+              })
+          } else {
+            resolve ({ error: "Error confirming your order! Try again!" })
+          }
+        })
+    });
+  }
+
+  getProductDetails(orderItems: any){
+    let _items: Array<String> = [Constants.SEARCH_QUERY.openBracketOr]
+    for(let _item in orderItems){
+      _items.push(Constants.SEARCH_QUERY.term.replace("$", String(orderItems[_item].product_id)))
+    }
+    _items.push(Constants.SEARCH_QUERY.closeBracket)
+    let _query: Query = {
+      q: _items.join(" "),
+      size: orderItems.length,
+      cursor: null,
+      return: Constants.SEARCH_QUERY.orderReturnFields,
+      start: null,
+      sort: null,
+      qdotparser: Constants.SEARCH_QUERY.structuredParser
+    }
+    return this._productService.get(_query)
+  }
+
+  formatOrderItems(orderItems: any) {
+    let formatedData = {}
+    for(let item in orderItems){
+      formatedData[orderItems[item].product_id] = orderItems[item]
+    }
+    return formatedData
+  }
+
+  prepareCartItemDetailsList(productDetails: any, orderItemsObject: any): Array<OrderItemDetails> {
+    let orderItemDetailsList: OrderItemDetails[] = []
+    for(let product in productDetails.hits.hit){
+      orderItemDetailsList.push(new OrderItemDetails(
+        orderItemsObject[productDetails.hits.hit[product]["id"]],
+        productDetails.hits.hit[product]["fields"]
+      ))
+    }
+    return orderItemDetailsList
   }
 }
