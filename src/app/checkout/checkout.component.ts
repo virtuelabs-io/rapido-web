@@ -27,6 +27,17 @@ export class CheckoutComponent implements OnInit {
   _imageUrl: string = Constants.environment.staticAssets
   isLinear = false;
   orderItems = []
+  orderAddress = {
+    addr_1: "",
+    addr_2: "",
+    address_type_id: "",
+    city: "",
+    country: "",
+    postcode: "",
+    county: "",
+    delivery_address_id: "",
+    full_name: ""
+  }
   stepperIndex: number = 0
   order: Order = new Order()
   showSpinner: Boolean = false
@@ -105,6 +116,15 @@ export class CheckoutComponent implements OnInit {
         })
       }
 
+      this.orderAddress.addr_1 = data[0].orderItem.addr_1
+      this.orderAddress.addr_2 = data[0].orderItem.addr_2
+      this.orderAddress.address_type_id = data[0].orderItem.address_type_id
+      this.orderAddress.city = data[0].orderItem.city
+      this.orderAddress.country = data[0].orderItem.country
+      this.orderAddress.county = data[0].orderItem.county
+      this.orderAddress.delivery_address_id = data[0].orderItem.delivery_address_id
+      this.orderAddress.full_name = data[0].orderItem.full_name
+      this.orderAddress.postcode = data[0].orderItem.postcode
       this.stepperIndex = 1
     })
   }

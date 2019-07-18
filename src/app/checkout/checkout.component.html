@@ -89,28 +89,14 @@
             </div>
             
             <div class="order-address">
-                <div class="card-info">
-                  <span class="green-text">
-                    Your order is eligible for FREE Delivery.
-                  </span>
-                  <span>
-                      Select this option at checkout.
-                  </span>
-                </div>
-                <div class="card-amount-inner">
-                  <div class="card-amount-title">
-                    <span>
-                      <strong>Total ({{inCartItems}} items): </strong>
-                      £
-                    </span>
-                    <span class="span-class">  
-                      <strong>{{cartAmount}}</strong>
-                    </span>
+                <div class="address-text">
+                    <strong> {{ orderAddress.full_name }} </strong>
+                    <br/><p>{{ orderAddress.addr_1 }}
+                    <br/> {{ orderAddress.addr_2 }}
+                    <br/> {{ orderAddress.city }} 
+                    <br/> {{ orderAddress.county }}, {{ orderAddress.postcode }}
+                    <br/> {{ orderAddress.country }}
                   </div>
-                    <div class="card-amount-checkout">
-                        <button mat-button (click)="postCartItems()" class="checkout-button">Proceed to Buy</button>
-                    </div>
-                </div>
             </div>
           </div>
         </div>
