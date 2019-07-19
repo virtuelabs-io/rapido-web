@@ -162,12 +162,12 @@ export class CheckoutComponent implements OnInit {
           id: data[i].orderItem.id,
           pic: this._imageUrl+data[i].itemDetails.images[0],
           title: data[i].itemDetails.name,
-          unitPrice: data[i].orderItem.unit_price,
+          unitPrice: data[i].orderItem.unit_price.toFixed(2),
           quantity: data[i].orderItem.quantity,
-          orderPrice: data[i].orderItem.order_price
+          orderPrice: data[i].orderItem.order_price.toFixed(2)
         })
       }
-      this.amount = data[0].orderItem.order_price
+      this.amount = data[0].orderItem.order_price.toFixed(2)
       this.orderAddress.addr_1 = data[0].orderItem.addr_1
       this.orderAddress.addr_2 = data[0].orderItem.addr_2
       this.orderAddress.address_type_id = data[0].orderItem.address_type_id
