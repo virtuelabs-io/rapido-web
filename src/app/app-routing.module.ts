@@ -20,6 +20,7 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
 import { AboutUsComponent } from './about-us/about-us.component';
 import { OrdersComponent } from './orders/orders.component';
 import { PaymentsComponent } from './payments/payments.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -42,6 +43,7 @@ const routes: Routes = [
   { path: 'aboutus', component: AboutUsComponent },
   { path: 'orders', component: OrdersComponent },
   { path: 'payment', component: PaymentsComponent },
+  { path: 'details', component: OrderDetailsComponent },
   { path: '', component: AuthmockComponent},
 ];
 
@@ -69,5 +71,6 @@ export const RoutingComponents = [
   AboutUsComponent,
   OrdersComponent,
   PaymentsComponent,
+  OrderDetailsComponent,
   AuthmockComponent
 ];

@@ -106,25 +106,15 @@
           <div class="pay-div">
             <h4>Card Details</h4>
             <div class="payment-det">
-                <mat-form-field class="">
-                    <input matInput [(ngModel)]="registeredEmail" name="email" placeholder="Enter your email">
-                </mat-form-field>
-                <div id="card-element" class="field"></div><br>
-    <button class="btn btn-primary" (click)="buy()">Pay £{{ amount }}</button>
+              <mat-form-field class="">
+                <input matInput [(ngModel)]="registeredEmail" name="email" placeholder="Enter your email">
+              </mat-form-field>
+              <div id="card-element" class="field"></div><br>
+                <button class="btn btn-primary" (click)="buy()">Pay £{{ amount }}</button>
+              </div>
             </div>
           </div>
-        </div>
       </form>
-    </mat-step>
-
-  <!--Summary Step-->
-    <mat-step>
-      <ng-template matStepLabel>Summary</ng-template>
-      You are now done.
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
-      </div>
     </mat-step>
   </mat-horizontal-stepper>
 </div>
