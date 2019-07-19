@@ -55,7 +55,7 @@
             <div class="order-div">
               <div class="title-div">
                 <h4>
-                  Your Orders
+                    Order Items
                 </h4>
               </div>
               <div class="cart-columns">
@@ -104,10 +104,10 @@
           </div>
 
           <div class="pay-div">
-            <h4>Card Details</h4>
+            <h4>Payment</h4>
             <div class="payment-det">
               <mat-form-field class="">
-                <input matInput [(ngModel)]="registeredEmail" name="email" placeholder="Enter your email">
+                <input matInput [(ngModel)]="registeredEmail" name="email" placeholder="Invoice sent to">
               </mat-form-field>
               <div id="card-element" class="field"></div><br>
                 <button class="btn btn-primary" (click)="buy()">Pay £{{ amount }}</button>
