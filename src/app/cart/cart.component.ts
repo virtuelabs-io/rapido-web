@@ -123,7 +123,13 @@ export class CartComponent implements OnInit {
       })
   }
 
-  quantityChange(unitPrice, quantity) {
-    console.log(unitPrice,quantity)
+  quantityChange(id, quantity) {
+    console.log(id,quantity)
+    for(var i = 0; i < this.cartItems.length; i++) {
+      if(this.cartItems[i].id === id) {
+        this.cartItems[i].quantity = quantity
+      }
+      this.cartAmount = (parseFloat(this.cartItems[i].amount) * this.cartItems[i].quantity).toFixed(2)
+    }
   }
 }
