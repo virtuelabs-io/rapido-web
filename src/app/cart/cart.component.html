@@ -35,7 +35,7 @@
             </p>
           </div>
           <div class="item-quantity">
-            <input type="text" maxlength="3" value="{{ item.quantity }}" autocomplete="off" name="quantityBox" class="item-quntity-input" aria-label="Quantity">
+            <input type="number" maxlength="3" (change)="quantityChange(item.amount, item.quantity )" [(ngModel)]="item.quantity" autocomplete="off" name="quantityBox" class="item-quntity-input" aria-label="Quantity">
           </div>
         </div>
       </div>    
@@ -103,7 +103,7 @@
             </p>
           </div>
           <div class="item-quantity">
-            <input type="text" maxlength="3" value="{{ item.quantity }}" autocomplete="off" name="quantityBox" class="item-quntity-input" aria-label="Quantity">
+            <input type="number" required value="{{ item.quantity }}" name="quantityBox" class="item-quntity-input">
           </div>
         </div>
       </div>    

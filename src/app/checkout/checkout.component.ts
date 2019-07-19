@@ -183,7 +183,7 @@ export class CheckoutComponent implements OnInit {
 
   buy() {
     this._charge.name = this._logInName
-    this._charge.amount = this.orderItems[0].orderPrice
+    this._charge.amount = this.orderItems[0].orderPrice.fixed(2)
     this._charge.description = ['Rapidobuild Order',' #', this.orderItems[0].id].join("")
     this._charge.receiptEmail = this.registeredEmail
     this._charge.order_id = this.orderItems[0].id

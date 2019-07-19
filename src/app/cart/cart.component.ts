@@ -122,4 +122,8 @@ export class CartComponent implements OnInit {
         this.router.navigate(['cart/checkout']);
       })
   }
+
+  quantityChange(unitPrice, quantity) {
+    console.log(unitPrice,quantity)
+  }
 }
