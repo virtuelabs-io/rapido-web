@@ -16,7 +16,7 @@
       </div>
       <div class="order-items-main">
           <div class="order-items">
-              <div class="order-items-list" *ngFor="let item of orderItems">
+              <div class="order-items-list" *ngFor="let item of orderedItems">
                 <div class="item-thumbnail">
                   <img class="image" src="{{ item.pic }}">
                 </div>
@@ -41,12 +41,12 @@
         <h5 class="title-div">Delivered To</h5>
       </div>
         <div class="address-text">
-            <strong> {{ orderAddress.full_name }} </strong>
-            <br/><p>{{ orderAddress.addr_1 }}
-            <br/> {{ orderAddress.addr_2 }}
-            <br/> {{ orderAddress.city }} 
-            <br/> {{ orderAddress.county }}, {{ orderAddress.postcode }}
-            <br/> {{ orderAddress.country }}
+            <strong> {{ deliveredAddress.full_name }} </strong>
+            <br/><p>{{ deliveredAddress.addr_1 }}
+            <br/> {{ deliveredAddress.addr_2 }}
+            <br/> {{ deliveredAddress.city }} 
+            <br/> {{ deliveredAddress.county }}, {{ deliveredAddress.postcode }}
+            <br/> {{ deliveredAddress.country }}
           </div>
     </div>
   </div>
