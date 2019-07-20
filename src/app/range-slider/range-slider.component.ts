@@ -1,6 +1,5 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
-import { Options, LabelType, ChangeContext, PointerType } from 'ng5-slider';
-
+import { Component, Input } from '@angular/core';
+// import { Options, LabelType, ChangeContext, PointerType } from 'ng5-slider';
 
 @Component({
   selector: 'range-slider',
