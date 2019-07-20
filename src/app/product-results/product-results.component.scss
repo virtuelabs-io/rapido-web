@@ -4,10 +4,6 @@ div {
     div{
         section{
             display: none;
-            // background: #e4e4e4;
-            // padding: 10px;
-            // position: relative;
-            // top: 1.5rem;
             button{
                 background: $black;
                 color: $white;
@@ -22,8 +18,6 @@ div {
        
     }
     div {
-        // position: relative;
-        // top: 1.5rem;
         div{
             @media screen and (max-width: $small-device) {
                 app-leftsection{

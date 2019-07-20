@@ -1,18 +1,15 @@
-
 form {
-    div{
-        label{
-            input{
-            width: 45px;
-            border-radius: 15px; 
-            padding-left: 2px;
-            text-align: center;
-            // padding-right: 2;
-            // margin-right: 0.5rem !important;
-        }
-        }
-    button{
-        font-size: 0.55rem;
-    }
-    }
+	div {
+		label {
+			input {
+				width: 45px;
+				border-radius: 15px;
+				padding-left: 2px;
+				text-align: center;
+			}
+		}
+		button {
+			font-size: 0.55rem;
+		}
+	}
 }
