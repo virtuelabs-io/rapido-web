@@ -5,7 +5,6 @@ import { LogInComponent } from './log-in/log-in.component';
 import { AuthmockComponent } from './authmock/authmock.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ProductResultsComponent } from './product-results/product-results.component';
-import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ResendOtpComponent } from './resend-otp/resend-otp.component';
 import { ProfileComponent } from './my-profile/profile.component';
 import { AddressComponent } from './address/address.component';
@@ -33,7 +32,6 @@ const routes: Routes = [
   { path: 'profile/companyDetails/edit', component: EditCompanyDetailsComponent },
   { path: 'profile/account', component: AccountInfoComponent },
   { path: '', component: AuthmockComponent},
-  { path: 'products/details/:id', component: ProductDetailsComponent},
   { path: 'products', component: ProductResultsComponent }
 ];
 
@@ -48,7 +46,6 @@ export const RoutingComponents = [
   ForgotPasswordComponent,
   ProductResultsComponent,
   AuthmockComponent,
-  ProductDetailsComponent,
   ResendOtpComponent,
   ProfileComponent,
   CompanyDetailsComponent,
