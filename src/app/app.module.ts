@@ -25,8 +25,6 @@ import { ImagesComponent } from './images/images.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { LeftSectionComponent } from './leftsection/leftsection.component';
 import { ProductControlsComponent } from './product-controls/product-controls.component';
-import { ProductDetailsComponent } from './product-details/product-details.component';
-import { ImageZoomComponent } from './image-zoom/image-zoom.component';
 import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { NgxStripeModule } from 'ngx-stripe';
@@ -61,8 +59,6 @@ import { AccountInfoComponent } from './account-info/account-info.component';
     ImagesComponent,
     LeftSectionComponent,
     ProductControlsComponent,
-    ProductDetailsComponent,
-    ImageZoomComponent,
     RangeSliderComponent,
     FilterControlsDialog,
     ResendOtpComponent,
