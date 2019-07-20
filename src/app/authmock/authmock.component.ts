@@ -491,6 +491,7 @@ export class AuthmockComponent implements OnInit {
   }
 
   getOrder(){
+    this.order.order_id = 103
     console.log("Fetching order for:", this.order.order_id)
     this._orderService.getOrder(this.order.order_id)
     .then((data: any) => {
