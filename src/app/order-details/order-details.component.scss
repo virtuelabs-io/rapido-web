@@ -54,46 +54,54 @@
                     margin-left: 5%;
                     .order-items-list {
                         display: flex;
-                        flex-direction: row;
+                        flex-direction: column;
                         flex-wrap: wrap;
-                        margin-top: 2%;
+                        margin-top: 1%;
                         border-bottom: 1px solid #e1e4e8;
-                        a {
-                            cursor: pointer;
-                            color: $primary;
-                        }
-                        .item-thumbnail {
-                            width: 20%;
-                            padding: 2%;
-    
-                            .image {
-                                width: 90%;
+                        .item {
+                            display: flex;
+                            flex-direction: row;
+                            flex-wrap: nowrap;
+                            .item-thumbnail {
+                                width: 20%;
+                                padding: 2%;
+                                padding-top: 0%;
+                                .image {
+                                    width: 90%;
+                                }
+                            }
+                            .item-desc {
+                                width: 35%;
+                            }
+                            .item-price {
+                                padding-left: 2%;
+                                width: 25%;
+                                color: #B12704;
+                            }
+                            .item-quantity {
+                                width: 20%;
+                                text-align: left;
+                                padding-left: 2%;
+                                padding-right: 2%;
+                                @media screen and (max-width: $small-device) {
+                                    padding-left: 10%;
+                                }
                             }
                         }
-                        .item-desc {
-                            width: 35%;
-                        }
-                        .item-price {
-                            padding-left: 2%;
-                            width: 25%;
-                            color: #B12704;
-                        }
-                        .item-quantity {
-                            width: 20%;
-                            text-align: left;
-                            padding-left: 2%;
-                            padding-right: 2%;
-                            @media screen and (max-width: $small-device) {
-                                padding-left: 10%;
-                            }
-                        }
+                        
                     }
                     .order-total {
                         width: 100%;
                         margin-left: 60%;
                         margin-top: 2%;
+                        h5 {
+                            margin-left: 14%;
+                            @media screen and (max-width: $mobile-device) {
+                                margin-left: 20%;
+                            }
+                        }
                         @media screen and (max-width: $mobile-device) {
-                            //margin-left: 
+                            margin-left: 0%;
                         }
                     }
                 }
