@@ -27,8 +27,6 @@ import { ProductResultsComponent } from './product-results/product-results.compo
 import { RangeSliderComponent } from './range-slider/range-slider.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
-import { NgxImageZoomModule } from 'ngx-image-zoom';
-
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -58,8 +56,7 @@ describe('AppComponent', () => {
         MatSidenavModule,
         MatListModule,
         MatSelectModule,
-        NgbModule,
-        NgxImageZoomModule.forRoot() 
+        NgbModule
       ],
       declarations: [
         AppComponent,

@@ -25,7 +25,6 @@ import { ImagesComponent } from './images/images.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { LeftSectionComponent } from './leftsection/leftsection.component';
 import { ProductControlsComponent } from './product-controls/product-controls.component';
-import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { Constants } from './utils/constants';
@@ -97,8 +96,7 @@ import { AccountInfoComponent } from './account-info/account-info.component';
     NgbModule,
     MatDialogModule,
     // Ng5SliderModule,
-    NgxStripeModule.forRoot(Constants.environment.stripePublicKey),
-    NgxImageZoomModule.forRoot() 
+    NgxStripeModule.forRoot(Constants.environment.stripePublicKey)
   ],
   entryComponents: [FilterControlsDialog],
   providers: [],
