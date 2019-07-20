@@ -43,7 +43,7 @@ export class OrderDetailsComponent implements OnInit {
           currency: data[i].itemDetails.currency,
           orderId: data[i].orderItem.id,
           order_price: data[i].orderItem.order_price,
-          order_status_id: data[i].orderItem.order_status_id,
+          order_status_id: Constants.ORDER_STATUS[data[i].orderItem.order_status_id],
           quantity: data[i].orderItem.quantity,
           unitPrice: data[i].orderItem.unit_price
         }

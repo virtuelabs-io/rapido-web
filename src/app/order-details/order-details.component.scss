@@ -58,6 +58,12 @@
                         flex-wrap: wrap;
                         margin-top: 1%;
                         border-bottom: 1px solid #e1e4e8;
+                        .order-item-status {
+                            span {
+                                color: green;
+                                font-weight: 800;
+                            }
+                        }
                         .item {
                             display: flex;
                             flex-direction: row;
