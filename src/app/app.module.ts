@@ -18,14 +18,13 @@ import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule,
           MatFormFieldModule  } from '@angular/material';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ProductResultsComponent } from './product-results/product-results.component';
-import { ProductResultsModule } from './product-results/product-results.module';
+// import { ProductResultsModule } from './product-results/product-results.module';
 import { FilterControlsDialog } from './product-results/product-results.component';
 import { CardComponent } from './card/card.component';
-import { CardModule } from './card/card.module';
+// import { CardModule } from './card/card.module';
 import { RatingComponent } from './rating/rating.component';
 import { RatingModule } from './rating/rating.module';
 import { ImagesComponent } from './images/images.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { LeftSectionComponent } from './leftsection/leftsection.component';
 import { LeftsectionModule } from './leftsection/leftsection.module';
 import { ProductControlsComponent } from './product-controls/product-controls.component';
@@ -76,7 +75,8 @@ import { AccountInfoComponent } from './account-info/account-info.component';
     EditCompanyDetailsComponent,
     AccountInfoComponent
   ],
-  imports: [MatSidenavModule,
+  imports: [
+    MatSidenavModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -98,15 +98,14 @@ import { AccountInfoComponent } from './account-info/account-info.component';
     MatPaginatorModule,
     HttpClientModule,
     MatProgressSpinnerModule,
-    NgbModule,
     MatDialogModule,
     // Ng5SliderModule,
     NgxStripeModule.forRoot(Constants.environment.stripePublicKey),
-    ProductResultsModule,
-    LeftsectionModule,
-    RangeSliderModule,
-    RatingModule,
-    CardModule
+    // ProductResultsModule,
+    // LeftsectionModule,
+    // RangeSliderModule,
+    // RatingModule
+    // CardModule
   ],
   entryComponents: [FilterControlsDialog],
   providers: [],
