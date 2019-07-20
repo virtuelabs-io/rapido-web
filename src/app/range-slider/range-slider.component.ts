@@ -36,8 +36,6 @@ export class RangeSliderComponent {
   // }
 
   onSubmitPriceFilter (evt){
-    console.log(this.rangeData)
-    console.log(this.selectedMaxVal, this.selectedMinVal)
     this.rangeData.fnPriceFilterHandler({
       min:this.selectedMinVal, max:this.selectedMaxVal
     })

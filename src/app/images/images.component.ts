@@ -13,7 +13,6 @@ export class ImagesComponent implements OnInit {
 
   ngOnInit() {
     this.imgSrc = Constants.environment.staticAssets + this.imgSrc[0]
-    console.log(this.imgSrc)
   }
 
 }
