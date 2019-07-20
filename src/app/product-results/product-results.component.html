@@ -1,7 +1,8 @@
 
-<div class="">
+<div>
   <div>
-    <app-productcontrols *ngIf="productList && productList.length" [searchedText]=searchedText [responseData]=responseData></app-productcontrols>
+    <!-- top 2nd banner - showing.....
+       <app-productcontrols *ngIf="productList && productList.length" [searchedText]=searchedText [responseData]=responseData></app-productcontrols> -->
       <!-- small device filter control starts -->
       <section>
         <div class="btnLeft pt-4 pr-3">
@@ -19,7 +20,7 @@
       </div>
         <!-- Cards List div starts -->
         <div class="row itemListCls col-md-9" >
-                <div *ngFor="let item of productListBind" class="">
+                <div *ngFor="let item of productListBind">
                     <app-card [itemList]=item></app-card>
                 </div>
         </div>

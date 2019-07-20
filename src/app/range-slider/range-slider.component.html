@@ -6,14 +6,14 @@
 
     <form class="pl-4" (ngSubmit)="onSubmitPriceFilter()">
         <div>
-            <label class="">
-            <span class=""> £</span>
-            <input class="" type="number" [(ngModel)]="selectedMinVal" [minlength]="selectedMinVal" name="min">
+            <label>
+            <span> £</span>
+            <input type="number" [(ngModel)]="selectedMinVal" [minlength]="selectedMinVal" name="min">
         </label>
             <span class="pr-1">  to  </span>
         <label class="pr-2">
-            <span class=""> £</span>
-            <input class="" type="number" [(ngModel)]="selectedMaxVal" [maxlength]="selectedMaxVal" name="max">
+            <span> £</span>
+            <input type="number" [(ngModel)]="selectedMaxVal" [maxlength]="selectedMaxVal" name="max">
         </label>
         
         <button class="btn font-weight-bold btn-primary rounded-pill" type="submit">Go</button>

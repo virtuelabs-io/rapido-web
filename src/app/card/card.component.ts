@@ -19,5 +19,4 @@ export class CardComponent implements OnInit {
     }
     // this.Math = this.win.windowRef && this.win.windowRef.Math
   }
-
 }

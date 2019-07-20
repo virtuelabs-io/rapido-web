@@ -1,28 +1,25 @@
 <div class="card p-2">
-    <!-- [routerLink]="['/products/details','1']" -->
+  <!-- [routerLink]="['/products/details','1']" -->
   <app-images [imgSrc]=itemDetails.images></app-images>
   <div class="card-body">
-      <h6 class="">
-        <a class="" >
-          <span class="">{{itemDetails.name}}</span>
+     <h6>
+        <a>
+        <span>{{itemDetails.name}}</span>
         </a>
-      </h6>
-       <app-rating [currentRate]=itemDetails.rating></app-rating>
-       <div>
-         <span aria-hidden="true" class="text-danger">
-             <span class="a-price-symbol">£</span>
-             <span class="a-price-whole">{{itemDetails.price}}</span>
-          </span>
-          <span aria-hidden="true" class="small p-2">
-            <span class="a-price-symbol">£</span>
-            <s class="a-price-whole">{{ itemDetails.offer === 0 ? (Math.round(itemDetails.price * itemDetails.offer * 1000)) / 100 : itemDetails.price }}</s>
-          </span> 
-         <span class="small p-2">
-            <span>Save £ {{ itemDetails.price - (itemDetails.offer === 0 ? (Math.round(itemDetails.price * itemDetails.offer * 1000)) / 100 : itemDetails.price) }}  ({{itemDetails.offer}})%</span>
-         </span>
-            
-       </div>
-
-    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+     </h6>
+     <app-rating [currentRate]=itemDetails.rating></app-rating>
+     <div>
+        <span aria-hidden="true" class="text-danger">
+        <span class="a-price-symbol">£</span>
+        <span class="a-price-whole">{{itemDetails.price}}</span>
+        </span>
+        <span aria-hidden="true" class="small p-2">
+        <span class="a-price-symbol">£</span>
+        <s class="a-price-whole">{{ itemDetails.offer === 0 ? (Math.round(itemDetails.price * itemDetails.offer * 1000)) / 100 : itemDetails.price }}</s>
+        </span> 
+        <span class="small p-2">
+        <span>Save £ {{ itemDetails.price - (itemDetails.offer === 0 ? (Math.round(itemDetails.price * itemDetails.offer * 1000)) / 100 : itemDetails.price) }}  ({{itemDetails.offer}})%</span>
+        </span>
+     </div>
   </div>
 </div>
