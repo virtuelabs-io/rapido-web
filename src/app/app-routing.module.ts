@@ -5,7 +5,6 @@ import { LogInComponent } from './log-in/log-in.component';
 import { AuthmockComponent } from './authmock/authmock.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ProductResultsComponent } from './product-results/product-results.component';
-import { FilterMobileComponent } from './filter-mobile/filter-mobile.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ResendOtpComponent } from './resend-otp/resend-otp.component';
 import { ProfileComponent } from './my-profile/profile.component';
@@ -35,8 +34,7 @@ const routes: Routes = [
   { path: 'profile/account', component: AccountInfoComponent },
   { path: '', component: AuthmockComponent},
   { path: 'products/details/:id', component: ProductDetailsComponent},
-  { path: 'products', component: ProductResultsComponent },
-  { path: 'filter-mobile', component: FilterMobileComponent },
+  { path: 'products', component: ProductResultsComponent }
 ];
 
 @NgModule({
@@ -50,7 +48,6 @@ export const RoutingComponents = [
   ForgotPasswordComponent,
   ProductResultsComponent,
   AuthmockComponent,
-  FilterMobileComponent,
   ProductDetailsComponent,
   ResendOtpComponent,
   ProfileComponent,
