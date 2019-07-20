@@ -11,8 +11,11 @@ export class RangeSliderComponent {
   selectedMinVal: number 
   selectedMaxVal: number 
   ngOnInit() {
-    this.selectedMinVal = this.rangeData.minValue
-    this.selectedMaxVal = this.rangeData.maxValue
+    if(this.rangeData){
+      this.selectedMinVal = this.rangeData.minValue
+      this.selectedMaxVal = this.rangeData.maxValue
+    }
+    
   }
   // options: Options = {
   //   floor: 0,

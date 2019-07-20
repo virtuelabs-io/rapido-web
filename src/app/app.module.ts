@@ -18,18 +18,23 @@ import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule,
           MatFormFieldModule  } from '@angular/material';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ProductResultsComponent } from './product-results/product-results.component';
+import { ProductResultsModule } from './product-results/product-results.module';
 import { FilterControlsDialog } from './product-results/product-results.component';
 import { CardComponent } from './card/card.component';
+import { CardModule } from './card/card.module';
 import { RatingComponent } from './rating/rating.component';
+import { RatingModule } from './rating/rating.module';
 import { ImagesComponent } from './images/images.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { LeftSectionComponent } from './leftsection/leftsection.component';
+import { LeftsectionModule } from './leftsection/leftsection.module';
 import { ProductControlsComponent } from './product-controls/product-controls.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { Constants } from './utils/constants';
 // import { Ng5SliderModule } from 'ng5-slider';
 import { RangeSliderComponent } from './range-slider/range-slider.component';
+import { RangeSliderModule } from './range-slider/range-slider.module';
 import { ResendOtpComponent } from './resend-otp/resend-otp.component';
 import { ProfileComponent } from './my-profile/profile.component';
 import { CompanyDetailsComponent } from './company-details/company-details.component';
@@ -96,7 +101,12 @@ import { AccountInfoComponent } from './account-info/account-info.component';
     NgbModule,
     MatDialogModule,
     // Ng5SliderModule,
-    NgxStripeModule.forRoot(Constants.environment.stripePublicKey)
+    NgxStripeModule.forRoot(Constants.environment.stripePublicKey),
+    ProductResultsModule,
+    LeftsectionModule,
+    RangeSliderModule,
+    RatingModule,
+    CardModule
   ],
   entryComponents: [FilterControlsDialog],
   providers: [],

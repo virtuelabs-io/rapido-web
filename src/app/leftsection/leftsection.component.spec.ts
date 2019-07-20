@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LeftSectionComponent } from './leftsection.component';
+import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('LeftSectionComponent', () => {
   let component: LeftSectionComponent;
@@ -8,7 +9,8 @@ describe('LeftSectionComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LeftSectionComponent ]
+      declarations: [ LeftSectionComponent ],
+      schemas: [NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));

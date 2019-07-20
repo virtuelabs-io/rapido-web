@@ -1,18 +1,18 @@
 <div class="card p-2">
   <!-- [routerLink]="['/products/details','1']" -->
-  <app-images [imgSrc]=itemDetails.images></app-images>
+  <app-images [imgSrc]=images></app-images>
   <div class="card-body">
      <h6>
         <a>
-        <span>{{itemDetails.name}}</span>
+        <span>{{name}}</span>
         </a>
      </h6>
-     <app-rating [currentRate]=itemDetails.rating></app-rating>
+     <app-rating [currentRate]=rating></app-rating>
      <div>
         <span aria-hidden="true" class="text-danger">
         <span class="a-price-symbol">£</span>
         <!-- Discounted Price -->
-        <span class="a-price-whole">{{itemDetails.price}}</span>
+        <span class="a-price-whole">{{ price }}</span>
         </span>
         <span aria-hidden="true" class="small p-2">
         <span class="a-price-symbol">£</span>
@@ -21,7 +21,7 @@
         </span> 
         <span class="small p-2">
         <!-- Price saved -->
-        <span>Save £ {{ discountedPrice }}  ({{itemDetails.offer}})%</span>
+        <span>Save £ {{ discountedPrice }}  ({{ offer }})%</span>
         </span>
      </div>
   </div>
