@@ -14,7 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, 
           MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, 
           MatSnackBarModule, MatExpansionModule, MatSelectModule, MatPaginatorModule, 
-          MatProgressSpinnerModule, MatDialogModule } from '@angular/material';
+          MatProgressSpinnerModule, MatDialogModule, MatCardModule,
+          MatFormFieldModule  } from '@angular/material';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ProductResultsComponent } from './product-results/product-results.component';
 import { FilterControlsDialog } from './product-results/product-results.component';
@@ -92,6 +93,8 @@ import { AccountInfoComponent } from './account-info/account-info.component';
     MatExpansionModule,
     MatMenuModule,
     MatSelectModule,
+    MatCardModule,
+    MatFormFieldModule,
     MatPaginatorModule,
     HttpClientModule,
     MatProgressSpinnerModule,

@@ -10,12 +10,26 @@ import { ButtonComponent } from './common/button/button.component';
 import { IconComponent } from './common/icons/icons.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { RoutingComponents } from './app-routing.module';
-import { MatStepperModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { Constants } from './utils/constants';
-import { MatProgressSpinnerModule, MatMenuModule , MatToolbarModule, MatFormFieldModule, MatIconModule, MatCheckboxModule, MatCardModule, MatExpansionModule, MatSnackBarModule } from '@angular/material';
+import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, 
+  MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, 
+  MatSnackBarModule, MatExpansionModule, MatSelectModule, MatPaginatorModule, 
+  MatProgressSpinnerModule, MatDialogModule, MatFormFieldModule, MatCardModule  } from '@angular/material';
+import { LeftSectionComponent } from './leftsection/leftsection.component';
+import { CardComponent } from './card/card.component';
+import { RatingComponent } from './rating/rating.component';
+import { ImagesComponent } from './images/images.component';
+import { ProductControlsComponent } from './product-controls/product-controls.component';
+import { ProductResultsComponent } from './product-results/product-results.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ImageZoomComponent } from './image-zoom/image-zoom.component';
+import { RangeSliderComponent } from './range-slider/range-slider.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
+import { NgxImageZoomModule } from 'ngx-image-zoom';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -39,7 +53,15 @@ describe('AppComponent', () => {
         MatExpansionModule,
         MatSnackBarModule,
         MatProgressSpinnerModule,
-        CheckoutComponent
+        MatPaginatorModule,
+        MatDialogModule,
+        MatInputModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatListModule,
+        MatSelectModule,
+        NgbModule,
+        NgxImageZoomModule.forRoot() 
       ],
       declarations: [
         AppComponent,
@@ -48,7 +70,17 @@ describe('AppComponent', () => {
         ButtonComponent,
         IconComponent,
         LogInComponent,
-        RoutingComponents
+        RoutingComponents,
+        CheckoutComponent,
+        LeftSectionComponent,
+        CardComponent,
+        RatingComponent,
+        ImageZoomComponent,
+        ImagesComponent,
+        ProductControlsComponent,
+        ProductDetailsComponent,
+        ProductResultsComponent,
+        RangeSliderComponent
       ],
     }).compileComponents();
   }));
