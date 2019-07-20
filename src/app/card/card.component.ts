@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CardComponent implements OnInit {
 
   itemDetails: any
-  actualPrice: any
+  mrpPrice: any
   discountedPrice: any
   images: any
   name: any
@@ -22,17 +22,8 @@ export class CardComponent implements OnInit {
   ngOnInit() {
     if(this.itemList){
       this.itemDetails = this.itemList.fields
-        if(this.itemDetails && this.itemDetails.offer && this.itemDetails.offer === 0){
-          this.actualPrice = (Math.round(this.itemDetails.price * this.itemDetails.offer * 1000)) / 100
-        }else{
-          this.actualPrice = this.itemDetails.price
-        }
-      this.discountedPrice = this.itemDetails.price - this.actualPrice
-      this.images = this.itemDetails && this.itemDetails.images
-      this.name = this.itemDetails && this.itemDetails.name
-      this.price = this.itemDetails && this.itemDetails.price
-      this.offer = this.itemDetails && this.itemDetails.offer
-      this.rating = this.itemDetails && this.itemDetails.rating
+      this.mrpPrice = (this.itemDetails.price * (1 + parseFloat(this.itemDetails.offer))).toFixed(2)
+      this.discountedPrice = (this.mrpPrice - this.itemDetails.price).toFixed(2)
     }
   }
 }
