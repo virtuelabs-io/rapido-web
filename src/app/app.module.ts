@@ -98,6 +98,7 @@ import { AccountInfoComponent } from './account-info/account-info.component';
     NgbModule,
     MatDialogModule,
     // Ng5SliderModule,
+    NgxStripeModule.forRoot(Constants.environment.stripePublicKey),
     NgxImageZoomModule.forRoot() 
   ],
   entryComponents: [FilterControlsDialog],
