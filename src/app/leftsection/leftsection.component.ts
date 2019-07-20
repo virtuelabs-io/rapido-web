@@ -28,14 +28,14 @@ export class LeftSectionComponent implements OnInit {
   updateProductControls(respData){
     let {hits} = respData
     if(hits && hits.hit ){
-    this.tags = hits.hit[0].fields.tags
-  }
+      this.tags = hits.hit[0].fields.tags
+    }
     this.fnPriceFilterHandler= obj => this.priceFilterData(obj);
     this.filterData = [
                       {
-                        'headerText':'Show result for',
+                        'headerText':'Show related types',
                          'panel':[ {
-                           'panelTitle':this.searchedText,
+                           'panelTitle':this.searchedText || '',
                            'panelType':'link',
                            'panelData':this.tags
                         }]

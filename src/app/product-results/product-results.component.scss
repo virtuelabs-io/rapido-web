@@ -33,6 +33,13 @@ div {
     } 
 }
 
+.no-results{
+    display: block;
+    padding: 10px 25px; 
+    text-align: center;
+    font-size: 28px;
+}
+
 .btnLeft{
     display: flex;
     justify-content: flex-end;

@@ -41,9 +41,11 @@ export class ProductResultsComponent implements OnInit {
               if(data.error){
                 throw Error('error')
               }
-              if(data.hits.found < 0){
+              if(data.hits.found === 0){
                 this.noResultsFound = true
+                return;
               }
+              this.noResultsFound = false
               this.responseData = data
               this._searchItemService.changeRespProdListState(data)
               if(data && data.hits && data.hits.hit)

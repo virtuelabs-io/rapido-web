@@ -1,7 +1,6 @@
-
-<div>
+<div *ngIf="!noResultsFound">
   <div>
-    <!-- top 2nd banner - showing.....
+    <!-- top 2nd banner - showing 1 of ...
        <app-productcontrols *ngIf="productList && productList.length" [searchedText]=searchedText [responseData]=responseData></app-productcontrols> -->
       <!-- small device filter control starts -->
       <section>
@@ -35,5 +34,8 @@
           </div>
     </div>
   </div>
-
 </div>
+
+<div class="no-results" *ngIf="noResultsFound">
+    We didn't find any results for that search... Please try again.
+  </div>
