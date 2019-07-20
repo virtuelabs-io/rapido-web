@@ -11,14 +11,17 @@
      <div>
         <span aria-hidden="true" class="text-danger">
         <span class="a-price-symbol">£</span>
+        <!-- Discounted Price -->
         <span class="a-price-whole">{{itemDetails.price}}</span>
         </span>
         <span aria-hidden="true" class="small p-2">
         <span class="a-price-symbol">£</span>
-        <s class="a-price-whole">{{ itemDetails.offer === 0 ? (Math.round(itemDetails.price * itemDetails.offer * 1000)) / 100 : itemDetails.price }}</s>
+        <!-- Actual Price -->
+        <s class="a-price-whole">{{ actualPrice }}</s>
         </span> 
         <span class="small p-2">
-        <span>Save £ {{ itemDetails.price - (itemDetails.offer === 0 ? (Math.round(itemDetails.price * itemDetails.offer * 1000)) / 100 : itemDetails.price) }}  ({{itemDetails.offer}})%</span>
+        <!-- Price saved -->
+        <span>Save £ {{ discountedPrice }}  ({{itemDetails.offer}})%</span>
         </span>
      </div>
   </div>
