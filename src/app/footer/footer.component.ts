@@ -13,7 +13,7 @@ export class FooterComponent implements OnInit {
   bannerName: String = Constants.RAPIDO_BUILD
   durationInSeconds = 5;
   constructor(
-    private router: Router
+    public router: Router
 
   ) { }
 
