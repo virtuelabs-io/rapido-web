@@ -6,7 +6,6 @@ import { ProfileService } from '../authentication/profile/profile.service';
 import { Constants } from '../../utils/constants';
 import { Query } from '../products/query.interface';
 import { ProductsService } from '../products/products.service';
-import { OrderItemDetails } from '../orders/order-item-details';
 
 @Injectable({
   providedIn: 'root'
@@ -62,19 +61,17 @@ export class ChargeService extends RapidoHttpService<Charge> {
   formatOrderItems(orderItems: any) {
     let formatedData = {}
     for(let item in orderItems){
-      formatedData[orderItems[item].product_id] = orderItems[item]
+      if(formatedData[orderItems[item].id] == undefined){
+        formatedData[orderItems[item].id] = {}
+      }
+      formatedData[orderItems[item].id][orderItems[item].product_id] = orderItems[item]
     }
     return formatedData
   }
 
-  prepareCartItemDetailsList(productDetails: any, orderItemsObject: any): Array<OrderItemDetails> {
-    let orderItemDetailsList: OrderItemDetails[] = []
-    for(let product in productDetails.hits.hit){
-      orderItemDetailsList.push(new OrderItemDetails(
-        orderItemsObject[productDetails.hits.hit[product]["id"]],
-        productDetails.hits.hit[product]["fields"]
-      ))
+  prepareCartItemDetailsList(productDetails: any, orderItemsObject: any) {
+    return {
+      orderItemsObject, productDetails
     }
-    return orderItemDetailsList
   }
 }
