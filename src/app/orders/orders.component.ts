@@ -11,15 +11,16 @@ import { Router } from '@angular/router';
 })
 export class OrdersComponent implements OnInit {
   private _orderService: OrdersService
-  _imageUrl: string = Constants.environment.staticAssets
-  orders = []
+  imageUrl: string = Constants.environment.staticAssets
+  orders = {}
+  products = {}
+  currentOrders = []
   cancelledStatus = Constants.ORDER_STATUS[4]
-  order: Order = new Order()
 
   constructor(
     orderService: OrdersService,
     private router: Router
-  ) { 
+  ) {
     this._orderService = orderService
   }
 
@@ -40,41 +41,32 @@ export class OrdersComponent implements OnInit {
   getOrders() {
     this._orderService.getOrders()
     .then((data: any) => {
-      console.log(data)
-      for(var i = 0; i < data.length; i++) {
-        this.orders.push({
-          id: data[i].orderItem.id,
-          date: data[i].orderItem.created_on.split("T")[0],
-          price: data[i].orderItem.order_price,
-          shipTo: data[i].orderItem.full_name,
-          currency: data[i].itemDetails.currency,
-          category: Constants.ORDER_STATUS[data[i].orderItem.order_status_id],
-          items: []
-        })
+      if(data['products']){
+        this.products = data['products']
       }
-      this.orders = this.uniqueOrders(this.orders, 'id')
-      for(var i = 0; i < data.length; i++) {
-        for(var j = 0; j < this.orders.length; j++) {
-          if(data[i].orderItem.id == this.orders[j].id) {
-            this.orders[j].items.push({
-              desc: data[i].itemDetails.name,
-              unitPrice: data[i].orderItem.unit_price,
-              pic: this._imageUrl+data[i].itemDetails.images[0],
-              currency: data[i].itemDetails.currency
-            })
+      if(data['orderItemsObject']){
+        for(let order in data['orderItemsObject']) {
+          if(this.orders[order] == undefined) {
+            this.orders[order] = {}
+            this.orders[order]['items'] = []
+          }
+          for(let product in data['orderItemsObject'][order]){
+            this.orders[order].currency = data['products'][product]['currency']
+            this.orders[order].price = data['orderItemsObject'][order][product]['order_price']
+            this.orders[order].date = data['orderItemsObject'][order][product]['created_on']
+            this.orders[order].shipTo = data['orderItemsObject'][order][product]['full_name']
+            this.orders[order].category = Constants.ORDER_STATUS[data['orderItemsObject'][order][product]['order_status_id']]
+            this.orders[order]['items'].push(data['orderItemsObject'][order][product])
           }
         }
       }
-      this.orders.sort(function(a, b){
-        return b.id-a.id //sort by date ascending
-    })
+      this.currentOrders = Object.keys(this.orders).reverse()
     })
   }
 
   cancelOrder(id) {
-    this.order.order_id = id
-    console.log("Canceling order for:", this.order.order_id)
-    this._orderService.cancelOrder(this.order.order_id)
+    console.log("Canceling order for:", id)
+    this._orderService.cancelOrder(id)
     .subscribe(data => {
       console.log(data)
       this.getOrders()
