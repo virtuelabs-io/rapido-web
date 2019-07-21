@@ -7,7 +7,13 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CardComponent implements OnInit {
 
-  itemDetails: any
+  itemDetails: any = {
+    'price':'',
+    'offer':'',
+    'name':'',
+    'images':'',
+    'rating':''
+  }
   mrpPrice: any
   discountedPrice: any
   images: any
