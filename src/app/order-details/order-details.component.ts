@@ -13,6 +13,8 @@ export class OrderDetailsComponent implements OnInit {
   deliveredAddress = []
   currency: string 
   orderPrice: string
+  createdOn: string
+  orderId: string
   _imageUrl: string = Constants.environment.staticAssets
   order: Order = new Order()
   private _orderService: OrdersService
@@ -53,6 +55,8 @@ export class OrderDetailsComponent implements OnInit {
     this.deliveredAddress = data[0].orderItem
     this.currency = this.orderedItems[0].currency
     this.orderPrice = data[0].orderItem.order_price
+    this.createdOn = this.orderedItems[0].createdOn
+    this.orderId = this.orderedItems[0].orderId
     })
   }
 
