@@ -11,7 +11,7 @@ import { parse } from 'url';
 })
 export class OrderDetailsComponent implements OnInit {
   orderedItems = []
-  deliveredAddress = []
+  deliveredAddress = {}
   currency: string 
   orderPrice: string
   createdOn: string
