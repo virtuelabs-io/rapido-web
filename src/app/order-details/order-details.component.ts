@@ -11,7 +11,15 @@ import { parse } from 'url';
 })
 export class OrderDetailsComponent implements OnInit {
   orderedItems = []
-  deliveredAddress = {}
+  deliveredAddress = {
+    full_name: "",
+    addr_1: "",
+    addr_2: "",
+    city: "",
+    county: "",
+    postcode: "",
+    country: ""
+  }
   currency: string 
   orderPrice: string
   createdOn: string
@@ -57,7 +65,15 @@ export class OrderDetailsComponent implements OnInit {
         }
       )
     }
-    this.deliveredAddress = data[0].orderItem
+    this.deliveredAddress.full_name = data[0].orderItem
+    this.deliveredAddress.addr_1 = data[0].orderItem.addr_1
+    this.deliveredAddress.addr_2 = data[0].orderItem.addr_1
+    this.deliveredAddress.city = data[0].orderItem.city
+    this.deliveredAddress.county = data[0].orderItem.county
+    this.deliveredAddress.postcode = data[0].orderItem.postcode
+    this.deliveredAddress.country = data[0].orderItem.country
+
+
     this.currency = this.orderedItems[0].currency
     this.orderPrice = data[0].orderItem.order_price
     this.createdOn = this.orderedItems[0].createdOn
