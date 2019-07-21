@@ -16,6 +16,9 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { Constants } from './utils/constants';
 import { MatProgressSpinnerModule, MatMenuModule , MatToolbarModule, MatFormFieldModule, MatIconModule, MatCheckboxModule, MatCardModule, MatExpansionModule, MatSnackBarModule } from '@angular/material';
+import { FooterComponent } from './footer/footer.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -38,7 +41,9 @@ describe('AppComponent', () => {
         MatCardModule,
         MatExpansionModule,
         MatSnackBarModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        HttpClientModule,
+        NgxPageScrollCoreModule
       ],
       declarations: [
         AppComponent,
@@ -48,7 +53,8 @@ describe('AppComponent', () => {
         IconComponent,
         LogInComponent,
         RoutingComponents,
-        CheckoutComponent
+        CheckoutComponent,
+        FooterComponent
       ],
     }).compileComponents();
   }));

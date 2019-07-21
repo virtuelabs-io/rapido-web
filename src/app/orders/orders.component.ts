@@ -37,9 +37,10 @@ export class OrdersComponent implements OnInit {
    return unique;
   }
 
-  getOrders(){
+  getOrders() {
     this._orderService.getOrders()
     .then((data: any) => {
+      console.log(data)
       for(var i = 0; i < data.length; i++) {
         this.orders.push({
           id: data[i].orderItem.id,
