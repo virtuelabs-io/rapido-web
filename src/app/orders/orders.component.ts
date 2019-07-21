@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OrdersService } from '../services/orders/orders.service';
 import { Constants } from '../utils/constants';
 import { Order } from '../services/orders/order';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-orders',
@@ -16,7 +17,8 @@ export class OrdersComponent implements OnInit {
   order: Order = new Order()
 
   constructor(
-    orderService: OrdersService
+    orderService: OrdersService,
+    private router: Router
   ) { 
     this._orderService = orderService
   }
@@ -76,5 +78,9 @@ export class OrdersComponent implements OnInit {
       console.log(data)
       this.getOrders()
     })
+  }
+
+  orderDetails(id) {
+    this.router.navigate(['orders', id, 'details'])
   }
 }

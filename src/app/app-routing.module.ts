@@ -43,7 +43,7 @@ const routes: Routes = [
   { path: 'aboutus', component: AboutUsComponent },
   { path: 'orders', component: OrdersComponent },
   { path: 'payment', component: PaymentsComponent },
-  { path: 'details', component: OrderDetailsComponent },
+  { path: 'orders/:id/details', component: OrderDetailsComponent },
   { path: '', component: AuthmockComponent},
 ];
 

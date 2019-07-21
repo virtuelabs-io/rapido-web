@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { OrdersService } from '../services/orders/orders.service';
 import { Order } from '../services/orders/order';
 import { Constants } from '../utils/constants';
-
+import { Router, ActivatedRoute } from '@angular/router';
+import { parse } from 'url';
 @Component({
   selector: 'app-order-details',
   templateUrl: './order-details.component.html',
@@ -15,23 +16,27 @@ export class OrderDetailsComponent implements OnInit {
   orderPrice: string
   createdOn: string
   orderId: string
+  id: number
   _imageUrl: string = Constants.environment.staticAssets
   order: Order = new Order()
   private _orderService: OrdersService
 
   constructor(
-    orderService: OrdersService
+    orderService: OrdersService,
+    private router: Router,
+    private actRoute: ActivatedRoute
   ) { 
     this._orderService = orderService
 
   }
 
   ngOnInit() {
+    this.id = parseInt(this.actRoute.snapshot.paramMap.get('id'))
     this.getOrder()
   }
 
   getOrder() {
-    this.order.order_id = 103
+    this.order.order_id = this.id
     console.log("Fetching order for:", this.order.order_id)
     this._orderService.getOrder(this.order.order_id)
     .then((data: any) => {
