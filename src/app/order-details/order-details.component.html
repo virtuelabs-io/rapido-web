@@ -6,6 +6,9 @@
           Summary
         </h4>
       </div>
+      <div class="order-id-date">
+        
+      </div>
       <div class="cart-columns">
         <div class="cart-col-price">
           <span>Price(£)</span>
@@ -36,18 +39,15 @@
                         <span>{{ item.quantity }}</span>
                       </div>
                 </div>
-                
               </div>
-              
                 <div class="order-total">
-                <p>Order Total: {{orderedItems[0].currency}}<span> {{orderedItems[0].order_price}}</span></p>
-              </div>
+                
+                  <p>Order Total: {{currency}}<span> {{orderPrice}}</span></p>
               
+              </div>
             </div>
-            
       </div>
     </div>
-    
     <div class="order-address">
       <div class="add-title-div">
         <h5 class="title-div">Delivered To</h5>
