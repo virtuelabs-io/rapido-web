@@ -45,7 +45,7 @@
               </div>
                 <div class="order-total">
                 
-                  <p>Order Total: {{currency}}<span> {{orderPrice}}</span></p>
+                  <p>Order Total: {{ orders[order].currency }}<span> {{ orders[order].order_price }}</span></p>
               
               </div>
             </div>
@@ -56,12 +56,12 @@
         <h5 class="title-div">Delivered To</h5>
       </div>
         <div class="address-text">
-            <strong> {{ deliveredAddress.full_name }} </strong>
-            <br/><p>{{ deliveredAddress.addr_1 }}
-            <br/> {{ deliveredAddress.addr_2 }}
-            <br/> {{ deliveredAddress.city }} 
-            <br/> {{ deliveredAddress.county }}, {{ deliveredAddress.postcode }}
-            <br/> {{ deliveredAddress.country }}
+            <strong> {{ orders[order]['address'].full_name }} </strong>
+            <br/><p>{{ orders[order]['address'].addr_1 }}
+            <br/> {{ orders[order]['address'].addr_2 }}
+            <br/> {{ orders[order]['address'].city }} 
+            <br/> {{ orders[order]['address'].county }}, {{ orders[order]['address'].postcode }}
+            <br/> {{ orders[order]['address'].country }}
           </div>
     </div>
   </div>

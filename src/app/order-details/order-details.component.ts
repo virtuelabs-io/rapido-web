@@ -13,15 +13,6 @@ export class OrderDetailsComponent implements OnInit {
   orderedItems = []
   orders = {}
   products = {}
-  deliveredAddress = {
-    full_name: "",
-    addr_1: "",
-    addr_2: "",
-    city: "",
-    county: "",
-    postcode: "",
-    country: ""
-  }
   currency: string 
   orderPrice: string
   createdOn: string
@@ -37,7 +28,6 @@ export class OrderDetailsComponent implements OnInit {
     private actRoute: ActivatedRoute
   ) { 
     this._orderService = orderService
-
   }
 
   ngOnInit() {
@@ -50,7 +40,6 @@ export class OrderDetailsComponent implements OnInit {
     console.log("Fetching order for:", this.order.order_id)
     this._orderService.getOrder(this.order.order_id)
     .then((data: any) => {
-      console.log(data)
       if(data['orderItemsObject']) {
         for(let order in data['orderItemsObject']) {
           if(data['products']) {
@@ -59,49 +48,27 @@ export class OrderDetailsComponent implements OnInit {
           if(this.orders[order] == undefined) {
             this.orders[order] = {}
             this.orders[order]['items'] = []
+            this.orders[order]['address'] = {}
           }
           for(let product in data['orderItemsObject'][order]) {
             this.orders[order].currency = data['products'][product]['currency']
-            this.orders[order].price = data['orderItemsObject'][order][product]['order_price']
+            this.orders[order].order_price = data['orderItemsObject'][order][product].order_price
             this.orders[order].date = data['orderItemsObject'][order][product]['created_on']
             this.orders[order].shipTo = data['orderItemsObject'][order][product]['full_name']
             this.orders[order].category = Constants.ORDER_STATUS[data['orderItemsObject'][order][product]['order_status_id']]
             this.orders[order].items.push(data['orderItemsObject'][order][product])
+
+            this.orders[order]['address'].full_name = data['orderItemsObject'][order][product].full_name
+            this.orders[order]['address'].addr_1 = data['orderItemsObject'][order][product].addr_1
+            this.orders[order]['address'].addr_2 = data['orderItemsObject'][order][product].addr_2
+            this.orders[order]['address'].city = data['orderItemsObject'][order][product].city
+            this.orders[order]['address'].county = data['orderItemsObject'][order][product].county
+            this.orders[order]['address'].postcode = data['orderItemsObject'][order][product].postcode
+            this.orders[order]['address'].country = data['orderItemsObject'][order][product].country
           }
         }
-        console.log(this.orders)
         this.orderedItems = Object.keys(this.orders)
-        console.log(this.orderedItems)
       }
-   /* for(var i = 0; i < data.length; i++) {
-      this.orderedItems.push(
-        {
-          pic: this._imageUrl+data[i].itemDetails.images[0],
-          title: data[i].itemDetails.name,
-          createdOn: data[i].orderItem.created_on.split("T")[0],
-          productId: data[i].orderItem.product_id,
-          currency: data[i].itemDetails.currency,
-          orderId: data[i].orderItem.id,
-          order_price: data[i].orderItem.order_price,
-          order_status_id: Constants.ORDER_STATUS[data[i].orderItem.order_status_id],
-          quantity: data[i].orderItem.quantity,
-          unitPrice: data[i].orderItem.unit_price
-        }
-      )
-    }
-    this.deliveredAddress.full_name = data[0].orderItem
-    this.deliveredAddress.addr_1 = data[0].orderItem.addr_1
-    this.deliveredAddress.addr_2 = data[0].orderItem.addr_1
-    this.deliveredAddress.city = data[0].orderItem.city
-    this.deliveredAddress.county = data[0].orderItem.county
-    this.deliveredAddress.postcode = data[0].orderItem.postcode
-    this.deliveredAddress.country = data[0].orderItem.country
-
-
-    this.currency = this.orderedItems[0].currency
-    this.orderPrice = data[0].orderItem.order_price
-    this.createdOn = this.orderedItems[0].createdOn
-    this.orderId = this.orderedItems[0].orderId */
     })
   }
 
