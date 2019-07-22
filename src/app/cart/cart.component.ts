@@ -126,11 +126,21 @@ export class CartComponent implements OnInit {
 
   quantityChange(id, quantity) {
     console.log(id,quantity)
+    this.cartAmount = 0
     for(var i = 0; i < this.cartItems.length; i++) {
       if(this.cartItems[i].id === id) {
-        this.cartItems[i].quantity = quantity
+        if(quantity == 0) {
+          this.cartItems[i].quantity = 1
+          this._snackBar.open('Minimun one quantity selected', "", {
+            duration: 5000
+          });
+        }
+        else {
+          this.cartItems[i].quantity = quantity
+        }
       }
-      this.cartAmount = (parseFloat(this.cartItems[i].amount) * this.cartItems[i].quantity).toFixed(2)
+      this.cartAmount += (parseFloat(this.cartItems[i].amount) * this.cartItems[i].quantity)
     }
+    this.cartAmount = this.cartAmount.toFixed(2)
   }
 }

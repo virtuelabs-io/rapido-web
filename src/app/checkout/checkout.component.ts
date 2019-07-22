@@ -187,18 +187,9 @@ export class CheckoutComponent implements OnInit {
           console.log(result.token);
           this._charge.token = result.token.id
           console.log(this._charge)
-          this.charge(this._charge)
         } else if (result.error) {
           console.log(result.error.message);
         }
       });
-  }
-
-  charge(charge: Charge) {
-    const promise = this.chargeService.chargeCustomer(charge)
-    .then(data => {
-      console.log(data)
-      this.chargeResult = JSON.stringify(data)
-    })
   }
 }
