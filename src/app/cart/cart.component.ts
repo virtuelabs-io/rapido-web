@@ -40,7 +40,7 @@ export class CartComponent implements OnInit {
       for(var i = 0; i < data.length; i++) {
         if(data[i].cartItem.in_cart) {
           this.inCart = true
-          this.cartAmount = (parseFloat(data[i].itemDetails.price) * data[i].cartItem.quantity).toFixed(2)
+          this.cartAmount += (parseFloat(data[i].itemDetails.price) * data[i].cartItem.quantity)
           this.cartItems.push({
             id: data[i].cartItem.product_id,
             icon: this._imageUrl+data[i].itemDetails.images[0],
@@ -60,6 +60,7 @@ export class CartComponent implements OnInit {
           })
         }
       }
+      this.cartAmount = this.cartAmount.toFixed(2)
       if(!this.saveforLater.length) {
         this.laterUse = false
       }
