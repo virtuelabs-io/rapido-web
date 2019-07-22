@@ -22,20 +22,20 @@
       </div>
       <div class="order-items-main">
           <div class="order-items">
-              <div class="order-items-list">
+              <div class="order-items-list" *ngFor="let item of orders[order].items">
                 <div class="order-item-status">
                     <span>{{ orders[order].category }}</span>
                 </div>
                 <div class="item">
                     <div class="item-thumbnail">
-                        <img class="image" src="{{ item.pic }}">
+                        <img class="image" src="{{ imageUrl + products[item.product_id].images[0] }}">
                       </div>
                       <div class="item-desc">
-                        <p><strong>{{ item.title }}</strong></p>
+                        <p><strong>{{ products[item.product_id].name }}</strong></p>
                       </div>
                       <div class="item-price">
                         <p>
-                          <strong>{{ item.unitPrice }}</strong>
+                          <strong>{{ item.unit_price }}</strong>
                         </p>
                       </div>
                       <div class="item-quantity">

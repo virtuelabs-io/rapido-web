@@ -12,6 +12,7 @@ import { parse } from 'url';
 export class OrderDetailsComponent implements OnInit {
   orderedItems = []
   orders = {}
+  products = {}
   deliveredAddress = {
     full_name: "",
     addr_1: "",
@@ -26,7 +27,7 @@ export class OrderDetailsComponent implements OnInit {
   createdOn: string
   orderId: string
   id: number
-  _imageUrl: string = Constants.environment.staticAssets
+  imageUrl: string = Constants.environment.staticAssets
   order: Order = new Order()
   private _orderService: OrdersService
 
@@ -52,6 +53,9 @@ export class OrderDetailsComponent implements OnInit {
       console.log(data)
       if(data['orderItemsObject']) {
         for(let order in data['orderItemsObject']) {
+          if(data['products']) {
+            this.products = data['products']
+          }
           if(this.orders[order] == undefined) {
             this.orders[order] = {}
             this.orders[order]['items'] = []
