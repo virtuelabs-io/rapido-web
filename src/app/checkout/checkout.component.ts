@@ -145,9 +145,6 @@ export class CheckoutComponent implements OnInit {
     this.order.delivery_address_id = id
     this._orderService.createOrder(this.order)
     .then((data: any) => {
-      console.log(data)
-     // this.order.order_id = data[0]['orderItem']['id']
-
       if(data['orderItemsObject']) {
         for(let order in data['orderItemsObject']) {
           if(data['products']) {
@@ -159,10 +156,7 @@ export class CheckoutComponent implements OnInit {
             this.orders[order]['address'] = {}
           }
           for(let product in data['orderItemsObject'][order]) {
-           // this.orders[order].items.push(data['products'][product])
-
            this.orders[order]['items'].push(data['orderItemsObject'][order][product])
-
             this.orders[order]['address'].full_name = data['orderItemsObject'][order][product].full_name
             this.orders[order]['address'].addr_1 = data['orderItemsObject'][order][product].addr_1
             this.orders[order]['address'].addr_2 = data['orderItemsObject'][order][product].addr_2
@@ -170,40 +164,12 @@ export class CheckoutComponent implements OnInit {
             this.orders[order]['address'].county = data['orderItemsObject'][order][product].county
             this.orders[order]['address'].postcode = data['orderItemsObject'][order][product].postcode
             this.orders[order]['address'].country = data['orderItemsObject'][order][product].country
-
             this.amount = data['orderItemsObject'][order][product].order_price.toFixed(2)
           }
-          
         }
-        console.log(this.orders)
         this.orderItems = Object.keys(this.orders)
-        
       }
-      
       this.stepperIndex = 1
-
-
-    /*  for(var i = 0; i < data.length; i++) {
-        this.orderItems.push({
-          id: data[i].orderItem.id,
-          pic: this._imageUrl+data[i].itemDetails.images[0],
-          title: data[i].itemDetails.name,
-          unitPrice: data[i].orderItem.unit_price.toFixed(2),
-          quantity: data[i].orderItem.quantity,
-          orderPrice: data[i].orderItem.order_price.toFixed(2)
-        })
-      }
-      this.amount = data[0].orderItem.order_price.toFixed(2)
-      this.orderAddress.addr_1 = data[0].orderItem.addr_1
-      this.orderAddress.addr_2 = data[0].orderItem.addr_2
-      this.orderAddress.address_type_id = data[0].orderItem.address_type_id
-      this.orderAddress.city = data[0].orderItem.city
-      this.orderAddress.country = data[0].orderItem.country
-      this.orderAddress.county = data[0].orderItem.county
-      this.orderAddress.delivery_address_id = data[0].orderItem.delivery_address_id
-      this.orderAddress.full_name = data[0].orderItem.full_name
-      this.orderAddress.postcode = data[0].orderItem.postcode
-      this.stepperIndex = 1 */
     })
   }
 
