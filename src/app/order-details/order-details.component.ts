@@ -11,6 +11,7 @@ import { parse } from 'url';
 })
 export class OrderDetailsComponent implements OnInit {
   orderedItems = []
+  orders = {}
   deliveredAddress = {
     full_name: "",
     addr_1: "",
@@ -49,7 +50,26 @@ export class OrderDetailsComponent implements OnInit {
     this._orderService.getOrder(this.order.order_id)
     .then((data: any) => {
       console.log(data)
-    for(var i = 0; i < data.length; i++) {
+      if(data['orderItemsObject']) {
+        for(let order in data['orderItemsObject']) {
+          if(this.orders[order] == undefined) {
+            this.orders[order] = {}
+            this.orders[order]['items'] = []
+          }
+          for(let product in data['orderItemsObject'][order]) {
+            this.orders[order].currency = data['products'][product]['currency']
+            this.orders[order].price = data['orderItemsObject'][order][product]['order_price']
+            this.orders[order].date = data['orderItemsObject'][order][product]['created_on']
+            this.orders[order].shipTo = data['orderItemsObject'][order][product]['full_name']
+            this.orders[order].category = Constants.ORDER_STATUS[data['orderItemsObject'][order][product]['order_status_id']]
+            this.orders[order].items.push(data['orderItemsObject'][order][product])
+          }
+        }
+        console.log(this.orders)
+        this.orderedItems = Object.keys(this.orders)
+        console.log(this.orderedItems)
+      }
+   /* for(var i = 0; i < data.length; i++) {
       this.orderedItems.push(
         {
           pic: this._imageUrl+data[i].itemDetails.images[0],
@@ -77,7 +97,7 @@ export class OrderDetailsComponent implements OnInit {
     this.currency = this.orderedItems[0].currency
     this.orderPrice = data[0].orderItem.order_price
     this.createdOn = this.orderedItems[0].createdOn
-    this.orderId = this.orderedItems[0].orderId
+    this.orderId = this.orderedItems[0].orderId */
     })
   }
 

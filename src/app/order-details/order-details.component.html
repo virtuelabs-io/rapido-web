@@ -1,5 +1,5 @@
 <div class="payment-div">
-  <div class="order-address-div">
+  <div class="order-address-div" *ngFor="let order of orderedItems">
     <div class="order-div">
       <div class="title-div">
         <h4>
@@ -10,7 +10,7 @@
         <p>Thank you for shopping with us !</p>
       </div>
       <div class="order-id-date">
-          <p>Ordered On: {{createdOn}}  <span> |  Order#: {{orderId}}</span></p>
+          <p>Ordered On: {{ orders[order].date }}  <span> |  Order#: {{ order }}</span></p>
       </div>
       <div class="cart-columns">
         <div class="cart-col-price">
@@ -22,9 +22,9 @@
       </div>
       <div class="order-items-main">
           <div class="order-items">
-              <div class="order-items-list" *ngFor="let item of orderedItems">
+              <div class="order-items-list">
                 <div class="order-item-status">
-                    <span>{{item.order_status_id}}</span>
+                    <span>{{ orders[order].category }}</span>
                 </div>
                 <div class="item">
                     <div class="item-thumbnail">
