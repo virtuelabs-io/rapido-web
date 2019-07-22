@@ -28,7 +28,11 @@ import { RangeSliderComponent } from './range-slider/range-slider.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 describe('AppComponent', () => {
+  var originalTimeout;
+
   beforeEach(async(() => {
+    originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
+        jasmine.DEFAULT_TIMEOUT_INTERVAL = 100000;
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
@@ -78,6 +82,10 @@ describe('AppComponent', () => {
     }).compileComponents();
   }));
 
+  afterEach(function() {
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
+  });
+  
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
