@@ -26,23 +26,14 @@ import { ProfileService } from '../services/authentication/profile/profile.servi
   styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent implements OnInit {
-  _imageUrl: string = Constants.environment.staticAssets
+  imageUrl: string = Constants.environment.staticAssets
   isLinear = false;
   registeredEmail: string = ""
   _logInName: string
   amount: any
   orderItems = []
-  orderAddress = {
-    addr_1: "",
-    addr_2: "",
-    address_type_id: "",
-    city: "",
-    country: "",
-    postcode: "",
-    county: "",
-    delivery_address_id: "",
-    full_name: ""
-  }
+  orders = {}
+  products = []
   stepperIndex: number = 0
   order: Order = new Order()
   showSpinner: Boolean = false
@@ -155,9 +146,44 @@ export class CheckoutComponent implements OnInit {
     this._orderService.createOrder(this.order)
     .then((data: any) => {
       console.log(data)
-      this.order.order_id = data[0]['orderItem']['id']
+     // this.order.order_id = data[0]['orderItem']['id']
 
-      for(var i = 0; i < data.length; i++) {
+      if(data['orderItemsObject']) {
+        for(let order in data['orderItemsObject']) {
+          if(data['products']) {
+            this.products = data['products']
+          }
+          if(this.orders[order] == undefined) {
+            this.orders[order] = {}
+            this.orders[order]['items'] = []
+            this.orders[order]['address'] = {}
+          }
+          for(let product in data['orderItemsObject'][order]) {
+           // this.orders[order].items.push(data['products'][product])
+
+           this.orders[order]['items'].push(data['orderItemsObject'][order][product])
+
+            this.orders[order]['address'].full_name = data['orderItemsObject'][order][product].full_name
+            this.orders[order]['address'].addr_1 = data['orderItemsObject'][order][product].addr_1
+            this.orders[order]['address'].addr_2 = data['orderItemsObject'][order][product].addr_2
+            this.orders[order]['address'].city = data['orderItemsObject'][order][product].city
+            this.orders[order]['address'].county = data['orderItemsObject'][order][product].county
+            this.orders[order]['address'].postcode = data['orderItemsObject'][order][product].postcode
+            this.orders[order]['address'].country = data['orderItemsObject'][order][product].country
+
+            this.amount = data['orderItemsObject'][order][product].order_price.toFixed(2)
+          }
+          
+        }
+        console.log(this.orders)
+        this.orderItems = Object.keys(this.orders)
+        
+      }
+      
+      this.stepperIndex = 1
+
+
+    /*  for(var i = 0; i < data.length; i++) {
         this.orderItems.push({
           id: data[i].orderItem.id,
           pic: this._imageUrl+data[i].itemDetails.images[0],
@@ -177,7 +203,7 @@ export class CheckoutComponent implements OnInit {
       this.orderAddress.delivery_address_id = data[0].orderItem.delivery_address_id
       this.orderAddress.full_name = data[0].orderItem.full_name
       this.orderAddress.postcode = data[0].orderItem.postcode
-      this.stepperIndex = 1
+      this.stepperIndex = 1 */
     })
   }
 
