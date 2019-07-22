@@ -44,7 +44,7 @@ export class OrdersComponent implements OnInit {
       if(data['products']){
         this.products = data['products']
       }
-      if(data['orderItemsObject']){
+      if(data['orderItemsObject']) {
         for(let order in data['orderItemsObject']) {
           if(this.orders[order] == undefined) {
             this.orders[order] = {}
