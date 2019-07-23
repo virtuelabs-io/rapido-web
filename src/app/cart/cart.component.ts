@@ -46,7 +46,7 @@ export class CartComponent implements OnInit {
             id: data[i].cartItem.product_id,
             icon: this._imageUrl+data[i].itemDetails.images[0],
             title: data[i].itemDetails.name,
-            amount: data[i].itemDetails.price,
+            amount: parseFloat(data[i].itemDetails.price).toFixed(2),
             quantity: data[i].cartItem.quantity
           })
         }
@@ -56,7 +56,7 @@ export class CartComponent implements OnInit {
             id: data[i].cartItem.product_id,
             icon: this._imageUrl+data[i].itemDetails.images[0],
             title: data[i].itemDetails.name,
-            amount: data[i].itemDetails.price,
+            amount: parseFloat(data[i].itemDetails.price).toFixed(2),
             quantity: data[i].cartItem.quantity
           })
         }
