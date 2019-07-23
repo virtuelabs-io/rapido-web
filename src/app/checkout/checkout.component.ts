@@ -27,6 +27,7 @@ import { ProfileService } from '../services/authentication/profile/profile.servi
 })
 export class CheckoutComponent implements OnInit {
   imageUrl: string = Constants.environment.staticAssets
+  _orderId: any
   isLinear = false;
   registeredEmail: string = ""
   _logInName: string
@@ -155,6 +156,7 @@ export class CheckoutComponent implements OnInit {
             this.orders[order]['items'] = []
             this.orders[order]['address'] = {}
           }
+          this._orderId = order
           for(let product in data['orderItemsObject'][order]) {
            this.orders[order]['items'].push(data['orderItemsObject'][order][product])
             this.orders[order]['address'].full_name = data['orderItemsObject'][order][product].full_name
@@ -175,10 +177,10 @@ export class CheckoutComponent implements OnInit {
 
   buy() {
     this._charge.name = this._logInName
-    this._charge.amount = this.orderItems[0].orderPrice
-    this._charge.description = ['Rapidobuild Order',' #', this.orderItems[0].id].join("")
+    this._charge.amount = this.amount
+    this._charge.description = ['Rapidobuild Order',' #', this._orderId].join("")
     this._charge.receiptEmail = this.registeredEmail
-    this._charge.order_id = this.orderItems[0].id
+    this._charge.order_id = this._orderId
     const name = this._charge.name
     this.stripeService
       .createToken(this.card, { name })
@@ -187,6 +189,7 @@ export class CheckoutComponent implements OnInit {
           console.log(result.token);
           this._charge.token = result.token.id
           console.log(this._charge)
+          this.router.navigate(['orders', this._charge.order_id, 'details'])
         } else if (result.error) {
           console.log(result.error.message);
         }
