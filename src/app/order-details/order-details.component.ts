@@ -3,13 +3,16 @@ import { OrdersService } from '../services/orders/orders.service';
 import { Order } from '../services/orders/order';
 import { Constants } from '../utils/constants';
 import { Router, ActivatedRoute } from '@angular/router';
-import { parse } from 'url';
+import { RouteService } from '../shared-services/route/route.service';
+
 @Component({
   selector: 'app-order-details',
   templateUrl: './order-details.component.html',
   styleUrls: ['./order-details.component.scss']
 })
 export class OrderDetailsComponent implements OnInit {
+  newOrder: boolean = false
+  _previousRoute: any = ""
   orderedItems = []
   orders = {}
   products = {}
@@ -25,12 +28,18 @@ export class OrderDetailsComponent implements OnInit {
   constructor(
     orderService: OrdersService,
     private router: Router,
-    private actRoute: ActivatedRoute
+    private actRoute: ActivatedRoute,
+    private RouteService: RouteService
   ) { 
     this._orderService = orderService
   }
 
   ngOnInit() {
+    this._previousRoute = this.RouteService.getRoute()
+    console.log(this._previousRoute.value)
+    if(this._previousRoute.value == 'orderCreated') {
+      this.newOrder = true
+    }
     this.id = parseInt(this.actRoute.snapshot.paramMap.get('id'))
     this.getOrder()
   }

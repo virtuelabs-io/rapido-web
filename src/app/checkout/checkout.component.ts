@@ -201,6 +201,7 @@ export class CheckoutComponent implements OnInit {
     .then(data => {
       console.log(data)
       this.chargeResult = JSON.stringify(data)
+      this.RouteService.changeRoute('orderCreated');
       this.router.navigate(['orders', this._charge.order_id, 'details'])
 
     })

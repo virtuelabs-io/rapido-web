@@ -33,7 +33,6 @@ import { TermsConditionsComponent } from './terms-conditions/terms-conditions.co
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { OrdersComponent } from './orders/orders.component';
-import { PaymentsComponent } from './payments/payments.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 
 @NgModule({
@@ -64,7 +63,6 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
     PrivacyPolicyComponent,
     AboutUsComponent,
     OrdersComponent,
-    PaymentsComponent,
     OrderDetailsComponent
   ],
   imports: [
