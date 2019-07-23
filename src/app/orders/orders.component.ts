@@ -53,7 +53,7 @@ export class OrdersComponent implements OnInit {
           for(let product in data['orderItemsObject'][order]){
             this.orders[order].currency = data['products'][product]['currency']
             this.orders[order].price = data['orderItemsObject'][order][product]['order_price']
-            this.orders[order].date = data['orderItemsObject'][order][product]['created_on'].split('T')[1]
+            this.orders[order].date = data['orderItemsObject'][order][product]['created_on'].split('T')[0]
             this.orders[order].shipTo = data['orderItemsObject'][order][product]['full_name']
             this.orders[order].category = Constants.ORDER_STATUS[data['orderItemsObject'][order][product]['order_status_id']]
             this.orders[order]['items'].push(data['orderItemsObject'][order][product])
