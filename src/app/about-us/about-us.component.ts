@@ -12,4 +12,8 @@ export class AboutUsComponent implements OnInit {
   ngOnInit() {
   }
 
+  getUrl() {
+    return "url('/assets/images/Rapido1.jpeg')";
+  }
+
 }
