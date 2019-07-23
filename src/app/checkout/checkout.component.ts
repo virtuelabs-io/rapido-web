@@ -11,6 +11,7 @@ import { OrdersService } from '../services/orders/orders.service';
 import { Order } from '../services/orders/order';
 import { LoginStateService } from '../shared-services/login-state/login-state.service';
 import { ProfileService } from '../services/authentication/profile/profile.service';
+import {MatSnackBar} from '@angular/material';
 
 @NgModule({
 	imports: [
@@ -66,7 +67,8 @@ export class CheckoutComponent implements OnInit {
     private _profileService: ProfileService,
     private fb: FormBuilder,
     private router: Router,
-    addressDetailsService: AddressDetailsService
+    addressDetailsService: AddressDetailsService,
+    private _snackBar: MatSnackBar
   ) {
     this._addressDetailsService = addressDetailsService
     this._orderService = orderService
@@ -189,6 +191,9 @@ export class CheckoutComponent implements OnInit {
           this.charge(this._charge)
         } else if (result.error) {
           // error log
+          this._snackBar.open(result.error.message, "", {
+            duration: 5000
+          });
         }
       });
   }
