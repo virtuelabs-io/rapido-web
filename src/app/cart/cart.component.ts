@@ -109,7 +109,6 @@ export class CartComponent implements OnInit {
     cartItem.product_id = product_id
     cartItem.quantity = quant
     cartItem.in_cart = in_cart
-    console.log("Updated product with id:", cartItem.product_id)
     return cartItem
   }
 
@@ -120,13 +119,11 @@ export class CartComponent implements OnInit {
     }
     this._cartService.postCartItemList(items)
       .subscribe(data2 => {
-        console.log("Cart confirmed data", data2)
         this.router.navigate(['cart/checkout']);
       })
   }
 
   quantityChange(id, quantity) {
-    console.log(id,quantity)
     this.cartAmount = 0
     for(var i = 0; i < this.cartItems.length; i++) {
       if(this.cartItems[i].id === id) {

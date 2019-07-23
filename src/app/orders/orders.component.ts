@@ -65,10 +65,8 @@ export class OrdersComponent implements OnInit {
   }
 
   cancelOrder(id) {
-    console.log("Canceling order for:", id)
     this._orderService.cancelOrder(id)
     .subscribe(data => {
-      console.log(data)
       this.getOrders()
     })
   }

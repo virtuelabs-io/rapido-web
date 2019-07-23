@@ -142,7 +142,6 @@ export class CheckoutComponent implements OnInit {
   }
 
   createOrder(id) {
-    console.log(id)
     this.order.delivery_address_id = id
     this._orderService.createOrder(this.order)
     .then((data: any) => {
@@ -186,12 +185,10 @@ export class CheckoutComponent implements OnInit {
       .createToken(this.card, { name })
       .subscribe(result => {
         if (result.token) {
-          console.log(result.token);
           this._charge.token = result.token.id
-          console.log(this._charge)
           this.charge(this._charge)
         } else if (result.error) {
-          console.log(result.error.message);
+          // error log
         }
       });
   }
@@ -199,7 +196,6 @@ export class CheckoutComponent implements OnInit {
   charge(charge: Charge){
     const promise = this.chargeService.chargeCustomer(charge)
     .then(data => {
-      console.log(data)
       this.chargeResult = JSON.stringify(data)
       this.RouteService.changeRoute('orderCreated');
       this.router.navigate(['orders', this._charge.order_id, 'details'])

@@ -36,7 +36,6 @@ export class OrderDetailsComponent implements OnInit {
 
   ngOnInit() {
     this._previousRoute = this.RouteService.getRoute()
-    console.log(this._previousRoute.value)
     if(this._previousRoute.value == 'orderCreated') {
       this.newOrder = true
     }
@@ -46,7 +45,6 @@ export class OrderDetailsComponent implements OnInit {
 
   getOrder() {
     this.order.order_id = this.id
-    console.log("Fetching order for:", this.order.order_id)
     this._orderService.getOrder(this.order.order_id)
     .then((data: any) => {
       if(data['orderItemsObject']) {
