@@ -110,7 +110,10 @@
                 <input matInput [(ngModel)]="registeredEmail" name="email" placeholder="Invoice sent to">
               </mat-form-field>
               <div id="card-element" class="field"></div><br>
-                <button class="btn btn-primary" (click)="buy()">Pay £{{ amount }}</button>
+                <div class="buy-cart-button">
+                  <button class="btn btn-primary buy-button" (click)="buy()">Pay £{{ amount }}</button>
+                <button class="btn btn-primary buy-button" routerLink="/cart">Edit Order</button>
+                </div>
               </div>
             </div>
         </div>

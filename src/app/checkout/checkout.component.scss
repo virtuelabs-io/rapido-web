@@ -240,6 +240,15 @@
                 flex-direction: column;
                 flex-wrap: nowrap;
                 width: 50%;
+                .buy-cart-button {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    .buy-button {
+                        width: 40%;
+                        margin-right: 10%;
+                    }
+                }
                 @media screen and (max-width: $small-device) {
                     width: 100%;
                 }
