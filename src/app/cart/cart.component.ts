@@ -35,6 +35,7 @@ export class CartComponent implements OnInit {
   getCartItems() {
     this.cartItems = []
     this.saveforLater = []
+    this.cartAmount = 0
     this._cartService.getCartItems()
     .then((data: any) => {
       for(var i = 0; i < data.length; i++) {
