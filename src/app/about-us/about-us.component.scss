@@ -86,4 +86,16 @@
             }
         }
     }
+
+    .image2-div {
+        height: 400px;
+        background-image:    url('/assets/images/aboutUs_3.jpg');
+        background-size:     cover;                     
+        background-repeat:   no-repeat;
+        background-position: center center; 
+        margin-top: 10%;
+        @media screen and (max-width: $mobile-device) {
+            height: 200px;
+        }
+    }
 }
