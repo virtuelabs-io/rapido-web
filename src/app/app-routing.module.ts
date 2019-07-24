@@ -15,6 +15,8 @@ import { AddCompanyDetailsComponent } from './add-company-details/add-company-de
 import { EditCompanyDetailsComponent } from './edit-company-details/edit-company-details.component';
 import { AccountInfoComponent } from './account-info/account-info.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -32,7 +34,8 @@ const routes: Routes = [
   { path: 'profile/companyDetails/edit', component: EditCompanyDetailsComponent },
   { path: 'profile/account', component: AccountInfoComponent },
   { path: '', component: AuthmockComponent},
-  { path: 'products', component: ProductResultsComponent }
+  { path: 'products', component: ProductResultsComponent },
+  { path: 'products/details/:id', component: ProductDetailsComponent}
 ];
 
 @NgModule({

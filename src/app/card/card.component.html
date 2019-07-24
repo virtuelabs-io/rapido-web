@@ -1,4 +1,4 @@
-<div class="card p-2">
+<div class="card p-2" [routerLink]="['/products/details', itemList.id]">
   <!-- [routerLink]="['/products/details','1']" -->
   <app-images [imgSrc]=itemDetails.images></app-images>
   <div class="card-body">

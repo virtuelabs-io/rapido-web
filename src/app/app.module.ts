@@ -39,6 +39,7 @@ import { EditAddressComponent } from './edit-address/edit-address.component';
 import { EditCompanyDetailsComponent } from './edit-company-details/edit-company-details.component';
 import { AccountInfoComponent } from './account-info/account-info.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     AddAddressComponent,
     EditAddressComponent,
     EditCompanyDetailsComponent,
-    AccountInfoComponent
+    AccountInfoComponent,
+    ProductDetailsComponent
   ],
   imports: [
     MatSidenavModule,
