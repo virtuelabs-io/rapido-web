@@ -7,21 +7,28 @@
         background-size:     cover;                     
         background-repeat:   no-repeat;
         background-position: center center; 
-        .head-text-div {
+        .outer-head-text-div {
             width: 100%;
             height: 200px;
             padding-top: 15%;
-            padding-left: 30%;
-            padding-right: 30%;
-            .title-div {
+            .inner-head-text-div {
                 padding-left: 30%;
-                @media screen and (max-width: $mobile-device) {
-                    padding-left: 20%;
+                padding-right: 30%;
+                .title-div {
+                    padding-left: 30%;
+                    padding-right: 30%;
+                    @media screen and (max-width: $mobile-device) {
+                        padding-left: 25%;
+                        padding-right: 25%;
+                    }
                 }
-            }
-            .about-us-div {
-               // height: 80%;
-             //  padding-left: 20%;
+                @media screen and (max-width: $medium-device) {
+                    padding-left: 5%;
+                    padding-right: 5%;
+                }
+                @media screen and (max-width: $mobile-device) {
+                    padding: 0%;
+                }
             }
             @media screen and (max-width: $mobile-device) {
                 width: 100%;
@@ -35,4 +42,48 @@
         }
     }
     
+    .our-story {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        //height: 600px;
+        margin-top: 10%;
+        padding-left: 15%;
+        padding-right: 15%;
+        .heading-div {
+            width: 50%;
+            .heading {
+                font-family: Heebo,sans-serif;
+                font-size: 60px;
+                font-weight: 100;
+                letter-spacing: .1em;
+                line-height: 1em;
+                color: #000;
+                @media screen and (max-width: $mobile-device) {
+                    font-size: 46px;
+                    margin-bottom: 10%;
+                }
+            }
+            @media screen and (max-width: $mobile-device) {
+                width: 100%;
+            }
+        }
+        .story {
+            width: 50%;
+            p {
+                @media screen and (max-width: $mobile-device) {
+                    font-size: 12px;
+                }
+            }
+            .margin-text {
+                margin-top: 10%;
+                @media screen and (max-width: $mobile-device) {
+                    font-size: 12px;
+                }
+            }
+            @media screen and (max-width: $mobile-device) {
+                width: 100%;
+            }
+        }
+    }
 }
