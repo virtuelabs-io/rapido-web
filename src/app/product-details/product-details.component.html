@@ -1,32 +1,43 @@
 
-<div class="main-div">
-    <div class="image-div">image
+<div class="main-div ">
+    <div class="image-div ">
         <app-images [imgSrc]=itemDetails.images></app-images>
     </div>
-    <div class="details-div">details
+    <!-- Details section starts -->
+    <div class="details-div ">
       <div class="card-body">
-        <h6 class="">
+        <h3 class="">
           <a class="" >
-            <span class="">iBall M500 14-inch Laptop Cobalt Blue</span>
+            <span class="">{{itemDetails.name}}</span>
           </a>
-        </h6>
-         <app-rating currentRate="3"></app-rating>
-         <div>
+        </h3>
+         <app-rating [currentRate]='itemDetails.rating'></app-rating>
+         <hr/>
+
+         <div class="price-section">
+           
            <span aria-hidden="true" class="text-danger">
-               <span class="a-price-symbol">₹</span>
-               <span class="a-price-whole">11,990</span>
+              Price:
+               <span class="a-price-symbol">{{itemDetails.currency}}</span>
+               <span class="a-price-whole">{{itemDetails.price}}</span>
             </span>
             <span aria-hidden="true" class="small m-2">
-              <span class="a-price-symbol">₹</span>
-              <s class="a-price-whole">2,599</s>
+                M.R.P.:
+              <span class="a-price-symbol">{{itemDetails.currency}}</span>
+              <s class="a-price-whole">{{mrpPrice}}</s>
             </span>
            <span class="small m-2">
-              <span>Save ₹1,170 (45%)</span>
+             You Save:
+              <span>{{ itemDetails.offer * 100}}%</span>
            </span>
          </div>
+         <hr/>
+
     </div>
     </div>
-    <div class="order-div"> checkout
+    <!-- Details section ends -->
+
+    <div class="order-div "> 
       <div class="row">
         <div class="">
            <div class="input-group">
