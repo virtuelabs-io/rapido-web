@@ -20,6 +20,12 @@
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">Order Id</span>
+      </div>
+      <input #orderId (keyup)="orderIdUpdater(orderId.value)" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-default">Amount (£)</span>
       </div>
       <input #amount (keyup)="amountUpdater(amount.value)" type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
