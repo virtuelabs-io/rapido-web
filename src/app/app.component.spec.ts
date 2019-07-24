@@ -25,7 +25,6 @@ import { ImagesComponent } from './images/images.component';
 import { ProductControlsComponent } from './product-controls/product-controls.component';
 import { ProductResultsComponent } from './product-results/product-results.component';
 import { RangeSliderComponent } from './range-slider/range-slider.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 describe('AppComponent', () => {
   var originalTimeout;
@@ -59,8 +58,7 @@ describe('AppComponent', () => {
         MatButtonModule,
         MatSidenavModule,
         MatListModule,
-        MatSelectModule,
-        NgbModule
+        MatSelectModule
       ],
       declarations: [
         AppComponent,
