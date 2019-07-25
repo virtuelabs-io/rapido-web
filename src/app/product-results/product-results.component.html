@@ -1,0 +1,41 @@
+<div *ngIf="!noResultsFound">
+  <div>
+    <!-- top 2nd banner - showing 1 of ...
+       <app-productcontrols *ngIf="productList && productList.length" [searchedText]=searchedText [responseData]=responseData></app-productcontrols> -->
+      <!-- small device filter control starts -->
+      <section>
+        <div class="btnLeft m-auto pt-4 pr-3">
+            <button type="button" (click)="openDialog()" class="btn rounded-pill">Filter Controls</button>
+        </div>
+      </section>
+      <!-- small device filter control ends-->
+  </div>
+    
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+          <app-leftsection></app-leftsection>
+      </div>
+        <!-- Cards List div starts -->
+        <div class="row itemListCls col-md-9" >
+                <div *ngFor="let item of productListBind">
+                    <app-card [itemList]=item></app-card>
+                </div>
+        </div>
+          <!-- Cards list div ends -->
+          <div class='m-auto'>
+            <mat-paginator 
+                [length]="length"
+                [pageSize]="pageSize"
+                [pageSizeOptions]="pageSizeOptions"
+                (page)="pageEvent = onPageChange($event)">
+            </mat-paginator>
+          </div>
+    </div>
+  </div>
+</div>
+
+<div class="no-results" *ngIf="noResultsFound">
+    We didn't find any results for that search... Please try again.
+  </div>

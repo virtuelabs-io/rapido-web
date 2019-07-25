@@ -1,0 +1,8 @@
+@import "../../assets/scss/custom-bootstrap-variables.scss";
+
+div{
+    ngb-rating{
+        color:$yellow;
+        font-size: 150%;
+    }
+}

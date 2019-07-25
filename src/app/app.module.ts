@@ -11,11 +11,24 @@ import { IconComponent } from './common/icons/icons.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { RoutingComponents } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, 
+          MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, 
+          MatSnackBarModule, MatExpansionModule, MatSelectModule, MatPaginatorModule, 
+          MatProgressSpinnerModule, MatDialogModule, MatCardModule,
+          MatFormFieldModule  } from '@angular/material';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ProductResultsComponent } from './product-results/product-results.component';
+import { FilterControlsDialog } from './product-results/product-results.component';
+import { CardComponent } from './card/card.component';
+import { RatingComponent } from './rating/rating.component';
+import { ImagesComponent } from './images/images.component';
+import { LeftSectionComponent } from './leftsection/leftsection.component';
+import { ProductControlsComponent } from './product-controls/product-controls.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { Constants } from './utils/constants';
-import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, MatSnackBarModule, MatExpansionModule, MatSelectModule, MatProgressSpinnerModule } from '@angular/material';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+// import { Ng5SliderModule } from 'ng5-slider';
+import { RangeSliderComponent } from './range-slider/range-slider.component';
 import { ResendOtpComponent } from './resend-otp/resend-otp.component';
 import { ProfileComponent } from './my-profile/profile.component';
 import { CompanyDetailsComponent } from './company-details/company-details.component';
@@ -25,11 +38,10 @@ import { AddAddressComponent } from './add-address/add-address.component';
 import { EditAddressComponent } from './edit-address/edit-address.component';
 import { EditCompanyDetailsComponent } from './edit-company-details/edit-company-details.component';
 import { AccountInfoComponent } from './account-info/account-info.component';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
-    AppComponent,
     TopnavComponent,
     AuthmockComponent,
     ButtonComponent,
@@ -38,6 +50,15 @@ import { AccountInfoComponent } from './account-info/account-info.component';
     RoutingComponents,
     CheckoutComponent,
     ForgotPasswordComponent,
+    AppComponent,
+    ProductResultsComponent,
+    CardComponent,
+    RatingComponent,
+    ImagesComponent,
+    LeftSectionComponent,
+    ProductControlsComponent,
+    RangeSliderComponent,
+    FilterControlsDialog,
     ResendOtpComponent,
     ProfileComponent,
     CompanyDetailsComponent,
@@ -67,23 +88,17 @@ import { AccountInfoComponent } from './account-info/account-info.component';
     MatExpansionModule,
     MatMenuModule,
     MatSelectModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
     HttpClientModule,
-    NgxStripeModule.forRoot(Constants.environment.stripePublicKey),
-    HttpClientModule,
-    MatMenuModule,
-    MatInputModule,
-    MatCheckboxModule,
-    MatButtonModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatListModule,
-    MatSnackBarModule,
-    MatExpansionModule,
-    MatMenuModule,
     MatProgressSpinnerModule,
-    MatSelectModule,
-    MatSidenavModule
+    MatDialogModule,
+    // Ng5SliderModule,
+    NgxStripeModule.forRoot(Constants.environment.stripePublicKey),
+    NgbModule
   ],
+  entryComponents: [FilterControlsDialog],
   providers: [],
   bootstrap: [ AppComponent ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

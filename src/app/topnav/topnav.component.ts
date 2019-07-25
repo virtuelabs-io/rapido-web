@@ -4,6 +4,7 @@ import { ProfileService } from '../services/authentication/profile/profile.servi
 import { Constants } from '../utils/constants';
 import { Router } from '@angular/router';
 import { LoginStateService } from '../shared-services/login-state/login-state.service';
+import { SearchItemService } from '../shared-services/search-item/search-item.services';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @NgModule({})
@@ -15,13 +16,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class TopnavComponent implements OnInit {
   isSignedIn: Boolean = false
   name: String
+  searchedText: string = ''
   bannerName: String = Constants.RAPIDO_BUILD
   durationInSeconds = 5;
 
   constructor(private _sessionService: SessionService,
               private _profileService: ProfileService,
-              public router: Router, // used in html
+              public router: Router, 
               private _snackBar: MatSnackBar,
+              private _searchItemService: SearchItemService,
               private _loginStateService: LoginStateService) {}
 
   ngOnInit() {
@@ -43,6 +46,21 @@ export class TopnavComponent implements OnInit {
   signOut() {
     this._profileService.cognitoUser.signOut()
     this._loginStateService.changeState(false)
+  }
+
+  onSearch(e){
+    if(this.searchedText){
+      this.router.navigateByUrl('/products')
+      this._searchItemService.changeState({
+        q: this.searchedText,
+        searchedText: this.searchedText,
+        start: 0,
+        sort: null,
+        cursor: null,
+        return: null,
+      })
+    }
+    
   }
 
   openSnackBar(message) {
