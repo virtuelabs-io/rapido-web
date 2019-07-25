@@ -76,7 +76,11 @@
                 }
             }
             .margin-text {
-                margin-top: 10%;
+                margin-bottom: 10%;
+                .story-heading {
+                    font-size: 25px;
+                    margin-bottom: 5%;
+                }
                 @media screen and (max-width: $mobile-device) {
                     font-size: 12px;
                 }
