@@ -34,6 +34,7 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
 import { AboutUsComponent } from './about-us/about-us.component';
 import { OrdersComponent } from './orders/orders.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
     PrivacyPolicyComponent,
     AboutUsComponent,
     OrdersComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+    HomeComponent
   ],
   imports: [
     MatSidenavModule,

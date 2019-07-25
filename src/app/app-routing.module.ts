@@ -20,6 +20,7 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
 import { AboutUsComponent } from './about-us/about-us.component';
 import { OrdersComponent } from './orders/orders.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -42,7 +43,8 @@ const routes: Routes = [
   { path: 'aboutus', component: AboutUsComponent },
   { path: 'orders', component: OrdersComponent },
   { path: 'orders/:id/details', component: OrderDetailsComponent },
-  { path: '', component: AuthmockComponent},
+  { path: '', component: HomeComponent }
+ // { path: '', component: AuthmockComponent},
 ];
 
 @NgModule({
@@ -69,5 +71,6 @@ export const RoutingComponents = [
   AboutUsComponent,
   OrdersComponent,
   OrderDetailsComponent,
+  HomeComponent,
   AuthmockComponent
 ];
