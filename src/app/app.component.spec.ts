@@ -57,7 +57,7 @@ describe('AppComponent', () => {
         MatSnackBarModule,
         MatProgressSpinnerModule,
         HttpClientModule,
-        NgxPageScrollCoreModule
+        NgxPageScrollCoreModule,
         MatProgressSpinnerModule,
         MatPaginatorModule,
         MatDialogModule,
@@ -77,7 +77,7 @@ describe('AppComponent', () => {
         LogInComponent,
         RoutingComponents,
         CheckoutComponent,
-        FooterComponent
+        FooterComponent,
         LeftSectionComponent,
         CardComponent,
         RatingComponent,
