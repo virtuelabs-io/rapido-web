@@ -3,8 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { AuthmockComponent } from './authmock/authmock.component';
-import { CheckoutComponent } from './checkout/checkout.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ProductResultsComponent } from './product-results/product-results.component';
 import { ResendOtpComponent } from './resend-otp/resend-otp.component';
 import { ProfileComponent } from './my-profile/profile.component';
 import { AddressComponent } from './address/address.component';
@@ -21,6 +21,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { OrdersComponent } from './orders/orders.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { HomeComponent } from './home/home.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -43,8 +44,9 @@ const routes: Routes = [
   { path: 'aboutus', component: AboutUsComponent },
   { path: 'orders', component: OrdersComponent },
   { path: 'orders/:id/details', component: OrderDetailsComponent },
-  { path: '', component: HomeComponent }
+  { path: '', component: HomeComponent },
  // { path: '', component: AuthmockComponent},
+  { path: 'products', component: ProductResultsComponent }
 ];
 
 @NgModule({
@@ -56,6 +58,8 @@ export const RoutingComponents = [
   RegisterComponent,
   LogInComponent,
   ForgotPasswordComponent,
+  ProductResultsComponent,
+  AuthmockComponent,
   ResendOtpComponent,
   ProfileComponent,
   CompanyDetailsComponent,
@@ -72,5 +76,6 @@ export const RoutingComponents = [
   OrdersComponent,
   OrderDetailsComponent,
   HomeComponent,
+  CheckoutComponent,
   AuthmockComponent
 ];

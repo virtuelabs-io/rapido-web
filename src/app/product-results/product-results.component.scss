@@ -1,0 +1,48 @@
+@import "../../assets/scss/custom-bootstrap-variables.scss";
+
+div {
+    div{
+        section{
+            display: none;
+            button{
+                background: $black;
+                color: $white;
+            }
+        }
+        @media screen and (max-width: $small-device) {
+            section{
+                display: flex;
+                padding-top: 20px;
+            }
+           }
+       
+    }
+    div {
+        div{
+            @media screen and (max-width: $small-device) {
+                app-leftsection{
+                    display: none;
+                }
+               }
+        }
+    }
+    .itemListCls{
+        @media screen and (max-width: $small-device) {
+            justify-content: center;
+        }
+    } 
+}
+
+.no-results{
+    display: block;
+    padding: 10px 25px; 
+    text-align: center;
+    font-size: 28px;
+}
+
+.btnLeft{
+    display: flex;
+    justify-content: flex-end;
+    align-items:center; 
+}
+

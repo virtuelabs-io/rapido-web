@@ -1,0 +1,40 @@
+<div>
+  <section>
+     <div class="filtersL">
+        <mat-accordion multi="true" displayMode="flat" *ngFor="let item of filterData">
+           <div class="h6 pt-4">{{item.headerText}}</div>
+           <mat-expansion-panel expanded="false" *ngFor="let panelList of item.panel" >
+              <mat-expansion-panel-header >
+                 <mat-panel-title>
+                    {{panelList.panelTitle}}
+                 </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-nav-list [ngSwitch]="panelList.panelType">
+                 <div *ngSwitchCase="'link'">
+                    <mat-list-item (click)="onPressItem(panelData)" *ngFor="let panelData of panelList.panelData">
+                    <a matLine>{{panelData}}</a>
+                    </mat-list-item>
+                 </div>
+                 <div *ngSwitchCase="'sort'">
+                    <mat-list-item (click)="onPressSort(iterator.key)" *ngFor="let iterator of panelList.panelData">
+                    <a matLine>{{iterator.desc}}</a>
+                    </mat-list-item>
+                 </div>
+                 <div *ngSwitchCase="'rating'">
+                    <mat-list-item (click)="onPressRating(val)" *ngFor='let val of panelList.panelData'>
+                    <!-- Based on rating value filters are applied -->
+                    <a matLine >
+                       <app-rating [currentRate]='val'></app-rating>
+                       <span class='pl-2' >{{val}} &Up</span>
+                    </a>
+                    </mat-list-item>
+                 </div>
+                 <div *ngSwitchCase="'priceslider'">
+                    <range-slider [rangeData]='panelList.panelData'></range-slider>
+                 </div>
+              </mat-nav-list>
+           </mat-expansion-panel>
+        </mat-accordion>
+     </div>
+  </section>
+</div>

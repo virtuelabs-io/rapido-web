@@ -15,8 +15,10 @@ export class ProductsService {
   private buildQuery(_query: Query): string {
     let queryKeys: string[] = [];
     for(let key in _query){
-      if(_query[key] != null ){
-        queryKeys.push(key.replace("qdot", "q.")+"="+String(_query[key]))
+      if(_query[key] != null){
+        if(key != 'searchedText'){
+          queryKeys.push(key.replace("qdot", "q.") + "=" + String(_query[key]))
+        }
       }
     }
     return queryKeys.join("&")
