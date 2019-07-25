@@ -8,9 +8,9 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        padding-left: 4%;
-        padding-right: 4%;
         justify-content: center;
+        margin-left: 1%;
+        margin-right: 1%;
         margin-bottom: 10%;
         .card1 {
             display: flex;
@@ -19,21 +19,23 @@
             margin-top: 10%; // need to remove
         //    margin-left: 20%;   // need to remove
             height: 420px;
-            width: 30%;
+            width: 24%;
             padding-left: 1%;
             padding-right: 1%;
             padding-top: 2%;
             padding-bottom: 1%; 
-            margin-right: 2%;
+            margin-right: 1%;
             background-color: black;
             .card-content {
+                padding-left: 8%;
+                padding-right: 8%;
                 .card-heading {
                     display: flex;
                     flex-direction: row;
                     flex-wrap: nowrap;
                     padding-left: 2%;
                     padding-right: 2%;
-                    font-size: 20px;
+                    font-size: 18px;
                     font-weight: 900;
                     color: white;
 
@@ -43,7 +45,7 @@
                     background-size:     cover;                     
                     background-repeat:   no-repeat;
                     background-position: center center; 
-                    height: 304px;
+                    height: 260px;
                     margin-top: 2%;
                 }
                 .card-desc {
