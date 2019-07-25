@@ -38,6 +38,7 @@ import { AddAddressComponent } from './add-address/add-address.component';
 import { EditAddressComponent } from './edit-address/edit-address.component';
 import { EditCompanyDetailsComponent } from './edit-company-details/edit-company-details.component';
 import { AccountInfoComponent } from './account-info/account-info.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -94,7 +95,8 @@ import { AccountInfoComponent } from './account-info/account-info.component';
     MatProgressSpinnerModule,
     MatDialogModule,
     // Ng5SliderModule,
-    NgxStripeModule.forRoot(Constants.environment.stripePublicKey)
+    NgxStripeModule.forRoot(Constants.environment.stripePublicKey),
+    NgbModule
   ],
   entryComponents: [FilterControlsDialog],
   providers: [],
