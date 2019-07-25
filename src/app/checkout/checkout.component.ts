@@ -79,6 +79,10 @@ export class CheckoutComponent implements OnInit {
     this._charge.description = value
   }
 
+  orderIdUpdater(value: number) {
+    this._charge.order_id = value
+  }
+
   receiptEmailUpdater(value: string) {
     this._charge.receiptEmail = value
   }
@@ -101,7 +105,7 @@ export class CheckoutComponent implements OnInit {
 
   charge(charge: Charge){
     const promise = this.chargeService.chargeCustomer(charge)
-    .subscribe(data => {
+    .then(data => {
       console.log(data)
       this.chargeResult = JSON.stringify(data)
     })

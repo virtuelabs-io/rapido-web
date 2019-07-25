@@ -466,7 +466,7 @@ export class AuthmockComponent implements OnInit {
     this._orderService.createOrder(this.order)
     .then((data: any) => {
       console.log(data)
-      this.order.order_id = data[0]['orderItem']['id']
+      this.order.order_id = parseInt(Object.keys(data['orderItemsObject'])[0])
       this.order_result = "Sucessfully created order and logged!";
     })
   }
