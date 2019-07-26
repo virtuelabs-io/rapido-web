@@ -69,46 +69,27 @@
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
+        margin-left: 1%;
+        margin-right: 1%;
         .card-holder2 {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
             justify-content: center;
-        //    margin-left: 1%;
-        //    margin-right: 1%;
             .card2 {
                 display: flex;
                 flex-direction: column;
                 flex-wrap: nowrap;
-                height: 420px;
-                width: 24%;
-                padding-left: 1%;
-                padding-right: 1%;
-                padding-top: 2%;
-                padding-bottom: 1%; 
-                margin-right: 1%;
+                height: 260px;
+                width: 20%;
                 background-color: black;
                 .card-content {
-                    padding-left: 8%;
-                    padding-right: 8%;
-                    .card-heading {
-                        display: flex;
-                        flex-direction: row;
-                        flex-wrap: nowrap;
-                        padding-left: 2%;
-                        padding-right: 2%;
-                        font-size: 18px;
-                        font-weight: 900;
-                        color: white;
-    
-                    }
                     .card-image {
                         background-image:    url('/assets/images/home_card_1.jpg');
                         background-size:     cover;                     
                         background-repeat:   no-repeat;
                         background-position: center center; 
                         height: 260px;
-                        margin-top: 2%;
                     }
                     .card-desc {
                         font-weight: initial;
@@ -121,39 +102,21 @@
                     width: 100%;
                 }
             }
+
             .card3 {
                 display: flex;
                 flex-direction: column;
                 flex-wrap: nowrap;
-                height: 420px;
-                width: 24%;
-                padding-left: 1%;
-                padding-right: 1%;
-                padding-top: 2%;
-                padding-bottom: 1%; 
-              //  margin-right: 1%;
-                background-color: yellow;
+                height: 260px;
+                width: 20%;
+                background-color: black;
                 .card-content {
-                    padding-left: 8%;
-                    padding-right: 8%;
-                    .card-heading {
-                        display: flex;
-                        flex-direction: row;
-                        flex-wrap: nowrap;
-                        padding-left: 2%;
-                        padding-right: 2%;
-                        font-size: 18px;
-                        font-weight: 900;
-                        color: white;
-    
-                    }
                     .card-image {
-                        background-image:    url('/assets/images/home_card_1.jpg');
+                        background-image:    url('/assets/images/aboutUs_1.jpg');
                         background-size:     cover;                     
                         background-repeat:   no-repeat;
                         background-position: center center; 
                         height: 260px;
-                        margin-top: 2%;
                     }
                     .card-desc {
                         font-weight: initial;
@@ -171,4 +134,9 @@
             }
         }
     }
+}
+
+
+.carousel-control-prev, .carousel-control-next {
+    width: 2% !important;
 }
