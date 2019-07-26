@@ -134,6 +134,55 @@
             }
         }
     }
+
+
+    .custom-carousel {
+        padding-top: 10%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        .custom-card-holder {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            .prev {
+                width: 5%;
+                margin-top: 7%;
+                padding-left: 2%;
+            }
+            .next {
+                width: 5%;
+                margin-top: 7%;
+                padding-right: 2%;
+            }
+            .card2 {
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                height: 260px;
+                width: 20%;
+                background-color: black;
+                .card-content {
+                    .card-image {
+                        background-image:    url('/assets/images/home_card_1.jpg');
+                        background-size:     cover;                     
+                        background-repeat:   no-repeat;
+                        background-position: center center; 
+                        height: 260px;
+                    }
+                    .card-desc {
+                        font-weight: initial;
+                        font-size: 14px;
+                        color: white;
+    
+                    }
+                }
+                @media screen and (max-width: $mobile-device) {
+                    width: 100%;
+                }
+            }
+        }
+    }
 }
 
 
