@@ -6,11 +6,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  images = [1, 2, 3].map(() => `https://picsum.photos/900/500?random&t=${Math.random()}`);
-
+  cardDetails: any
   constructor() { }
 
   ngOnInit() {
+    this.cardDetails = [
+      {
+        "title": "Fashion photography store 1",
+        "image": "",
+        "desc": "find the best photography deals",
+        "price": 100000
+      },
+      {
+        "title": "Fashion photography store 2",
+        "image": "",
+        "desc": "find the best photography deals"
+      },
+      {
+        "title": "Fashion photography store 3",
+        "image": "",
+        "desc": "find the best photography deals"
+      },
+      {
+        "title": "Fashion photography store 4",
+        "image": "",
+        "desc": "find the best photography deals"
+      }
+    ]
   }
 
 }
