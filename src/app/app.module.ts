@@ -49,6 +49,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { HomeComponent } from './home/home.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { HomeCardComponent } from './card/home-card/home-card.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     AboutUsComponent,
     OrdersComponent,
     OrderDetailsComponent,
-    HomeComponent
+    HomeComponent,
+    HomeCardComponent
   ],
   imports: [
     MatSidenavModule,
