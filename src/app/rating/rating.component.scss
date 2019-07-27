@@ -3,6 +3,11 @@
 div{
     ngb-rating{
         color:$yellow;
+    }
+    .size-sm{
         font-size: 150%;
+    }
+    .size-bg{
+        font-size: 250%;
     }
 }

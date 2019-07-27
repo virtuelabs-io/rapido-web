@@ -9,7 +9,7 @@
               </a>
             </h3>
       </header>
-        <img [src]=imagePreviewURI class="reg-size"/>
+        <img [src]=imagePreviewURI class="reg-size ml-5"/>
         <div class="thumbnail-row">
           <img
             *ngFor="let imageObj of imageDetails; let i = index"  
@@ -33,49 +33,67 @@
             <span class="">{{itemDetails.name}}</span>
           </a>
         </h3>
-         <app-rating [currentRate]='itemDetails.rating'></app-rating>
+         <app-rating 
+         styleClass='size-bg'
+         [currentRate]='itemDetails.rating'>
+
+         </app-rating>
+         
          <hr/>
 
-         <div class="price-section">
-           
-           <span aria-hidden="true" class="text-danger">
+         <div class="price-section ml-2 h5">
+           <span aria-hidden="true" class="text-danger ">
               Price:
                <span class="a-price-symbol">{{itemDetails.currency}}</span>
                <span class="a-price-whole">{{itemDetails.price}}</span>
             </span>
-            <span aria-hidden="true" class="small m-2">
+            <span aria-hidden="true" class="small ">
                 M.R.P.:
               <span class="a-price-symbol">{{itemDetails.currency}}</span>
               <s class="a-price-whole">{{mrpPrice}}</s>
             </span>
-           <span class="small m-2">
+           <span class="small ">
              You Save:
               <span>{{ itemDetails.offer * 100}}%</span>
            </span>
          </div>
+         
          <hr/>
+
+         <div class="product-points">
+            <ul class="">
+                <li *ngFor="let point of itemDetails.points">
+                  <span class="">{{point}}</span>
+                </li> 
+              </ul>
+         </div>
 
     </div>
     </div>
     <!-- Details section ends -->
 
+    <!-- Add to cart section starts -->
     <div class="order-div col-md-2"> 
-      <div class="row">
-        <div class="">
-           <div class="input-group">
-             <span class="input-group-btn">
-                 <button type="button" class="quantity-left-minus btn btn-danger btn-number"  data-type="minus" data-field="">
-                   -
-                 </button>
-             </span>
-             <input type="text" id="quantity" name="quantity" class="form-control input-number" value="10" min="1" max="100">
-             <span class="input-group-btn">
-                 <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
-                     +
-                 </button>
-             </span>
-       </div>
-   </div>
+      <div class="">
+        <h4>{{itemDetails.currency}} {{itemDetails.price}}</h4>
+           <!-- <div class="input-group">
+             <input 
+                type="number" 
+                name="quantity" 
+                class="form-control input-number" 
+                value="10"
+                [(ngModel)]="quantity" 
+                min="1" 
+                max="100">
+          </div> -->
+
+          <div>
+            <label>Quantity: 1</label>
+          </div>
+          <div routerLink="/checkout">
+            <button>Add to cart</button>
+          </div>
       </div>
     </div>
+    <!-- Add to cart section ends -->
 </div>
