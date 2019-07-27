@@ -1,10 +1,32 @@
 
 <div class="main-div ">
-    <div class="image-div ">
-        <app-images [imgSrc]=itemDetails.images></app-images>
+    <!-- Product gallery section starts -->
+    <div class="product-gallery-container col-md-5">
+      <header>
+          <h3 class="">
+              <a class="" >
+                <span class="">{{itemDetails.name}}</span>
+              </a>
+            </h3>
+      </header>
+        <img [src]=imagePreviewURI class="reg-size"/>
+        <div class="thumbnail-row">
+          <img
+            *ngFor="let imageObj of imageDetails; let i = index"  
+            class="p-2 m-2 thumbnail"
+            [ngClass]="{
+              'thumbnail-sel':imageObj.active,
+              'thumbnail-deSel':!imageObj.active
+            }"
+            [src]=imageObj.uri 
+            (click)="showPicture(imageObj.uri, i)"
+            />
+        </div>
     </div>
+    <!-- Product gallery section ends -->
+
     <!-- Details section starts -->
-    <div class="details-div ">
+    <div class="details-div col-md-5">
       <div class="card-body">
         <h3 class="">
           <a class="" >
@@ -37,7 +59,7 @@
     </div>
     <!-- Details section ends -->
 
-    <div class="order-div "> 
+    <div class="order-div col-md-2"> 
       <div class="row">
         <div class="">
            <div class="input-group">

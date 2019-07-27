@@ -7,6 +7,25 @@
         width:100%;
         height: 100%;
         padding: 2%;
+        .product-gallery-container{
+                header{
+                        display: none;
+                    }
+                @media screen and (max-width: $small-device) {
+                header{
+                        display: flex;
+                        padding-top: 20px;
+                }
+                }
+                // border: 1px solid $gray-text-light !important;
+                .reg-size{
+                        width:75% 
+                }
+                .thumbnail{
+                        cursor: pointer;
+                        width:20% 
+                }
+        }
         .details-div {
                 .price-section {
                         display: flex;
@@ -15,4 +34,12 @@
                         flex: 1; 
                 }
         }
+}
+
+.thumbnail-sel{
+        border: 2px solid $primary !important;   
+}
+
+.thumbnail-deSel{
+        border: 2px solid $gray-lighter !important; 
 }

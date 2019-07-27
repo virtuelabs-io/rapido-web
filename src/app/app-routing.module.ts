@@ -58,5 +58,6 @@ export const RoutingComponents = [
   EditAddressComponent,
   EditCompanyDetailsComponent,
   AccountInfoComponent,
-  AuthmockComponent
+  AuthmockComponent,
+  ProductDetailsComponent
 ];
