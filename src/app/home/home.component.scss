@@ -95,7 +95,14 @@
 
 
 ::ng-deep .carousel-control-prev, ::ng-deep .carousel-control-next {
+    margin-bottom: 6%;
     width: 2% !important;
+    margin-top: 6%;
+    background-color: black;
+}
+
+::ng-deep .carousel-indicators {
+    display: none;
 }
 
 
