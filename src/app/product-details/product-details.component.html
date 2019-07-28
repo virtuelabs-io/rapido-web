@@ -41,7 +41,7 @@
          
          <hr/>
 
-         <div class="price-section ml-2 h5">
+         <div class="price-section h5">
            <span aria-hidden="true" class="text-danger ">
               Price:
                <span class="a-price-symbol">{{itemDetails.currency}}</span>
@@ -91,7 +91,14 @@
             <label>Quantity: 1</label>
           </div>
           <div routerLink="/checkout">
-            <button>Add to cart</button>
+            <button 
+              type="button"
+              
+              class="btn btn-outline-dark btn-warning btn-block">
+
+              Add to cart
+            </button>
+
           </div>
       </div>
     </div>
