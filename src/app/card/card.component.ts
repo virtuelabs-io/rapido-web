@@ -22,7 +22,10 @@ export class CardComponent implements OnInit {
   offer: any
   rating: any
   Math: any
-  @Input() itemList
+  @Input() itemList ={
+    id:'',
+    fields:{}
+  }
   constructor() { }
 
   ngOnInit() {
