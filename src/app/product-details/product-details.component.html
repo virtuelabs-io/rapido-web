@@ -1,4 +1,5 @@
-
+<div *ngIf=itemDetails>
+  
 <div class="main-div ">
     <!-- Product gallery section starts -->
     <div class="product-gallery-container col-md-5">
@@ -103,4 +104,10 @@
       </div>
     </div>
     <!-- Add to cart section ends -->
+</div>
+
+</div>
+
+<div class="no-results" *ngIf=!itemDetails>
+  We didn't find any result for that product id... Please try again.
 </div>

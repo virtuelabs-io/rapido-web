@@ -8,7 +8,13 @@ export class Common {
       return  Constants.environment.staticAssets + imagePath
     }
     return (
-      images.map((val) => Constants.environment.staticAssets + val)
+      images.map((val) => {
+        return (
+          !val.includes(Constants.environment.staticAssets) ? 
+            Constants.environment.staticAssets + val: 
+            val
+        )
+      })
       );
   }
 

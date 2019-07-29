@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SearchItemService } from '../shared-services/search-item/search-item.services';
+import { ProductsService } from '../services/products/products.service';
 import { Common } from '../../../src/app/utils/common';
 
 @Component({
@@ -10,15 +11,19 @@ import { Common } from '../../../src/app/utils/common';
 })
 export class ProductDetailsComponent implements OnInit {
 
+  private _productsService: ProductsService
   itemDetails: any
   imagePreviewURI: any
-  imageDetails:Object
+  imageDetails: any
   itemId: any
   mrpPrice: any
-  constructor(private _searchItemService: SearchItemService,
-    private route: ActivatedRoute) { }
+  constructor(productsService: ProductsService,
+    private _searchItemService: SearchItemService,
+    private route: ActivatedRoute) { 
+      this._productsService = productsService
+    }
 
-  ngOnInit() {
+    ngOnInit() {
 
     // get current product id
      this.route.params.subscribe(params => {
@@ -30,12 +35,30 @@ export class ProductDetailsComponent implements OnInit {
       this._searchItemService.responsePoductListState.subscribe(respData => {
       let { hits } = respData
       if(hits && hits.hit ){
-        this.itemDetails = hits.hit.filter((val,key) => {
+        let product = hits.hit.filter((val) => {
           return val.id == this.itemId
         })
-        this.itemDetails = this.itemDetails[0].fields
-        this.itemDetails.images = Common.getImageURI(this.itemDetails.images, null)
-        this.mrpPrice = (this.itemDetails.price * (1 + parseFloat(this.itemDetails.offer))).toFixed(2)
+        if(product[0].id){
+          this.itemDetails = product[0].fields
+          this.imageDetails = Common.getImageURI(this.itemDetails.images, null)
+          this.imagePreviewURI = this.imageDetails[0]
+          this.imageDetails = this.setImageValue()
+          this.mrpPrice = (this.itemDetails.price * (1 + parseFloat(this.itemDetails.offer))).toFixed(2)
+        }else{
+          /* this._productsService.get(query).
+         subscribe(data => {
+            if(data){
+              if(data.error){
+                throw Error('error')
+              }
+              if(data.hits.found === 0){
+                return;
+              }
+              product = data;
+            }
+       }) */
+        }
+        
       }
     })
     }
@@ -44,15 +67,15 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   setImageValue(index=0){
-    this.imageDetails = this.itemDetails.images.map((val,key)=>{
-    let thumbnailSel= false
-    if(index === key){
-      thumbnailSel= true
-    }
+    return this.imageDetails.map((val,key)=> {
+      let thumbnailSel= false
+        if(index === key){
+          thumbnailSel= true
+        }
     return ({
-      active: thumbnailSel,
-      uri: val
-    })
+        active: thumbnailSel,
+        uri: val
+      })
     })
   }
 

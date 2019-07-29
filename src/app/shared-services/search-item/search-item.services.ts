@@ -28,8 +28,13 @@ export class SearchItemService {
       "found": 0,
       "start": 0,
       "hit": [{
-        "id": "1",
-        "fields": {}
+        "id": null,
+        "fields": {
+          "points":[],
+          "details":[],
+          "images":[],
+          "rating":"0"
+        }
       }]
     }
   }
