@@ -27,7 +27,7 @@
     }
 
 
-    .carousel-main {
+    
         .carousel {
             display: flex;
             flex-direction: column;
@@ -96,10 +96,10 @@
                     width: 100%;
                 }
             }
-        }
-        @media screen and (max-width: $mobile-device) {
-            display: none;
-        }
+        
+            @media screen and (max-width: $mobile-device) {
+                display: none !important;
+            }
     }
 
     @media screen and (max-width: $mobile-device) {
