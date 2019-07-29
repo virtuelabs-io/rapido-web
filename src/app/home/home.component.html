@@ -1,13 +1,13 @@
 <div class="home-div">
   <div class="card-holder">
-     <app-home-card [cardDetails]=card *ngFor="let card of cardDetails"></app-home-card>
+     <app-home-card [cardDetails]=card class="app-home-card" *ngFor="let card of cardDetails"></app-home-card>
          
   </div>
 
 
 
 
-  <ngb-carousel interval='0'>
+  <ngb-carousel interval='0' class="carousel-main">
     <ng-template ngbSlide class="carousel">
         <div class="card-holder2">
             <div class="card2">

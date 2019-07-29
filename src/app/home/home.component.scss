@@ -9,88 +9,102 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
-        margin-left: 1%;
-        margin-right: 1%;
         margin-bottom: 10%;
         margin-top: 5%;
-        @media screen and (max-width: $mobile-device) {
-            width: 100%;
-        }
-    }
-
-
-    .carousel {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        margin-left: 1%;
-        margin-right: 1%;
-        .card-holder2 {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: center;
-            .card2 {
-                display: flex;
-                flex-direction: column;
-                flex-wrap: nowrap;
-                height: 260px;
-                width: 20%;
-                background-color: black;
-                .card-content {
-                    .card-image {
-                        background-image:    url('/assets/images/home_card_1.jpg');
-                        background-size:     cover;                     
-                        background-repeat:   no-repeat;
-                        background-position: center center; 
-                        height: 260px;
-                    }
-                    .card-desc {
-                        font-weight: initial;
-                        font-size: 14px;
-                        color: white;
-    
-                    }
-                }
-                @media screen and (max-width: $mobile-device) {
-                    width: 100%;
-                }
-            }
-
-            .card3 {
-                display: flex;
-                flex-direction: column;
-                flex-wrap: nowrap;
-                height: 260px;
-                width: 20%;
-                background-color: black;
-                .card-content {
-                    .card-image {
-                        background-image:    url('/assets/images/aboutUs_1.jpg');
-                        background-size:     cover;                     
-                        background-repeat:   no-repeat;
-                        background-position: center center; 
-                        height: 260px;
-                    }
-                    .card-desc {
-                        font-weight: initial;
-                        font-size: 14px;
-                        color: white;
-    
-                    }
-                }
-                @media screen and (max-width: $mobile-device) {
-                    width: 100%;
-                }
-            }
+        width: 100%;
+        .app-home-card {
+            width: 22%;
+            margin-right: 1.5%;
+            margin-left: 1.5%;
             @media screen and (max-width: $mobile-device) {
                 width: 100%;
             }
         }
+        @media screen and (max-width: $mobile-device) {
+            width: 100%;
+           // margin-right: 0%;
+        }
     }
 
 
+    .carousel-main {
+        .carousel {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            margin-left: 1%;
+            margin-right: 1%;
+            .card-holder2 {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                .card2 {
+                    display: flex;
+                    flex-direction: column;
+                    flex-wrap: nowrap;
+                    height: 260px;
+                    width: 20%;
+                    background-color: black;
+                    .card-content {
+                        .card-image {
+                            background-image:    url('/assets/images/home_card_1.jpg');
+                            background-size:     cover;                     
+                            background-repeat:   no-repeat;
+                            background-position: center center; 
+                            height: 260px;
+                        }
+                        .card-desc {
+                            font-weight: initial;
+                            font-size: 14px;
+                            color: white;
+        
+                        }
+                    }
+                    @media screen and (max-width: $mobile-device) {
+                        width: 100%;
+                    }
+                }
     
+                .card3 {
+                    display: flex;
+                    flex-direction: column;
+                    flex-wrap: nowrap;
+                    height: 260px;
+                    width: 20%;
+                    background-color: black;
+                    .card-content {
+                        .card-image {
+                            background-image:    url('/assets/images/aboutUs_1.jpg');
+                            background-size:     cover;                     
+                            background-repeat:   no-repeat;
+                            background-position: center center; 
+                            height: 260px;
+                        }
+                        .card-desc {
+                            font-weight: initial;
+                            font-size: 14px;
+                            color: white;
+        
+                        }
+                    }
+                    @media screen and (max-width: $mobile-device) {
+                        width: 100%;
+                    }
+                }
+                @media screen and (max-width: $mobile-device) {
+                    width: 100%;
+                }
+            }
+        }
+        @media screen and (max-width: $mobile-device) {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: $mobile-device) {
+        width: 100%;
+    }
 }
 
 

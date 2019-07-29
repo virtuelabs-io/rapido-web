@@ -1,17 +1,17 @@
 
-    <div class="card1">
-       <div class="card-content">
-                 <div class="card-heading">
-                     {{cardDetails.title}}
-                 </div>
-                 <div class="card-image">
-                    <img class="image" src="{{ cardDetails.image }}">
-                 </div>
-                 <div class="card-desc">
-                     Learn all about fashion photography here
-                 </div>
-                 <div class="card-desc" *ngIf="cardDetails.price">
-                        20000
-                    </div>
-             </div>
-           </div>
+<div class="card1">
+  <div class="card-content">
+    <div class="card-heading">
+      {{ cardDetails.title }}
+    </div>
+    <div class="card-image">
+      <img class="image" src="{{ cardDetails.image }}">
+    </div>
+    <div class="card-desc">
+      {{ cardDetails.desc }}
+    </div>
+    <div class="card-desc" *ngIf="cardDetails.price">
+      {{ cardDetails.price }}
+    </div>
+  </div>
+</div>

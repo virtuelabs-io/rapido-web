@@ -12,25 +12,25 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.cardDetails = [
       {
-        "title": "Fashion photography store 1",
+        "title": "Fashion photography store",
         "image": '/assets/images/home_card_1.jpg',
-        "desc": "find the best photography deals",
-        "price": 100000
+        "desc": "Find the best photography deals",
+        "price": "Rs. 100000"
       },
       {
-        "title": "Fashion photography store 2",
-        "image": '/assets/images/home_card_1.jpg',
-        "desc": "find the best photography deals"
+        "title": "Crazy Constructions",
+        "image": '/assets/images/aboutUs_1.jpg',
+        "desc": "Find tools related to construction"
       },
       {
-        "title": "Fashion photography store 3",
-        "image": '/assets/images/home_card_1.jpg',
-        "desc": "find the best photography deals"
+        "title": "Farmer's place",
+        "image": '/assets/images/aboutUs_2.jpg',
+        "desc": "Find the best deals here"
       },
       {
-        "title": "Fashion photography store 4",
-        "image": '/assets/images/home_card_1.jpg',
-        "desc": "find the best photography deals"
+        "title": "We make it possible",
+        "image": '/assets/images/aboutUs_3.jpg',
+        "desc": "Deals you might be interested in"
       }
     ]
   }
