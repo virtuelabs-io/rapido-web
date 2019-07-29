@@ -3,21 +3,21 @@
 <div class="main-div ">
     <!-- Product gallery section starts -->
     <div class="product-gallery-container col-md-5">
-      <header>
+      <!-- <header>
           <h3 class="">
               <a class="" >
                 <span class="">{{itemDetails.name}}</span>
               </a>
             </h3>
-      </header>
+      </header> -->
         <img [src]=imagePreviewURI class="reg-size ml-5"/>
         <div class="thumbnail-row">
           <img
             *ngFor="let imageObj of imageDetails; let i = index"  
             class="p-2 m-2 thumbnail"
             [ngClass]="{
-              'thumbnail-sel':imageObj.active,
-              'thumbnail-deSel':!imageObj.active
+              'thumbnail-active':imageObj.active,
+              'thumbnail-inactive':!imageObj.active
             }"
             [src]=imageObj.uri 
             (click)="showPicture(imageObj.uri, i)"
@@ -76,6 +76,7 @@
     <!-- Add to cart section starts -->
     <div class="order-div col-md-2"> 
       <div class="">
+      <div class="thumbnail-inactive p-2">
         <h4>{{itemDetails.currency}} {{itemDetails.price}}</h4>
            <!-- <div class="input-group">
              <input 
@@ -99,12 +100,32 @@
 
               Add to cart
             </button>
-
+            </div>
           </div>
       </div>
     </div>
     <!-- Add to cart section ends -->
 </div>
+
+<div >
+  <hr>
+</div>
+
+<div>
+    <div class="m-3 p-1">
+        <h3>Product descriptions</h3>
+        <span>{{itemDetails.description}}</span>
+    </div>
+  </div>
+
+<!-- Product specifications starts -->
+<div>
+  <div class="m-3 p-1">
+      <h3>Product specifications</h3>
+      <app-table [tableData]=itemDetails.details></app-table>
+  </div>
+</div>
+<!-- Product specifications ends -->
 
 </div>
 

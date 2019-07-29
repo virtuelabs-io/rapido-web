@@ -17,7 +17,8 @@ import { Constants } from './utils/constants';
 import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, 
   MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, 
   MatSnackBarModule, MatExpansionModule, MatSelectModule, MatPaginatorModule, 
-  MatProgressSpinnerModule, MatDialogModule, MatFormFieldModule, MatCardModule  } from '@angular/material';
+  MatProgressSpinnerModule, MatDialogModule, MatFormFieldModule, MatCardModule,
+  MatTableModule  } from '@angular/material';
 import { LeftSectionComponent } from './leftsection/leftsection.component';
 import { CardComponent } from './card/card.component';
 import { RatingComponent } from './rating/rating.component';
@@ -60,6 +61,7 @@ describe('AppComponent', () => {
         MatSidenavModule,
         MatListModule,
         MatSelectModule,
+        MatTableModule,
         NgbModule
       ],
       declarations: [

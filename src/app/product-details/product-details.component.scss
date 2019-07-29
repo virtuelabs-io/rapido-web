@@ -1,50 +1,42 @@
 @import "../../assets/scss/custom-bootstrap-variables.scss";
 .main-div {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        flex-wrap: wrap;
-        width:100%;
-        height: 100%;
-        padding: 2%;
-        .product-gallery-container{
-                header{
-                        display: none;
-                    }
-                @media screen and (max-width: $small-device) {
-                header{
-                        display: flex;
-                        padding-top: 20px;
-                }
-                }
-                .reg-size{
-                        width:75% 
-                }
-                .thumbnail{
-                        cursor: pointer;
-                        width:15% 
-                }
-        }
-        .details-div {
-                .price-section {
-                        display: flex;
-                        flex-direction: column;
-                        flex-basis: 100%;
-                        flex: 1; 
-                }
-        }
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	flex-wrap: wrap;
+	width: 100%;
+	height: 100%;
+	padding: 2%;
+	.product-gallery-container {
+		.reg-size {
+			width: 70%
+		}
+		.thumbnail {
+			cursor: pointer;
+			width: 15%
+		}
+	}
+	.details-div {
+		.price-section {
+			display: flex;
+			flex-direction: column;
+			flex-basis: 100%;
+			flex: 1;
+		}
+	}
 }
 
-.thumbnail-sel{
-        border: 2px solid $primary !important;   
+.thumbnail-active {
+	border: 2px solid $primary !important;
 }
 
-.thumbnail-deSel{
-        border: 2px solid $gray-lighter !important; 
+.thumbnail-inactive {
+	border: 2px solid $gray-lighter !important;
 }
-.no-results{
-        display: block;
-        padding: 10px 25px; 
-        text-align: center;
-        font-size: 28px;
+
+.no-results {
+	display: block;
+	padding: 10px 25px;
+	text-align: center;
+	font-size: 28px;
 }
