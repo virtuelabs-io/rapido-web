@@ -34,6 +34,11 @@
             .image {
                 width: 100%;
             }
+            @media screen and (max-width: $mobile-device) {
+                margin-left: 7.5%;
+                margin-right: 7.5%;
+                margin-bottom: 2%;
+            }
         }
         .card-desc {
             font-weight: initial;
@@ -44,5 +49,6 @@
     }
     @media screen and (max-width: $mobile-device) {
         width: 100%;
+        margin-bottom: 1%;
     }
 }
