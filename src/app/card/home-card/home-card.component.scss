@@ -33,11 +33,22 @@
             margin-top: 6%;
             .image {
                 width: 100%;
+                @media screen and (max-width: $mobile-device) {
+                    width: 100% !important;
+                }
+                @media screen and (max-width: $ipad-pro) {
+                    width: 90%;
+                }
             }
             @media screen and (max-width: $mobile-device) {
-                margin-left: 7.5%;
-                margin-right: 7.5%;
-                margin-bottom: 2%;
+                margin-left: 7.5% !important;
+                margin-right: 7.5% !important;
+                margin-bottom: 2% !important;
+            }
+            @media screen and (max-width: $ipad-pro) {
+                margin-left: 10%;
+                margin-right: 8%;
+                margin-bottom: 5%;
             }
         }
         .card-desc {
