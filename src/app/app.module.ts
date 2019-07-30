@@ -50,6 +50,7 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
 import { HomeComponent } from './home/home.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HomeCardComponent } from './card/home-card/home-card.component';
+import { CarouselComponent } from './card/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,8 @@ import { HomeCardComponent } from './card/home-card/home-card.component';
     OrdersComponent,
     OrderDetailsComponent,
     HomeComponent,
-    HomeCardComponent
+    HomeCardComponent,
+    CarouselComponent
   ],
   imports: [
     MatSidenavModule,
