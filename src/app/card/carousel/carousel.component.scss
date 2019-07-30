@@ -17,14 +17,17 @@
             flex-wrap: nowrap;
             height: 260px;
             width: 20%;
-            background-color: black;
+            background-color: white;
+            padding: 1%;
+            padding-bottom: 1%;
             .card-content {
+                height: 100%;
                 .card-image {
                 //    background-image:    url('/assets/images/home_card_1.jpg');
                     background-size:     cover;                     
                     background-repeat:   no-repeat;
                     background-position: center center; 
-                    height: 260px;
+                    height: 100%; //260px;
                     width: 100%;
                 }
                 .card-desc {
