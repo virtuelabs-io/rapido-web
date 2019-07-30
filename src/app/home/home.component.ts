@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   cardDetails: any
+  carousel: any
   constructor() { }
 
   ngOnInit() {
@@ -31,6 +32,24 @@ export class HomeComponent implements OnInit {
         "title": "We make it possible",
         "image": '/assets/images/aboutUs_3.jpg',
         "desc": "Deals you might be interested in"
+      }
+    ]
+
+    this.carousel = [
+      {
+        "image": '/assets/images/home_card_1.jpg'
+      },
+      {
+        "image": '/assets/images/aboutUs_1.jpg'
+      },
+      {
+        "image": '/assets/images/aboutUs_2.jpg'
+      },
+      {
+        "image": '/assets/images/aboutUs_3.jpg'
+      },
+      {
+        "image": '/assets/images/aboutUs_4.jpg'
       }
     ]
   }
