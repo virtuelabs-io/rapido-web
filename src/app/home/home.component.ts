@@ -50,6 +50,21 @@ export class HomeComponent implements OnInit {
       },
       {
         "image": '/assets/images/aboutUs_4.jpg'
+      },
+      {
+        "image": '/assets/images/aboutUs_4.jpg'
+      },
+      {
+        "image": '/assets/images/aboutUs_3.jpg'
+      },
+      {
+        "image": '/assets/images/aboutUs_2.jpg'
+      },
+      {
+        "image": '/assets/images/aboutUs_1.jpg'
+      },
+      {
+        "image": '/assets/images/home_card_1.jpg'
       }
     ]
   }
