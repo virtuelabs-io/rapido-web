@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   cardDetails: any
   carousel: any
+  car1: any
   constructor() { }
 
   ngOnInit() {
@@ -35,8 +36,13 @@ export class HomeComponent implements OnInit {
       }
     ]
 
+    this.car1 = {
+      
+      
+      
+    }
     this.carousel = [
-      {
+      [{
         "image": '/assets/images/home_card_1.jpg',
         "price": '₹ 359.00 to ₹ 5,319.00'
       },
@@ -55,8 +61,8 @@ export class HomeComponent implements OnInit {
       {
         "image": '/assets/images/aboutUs_4.jpg',
         "price": '₹ 359.00 to ₹ 5,319.00'
-      },
-      {
+      }],
+      [{
         "image": '/assets/images/aboutUs_4.jpg',
         "price": '₹ 359.00 to ₹ 5,319.00'
       },
@@ -75,7 +81,15 @@ export class HomeComponent implements OnInit {
       {
         "image": '/assets/images/home_card_1.jpg'
         
-      }
+      }],
+      [{
+        "image": '/assets/images/aboutUs_4.jpg',
+        "price": 'test price 1'
+      },
+      {
+        "image": '/assets/images/aboutUs_3.jpg',
+        "price": 'test price 2'
+      }]
     ]
   }
 
