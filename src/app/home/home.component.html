@@ -29,18 +29,14 @@
  
 
   <div class="container"> 
-    <img src="assets/images/aboutUs_1.jpg">
-    <img src="assets/images/aboutUs_2.jpg"> 
-    <img src="assets/images/aboutUs_3.jpg">    
-    <img src="assets/images/aboutUs_1.jpg">    
-    <img src="assets/images/aboutUs_2.jpg">
-    <img src="assets/images/aboutUs_4.jpg">
-    <img src="assets/images/aboutUs_1.jpg">
-    <img src="assets/images/aboutUs_2.jpg"> 
-    <img src="assets/images/aboutUs_3.jpg">    
-    <img src="assets/images/aboutUs_1.jpg">    
-    <img src="assets/images/aboutUs_2.jpg">
-    <img src="assets/images/aboutUs_4.jpg">
+      <div class="card2" *ngFor="let card of scroll">
+          <div class="card-content">
+            <img class="card-image" src="{{ card.image }}">
+            <div class="card-price">
+              {{ card.price }}
+            </div>
+          </div>
+        </div>
   </div>
 
 
