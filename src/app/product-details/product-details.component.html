@@ -1,6 +1,6 @@
 <div *ngIf=itemDetails>
   
-<div class="main-div ">
+<div class="main-div pl-2 pr-2 pt-3">
     <!-- Product gallery section starts -->
     <div class="product-gallery-container col-md-5">
       <!-- <header>
@@ -46,12 +46,12 @@
            <span aria-hidden="true" class="text-danger ">
               Price:
                <span class="a-price-symbol">{{itemDetails.currency}}</span>
-               <span class="a-price-whole">{{itemDetails.price}}</span>
+               <span class="a-price-whole">{{Number(itemDetails.price).toFixed(2)}}</span>
             </span>
             <span aria-hidden="true" class="small ">
                 M.R.P.:
               <span class="a-price-symbol">{{itemDetails.currency}}</span>
-              <s class="a-price-whole">{{mrpPrice}}</s>
+              <s class="a-price-whole">{{Number(mrpPrice).toFixed(2)}}</s>
             </span>
            <span class="small ">
              You Save:
@@ -77,27 +77,17 @@
     <div class="order-div col-md-2"> 
       <div class="">
       <div class="thumbnail-inactive p-2">
-        <h4>{{itemDetails.currency}} {{itemDetails.price}}</h4>
-           <!-- <div class="input-group">
-             <input 
-                type="number" 
-                name="quantity" 
-                class="form-control input-number" 
-                value="10"
-                [(ngModel)]="quantity" 
-                min="1" 
-                max="100">
-          </div> -->
-
-          <div>
-            <label>Quantity: 1</label>
+        <h4 class="text-danger">{{itemDetails.currency}} {{itemDetails.price}}</h4>
+          <div class="d-flex ">
+            <label class="mr-2">Quantity: </label>
+            <select name="quantity" class="quantity" autocomplete="off" id="quantity" tabindex="-1" >
+              <option [value]=val *ngFor="let val of [1,2,3,4]">{{val}}</option>
+            </select>
           </div>
           <div routerLink="/checkout">
             <button 
               type="button"
-              
-              class="btn btn-outline-dark btn-warning btn-block">
-
+              class="btn btn-outline-dark btn-block bg-primary">
               Add to cart
             </button>
             </div>
@@ -107,20 +97,23 @@
     <!-- Add to cart section ends -->
 </div>
 
-<div >
-  <hr>
-</div>
+<div class="hr-divider"></div>
 
-<div>
-    <div class="m-3 p-1">
+<!-- Product descriptions Starts -->
+  <div>
+    <div class="m-3 p-1 description">
         <h3>Product descriptions</h3>
-        <span>{{itemDetails.description}}</span>
+        <div>
+          <p>{{itemDetails.description}}</p>
+        </div>
     </div>
   </div>
+<!-- Product descriptions ends -->
+
 
 <!-- Product specifications starts -->
 <div>
-  <div class="m-3 p-1">
+  <div class="m-3 p-1 ">
       <h3>Product specifications</h3>
       <app-table [tableData]=itemDetails.details></app-table>
   </div>

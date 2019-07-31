@@ -3,6 +3,7 @@
 div{
     ngb-rating{
         color:$yellow;
+        outline: none;
     }
     .size-sm{
         font-size: 150%;

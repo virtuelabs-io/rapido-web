@@ -17,6 +17,8 @@ export class ProductDetailsComponent implements OnInit {
 	imageDetails: any
 	itemId: any
 	mrpPrice: any
+	Number:Function
+	quantity:Number
 	constructor(productsService: ProductsService,
 		private _searchItemService: SearchItemService,
 		private route: ActivatedRoute) {
@@ -25,6 +27,7 @@ export class ProductDetailsComponent implements OnInit {
 
 	ngOnInit() {
 
+		this.Number = Number
 		// get current product id
 		this.route.params.subscribe(params => {
 			this.itemId = params.id;
