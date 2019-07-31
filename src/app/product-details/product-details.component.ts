@@ -17,8 +17,9 @@ export class ProductDetailsComponent implements OnInit {
 	imageDetails: any
 	itemId: any
 	mrpPrice: any
+	totalPrice: Number|string
 	Number:Function
-	quantity:Number
+	quantity:Number|string
 	constructor(productsService: ProductsService,
 		private _searchItemService: SearchItemService,
 		private route: ActivatedRoute) {
@@ -75,6 +76,8 @@ export class ProductDetailsComponent implements OnInit {
 		this.imagePreviewURI = this.imageDetails[0]
 		this.imageDetails = this.setImageValue()
 		this.mrpPrice = (this.itemDetails.price * (1 + parseFloat(this.itemDetails.offer))).toFixed(2)
+		this.totalPrice = this.itemDetails.price
+		this.quantity = 1
 	}
 
 	setImageValue(index = 0) {
@@ -93,6 +96,10 @@ export class ProductDetailsComponent implements OnInit {
 	showPicture(uri, index) {
 		this.imageDetails = this.setImageValue(index)
 		this.imagePreviewURI = uri
+	}
+	
+	onChangeQuantity(quant:Number|string) {
+		this.totalPrice = Number(quant) * this.itemDetails.price
 	}
 
 }

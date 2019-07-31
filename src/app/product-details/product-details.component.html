@@ -77,11 +77,15 @@
     <div class="order-div col-md-2"> 
       <div class="">
       <div class="thumbnail-inactive p-2">
-        <h4 class="text-danger">{{itemDetails.currency}} {{itemDetails.price}}</h4>
+        <h4 class="text-danger">{{itemDetails.currency}} {{totalPrice}}</h4>
           <div class="d-flex ">
             <label class="mr-2">Quantity: </label>
-            <select name="quantity" class="quantity" autocomplete="off" id="quantity" tabindex="-1" >
-              <option [value]=val *ngFor="let val of [1,2,3,4]">{{val}}</option>
+            <select 
+              (change)="onChangeQuantity($event.target.value)"
+              [(ngModel)]="quantity" 
+              class="quantity" 
+              autocomplete="off">
+              <option *ngFor="let val of [1,2,3,4]">{{val}}</option>
             </select>
           </div>
           <div routerLink="/checkout">
