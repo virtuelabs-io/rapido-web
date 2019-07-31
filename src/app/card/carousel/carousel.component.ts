@@ -6,11 +6,30 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./carousel.component.scss']
 })
 export class CarouselComponent implements OnInit {
-  @Input() carousel
+  @Input() carouselConfig
+  carouselData: any
+  config: any
   constructor() { }
 
   ngOnInit() {
-    console.log(this.carousel)
+    this.config = this.carouselConfig.config
+    this.carouselData = this.formatData(this.carouselConfig.data, this.carouselConfig.config.itemsInTemplate)
   }
 
+  formatData(data: any[], itemsInTemplate: number) {
+    let formatedData = []
+    let tmpItems = []
+    data.forEach(item => {
+      tmpItems.push(item)
+      if(tmpItems.length === itemsInTemplate){
+        formatedData.push(tmpItems)
+        tmpItems = []
+      }
+    })
+    if(tmpItems.length > 0){
+      formatedData.push(tmpItems)
+      tmpItems = []
+    }
+    return formatedData
+  }
 }

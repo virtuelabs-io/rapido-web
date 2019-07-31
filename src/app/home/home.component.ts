@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   cardDetails: any
-  carousel: any
+  browserCarousel: any
   scroll: any
   constructor() { }
 
@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
         "title": "Fashion photography store",
         "image": '/assets/images/home_card_1.jpg',
         "desc": "Find the best photography deals",
-        "price": "Rs. 100000"
+        "price": "Rs. 100000" 
       },
       {
         "title": "Crazy Constructions",
@@ -36,56 +36,67 @@ export class HomeComponent implements OnInit {
       }
     ]
 
-    this.carousel = [
-      [{
-        "image": '/assets/images/home_card_1.jpg',
-        "price": '₹ 359.00 to ₹ 5,319.00'
+    this.browserCarousel = {
+      config: {
+        image: true,
+        price: false,
+        title: true,
+        itemsInTemplate: 3,
+        scroll: true
       },
-      {
-        "image": '/assets/images/aboutUs_1.jpg',
-        "price": '₹ 359.00 to ₹ 5,319.00'
-      },
-      {
-        "image": '/assets/images/aboutUs_2.jpg',
-        "price": '₹ 359.00 to ₹ 5,319.00'
-      },
-      {
-        "image": '/assets/images/aboutUs_3.jpg',
-        "price": '₹ 359.00 to ₹ 5,319.00'
-      },
-      {
-        "image": '/assets/images/aboutUs_4.jpg',
-        "price": '₹ 359.00 to ₹ 5,319.00'
-      }],
-      [{
-        "image": '/assets/images/aboutUs_4.jpg',
-        "price": '₹ 359.00 to ₹ 5,319.00'
-      },
-      {
-        "image": '/assets/images/aboutUs_3.jpg',
-        "price": '₹ 359.00 to ₹ 5,319.00'
-      },
-      {
-        "image": '/assets/images/aboutUs_2.jpg',
-        "price": '₹ 359.00 to ₹ 5,319.00'
-      },
-      {
-        "image": '/assets/images/aboutUs_1.jpg'
-        
-      },
-      {
-        "image": '/assets/images/home_card_1.jpg'
-        
-      }],
-      [{
-        "image": '/assets/images/aboutUs_4.jpg',
-        "price": 'test price 1'
-      },
-      {
-        "image": '/assets/images/aboutUs_3.jpg',
-        "price": 'test price 2'
-      }]
-    ]
+      data: [
+        {
+          "image": '/assets/images/home_card_1.jpg',
+          "price": '₹ 359.00 to ₹ 5,319.00'
+        },
+        {
+          "image": '/assets/images/aboutUs_1.jpg',
+          "price": '₹ 359.00 to ₹ 5,319.00'
+        },
+        {
+          "image": '/assets/images/aboutUs_2.jpg',
+          "price": '₹ 359.00 to ₹ 5,319.00'
+        },
+        {
+          "image": '/assets/images/aboutUs_3.jpg',
+          "price": '₹ 359.00 to ₹ 5,319.00'
+        },
+        {
+          "image": '/assets/images/aboutUs_4.jpg',
+          "price": '₹ 359.00 to ₹ 5,319.00'
+        },
+        {
+          "image": '/assets/images/aboutUs_4.jpg',
+          "price": '₹ 359.00 to ₹ 5,319.00'
+        },
+        {
+          "image": '/assets/images/aboutUs_3.jpg',
+          "price": '₹ 359.00 to ₹ 5,319.00'
+        },
+        {
+          "image": '/assets/images/aboutUs_2.jpg',
+          "price": '₹ 359.00 to ₹ 5,319.00'
+        },
+        {
+          "image": '/assets/images/aboutUs_1.jpg'
+          
+        },
+        {
+          "image": '/assets/images/home_card_1.jpg'
+          
+        },
+        {
+          "image": '/assets/images/aboutUs_4.jpg',
+          "price": 'test price 1'
+        },
+        {
+          "image": '/assets/images/aboutUs_3.jpg',
+          "price": 'test price 2'
+        }
+      ]
+    }
+    
+    
 
     this.scroll = [
       {

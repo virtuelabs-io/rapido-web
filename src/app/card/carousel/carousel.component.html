@@ -1,10 +1,10 @@
 <ngb-carousel interval='0'>
-  <ng-template ngbSlide class="carousel" *ngFor="let car of carousel">
+  <ng-template ngbSlide class="carousel" *ngFor="let template of carouselData">
     <div class="card-holder2">
-      <div class="card2" *ngFor="let card of car">
+      <div class="card2" *ngFor="let card of template">
         <div class="card-content">
           <img class="card-image" src="{{ card.image }}">
-          <div class="card-price">
+          <div *ngIf="config.price" class="card-price">
             {{ card.price }}
           </div>
         </div>

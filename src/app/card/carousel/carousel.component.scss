@@ -39,6 +39,9 @@
             @media screen and (max-width: $mobile-device) {
                 width: 100%;
             }
+            @media screen and (max-width: $medium-device) {
+                width: 30%;
+            }
         }
 
        
