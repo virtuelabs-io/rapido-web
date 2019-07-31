@@ -36,7 +36,7 @@
                 @media screen and (max-width: $mobile-device) {
                     width: 100% !important;
                 }
-                @media screen and (max-width: $ipad-pro) {
+                @media screen and (max-width: $medium-device) {
                     width: 90%;
                 }
             }
@@ -45,7 +45,7 @@
                 margin-right: 7.5% !important;
                 margin-bottom: 2% !important;
             }
-            @media screen and (max-width: $ipad-pro) {
+            @media screen and (max-width: $medium-device) {
                 margin-left: 10%;
                 margin-right: 8%;
                 margin-bottom: 5%;
