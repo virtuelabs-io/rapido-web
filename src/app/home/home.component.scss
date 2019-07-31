@@ -9,7 +9,7 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
-        margin-bottom: 10%;
+        margin-bottom: 5%;
         margin-top: 5%;
         width: 100%;
         .app-home-card {
@@ -50,6 +50,9 @@
             .carousel-title {
                 padding-left: 2%;
                 font-size: 24px;
+                @media screen and (max-width: $mobile-device) {
+                    padding-left: 0%;
+                }
             }
             .card2 {
                 display: flex;
@@ -69,11 +72,18 @@
                         background-position: center center; 
                         height: 90%; //260px;
                         width: 100%;
+                        @media screen and (max-width: $mobile-device) {
+                            width: 90%;
+                            padding-left: 10%;
+                        }
                     }
                     .card-price {
                         padding-top: 1%;
                         color: red;
                         padding-left: 15%;
+                        @media screen and (max-width: $mobile-device) {
+                            padding-left: 25%;
+                        }
                     }
                 }
                 @media screen and (max-width: $mobile-device) {
