@@ -46,10 +46,6 @@
             width: 100%;
         }
     }
-
-    @media screen and (max-width: $mobile-device) {
-        display: none !important;
-    }
 }
 
 ::ng-deep .carousel-control-prev, ::ng-deep .carousel-control-next {

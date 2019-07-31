@@ -8,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   cardDetails: any
   carousel: any
-  car1: any
   constructor() { }
 
   ngOnInit() {
@@ -36,11 +35,6 @@ export class HomeComponent implements OnInit {
       }
     ]
 
-    this.car1 = {
-      
-      
-      
-    }
     this.carousel = [
       [{
         "image": '/assets/images/home_card_1.jpg',

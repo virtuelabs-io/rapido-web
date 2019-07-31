@@ -10,6 +10,22 @@
     </div>
     <app-carousel [carousel]=carousel></app-carousel>
   </div>
+
+  <div class="carousel-card-mobile">
+    <div class="card-holder2">
+      <div class="carousel-title">
+        Recommended Products
+      </div>
+      <div class="card2" *ngFor="let card of carousel[0]">
+        <div class="card-content">
+          <img class="card-image" src="{{ card.image }}">
+          <div class="card-price">
+            {{ card.price }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
  
 
   
