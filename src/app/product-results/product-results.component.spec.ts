@@ -3,6 +3,10 @@ import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ProductResultsComponent } from './product-results.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import {  HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterTestingModule } from '@angular/router/testing';
+import { SearchItemService } from '../shared-services/search-item/search-item.services';
+import { ProductsService } from '../services/products/products.service';
 
 describe('ProductResultsComponent', () => {
   let component: ProductResultsComponent;
@@ -12,7 +16,8 @@ describe('ProductResultsComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ ProductResultsComponent ],
       schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
-      imports:[MatDialogModule,HttpClientTestingModule ]
+      imports:[MatDialogModule, HttpClientTestingModule, HttpClientModule, RouterTestingModule ],
+      providers: [SearchItemService, ProductsService]
     })
     .compileComponents();
   }));
