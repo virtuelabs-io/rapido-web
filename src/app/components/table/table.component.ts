@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { MatTableDataSource, MatSort } from '@angular/material';
 
 @Component({
 	selector: 'app-table',
@@ -13,6 +14,7 @@ export class TableComponent implements OnInit {
 	constructor() {}
 
 	ngOnInit() {
+		if(this.tableData)
 		this.prepareTableData(this.tableData)
 	}
 
@@ -25,9 +27,8 @@ export class TableComponent implements OnInit {
 				'val': obj[1]
 			}
 		})
-		this.dataSource = updateData
+		this.dataSource = new MatTableDataSource(updateData);
 		this.displayedColumns = ['prop', 'val'];
-
 	}
 
 }
