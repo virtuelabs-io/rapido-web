@@ -40,21 +40,21 @@ export class HomeComponent implements OnInit {
     ]
     this.desktopConfig = {
       image: true,
-      price: false,
+      price: true,
       itemsInTemplate: 5,
       scroll: true,
       title: "Recommended Products 1"
     }
     this.tabletConfig = {
       image: true,
-      price: false,
+      price: true,
       itemsInTemplate: 3,
       scroll: true,
       title: "Recommended Products 2"
     }
     this.mobileConfig = {
       image: true,
-      price: false,
+      price: true,
       itemsInTemplate: 1,
       scroll: true,
       title: "Recommended Products 3"

@@ -61,8 +61,8 @@
     width: 2% !important;
     margin-top: 6%;
     background-color: black;
-    @media screen and (max-width: $mobile-device) {
-        width: 5% !important;
+    @media screen and (max-width: $medium-device) {
+        width: 4% !important;
         margin-top: 15%;
         margin-bottom: 15%;
     }
