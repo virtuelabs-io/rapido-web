@@ -51,6 +51,7 @@ import { HomeComponent } from './home/home.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HomeCardComponent } from './card/home-card/home-card.component';
 import { CarouselComponent } from './card/carousel/carousel.component';
+import { CarouselScrollComponent } from './card/carousel-scroll/carousel-scroll.component';
 
 @NgModule({
   declarations: [
@@ -91,7 +92,8 @@ import { CarouselComponent } from './card/carousel/carousel.component';
     OrderDetailsComponent,
     HomeComponent,
     HomeCardComponent,
-    CarouselComponent
+    CarouselComponent,
+    CarouselScrollComponent
   ],
   imports: [
     MatSidenavModule,
