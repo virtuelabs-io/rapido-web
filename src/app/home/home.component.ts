@@ -43,21 +43,27 @@ export class HomeComponent implements OnInit {
       price: true,
       itemsInTemplate: 5,
       scroll: true,
-      title: true
+      title: true,
+      offer: true,
+      desc: true
     }
     this.tabletConfig = {
       image: true,
       price: true,
       itemsInTemplate: 3,
       scroll: true,
-      title: true
+      title: true,
+      offer: true,
+      desc: true
     }
     this.mobileConfig = {
       image: true,
       price: true,
       itemsInTemplate: 1,
       scroll: true,
-      title: true
+      title: true,
+      offer: true,
+      desc: true
     }
     this.carousel = {
       RecommendedList:  {
@@ -65,19 +71,27 @@ export class HomeComponent implements OnInit {
         "data": [
           {
             "image": '/assets/images/home_card_1.jpg',
-            "price": '₹ 359.00 to ₹ 5,319.00'
+            "price": '₹ 359.00 to ₹ 5,319.00',
+            "offer": "10%",
+            "desc": "Fossil Watch"
           },
           {
             "image": '/assets/images/aboutUs_1.jpg',
-            "price": '₹ 359.00 to ₹ 5,319.00'
+            "price": '₹ 359.00 to ₹ 5,319.00',
+            "offer": "10%",
+            "desc": "Fossil Watch"
           },
           {
             "image": '/assets/images/aboutUs_2.jpg',
-            "price": '₹ 359.00 to ₹ 5,319.00'
+            "price": '₹ 359.00 to ₹ 5,319.00',
+            "offer": "10%",
+            "desc": "Fossil Watch"
           },
           {
             "image": '/assets/images/aboutUs_3.jpg',
-            "price": '₹ 359.00 to ₹ 5,319.00'
+            "price": '₹ 359.00 to ₹ 5,319.00',
+            "offer": "10%",
+            "desc": "Fossil Watch"
           },
           {
             "image": '/assets/images/aboutUs_4.jpg',
