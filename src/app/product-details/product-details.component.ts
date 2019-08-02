@@ -40,7 +40,7 @@ export class ProductDetailsComponent implements OnInit {
 				let {
 					hits
 				} = respData
-				if (hits && hits.hit && hits.hit[0].id) {
+				if (hits.hit[0].id) {
 					this.updateProductDetails(hits)
 				} else {
 					let query = {
