@@ -29,13 +29,9 @@
         }
     }
     .carousel-holder {  
-        height: 300px;
-        margin-bottom: 5%;
-        @media screen and (max-width: $medium-device) {
-            margin-bottom: 10%;
-        }
+        height: 350px;
         @media screen and (max-width: $mobile-device) {
-            margin-bottom: 20%;
+            height: 400px;
         }
         .rapido-desktop-component {
             display: block;
