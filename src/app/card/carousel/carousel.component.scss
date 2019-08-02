@@ -37,7 +37,10 @@
                 .card-price {
                     padding-top: 1%;
                     color: black;
-                    padding-left: 15%;
+                //    padding-left: 15%;
+                    @media screen and (max-width: $medium-device) {
+                        padding-left: 0%;
+                    }
                 }
             }
             @media screen and (max-width: $mobile-device) {

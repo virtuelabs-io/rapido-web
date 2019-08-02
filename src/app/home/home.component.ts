@@ -79,42 +79,42 @@ export class HomeComponent implements OnInit {
           {
             "image": '/assets/images/home_card_1.jpg',
             "price": '₹ 359.00 to ₹ 5,319.00',
-            "offer": "10%",
+            "offer": "15%",
             "desc": "Fossil Watch"
           },
 
           {
             "image": '/assets/images/home_card_1.jpg',
             "price": '₹ 359.00 to ₹ 5,319.00',
-            "offer": "10%",
+            "offer": "20%",
             "desc": "Fossil Watch"
           },
 
           {
             "image": '/assets/images/home_card_1.jpg',
             "price": '₹ 359.00 to ₹ 5,319.00',
-            "offer": "10%",
+            "offer": "25%",
             "desc": "Fossil Watch"
           },
 
           {
             "image": '/assets/images/home_card_1.jpg',
             "price": '₹ 359.00 to ₹ 5,319.00',
-            "offer": "10%",
+            "offer": "30%",
             "desc": "Fossil Watch"
           },
 
           {
             "image": '/assets/images/home_card_1.jpg',
             "price": '₹ 359.00 to ₹ 5,319.00',
-            "offer": "10%",
+            "offer": "35%",
             "desc": "Fossil Watch"
           },
 
           {
             "image": '/assets/images/home_card_1.jpg',
             "price": '₹ 359.00 to ₹ 5,319.00',
-            "offer": "10%",
+            "offer": "40%",
             "desc": "Fossil Watch"
           }
           
