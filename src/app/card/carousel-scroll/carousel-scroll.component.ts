@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-carousel-scroll',
@@ -6,11 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./carousel-scroll.component.scss']
 })
 export class CarouselScrollComponent implements OnInit {
-  scroll: any
+  @Input() carouselCard
+  @Input() CarouselConfig
+  carouselData: any
+  config: any
   constructor() { }
 
   ngOnInit() {
-    this.scroll = [
+    this.config = this.CarouselConfig
+    this.carouselData = this.carouselCard.data
+    /*this.scroll = [
       {
         "image": '/assets/images/home_card_1.jpg',
         "price": '₹ 359.00 to ₹ 5,319.00'
@@ -71,7 +76,24 @@ export class CarouselScrollComponent implements OnInit {
         "image": '/assets/images/aboutUs_4.jpg',
         "price": '₹ 359.00 to ₹ 5,319.00'
       }
-    ]
+    ]*/
+  }
+
+  formatData(data: any[], itemsInTemplate: number) {
+    let formatedData = []
+    let tmpItems = []
+    data.forEach(item => {
+      tmpItems.push(item)
+      if(tmpItems.length === itemsInTemplate){
+        formatedData.push(tmpItems)
+        tmpItems = []
+      }
+    })
+    if(tmpItems.length > 0){
+      formatedData.push(tmpItems)
+      tmpItems = []
+    }
+    return formatedData
   }
 
 }
