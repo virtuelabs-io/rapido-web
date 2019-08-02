@@ -26,6 +26,7 @@ import { ProductControlsComponent } from './product-controls/product-controls.co
 import { ProductResultsComponent } from './product-results/product-results.component';
 import { RangeSliderComponent } from './range-slider/range-slider.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { BusyLoaderComponent } from './components/common/busy-loader/busy-loader.component';
 
 describe('AppComponent', () => {
   var originalTimeout;
@@ -77,7 +78,8 @@ describe('AppComponent', () => {
         ImagesComponent,
         ProductControlsComponent,
         ProductResultsComponent,
-        RangeSliderComponent
+        RangeSliderComponent,
+        BusyLoaderComponent
       ],
     }).compileComponents();
   }));
