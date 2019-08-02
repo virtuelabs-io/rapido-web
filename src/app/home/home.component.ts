@@ -60,7 +60,7 @@ export class HomeComponent implements OnInit {
       title: "Recommended Products"
     }
     this.carousel = {
-      data: [
+      RecommendedList: [
         {
           "image": '/assets/images/home_card_1.jpg',
           "price": '₹ 359.00 to ₹ 5,319.00'

@@ -14,7 +14,7 @@ export class CarouselComponent implements OnInit {
 
   ngOnInit() {
     this.config = this.CarouselConfig
-    this.carouselData = this.formatData(this.carouselCard.data, this.config.itemsInTemplate)
+    this.carouselData = this.formatData(this.carouselCard.RecommendedList, this.config.itemsInTemplate)
   }
 
   formatData(data: any[], itemsInTemplate: number) {
