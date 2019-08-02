@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   cardDetails: any
-  browserCarousel: any
+  carousel: any
+  desktopConfig: any
+  tabletConfig: any
+  mobileConfig: any
   scroll: any
   constructor() { }
 
@@ -35,15 +38,28 @@ export class HomeComponent implements OnInit {
         "desc": "Deals you might be interested in"
       }
     ]
-
-    this.browserCarousel = {
-      config: {
-        image: true,
-        price: false,
-        title: true,
-        itemsInTemplate: 3,
-        scroll: true
-      },
+    this.desktopConfig = {
+      image: true,
+      price: false,
+      itemsInTemplate: 5,
+      scroll: true,
+      title: "Recommended Products 1"
+    }
+    this.tabletConfig = {
+      image: true,
+      price: false,
+      itemsInTemplate: 3,
+      scroll: true,
+      title: "Recommended Products 2"
+    }
+    this.mobileConfig = {
+      image: true,
+      price: false,
+      itemsInTemplate: 1,
+      scroll: true,
+      title: "Recommended Products 3"
+    }
+    this.carousel = {
       data: [
         {
           "image": '/assets/images/home_card_1.jpg',

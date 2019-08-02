@@ -1,5 +1,9 @@
 @import "../../../assets/scss/custom-bootstrap-variables.scss";
 
+.carousel-title {
+    padding-left: 2%;
+    font-size: 24px;
+}
 .carousel {
     display: flex;
     flex-direction: column;
@@ -42,9 +46,10 @@
             @media screen and (max-width: $medium-device) {
                 width: 30%;
             }
+            @media screen and (max-width: $small-device) {
+                width: 70%;
+            }
         }
-
-       
         @media screen and (max-width: $mobile-device) {
             width: 100%;
         }
@@ -56,6 +61,11 @@
     width: 2% !important;
     margin-top: 6%;
     background-color: black;
+    @media screen and (max-width: $mobile-device) {
+        width: 5% !important;
+        margin-top: 15%;
+        margin-bottom: 15%;
+    }
 }
 
 ::ng-deep .carousel-indicators {
