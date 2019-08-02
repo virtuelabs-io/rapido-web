@@ -3,8 +3,8 @@
 </div>
 <ngb-carousel interval='0'>
   <ng-template ngbSlide class="carousel" *ngFor="let template of carouselData">
-    <div class="card-holder2">
-      <div class="card2" *ngFor="let card of template">
+    <div class="card-holder">
+      <div class="card" *ngFor="let card of template">
         <div class="card-content">
           <img *ngIf="config.image" class="card-image" src="{{ card.image }}">
           <div *ngIf="config.price" class="card-price">

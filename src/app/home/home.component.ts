@@ -43,21 +43,21 @@ export class HomeComponent implements OnInit {
       price: true,
       itemsInTemplate: 5,
       scroll: true,
-      title: "Recommended Products 1"
+      title: "Recommended Products"
     }
     this.tabletConfig = {
       image: true,
       price: true,
       itemsInTemplate: 3,
       scroll: true,
-      title: "Recommended Products 2"
+      title: "Recommended Products"
     }
     this.mobileConfig = {
       image: true,
       price: true,
       itemsInTemplate: 1,
       scroll: true,
-      title: "Recommended Products 3"
+      title: "Recommended Products"
     }
     this.carousel = {
       data: [
