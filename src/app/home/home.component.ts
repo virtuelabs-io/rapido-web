@@ -43,73 +43,80 @@ export class HomeComponent implements OnInit {
       price: true,
       itemsInTemplate: 5,
       scroll: true,
-      title: "Recommended Products"
+      title: true
     }
     this.tabletConfig = {
       image: true,
       price: true,
       itemsInTemplate: 3,
       scroll: true,
-      title: "Recommended Products"
+      title: true
     }
     this.mobileConfig = {
       image: true,
       price: true,
       itemsInTemplate: 1,
       scroll: true,
-      title: "Recommended Products"
+      title: true
     }
     this.carousel = {
-      RecommendedList: [
-        {
-          "image": '/assets/images/home_card_1.jpg',
-          "price": '₹ 359.00 to ₹ 5,319.00'
-        },
-        {
-          "image": '/assets/images/aboutUs_1.jpg',
-          "price": '₹ 359.00 to ₹ 5,319.00'
-        },
-        {
-          "image": '/assets/images/aboutUs_2.jpg',
-          "price": '₹ 359.00 to ₹ 5,319.00'
-        },
-        {
-          "image": '/assets/images/aboutUs_3.jpg',
-          "price": '₹ 359.00 to ₹ 5,319.00'
-        },
-        {
-          "image": '/assets/images/aboutUs_4.jpg',
-          "price": '₹ 359.00 to ₹ 5,319.00'
-        },
-        {
-          "image": '/assets/images/aboutUs_4.jpg',
-          "price": '₹ 359.00 to ₹ 5,319.00'
-        },
-        {
-          "image": '/assets/images/aboutUs_3.jpg',
-          "price": '₹ 359.00 to ₹ 5,319.00'
-        },
-        {
-          "image": '/assets/images/aboutUs_2.jpg',
-          "price": '₹ 359.00 to ₹ 5,319.00'
-        },
-        {
-          "image": '/assets/images/aboutUs_1.jpg'
-          
-        },
-        {
-          "image": '/assets/images/home_card_1.jpg'
-          
-        },
-        {
-          "image": '/assets/images/aboutUs_4.jpg',
-          "price": 'test price 1'
-        },
-        {
-          "image": '/assets/images/aboutUs_3.jpg',
-          "price": 'test price 2'
-        }
-      ]
+      RecommendedList:  {
+        "title": "Recommended Products",
+        "data": [
+          {
+            "image": '/assets/images/home_card_1.jpg',
+            "price": '₹ 359.00 to ₹ 5,319.00'
+          },
+          {
+            "image": '/assets/images/aboutUs_1.jpg',
+            "price": '₹ 359.00 to ₹ 5,319.00'
+          },
+          {
+            "image": '/assets/images/aboutUs_2.jpg',
+            "price": '₹ 359.00 to ₹ 5,319.00'
+          },
+          {
+            "image": '/assets/images/aboutUs_3.jpg',
+            "price": '₹ 359.00 to ₹ 5,319.00'
+          },
+          {
+            "image": '/assets/images/aboutUs_4.jpg',
+            "price": '₹ 359.00 to ₹ 5,319.00'
+          },
+          {
+            "image": '/assets/images/aboutUs_4.jpg',
+            "price": '₹ 359.00 to ₹ 5,319.00'
+          },
+          {
+            "image": '/assets/images/aboutUs_3.jpg',
+            "price": '₹ 359.00 to ₹ 5,319.00'
+          },
+          {
+            "image": '/assets/images/aboutUs_2.jpg',
+            "price": '₹ 359.00 to ₹ 5,319.00'
+          },
+          {
+            "image": '/assets/images/aboutUs_1.jpg'
+            
+          },
+          {
+            "image": '/assets/images/home_card_1.jpg'
+            
+          },
+          {
+            "image": '/assets/images/aboutUs_4.jpg',
+            "price": 'test price 1'
+          },
+          {
+            "image": '/assets/images/aboutUs_3.jpg',
+            "price": 'test price 2'
+          }
+        ]
+      }
+        
+      
+      
+      
     }
     
     
