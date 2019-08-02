@@ -28,7 +28,14 @@
             width: 100%;
         }
     }
-    .carousel-holder {
+    .carousel-holder {  
+        margin-bottom: 5%;
+        @media screen and (max-width: $medium-device) {
+            margin-bottom: 10%;
+        }
+        @media screen and (max-width: $mobile-device) {
+            margin-bottom: 20%;
+        }
         .rapido-desktop-component {
             display: block;
             @media screen and (max-width: $mobile-device) {
