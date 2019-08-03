@@ -21,6 +21,9 @@
                 width: 100%;
                 height: 100%;
             }
+            @media screen and (max-width: $mobile-device) {
+                width: 100%;
+            }
         }
         .app-home-card {
             width: 22%;
