@@ -73,14 +73,14 @@ export class HomeComponent implements OnInit {
             "image": '/assets/images/home_card_1.jpg',
             "price": '₹ 359.00 to ₹ 5,319.00',
             "offer": "10%",
-            "desc": "Fossil Watch"
+            "desc": "Watches that will exite you at the best of prices"
           },
 
           {
             "image": '/assets/images/home_card_1.jpg',
             "price": '₹ 359.00 to ₹ 5,319.00',
             "offer": "15%",
-            "desc": "Fossil Watch"
+            "desc": "Watches that will exite you"
           },
 
           {
@@ -130,13 +130,43 @@ export class HomeComponent implements OnInit {
           {
             "image": '/assets/images/home_card_1.jpg',
             "price": '₹ 359.00 to ₹ 5,319.00',
-            "offer": "40%",
-            "desc": "Fossil Watch"
+            "offer": "5%",
+            "desc": "Watches that will exite you"
           },
           {
             "image": '/assets/images/aboutUs_1.jpg',
             "price": '₹ 359.00 to ₹ 5,319.00',
-            "offer": "40%",
+            "offer": "10%",
+            "desc": "Watches that will exite you at the best of prices"
+          },
+          {
+            "image": '/assets/images/aboutUs_2.jpg',
+            "price": '₹ 359.00 to ₹ 5,319.00',
+            "offer": "15%",
+            "desc": "Fossil Watch"
+          },
+          {
+            "image": '/assets/images/aboutUs_3.jpg',
+            "price": '₹ 359.00 to ₹ 5,319.00',
+            "offer": "20%",
+            "desc": "Fossil Watch"
+          },
+          {
+            "image": '/assets/images/aboutUs_4.jpg',
+            "price": '₹ 359.00 to ₹ 5,319.00',
+            "offer": "25%",
+            "desc": "Fossil Watch"
+          },
+          {
+            "image": '/assets/images/aboutUs_4.jpg',
+            "price": '₹ 359.00 to ₹ 5,319.00',
+            "offer": "30%",
+            "desc": "Fossil Watch"
+          },
+          {
+            "image": '/assets/images/aboutUs_3.jpg',
+            "price": '₹ 359.00 to ₹ 5,319.00',
+            "offer": "35%",
             "desc": "Fossil Watch"
           },
           {
@@ -144,26 +174,6 @@ export class HomeComponent implements OnInit {
             "price": '₹ 359.00 to ₹ 5,319.00',
             "offer": "40%",
             "desc": "Fossil Watch"
-          },
-          {
-            "image": '/assets/images/aboutUs_3.jpg',
-            "price": '₹ 359.00 to ₹ 5,319.00'
-          },
-          {
-            "image": '/assets/images/aboutUs_4.jpg',
-            "price": '₹ 359.00 to ₹ 5,319.00'
-          },
-          {
-            "image": '/assets/images/aboutUs_4.jpg',
-            "price": '₹ 359.00 to ₹ 5,319.00'
-          },
-          {
-            "image": '/assets/images/aboutUs_3.jpg',
-            "price": '₹ 359.00 to ₹ 5,319.00'
-          },
-          {
-            "image": '/assets/images/aboutUs_2.jpg',
-            "price": '₹ 359.00 to ₹ 5,319.00'
           },
           {
             "image": '/assets/images/aboutUs_1.jpg'
