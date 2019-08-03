@@ -85,9 +85,8 @@ export class HomeComponent implements OnInit {
 
           {
             "image": '/assets/images/home_card_1.jpg',
-            "price": '₹ 359.00 to ₹ 5,319.00',
             "offer": "20%",
-            "desc": "Fossil Watch"
+            "desc": "Watches that will exite you at the best of prices"
           },
 
           {
@@ -117,13 +116,8 @@ export class HomeComponent implements OnInit {
             "offer": "40%",
             "desc": "Fossil Watch"
           }
-          
-          
-          
         ]
       },
-
-
       BrowsingHistory:  {
         "title": "Previously Browsed Products",
         "data": [
@@ -193,15 +187,6 @@ export class HomeComponent implements OnInit {
           }
         ]
       }
-        
-      
-      
-      
     }
-    
-    
-
-    
   }
-
 }
