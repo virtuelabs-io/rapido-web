@@ -17,7 +17,8 @@ import { Constants } from './utils/constants';
 import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, 
   MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, 
   MatSnackBarModule, MatExpansionModule, MatSelectModule, MatPaginatorModule, 
-  MatProgressSpinnerModule, MatDialogModule, MatFormFieldModule, MatCardModule  } from '@angular/material';
+  MatProgressSpinnerModule, MatDialogModule, MatFormFieldModule, MatCardModule,
+  MatTableModule  } from '@angular/material';
 import { LeftSectionComponent } from './leftsection/leftsection.component';
 import { CardComponent } from './card/card.component';
 import { RatingComponent } from './rating/rating.component';
@@ -26,6 +27,7 @@ import { ProductControlsComponent } from './product-controls/product-controls.co
 import { ProductResultsComponent } from './product-results/product-results.component';
 import { RangeSliderComponent } from './range-slider/range-slider.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { TableComponent } from './components/table/table.component';
 
 describe('AppComponent', () => {
   var originalTimeout;
@@ -60,6 +62,7 @@ describe('AppComponent', () => {
         MatSidenavModule,
         MatListModule,
         MatSelectModule,
+        MatTableModule,
         NgbModule
       ],
       declarations: [
@@ -77,7 +80,8 @@ describe('AppComponent', () => {
         ImagesComponent,
         ProductControlsComponent,
         ProductResultsComponent,
-        RangeSliderComponent
+        RangeSliderComponent,
+        TableComponent
       ],
     }).compileComponents();
   }));

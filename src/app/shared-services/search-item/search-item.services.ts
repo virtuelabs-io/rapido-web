@@ -18,9 +18,30 @@ export class SearchItemService {
     sort: null,
     parser:'structured'
   }
-  private responsePoductList = new BehaviorSubject<object>({});
+
+  _responseData = {
+    "status": {
+      "rid": "",
+      "time-ms": 0
+    },
+    "hits": {
+      "found": 0,
+      "start": 0,
+      "hit": [{
+        "id": null,
+        "fields": {
+          "points":[],
+          "details":[],
+          "images":[],
+          "rating":"0"
+        }
+      }]
+    }
+  }
   private searchItemText = new BehaviorSubject<Query>(this._query);
   currentState = this.searchItemText.asObservable();
+  
+  private responsePoductList = new BehaviorSubject(this._responseData);
   responsePoductListState = this.responsePoductList.asObservable();
 
   constructor() {}

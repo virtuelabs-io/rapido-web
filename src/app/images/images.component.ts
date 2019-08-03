@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Constants } from '../../../src/app/utils/constants';
+import { Common } from '../../../src/app/utils/common';
 
 @Component({
   selector: 'app-images',
@@ -13,7 +13,7 @@ export class ImagesComponent implements OnInit {
 
   ngOnInit() {
     if(this.imgSrc){
-      this.imgSrc = Constants.environment.staticAssets + this.imgSrc[0]
+      this.imgSrc = Common.getImageURI(null, this.imgSrc[0])
     }
   }
 }

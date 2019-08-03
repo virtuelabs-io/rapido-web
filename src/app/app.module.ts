@@ -15,7 +15,7 @@ import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule,
           MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, 
           MatSnackBarModule, MatExpansionModule, MatSelectModule, MatPaginatorModule, 
           MatProgressSpinnerModule, MatDialogModule, MatCardModule,
-          MatFormFieldModule  } from '@angular/material';
+          MatFormFieldModule, MatTableModule  } from '@angular/material';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ProductResultsComponent } from './product-results/product-results.component';
 import { FilterControlsDialog } from './product-results/product-results.component';
@@ -39,6 +39,8 @@ import { EditAddressComponent } from './edit-address/edit-address.component';
 import { EditCompanyDetailsComponent } from './edit-company-details/edit-company-details.component';
 import { AccountInfoComponent } from './account-info/account-info.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { TableComponent } from './components/table/table.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +70,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     AddAddressComponent,
     EditAddressComponent,
     EditCompanyDetailsComponent,
-    AccountInfoComponent
+    AccountInfoComponent,
+    ProductDetailsComponent,
+    TableComponent
   ],
   imports: [
     MatSidenavModule,
@@ -94,6 +98,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     MatProgressSpinnerModule,
     MatDialogModule,
+    MatTableModule,
     // Ng5SliderModule,
     NgxStripeModule.forRoot(Constants.environment.stripePublicKey),
     NgbModule

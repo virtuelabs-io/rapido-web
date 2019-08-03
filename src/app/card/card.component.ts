@@ -22,7 +22,10 @@ export class CardComponent implements OnInit {
   offer: any
   rating: any
   Math: any
-  @Input() itemList
+  @Input() itemList ={
+    id:'',
+    fields:{}
+  }
   constructor() { }
 
   ngOnInit() {
@@ -30,6 +33,7 @@ export class CardComponent implements OnInit {
       this.itemDetails = this.itemList.fields
       this.mrpPrice = (this.itemDetails.price * (1 + parseFloat(this.itemDetails.offer))).toFixed(2)
       this.discountedPrice = (this.mrpPrice - this.itemDetails.price).toFixed(2)
+      this.itemDetails.price = Number(this.itemDetails.price).toFixed(2)
     }
   }
 }
