@@ -20,10 +20,9 @@ export class HomeComponent implements OnInit {
     this.banner = "assets/images/aboutUs_1.jpg"
     this.cardDetails = [
       {
-        "title": "Fashion photography store",
+        "title": "Photography store",
         "image": '/assets/images/home_card_1.jpg',
-        "desc": "Find the best photography deals",
-        "price": "Rs. 100000" 
+        "desc": "Find the best photography deals"
       },
       {
         "title": "Crazy Constructions",
