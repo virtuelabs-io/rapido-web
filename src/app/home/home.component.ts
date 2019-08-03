@@ -129,15 +129,21 @@ export class HomeComponent implements OnInit {
         "data": [
           {
             "image": '/assets/images/home_card_1.jpg',
-            "price": '₹ 359.00 to ₹ 5,319.00'
+            "price": '₹ 359.00 to ₹ 5,319.00',
+            "offer": "40%",
+            "desc": "Fossil Watch"
           },
           {
             "image": '/assets/images/aboutUs_1.jpg',
-            "price": '₹ 359.00 to ₹ 5,319.00'
+            "price": '₹ 359.00 to ₹ 5,319.00',
+            "offer": "40%",
+            "desc": "Fossil Watch"
           },
           {
             "image": '/assets/images/aboutUs_2.jpg',
-            "price": '₹ 359.00 to ₹ 5,319.00'
+            "price": '₹ 359.00 to ₹ 5,319.00',
+            "offer": "40%",
+            "desc": "Fossil Watch"
           },
           {
             "image": '/assets/images/aboutUs_3.jpg',
