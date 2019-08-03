@@ -11,10 +11,13 @@ export class HomeComponent implements OnInit {
   desktopConfig: any
   tabletConfig: any
   mobileConfig: any
+  bannerCard: any
+  banner: string
   scroll: any
   constructor() { }
 
   ngOnInit() {
+    this.banner = "assets/images/aboutUs_1.jpg"
     this.cardDetails = [
       {
         "title": "Fashion photography store",
@@ -36,7 +39,23 @@ export class HomeComponent implements OnInit {
         "title": "We make it possible",
         "image": '/assets/images/aboutUs_3.jpg',
         "desc": "Deals you might be interested in"
-      }
+      } 
+    ]
+
+    this.bannerCard = [
+      
+      {
+        "title": "Fashion photography store",
+        "image": '/assets/images/home_card_1.jpg',
+        "desc": "Find the best photography deals",
+        "price": "Rs. 100000" 
+      },
+      {
+        "title": "Crazy Constructions",
+        "image": '/assets/images/aboutUs_1.jpg',
+        "desc": "Find tools related to construction"
+      },
+      
     ]
     this.desktopConfig = {
       image: true,
