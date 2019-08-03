@@ -27,6 +27,7 @@
             background-color: white;
             padding: 1%;
             padding-bottom: 1%;
+            border: none;
             .card-content {
                 height: 100%;
                 .card-image {
@@ -40,7 +41,7 @@
                 .card-price {
                     padding-top: 1%;
                     color: black;
-                //    padding-left: 15%;
+                    text-align: center;
                     @media screen and (max-width: $medium-device) {
                         padding-left: 0%;
                     }
