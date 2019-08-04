@@ -1,0 +1,131 @@
+<div *ngIf=itemDetails>
+  
+<div class="main-div pl-2 pr-2 pt-3">
+    <!-- Product gallery section starts -->
+    <div class="product-gallery-container col-md-5">
+      <!-- <header>
+          <h3 class="">
+              <a class="" >
+                <span class="">{{itemDetails.name}}</span>
+              </a>
+            </h3>
+      </header> -->
+        <img [src]=imagePreviewURI class="reg-size ml-5"/>
+        <div class="thumbnail-row">
+          <img
+            *ngFor="let imageObj of imageDetails; let i = index"  
+            class="p-2 m-2 thumbnail"
+            [ngClass]="{
+              'thumbnail-active':imageObj.active,
+              'thumbnail-inactive':!imageObj.active
+            }"
+            [src]=imageObj.uri 
+            (click)="showPicture(imageObj.uri, i)"
+            />
+        </div>
+    </div>
+    <!-- Product gallery section ends -->
+
+    <!-- Details section starts -->
+    <div class="details-div col-md-5">
+      <div class="card-body">
+        <h3 class="">
+          <a class="" >
+            <span class="">{{itemDetails.name}}</span>
+          </a>
+        </h3>
+         <app-rating 
+         styleClass='size-bg'
+         [currentRate]='itemDetails.rating'>
+
+         </app-rating>
+         
+         <hr/>
+
+         <div class="price-section h5">
+           <span aria-hidden="true" class="text-danger ">
+              Price:
+               <span class="a-price-symbol">{{itemDetails.currency}}</span>
+               <span class="a-price-whole">{{Number(itemDetails.price).toFixed(2)}}</span>
+            </span>
+            <span aria-hidden="true" class="small ">
+                M.R.P.:
+              <span class="a-price-symbol">{{itemDetails.currency}}</span>
+              <s class="a-price-whole">{{Number(mrpPrice).toFixed(2)}}</s>
+            </span>
+           <span class="small ">
+             You Save:
+              <span>{{ itemDetails.offer * 100}}%</span>
+           </span>
+         </div>
+         
+         <hr/>
+
+         <div class="product-points">
+            <ul class="">
+                <li *ngFor="let point of itemDetails.points">
+                  <span class="">{{point}}</span>
+                </li> 
+              </ul>
+         </div>
+
+    </div>
+    </div>
+    <!-- Details section ends -->
+
+    <!-- Add to cart section starts -->
+    <div class="order-div col-md-2"> 
+      <div class="">
+      <div class="thumbnail-inactive p-2">
+        <h4 class="text-danger">{{itemDetails.currency}} {{totalPrice}}</h4>
+          <div class="d-flex ">
+            <label class="mr-2">Quantity: </label>
+            <select 
+              (change)="onChangeQuantity($event.target.value)"
+              [(ngModel)]="quantity" 
+              class="quantity" 
+              autocomplete="off">
+              <option *ngFor="let val of [1,2,3,4]">{{val}}</option>
+            </select>
+          </div>
+          <div routerLink="/checkout">
+            <button 
+              type="button"
+              class="btn btn-outline-dark btn-block bg-primary">
+              Add to cart
+            </button>
+            </div>
+          </div>
+      </div>
+    </div>
+    <!-- Add to cart section ends -->
+</div>
+
+<div class="hr-divider"></div>
+
+<!-- Product descriptions Starts -->
+  <div>
+    <div class="m-3 p-1 description">
+        <h3>Product descriptions</h3>
+        <div>
+          <p>{{itemDetails.description}}</p>
+        </div>
+    </div>
+  </div>
+<!-- Product descriptions ends -->
+
+
+<!-- Product specifications starts -->
+<div>
+  <div class="m-3 p-1 ">
+      <h3>Product specifications</h3>
+      <app-table [tableData]=itemDetails.details></app-table>
+  </div>
+</div>
+<!-- Product specifications ends -->
+
+</div>
+
+<div class="no-results" *ngIf=!itemDetails>
+  We didn't find any result for that product id... Please try again.
+</div>

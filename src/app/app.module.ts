@@ -15,7 +15,7 @@ import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule,
           MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, 
           MatSnackBarModule, MatExpansionModule, MatSelectModule, MatPaginatorModule, 
           MatProgressSpinnerModule, MatDialogModule, MatCardModule,
-          MatFormFieldModule  } from '@angular/material';
+          MatFormFieldModule, MatTableModule  } from '@angular/material';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ProductResultsComponent } from './product-results/product-results.component';
 import { FilterControlsDialog } from './product-results/product-results.component';
@@ -52,6 +52,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HomeCardComponent } from './card/home-card/home-card.component';
 import { CarouselComponent } from './card/carousel/carousel.component';
 import { CarouselScrollComponent } from './card/carousel-scroll/carousel-scroll.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { TableComponent } from './components/table/table.component';
 
 @NgModule({
   declarations: [
@@ -81,10 +83,11 @@ import { CarouselScrollComponent } from './card/carousel-scroll/carousel-scroll.
     AddAddressComponent,
     EditAddressComponent,
     EditCompanyDetailsComponent,
+    AccountInfoComponent,
+    ProductDetailsComponent,
+    TableComponent,
     CartComponent,
     FooterComponent,
-    EditCompanyDetailsComponent,
-    AccountInfoComponent,
     TermsConditionsComponent,
     PrivacyPolicyComponent,
     AboutUsComponent,
@@ -93,7 +96,8 @@ import { CarouselScrollComponent } from './card/carousel-scroll/carousel-scroll.
     HomeComponent,
     HomeCardComponent,
     CarouselComponent,
-    CarouselScrollComponent
+    CarouselScrollComponent,
+    AccountInfoComponent
   ],
   imports: [
     MatSidenavModule,
@@ -119,6 +123,7 @@ import { CarouselScrollComponent } from './card/carousel-scroll/carousel-scroll.
     HttpClientModule,
     MatProgressSpinnerModule,
     MatDialogModule,
+    MatTableModule,
     // Ng5SliderModule,
     NgxStripeModule.forRoot(Constants.environment.stripePublicKey),
     HttpClientModule,

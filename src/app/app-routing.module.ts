@@ -22,6 +22,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { HomeComponent } from './home/home.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -46,7 +47,8 @@ const routes: Routes = [
   { path: 'orders/:id/details', component: OrderDetailsComponent },
   { path: '', component: HomeComponent },
  // { path: '', component: AuthmockComponent},
-  { path: 'products', component: ProductResultsComponent }
+  { path: 'products', component: ProductResultsComponent },
+  { path: 'products/details/:id', component: ProductDetailsComponent}
 ];
 
 @NgModule({
@@ -77,5 +79,6 @@ export const RoutingComponents = [
   OrderDetailsComponent,
   HomeComponent,
   CheckoutComponent,
-  AuthmockComponent
+  AuthmockComponent,
+  ProductDetailsComponent
 ];
