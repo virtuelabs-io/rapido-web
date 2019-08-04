@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, Event, NavigationStart, NavigationEnd, NavigationError, ActivationEnd  } from '@angular/router';
 import { LoginStateService } from 'src/app/shared-services/login-state/login-state.service';
-
+import { Config } from 'src/app/utils/config'
 
 @Component({
   selector: 'app-root',
@@ -37,7 +37,7 @@ export class AppComponent {
   }
 
   handleNavBarVisibility(event){
-    let navBarComponents = ['RegisterComponent','LogInComponent','CheckoutComponent','ForgotPasswordComponent']
+    let navBarComponents = Config.COMPONENTS_WITHOUT_NAVBAR
     let componentName 
     debugger
     console.log(event)
