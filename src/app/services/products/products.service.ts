@@ -6,7 +6,6 @@ import { Constants } from '../../utils/constants';
 import { Query } from './query.interface';
 import { LoginStateService } from 'src/app/shared-services/login-state/login-state.service';
 
-
 @Injectable({
   providedIn: 'root'
 })
