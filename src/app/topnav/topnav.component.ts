@@ -15,7 +15,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class TopnavComponent implements OnInit {
   isSignedIn: Boolean = false
-  showNavBar: Boolean = true
   name: String
   searchedText: string = ''
   bannerName: String = Constants.RAPIDO_BUILD
@@ -43,9 +42,6 @@ export class TopnavComponent implements OnInit {
       }
     })
     
-    this._loginStateService.navBarState.subscribe(state => {
-      this.showNavBar = state
-    })
   }
 
   signOut() {

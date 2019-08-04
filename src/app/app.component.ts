@@ -10,7 +10,7 @@ import { Config } from 'src/app/utils/config'
 })
 export class AppComponent {
   
-  // navBarComponents: Array<[]>
+  showNavBar: Boolean = true
   constructor(private router: Router,
     private loginStateService: LoginStateService){ }
 
@@ -38,14 +38,11 @@ export class AppComponent {
 
   handleNavBarVisibility(event){
     let navBarComponents = Config.COMPONENTS_WITHOUT_NAVBAR
-    let componentName 
-    debugger
-    console.log(event)
-    componentName = event.snapshot.component.name
+    let componentName = event.snapshot.component.name
     if(navBarComponents.indexOf(componentName) === -1){
-      this.loginStateService.showNavBar()
+      this.showNavBar = true
     }else{
-      this.loginStateService.hideNavBar()
+      this.showNavBar = false
     }
   }
 
