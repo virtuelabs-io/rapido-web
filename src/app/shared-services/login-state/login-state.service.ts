@@ -8,8 +8,8 @@ export class LoginStateService {
 
   private userSignedIn = new BehaviorSubject<Boolean>(false);
   private isLoading = new BehaviorSubject<Boolean>(false);
-  currentState = this.userSignedIn.asObservable();
-  cuurLoadingState = this.isLoading.asObservable();
+  isLoggedInState = this.userSignedIn.asObservable();
+  loaderState = this.isLoading.asObservable();
 
   constructor() {}
 
@@ -17,7 +17,11 @@ export class LoginStateService {
     this.userSignedIn.next(state)
   }
 
-  toggleLoadingState(loading: Boolean){
-    this.isLoading.next(loading)
+  loaderEnable(){
+    this.isLoading.next(true)
+  }
+  
+  loaderDisable(){
+    this.isLoading.next(false)
   }
 }

@@ -35,7 +35,7 @@ export class TopnavComponent implements OnInit {
       this.openSnackBar(error.message);
       this.isSignedIn = false
     })
-    this._loginStateService.currentState.subscribe(state => {
+    this._loginStateService.isLoggedInState.subscribe(state => {
       this.isSignedIn = state
       if (state) {
         this.name =  this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.name
@@ -58,6 +58,7 @@ export class TopnavComponent implements OnInit {
         sort: null,
         cursor: null,
         return: null,
+        qdotparser:null
       })
     }
     

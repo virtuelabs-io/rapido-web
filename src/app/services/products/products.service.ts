@@ -29,14 +29,14 @@ export class ProductsService {
 
   get(_query: Query): Observable<any> {
     let url = Constants.environment.productSearchEndPoint + this.buildQuery(_query)
-    this.loginStateService.toggleLoadingState(true)
+    this.loginStateService.loaderEnable()
     return this._http.get<any>(url)
     .pipe(
       retry(Constants.RETRY_TIMES),
-      tap( _ => this.loginStateService.toggleLoadingState(false)),
+      tap( _ => this.loginStateService.loaderDisable()),
       catchError(err => {
         console.log('Error in processing request...', err);
-        this.loginStateService.toggleLoadingState(false)
+        this.loginStateService.loaderDisable()
         return throwError(err);
       })
     );
