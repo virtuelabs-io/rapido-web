@@ -17,7 +17,8 @@ import { Constants } from './utils/constants';
 import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, 
   MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, 
   MatSnackBarModule, MatExpansionModule, MatSelectModule, MatPaginatorModule, 
-  MatProgressSpinnerModule, MatDialogModule, MatFormFieldModule, MatCardModule  } from '@angular/material';
+  MatProgressSpinnerModule, MatDialogModule, MatFormFieldModule, MatCardModule,
+  MatTableModule  } from '@angular/material';
 import { LeftSectionComponent } from './leftsection/leftsection.component';
 import { CardComponent } from './card/card.component';
 import { RatingComponent } from './rating/rating.component';
@@ -27,6 +28,7 @@ import { ProductResultsComponent } from './product-results/product-results.compo
 import { RangeSliderComponent } from './range-slider/range-slider.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { BusyLoaderComponent } from './components/common/busy-loader/busy-loader.component';
+import { TableComponent } from './components/table/table.component';
 
 describe('AppComponent', () => {
   var originalTimeout;
@@ -61,6 +63,7 @@ describe('AppComponent', () => {
         MatSidenavModule,
         MatListModule,
         MatSelectModule,
+        MatTableModule,
         NgbModule
       ],
       declarations: [
@@ -79,7 +82,8 @@ describe('AppComponent', () => {
         ProductControlsComponent,
         ProductResultsComponent,
         RangeSliderComponent,
-        BusyLoaderComponent
+        BusyLoaderComponent,
+        TableComponent
       ],
     }).compileComponents();
   }));

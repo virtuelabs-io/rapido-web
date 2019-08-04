@@ -15,7 +15,7 @@ import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule,
           MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, 
           MatSnackBarModule, MatExpansionModule, MatSelectModule, MatPaginatorModule, 
           MatProgressSpinnerModule, MatDialogModule, MatCardModule,
-          MatFormFieldModule  } from '@angular/material';
+          MatFormFieldModule, MatTableModule  } from '@angular/material';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ProductResultsComponent } from './product-results/product-results.component';
 import { FilterControlsDialog } from './product-results/product-results.component';
@@ -40,6 +40,8 @@ import { EditCompanyDetailsComponent } from './edit-company-details/edit-company
 import { AccountInfoComponent } from './account-info/account-info.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { BusyLoaderComponent } from './components/common/busy-loader/busy-loader.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { TableComponent } from './components/table/table.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +72,9 @@ import { BusyLoaderComponent } from './components/common/busy-loader/busy-loader
     EditAddressComponent,
     EditCompanyDetailsComponent,
     AccountInfoComponent,
-    BusyLoaderComponent
+    BusyLoaderComponent,
+    ProductDetailsComponent,
+    TableComponent
   ],
   imports: [
     MatSidenavModule,
@@ -96,6 +100,7 @@ import { BusyLoaderComponent } from './components/common/busy-loader/busy-loader
     HttpClientModule,
     MatProgressSpinnerModule,
     MatDialogModule,
+    MatTableModule,
     // Ng5SliderModule,
     NgxStripeModule.forRoot(Constants.environment.stripePublicKey),
     NgbModule

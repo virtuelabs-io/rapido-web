@@ -12,7 +12,7 @@ describe('ProductResultsComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ ProductResultsComponent ],
       schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
-      imports:[MatDialogModule,HttpClientTestingModule ]
+      imports:[MatDialogModule, HttpClientTestingModule]
     })
     .compileComponents();
   }));

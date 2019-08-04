@@ -1,0 +1,10 @@
+@import "../../../assets/scss/custom-bootstrap-variables.scss";
+
+
+table {
+    width: 35%;
+    @media screen and (max-width: $medium-device) {
+      width: 100%;
+  }    
+  }
+  
