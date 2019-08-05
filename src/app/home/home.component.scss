@@ -9,7 +9,6 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
-       // margin-bottom: 5%;
         margin-top: 5%;
         width: 100%;
         .banner-card {
@@ -41,13 +40,11 @@
             width: 100%;
         }
     }
+
     .carousel-holder {  
         height: 450px;
         margin-top: 5%;
         width: 100%;
-        @media screen and (max-width: $mobile-device) {
-           // height: 400px;
-        }
         .rapido-desktop-component {
             display: block;
             @media screen and (max-width: $mobile-device) {
@@ -108,11 +105,10 @@
                 .card-content {
                     height: 100%;
                     .card-image {
-                    //    background-image:    url('/assets/images/home_card_1.jpg');
                         background-size:     cover;                     
                         background-repeat:   no-repeat;
                         background-position: center center; 
-                        height: 90%; //260px;
+                        height: 90%;
                         width: 100%;
                         @media screen and (max-width: $mobile-device) {
                             width: 90%;
@@ -132,8 +128,6 @@
                     width: 100%;
                 }
             }
-    
-           
             @media screen and (max-width: $mobile-device) {
                 width: 100%;
             }
@@ -142,8 +136,6 @@
             display: block;
         }
     }
-
-    
 
     @media screen and (max-width: $mobile-device) {
         width: 100%;

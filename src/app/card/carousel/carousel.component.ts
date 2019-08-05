@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, SimpleChanges, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-carousel',
@@ -8,23 +8,17 @@ import { Component, Input, OnInit, SimpleChanges, ChangeDetectorRef } from '@ang
 export class CarouselComponent implements OnInit {
   @Input() carouselCard
   @Input() CarouselConfig
+  @Input() carouselTitle
   carouselData: any
-  config: any
-  constructor(
-    private cd: ChangeDetectorRef
-  ) { }
+  constructor() { }
 
   ngOnInit() {
-    this.config = this.CarouselConfig
-    this.carouselData = this.formatData(this.carouselCard, this.config.itemsInTemplate)
-    this.cd.detectChanges();
+    this.carouselData = this.formatData(this.carouselCard, this.CarouselConfig.itemsInTemplate)
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes)
-    this.config = this.CarouselConfig
-    this.carouselData = this.formatData(this.carouselCard, this.config.itemsInTemplate)
-}
+    this.carouselData = this.formatData(this.carouselCard, this.CarouselConfig.itemsInTemplate)
+  }
 
   formatData(data: any[], itemsInTemplate: number) {
     let formatedData = []
@@ -42,7 +36,6 @@ export class CarouselComponent implements OnInit {
         tmpItems = []
       }
     }
-    
     return formatedData
   }
 }
