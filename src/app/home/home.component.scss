@@ -44,6 +44,7 @@
     .carousel-holder {  
         height: 450px;
         margin-top: 5%;
+        width: 100%;
         @media screen and (max-width: $mobile-device) {
            // height: 400px;
         }

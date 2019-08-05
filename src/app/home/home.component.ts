@@ -24,10 +24,84 @@ export class HomeComponent implements OnInit {
     this._productsService = productsService
   }
 
-  async ngOnInit() {
+   ngOnInit() {
 
       
-
+    this.carousel = {
+      RecommendedList:  {
+        "title": "Recommended Products",
+        "data": []
+      },
+      BrowsingHistory:  {
+        "title": "Previously Browsed Products",
+        "data": [
+          {
+            "image": '/assets/images/home_card_1.jpg',
+            "price": '₹ 359.00 to ₹ 5,319.00',
+            "offer": "5%",
+            "desc": "Watches that will exite you"
+          },
+          {
+            "image": '/assets/images/aboutUs_1.jpg',
+            "price": '₹ 359.00 to ₹ 5,319.00',
+            "offer": "10%",
+            "desc": "Watches that will exite you at the best of prices"
+          },
+          {
+            "image": '/assets/images/aboutUs_2.jpg',
+            "price": '₹ 359.00 to ₹ 5,319.00',
+            "offer": "15%",
+            "desc": "Fossil Watch"
+          },
+          {
+            "image": '/assets/images/aboutUs_3.jpg',
+            "price": '₹ 359.00 to ₹ 5,319.00',
+            "offer": "20%",
+            "desc": "Fossil Watch"
+          },
+          {
+            "image": '/assets/images/aboutUs_4.jpg',
+            "price": '₹ 359.00 to ₹ 5,319.00',
+            "offer": "25%",
+            "desc": "Fossil Watch"
+          },
+          {
+            "image": '/assets/images/aboutUs_4.jpg',
+            "price": '₹ 359.00 to ₹ 5,319.00',
+            "offer": "30%",
+            "desc": "Fossil Watch"
+          },
+          {
+            "image": '/assets/images/aboutUs_3.jpg',
+            "price": '₹ 359.00 to ₹ 5,319.00',
+            "offer": "35%",
+            "desc": "Fossil Watch"
+          },
+          {
+            "image": '/assets/images/aboutUs_2.jpg',
+            "price": '₹ 359.00 to ₹ 5,319.00',
+            "offer": "40%",
+            "desc": "Fossil Watch"
+          },
+          {
+            "image": '/assets/images/aboutUs_1.jpg'
+            
+          },
+          {
+            "image": '/assets/images/home_card_1.jpg'
+            
+          },
+          {
+            "image": '/assets/images/aboutUs_4.jpg',
+            "price": 'test price 1'
+          },
+          {
+            "image": '/assets/images/aboutUs_3.jpg',
+            "price": 'test price 2'
+          }
+        ]
+      }
+    }
 
 
 
@@ -104,7 +178,7 @@ export class HomeComponent implements OnInit {
     }
     
 
-    await this.fetchProducts()
+     this.fetchProducts()
   }
 
    fetchProducts() {
@@ -116,86 +190,12 @@ export class HomeComponent implements OnInit {
     subscribe(data => {
       if (data) {
         console.log(data)
-        this.carousel = {
-          RecommendedList:  {
-            "title": "Recommended Products",
-            "data": data.hits.hit.map((v,i)=>{
-              v.fields.id = v.id
-              v.fields.image = Common.getImageURI(null, v.fields.images[0])
-              return v.fields
-              })
-          },
-          BrowsingHistory:  {
-            "title": "Previously Browsed Products",
-            "data": [
-              {
-                "image": '/assets/images/home_card_1.jpg',
-                "price": '₹ 359.00 to ₹ 5,319.00',
-                "offer": "5%",
-                "desc": "Watches that will exite you"
-              },
-              {
-                "image": '/assets/images/aboutUs_1.jpg',
-                "price": '₹ 359.00 to ₹ 5,319.00',
-                "offer": "10%",
-                "desc": "Watches that will exite you at the best of prices"
-              },
-              {
-                "image": '/assets/images/aboutUs_2.jpg',
-                "price": '₹ 359.00 to ₹ 5,319.00',
-                "offer": "15%",
-                "desc": "Fossil Watch"
-              },
-              {
-                "image": '/assets/images/aboutUs_3.jpg',
-                "price": '₹ 359.00 to ₹ 5,319.00',
-                "offer": "20%",
-                "desc": "Fossil Watch"
-              },
-              {
-                "image": '/assets/images/aboutUs_4.jpg',
-                "price": '₹ 359.00 to ₹ 5,319.00',
-                "offer": "25%",
-                "desc": "Fossil Watch"
-              },
-              {
-                "image": '/assets/images/aboutUs_4.jpg',
-                "price": '₹ 359.00 to ₹ 5,319.00',
-                "offer": "30%",
-                "desc": "Fossil Watch"
-              },
-              {
-                "image": '/assets/images/aboutUs_3.jpg',
-                "price": '₹ 359.00 to ₹ 5,319.00',
-                "offer": "35%",
-                "desc": "Fossil Watch"
-              },
-              {
-                "image": '/assets/images/aboutUs_2.jpg',
-                "price": '₹ 359.00 to ₹ 5,319.00',
-                "offer": "40%",
-                "desc": "Fossil Watch"
-              },
-              {
-                "image": '/assets/images/aboutUs_1.jpg'
-                
-              },
-              {
-                "image": '/assets/images/home_card_1.jpg'
-                
-              },
-              {
-                "image": '/assets/images/aboutUs_4.jpg',
-                "price": 'test price 1'
-              },
-              {
-                "image": '/assets/images/aboutUs_3.jpg',
-                "price": 'test price 2'
-              }
-            ]
-          }
-        }
-      //  this.carousel.RecommendedList.data = 
+        
+        this.carousel.RecommendedList.data = data.hits.hit.map((v,i)=>{
+          v.fields.id = v.id
+          v.fields.image = Common.getImageURI(null, v.fields.images[0])
+          return v.fields
+          })
         console.log(this.carousel)
         if (data.error) {
           throw Error('error')
