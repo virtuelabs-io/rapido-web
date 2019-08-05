@@ -14,8 +14,6 @@ export class CarouselComponent implements OnInit {
     private cd: ChangeDetectorRef
   ) { }
 
-  
-
   ngOnInit() {
     this.config = this.CarouselConfig
     this.carouselData = this.formatData(this.carouselCard, this.config.itemsInTemplate)
@@ -26,8 +24,6 @@ export class CarouselComponent implements OnInit {
     console.log(changes)
     this.config = this.CarouselConfig
     this.carouselData = this.formatData(this.carouselCard, this.config.itemsInTemplate)
-
-
 }
 
   formatData(data: any[], itemsInTemplate: number) {

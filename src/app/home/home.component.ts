@@ -25,8 +25,6 @@ export class HomeComponent implements OnInit {
   }
 
    ngOnInit() {
-
-      
     this.carousel = {
       RecommendedList:  {
         "title": "Recommended Products",
@@ -103,13 +101,6 @@ export class HomeComponent implements OnInit {
       }
     }
 
-
-
-    
-
-
-
-
     this.banner = "assets/images/aboutUs_1.jpg"
     this.cardDetails = [
       {
@@ -135,7 +126,6 @@ export class HomeComponent implements OnInit {
     ]
 
     this.bannerCard = [
-      
       {
         "title": "Fashion photography store",
         "image": '/assets/images/home_card_1.jpg',
@@ -176,8 +166,6 @@ export class HomeComponent implements OnInit {
       offer: true,
       desc: true
     }
-    
-
      this.fetchProducts()
   }
 
