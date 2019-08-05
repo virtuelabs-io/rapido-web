@@ -97,4 +97,34 @@ export class Constants {
     "1": "United Kingdom"
   }
 
+  public static MOBILE_CONFIG = {
+    image: true,
+    price: true,
+    itemsInTemplate: 1,
+    scroll: true,
+    title: true,
+    offer: true,
+    desc: true
+  }
+
+  public static TABLET_CONFIG = {
+    image: true,
+    price: true,
+    itemsInTemplate: 3,
+    scroll: true,
+    title: true,
+    offer: true,
+    desc: true
+  }
+
+  public static DESKTOP_CONFIG = {
+    image: true,
+    price: true,
+    itemsInTemplate: 5,
+    scroll: true,
+    title: true,
+    offer: true,
+    desc: true
+  }
+
 }

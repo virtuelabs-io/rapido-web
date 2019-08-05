@@ -19,6 +19,10 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
+        
+            .card:hover {
+            transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+            }
         .card {
             display: flex;
             flex-direction: column;
@@ -38,11 +42,14 @@
                     background-position: center center; 
                     height: 100%; //260px;
                     width: 100%;
-                    padding: 35px;
+                    padding: 40px;
                 }
                 .card-price {
                     padding-top: 1%;
                     color: black;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
                     @media screen and (max-width: $medium-device) {
                         padding-left: 0%;
                     }
