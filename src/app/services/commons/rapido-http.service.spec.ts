@@ -7,6 +7,7 @@ import {
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RapidoHttpService } from './rapido-http.service';
 import { ProfileService } from '../authentication/profile/profile.service';
+import { LoginStateService } from 'src/app/shared-services/login-state/login-state.service';
 
 class User {
   constructor(private _name: string){ }
@@ -15,8 +16,10 @@ class User {
   }
 }
 class UserService extends RapidoHttpService<User>{
-  constructor(protected _http: HttpClient, protected _profileService: ProfileService){
-    super(_http, _profileService)
+  constructor(protected _http: HttpClient, 
+    protected _profileService: ProfileService,
+    protected _loginStateService: LoginStateService){
+    super(_http, _profileService, _loginStateService)
   }
 }
 
@@ -37,12 +40,12 @@ class UserService extends RapidoHttpService<User>{
     fakeAsync(
       inject(
         [HttpTestingController, ProfileService, HttpClient],
-        (backend: HttpTestingController, profileService: ProfileService, httpClient: HttpClient) => {
+        (backend: HttpTestingController, profileService: ProfileService, httpClient: HttpClient, loginStateService: LoginStateService) => {
 
           // Set up
           const url = "https://rapidobuild.com/api/user/"
           const user = new User("rocky")
-          const service = new UserService(httpClient, profileService)
+          const service = new UserService(httpClient, profileService, loginStateService)
           const responseObject = {
             body: user,
             status: 200
@@ -74,12 +77,12 @@ class UserService extends RapidoHttpService<User>{
     fakeAsync(
       inject(
         [HttpTestingController, ProfileService, HttpClient],
-        (backend: HttpTestingController, profileService: ProfileService, httpClient: HttpClient) => {
+        (backend: HttpTestingController, profileService: ProfileService, httpClient: HttpClient, loginStateService: LoginStateService) => {
 
           // Set up
           const url = "https://rapidobuild.com/api/user/list"
           const user = new User("rocky")
-          const service = new UserService(httpClient, profileService)
+          const service = new UserService(httpClient, profileService, loginStateService)
           const responseObject = {
             body: [ user, user ],
             status: 200
@@ -111,12 +114,12 @@ class UserService extends RapidoHttpService<User>{
     fakeAsync(
       inject(
         [HttpTestingController, ProfileService, HttpClient],
-        (backend: HttpTestingController, profileService: ProfileService, httpClient: HttpClient) => {
+        (backend: HttpTestingController, profileService: ProfileService, httpClient: HttpClient, loginStateService: LoginStateService) => {
 
           // Set up
           const url = "https://rapidobuild.com/api/user/"
           const user = new User("rocky")
-          const service = new UserService(httpClient, profileService)
+          const service = new UserService(httpClient, profileService, loginStateService)
           const responseObject = {
             body: user,
             status: 201
@@ -148,12 +151,12 @@ class UserService extends RapidoHttpService<User>{
     fakeAsync(
       inject(
         [HttpTestingController, ProfileService, HttpClient],
-        (backend: HttpTestingController, profileService: ProfileService, httpClient: HttpClient) => {
+        (backend: HttpTestingController, profileService: ProfileService, httpClient: HttpClient, loginStateService: LoginStateService) => {
 
           // Set up
           const url = "https://rapidobuild.com/api/user/"
           const user = new User("rocky")
-          const service = new UserService(httpClient, profileService)
+          const service = new UserService(httpClient, profileService, loginStateService)
           const responseObject = {
             body: [ user, user ],
             status: 201
@@ -186,12 +189,12 @@ class UserService extends RapidoHttpService<User>{
     fakeAsync(
       inject(
         [HttpTestingController, ProfileService, HttpClient],
-        (backend: HttpTestingController, profileService: ProfileService, httpClient: HttpClient) => {
+        (backend: HttpTestingController, profileService: ProfileService, httpClient: HttpClient, loginStateService: LoginStateService) => {
 
           // Set up
           const url = "https://rapidobuild.com/api/user/"
           const user = new User("rocky")
-          const service = new UserService(httpClient, profileService)
+          const service = new UserService(httpClient, profileService, loginStateService)
           const responseObject = {
             body: user,
             status: 202
@@ -223,11 +226,11 @@ class UserService extends RapidoHttpService<User>{
     fakeAsync(
       inject(
         [HttpTestingController, ProfileService, HttpClient],
-        (backend: HttpTestingController, profileService: ProfileService, httpClient: HttpClient) => {
+        (backend: HttpTestingController, profileService: ProfileService, httpClient: HttpClient, loginStateService: LoginStateService) => {
 
           // Set up
           const url = "https://rapidobuild.com/api/user/rocky"
-          const service = new UserService(httpClient, profileService)
+          const service = new UserService(httpClient, profileService, loginStateService)
           const responseObject = {
             body: null,
             status: 204
@@ -259,13 +262,13 @@ class UserService extends RapidoHttpService<User>{
     fakeAsync(
       inject(
         [HttpTestingController, ProfileService, HttpClient],
-        (backend: HttpTestingController, profileService: ProfileService, httpClient: HttpClient) => {
+        (backend: HttpTestingController, profileService: ProfileService, httpClient: HttpClient, loginStateService: LoginStateService) => {
 
           // Set up
 
           const url = "https://rapidobuild.com/api/user/"
           const user = new User("rocky")
-          const service = new UserService(httpClient, profileService)
+          const service = new UserService(httpClient, profileService, loginStateService)
           const responseObject = {
             body: user,
             status: 200
@@ -298,12 +301,12 @@ class UserService extends RapidoHttpService<User>{
     fakeAsync(
       inject(
         [HttpTestingController, ProfileService, HttpClient],
-        (backend: HttpTestingController, profileService: ProfileService, httpClient: HttpClient) => {
+        (backend: HttpTestingController, profileService: ProfileService, httpClient: HttpClient, loginStateService: LoginStateService) => {
 
           // Set up
           const url = "https://rapidobuild.com/api/user/list"
           const user = new User("rocky")
-          const service = new UserService(httpClient, profileService)
+          const service = new UserService(httpClient, profileService, loginStateService)
           const responseObject = {
             body: [ user, user ],
             status: 200
@@ -336,12 +339,12 @@ class UserService extends RapidoHttpService<User>{
     fakeAsync(
       inject(
         [HttpTestingController, ProfileService, HttpClient],
-        (backend: HttpTestingController, profileService: ProfileService, httpClient: HttpClient) => {
+        (backend: HttpTestingController, profileService: ProfileService, httpClient: HttpClient, loginStateService: LoginStateService) => {
 
           // Set up
           const url = "https://rapidobuild.com/api/user/"
           const user = new User("rocky")
-          const service = new UserService(httpClient, profileService)
+          const service = new UserService(httpClient, profileService, loginStateService)
           const responseObject = {
             body: user,
             status: 201
@@ -374,12 +377,12 @@ class UserService extends RapidoHttpService<User>{
     fakeAsync(
       inject(
         [HttpTestingController, ProfileService, HttpClient],
-        (backend: HttpTestingController, profileService: ProfileService, httpClient: HttpClient) => {
+        (backend: HttpTestingController, profileService: ProfileService, httpClient: HttpClient, loginStateService: LoginStateService) => {
 
           // Set up
           const url = "https://rapidobuild.com/api/user/"
           const user = new User("rocky")
-          const service = new UserService(httpClient, profileService)
+          const service = new UserService(httpClient, profileService, loginStateService)
           const responseObject = {
             body: [ user, user ],
             status: 201
@@ -413,12 +416,12 @@ class UserService extends RapidoHttpService<User>{
     fakeAsync(
       inject(
         [HttpTestingController, ProfileService, HttpClient],
-        (backend: HttpTestingController, profileService: ProfileService, httpClient: HttpClient) => {
+        (backend: HttpTestingController, profileService: ProfileService, httpClient: HttpClient, loginStateService: LoginStateService) => {
 
           // Set up
           const url = "https://rapidobuild.com/api/user/"
           const user = new User("rocky")
-          const service = new UserService(httpClient, profileService)
+          const service = new UserService(httpClient, profileService, loginStateService)
           const responseObject = {
             body: user,
             status: 202
@@ -451,11 +454,11 @@ class UserService extends RapidoHttpService<User>{
     fakeAsync(
       inject(
         [HttpTestingController, ProfileService, HttpClient],
-        (backend: HttpTestingController, profileService: ProfileService, httpClient: HttpClient) => {
+        (backend: HttpTestingController, profileService: ProfileService, httpClient: HttpClient, loginStateService: LoginStateService) => {
 
           // Set up
           const url = "https://rapidobuild.com/api/user/rocky"
-          const service = new UserService(httpClient, profileService)
+          const service = new UserService(httpClient, profileService, loginStateService)
           const responseObject = {
             body: null,
             status: 204
@@ -487,8 +490,8 @@ class UserService extends RapidoHttpService<User>{
     fakeAsync(
       inject(
         [ProfileService, HttpClient],
-        (profileService: ProfileService, httpClient: HttpClient) => {
-          const service = new UserService(httpClient, profileService)
+        (profileService: ProfileService, httpClient: HttpClient, loginStateService: LoginStateService) => {
+          const service = new UserService(httpClient, profileService, loginStateService)
           const httpHeaders: HttpHeaders = service.initializeHeaders()
           expect(httpHeaders.get('Content-Type')).toEqual('application/json')
         }

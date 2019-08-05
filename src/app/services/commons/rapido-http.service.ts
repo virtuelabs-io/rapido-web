@@ -13,95 +13,95 @@ export class RapidoHttpService<T> {
 
   constructor(protected _http: HttpClient, 
     protected _profileService: ProfileService,
-    private loginStateService: LoginStateService) { }
+    protected _loginStateService: LoginStateService) { }
 
   getList(_url: string, _headers?: HttpHeaders): Observable<T[]>{
-    this.loginStateService.loaderEnable()
+    this._loginStateService.loaderEnable()
 
     return this._http.get<T[]>(_url, {
       headers: _headers
     }).pipe(
       retry(Constants.RETRY_TIMES),
-      tap( _ => this.loginStateService.loaderDisable()),
+      tap( _ => this._loginStateService.loaderDisable()),
       catchError(err => {
         console.log('Error in processing request...', err);
-        this.loginStateService.loaderDisable()
+        this._loginStateService.loaderDisable()
         return throwError(err);
       })
     );
   }
 
   get(_url: string, _headers?: HttpHeaders): Observable<T>{
-    this.loginStateService.loaderEnable()
+    this._loginStateService.loaderEnable()
 
     return this._http.get<T>(_url, {
       headers: _headers
     }).pipe(
       retry(Constants.RETRY_TIMES),
-      tap( _ => this.loginStateService.loaderDisable()),
+      tap( _ => this._loginStateService.loaderDisable()),
       catchError(err => {
         console.log('Error in processing request...', err);
-        this.loginStateService.loaderDisable()
+        this._loginStateService.loaderDisable()
         return throwError(err);
       })
     );
   }
 
   post(_url: string, _item: T, _headers?: HttpHeaders): Observable<any>{
-    this.loginStateService.loaderEnable()
+    this._loginStateService.loaderEnable()
 
     return this._http.post<any>(_url, _item, {
       headers: _headers
     }).pipe(
-      tap( _ => this.loginStateService.loaderDisable()),
+      tap( _ => this._loginStateService.loaderDisable()),
       catchError(err => {
         console.log('Error in processing request...', err);
-        this.loginStateService.loaderDisable()
+        this._loginStateService.loaderDisable()
         return throwError(err);
       })
     );
   }
 
   postList(_url: string, _item: Array<T>, _headers?: HttpHeaders): Observable<any>{
-    this.loginStateService.loaderEnable()
+    this._loginStateService.loaderEnable()
 
     return this._http.post<any>(_url, _item, {
       headers: _headers
     }).pipe(
-      tap( _ => this.loginStateService.loaderDisable()),
+      tap( _ => this._loginStateService.loaderDisable()),
       catchError(err => {
         console.log('Error in processing request...', err);
-        this.loginStateService.loaderDisable()
+        this._loginStateService.loaderDisable()
         return throwError(err);
       })
     );
   }
 
   delete(_url: string, _headers?: HttpHeaders): Observable<{}>{
-    this.loginStateService.loaderEnable()
+    this._loginStateService.loaderEnable()
 
     return this._http.delete<{}>(_url,{
       headers: _headers
     }).pipe(
-      tap( _ => this.loginStateService.loaderDisable()),
+      tap( _ => this._loginStateService.loaderDisable()),
       catchError(err => {
         console.log('Error in processing request...', err);
-        this.loginStateService.loaderDisable()
+        this._loginStateService.loaderDisable()
         return throwError(err);
       })
     );
   }
 
   put(_url: string, _item: T, _headers?: HttpHeaders): Observable<any>{
-    this.loginStateService.loaderEnable()
+    this._loginStateService.loaderEnable()
 
     return this._http.put<any>(_url, _item, {
       headers: _headers
     }).pipe(
-      tap( _ => this.loginStateService.loaderDisable()),
+      tap( _ => this._loginStateService.loaderDisable()),
       catchError(err => {
         console.log('Error in processing request...', err);
-        this.loginStateService.loaderDisable()
+        this._loginStateService.loaderDisable()
         return throwError(err);
       })
     );
