@@ -28,7 +28,6 @@
             height: 10%;
         }
         .card-image {
-         //   background-image:    url('/assets/images/home_card_1.jpg');
             background-size:     cover;                     
             background-repeat:   no-repeat;
             background-position: center center; 
@@ -36,22 +35,16 @@
             padding-top: 6%;
             .image {
                 width: 100%;
-                @media screen and (max-width: $mobile-device) {
-                 //   width: 100% !important;
-                }
                 @media screen and (max-width: $medium-device) {
                     width: 90%;
                 }
             }
             @media screen and (max-width: $mobile-device) {
                 padding-left: 10% !important;
-            //    margin-right: 10% !important;
                 padding-bottom: 7% !important;
             }
             @media screen and (max-width: $medium-device) {
                 padding-left: 10%;
-             //   margin-right: 8%;
-              //  margin-bottom: 5%;
             }
         }
         .card-desc {

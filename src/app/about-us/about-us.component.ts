@@ -15,5 +15,4 @@ export class AboutUsComponent implements OnInit {
   getUrl() {
     return "url('/assets/images/Rapido1.jpeg')";
   }
-
 }

@@ -19,12 +19,10 @@
         margin-right: 15%;
         margin-bottom: 2%;
         border-width: 2px;
-      //  border-radius: 6px;
         box-sizing: border-box;
         border-color: white;
         box-shadow: 0 2px 1px 0 rgba(0,0,0,.16);
         border-style: solid;
-       // height: 340px;
         .order-card-header {
             display: flex;
             flex-direction: row;
@@ -47,7 +45,6 @@
                     text-transform: uppercase;
                     @media screen and (max-width: $mobile-device) {
                         width: 40%;
-                        /* text-align: right; */
                         margin-right: 2%;
                         
                     }
@@ -123,7 +120,6 @@
                 flex-wrap: nowrap;
                 width: 20%;
                 margin-left: 5%;
-              //  margin-top: 20%;
                 .action-but {
                     background-color: $primary;
                     margin-top: 2%;
@@ -139,7 +135,5 @@
             margin-left: 5%;
             margin-right: 5%; 
         }
-    }
-    @media screen and (max-width: $mobile-device) {
     }
 }

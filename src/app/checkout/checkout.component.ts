@@ -198,7 +198,7 @@ export class CheckoutComponent implements OnInit {
       });
   }
 
-  charge(charge: Charge){
+  charge(charge: Charge) {
     const promise = this.chargeService.chargeCustomer(charge)
     .then(data => {
       this.chargeResult = JSON.stringify(data)

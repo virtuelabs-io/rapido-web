@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OrdersService } from '../services/orders/orders.service';
 import { Constants } from '../utils/constants';
-import { Order } from '../services/orders/order';
 import { Router } from '@angular/router';
 
 @Component({

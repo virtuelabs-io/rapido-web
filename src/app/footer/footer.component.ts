@@ -14,8 +14,6 @@ export class FooterComponent implements OnInit {
   durationInSeconds = 5;
   constructor(
     public router: Router
-
   ) { }
-
   ngOnInit() {} 
 }

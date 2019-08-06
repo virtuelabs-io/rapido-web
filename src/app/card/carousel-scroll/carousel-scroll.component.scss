@@ -1,7 +1,6 @@
 @import "../../../assets/scss/custom-bootstrap-variables.scss";
 
 .carousel-title {
- //   margin-top: 10%;
     padding-left: 2%;
     font-size: 24px;
 }
@@ -26,11 +25,10 @@
         .card-content {
             height: 100%;
             .card-image {
-            //    background-image:    url('/assets/images/home_card_1.jpg');
                 background-size:     cover;                     
                 background-repeat:   no-repeat;
                 background-position: center center; 
-                height: 80%; //260px;
+                height: 80%;
                 width: 100%;
                 @media screen and (max-width: $mobile-device) {
                     width: 90%;
@@ -40,9 +38,6 @@
             .card-price {
                 padding-top: 1%;
                 color: black;
-                @media screen and (max-width: $mobile-device) {
-                 //   padding-left: 25%;
-                }
             }
         }
         @media screen and (max-width: $mobile-device) {
