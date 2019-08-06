@@ -4,13 +4,18 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Constants } from 'src/app/utils/constants';
 import { ProfileService } from '../authentication/profile/profile.service';
+import { LoginStateService } from 'src/app/shared-services/login-state/login-state.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RapidoHttpService<T> {
 
-  constructor(protected _http: HttpClient, protected _profileService: ProfileService) { }
+  protected loginStateService: LoginStateService;
+
+  constructor(protected _http: HttpClient, protected _profileService: ProfileService) {
+    this.loginStateService = new LoginStateService();
+  }
 
   getList(_url: string, _headers?: HttpHeaders): Observable<T[]>{
     return this._http.get<T[]>(_url, {
