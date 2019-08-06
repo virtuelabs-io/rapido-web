@@ -1,23 +1,28 @@
-import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges, Directive } from '@angular/core';
 
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss']
 })
+@Directive({ selector: '[carouselCard, CarouselConfig, carouselTitle]' })
+
 export class CarouselComponent implements OnInit {
   @Input() carouselCard
   @Input() CarouselConfig
   @Input() carouselTitle
   carouselData: any
+  config: any
   constructor() { }
 
   ngOnInit() {
-    this.carouselData = this.formatData(this.carouselCard, this.CarouselConfig.itemsInTemplate)
+    this.config = this.CarouselConfig
+    this.carouselData = this.formatData(this.carouselCard, this.config.itemsInTemplate)
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    this.carouselData = this.formatData(this.carouselCard, this.CarouselConfig.itemsInTemplate)
+    this.config = this.CarouselConfig
+    this.carouselData = this.formatData(this.carouselCard, this.config.itemsInTemplate)
   }
 
   formatData(data: any[], itemsInTemplate: number) {

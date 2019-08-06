@@ -2,7 +2,7 @@
   {{ carouselCard.title }}
 </div>
 <div class="container"> 
-  <div class="card2" *ngFor="let card of carouselData">
+  <div class="card2" *ngFor="let card of carouselData.data">
     <div class="card-content">
       <img *ngIf="config.image" class="card-image" src="{{ card.image }}">
       <div *ngIf="config.desc" class="card-price">

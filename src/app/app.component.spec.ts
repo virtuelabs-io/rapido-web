@@ -31,6 +31,9 @@ import { ProductResultsComponent } from './product-results/product-results.compo
 import { RangeSliderComponent } from './range-slider/range-slider.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { TableComponent } from './components/table/table.component';
+import { HomeCardComponent } from './card/home-card/home-card.component';
+import { CarouselComponent } from './card/carousel/carousel.component';
+import { CarouselScrollComponent } from './card/carousel-scroll/carousel-scroll.component';
 
 describe('AppComponent', () => {
   var originalTimeout;
@@ -88,7 +91,10 @@ describe('AppComponent', () => {
         ProductControlsComponent,
         ProductResultsComponent,
         RangeSliderComponent,
-        TableComponent
+        TableComponent,
+        HomeCardComponent,
+        CarouselComponent,
+        CarouselScrollComponent
       ],
     }).compileComponents();
   }));

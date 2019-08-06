@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CarouselScrollComponent } from './carousel-scroll.component';
+import { HomeComponent } from 'src/app/home/home.component';
 
 describe('CarouselScrollComponent', () => {
   let component: CarouselScrollComponent;
@@ -8,7 +9,10 @@ describe('CarouselScrollComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CarouselScrollComponent ]
+      imports: [],
+      declarations: [ CarouselScrollComponent, HomeComponent ],
+      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
+
     })
     .compileComponents();
   }));

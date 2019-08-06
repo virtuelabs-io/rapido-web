@@ -5,6 +5,7 @@ import { Component,Input, OnInit } from '@angular/core';
   templateUrl: './carousel-scroll.component.html',
   styleUrls: ['./carousel-scroll.component.scss']
 })
+
 export class CarouselScrollComponent implements OnInit {
   @Input() carouselCard
   @Input() CarouselConfig
@@ -14,23 +15,6 @@ export class CarouselScrollComponent implements OnInit {
 
   ngOnInit() {
     this.config = this.CarouselConfig
-    this.carouselData = this.carouselCard.data
-  }
-
-  formatData(data: any[], itemsInTemplate: number) {
-    let formatedData = []
-    let tmpItems = []
-    data.forEach(item => {
-      tmpItems.push(item)
-      if(tmpItems.length === itemsInTemplate){
-        formatedData.push(tmpItems)
-        tmpItems = []
-      }
-    })
-    if(tmpItems.length > 0){
-      formatedData.push(tmpItems)
-      tmpItems = []
-    }
-    return formatedData
+    this.carouselData = this.carouselCard
   }
 }
