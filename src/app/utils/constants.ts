@@ -87,7 +87,7 @@ export class Constants {
 
   public static ORDER_STATUS = {
     "1": "Incomplete",
-    "2": "Payed",
+    "2": "Paid",
     "3": "Delivered",
     "4": "Cancelled",
     "5": "Returned"
