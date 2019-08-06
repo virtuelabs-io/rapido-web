@@ -5,7 +5,6 @@ import { Router, Event, NavigationStart, NavigationEnd, NavigationError, Activat
 import { LoginStateService } from 'src/app/shared-services/login-state/login-state.service';
 import { Config } from 'src/app/utils/config'
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
