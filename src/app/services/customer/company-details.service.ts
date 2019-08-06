@@ -4,17 +4,14 @@ import { CompanyDetails } from './company-details';
 import { HttpClient } from '@angular/common/http';
 import { ProfileService } from '../authentication/profile/profile.service';
 import { Constants } from '../../utils/constants';
-import { LoginStateService } from 'src/app/shared-services/login-state/login-state.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CompanyDetailsService extends RapidoHttpService<CompanyDetails>{
 
-  constructor(protected _http: HttpClient, 
-    protected _profileService: ProfileService,
-    protected _loginStateService: LoginStateService) { 
-    super(_http, _profileService, _loginStateService)
+  constructor(protected _http: HttpClient, protected _profileService: ProfileService) { 
+    super(_http, _profileService)
   }
 
   getCompanyDetails(){

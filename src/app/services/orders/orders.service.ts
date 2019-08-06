@@ -6,7 +6,6 @@ import { ProfileService } from '../authentication/profile/profile.service';
 import { Constants } from '../../utils/constants';
 import { Query } from '../products/query.interface';
 import { ProductsService } from '../products/products.service';
-import { LoginStateService } from 'src/app/shared-services/login-state/login-state.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +14,8 @@ export class OrdersService extends RapidoHttpService<Order> {
 
   private _productService: ProductsService
 
-  constructor(protected _http: HttpClient, 
-    protected _profileService: ProfileService, 
-    productService: ProductsService,
-    protected _loginStateService: LoginStateService) {
-
-    super(_http, _profileService, _loginStateService)
+  constructor(protected _http: HttpClient, protected _profileService: ProfileService, productService: ProductsService) {
+    super(_http, _profileService)
     this._productService = productService
   }
 
