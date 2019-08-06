@@ -4,14 +4,14 @@
 <div class="container"> 
   <div class="card2" *ngFor="let card of carouselData.data">
     <div class="card-content">
-      <img *ngIf="config.image" class="card-image" src="{{ card.image }}">
-      <div *ngIf="config.desc" class="card-price">
+      <img *ngIf="CarouselConfig.image" class="card-image" src="{{ card.image }}">
+      <div *ngIf="CarouselConfig.desc" class="card-price">
           {{ card.desc }}
       </div>
-      <div *ngIf="config.price" class="card-price">
+      <div *ngIf="CarouselConfig.price" class="card-price">
         {{ card.price }}
       </div>
-      <div *ngIf="config.offer" class="card-price">
+      <div *ngIf="CarouselConfig.offer" class="card-price">
           Offer: {{ card.offer }}
       </div>
     </div>

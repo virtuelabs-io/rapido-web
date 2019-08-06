@@ -7,14 +7,15 @@ import { Component,Input, OnInit } from '@angular/core';
 })
 
 export class CarouselScrollComponent implements OnInit {
-  @Input() carouselCard
-  @Input() CarouselConfig
+  @Input() carouselCard = {
+    title: "",
+    data: []
+  }
+  @Input() CarouselConfig = {}
   carouselData: any
-  config: any
   constructor() { }
 
   ngOnInit() {
-    this.config = this.CarouselConfig
     this.carouselData = this.carouselCard
   }
 }

@@ -34,6 +34,7 @@ import { TableComponent } from './components/table/table.component';
 import { HomeCardComponent } from './card/home-card/home-card.component';
 import { CarouselComponent } from './card/carousel/carousel.component';
 import { CarouselScrollComponent } from './card/carousel-scroll/carousel-scroll.component';
+import { HomeComponent } from './home/home.component';
 
 describe('AppComponent', () => {
   var originalTimeout;
@@ -94,7 +95,8 @@ describe('AppComponent', () => {
         TableComponent,
         HomeCardComponent,
         CarouselComponent,
-        CarouselScrollComponent
+        CarouselScrollComponent,
+        HomeComponent
       ],
     }).compileComponents();
   }));

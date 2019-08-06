@@ -8,9 +8,9 @@ import { Component, Input, OnInit, SimpleChanges, Directive } from '@angular/cor
 @Directive({ selector: '[carouselCard, CarouselConfig, carouselTitle]' })
 
 export class CarouselComponent implements OnInit {
-  @Input() carouselCard
-  @Input() CarouselConfig
-  @Input() carouselTitle
+  @Input() carouselCard = []
+  @Input() CarouselConfig = {}
+  @Input() carouselTitle = ""
   carouselData: any
   config: any
   constructor() { }
