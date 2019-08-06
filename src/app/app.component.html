@@ -1,8 +1,14 @@
-<app-icons></app-icons>
-<app-topnav *ngIf="showNavBar"></app-topnav>
-<div>  
-  <div>
-    <router-outlet></router-outlet>
+<div>
+  <app-topnav  
+    id='nav-top' 
+    *ngIf="showNavBar">
+  </app-topnav>
+
+  <app-icons></app-icons>
+  <div>  
+      <router-outlet></router-outlet>
   </div>
+  
+  <app-busy-loader></app-busy-loader>
+  <app-footer></app-footer>
 </div>
-<app-busy-loader></app-busy-loader>

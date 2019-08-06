@@ -1,39 +1,123 @@
-<div class="container checkout-body">
-  <form novalidate (ngSubmit)="buy()" [formGroup]="payment">
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">Full Name</span>
-      </div>
-      <input #customerName (keyup)="customerNameUpdater(customerName.value)" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-    </div>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
-      </div>
-      <input #receiptEmail (keyup)="receiptEmailUpdater(receiptEmail.value)" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-    </div>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">Order Description</span>
-      </div>
-      <input #chargeDescription (keyup)="chargeDescriptionUpdater(chargeDescription.value)" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-    </div>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">Order Id</span>
-      </div>
-      <input #orderId (keyup)="orderIdUpdater(orderId.value)" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-    </div>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">Amount (£)</span>
-      </div>
-      <input #amount (keyup)="amountUpdater(amount.value)" type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-    </div>
-    <h6>Credit or Debit card</h6>
-    <div id="card-element" class="field"></div><br>
-    <button class="btn btn-primary" type="submit">Pay £{{ amount.value }}</button>
-  </form>
-  <br>
-  <p>{{ chargeResult }}</p>
-<div>
+<div class="main-div">
+  <mat-horizontal-stepper [linear]="isLinear" #stepper [selectedIndex]="stepperIndex">
+    <!-- Delivery address step-->
+    <mat-step [stepControl]="registerFormGroup">
+      <ng-template matStepLabel>Select Delivery Address</ng-template>
+      <form class="form-container">
+        <div class="address-div">
+          <div class="title-div">
+            <h4>
+              My Addresses
+            </h4>
+          </div>
+          <div class="rapido-add-address">
+            <a class="rapido-add-address-icon">
+              <div class="address-add-icon">
+                <a class="" (click)="newAddress()">
+                  <svg aria-hidden="true" aria-haspopup="menu">
+                    <use xlink:href="#add"/>
+                  </svg>
+                </a>
+              </div>
+              <div class="text-div">
+                <p>Add Address</p>
+              </div>
+              <div class="spinner-div">
+                <mat-spinner strokeWidth="4" [diameter]="50" *ngIf="showSpinner"></mat-spinner>
+              </div>
+            </a>
+            <div class="rapido-add-address-item" *ngFor="let address of address">
+              <div class="address-text">
+                <strong> {{ address.full_name }} </strong>
+                <br/><p>{{ address.addr_1 }}
+                <br/> {{ address.addr_2 }}
+                <br/> {{ address.city }} 
+                <br/> {{ address.county }}, {{ address.postcode }}
+                <br/> {{ address.country }}
+              </div>
+              <div class="card-actions">
+                <button mat-flat-button color="primary" class="delivery-add-button" (click)="createOrder(address.id)">
+                  Deliver to this Address
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>          
+    </mat-step>
+
+  <!-- payment step -->
+    <mat-step [stepControl]="registerFormGroup">
+      <ng-template matStepLabel>Make a Payment</ng-template>
+      <form>
+        <div class="payment-div">
+          <div class="order-address-div"  *ngFor="let order of orderItems">
+            <div class="order-div">
+              <div class="title-div">
+                <h4>
+                    Order Items
+                </h4>
+              </div>
+              <div class="cart-columns">
+                <div class="cart-col-price">
+                  <span>Price(£)</span>
+                </div>
+                <div class="cart-col-quan">
+                  <span>Quantity</span>
+                </div>
+              </div>
+              <div class="order-items-main">
+                  <div class="order-items">
+                      <div class="order-items-list" *ngFor="let item of orders[order].items">
+                        <div class="item-thumbnail">
+                          <img class="image" src="{{ imageUrl + products[item.product_id].images[0] }}">
+                        </div>
+                        <div class="item-desc">
+                          <p><strong>{{ products[item.product_id].name }}</strong></p>
+                        </div>
+                        <div class="item-price">
+                          <p>
+                            <strong>{{ item.unit_price.toFixed(2) }}</strong>
+                          </p>
+                        </div>
+                        <div class="item-quantity">
+                          <span>{{ item.quantity }}</span>
+                        </div>
+                      </div>
+                    </div>
+              </div>
+            </div>
+            
+            <div class="order-address">
+              <div class="add-title-div">
+                <h5 class="title-div">Delivery Address</h5>
+              </div>
+                <div class="address-text">
+                    <strong> {{ orders[order]['address'].full_name }} </strong>
+                    <br/><p>{{ orders[order]['address'].addr_1 }}
+                    <br/> {{ orders[order]['address'].addr_2 }}
+                    <br/> {{ orders[order]['address'].city }} 
+                    <br/> {{ orders[order]['address'].county }}, {{ orders[order]['address'].postcode }}
+                    <br/> {{ orders[order]['address'].country }}
+                  </div>
+            </div>
+          </div>
+
+          <div class="pay-div">
+            <h4>Payment</h4>
+            <div class="payment-det">
+              <mat-form-field class="">
+                <input matInput [(ngModel)]="registeredEmail" name="email" placeholder="Invoice sent to">
+              </mat-form-field>
+              <div id="card-element" class="field"></div><br>
+                <div class="buy-cart-button">
+                  <button class="btn btn-primary buy-button" (click)="buy()">Pay £{{ amount }}</button>
+                <button class="btn btn-primary buy-button" routerLink="/cart">Edit Order</button>
+                </div>
+              </div>
+            </div>
+        </div>
+      </form>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

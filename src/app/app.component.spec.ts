@@ -14,6 +14,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { Constants } from './utils/constants';
+import { FooterComponent } from './footer/footer.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, 
   MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, 
   MatSnackBarModule, MatExpansionModule, MatSelectModule, MatPaginatorModule, 
@@ -29,6 +32,10 @@ import { RangeSliderComponent } from './range-slider/range-slider.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { BusyLoaderComponent } from './components/common/busy-loader/busy-loader.component';
 import { TableComponent } from './components/table/table.component';
+import { HomeCardComponent } from './card/home-card/home-card.component';
+import { CarouselComponent } from './card/carousel/carousel.component';
+import { CarouselScrollComponent } from './card/carousel-scroll/carousel-scroll.component';
+import { HomeComponent } from './home/home.component';
 
 describe('AppComponent', () => {
   var originalTimeout;
@@ -56,6 +63,9 @@ describe('AppComponent', () => {
         MatExpansionModule,
         MatSnackBarModule,
         MatProgressSpinnerModule,
+        HttpClientModule,
+        NgxPageScrollCoreModule,
+        MatProgressSpinnerModule,
         MatPaginatorModule,
         MatDialogModule,
         MatInputModule,
@@ -75,6 +85,7 @@ describe('AppComponent', () => {
         LogInComponent,
         RoutingComponents,
         CheckoutComponent,
+        FooterComponent,
         LeftSectionComponent,
         CardComponent,
         RatingComponent,
@@ -83,7 +94,11 @@ describe('AppComponent', () => {
         ProductResultsComponent,
         RangeSliderComponent,
         BusyLoaderComponent,
-        TableComponent
+        TableComponent,
+        HomeCardComponent,
+        CarouselComponent,
+        CarouselScrollComponent,
+        HomeComponent
       ],
     }).compileComponents();
   }));

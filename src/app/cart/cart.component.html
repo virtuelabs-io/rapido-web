@@ -1,0 +1,119 @@
+<div class="main-div" id='nav-top'>
+  <div class="cart-div">
+    <div class="title-div">
+      <h4>
+        Shopping Cart
+      </h4>
+      <h5 *ngIf="!inCart" class="title-no-item-text">
+        No Items in Cart
+      </h5>
+    </div>
+    <div *ngIf="inCart" class="cart-columns">
+      <div class="cart-col-price">
+        <span>Price(£)</span>
+      </div>
+      <div class="cart-col-quan">
+        <span>Quantity</span>
+      </div>
+    </div>
+    <div *ngIf="inCart" class="cart-items-main">
+      <div class="cart-items">
+        <div class="cart-items-list" *ngFor="let item of cartItems">
+          <div class="item-thumbnail">
+            <img class="image" src="{{ item.icon }}">
+          </div>
+          <div class="item-desc">
+            <p><strong>{{ item.title }}</strong></p>
+            <div>
+              <a (click)="deleteCartItem(item.id)">Delete</a> |
+              <a (click)="saveForLater(item.id, item.quantity, false)">Save for Later</a>
+            </div>
+          </div>
+          <div class="item-price">
+            <p>
+              <strong>{{ item.amount }}</strong>
+            </p>
+          </div>
+          <div class="item-quantity">
+            <input type="number" maxlength="3" min="1" (change)="quantityChange(item.id, item.quantity )" [(ngModel)]="item.quantity" autocomplete="off" name="quantityBox" class="item-quntity-input" aria-label="Quantity">
+          </div>
+        </div>
+      </div>    
+    </div>
+  </div>
+  <div *ngIf="inCart" class="cart-amount">
+    <div class="card-info">
+      <span class="green-text">
+        Your order is eligible for FREE Delivery.
+      </span>
+      <span>
+          Select this option at checkout.
+      </span>
+    </div>
+    <div class="card-amount-inner">
+      <div class="card-amount-title">
+        <span>
+          <strong>Total ({{inCartItems}} items): </strong>
+          £
+        </span>
+        <span class="span-class">  
+          <strong>{{cartAmount}}</strong>
+        </span>
+      </div>
+        <div class="card-amount-checkout">
+            <button mat-button (click)="postCartItems()" class="checkout-button">Proceed to Buy</button>
+        </div>
+    </div>
+  </div>
+  <div *ngIf="!laterUse" class="no-save-for-later-text">
+    <h4>
+      No items saved for Later
+    </h4>
+  </div>
+  <div *ngIf="laterUse" class="cart-div">
+    <div class="title-div">
+      <h4>
+        Saved for later
+      </h4>
+    </div>
+    <div  class="cart-columns">
+      <div class="cart-col-price">
+        <span>Price(£)</span>
+      </div>
+      <div class="cart-col-quan">
+        <span>Quantity</span>
+      </div>
+    </div>
+    <div class="cart-items-main">
+      <div class="cart-items">
+        <div class="cart-items-list" *ngFor="let item of saveforLater">
+          <div class="item-thumbnail">
+            <img class="image" src="{{ item.icon }}">
+          </div>
+          <div class="item-desc">
+            <p><strong>{{ item.title }}</strong></p>
+            <div>
+              <a (click)="deleteCartItem(item.id)">Delete</a> |
+              <a (click)="saveForLater(item.id, item.quantity, true)">Move to Cart</a>
+            </div>
+          </div>
+          <div class="item-price">
+            <p>
+              <strong>{{ item.amount }}</strong>
+            </p>
+          </div>
+          <div class="item-quantity">
+            <input type="number" required value="{{ item.quantity }}" name="quantityBox" class="item-quntity-input">
+          </div>
+        </div>
+      </div>    
+    </div>
+  </div>
+  <div class="terms-conditions">
+    <span>
+      The price and availability of items at Rapidobuild.com are subject to change. 
+      The shopping cart is a temporary place to store a list of your items and reflects each item's most recent price.
+      Do you have a promotional code? We'll ask you to enter your claim code when it's time to pay.
+    </span>
+  </div>
+</div>
