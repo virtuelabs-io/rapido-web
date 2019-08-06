@@ -38,10 +38,7 @@ export class ProductResultsComponent implements OnInit {
         this._productsService.get(query).
          subscribe(data => {
             if(data){
-              if(data.error){
-                throw Error('error')
-              }
-              if(data.hits.found === 0){
+              if(data.error || data.hits.found === 0){
                 this.noResultsFound = true
                 return;
               }

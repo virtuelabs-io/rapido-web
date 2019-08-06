@@ -49,6 +49,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { HomeComponent } from './home/home.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { BusyLoaderComponent } from './components/common/busy-loader/busy-loader.component';
 import { HomeCardComponent } from './card/home-card/home-card.component';
 import { CarouselComponent } from './card/carousel/carousel.component';
 import { CarouselScrollComponent } from './card/carousel-scroll/carousel-scroll.component';
@@ -84,6 +85,7 @@ import { TableComponent } from './components/table/table.component';
     EditAddressComponent,
     EditCompanyDetailsComponent,
     AccountInfoComponent,
+    BusyLoaderComponent,
     ProductDetailsComponent,
     TableComponent,
     CartComponent,

@@ -1,10 +1,14 @@
 <div>
+  <app-topnav  
+    id='nav-top' 
+    *ngIf="showNavBar">
+  </app-topnav>
+
   <app-icons></app-icons>
-<app-topnav id='nav-top'></app-topnav>
-<div>  
-  <div>
-    <router-outlet></router-outlet>
+  <div>  
+      <router-outlet></router-outlet>
   </div>
-</div>
-<app-footer></app-footer>
+  
+  <app-busy-loader></app-busy-loader>
+  <app-footer></app-footer>
 </div>

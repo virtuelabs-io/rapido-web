@@ -7,11 +7,23 @@ import { BehaviorSubject } from 'rxjs';
 export class LoginStateService {
 
   private userSignedIn = new BehaviorSubject<Boolean>(false);
-  currentState = this.userSignedIn.asObservable();
+  private isLoading = new BehaviorSubject<Boolean>(false);
+  
+  isLoggedInState = this.userSignedIn.asObservable();
+  loaderState = this.isLoading.asObservable();
 
   constructor() {}
 
   changeState(state: Boolean) {
     this.userSignedIn.next(state)
   }
+
+  loaderEnable(){
+    this.isLoading.next(true)
+  }
+  
+  loaderDisable(){
+    this.isLoading.next(false)
+  }
+  
 }

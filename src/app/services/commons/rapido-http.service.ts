@@ -1,22 +1,30 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { catchError, retry, tap } from 'rxjs/operators';
 import { Constants } from 'src/app/utils/constants';
 import { ProfileService } from '../authentication/profile/profile.service';
+import { LoginStateService } from 'src/app/shared-services/login-state/login-state.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RapidoHttpService<T> {
 
-  constructor(protected _http: HttpClient, protected _profileService: ProfileService) { }
+  protected loginStateService: LoginStateService;
+
+  constructor(protected _http: HttpClient, protected _profileService: ProfileService) {
+    this.loginStateService = new LoginStateService();
+  }
 
   getList(_url: string, _headers?: HttpHeaders): Observable<T[]>{
+    this.loginStateService.loaderEnable()
+
     return this._http.get<T[]>(_url, {
       headers: _headers
     }).pipe(
       retry(Constants.RETRY_TIMES),
+      tap( _ => this.loginStateService.loaderDisable()),
       catchError(err => {
         console.log('Error in processing request...', err);
         return throwError(err);
@@ -25,10 +33,13 @@ export class RapidoHttpService<T> {
   }
 
   get(_url: string, _headers?: HttpHeaders): Observable<T>{
+    this.loginStateService.loaderEnable()
+
     return this._http.get<T>(_url, {
       headers: _headers
     }).pipe(
       retry(Constants.RETRY_TIMES),
+      tap( _ => this.loginStateService.loaderDisable()),
       catchError(err => {
         console.log('Error in processing request...', err);
         return throwError(err);
@@ -37,9 +48,12 @@ export class RapidoHttpService<T> {
   }
 
   post(_url: string, _item: T, _headers?: HttpHeaders): Observable<any>{
+    this.loginStateService.loaderEnable()
+
     return this._http.post<any>(_url, _item, {
       headers: _headers
     }).pipe(
+      tap( _ => this.loginStateService.loaderDisable()),
       catchError(err => {
         console.log('Error in processing request...', err);
         return throwError(err);
@@ -48,9 +62,12 @@ export class RapidoHttpService<T> {
   }
 
   postList(_url: string, _item: Array<T>, _headers?: HttpHeaders): Observable<any>{
+    this.loginStateService.loaderEnable()
+
     return this._http.post<any>(_url, _item, {
       headers: _headers
     }).pipe(
+      tap( _ => this.loginStateService.loaderDisable()),
       catchError(err => {
         console.log('Error in processing request...', err);
         return throwError(err);
@@ -59,9 +76,12 @@ export class RapidoHttpService<T> {
   }
 
   delete(_url: string, _headers?: HttpHeaders): Observable<{}>{
+    this.loginStateService.loaderEnable()
+
     return this._http.delete<{}>(_url,{
       headers: _headers
     }).pipe(
+      tap( _ => this.loginStateService.loaderDisable()),
       catchError(err => {
         console.log('Error in processing request...', err);
         return throwError(err);
@@ -70,9 +90,12 @@ export class RapidoHttpService<T> {
   }
 
   put(_url: string, _item: T, _headers?: HttpHeaders): Observable<any>{
+    this.loginStateService.loaderEnable()
+
     return this._http.put<any>(_url, _item, {
       headers: _headers
     }).pipe(
+      tap( _ => this.loginStateService.loaderDisable()),
       catchError(err => {
         console.log('Error in processing request...', err);
         return throwError(err);

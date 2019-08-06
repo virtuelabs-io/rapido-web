@@ -63,8 +63,8 @@ export class LeftSectionComponent implements OnInit {
                         'panelData':[
                           {desc:'Price: Low to High', key:'price asc'},
                           {desc:'Price: High to Low', key:'price desc'},
-                          {desc:'Avg. Customer Review', key:'rating asc'},
-                          {desc:'Newest Arrivals', key:'date asc'}
+                          {desc:'Avg. Customer Review', key:'rating asc'}
+                          // {desc:'Newest Arrivals', key:'date asc'}
                         ]
                       }
                       ]}

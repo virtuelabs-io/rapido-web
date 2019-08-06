@@ -87,7 +87,7 @@ export class CheckoutComponent implements OnInit {
       this.showSpinner = false
     })
 
-    this._loginStateService.currentState.subscribe(state => {
+    this._loginStateService.isLoggedInState.subscribe(state => {
       if (state) {
         this.registeredEmail = this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.email
         this._logInName = this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.name

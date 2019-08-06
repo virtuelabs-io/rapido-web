@@ -30,6 +30,7 @@ import { ProductControlsComponent } from './product-controls/product-controls.co
 import { ProductResultsComponent } from './product-results/product-results.component';
 import { RangeSliderComponent } from './range-slider/range-slider.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { BusyLoaderComponent } from './components/common/busy-loader/busy-loader.component';
 import { TableComponent } from './components/table/table.component';
 import { HomeCardComponent } from './card/home-card/home-card.component';
 import { CarouselComponent } from './card/carousel/carousel.component';
@@ -92,6 +93,7 @@ describe('AppComponent', () => {
         ProductControlsComponent,
         ProductResultsComponent,
         RangeSliderComponent,
+        BusyLoaderComponent,
         TableComponent,
         HomeCardComponent,
         CarouselComponent,
