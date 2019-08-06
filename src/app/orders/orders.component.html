@@ -1,0 +1,48 @@
+<div class="main-div">
+  <div class="title-div">
+    <h4>Your Orders</h4>
+  </div>
+  <div class="order-card" *ngFor="let order of currentOrders">
+    <div class="order-card-header">
+      <div class="date-div">
+        <span class="label">Order placed: </span>
+        <span>{{ orders[order].date }}</span>
+      </div>
+      <div class="date-div">
+          <span class="label">Total: </span>
+          <span>{{ orders[order].currency }}{{ orders[order].price }}</span>
+      </div>
+      <div class="date-div">
+          <span class="label">Ship To: </span>
+          <span>{{ orders[order].shipTo }}</span>
+      </div>
+      <div class="date-div">
+          <span class="label">Order#: </span>
+          <span>{{ order }}</span>
+      </div>
+    </div>
+    <div class="order-card-items">
+      <div class="item">
+        <div class="item-status">
+          <span class="status-label">{{ orders[order].category }}</span>
+        </div>
+        <div class="item-detail" *ngFor="let item of orders[order].items">
+          <div class="item-image">
+              <img class="image" src="{{ imageUrl + products[item.product_id].images[0] }}">
+          </div>
+          <div class="item-desc-price">
+            <a href="">{{ products[item.product_id].name }}</a>
+            <span>
+              <span>{{ products[item.product_id].currency }} </span>
+              <span class="price-tag">{{ item.unit_price }}</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="item-action">
+          <button mat-button (click)="orderDetails(order)" class="action-but">Order Details</button>
+          <button mat-button *ngIf="order.category != cancelledStatus" (click)="cancelOrder(order)" class="action-but">Cancel Order</button>
+      </div>
+    </div>
+  </div>
+</div>

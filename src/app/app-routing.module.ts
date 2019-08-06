@@ -13,14 +13,20 @@ import { EditAddressComponent } from './edit-address/edit-address.component';
 import { CompanyDetailsComponent } from './company-details/company-details.component';
 import { AddCompanyDetailsComponent } from './add-company-details/add-company-details.component';
 import { EditCompanyDetailsComponent } from './edit-company-details/edit-company-details.component';
+import { CartComponent } from './cart/cart.component';
 import { AccountInfoComponent } from './account-info/account-info.component';
+import { TermsConditionsComponent } from './terms-conditions/terms-conditions.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { OrdersComponent } from './orders/orders.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
+import { HomeComponent } from './home/home.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LogInComponent },
-  { path: 'checkout', component: CheckoutComponent},
   { path: 'forgotpassword', component: ForgotPasswordComponent},
   { path: 'resendotp', component: ResendOtpComponent},
   { path: 'profile', component: ProfileComponent},
@@ -31,8 +37,16 @@ const routes: Routes = [
   { path: 'profile/companyDetails', component: CompanyDetailsComponent },
   { path: 'profile/companyDetails/newDetails', component: AddCompanyDetailsComponent },
   { path: 'profile/companyDetails/edit', component: EditCompanyDetailsComponent },
+  { path: 'cart', component: CartComponent },
+  { path: 'cart/checkout', component: CheckoutComponent},
   { path: 'profile/account', component: AccountInfoComponent },
-  { path: '', component: AuthmockComponent},
+  { path: 'terms', component: TermsConditionsComponent },
+  { path: 'privacy-policy', component: PrivacyPolicyComponent },
+  { path: 'aboutus', component: AboutUsComponent },
+  { path: 'orders', component: OrdersComponent },
+  { path: 'orders/:id/details', component: OrderDetailsComponent },
+  { path: '', component: HomeComponent },
+ // { path: '', component: AuthmockComponent},
   { path: 'products', component: ProductResultsComponent },
   { path: 'products/details/:id', component: ProductDetailsComponent}
 ];
@@ -56,7 +70,15 @@ export const RoutingComponents = [
   AddAddressComponent,
   EditAddressComponent,
   EditCompanyDetailsComponent,
+  CartComponent,
   AccountInfoComponent,
+  TermsConditionsComponent,
+  PrivacyPolicyComponent,
+  AboutUsComponent,
+  OrdersComponent,
+  OrderDetailsComponent,
+  HomeComponent,
+  CheckoutComponent,
   AuthmockComponent,
   ProductDetailsComponent
 ];

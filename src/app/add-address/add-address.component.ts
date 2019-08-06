@@ -4,6 +4,8 @@ import { AddressDetails } from '../services/customer/address-details';
 import { AddressDetailsService } from '../services/customer/address-details.service';
 import {FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Constants } from '../utils/constants';
+import { Location } from '@angular/common';
+import { RouteService } from '../shared-services/route/route.service';
 
 @Component({
   selector: 'app-add-address',
@@ -12,6 +14,7 @@ import { Constants } from '../utils/constants';
 })
 
 export class AddAddressComponent implements OnInit {
+  _previousRoute: any = ""
   address_details_id: number
   name: string = ""
   showSpinner: Boolean = false
@@ -20,12 +23,16 @@ export class AddAddressComponent implements OnInit {
   addressFormGroup: FormGroup // UI reactive Form Group variable
 
   constructor( private router: Router,
-               addressDetailsService: AddressDetailsService
+               addressDetailsService: AddressDetailsService,
+               private location: Location,
+               private RouteService: RouteService
   ) { 
       this._addressDetailsService = addressDetailsService
     }
 
   ngOnInit() {
+
+    this._previousRoute = this.RouteService.getRoute()
     this.addressFormGroup = new FormGroup({
       name: new FormControl('', [Validators.required]),
       add1: new FormControl('', [Validators.required]),
@@ -53,12 +60,24 @@ export class AddAddressComponent implements OnInit {
     .subscribe(data => {
       if(data['insertId']) {
         this.address_details_id = data['insertId']
+        this.location.back();
+  // lets this code be commented. Dont remove this..
+        
+      /*  if(this._previousRoute.value == 'cart') {
+          this.router.navigate(['cart/checkout']);
+        }
+        else if(this._previousRoute.value == 'profile') {
+          this.router.navigate(['profile/address']);
+        }
+        else if(this._previousRoute.value == '') {
+          this.location.back();
+        }*/
       }
-    })
-    this.router.navigate(['profile/address']);
+    })   
   }
   cancelAddAddress() {
-    this.router.navigate(['profile/address']);
+    this.location.back();
+   // this.router.navigate(['profile/address']);
   }
 
   public hasError = (controlName: string, errorName: string) => {

@@ -70,8 +70,12 @@ export class ChargeService extends RapidoHttpService<Charge> {
   }
 
   prepareCartItemDetailsList(productDetails: any, orderItemsObject: any) {
+    let products = {}
+    productDetails['hits']['hit'].forEach(product => {
+      products[product.id] = product['fields']
+    });
     return {
-      orderItemsObject, productDetails
+      orderItemsObject, products
     }
   }
 }

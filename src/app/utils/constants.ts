@@ -87,7 +87,7 @@ export class Constants {
 
   public static ORDER_STATUS = {
     "1": "Incomplete",
-    "2": "Payed",
+    "2": "Paid",
     "3": "Delivered",
     "4": "Cancelled",
     "5": "Returned"
@@ -95,6 +95,36 @@ export class Constants {
 
   public static COUNTRY_CODES = {
     "1": "United Kingdom"
+  }
+
+  public static MOBILE_CONFIG = {
+    image: true,
+    price: true,
+    itemsInTemplate: 1,
+    scroll: true,
+    title: true,
+    offer: true,
+    desc: true
+  }
+
+  public static TABLET_CONFIG = {
+    image: true,
+    price: true,
+    itemsInTemplate: 3,
+    scroll: true,
+    title: true,
+    offer: true,
+    desc: true
+  }
+
+  public static DESKTOP_CONFIG = {
+    image: true,
+    price: true,
+    itemsInTemplate: 5,
+    scroll: true,
+    title: true,
+    offer: true,
+    desc: true
   }
 
 }

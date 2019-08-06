@@ -1,0 +1,23 @@
+<div class="carousel-title">
+  {{ carouselTitle }}
+</div>
+<ngb-carousel interval='0'>
+  <ng-template ngbSlide class="carousel" *ngFor="let template of carouselData">
+    <div class="card-holder">
+      <div class="card" *ngFor="let card of template">
+        <div class="card-content">
+          <img *ngIf="CarouselConfig.image" class="card-image" src="{{ card.image }}">
+          <div *ngIf="CarouselConfig.desc" class="card-price">
+            {{ card.name }}
+          </div>
+          <div *ngIf="CarouselConfig.price" class="card-price">
+            {{ card.currency }} {{ card.price }}
+          </div>
+          <div *ngIf="CarouselConfig.offer" class="card-price">
+            Offer: {{ card.offer }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</ngb-carousel>

@@ -1,0 +1,104 @@
+@import "../../assets/scss/custom-bootstrap-variables.scss";
+
+.main-div {
+    .image-div {
+        height: 683px;
+        background-image:    url('/assets/images/aboutUs_2.jpg');
+        background-size:     cover;                     
+        background-repeat:   no-repeat;
+        background-position: center center; 
+        .outer-head-text-div {
+            width: 100%;
+            height: 200px;
+            padding-top: 15%;
+            .inner-head-text-div {
+                padding-left: 30%;
+                padding-right: 30%;
+                .title-div {
+                    padding-left: 30%;
+                    padding-right: 30%;
+                    @media screen and (max-width: $mobile-device) {
+                        padding-left: 25%;
+                        padding-right: 25%;
+                    }
+                }
+                @media screen and (max-width: $medium-device) {
+                    padding-left: 5%;
+                    padding-right: 5%;
+                }
+                @media screen and (max-width: $mobile-device) {
+                    padding: 0%;
+                }
+            }
+            @media screen and (max-width: $mobile-device) {
+                width: 100%;
+                padding-left: 2%;
+                padding-right: 2%;
+                padding-top: 10%;
+            }
+        }
+        @media screen and (max-width: $mobile-device) {
+            height: 400px;
+        }
+    }
+    
+    .our-story {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 10%;
+        padding-left: 15%;
+        padding-right: 15%;
+        .heading-div {
+            width: 50%;
+            .heading {
+                font-family: Heebo,sans-serif;
+                font-size: 60px;
+                font-weight: 100;
+                letter-spacing: .1em;
+                line-height: 1em;
+                color: #000;
+                @media screen and (max-width: $mobile-device) {
+                    font-size: 46px;
+                    margin-bottom: 10%;
+                }
+            }
+            @media screen and (max-width: $mobile-device) {
+                width: 100%;
+            }
+        }
+        .story {
+            width: 50%;
+            p {
+                @media screen and (max-width: $mobile-device) {
+                    font-size: 12px;
+                }
+            }
+            .margin-text {
+                margin-bottom: 10%;
+                .story-heading {
+                    font-size: 25px;
+                    margin-bottom: 5%;
+                }
+                @media screen and (max-width: $mobile-device) {
+                    font-size: 12px;
+                }
+            }
+            @media screen and (max-width: $mobile-device) {
+                width: 100%;
+            }
+        }
+    }
+
+    .image2-div {
+        height: 400px;
+        background-image:    url('/assets/images/aboutUs_4.jpg');
+        background-size:     cover;                     
+        background-repeat:   no-repeat;
+        background-position: center center; 
+        margin-top: 10%;
+        @media screen and (max-width: $mobile-device) {
+            height: 200px;
+        }
+    }
+}

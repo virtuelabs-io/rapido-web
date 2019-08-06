@@ -37,8 +37,21 @@ import { AddressComponent } from './address/address.component';
 import { AddAddressComponent } from './add-address/add-address.component';
 import { EditAddressComponent } from './edit-address/edit-address.component';
 import { EditCompanyDetailsComponent } from './edit-company-details/edit-company-details.component';
+import { CartComponent } from './cart/cart.component';
+import { RouteService } from '../app/shared-services/route/route.service';
+import { FooterComponent } from './footer/footer.component';
+import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 import { AccountInfoComponent } from './account-info/account-info.component';
+import { TermsConditionsComponent } from './terms-conditions/terms-conditions.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { OrdersComponent } from './orders/orders.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
+import { HomeComponent } from './home/home.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { HomeCardComponent } from './card/home-card/home-card.component';
+import { CarouselComponent } from './card/carousel/carousel.component';
+import { CarouselScrollComponent } from './card/carousel-scroll/carousel-scroll.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { TableComponent } from './components/table/table.component';
 
@@ -72,7 +85,19 @@ import { TableComponent } from './components/table/table.component';
     EditCompanyDetailsComponent,
     AccountInfoComponent,
     ProductDetailsComponent,
-    TableComponent
+    TableComponent,
+    CartComponent,
+    FooterComponent,
+    TermsConditionsComponent,
+    PrivacyPolicyComponent,
+    AboutUsComponent,
+    OrdersComponent,
+    OrderDetailsComponent,
+    HomeComponent,
+    HomeCardComponent,
+    CarouselComponent,
+    CarouselScrollComponent,
+    AccountInfoComponent
   ],
   imports: [
     MatSidenavModule,
@@ -101,6 +126,21 @@ import { TableComponent } from './components/table/table.component';
     MatTableModule,
     // Ng5SliderModule,
     NgxStripeModule.forRoot(Constants.environment.stripePublicKey),
+    HttpClientModule,
+    MatMenuModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatButtonModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatListModule,
+    MatSnackBarModule,
+    MatExpansionModule,
+    MatMenuModule,
+    MatProgressSpinnerModule,
+    MatSelectModule,
+    MatSidenavModule,
+    NgxPageScrollCoreModule,
     NgbModule
   ],
   entryComponents: [FilterControlsDialog],
@@ -108,4 +148,15 @@ import { TableComponent } from './components/table/table.component';
   bootstrap: [ AppComponent ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(
+    private RouteService : RouteService
+   ) {
+   }
+
+   ngOnInit() {
+    this.RouteService.previousRoute.subscribe(state => {
+      this.RouteService.changeRoute(state)
+    })
+   }
+}
