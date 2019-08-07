@@ -34,7 +34,7 @@
             padding: 1%;
             margin: 1%;
             padding-bottom: 1%;
-            margin-bottom: 2%;
+            margin-bottom: 3%;
             margin-top: 2%;
             border: none;
             .card-content {
@@ -66,6 +66,8 @@
             }
             @media screen and (max-width: $small-device) {
                 width: 70%;
+                margin-bottom: 7%;
+                margin-top: 5%;
             }
         }
         @media screen and (max-width: $mobile-device) {
