@@ -76,7 +76,13 @@
     }
 
     .carousel-scroll {
-        width: 98%;
+        margin-left: 1%;
+        margin-right: 1%;
+        margin-bottom: 5%;
+        @media screen and (max-width: $mobile-device) {
+            width: 99%;
+            height: 440px;  
+        }
     }
 
     .carousel-card-mobile {

@@ -7,7 +7,7 @@
       <div class="card" *ngFor="let card of template">
         <div class="card-content">
           <img *ngIf="CarouselConfig.image" class="card-image" src="{{ card.image }}">
-          <div *ngIf="CarouselConfig.desc" class="card-price">
+          <div *ngIf="CarouselConfig.desc" class="card-text">
             {{ card.name }}
           </div>
           <div *ngIf="CarouselConfig.price" class="card-price">
