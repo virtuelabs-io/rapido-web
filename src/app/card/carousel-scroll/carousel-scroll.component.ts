@@ -11,6 +11,7 @@ export class CarouselScrollComponent implements OnInit {
     title: "",
     data: []
   }
+  @Input() carouselTitle = ""
   @Input() CarouselConfig = {}
   carouselData: any
   constructor() { }
