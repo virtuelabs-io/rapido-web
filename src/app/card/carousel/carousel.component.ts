@@ -31,12 +31,12 @@ export class CarouselComponent implements OnInit {
     if(data) {
       data.forEach(item => {
         tmpItems.push(item)
-        if(tmpItems.length === itemsInTemplate){
+        if(tmpItems.length === itemsInTemplate) {
           formatedData.push(tmpItems)
           tmpItems = []
         }
       })
-      if(tmpItems.length > 0){
+      if(tmpItems.length > 0) {
         formatedData.push(tmpItems)
         tmpItems = []
       }

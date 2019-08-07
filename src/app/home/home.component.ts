@@ -142,10 +142,11 @@ export class HomeComponent implements OnInit {
     this.desktopConfig = Constants.DESKTOP_CONFIG
     this.tabletConfig = Constants.TABLET_CONFIG
     this.mobileConfig = Constants.MOBILE_CONFIG
-     this.fetchProducts()
+     this.recommendedProductList()
+     this.browsedHistory()
   }
 
-   fetchProducts() {
+  recommendedProductList() {
     let query = {
       q: `watches`,
       size: 10
@@ -156,6 +157,31 @@ export class HomeComponent implements OnInit {
         console.log(data)
         
         this.carousel.RecommendedList.data = data.hits.hit.map((v,i)=>{
+          v.fields.id = v.id
+          v.fields.image = Common.getImageURI(null, v.fields.images[0])
+          return v.fields
+          })
+        if (data.error) {
+          throw Error('error')
+        }
+        if (data.hits.found === 0) {
+          return;
+        }
+      }
+    })
+  }
+
+  browsedHistory() {
+    let query = {
+      q: `watches`,
+      size: 10
+    }
+     this._productsService.get(query).
+    subscribe(data => {
+      if (data) {
+        console.log(data)
+        
+        this.carousel.BrowsingHistory.data = data.hits.hit.map((v,i)=>{
           v.fields.id = v.id
           v.fields.image = Common.getImageURI(null, v.fields.images[0])
           return v.fields
