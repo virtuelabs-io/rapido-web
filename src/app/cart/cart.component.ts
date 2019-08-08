@@ -73,7 +73,7 @@ export class CartComponent implements OnInit {
   }
 
   deleteCartItem(id) {
-    this._snackBarMsg = "Item has been deleted !"
+    this._snackBarMsg = Constants.ITWM_DELETE_CART
     this._cartService.deleteCartItem(id)
     .subscribe(data => {
       this._snackBar.open(this._snackBarMsg, "", {
@@ -90,10 +90,10 @@ export class CartComponent implements OnInit {
     cartItem.quantity = quantity
     cartItem.in_cart = bol
     if(bol) {
-      this._snackBarMsg = "Item has been moved to cart"
+      this._snackBarMsg = Constants.ITEM_MOVED_TO_CART
     }
     else {
-      this._snackBarMsg = "Item has been saved for later"
+      this._snackBarMsg = Constants.ITWM_SAVE_LATER
     }
     this._cartService.postCartItem(cartItem)
     .subscribe(_ => {
