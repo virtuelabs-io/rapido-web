@@ -12,7 +12,7 @@
     min-width: 98%;
     width: 90%;
     overflow-y: hidden;
-    .card2 {
+    .cards {
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
@@ -20,6 +20,7 @@
         width: 25%;
         background-color: white;
         margin: 1%;
+        cursor: pointer;
         .card-content {
             height: 100%;
             .card-image {

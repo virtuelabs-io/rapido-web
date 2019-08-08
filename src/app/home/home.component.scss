@@ -83,65 +83,6 @@
             width: 99%;
         }
     }
-
-    .carousel-card-mobile {
-        display: none;
-        .card-holder2 {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: center;
-            .carousel-title {
-                padding-left: 2%;
-                font-size: 24px;
-                @media screen and (max-width: $mobile-device) {
-                    padding-left: 0%;
-                }
-            }
-            .card2 {
-                display: flex;
-                flex-direction: column;
-                flex-wrap: nowrap;
-                height: 260px;
-                width: 20%;
-                background-color: white;
-                padding: 1%;
-                padding-bottom: 1%;
-                .card-content {
-                    height: 100%;
-                    .card-image {
-                        background-size:     cover;                     
-                        background-repeat:   no-repeat;
-                        background-position: center center; 
-                        height: 90%;
-                        width: 100%;
-                        @media screen and (max-width: $mobile-device) {
-                            width: 90%;
-                            padding-left: 10%;
-                        }
-                    }
-                    .card-price {
-                        padding-top: 1%;
-                        color: red;
-                        padding-left: 15%;
-                        @media screen and (max-width: $mobile-device) {
-                            padding-left: 25%;
-                        }
-                    }
-                }
-                @media screen and (max-width: $mobile-device) {
-                    width: 100%;
-                }
-            }
-            @media screen and (max-width: $mobile-device) {
-                width: 100%;
-            }
-        }
-        @media screen and (max-width: $mobile-device) {
-            display: block;
-        }
-    }
-
     @media screen and (max-width: $mobile-device) {
         width: 100%;
     }
