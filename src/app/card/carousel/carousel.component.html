@@ -6,14 +6,14 @@
     <div class="card-holder">
       <div class="card" *ngFor="let card of template">
         <div class="card-content" [routerLink]="['/products/details', card.id]">
-          <img *ngIf="CarouselConfig.image" class="card-image" src="{{ card.image }}">
-          <div *ngIf="CarouselConfig.desc" class="card-text">
+          <img *ngIf="carouselConfig.image" class="card-image" src="{{ card.image }}">
+          <div *ngIf="carouselConfig.desc" class="card-text">
             {{ card.name }}
           </div>
-          <div *ngIf="CarouselConfig.price" class="card-price">
+          <div *ngIf="carouselConfig.price" class="card-price">
             {{ card.currency }} {{ card.price }}
           </div>
-          <div *ngIf="CarouselConfig.offer" class="card-price">
+          <div *ngIf="carouselConfig.offer" class="card-price">
             Offer: {{ card.offer }}
           </div>
         </div>

@@ -5,23 +5,22 @@ import { Component, Input, OnInit, SimpleChanges, Directive } from '@angular/cor
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss']
 })
-@Directive({ selector: '[carouselCard, CarouselConfig, carouselTitle]' })
 
 export class CarouselComponent implements OnInit {
   @Input() carouselCard = []
-  @Input() CarouselConfig = {}
+  @Input() carouselConfig = {}
   @Input() carouselTitle = ""
   carouselData: any
   config: any
   constructor() { }
 
   ngOnInit() {
-    this.config = this.CarouselConfig
+    this.config = this.carouselConfig
     this.carouselData = this.formatData(this.carouselCard, this.config.itemsInTemplate)
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    this.config = this.CarouselConfig
+    this.config = this.carouselConfig
     this.carouselData = this.formatData(this.carouselCard, this.config.itemsInTemplate)
   }
 
