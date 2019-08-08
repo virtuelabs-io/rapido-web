@@ -143,7 +143,7 @@ import { TableComponent } from './components/table/table.component';
     MatSelectModule,
     MatSidenavModule,
     NgxPageScrollCoreModule,
-    NgbModule.forRoot()
+    NgbModule
   ],
   entryComponents: [FilterControlsDialog],
   providers: [],
