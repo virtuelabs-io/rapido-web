@@ -34,6 +34,7 @@ steps:
     aws s3 cp s3://rapido-build-secrets-bucket/environment.staging.ts ./src/environments/environment.staging.ts
     aws s3 cp s3://rapido-build-secrets-bucket/environment.prod.ts ./src/environments/environment.prod.ts
     aws s3 cp s3://rapido-build-secrets-bucket/environment.prod.ts ./src/environments/environment.ts
+    echo $(system.pullRequest.sourceCommitId)
   env:
     AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
     AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
