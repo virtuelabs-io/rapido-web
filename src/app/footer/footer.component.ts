@@ -12,8 +12,9 @@ export class FooterComponent implements OnInit {
   name: String
   bannerName: String = Constants.RAPIDO_BUILD
   durationInSeconds = 5;
+  deployedVersion = Constants.environment.version;
   constructor(
     public router: Router
   ) { }
-  ngOnInit() {} 
+  ngOnInit() {}
 }

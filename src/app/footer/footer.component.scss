@@ -34,6 +34,22 @@
     }
 }
 
+a:hover {
+    color: $primary;
+}
 
 
 
+
+.footer-countries {
+    color: white;
+    font-size: small;
+}
+
+.nav-line {
+    border-top: 1px solid #3a4553;
+}
+
+.commit-color {
+  color: $green !important;
+}
