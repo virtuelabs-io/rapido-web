@@ -38,6 +38,9 @@ steps:
     sed -i -e "s/GIT_COMMIT/$COMMIT_ID/g" ./src/environments/environment.staging.ts
     sed -i -e "s/GIT_COMMIT/$COMMIT_ID/g" ./src/environments/environment.prod.ts
     sed -i -e "s/GIT_COMMIT/$COMMIT_ID/g" ./src/environments/environment.ts
+    cat ./src/environments/environment.staging.ts
+    cat ./src/environments/environment.prod.ts
+    cat ./src/environments/environment.ts
   env:
     AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
     AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
