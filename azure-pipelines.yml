@@ -34,10 +34,11 @@ steps:
     aws s3 cp s3://rapido-build-secrets-bucket/environment.staging.ts ./src/environments/environment.staging.ts
     aws s3 cp s3://rapido-build-secrets-bucket/environment.prod.ts ./src/environments/environment.prod.ts
     aws s3 cp s3://rapido-build-secrets-bucket/environment.prod.ts ./src/environments/environment.ts
-    echo $(system.pullRequest.sourceCommitId)
+    echo $COMMIT_ID
   env:
     AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
     AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
+    COMMIT_ID: $(system.pullRequest.sourceCommitId)
   displayName: 'Fetch secrets from AWS and format'
 
 - task: NodeTool@0
