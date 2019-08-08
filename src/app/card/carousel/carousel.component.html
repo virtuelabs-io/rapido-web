@@ -5,7 +5,7 @@
   <ng-template ngbSlide class="carousel" *ngFor="let template of carouselData">
     <div class="card-holder">
       <div class="card" *ngFor="let card of template">
-        <div class="card-content">
+        <div class="card-content" [routerLink]="['/products/details', card.id]">
           <img *ngIf="CarouselConfig.image" class="card-image" src="{{ card.image }}">
           <div *ngIf="CarouselConfig.desc" class="card-text">
             {{ card.name }}

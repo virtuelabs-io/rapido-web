@@ -2,7 +2,7 @@
   {{ carouselTitle }}
 </div>
 <div class="container"> 
-  <div class="cards" *ngFor="let card of carouselData">
+  <div class="cards" *ngFor="let card of carouselData" [routerLink]="['/products/details', card.id]">
     <div class="card-content">
       <img *ngIf="CarouselConfig.image" class="card-image" src="{{ card.image }}">
       <div *ngIf="CarouselConfig.desc" class="card-price">
