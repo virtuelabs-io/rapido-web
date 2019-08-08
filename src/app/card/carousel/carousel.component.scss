@@ -73,7 +73,7 @@
     }
 }
 
-::ng-deep .carousel-control-prev, ::ng-deep .carousel-control-next {
+:host ::ng-deep .carousel-control-prev, ::ng-deep .carousel-control-next {
     margin-bottom: 10%;
     width: 2% !important;
     margin-top: 10%;
@@ -90,6 +90,6 @@
     }
 }
 
-::ng-deep .carousel-indicators {
+:host ::ng-deep .carousel-indicators {
     display: none;
 }

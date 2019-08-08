@@ -36,7 +36,8 @@
 		}
 	}
 	.block-two {
-		width: 50%;
+	//	padding-left: 10%;
+		width: 100%;
 		 ::-webkit-input-placeholder {
 			text-align: left;
 		}
@@ -77,6 +78,8 @@
 		margin-right: 10px;
 		margin-left: 10px;
 		width: 35%;
+		padding-left: 5%;
+		justify-content: center;
 		.rapido-icon {
 			svg {
 				margin: 12px 0px;
