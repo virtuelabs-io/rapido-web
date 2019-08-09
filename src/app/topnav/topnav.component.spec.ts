@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { DebugElement, Input } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {  HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('TopnavComponent', () => {
   let component: TopnavComponent;
@@ -16,7 +17,8 @@ describe('TopnavComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ BrowserAnimationsModule, MatMenuModule, MatToolbarModule, FormsModule, MatSnackBarModule, RouterModule.forRoot([]) ],
+      imports: [ HttpClientTestingModule,
+        BrowserAnimationsModule, MatMenuModule, MatToolbarModule, FormsModule, MatSnackBarModule, RouterModule.forRoot([]) ],
       declarations: [ TopnavComponent, ButtonComponent ]
     })
     .compileComponents();
