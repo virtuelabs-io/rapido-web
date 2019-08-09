@@ -1,9 +1,11 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { SessionService } from '../services/authentication/session/session.service';
 import { ProfileService } from '../services/authentication/profile/profile.service';
+import { CartService } from '../services/cart/cart.service';
 import { Constants } from '../utils/constants';
 import { Router } from '@angular/router';
 import { LoginStateService } from '../shared-services/login-state/login-state.service';
+import { CartStateService } from '../shared-services/cart-state/cart-state.service';
 import { SearchItemService } from '../shared-services/search-item/search-item.services';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -19,18 +21,22 @@ export class TopnavComponent implements OnInit {
   searchedText: string = ''
   bannerName: String = Constants.RAPIDO_BUILD
   durationInSeconds = 5;
+  cartCount:Number = 0;
 
   constructor(private _sessionService: SessionService,
               private _profileService: ProfileService,
+              private _cartService: CartService,
               public router: Router, 
               private _snackBar: MatSnackBar,
               private _searchItemService: SearchItemService,
+              private _cartStateService: CartStateService,
               private _loginStateService: LoginStateService) {}
 
   ngOnInit() {
     const promise = this._sessionService.retrieveSessionIfExists()
     promise.then( _ => {
       this._loginStateService.changeState(true);
+      this.getCartCount()
     }).catch(error => {
       this.openSnackBar(error.message);
       this.isSignedIn = false
@@ -42,6 +48,9 @@ export class TopnavComponent implements OnInit {
       }
     })
     
+    this._cartStateService.cartCountState.subscribe(state => {
+      this.cartCount = state;
+    })
   }
 
   signOut() {
@@ -69,5 +78,13 @@ export class TopnavComponent implements OnInit {
     message && this._snackBar.open(message,  undefined , {
       duration: 4000,
    });
+  }
+
+  getCartCount(){
+    this._cartService.getCountOfInCartItems()
+        .then((count: any) => {
+          this.cartCount = count
+          // this._cartStateService.updateCartCount(count)
+        })
   }
 }

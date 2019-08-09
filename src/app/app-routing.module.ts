@@ -27,6 +27,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LogInComponent },
+  { path: 'login/:redirectToCart', component: LogInComponent },
   { path: 'forgotpassword', component: ForgotPasswordComponent},
   { path: 'resendotp', component: ResendOtpComponent},
   { path: 'profile', component: ProfileComponent},
@@ -46,7 +47,7 @@ const routes: Routes = [
   { path: 'orders', component: OrdersComponent },
   { path: 'orders/:id/details', component: OrderDetailsComponent },
   { path: '', component: HomeComponent },
- // { path: '', component: AuthmockComponent},
+ { path: 'authmock', component: AuthmockComponent},
   { path: 'products', component: ProductResultsComponent },
   { path: 'products/details/:id', component: ProductDetailsComponent}
 ];

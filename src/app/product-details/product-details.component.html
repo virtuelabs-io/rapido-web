@@ -88,9 +88,10 @@
               <option *ngFor="let val of [1,2,3,4]">{{val}}</option>
             </select>
           </div>
-          <div routerLink="/checkout">
+          <div >
             <button 
               type="button"
+              (click)="addItemsToCart()"
               class="btn btn-outline-dark btn-block bg-primary">
               Add to cart
             </button>
