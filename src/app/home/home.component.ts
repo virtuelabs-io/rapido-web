@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../services/products/products.service';
 import { Common } from '../../../src/app/utils/common';
-
+import { Constants } from '../../app/utils/constants'
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -32,72 +32,7 @@ export class HomeComponent implements OnInit {
       },
       BrowsingHistory:  {
         "title": "Previously Browsed Products",
-        "data": [
-          {
-            "image": '/assets/images/home_card_1.jpg',
-            "price": '₹ 359.00 to ₹ 5,319.00',
-            "offer": "5%",
-            "desc": "Watches that will exite you"
-          },
-          {
-            "image": '/assets/images/aboutUs_1.jpg',
-            "price": '₹ 359.00 to ₹ 5,319.00',
-            "offer": "10%",
-            "desc": "Watches that will exite you at the best of prices"
-          },
-          {
-            "image": '/assets/images/aboutUs_2.jpg',
-            "price": '₹ 359.00 to ₹ 5,319.00',
-            "offer": "15%",
-            "desc": "Fossil Watch"
-          },
-          {
-            "image": '/assets/images/aboutUs_3.jpg',
-            "price": '₹ 359.00 to ₹ 5,319.00',
-            "offer": "20%",
-            "desc": "Fossil Watch"
-          },
-          {
-            "image": '/assets/images/aboutUs_4.jpg',
-            "price": '₹ 359.00 to ₹ 5,319.00',
-            "offer": "25%",
-            "desc": "Fossil Watch"
-          },
-          {
-            "image": '/assets/images/aboutUs_4.jpg',
-            "price": '₹ 359.00 to ₹ 5,319.00',
-            "offer": "30%",
-            "desc": "Fossil Watch"
-          },
-          {
-            "image": '/assets/images/aboutUs_3.jpg',
-            "price": '₹ 359.00 to ₹ 5,319.00',
-            "offer": "35%",
-            "desc": "Fossil Watch"
-          },
-          {
-            "image": '/assets/images/aboutUs_2.jpg',
-            "price": '₹ 359.00 to ₹ 5,319.00',
-            "offer": "40%",
-            "desc": "Fossil Watch"
-          },
-          {
-            "image": '/assets/images/aboutUs_1.jpg'
-            
-          },
-          {
-            "image": '/assets/images/home_card_1.jpg'
-            
-          },
-          {
-            "image": '/assets/images/aboutUs_4.jpg',
-            "price": 'test price 1'
-          },
-          {
-            "image": '/assets/images/aboutUs_3.jpg',
-            "price": 'test price 2'
-          }
-        ]
+        "data": []
       }
     }
 
@@ -139,37 +74,14 @@ export class HomeComponent implements OnInit {
       },
       
     ]
-    this.desktopConfig = {
-      image: true,
-      price: true,
-      itemsInTemplate: 5,
-      scroll: true,
-      title: true,
-      offer: true,
-      desc: true
-    }
-    this.tabletConfig = {
-      image: true,
-      price: true,
-      itemsInTemplate: 3,
-      scroll: true,
-      title: true,
-      offer: true,
-      desc: true
-    }
-    this.mobileConfig = {
-      image: true,
-      price: true,
-      itemsInTemplate: 1,
-      scroll: true,
-      title: true,
-      offer: true,
-      desc: true
-    }
-     this.fetchProducts()
+    this.desktopConfig = Constants.DESKTOP_CONFIG
+    this.tabletConfig = Constants.TABLET_CONFIG
+    this.mobileConfig = Constants.MOBILE_CONFIG
+     this.recommendedProductList()
+     this.browsedHistory()
   }
 
-   fetchProducts() {
+  recommendedProductList() {
     let query = {
       q: `watches`,
       size: 10
@@ -184,7 +96,31 @@ export class HomeComponent implements OnInit {
           v.fields.image = Common.getImageURI(null, v.fields.images[0])
           return v.fields
           })
-        console.log(this.carousel)
+        if (data.error) {
+          throw Error('error')
+        }
+        if (data.hits.found === 0) {
+          return;
+        }
+      }
+    })
+  }
+
+  browsedHistory() {
+    let query = {
+      q: `watches`,
+      size: 10
+    }
+     this._productsService.get(query).
+    subscribe(data => {
+      if (data) {
+        console.log(data)
+        
+        this.carousel.BrowsingHistory.data = data.hits.hit.map((v,i)=>{
+          v.fields.id = v.id
+          v.fields.image = Common.getImageURI(null, v.fields.images[0])
+          return v.fields
+          })
         if (data.error) {
           throw Error('error')
         }

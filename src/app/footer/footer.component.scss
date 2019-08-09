@@ -2,30 +2,44 @@
 
 .main {
     background-color: black;
-}
-a {
-    color: white;
-    text-decoration: none;
-    background-color: transparent;
+    a {
+        color: white;
+        text-decoration: none;
+        background-color: transparent;
+    }
+    a:hover { 
+        color: $primary;
+    }
+    h5 {
+        color: white;
+    }
+    
+    .nav-footer-line {
+        border-top: 1px solid #3a4553;
+        margin-top: 40px;
+    }
+    
+    .footer-rapido-icon {
+        color: white;
+        margin-top: 1%;
+    }
+    
+    .footer-countries {
+        color: white;
+        font-size: small;
+    }
+    
+    .nav-line {
+        border-top: 1px solid #3a4553;
+    }
 }
 
-a:hover { 
+a:hover {
     color: $primary;
 }
 
-h5 {
-    color: white;
-}
 
-.nav-footer-line {
-    border-top: 1px solid #3a4553;
-    margin-top: 40px;
-}
 
-.footer-rapido-icon {
-    color: white;
-    margin-top: 1%;
-}
 
 .footer-countries {
     color: white;
@@ -34,4 +48,8 @@ h5 {
 
 .nav-line {
     border-top: 1px solid #3a4553;
+}
+
+.commit-color {
+  color: $green !important;
 }

@@ -1,6 +1,6 @@
 @import "../../../assets/scss/custom-bootstrap-variables.scss";
 
-.card1 {
+.card {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -35,6 +35,7 @@
             padding-top: 6%;
             .image {
                 width: 100%;
+                height: 100%;
                 @media screen and (max-width: $medium-device) {
                     width: 90%;
                 }

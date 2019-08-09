@@ -1,12 +1,12 @@
 <div class="carousel-title">
-  {{ carouselCard.title }}
+  {{ carouselTitle }}
 </div>
 <div class="container"> 
-  <div class="card2" *ngFor="let card of carouselData.data">
+  <div class="cards" *ngFor="let card of carouselData" [routerLink]="['/products/details', card.id]">
     <div class="card-content">
       <img *ngIf="CarouselConfig.image" class="card-image" src="{{ card.image }}">
       <div *ngIf="CarouselConfig.desc" class="card-price">
-          {{ card.desc }}
+          {{ card.name }}
       </div>
       <div *ngIf="CarouselConfig.price" class="card-price">
         {{ card.price }}

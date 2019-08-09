@@ -5,10 +5,6 @@
     font-size: 24px;
 }
 
-*:focus {
-    outline: none !important;
-}
-
 .carousel {
     display: flex;
     flex-direction: column;
@@ -34,9 +30,10 @@
             padding: 1%;
             margin: 1%;
             padding-bottom: 1%;
-            margin-bottom: 2%;
+            margin-bottom: 3%;
             margin-top: 2%;
             border: none;
+            cursor: pointer;
             .card-content {
                 height: 100%;
                 .card-image {
@@ -47,7 +44,7 @@
                     width: 100%;
                     padding: 40px;
                 }
-                .card-price {
+                .card-text {
                     padding-top: 1%;
                     color: black;
                     text-overflow: ellipsis;
@@ -66,6 +63,8 @@
             }
             @media screen and (max-width: $small-device) {
                 width: 70%;
+                margin-bottom: 7%;
+                margin-top: 5%;
             }
         }
         @media screen and (max-width: $mobile-device) {
@@ -74,7 +73,7 @@
     }
 }
 
-::ng-deep .carousel-control-prev, ::ng-deep .carousel-control-next {
+:host ::ng-deep .carousel-control-prev, ::ng-deep .carousel-control-next {
     margin-bottom: 10%;
     width: 2% !important;
     margin-top: 10%;
@@ -91,6 +90,6 @@
     }
 }
 
-::ng-deep .carousel-indicators {
+:host ::ng-deep .carousel-indicators {
     display: none;
 }

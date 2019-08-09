@@ -34,10 +34,14 @@ steps:
     aws s3 cp s3://rapido-build-secrets-bucket/environment.staging.ts ./src/environments/environment.staging.ts
     aws s3 cp s3://rapido-build-secrets-bucket/environment.prod.ts ./src/environments/environment.prod.ts
     aws s3 cp s3://rapido-build-secrets-bucket/environment.prod.ts ./src/environments/environment.ts
+    export COMMIT_ID=$(git rev-parse --short HEAD)
+    echo $COMMIT_ID
+    sed -i -e "s/GIT_COMMIT/$COMMIT_ID/g" ./src/environments/environment*ts
+    cat ./src/environments/environment.*.ts
   env:
     AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
     AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
-  displayName: 'Fetch secrets from AWS'
+  displayName: 'Fetch secrets from AWS and format env files'
 
 - task: NodeTool@0
   inputs:
@@ -72,19 +76,39 @@ steps:
 
 - script: |
     docker build -t $DOCKER_REPO/$(imageName):v$(major).$(minor).$(patch) .
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/disabled')
   env:
     DOCKER_REPO: $(DOCKER_REPO)
-  displayName: 'Build docker image and tag it'
+  displayName: 'Disabled: Build docker image and tag it'
 
 - script: |
     eval $(aws ecr get-login --no-include-email --region eu-west-2)
     docker push $DOCKER_REPO/$(imageName):v$(major).$(minor).$(patch)
     docker tag $DOCKER_REPO/$(imageName):v$(major).$(minor).$(patch) $DOCKER_REPO/$(imageName):latest
     docker push $DOCKER_REPO/$(imageName):latest
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/disabled')
+  env:
+    AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
+    AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
+    DOCKER_REPO: $(DOCKER_REPO)
+  displayName: 'Disabled: Publish docker image to ECR'
+
+- script: |
+    aws s3 cp ${PWD}/dist/rapido-web/. s3://$DEV_RAPIDO_BUILD_S3_BUCKET --recursive
+  condition: eq(variables['Build.Reason'], 'PullRequest')
+  env:
+    AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
+    AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
+    DOCKER_REPO: $(DOCKER_REPO)
+    DEV_RAPIDO_BUILD_S3_BUCKET: $(DEV_RAPIDO_BUILD_S3_BUCKET)
+  displayName: 'Deploying distribution to dev environment'
+
+- script: |
+    aws s3 cp ${PWD}/dist/rapido-web/. s3://$PROD_RAPIDO_BUILD_S3_BUCKET --recursive
   condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
   env:
     AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
     AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
     DOCKER_REPO: $(DOCKER_REPO)
-  displayName: 'Publish docker image to ECR'
-
+    PROD_RAPIDO_BUILD_S3_BUCKET: $(DEV_RAPIDO_BUILD_S3_BUCKET) # TODO: Change it PROD_RAPIDO_BUILD_S3_BUCKET when going live
+  displayName: 'Deploying distribution to prod environment'

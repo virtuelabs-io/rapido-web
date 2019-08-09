@@ -1,4 +1,4 @@
-import { Component,Input, OnInit } from '@angular/core';
+import { Component,Input, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-carousel-scroll',
@@ -7,15 +7,17 @@ import { Component,Input, OnInit } from '@angular/core';
 })
 
 export class CarouselScrollComponent implements OnInit {
-  @Input() carouselCard = {
-    title: "",
-    data: []
-  }
+  @Input() carouselCard = []
+  @Input() carouselTitle = ""
   @Input() CarouselConfig = {}
   carouselData: any
   constructor() { }
 
   ngOnInit() {
+    this.carouselData = this.carouselCard
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
     this.carouselData = this.carouselCard
   }
 }
