@@ -27,6 +27,7 @@ export class RapidoHttpService<T> {
       tap( _ => this.loginStateService.loaderDisable()),
       catchError(err => {
         console.log('Error in processing request...', err);
+        this.loginStateService.loaderDisable()
         return throwError(err);
       })
     );
@@ -42,6 +43,7 @@ export class RapidoHttpService<T> {
       tap( _ => this.loginStateService.loaderDisable()),
       catchError(err => {
         console.log('Error in processing request...', err);
+        this.loginStateService.loaderDisable()
         return throwError(err);
       })
     );
@@ -56,6 +58,7 @@ export class RapidoHttpService<T> {
       tap( _ => this.loginStateService.loaderDisable()),
       catchError(err => {
         console.log('Error in processing request...', err);
+        this.loginStateService.loaderDisable()
         return throwError(err);
       })
     );
@@ -70,6 +73,7 @@ export class RapidoHttpService<T> {
       tap( _ => this.loginStateService.loaderDisable()),
       catchError(err => {
         console.log('Error in processing request...', err);
+        this.loginStateService.loaderDisable()
         return throwError(err);
       })
     );
@@ -84,6 +88,7 @@ export class RapidoHttpService<T> {
       tap( _ => this.loginStateService.loaderDisable()),
       catchError(err => {
         console.log('Error in processing request...', err);
+        this.loginStateService.loaderDisable()
         return throwError(err);
       })
     );
@@ -98,6 +103,7 @@ export class RapidoHttpService<T> {
       tap( _ => this.loginStateService.loaderDisable()),
       catchError(err => {
         console.log('Error in processing request...', err);
+        this.loginStateService.loaderDisable()
         return throwError(err);
       })
     );

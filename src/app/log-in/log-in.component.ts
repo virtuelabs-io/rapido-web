@@ -2,9 +2,11 @@ import { Component, OnInit, NgModule } from '@angular/core';
 import { SignInService } from '../services/authentication/sign-in/sign-in.service';
 import { ProfileService } from '../services/authentication/profile/profile.service';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Constants } from '../utils/constants';
 import { LoginStateService } from '../shared-services/login-state/login-state.service';
 import { ResendOtpService } from '../shared-services/resend-otp/resend-otp.services';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-log-in',
@@ -22,18 +24,24 @@ export class LogInComponent implements OnInit {
   _profileService: ProfileService;
 
   private _signInService: SignInService
+  redirectToCart: any;
   constructor(
     signInService: SignInService,
     profileService: ProfileService,
     private router: Router,
     private loginStateService: LoginStateService,
-    private resendOtpService : ResendOtpService
+    private resendOtpService : ResendOtpService,
+		private route: ActivatedRoute,
+    private location: Location
     ) {
     this._signInService = signInService
     this._profileService = profileService
   }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+			this.redirectToCart = params.redirectToCart;
+		});
    this.loginStateService.changeState(false);
   }
 
@@ -58,7 +66,12 @@ export class LogInComponent implements OnInit {
         console.log(this._profileService.cognitoUser);
         this._signInResponse = true;
         this.loginStateService.changeState(true);
-        this.router.navigateByUrl('/');
+        if(this.redirectToCart){
+          this.location.back();
+        }else{
+          this.router.navigateByUrl('/');
+        }
+        
       }).catch(error => {
         this.progressSpinner = false
         this._signInResponse = false;

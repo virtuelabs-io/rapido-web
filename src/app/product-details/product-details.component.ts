@@ -1,7 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SearchItemService } from '../shared-services/search-item/search-item.services';
+import { LoginStateService } from '../shared-services/login-state/login-state.service';
+import { CartStateService } from '../shared-services/cart-state/cart-state.service';
 import { ProductsService } from '../services/products/products.service';
+import { CartService } from '../services/cart/cart.service';
+import { CartItem } from '../services/cart/cart-item';
 import { Common } from '../../../src/app/utils/common';
 
 @Component({
@@ -12,6 +16,7 @@ import { Common } from '../../../src/app/utils/common';
 export class ProductDetailsComponent implements OnInit {
 
 	private _productsService: ProductsService
+	private _cartService: CartService
 	itemDetails: any
 	imagePreviewURI: any
 	imageDetails: any
@@ -19,11 +24,17 @@ export class ProductDetailsComponent implements OnInit {
 	mrpPrice: any
 	totalPrice: Number|string
 	Number:Function
-	quantity:Number|string
+	quantity:number
+	isLoggedIn:Boolean
 	constructor(productsService: ProductsService,
 		private _searchItemService: SearchItemService,
+		private _loginStateService: LoginStateService,
+		private _cartStateService: CartStateService,
+		private cartService: CartService,
+		public router: Router, 
 		private route: ActivatedRoute) {
 		this._productsService = productsService
+		this._cartService = cartService
 	}
 
 	ngOnInit() {
@@ -98,8 +109,40 @@ export class ProductDetailsComponent implements OnInit {
 		this.imagePreviewURI = uri
 	}
 	
-	onChangeQuantity(quant:Number|string) {
+	onChangeQuantity(quant:number) {
+		this.quantity = quant
 		this.totalPrice = Number(quant) * this.itemDetails.price
 	}
+	
+	async addItemsToCart() {
+		
+		await this.loginSessinExists().
+		then( _ => this.postCartItem()).
+		then( _ => this._cartService.getCountOfInCartItems()).
+		then(count => this._cartStateService.updateCartCount(Number(count))).
+		catch(err => this.handleError(err))
+	}
+
+	async loginSessinExists(){
+		 await (this._loginStateService.isLoggedInState.subscribe(state => this.isLoggedIn = state))
+	}
+	
+	async postCartItem(){
+		let cartItem: CartItem = new CartItem()
+		cartItem.product_id = parseInt(this.itemId) 
+    	cartItem.quantity = this.quantity
+		cartItem.in_cart = true
+		if(this.isLoggedIn){
+			await this._cartService.postCartItem(cartItem).subscribe(data => data)
+		}else{
+			await Promise.reject("Login Session doesn't exist!")
+		}
+	}
+
+	async handleError(err){
+		if(err=="Login Session doesn't exist!"){
+			this.router.navigate(['/login', 'redirectToCart'])
+		}
+   }
 
 }
