@@ -78,7 +78,7 @@
       <div class="">
       <div class="thumbnail-inactive p-2">
         <h4 class="text-danger">{{itemDetails.currency}} {{totalPrice}}</h4>
-          <div class="d-flex ">
+          <!-- <div class="d-flex ">
             <label class="mr-2">Quantity: </label>
             <select 
               (change)="onChangeQuantity($event.target.value)"
@@ -87,15 +87,35 @@
               autocomplete="off">
               <option *ngFor="let val of [1,2,3,4]">{{val}}</option>
             </select>
+          </div> -->
+          <div class="item-quantity d-flex">
+              <label class="mr-2">Quantity: </label>
+              <input 
+                (change)="onChangeQuantity($event.target.value)"
+                [(ngModel)]="quantity" 
+                type="number" 
+                min="1"
+                max="100"
+                required 
+                name="quantityBox" 
+                class="item-quntity-input pl-3">
           </div>
-          <div >
+          <div class="m-1">
             <button 
               type="button"
               (click)="addItemsToCart()"
               class="btn btn-outline-dark btn-block bg-primary">
               Add to cart
             </button>
-            </div>
+          </div>
+          <div class="m-1">
+            <button 
+              type="button"
+              routerLink="/cart"
+              class="btn btn-outline-dark btn-block bg-primary">
+              Goto Cart
+            </button>
+          </div>
           </div>
       </div>
     </div>

@@ -113,8 +113,14 @@ export class ProductDetailsComponent implements OnInit {
 	}
 	
 	onChangeQuantity(quant:number) {
-		this.quantity = quant
-		this.totalPrice = Number(quant) * this.itemDetails.price
+		if(quant > 0){
+			this._snackBar.open(Constants.ORDER_QUANTITY_ERROR,  undefined , {
+				duration: 4000,
+			 })
+		}else{
+			this.quantity = quant
+			this.totalPrice = Number(quant * this.itemDetails.price).toFixed(2)
+		}
 	}
 	
 	async addItemsToCart() {

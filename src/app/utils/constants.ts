@@ -131,4 +131,5 @@ export class Constants {
   public static ITWM_DELETE_CART = "Item has been deleted !";
   public static ITWM_SAVE_LATER = "Item has been saved for later";
   public static SESSION_LOST = "Login Session doesn't exist";
+  public static ORDER_QUANTITY_ERROR = "Order quantity can't be less than zero";
 }
