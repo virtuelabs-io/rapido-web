@@ -5,7 +5,7 @@
         </h1>
       </div>
       <div class="rapido-profile">
-        <a class="rapido-profile-item" *ngFor="let item of profileItems" [routerLink]="[ item.route ]" >
+        <div class="rapido-profile-item" *ngFor="let item of profileItems" [routerLink]="[ item.route ]" >
           <div class="icon-div">
             <a class="rapido-icon">
               <svg aria-hidden="true" aria-haspopup="menu">
@@ -19,6 +19,6 @@
             </h4>
             <p>{{ item.description }}</p>
           </div>
-        </a>
+        </div>
       </div>
 </div>
