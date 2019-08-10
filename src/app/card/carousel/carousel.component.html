@@ -7,14 +7,31 @@
       <div class="card" *ngFor="let card of template">
         <div class="card-content" [routerLink]="['/products/details', card.id]">
           <img *ngIf="carouselConfig.image" class="card-image" src="{{ card.image }}">
-          <div *ngIf="carouselConfig.desc" class="card-text">
+          <div *ngIf="carouselConfig.desc" class="card-text text-clamp">
             {{ card.name }}
           </div>
-          <div *ngIf="carouselConfig.price" class="card-price">
-            {{ card.currency }} {{ card.price }}
+          <div *ngIf="carouselConfig.price">
+            
+            <span class="card-price">{{ card.currency }}</span>
+            <span class="card-price">{{ card.price }}</span>
+
+            <span aria-hidden="true" class="small p-2 red">
+              <span class="a-price-symbol">{{ card.currency }}</span>
+              <!-- Discounted Price -->
+              <s class="a-price-whole">{{ card.mrpPrice }}</s>
+              </span> 
+
+              <span class="small p-2">
+                <!-- actualPrice saved -->
+                <span>  {{ card.offer * 100}}% <b>Off</b> </span>
+                
+                </span>
           </div>
-          <div *ngIf="carouselConfig.offer" class="card-price">
-            Offer: {{ card.offer }}
+          <div>
+            <button mat-flat-button color="primary">
+              <span role="status" aria-hidden="true"></span>
+              Add to Cart
+          </button>
           </div>
         </div>
       </div>

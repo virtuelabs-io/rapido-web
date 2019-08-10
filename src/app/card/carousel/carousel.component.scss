@@ -45,13 +45,17 @@
                     padding: 40px;
                 }
                 .card-text {
+                    display: flex;
+                    flex-wrap: wrap;
                     padding-top: 1%;
                     color: black;
-                    text-overflow: ellipsis;
-                    overflow: hidden;
-                    white-space: nowrap;
                     @media screen and (max-width: $medium-device) {
                         padding-left: 0%;
+                    }
+                }
+                div {
+                    .card-price {
+                        color: red;
                     }
                 }
             }

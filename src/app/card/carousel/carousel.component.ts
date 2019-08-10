@@ -29,9 +29,14 @@ export class CarouselComponent implements OnInit {
     let tmpItems = []
     if(data) {
       data.forEach(item => {
+        item.mrpPrice = (item.price * (1 + parseFloat(item.offer))).toFixed(2)
+        item.discountedPrice = (item.mrpPrice - item.price).toFixed(2)
+        item.price = Number(item.price).toFixed(2)
+        
         tmpItems.push(item)
         if(tmpItems.length === itemsInTemplate) {
           formatedData.push(tmpItems)
+          
           tmpItems = []
         }
       })
