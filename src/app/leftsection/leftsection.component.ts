@@ -32,14 +32,7 @@ export class LeftSectionComponent implements OnInit {
     }
     this.fnPriceFilterHandler= obj => this.priceFilterData(obj);
     this.filterData = [
-                      {
-                        'headerText':'Show related types',
-                         'panel':[ {
-                           'panelTitle':this.searchedText || '',
-                           'panelType':'link',
-                           'panelData':this.tags
-                        }]
-                      },
+                      
                       {
                         'headerText':'Filter by',
                          'panel':[ 
@@ -67,7 +60,15 @@ export class LeftSectionComponent implements OnInit {
                           // {desc:'Newest Arrivals', key:'date asc'}
                         ]
                       }
-                      ]}
+                      ]},
+                      {
+                        'headerText':'Show related types',
+                         'panel':[ {
+                           'panelTitle':this.searchedText || '',
+                           'panelType':'link',
+                           'panelData':this.tags
+                        }]
+                      },
          ]
   }
 
