@@ -30,8 +30,8 @@
           <div class="item-image" [routerLink]="['/products/details', item.product_id]">
               <img class="image" src="{{ imageUrl + products[item.product_id].images[0] }}">
           </div>
-          <div class="item-desc-price" [routerLink]="['/products/details', item.product_id]">
-            <a>{{ products[item.product_id].name }}</a>
+          <div class="item-desc-price">
+            <a [routerLink]="['/products/details', item.product_id]">{{ products[item.product_id].name }}</a>
             <span>
               <span>{{ products[item.product_id].currency }} </span>
               <span class="price-tag">{{ item.unit_price }}</span>
