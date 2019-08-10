@@ -24,14 +24,15 @@
     <div class="order-card-items">
       <div class="item">
         <div class="item-status">
-          <span class="status-label">{{ orders[order].category }}</span>
+          <span class="status-label-success" *ngIf="orders[order].category != cancelledStatus">{{ orders[order].category }}</span>
+          <span class="status-label-cancelled" *ngIf="orders[order].category == cancelledStatus">{{ orders[order].category }}</span>
         </div>
         <div class="item-detail" *ngFor="let item of orders[order].items">
           <div class="item-image" [routerLink]="['/products/details', item.product_id]">
               <img class="image" src="{{ imageUrl + products[item.product_id].images[0] }}">
           </div>
-          <div class="item-desc-price" [routerLink]="['/products/details', item.product_id]">
-            <a>{{ products[item.product_id].name }}</a>
+          <div class="item-desc-price">
+            <a [routerLink]="['/products/details', item.product_id]">{{ products[item.product_id].name }}</a>
             <span>
               <span>{{ products[item.product_id].currency }} </span>
               <span class="price-tag">{{ item.unit_price }}</span>
@@ -41,7 +42,7 @@
       </div>
       <div class="item-action">
           <button mat-button (click)="orderDetails(order)" class="action-but">Order Details</button>
-          <button mat-button *ngIf="order.category != cancelledStatus" (click)="cancelOrder(order)" class="action-but">Cancel Order</button>
+          <button mat-button *ngIf="orders[order].category != cancelledStatus" (click)="cancelOrder(order)" class="action-but">Cancel Order</button>
       </div>
     </div>
   </div>
