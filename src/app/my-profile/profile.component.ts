@@ -10,7 +10,8 @@ export class ProfileComponent implements OnInit {
     {
       icon: "#shopping-bag",
       title: "My Orders",
-      description: "Track, return or buy things again"
+      description: "Track, return or buy things again",
+      route: "/orders"
     },
     {
       icon: "#black-and-white-credit-cards",
@@ -22,19 +23,19 @@ export class ProfileComponent implements OnInit {
       icon: "#company-details", 
       title: "Company Details",
       description: "Add your company details",
-      route: "profile/companyDetails"
+      route: "/profile/companyDetails"
     },
     {
       icon: "#delivery-truck",
       title: "My Addresses",
       description: "Track, return or buy things again",
-      route: "profile/address"
+      route: "/profile/address"
     },
     {
       icon: "#settings-work-tool",
       title: "Account Settings",
       description: "Set up your account",
-      route: "profile/account"
+      route: "/profile/account"
     },
     {
       icon: "#log-in",

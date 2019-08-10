@@ -38,6 +38,8 @@ export class OrdersComponent implements OnInit {
   }
 
   getOrders() {
+    this.currentOrders = []
+    this.orders = {}
     this._orderService.getOrders()
     .then((data: any) => {
       if(data['products']) {
