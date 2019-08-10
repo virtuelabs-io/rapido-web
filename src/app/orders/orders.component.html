@@ -41,7 +41,7 @@
       </div>
       <div class="item-action">
           <button mat-button (click)="orderDetails(order)" class="action-but">Order Details</button>
-          <button mat-button *ngIf="order.category != cancelledStatus" (click)="cancelOrder(order)" class="action-but">Cancel Order</button>
+          <button mat-button *ngIf="orders[order].category != cancelledStatus" (click)="cancelOrder(order)" class="action-but">Cancel Order</button>
       </div>
     </div>
   </div>
