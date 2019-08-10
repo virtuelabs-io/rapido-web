@@ -5,12 +5,12 @@
   <ng-template ngbSlide class="carousel" *ngFor="let template of carouselData">
     <div class="card-holder">
       <div class="card" *ngFor="let card of template">
-        <div class="card-content" [routerLink]="['/products/details', card.id]">
-          <img *ngIf="carouselConfig.image" class="card-image" src="{{ card.image }}">
-          <div *ngIf="carouselConfig.desc" class="card-text text-clamp">
+        <div class="card-content">
+          <img *ngIf="carouselConfig.image" class="card-image" src="{{ card.image }}" [routerLink]="['/products/details', card.id]">
+          <div *ngIf="carouselConfig.desc" class="card-text text-clamp" [routerLink]="['/products/details', card.id]">
             {{ card.name }}
           </div>
-          <div *ngIf="carouselConfig.price">
+          <div *ngIf="carouselConfig.price" [routerLink]="['/products/details', card.id]">
             
             <span class="card-price">{{ card.currency }}</span>
             <span class="card-price">{{ card.price }}</span>
