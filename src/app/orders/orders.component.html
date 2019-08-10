@@ -24,7 +24,8 @@
     <div class="order-card-items">
       <div class="item">
         <div class="item-status">
-          <span class="status-label">{{ orders[order].category }}</span>
+          <span class="status-label-success" *ngIf="orders[order].category != cancelledStatus">{{ orders[order].category }}</span>
+          <span class="status-label-cancelled" *ngIf="orders[order].category == cancelledStatus">{{ orders[order].category }}</span>
         </div>
         <div class="item-detail" *ngFor="let item of orders[order].items">
           <div class="item-image" [routerLink]="['/products/details', item.product_id]">

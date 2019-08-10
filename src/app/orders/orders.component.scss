@@ -75,10 +75,15 @@
                 flex-wrap: nowrap;
                 width: 75%;
                 .item-status {
-                    .status-label {
+                    .status-label-success {
                         font-weight: 700!important;
                         font-size: 20px!important;
                         color: green;
+                    }
+                    .status-label-cancelled {
+                        font-weight: 700!important;
+                        font-size: 20px!important;
+                        color: red;
                     }
                 }
                 .item-detail {
