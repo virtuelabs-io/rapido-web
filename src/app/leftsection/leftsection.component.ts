@@ -35,6 +35,7 @@ export class LeftSectionComponent implements OnInit {
                       
                       {
                         'headerText':'Filter by',
+                        'expanded': 'true',
                          'panel':[ 
                            {
                           'panelTitle':'Rating',
@@ -63,6 +64,7 @@ export class LeftSectionComponent implements OnInit {
                       ]},
                       {
                         'headerText':'Show related types',
+                        'expanded': 'false',
                          'panel':[ {
                            'panelTitle':this.searchedText || '',
                            'panelType':'link',

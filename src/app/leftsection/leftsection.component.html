@@ -3,7 +3,7 @@
      <div class="filtersL">
         <mat-accordion multi="true" displayMode="flat" *ngFor="let item of filterData">
            <div class="h6 pt-4">{{item.headerText}}</div>
-           <mat-expansion-panel expanded="false" *ngFor="let panelList of item.panel" >
+           <mat-expansion-panel [expanded]="item.expanded" *ngFor="let panelList of item.panel" >
               <mat-expansion-panel-header >
                  <mat-panel-title>
                     {{panelList.panelTitle}}
