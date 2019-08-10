@@ -85,7 +85,6 @@ export class TopnavComponent implements OnInit {
     this._cartService.getCountOfInCartItems()
         .then((count: any) => {
           this.cartCount = count
-          // this._cartStateService.updateCartCount(count)
         })
   }
 }

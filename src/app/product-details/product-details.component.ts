@@ -127,12 +127,7 @@ export class ProductDetailsComponent implements OnInit {
 	async loginSessinExists(){
 		 await (this._loginStateService.isLoggedInState.subscribe(state => this.isLoggedIn = state))
 	}
-	
-	async fetchAndUpdateCartCount(){
-		 await this._cartService.getCountOfInCartItems().
-		 then(count => this._cartStateService.updateCartCount(Number(count)))
-	}
-	
+		
 	async postCartItem(){
 		let cartItem: CartItem = new CartItem()
 		cartItem.product_id = parseInt(this.itemId) 
@@ -143,7 +138,7 @@ export class ProductDetailsComponent implements OnInit {
 				this._snackBar.open(Constants.ITEM_MOVED_TO_CART,  undefined , {
 					duration: 4000,
 				 })
-				 this.fetchAndUpdateCartCount()
+				 this._cartStateService.fetchAndUpdateCartCount()
 			})
 		}else{
 			await Promise.reject("Login Session doesn't exist!")
