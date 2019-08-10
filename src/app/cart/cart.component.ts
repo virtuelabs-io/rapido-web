@@ -71,15 +71,11 @@ export class CartComponent implements OnInit {
         this.inCart = false
       }
       this.inCartItems = this.cartItems.length
+      this._cartStateService.updateCartCount(this.inCartItems)
     })
   }
 
-  async deleteCartItem(id) {
-    await this.removeCartItem(id).
-    then( _ => this._cartStateService.updateCartCount(this.inCartItems - 1))
-  }
-
-  async removeCartItem(id){
+  async deleteCartItem(id){
     this._snackBarMsg = Constants.ITWM_DELETE_CART
     await this._cartService.deleteCartItem(id)
     .subscribe( _ => {
@@ -91,7 +87,7 @@ export class CartComponent implements OnInit {
   }
 
 // true - save for later , false - move to cart
-  saveForLater(id, quantity, bol) {
+  saveForLaterFn(id, quantity, bol) {
     let cartItem: CartItem = new CartItem()
     cartItem.product_id = id
     cartItem.quantity = quantity

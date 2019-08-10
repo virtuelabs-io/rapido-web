@@ -26,7 +26,7 @@
             <p [routerLink]="['/products/details', item.id]"><strong>{{ item.title }}</strong></p>
             <div>
               <a (click)="deleteCartItem(item.id)">Delete</a> |
-              <a (click)="saveForLater(item.id, item.quantity, false)">Save for Later</a>
+              <a (click)="saveForLaterFn(item.id, item.quantity, false)">Save for Later</a>
             </div>
           </div>
           <div class="item-price">
@@ -94,7 +94,7 @@
             <p><strong>{{ item.title }}</strong></p>
             <div>
               <a (click)="deleteCartItem(item.id)">Delete</a> |
-              <a (click)="saveForLater(item.id, item.quantity, true)">Move to Cart</a>
+              <a (click)="saveForLaterFn(item.id, item.quantity, true)">Move to Cart</a>
             </div>
           </div>
           <div class="item-price">
