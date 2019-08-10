@@ -130,4 +130,5 @@ export class Constants {
   public static ITEM_MOVED_TO_CART = "Item has been moved to cart";
   public static ITWM_DELETE_CART = "Item has been deleted !";
   public static ITWM_SAVE_LATER = "Item has been saved for later";
+  public static SESSION_LOST = "Login Session doesn't exist";
 }

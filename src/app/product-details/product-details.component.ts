@@ -7,6 +7,7 @@ import { ProductsService } from '../services/products/products.service';
 import { CartService } from '../services/cart/cart.service';
 import { CartItem } from '../services/cart/cart-item';
 import { Common } from '../../../src/app/utils/common';
+import { Constants } from '../../../src/app/utils/constants';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -136,8 +137,7 @@ export class ProductDetailsComponent implements OnInit {
 		cartItem.in_cart = true
 		if(this.isLoggedIn){
 			await this._cartService.postCartItem(cartItem).subscribe(data => {
-				console.log(this.itemId)
-				this._snackBar.open(`The item [${this.itemId}] is added to Cart`,  undefined , {
+				this._snackBar.open(Constants.ITEM_MOVED_TO_CART,  undefined , {
 					duration: 4000,
 				 })
 				return data
@@ -149,7 +149,7 @@ export class ProductDetailsComponent implements OnInit {
 
 	async handleError(err){
 		if(err=="Login Session doesn't exist!"){
-			this._snackBar.open(`Login Session doesn't exist, please login to add items to cart`,  undefined , {
+			this._snackBar.open(`${Constants.SESSION_LOST} please login to add items to cart`,  undefined , {
 				duration: 4000,
 			 })
 			this.router.navigate(['/login', 'redirectToCart'])
