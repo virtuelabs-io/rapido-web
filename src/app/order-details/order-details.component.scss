@@ -17,6 +17,9 @@
             .title-div {
                 h4 {
                     margin-left: 2%;
+                    @media screen and (max-width: $mobile-device) {
+                        margin-top: 3%;
+                    }
                 }
             }
             .thanks-div {
@@ -67,6 +70,7 @@
                         flex-direction: column;
                         flex-wrap: wrap;
                         margin-top: 1%;
+                        padding-bottom: 1%;
                         border-bottom: 1px solid #e1e4e8;
                         .order-item-status {
                             span {
