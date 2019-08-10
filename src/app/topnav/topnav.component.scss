@@ -125,6 +125,7 @@
 		margin-left: 20%;
 	}
 	.cartCountCls {
+		cursor: pointer;
 		position: relative;
 		right: 23px;
 		bottom: 10px;
@@ -171,4 +172,8 @@
 	@media screen and (max-width: $small-device) {
 		display: block;
 	}
+}
+
+svg{
+	cursor: pointer;
 }

@@ -4,6 +4,7 @@ import { Constants } from '../utils/constants';
 import { CartItem } from '../services/cart/cart-item';
 import {MatSnackBar} from '@angular/material';
 import { Router } from '@angular/router';
+import { CartStateService } from '../shared-services/cart-state/cart-state.service';
 
 @Component({
   selector: 'app-cart',
@@ -23,7 +24,8 @@ export class CartComponent implements OnInit {
   constructor(
     cartService: CartService,
     private _snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+		private _cartStateService: CartStateService
   ) { 
     this._cartService = cartService
   }
@@ -72,10 +74,15 @@ export class CartComponent implements OnInit {
     })
   }
 
-  deleteCartItem(id) {
+  async deleteCartItem(id) {
+    await this.removeCartItem(id).
+    then( _ => this._cartStateService.updateCartCount(this.inCartItems - 1))
+  }
+
+  async removeCartItem(id){
     this._snackBarMsg = Constants.ITWM_DELETE_CART
-    this._cartService.deleteCartItem(id)
-    .subscribe(data => {
+    await this._cartService.deleteCartItem(id)
+    .subscribe( _ => {
       this._snackBar.open(this._snackBarMsg, "", {
         duration: 5000
       });
