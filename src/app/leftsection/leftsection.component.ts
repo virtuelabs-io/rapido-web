@@ -10,9 +10,12 @@ export class LeftSectionComponent implements OnInit {
 
   @Input() closeDialog:any
   filterData: Object 
+  prevQuery: Object 
+  selections: Object 
   constructor(private _searchItemService: SearchItemService ) { }
   fnPriceFilterHandler: Function;
   tags = []
+  fieldsQuery: any
   searchedText: string = ""
 
   ngOnInit() {
@@ -22,14 +25,25 @@ export class LeftSectionComponent implements OnInit {
     this._searchItemService.currentState.subscribe(query => {
       if (query.searchedText){
         this.searchedText = query.searchedText
-      }})
+        this.prevQuery = query
+      }
+    })
+    this.fieldsQuery = {
+      price:{
+        q:null,
+        text:null
+      },
+      rating:{
+        q:null,
+        text:null
+      }
+    }
   }
 
   updateProductControls(respData){
     let {hits} = respData
     if(hits && hits.hit ){
-      this.tags = hits.hit[0].fields.tags
-    }
+    this.tags = hits.hit[0].fields.tags
     this.fnPriceFilterHandler= obj => this.priceFilterData(obj);
     this.filterData = [
                       
@@ -72,11 +86,18 @@ export class LeftSectionComponent implements OnInit {
                         }]
                       },
          ]
+        }
   }
 
   priceFilterData(range){
-    this.changeQuery({
-        q:`(and '${this.searchedText}' (range field=price [${range.min},${range.max}]))`,
+    let query = `(and '${this.searchedText}' (range field=price [${range.min}, ${range.max}]))`
+    if(this.fieldsQuery.rating.q){
+        query = `(and '${this.searchedText}' (and (range field=rating [${this.fieldsQuery.rating.q},${Number(5)}]}) (range field=price [${range.min}, ${range.max}])))`
+      }
+      this.fieldsQuery.price.q = `[${range.min},${range.max}]`
+      this.fieldsQuery.price.text = `: $${range.min} - ${range.max}`
+      this.updateFilterConditions({
+        q:query,
         searchedText:this.searchedText,
         qdotparser:'structured',
         parser:null
@@ -84,15 +105,22 @@ export class LeftSectionComponent implements OnInit {
   }
 
   onPressRating(val){
-    this.changeQuery({
-      q:`(and '${this.searchedText}' (range field=rating [${val},${Number(val)+1}]))`,
-      qdotparser:'structured',
-      parser:null
-    })
+    let query = `(and '${this.searchedText}' (range field=rating [${val},${Number(5)}]))`
+    if(this.fieldsQuery.price.q){
+        query = `(and '${this.searchedText}' (and (range field=rating [${val},${Number(5)}]) (range field=price ${this.fieldsQuery.price.q})))`
+      }
+      this.fieldsQuery.rating.q = val
+      this.fieldsQuery.rating.text = `: ${val} - ${Number(5)}`
+      this.updateFilterConditions({
+        q:query,
+        searchedText:this.searchedText,
+        qdotparser:'structured',
+        parser:null
+      })
   }
 
   onPressSort(data){
-    this.changeQuery({
+    this.updateFilterConditions({
       sort:data,
       qdotparser: null,
       q:this.searchedText
@@ -100,14 +128,30 @@ export class LeftSectionComponent implements OnInit {
   }
 
   onPressItem(data){
-    this.changeQuery({
+    this.updateFilterConditions({
       q:data
     })
   }
 
-  changeQuery(queryObj){
+  updateFilterConditions(queryObj){
+    if(this.searchedText){
       this._searchItemService.changeState(queryObj)
-      if(this.closeDialog) this.closeDialog.close()
+      if(this.closeDialog) {
+        this.closeDialog.close()
+      }
+    }
+  }
+
+  removeRating(){
+     this.fieldsQuery.rating.q = null
+     let priceRange = JSON.parse(this.fieldsQuery.rating.q) 
+     if(priceRange)
+     this.priceFilterData({min:priceRange[0], max:priceRange[1]})
+  }
+  
+  removePrice(){
+    this.fieldsQuery.price.q = null
+    this.onPressRating(this.fieldsQuery.rating.q)
   }
 
 }
