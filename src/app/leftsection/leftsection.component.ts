@@ -110,7 +110,7 @@ import { SearchItemService } from '../shared-services/search-item/search-item.se
       query = `(and '${this.searchedText}' (and (range field=rating [${this.fieldsQuery.rating.q},${Number(5)}]) (range field=price [${range.min},${range.max}])))`
     }
     this.fieldsQuery.price.q = `[${range.min},${range.max}]`
-    this.fieldsQuery.price.text = ` $${range.min} - ${range.max}`
+    this.fieldsQuery.price.text = ` $${range.min} - $${range.max}`
     this.updateFilterConditions({
       q: query,
       searchedText: this.searchedText,
@@ -125,7 +125,7 @@ import { SearchItemService } from '../shared-services/search-item/search-item.se
       query = `(and '${this.searchedText}' (and (range field=rating [${val},${Number(5)}]) (range field=price ${this.fieldsQuery.price.q})))`
     }
     this.fieldsQuery.rating.q = val
-    this.fieldsQuery.rating.text = ` ${val} - ${Number(5)}`
+    this.fieldsQuery.rating.text = ` ${val} +`
     this.updateFilterConditions({
       q: query,
       searchedText: this.searchedText,
