@@ -46,7 +46,6 @@ export class LeftSectionComponent implements OnInit {
     this.tags = hits.hit[0].fields.tags
     this.fnPriceFilterHandler= obj => this.priceFilterData(obj);
     this.filterData = [
-                      
                       {
                         'headerText':'Filter by',
                         'expanded': 'true',
