@@ -1,7 +1,6 @@
-<!-- <span class="badge badge-pill badge-dark">Dark</span> -->
-<div class="main-div m-1">
-  <p class="badge badge-pill badge-dark" >
+<div class="main-div">
+  <span class="badge badge-pill badge-dark m-1 selText">
     {{selType}} : {{selValue}}
-    <span (click)="removeSelection.emit()" class="closeDingBat"> &#10006;</span>
- </p>
+    <button *ngIf="selValue" (click)="removeSelection.emit()" class="closeDingBat ml-1"> &#10006;</button>
+  </span>
 </div>

@@ -110,17 +110,6 @@ import { SearchItemService } from '../shared-services/search-item/search-item.se
     if (this.fieldsQuery.rating.q) {
       query = `(and '${this.searchedText}' (and (range field=rating [${this.fieldsQuery.rating.q},${Number(5)}]) (range field=price [${range.min},${range.max}])))`
     }
-    if(this.filterData.length == 3){
-      let selectorPanel = {
-        'headerText': 'Selectors',
-        'expanded': 'true',
-        'panel': [{
-          'panelTitle': 'Selected conditions',
-          'panelType': 'badge'
-        }]
-      }
-      this.filterData = [selectorPanel, ...this.filterData]
-    }
     this.fieldsQuery.price.q = `[${range.min},${range.max}]`
     this.fieldsQuery.price.text = ` $${range.min} - $${range.max}`
     this.updateFilterConditions({
@@ -135,17 +124,6 @@ import { SearchItemService } from '../shared-services/search-item/search-item.se
     let query = `(and '${this.searchedText}' (range field=rating [${val},${Number(5)}]))`
     if (this.fieldsQuery.price.q) {
       query = `(and '${this.searchedText}' (and (range field=rating [${val},${Number(5)}]) (range field=price ${this.fieldsQuery.price.q})))`
-    }
-    if(this.filterData.length == 3){
-      let selectorPanel = {
-        'headerText': 'Selectors',
-        'expanded': 'true',
-        'panel': [{
-          'panelTitle': 'Selected conditions',
-          'panelType': 'badge'
-        }]
-      }
-      this.filterData = [selectorPanel, ...this.filterData]
     }
     this.fieldsQuery.rating.q = val
     this.fieldsQuery.rating.text = ` ${val} +`
@@ -187,9 +165,6 @@ import { SearchItemService } from '../shared-services/search-item/search-item.se
     this.fieldsQuery.rating.q = null
     if (!this.fieldsQuery.price.q && !this.fieldsQuery.rating.q) {
       this.onPressItem(this.searchedText)
-      if(this.filterData.length>3){
-        this.filterData.shift()
-      }
     } else {
       let priceRange = JSON.parse(this.fieldsQuery.price.q)
       if (priceRange)
@@ -204,9 +179,6 @@ import { SearchItemService } from '../shared-services/search-item/search-item.se
     this.fieldsQuery.price.q = null
     if (!this.fieldsQuery.price.q && !this.fieldsQuery.rating.q) {
       this.onPressItem(this.searchedText)
-      if(this.filterData.length>3){
-        this.filterData.shift()
-      }
     } else {
       this.onPressRating(this.fieldsQuery.rating.q)
     }
