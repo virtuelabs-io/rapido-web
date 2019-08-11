@@ -1,12 +1,11 @@
-<div>
+<div id='nav-top'>
   <app-topnav  
-    id='nav-top' 
     *ngIf="showNavBar">
   </app-topnav>
 
   <app-icons></app-icons>
   <div>  
-      <router-outlet></router-outlet>
+      <router-outlet (activate)="onActivate($event)"></router-outlet>
   </div>
   
   <app-busy-loader></app-busy-loader>

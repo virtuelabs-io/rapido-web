@@ -43,8 +43,8 @@ export class HomeComponent implements OnInit {
     this.banner = "assets/images/aboutUs_1.jpg"
     this.cardDetails = [
       {
-        "title": "Photography store",
-        "image": '/assets/images/home_card_1.jpg',
+        "title": "Watches",
+        "image": '/assets/images/Watches.jpeg',
         "desc": "Find the best photography deals"
       },
       {
