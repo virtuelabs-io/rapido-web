@@ -1,20 +1,6 @@
 <div>
   <section>
      <div class="filtersL">
-      <div>
-         <app-pill-badge 
-            *ngIf='fieldsQuery.price.q'
-            selType = 'Price'
-            [selValue] = 'fieldsQuery.price.text'
-            (removeSelection) = removePrice()>
-         </app-pill-badge>
-         <app-pill-badge 
-            *ngIf='fieldsQuery.rating.q'
-            selType = 'Rating'
-            [selValue] = 'fieldsQuery.rating.text'
-            (removeSelection) = removeRating(fieldsQuery)>
-         </app-pill-badge>
-      </div>
       <mat-accordion multi="true" displayMode="flat" *ngFor="let item of filterData">
            <div class="h6 pt-4">{{item.headerText}}</div>
            <mat-expansion-panel [expanded]="item.expanded" *ngFor="let panelList of item.panel" >
@@ -24,6 +10,22 @@
                  </mat-panel-title>
               </mat-expansion-panel-header>
               <mat-nav-list [ngSwitch]="panelList.panelType">
+                 <div *ngSwitchCase="'badge'" >
+                     <div class="d-flex" >
+                        <app-pill-badge 
+                           *ngIf='fieldsQuery.price.q'
+                           selType = 'Price'
+                           [selValue] = 'fieldsQuery.price.text'
+                           (removeSelection) = removePrice()>
+                        </app-pill-badge>
+                        <app-pill-badge 
+                           *ngIf='fieldsQuery.rating.q'
+                           selType = 'Rating'
+                           [selValue] = 'fieldsQuery.rating.text'
+                           (removeSelection) = removeRating(fieldsQuery)>
+                        </app-pill-badge>
+                     </div>
+                 </div>
                  <div *ngSwitchCase="'link'">
                     <mat-list-item (click)="onPressItem(panelData)" *ngFor="let panelData of panelList.panelData">
                     <a matLine>{{panelData}}</a>
