@@ -34,15 +34,11 @@
                     padding-left: 10%;
                 }
             }
-            .card-price {
-                padding-top: 1%;
-                padding-left: 10%;
-                padding-right: 10%;
-                color: black;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                white-space: nowrap;
-            }
+            
+                .card-price {
+                    color: red;
+                }
+            
         }
         @media screen and (max-width: $mobile-device) {
             width: 100% !important;
