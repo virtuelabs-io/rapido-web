@@ -143,7 +143,7 @@ export class LeftSectionComponent implements OnInit {
 
   removeRating(){
      this.fieldsQuery.rating.q = null
-     let priceRange = JSON.parse(this.fieldsQuery.rating.q) 
+     let priceRange = JSON.parse(this.fieldsQuery.price.q) 
      if(priceRange)
      this.priceFilterData({min:priceRange[0], max:priceRange[1]})
   }
