@@ -1,6 +1,20 @@
 <div>
   <section>
      <div class="filtersL">
+        <div>
+           <app-pill-badge 
+            selType = 'Price'
+            selValue = 'fieldsQuery.price.text'
+            (removeSelection) = removePrice()>
+         </app-pill-badge>
+         <app-pill-badge 
+            selType = 'Price'
+            selValue = 'fieldsQuery.price.text'
+            (removeSelection) = removePrice()>
+         </app-pill-badge>
+        </div>
+      
+      
       <app-pill-badge 
          *ngIf='fieldsQuery.price.q'
          selType = 'Price'

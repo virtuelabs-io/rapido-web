@@ -92,10 +92,10 @@ export class LeftSectionComponent implements OnInit {
   priceFilterData(range){
     let query = `(and '${this.searchedText}' (range field=price [${range.min}, ${range.max}]))`
     if(this.fieldsQuery.rating.q){
-        query = `(and '${this.searchedText}' (and (range field=rating [${this.fieldsQuery.rating.q},${Number(5)}]}) (range field=price [${range.min}, ${range.max}])))`
+        query = `(and '${this.searchedText}' (and (range field=rating [${this.fieldsQuery.rating.q},${Number(5)}]) (range field=price [${range.min},${range.max}])))`
       }
       this.fieldsQuery.price.q = `[${range.min},${range.max}]`
-      this.fieldsQuery.price.text = `: $${range.min} - ${range.max}`
+      this.fieldsQuery.price.text = ` $${range.min} - ${range.max}`
       this.updateFilterConditions({
         q:query,
         searchedText:this.searchedText,
@@ -110,7 +110,7 @@ export class LeftSectionComponent implements OnInit {
         query = `(and '${this.searchedText}' (and (range field=rating [${val},${Number(5)}]) (range field=price ${this.fieldsQuery.price.q})))`
       }
       this.fieldsQuery.rating.q = val
-      this.fieldsQuery.rating.text = `: ${val} - ${Number(5)}`
+      this.fieldsQuery.rating.text = ` ${val} - ${Number(5)}`
       this.updateFilterConditions({
         q:query,
         searchedText:this.searchedText,
