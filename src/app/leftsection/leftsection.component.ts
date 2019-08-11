@@ -120,9 +120,7 @@ export class LeftSectionComponent implements OnInit {
 
   onPressSort(data){
     this.updateFilterConditions({
-      sort:data,
-      qdotparser: null,
-      q:this.searchedText
+      sort:data
     })
   }
 
