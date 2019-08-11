@@ -55,7 +55,7 @@ export class AppComponent {
     }
   }
 
-  onActivate(event) {
+  onActivate() {
     window.scroll(0,0);
   }
 }
