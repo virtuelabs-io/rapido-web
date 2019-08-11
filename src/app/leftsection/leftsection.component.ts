@@ -128,7 +128,12 @@ export class LeftSectionComponent implements OnInit {
 
   onPressItem(data){
     this.updateFilterConditions({
-      q:data
+      q:data,
+      start: 0,
+      sort: null,
+      cursor: null,
+      return: null,
+      qdotparser:null
     })
   }
 
@@ -143,14 +148,23 @@ export class LeftSectionComponent implements OnInit {
 
   removeRating(){
      this.fieldsQuery.rating.q = null
-     let priceRange = JSON.parse(this.fieldsQuery.price.q) 
-     if(priceRange)
-     this.priceFilterData({min:priceRange[0], max:priceRange[1]})
+     if(!this.fieldsQuery.price.q && !this.fieldsQuery.rating.q){
+      this.onPressItem(this.searchedText)
+     }else{
+        let priceRange = JSON.parse(this.fieldsQuery.price.q) 
+        if(priceRange)
+        this.priceFilterData({min:priceRange[0], max:priceRange[1]})
+      }
   }
   
   removePrice(){
     this.fieldsQuery.price.q = null
-    this.onPressRating(this.fieldsQuery.rating.q)
+    if(!this.fieldsQuery.price.q && !this.fieldsQuery.rating.q){
+      this.onPressItem(this.searchedText)
+    }else{
+      this.onPressRating(this.fieldsQuery.rating.q)
+    }
+    
   }
 
 }
