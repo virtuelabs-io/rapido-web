@@ -36,27 +36,27 @@
 		}
 	}
 	.block-two {
+		text-align: center;
 		width: 100%;
 		 ::-webkit-input-placeholder {
-			text-align: left;
+			text-align: center;
 		}
 		 :-moz-placeholder {
 			/* Firefox 18- */
-			text-align: left;
+			text-align: center;
 		}
 		 ::-moz-placeholder {
 			/* Firefox 19+ */
-			text-align: left;
+			text-align: center;
 		}
 		 :-ms-input-placeholder {
-			text-align: left;
+			text-align: center;
 		}
 		input {
-			margin-left: 10%;
-			margin-right: 10%;
 			margin-top: 4px;
-			width: 80%;
+			width: 50%;
 			border-color: $primary;
+			border: none;
 			border-radius: 20px;
 			padding-left: 10px;
 			padding-right: 10px;
