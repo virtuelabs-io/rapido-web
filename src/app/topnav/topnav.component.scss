@@ -138,18 +138,18 @@
 	.block-search {
 		width: 100%;
 		 ::-webkit-input-placeholder {
-			text-align: left;
+			text-align: center;
 		}
 		 :-moz-placeholder {
 			/* Firefox 18- */
-			text-align: left;
+			text-align: center;
 		}
 		 ::-moz-placeholder {
 			/* Firefox 19+ */
-			text-align: left;
+			text-align: center;
 		}
 		 :-ms-input-placeholder {
-			text-align: left;
+			text-align: center;
 		}
 		input {
 			margin-left: 10%;
@@ -162,6 +162,7 @@
 			padding-right: 10px;
 			outline: none;
 			text-align: left !important;
+			border: 1px solid;
 		}
 	}
 	@media screen and (max-width: $small-device) {
