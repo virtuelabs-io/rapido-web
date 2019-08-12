@@ -104,7 +104,7 @@ steps:
   displayName: 'Deploying distribution to dev environment'
 
 - script: |
-    aws s3 cp ${PWD}/dist/rapido-web/. s3://$PROD_RAPIDO_BUILD_S3_BUCKET --recursive
+    aws s3 sync ${PWD}/dist/rapido-web/. s3://$PROD_RAPIDO_BUILD_S3_BUCKET --recursive
   condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
   env:
     AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
