@@ -15,7 +15,7 @@
         </div>
         <div class="block-three">
            <div *ngIf="isSignedIn" class="rapido-icon-spacer">
-              <a  class="rapido-icon mat-button rapido-icon-hider" routerLink="" [matMenuTriggerFor]="menu">
+              <a  class="rapido-icon mat-button rapido-icon-hider" [matMenuTriggerFor]="menu">
                  <svg aria-hidden="true" aria-haspopup="menu">
                     <use xlink:href="#man-user"/>
                  </svg>
@@ -31,7 +31,7 @@
                  </div>
               </div>
               <div role="none" class="dropdown-divider"></div>
-              <a class="dropdown-item " href="/profile">My Profile</a>
+              <a class="dropdown-item " routerLink="/profile" >My Profile</a>
               <div (click)="signOut()">
                  <a class="dropdown-item">Log Out</a>
               </div>
@@ -40,14 +40,14 @@
            <div *ngIf="!isSignedIn && router.url != '/login'" aria-label="Menu" class="rapido-sign-in mr-3">
               <a routerLink="/login" class="tag">Log in</a>
            </div>
-           <div class="rapido-icon-spacer">
-              <a class="rapido-icon" routerLink="/cart">
+           <div class="rapido-icon-spacer" routerLink="/cart">
+              <a class="rapido-icon" >
                  <svg>
                     <use xlink:href="#shopping-cart" />
                  </svg>
               </a>
            </div>
-           <div>
+           <div class="cartCountCls" routerLink="/cart">
               {{cartCount}}
            </div>
         </div>

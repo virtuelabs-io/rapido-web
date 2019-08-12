@@ -3,7 +3,7 @@ import { ProductDetailsComponent } from './product-details.component';
 import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import {  HttpClientTestingModule } from '@angular/common/http/testing';
-import { MatTableModule } from '@angular/material';
+import { MatTableModule, MatSnackBarModule  } from '@angular/material';
 
 describe('ProductDetailsComponent', () => {
   let component: ProductDetailsComponent;
@@ -15,6 +15,7 @@ describe('ProductDetailsComponent', () => {
       imports: [
         HttpClientTestingModule,
         MatTableModule,
+        MatSnackBarModule,
         RouterTestingModule.withRoutes([{ path: 'products/details/:id', component: ProductDetailsComponent }])
       ],
       schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]

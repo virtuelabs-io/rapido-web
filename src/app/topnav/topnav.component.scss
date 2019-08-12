@@ -124,6 +124,13 @@
 		margin: 0px 10px;
 		margin-left: 20%;
 	}
+	.cartCountCls {
+		cursor: pointer;
+		position: relative;
+		right: 23px;
+		bottom: 10px;
+		font-size: initial;
+	}
 }
 
 .sign-in-class {
@@ -172,4 +179,8 @@
     position: -webkit-sticky; /* For macOS/iOS Safari */
     top: 0; /* Sets the sticky toolbar to be on top */
     z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+}
+
+svg{
+	cursor: pointer;
 }

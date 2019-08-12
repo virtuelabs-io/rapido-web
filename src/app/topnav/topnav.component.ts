@@ -56,6 +56,7 @@ export class TopnavComponent implements OnInit {
   signOut() {
     this._profileService.cognitoUser.signOut()
     this._loginStateService.changeState(false)
+    this._cartStateService.updateCartCount(0)
   }
 
   onSearch(e){
@@ -84,7 +85,6 @@ export class TopnavComponent implements OnInit {
     this._cartService.getCountOfInCartItems()
         .then((count: any) => {
           this.cartCount = count
-          // this._cartStateService.updateCartCount(count)
         })
   }
 }

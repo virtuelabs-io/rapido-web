@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Constants } from '../utils/constants';
 import { LoginStateService } from '../shared-services/login-state/login-state.service';
+import { CartStateService } from '../shared-services/cart-state/cart-state.service';
 import { ResendOtpService } from '../shared-services/resend-otp/resend-otp.services';
 import { Location } from '@angular/common';
 
@@ -30,6 +31,7 @@ export class LogInComponent implements OnInit {
     profileService: ProfileService,
     private router: Router,
     private loginStateService: LoginStateService,
+    private cartStateService: CartStateService,
     private resendOtpService : ResendOtpService,
 		private route: ActivatedRoute,
     private location: Location
@@ -71,6 +73,7 @@ export class LogInComponent implements OnInit {
         }else{
           this.router.navigateByUrl('/');
         }
+        this.cartStateService.fetchAndUpdateCartCount()
         
       }).catch(error => {
         this.progressSpinner = false
