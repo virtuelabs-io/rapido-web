@@ -30,6 +30,10 @@ export class HomeComponent implements OnInit {
         "title": "Recommended Products",
         "data": []
       },
+      RecommendedSet:  {
+        "title": "Recommended for You",
+        "data": []
+      },
       BrowsingHistory:  {
         "title": "Previously Browsed Products",
         "data": []
@@ -39,8 +43,8 @@ export class HomeComponent implements OnInit {
     this.banner = "assets/images/aboutUs_1.jpg"
     this.cardDetails = [
       {
-        "title": "Photography store",
-        "image": '/assets/images/home_card_1.jpg',
+        "title": "Watches",
+        "image": '/assets/images/Watches.jpeg',
         "desc": "Find the best photography deals"
       },
       {
@@ -78,6 +82,7 @@ export class HomeComponent implements OnInit {
     this.tabletConfig = Constants.TABLET_CONFIG
     this.mobileConfig = Constants.MOBILE_CONFIG
      this.recommendedProductList()
+     this.recommendedSet()
      this.browsedHistory()
   }
 
@@ -89,9 +94,30 @@ export class HomeComponent implements OnInit {
      this._productsService.get(query).
     subscribe(data => {
       if (data) {
-        console.log(data)
-        
         this.carousel.RecommendedList.data = data.hits.hit.map((v,i)=>{
+          v.fields.id = v.id
+          v.fields.image = Common.getImageURI(null, v.fields.images[0])
+          return v.fields
+          })
+        if (data.error) {
+          throw Error('error')
+        }
+        if (data.hits.found === 0) {
+          return;
+        }
+      }
+    })
+  }
+
+  recommendedSet() {
+    let query = {
+      q: `watches`,
+      size: 10
+    }
+     this._productsService.get(query).
+    subscribe(data => {
+      if (data) {
+        this.carousel.RecommendedSet.data = data.hits.hit.map((v,i)=>{
           v.fields.id = v.id
           v.fields.image = Common.getImageURI(null, v.fields.images[0])
           return v.fields
@@ -114,8 +140,6 @@ export class HomeComponent implements OnInit {
      this._productsService.get(query).
     subscribe(data => {
       if (data) {
-        console.log(data)
-        
         this.carousel.BrowsingHistory.data = data.hits.hit.map((v,i)=>{
           v.fields.id = v.id
           v.fields.image = Common.getImageURI(null, v.fields.images[0])

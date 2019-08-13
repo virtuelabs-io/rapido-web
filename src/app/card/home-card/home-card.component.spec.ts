@@ -1,9 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HomeCardComponent } from './home-card.component';
-import { HomeComponent } from 'src/app/home/home.component';
-import { CarouselComponent } from '../carousel/carousel.component';
-import { CarouselScrollComponent } from '../carousel-scroll/carousel-scroll.component';
-import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('HomeCardComponent', () => {
   let component: HomeCardComponent;
@@ -11,7 +10,7 @@ describe('HomeCardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [],
+      imports: [HttpClientModule, RouterTestingModule],
       declarations: [ HomeCardComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
