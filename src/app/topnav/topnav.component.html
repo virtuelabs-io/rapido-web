@@ -3,17 +3,19 @@
      <div class="block">
         <div class="block-one" routerLink="/">
            <i class="fa fa-bars" aria-hidden="true"></i>
-           <a class="navbar-brand rapido-banner">
-            {{bannerName}}<a class="com">.com</a>
-           </a>
+           <div class="navbar-brand rapido-banner">
+            <img class="img-banner" src="assets/images/logo-b.png">
+           </div>
+           
         </div>
-        <div class="block-two">
-           <form (ngSubmit)="onSearch($event)" >
+        <div class="block-two pt-2">
+           <form (ngSubmit)="onSearch()" >
               <input type="text" placeholder="Search for materials..." [(ngModel)]="searchedText" name="search"  >
+              <i class="fa fa-search search-icon" aria-hidden="true" (click)="onSearch()"></i>
               <button type="submit" style="display:none">hidden submit</button>
            </form>
         </div>
-        <div class="block-three">
+        <div class="block-three pt-2">
            <div *ngIf="isSignedIn" class="rapido-icon-spacer">
               <a  class="rapido-icon mat-button rapido-icon-hider" [matMenuTriggerFor]="menu">
                  <svg aria-hidden="true" aria-haspopup="menu">
@@ -56,7 +58,7 @@
   <mat-toolbar-row class="secondary-toolbar">
      <div class="block">
         <div class="block-search">
-           <form (ngSubmit)="onSearch($event)">
+           <form (ngSubmit)="onSearch()">
               <input type="text" placeholder="Search for materials..." name="search" [(ngModel)]="searchedText">
               <button type="submit" style="display:none">hidden submit</button>
            </form>

@@ -59,7 +59,7 @@ export class TopnavComponent implements OnInit {
     this._cartStateService.updateCartCount(0)
   }
 
-  onSearch(e){
+  onSearch(){
     if(this.searchedText){
       this.router.navigateByUrl('/products')
       this._searchItemService.changeState({
