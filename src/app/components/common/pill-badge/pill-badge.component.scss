@@ -1,0 +1,15 @@
+@import "../../../../assets/scss/custom-bootstrap-variables.scss";
+
+.main-div{
+    .selText{
+        height: 28.4px;
+        line-height: 18px;
+    }
+    .closeDingBat{
+        cursor: pointer;
+        border-radius: 50%;
+        height: 20px;
+        background: $white;
+        border: none;
+    }
+}

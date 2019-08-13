@@ -113,7 +113,7 @@ export class ProductDetailsComponent implements OnInit {
 	}
 	
 	onChangeQuantity(quant:number) {
-		if(quant > 0){
+		if(quant < 0){
 			this._snackBar.open(Constants.ORDER_QUANTITY_ERROR,  undefined , {
 				duration: 4000,
 			 })

@@ -1,9 +1,36 @@
 <div>
   <section>
      <div class="filtersL">
-        <mat-accordion multi="true" displayMode="flat" *ngFor="let item of filterData">
+         <mat-accordion multi="true" displayMode="flat" *ngIf='searchedText  || fieldsQuery.price.q || fieldsQuery.rating.q'>
+               <div class="h6 pt-4">Current selections</div>
+               <mat-expansion-panel expanded="true">
+                     <mat-nav-list>
+                        <div class="d-flex flex-wrap" >
+                           <app-pill-badge 
+                              *ngIf='searchedText'
+                              [selType] = 'searchedText'>
+                           </app-pill-badge>
+                           <app-pill-badge 
+                              *ngIf='fieldsQuery.price.q'
+                              selType = 'Price'
+                              [selValue] = 'fieldsQuery.price.text'
+                              (removeSelection) = removePrice()>
+                           </app-pill-badge>
+                           <app-pill-badge 
+                              *ngIf='fieldsQuery.rating.q'
+                              selType = 'Rating'
+                              [selValue] = 'fieldsQuery.rating.text'
+                              (removeSelection) = removeRating(fieldsQuery)>
+                           </app-pill-badge>
+                        </div>
+                     </mat-nav-list>
+                     
+               </mat-expansion-panel>
+         </mat-accordion> 
+
+      <mat-accordion multi="true" displayMode="flat" *ngFor="let item of filterData">
            <div class="h6 pt-4">{{item.headerText}}</div>
-           <mat-expansion-panel expanded="false" *ngFor="let panelList of item.panel" >
+           <mat-expansion-panel [expanded]="item.expanded" *ngFor="let panelList of item.panel" >
               <mat-expansion-panel-header >
                  <mat-panel-title>
                     {{panelList.panelTitle}}
