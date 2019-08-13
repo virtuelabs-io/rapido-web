@@ -16,6 +16,7 @@
 		}
 		.rapido-banner {
 			.img-banner{
+				cursor: pointer;
 				height: 100%;
 				width: 80%;
 			}
@@ -57,6 +58,11 @@
 			padding-right: 10px;
 			outline: none;
 			text-align: left !important;
+		}
+		.search-icon{
+			position: relative;
+			right: 26px;
+			color: $gray-light;
 		}
 		@media screen and (max-width: $small-device) {
 			visibility: hidden;

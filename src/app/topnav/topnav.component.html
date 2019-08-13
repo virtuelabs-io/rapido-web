@@ -11,6 +11,7 @@
         <div class="block-two pt-2">
            <form (ngSubmit)="onSearch($event)" >
               <input type="text" placeholder="Search for materials..." [(ngModel)]="searchedText" name="search"  >
+              <i class="fa fa-search search-icon" aria-hidden="true"></i>
               <button type="submit" style="display:none">hidden submit</button>
            </form>
         </div>
