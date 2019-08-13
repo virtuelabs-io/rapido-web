@@ -15,14 +15,9 @@
 			visibility: hidden;
 		}
 		.rapido-banner {
-			font-size: 22px;
-			font-weight: 700;
-			display: table-cell;
-			vertical-align: middle;
-			.com {
-				display: inline-block;
-				font-size: 15px;
-				font-weight: 400;
+			.img-banner{
+				cursor: pointer;
+				width: 100px;
 			}
 		}
 		.navbar {
@@ -36,32 +31,37 @@
 		}
 	}
 	.block-two {
+		text-align: center;
 		width: 100%;
 		 ::-webkit-input-placeholder {
-			text-align: left;
+			text-align: center;
 		}
 		 :-moz-placeholder {
 			/* Firefox 18- */
-			text-align: left;
+			text-align: center;
 		}
 		 ::-moz-placeholder {
 			/* Firefox 19+ */
-			text-align: left;
+			text-align: center;
 		}
 		 :-ms-input-placeholder {
-			text-align: left;
+			text-align: center;
 		}
 		input {
-			margin-left: 10%;
-			margin-right: 10%;
 			margin-top: 4px;
-			width: 80%;
+			width: 50%;
 			border-color: $primary;
+			border: none;
 			border-radius: 20px;
 			padding-left: 10px;
 			padding-right: 10px;
 			outline: none;
 			text-align: left !important;
+		}
+		.search-icon{
+			position: relative;
+			right: 26px;
+			color: $gray-light;
 		}
 		@media screen and (max-width: $small-device) {
 			visibility: hidden;
@@ -143,18 +143,18 @@
 	.block-search {
 		width: 100%;
 		 ::-webkit-input-placeholder {
-			text-align: left;
+			text-align: center;
 		}
 		 :-moz-placeholder {
 			/* Firefox 18- */
-			text-align: left;
+			text-align: center;
 		}
 		 ::-moz-placeholder {
 			/* Firefox 19+ */
-			text-align: left;
+			text-align: center;
 		}
 		 :-ms-input-placeholder {
-			text-align: left;
+			text-align: center;
 		}
 		input {
 			margin-left: 10%;
@@ -167,6 +167,7 @@
 			padding-right: 10px;
 			outline: none;
 			text-align: left !important;
+			border: 1px solid;
 		}
 	}
 	@media screen and (max-width: $small-device) {
