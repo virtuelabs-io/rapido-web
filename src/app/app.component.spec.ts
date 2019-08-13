@@ -32,6 +32,7 @@ import { RangeSliderComponent } from './range-slider/range-slider.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { BusyLoaderComponent } from './components/common/busy-loader/busy-loader.component';
 import { TableComponent } from './components/table/table.component';
+import { PillBadgeComponent } from './components/common/pill-badge/pill-badge.component';
 import { HomeCardComponent } from './card/home-card/home-card.component';
 import { CarouselComponent } from './card/carousel/carousel.component';
 import { CarouselScrollComponent } from './card/carousel-scroll/carousel-scroll.component';
@@ -95,6 +96,7 @@ describe('AppComponent', () => {
         RangeSliderComponent,
         BusyLoaderComponent,
         TableComponent,
+        PillBadgeComponent,
         HomeCardComponent,
         CarouselComponent,
         CarouselScrollComponent,
