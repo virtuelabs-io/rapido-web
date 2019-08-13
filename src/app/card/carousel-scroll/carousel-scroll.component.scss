@@ -30,7 +30,7 @@
                 background-position: center center; 
                 width: 80%;
                 height: 300px;
-                padding: 20px;
+                padding: 35px;
                 @media screen and (max-width: $mobile-device) {
                     width: 90%;
                     padding-left: 10%;
@@ -39,20 +39,15 @@
             .card-price {
                 color: red;
             }
-            
         }
         @media screen and (max-width: $mobile-device) {
             width: 100% !important;
         }
         @media screen and (max-width: $medium-device) {
             width: 40%;
-          //  height: 100%;
         }
     }
     img {
         min-width: 250px;
-    }
-    @media screen and (max-width: $medium-device) {
-      //  height: 100%;
     }
 }

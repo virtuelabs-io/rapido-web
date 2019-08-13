@@ -22,7 +22,6 @@
             flex-direction: column;
             flex-wrap: nowrap;
             justify-content: center;
-           // width:800px;
             margin-top: 2%;
             .check-box-margin {
                 margin-left: 1%;
@@ -50,6 +49,9 @@
             flex-direction: column !important;
             flex-wrap: wrap !important;
             margin-top: 2%;
+            .title-div {
+                border-bottom: 1px solid #e1e4e8;
+            }
             .delete-div {
                 display: flex;
                 flex-direction: row;
