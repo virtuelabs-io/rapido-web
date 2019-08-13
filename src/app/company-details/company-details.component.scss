@@ -1,5 +1,12 @@
 @import "../../assets/scss/custom-bootstrap-variables.scss";
 
+.title-div {
+    margin-top: 2%;
+    padding-left: 2%;
+    @media screen and (max-width: $mobile-device) {
+        margin-top: 10%;
+    }
+}
 .rapido-add-company {
     display: flex;
     flex-direction: row;
