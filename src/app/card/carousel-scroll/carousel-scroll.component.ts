@@ -20,4 +20,8 @@ export class CarouselScrollComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
     this.carouselData = this.carouselCard
   }
+
+  handleMrpRate(price, offer) {
+    return (price * (1 + parseFloat(offer))).toFixed(2);
+  }
 }
