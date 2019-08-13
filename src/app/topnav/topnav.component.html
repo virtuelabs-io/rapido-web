@@ -9,9 +9,9 @@
            
         </div>
         <div class="block-two pt-2">
-           <form (ngSubmit)="onSearch($event)" >
+           <form (ngSubmit)="onSearch()" >
               <input type="text" placeholder="Search for materials..." [(ngModel)]="searchedText" name="search"  >
-              <i class="fa fa-search search-icon" aria-hidden="true"></i>
+              <i class="fa fa-search search-icon" aria-hidden="true" (click)="onSearch()"></i>
               <button type="submit" style="display:none">hidden submit</button>
            </form>
         </div>
@@ -58,7 +58,7 @@
   <mat-toolbar-row class="secondary-toolbar">
      <div class="block">
         <div class="block-search">
-           <form (ngSubmit)="onSearch($event)">
+           <form (ngSubmit)="onSearch()">
               <input type="text" placeholder="Search for materials..." name="search" [(ngModel)]="searchedText">
               <button type="submit" style="display:none">hidden submit</button>
            </form>
