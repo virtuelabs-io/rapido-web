@@ -55,6 +55,7 @@ import { CarouselComponent } from './card/carousel/carousel.component';
 import { CarouselScrollComponent } from './card/carousel-scroll/carousel-scroll.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { TableComponent } from './components/table/table.component';
+import { PillBadgeComponent } from './components/common/pill-badge/pill-badge.component';
 
 @NgModule({
   declarations: [
@@ -99,7 +100,8 @@ import { TableComponent } from './components/table/table.component';
     HomeCardComponent,
     CarouselComponent,
     CarouselScrollComponent,
-    AccountInfoComponent
+    AccountInfoComponent,
+    PillBadgeComponent
   ],
   imports: [
     MatSidenavModule,
