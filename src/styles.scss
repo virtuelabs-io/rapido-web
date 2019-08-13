@@ -62,3 +62,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 *:focus {
     outline: none !important;
 }
+
+ .text-clamp { 
+    overflow: hidden;
+    display: -webkit-box !important;
+    /* autoprefixer: off */
+    -webkit-box-orient: vertical;
+    /* autoprefixer: on */
+    -webkit-line-clamp: 2;
+ }
