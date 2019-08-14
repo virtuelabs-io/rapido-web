@@ -132,4 +132,8 @@ export class Constants {
   public static ITWM_SAVE_LATER = "Item has been saved for later";
   public static SESSION_LOST = "Login Session doesn't exist";
   public static ORDER_QUANTITY_ERROR = "Order quantity can't be less than one";
+
+  public static COMPANY_DETAILS_ADDED = "Company Details has been added"
+  public static COMPANY_DETAILS_UPDATED = "Company Details has been updated"
+
 }

@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { CompanyDetails } from '../services/customer/company-details';
 import { CompanyDetailsService } from '../services/customer/company-details.service';
 import { Router } from '@angular/router';
+import {MatSnackBar} from '@angular/material';
+import { Constants } from '../utils/constants';
 
 @Component({
   selector: 'app-company-details',
@@ -13,12 +15,14 @@ export class CompanyDetailsComponent implements OnInit {
   showSpinner: Boolean = false
   _customerId: string = ""
   editButtonShow: boolean = false
+  _snackBarMsg: string = ""
   companyDetails: CompanyDetails
   addressFormGroup: FormGroup // UI reactive Form Group variable
   private _companyDetailsService: CompanyDetailsService
   constructor(
     private router: Router,
-    companyDetailsService: CompanyDetailsService
+    companyDetailsService: CompanyDetailsService,
+    private _snackBar: MatSnackBar
   ) { 
     this._companyDetailsService = companyDetailsService
   }
@@ -67,6 +71,7 @@ export class CompanyDetailsComponent implements OnInit {
 
   putCompanyDetails() {
     this.showSpinner = true
+    this._snackBarMsg = Constants.COMPANY_DETAILS_UPDATED
     this.companyDetails = new CompanyDetails(  
       this.addressFormGroup.value.name,
       this.addressFormGroup.value.add1,
@@ -77,14 +82,16 @@ export class CompanyDetailsComponent implements OnInit {
       this.addressFormGroup.value.add2
     )
     this._companyDetailsService.putCompanyDetails(this.companyDetails)
-    .subscribe(data => {
-      console.log(data)
+    .subscribe(_ => {this._snackBar.open(this._snackBarMsg, "", {
+      duration: 5000
+    });
       this.showSpinner = false
     })
   }
 
   postCompanyDetails(formData) {
     this.showSpinner = true
+    this._snackBarMsg = Constants.COMPANY_DETAILS_ADDED
     this.companyDetails = new CompanyDetails(
       formData.name,
       formData.add1,
@@ -95,11 +102,11 @@ export class CompanyDetailsComponent implements OnInit {
       formData.add2
     )
     this._companyDetailsService.postCompanyDetails(this.companyDetails)
-    .subscribe(data => {
+    .subscribe(_ => {
       this.showSpinner = false
-      this.getCompanyDetails()
-    //  this.router.navigate(['profile/companyDetails']);
-    //  this.company_details_result = "Sucessfully posted customer company details and logged!";
+      this._snackBar.open(this._snackBarMsg, "", {
+        duration: 5000
+      });
     })
   }
 
