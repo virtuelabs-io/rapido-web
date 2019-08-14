@@ -47,11 +47,14 @@
         <mat-error *ngIf="hasError('country', 'required')">Country is required</mat-error>
       </mat-form-field>
       <mat-card-actions>
-        <button class="spacing" mat-flat-button color="primary" type="submit" [disabled]="!addressFormGroup.valid" (click)="putCompanyDetails()">
+        <button *ngIf="!editButtonShow" class="spacing" mat-flat-button color="primary" type="submit" [disabled]="!addressFormGroup.valid" (click)="postCompanyDetails(addressFormGroup.value)">
             Add Company
         </button>
-        <button mat-flat-button color="primary" (click)="cancelAddAddress()">
-          Cancel
+        <button *ngIf="editButtonShow" class="spacing" mat-flat-button color="primary" type="submit" (click)="putCompanyDetails()">
+            Save
+        </button>
+        <button *ngIf="editButtonShow" mat-flat-button color="primary" (click)="deleteCompanyDetails()">
+          Delete
       </button>
       </mat-card-actions>
     </form>

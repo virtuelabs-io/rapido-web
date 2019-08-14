@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class EditCompanyDetailsComponent implements OnInit {
   showSpinner: Boolean = false
   _customerId: string = ""
+  editButtonShow: boolean = false
   companyDetails: CompanyDetails
   addressFormGroup: FormGroup // UI reactive Form Group variable
   private _companyDetailsService: CompanyDetailsService
@@ -33,17 +34,34 @@ export class EditCompanyDetailsComponent implements OnInit {
       county: new FormControl('', [Validators.required]),
       country: new FormControl('', [Validators.required])
     })
+    this.getCompanyDetails()
+  }
+
+  getCompanyDetails() {
     this._companyDetailsService.getCompanyDetails()
     .subscribe(data => {
-      this.addressFormGroup.controls["name"].setValue(data.company_name)
-      this.addressFormGroup.controls["add1"].setValue(data.addr_1)
-      this.addressFormGroup.controls["add2"].setValue(data.addr_2)
-      this.addressFormGroup.controls["town_city"].setValue(data.city)
-      this.addressFormGroup.controls["postCode"].setValue(data.postcode)
-      this.addressFormGroup.controls["country"].setValue(data.country)
-      this.addressFormGroup.controls["county"].setValue(data.county)
-      this._customerId = data.customer_id
       this.showSpinner = false
+      if(data != null) {
+        this.editButtonShow = true
+        this.addressFormGroup.controls["name"].setValue(data.company_name)
+        this.addressFormGroup.controls["add1"].setValue(data.addr_1)
+        this.addressFormGroup.controls["add2"].setValue(data.addr_2)
+        this.addressFormGroup.controls["town_city"].setValue(data.city)
+        this.addressFormGroup.controls["postCode"].setValue(data.postcode)
+        this.addressFormGroup.controls["country"].setValue(data.country)
+        this.addressFormGroup.controls["county"].setValue(data.county)
+        this._customerId = data.customer_id
+      }
+      else {
+        this.editButtonShow = false
+        this.addressFormGroup.controls["name"].setValue('')
+        this.addressFormGroup.controls["add1"].setValue('')
+        this.addressFormGroup.controls["add2"].setValue('')
+        this.addressFormGroup.controls["town_city"].setValue('')
+        this.addressFormGroup.controls["postCode"].setValue('')
+        this.addressFormGroup.controls["country"].setValue('')
+        this.addressFormGroup.controls["county"].setValue('')
+      }
     })
   }
 
@@ -60,12 +78,41 @@ export class EditCompanyDetailsComponent implements OnInit {
     )
     this._companyDetailsService.putCompanyDetails(this.companyDetails)
     .subscribe(data => {
-      this.router.navigate(['profile/companyDetails'])
+      console.log(data)
+      this.showSpinner = false
+    })
+  }
+
+  postCompanyDetails(formData) {
+    this.showSpinner = true
+    this.companyDetails = new CompanyDetails(
+      formData.name,
+      formData.add1,
+      formData.town_city,
+      formData.county,
+      formData.country,
+      formData.postCode,
+      formData.add2
+    )
+    this._companyDetailsService.postCompanyDetails(this.companyDetails)
+    .subscribe(data => {
+      this.showSpinner = false
+      this.getCompanyDetails()
+    //  this.router.navigate(['profile/companyDetails']);
+    //  this.company_details_result = "Sucessfully posted customer company details and logged!";
     })
   }
 
   cancelAddAddress() {
     this.router.navigate(['profile/companyDetails']);
+  }
+
+  deleteCompanyDetails() {
+    this.showSpinner = true
+    this._companyDetailsService.deleteCompanyDetails()
+    .subscribe(data => {
+      this.getCompanyDetails()
+    })
   }
 
   public hasError = (controlName: string, errorName: string) => {

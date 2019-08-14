@@ -35,7 +35,7 @@ const routes: Routes = [
   { path: 'profile/address/newAddress', component: AddAddressComponent},
   { path: 'profile/address/editAddress/:id', component: EditAddressComponent},
   { path: 'myprofile', component: ProfileComponent},
-  { path: 'profile/companyDetails', component: CompanyDetailsComponent },
+  { path: 'profile/companyDetails', component: EditCompanyDetailsComponent },
   { path: 'profile/companyDetails/newDetails', component: AddCompanyDetailsComponent },
   { path: 'profile/companyDetails/edit', component: EditCompanyDetailsComponent },
   { path: 'cart', component: CartComponent },
