@@ -94,7 +94,7 @@ steps:
   displayName: 'Disabled: Publish docker image to ECR'
 
 - script: |
-    aws s3 cp ${PWD}/dist/rapido-web/. s3://$DEV_RAPIDO_BUILD_S3_BUCKET
+    aws s3 sync ${PWD}/dist/rapido-web/. s3://$DEV_RAPIDO_BUILD_S3_BUCKET
   condition: eq(variables['Build.Reason'], 'PullRequest')
   env:
     AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
