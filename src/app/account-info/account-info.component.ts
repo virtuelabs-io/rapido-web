@@ -4,11 +4,13 @@ import { UpdateAttributeService } from '../services/authentication/update-attrib
 import { Registration } from '../services/authentication/helpers/registration';
 import { DeleteUserService } from '../services/authentication/delete-user/delete-user.service';
 import { LoginStateService } from '../shared-services/login-state/login-state.service';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-account-info',
   templateUrl: './account-info.component.html',
-  styleUrls: ['./account-info.component.scss']
+  styleUrls: ['./account-info.component.scss'],
+  providers: [NgbModalConfig, NgbModal]
 })
 export class AccountInfoComponent implements OnInit {
   _profileService: ProfileService;
@@ -42,7 +44,8 @@ export class AccountInfoComponent implements OnInit {
     profileService: ProfileService,
     updateAttributeService: UpdateAttributeService,
     private loginStateService: LoginStateService,
-    deleteUserService: DeleteUserService
+    deleteUserService: DeleteUserService,
+    config: NgbModalConfig, private modalService: NgbModal
   ) {
     this._profileService = profileService
     this._updateAttributeService = updateAttributeService
@@ -112,7 +115,11 @@ export class AccountInfoComponent implements OnInit {
     })
   }
 
-  delete() {
+  delete(content) {
+    this.modalService.open(content)
+  }
+
+  yesModalAction() {
     this.deleteButton = true
     const promise = this._deleteUserService.deleteUser()
     promise.then(value => {
@@ -126,5 +133,5 @@ export class AccountInfoComponent implements OnInit {
       this.deletedUser = false
       this.failedToDelete = true
     })
-  }
+  } 
 }
