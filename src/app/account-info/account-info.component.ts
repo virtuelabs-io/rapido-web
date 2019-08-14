@@ -59,22 +59,24 @@ export class AccountInfoComponent implements OnInit {
   fetchUserProfile() {
     let localAttributes = this.attribute
     this._profileService.cognitoUser.getUserAttributes(function(err, result) {
-      for(var i = 0; i < result.length; i++) {
-        if (localAttributes[result[i]["Name"].replace("custom:", "")] != null) {
-          localAttributes[result[i]["Name"].replace("custom:", "")] = result[i].getValue()
+      if(result != null) {
+        for(var i = 0; i < result.length; i++) {
+          if (localAttributes[result[i]["Name"].replace("custom:", "")] != null) {
+            localAttributes[result[i]["Name"].replace("custom:", "")] = result[i].getValue()
+          }
         }
-      }
-      if(localAttributes.sendMePromotions == "true") {
-        localAttributes.sendMePromotionsB = true
-      }
-      if(localAttributes.commViaEmail == "true") {
-        localAttributes.commViaEmailB = true
-      }
-      if(localAttributes.commViaSMS == "true") {
-        localAttributes.commViaSMSB = true
-      }
-      if(localAttributes.personalisation == "true") {
-        localAttributes.personalisationB = true
+        if(localAttributes.sendMePromotions == "true") {
+          localAttributes.sendMePromotionsB = true
+        }
+        if(localAttributes.commViaEmail == "true") {
+          localAttributes.commViaEmailB = true
+        }
+        if(localAttributes.commViaSMS == "true") {
+          localAttributes.commViaSMSB = true
+        }
+        if(localAttributes.personalisation == "true") {
+          localAttributes.personalisationB = true
+        }
       }
     })
   }
