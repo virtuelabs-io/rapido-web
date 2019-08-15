@@ -1,22 +1,9 @@
 <div class="main-div">
-    <div class="search-text-div">
-      <h3>
-        Company Details
-      </h3>
-      <p>
-        Rapidobuild helps you to build without a real headache of the building materials..
-        Sothe saying goes on "you build and we deliver" 
-        We know how you value time and to help you save time is our sole motto..!
-      </p>
-      <div class="spinner-div">
-        <mat-spinner strokeWidth="4" [diameter]="50" *ngIf="showSpinner"></mat-spinner>
-      </div>
-      <!--<div class="search-postcode-div">
-        <input matInput maxlength="10" placeholder="postcode">
-        <button mat-flat-button color="primary" type="submit">Find Address</button>
-      </div>-->
-    </div>
+    
     <div class="add-address-main">
+        <div class="title-div">
+            <h2>Company Details</h2>
+          </div>
       <form class="form-details" [formGroup]="addressFormGroup" novalidate>
         <mat-form-field>
           <input matInput placeholder="Organisation Name" formControlName="name">
