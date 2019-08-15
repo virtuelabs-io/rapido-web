@@ -1,28 +1,33 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { CompanyDetails } from '../services/customer/company-details';
 import { CompanyDetailsService } from '../services/customer/company-details.service';
 import { Router } from '@angular/router';
 import {MatSnackBar} from '@angular/material';
 import { Constants } from '../utils/constants';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-company-details',
   templateUrl: './company-details.component.html',
-  styleUrls: ['./company-details.component.scss']
+  styleUrls: ['./company-details.component.scss'],
+  providers: [NgbModalConfig, NgbModal]
 })
 export class CompanyDetailsComponent implements OnInit {
   showSpinner: Boolean = false
   _customerId: string = ""
   editButtonShow: boolean = false
   _snackBarMsg: string = ""
+  _modalReference = null;  
   companyDetails: CompanyDetails
   addressFormGroup: FormGroup // UI reactive Form Group variable
   private _companyDetailsService: CompanyDetailsService
   constructor(
     private router: Router,
     companyDetailsService: CompanyDetailsService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    config: NgbModalConfig, 
+    private modalService: NgbModal
   ) { 
     this._companyDetailsService = companyDetailsService
   }
@@ -68,8 +73,10 @@ export class CompanyDetailsComponent implements OnInit {
       }
     })
   }
-
-  putCompanyDetails() {
+  putCompanyDetails(content) {
+    this._modalReference = this.modalService.open(content,  { centered: true })
+  }
+  modalSave() {
     this.showSpinner = true
     this._snackBarMsg = Constants.COMPANY_DETAILS_UPDATED
     this.companyDetails = new CompanyDetails(  
@@ -82,7 +89,10 @@ export class CompanyDetailsComponent implements OnInit {
       this.addressFormGroup.value.add2
     )
     this._companyDetailsService.putCompanyDetails(this.companyDetails)
-    .subscribe(_ => {this._snackBar.open(this._snackBarMsg, "", {
+    .subscribe(_ => {
+      this._modalReference.close()
+      this.getCompanyDetails()
+      this._snackBar.open(this._snackBarMsg, "", {
       duration: 5000
     });
       this.showSpinner = false

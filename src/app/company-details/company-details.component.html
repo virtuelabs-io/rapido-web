@@ -37,7 +37,7 @@
           <button *ngIf="!editButtonShow" class="spacing" mat-flat-button color="primary" type="submit" [disabled]="!addressFormGroup.valid" (click)="postCompanyDetails(addressFormGroup.value)">
               Add Company
           </button>
-          <button *ngIf="editButtonShow" class="spacing" mat-flat-button color="primary" type="submit" (click)="putCompanyDetails()">
+          <button *ngIf="editButtonShow" class="spacing" mat-flat-button color="primary" type="submit" (click)="putCompanyDetails(content)">
               Save
           </button>
           <button *ngIf="editButtonShow" mat-flat-button color="primary" (click)="deleteCompanyDetails()">
@@ -47,4 +47,19 @@
       </form>
     </div>
   </div>
-  
+  <ng-template #content  let-cross="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Account Delete</h4>
+        <button type="button" class="close" aria-label="Close" (click)="cross('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to save the changes.
+        </p>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="cross('Cross click')">No</button>
+        <button type="button" class="btn btn-outline-dark" (click)="modalSave()">Yes</button>
+      </div>
+    </ng-template>
