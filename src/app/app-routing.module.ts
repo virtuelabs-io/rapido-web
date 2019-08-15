@@ -32,7 +32,6 @@ const routes: Routes = [
   { path: 'profile/address', component: AddressComponent},
   { path: 'profile/address/newAddress', component: AddAddressComponent},
   { path: 'profile/address/editAddress/:id', component: EditAddressComponent},
-  { path: 'myprofile', component: ProfileComponent},
   { path: 'profile/companyDetails', component: CompanyDetailsComponent },
   { path: 'cart', component: CartComponent },
   { path: 'cart/checkout', component: CheckoutComponent},

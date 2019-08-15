@@ -8,6 +8,7 @@ import { LoginStateService } from '../shared-services/login-state/login-state.se
 import { CartStateService } from '../shared-services/cart-state/cart-state.service';
 import { SearchItemService } from '../shared-services/search-item/search-item.services';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { RouteService } from '../shared-services/route/route.service';
 
 @NgModule({})
 @Component({
@@ -30,7 +31,8 @@ export class TopnavComponent implements OnInit {
               private _snackBar: MatSnackBar,
               private _searchItemService: SearchItemService,
               private _cartStateService: CartStateService,
-              private _loginStateService: LoginStateService) {}
+              private _loginStateService: LoginStateService,
+              private RouteService : RouteService) {}
 
   ngOnInit() {
     const promise = this._sessionService.retrieveSessionIfExists()
@@ -86,5 +88,10 @@ export class TopnavComponent implements OnInit {
         .then((count: any) => {
           this.cartCount = count
         })
+  }
+
+  handleProfileNavigation() {
+    this.RouteService.changeRoute('noQuestionnaire');
+    this.router.navigateByUrl('/profile')
   }
 }
