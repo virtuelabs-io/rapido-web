@@ -11,8 +11,6 @@ import { AddressComponent } from './address/address.component';
 import { AddAddressComponent } from './add-address/add-address.component';
 import { EditAddressComponent } from './edit-address/edit-address.component';
 import { CompanyDetailsComponent } from './company-details/company-details.component';
-import { AddCompanyDetailsComponent } from './add-company-details/add-company-details.component';
-import { EditCompanyDetailsComponent } from './edit-company-details/edit-company-details.component';
 import { CartComponent } from './cart/cart.component';
 import { AccountInfoComponent } from './account-info/account-info.component';
 import { TermsConditionsComponent } from './terms-conditions/terms-conditions.component';
@@ -36,8 +34,6 @@ const routes: Routes = [
   { path: 'profile/address/editAddress/:id', component: EditAddressComponent},
   { path: 'myprofile', component: ProfileComponent},
   { path: 'profile/companyDetails', component: CompanyDetailsComponent },
-  { path: 'profile/companyDetails/newDetails', component: AddCompanyDetailsComponent },
-  { path: 'profile/companyDetails/edit', component: EditCompanyDetailsComponent },
   { path: 'cart', component: CartComponent },
   { path: 'cart/checkout', component: CheckoutComponent},
   { path: 'profile/account', component: AccountInfoComponent },
@@ -66,11 +62,9 @@ export const RoutingComponents = [
   ResendOtpComponent,
   ProfileComponent,
   CompanyDetailsComponent,
-  AddCompanyDetailsComponent,
   AddressComponent,
   AddAddressComponent,
   EditAddressComponent,
-  EditCompanyDetailsComponent,
   CartComponent,
   AccountInfoComponent,
   TermsConditionsComponent,
