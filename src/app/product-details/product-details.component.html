@@ -35,22 +35,38 @@
          
          <hr/>
 
-         <div class="price-section h5">
-           <span aria-hidden="true" class="text-danger ">
-              Price:
-               <span class="a-price-symbol">{{itemDetails.currency}}</span>
-               <span class="a-price-whole">{{Number(itemDetails.price).toFixed(2)}}</span>
-            </span>
-            <span aria-hidden="true" class="small ">
-                M.R.P.:
-              <span class="a-price-symbol">{{itemDetails.currency}}</span>
-              <s class="a-price-whole">{{Number(mrpPrice).toFixed(2)}}</s>
-            </span>
-           <span class="small ">
-             You Save:
-              <span>{{ itemDetails.offer * 100}}%</span>
-           </span>
+         <div class="d-flex">
+            <div class="price-section h5">
+              <span aria-hidden="true" class="text-danger ">
+                  Price:
+                  <span class="a-price-symbol">{{itemDetails.currency}}</span>
+                  <span class="a-price-whole">{{Number(itemDetails.price).toFixed(2)}}</span>
+                </span>
+                <span aria-hidden="true" class="small ">
+                    M.R.P.:
+                  <span class="a-price-symbol">{{itemDetails.currency}}</span>
+                  <s class="a-price-whole">{{Number(mrpPrice).toFixed(2)}}</s>
+                </span>
+              <span class="small ">
+                You Save:
+                  <span>{{ itemDetails.offer * 100}}%</span>
+              </span>
+            </div>
+              <div class="pr-3">
+                  <i class="fa fa-4x fa-4x fa-facebook"></i>
+              </div>
+              <div class="pr-3">
+                  <i class="fa fa-4x fa-instagram"></i>
+              </div>
+              <div class="pr-3">
+                  <i class="fa fa-4x fa-twitter"></i>
+              </div>
+              <div class="pr-3">
+                  <i class="fa fa-4x fa-youtube"></i>
+              </div>
+               
          </div>
+        
          
          <hr/>
 
