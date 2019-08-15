@@ -29,7 +29,7 @@
       min-height: 125px;
       cursor: pointer;
       .icon-div {
-        .rapido-icon{
+        .rapido-icon {
           svg {
             margin: 30px 0px;
             width: 70px;
@@ -55,7 +55,6 @@
 }
 .questionnaire {
   .title-div {
-    margin-top: 2%;
     margin-left: 2%;
     @media screen and (max-width: $mobile-device) {
       margin-top: 5%;
