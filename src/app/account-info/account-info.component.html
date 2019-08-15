@@ -1,68 +1,91 @@
 <div class="main-div">
-  <div class="title-div">
-    <h2>
-      Account Info
-    </h2>
-  </div>
-  <div class="rapido-account-info-div">
-    <mat-form-field>
-      <input matInput placeholder="User Name" [disabled]="true" [(ngModel)]="attribute.phone_number">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Name" [disabled]="viewMode" [(ngModel)]="attribute.name">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Email ID" [disabled]="viewMode" [(ngModel)]="attribute.email">
-    </mat-form-field>
-    <mat-checkbox required [disabled]="viewMode" [(ngModel)]="attribute.sendMePromotionsB" class="check-box-margin">Send Me Promotions</mat-checkbox>
-    <mat-checkbox required [disabled]="viewMode" [(ngModel)]="attribute.commViaEmailB" class="check-box-margin">Communications via Email</mat-checkbox>
-    <mat-checkbox required [disabled]="viewMode" [(ngModel)]="attribute.commViaSMSB" class="check-box-margin">Communications via SMS</mat-checkbox>
-    <mat-checkbox required [disabled]="viewMode" [(ngModel)]="attribute.personalisationB" class="check-box-margin">Personalisation</mat-checkbox>
-    <mat-action-row>
-      <button *ngIf="viewMode" mat-raised-button color="primary" (click)="edit()">
-      <mat-icon aria-hidden="true">edit</mat-icon>
-      Edit
-    </button>
-    <button *ngIf="updateMode" mat-raised-button color="primary" (click)="update()">
-      <mat-icon aria-hidden="true">update</mat-icon>
-      Update
-      <span *ngIf="updateButton" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-    </button>
-    </mat-action-row>
-    <div *ngIf='updatedAttribute' class="alert-danger-background msg" role="alert">
-        <h4 class="alert-success-text text-align">Success!</h4>
-        <p class="alert-success-text text-align">Profile Successfully Updated</p>
+  <div class="account-info">
+    <div class="title-div">
+      <h2>
+        Account Info
+      </h2>
     </div>
-    <div *ngIf='failedToUpdate' class="alert-danger-background msg" role="alert">
-        <h4 class="alert-danger-text text-align">Error!</h4>
-        <p class="alert-danger-text text-align">Unable to update Profile</p>
-    </div>
-  </div>
-  <div class="title-div">
-    <h2>
-      Delete Account
-    </h2>
-  </div>
-  <div class="col-wrap rapido-account-info-div">
-    <div class="delete-div">
-      <div class="text-spacing">
-        <strong>Delete this account</strong>
-        <p>Once you delete the account, there is no going back. Please be certain.</p>
+    <div class="rapido-account-info-div">
+      <mat-form-field>
+        <input matInput placeholder="User Name" [disabled]="true" [(ngModel)]="attribute.phone_number">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Name" [disabled]="viewMode" [(ngModel)]="attribute.name">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Email ID" [disabled]="viewMode" [(ngModel)]="attribute.email">
+      </mat-form-field>
+      <mat-checkbox required [disabled]="viewMode" [(ngModel)]="attribute.sendMePromotionsB" class="check-box-margin">Send Me Promotions</mat-checkbox>
+      <mat-checkbox required [disabled]="viewMode" [(ngModel)]="attribute.commViaEmailB" class="check-box-margin">Communications via Email</mat-checkbox>
+      <mat-checkbox required [disabled]="viewMode" [(ngModel)]="attribute.commViaSMSB" class="check-box-margin">Communications via SMS</mat-checkbox>
+      <mat-checkbox required [disabled]="viewMode" [(ngModel)]="attribute.personalisationB" class="check-box-margin">Personalisation</mat-checkbox>
+      <mat-action-row>
+        <button *ngIf="viewMode" mat-raised-button color="primary" (click)="edit()">
+        <mat-icon aria-hidden="true">edit</mat-icon>
+        Edit
+      </button>
+      <button *ngIf="updateMode" mat-raised-button color="primary" (click)="update()">
+        <mat-icon aria-hidden="true">update</mat-icon>
+        Update
+        <span *ngIf="updateButton" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      </button>
+      </mat-action-row>
+      <div *ngIf='updatedAttribute' class="alert-danger-background msg" role="alert">
+          <h4 class="alert-success-text text-align">Success!</h4>
+          <p class="alert-success-text text-align">Profile Successfully Updated</p>
       </div>
-      <div class="button">
-        <button mat-raised-button color="primary" (click)="delete()">
-          <span *ngIf="deleteButton" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-          Delete Account
-        </button>
+      <div *ngIf='failedToUpdate' class="alert-danger-background msg" role="alert">
+          <h4 class="alert-danger-text text-align">Error!</h4>
+          <p class="alert-danger-text text-align">Unable to update Profile</p>
       </div>
     </div>
-    <div *ngIf='deletedUser' class="alert-danger-background msg" role="alert">
-        <h4 class="alert-success-text text-align">Success!</h4>
-        <p class="alert-success-text text-align">{{ deleteUserMsg }}</p>
+  </div>
+  <div class="delete-user">
+    <div class="title-div">
+      <h2>
+        Delete Account
+      </h2>
     </div>
-    <div *ngIf='failedToDelete' class="alert-danger-background msg" role="alert">
-        <h4 class="alert-danger-text text-align">Error!</h4>
-        <p class="alert-danger-text text-align">Unable to delete Profile</p>
+    <div class="col-wrap">
+      <div class="delete-div">
+        <div class="text-spacing">
+          <strong>Delete this account</strong>
+          <p>Once you delete the account, there is no going back. Please be certain.</p>
+        </div>
+        <div class="button">
+          <button mat-raised-button color="primary" (click)="delete(content)">
+            <span *ngIf="deleteButton" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Delete Account
+          </button>
+        </div>
+      </div>
+      <div *ngIf='deletedUser' class="alert-danger-background msg" role="alert">
+          <h4 class="alert-success-text text-align">Success!</h4>
+          <p class="alert-success-text text-align">{{ deleteUserMsg }}</p>
+      </div>
+      <div *ngIf='failedToDelete' class="alert-danger-background msg" role="alert">
+          <h4 class="alert-danger-text text-align">Error!</h4>
+          <p class="alert-danger-text text-align">Unable to delete Profile</p>
+      </div>
     </div>
   </div>
+  
 </div>
+
+<ng-template #content  let-cross="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Account Delete</h4>
+    <button type="button" class="close" aria-label="Close" (click)="cross('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Are you sure you want to delete the account.
+      Once deleted, your account can't be recovered
+    </p>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="cross('Cross click')">No</button>
+    <button type="button" class="btn btn-outline-dark" (click)="yesModalAction()">Yes</button>
+  </div>
+</ng-template>

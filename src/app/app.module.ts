@@ -32,11 +32,9 @@ import { RangeSliderComponent } from './range-slider/range-slider.component';
 import { ResendOtpComponent } from './resend-otp/resend-otp.component';
 import { ProfileComponent } from './my-profile/profile.component';
 import { CompanyDetailsComponent } from './company-details/company-details.component';
-import { AddCompanyDetailsComponent } from './add-company-details/add-company-details.component';
 import { AddressComponent } from './address/address.component';
 import { AddAddressComponent } from './add-address/add-address.component';
 import { EditAddressComponent } from './edit-address/edit-address.component';
-import { EditCompanyDetailsComponent } from './edit-company-details/edit-company-details.component';
 import { CartComponent } from './cart/cart.component';
 import { RouteService } from '../app/shared-services/route/route.service';
 import { FooterComponent } from './footer/footer.component';
@@ -79,12 +77,10 @@ import { PillBadgeComponent } from './components/common/pill-badge/pill-badge.co
     ResendOtpComponent,
     ProfileComponent,
     CompanyDetailsComponent,
-    AddCompanyDetailsComponent,
     ProfileComponent,
     AddressComponent,
     AddAddressComponent,
     EditAddressComponent,
-    EditCompanyDetailsComponent,
     AccountInfoComponent,
     BusyLoaderComponent,
     ProductDetailsComponent,
