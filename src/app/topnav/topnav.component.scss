@@ -60,7 +60,8 @@
 		}
 		.search-icon{
 			position: relative;
-			right: 26px;
+			right: 30px;
+			bottom: 1px;
 			color: $gray-light;
 		}
 		@media screen and (max-width: $small-device) {
