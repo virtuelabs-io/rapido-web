@@ -1,36 +1,65 @@
-<div class="title-div">
-  <h4>
-    My Company Details
-  </h4>
-</div>
-<div class="rapido-add-company">
-  <a *ngIf="hide_plus_card" class="rapido-add-company-icon">
-    <div class="company-add-icon">
-      <a href="profile/companyDetails/newDetails">
-        <svg aria-hidden="true" aria-haspopup="menu">
-            <use xlink:href="#add"/>
-        </svg>
-      </a>
-    </div>
-    <div class="text-div">
-        <p>Add Company Details</p>  
-    </div>
-    <div class="spinner-div">
-      <mat-spinner strokeWidth="4" [diameter]="50" *ngIf="showSpinner"></mat-spinner>
-    </div>
-  </a>
-  <div *ngIf="company_detail_not_reg" class="rapido-add-company-item">
-    <div class="address-text">
-      <strong> {{ companyItems.company_name }} </strong>
-      <br/><p>{{ companyItems.addr_1 }}
-      <br/> {{ companyItems.addr_2 }}
-      <br/> {{ companyItems.city }}
-      <br/> {{ companyItems.county }}, {{ companyItems.postcode }}
-      <br/> {{ companyItems.country }}
-      </div>
-    <div class="card-actions">
-      <a (click)="addressEdit()">Edit</a> |
-      <a (click)="deleteCompanyDetails()">Delete</a>
+<div class="main-div">
+    
+    <div class="add-address-main">
+        <div class="title-div">
+            <h2>Company Details</h2>
+          </div>
+      <form class="form-details" [formGroup]="addressFormGroup" novalidate>
+        <mat-form-field>
+          <input matInput placeholder="Organisation Name" formControlName="name">
+          <mat-error *ngIf="hasError('name', 'required')">Name is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Address Line 1" formControlName="add1">
+          <mat-error *ngIf="hasError('add1', 'required')">Address 1 is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Address Line 2" formControlName="add2">
+          <mat-error *ngIf="hasError('add2', 'required')">Address 2 is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Town / City" formControlName="town_city">
+          <mat-error *ngIf="hasError('town_city', 'required')">Town/City is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="County"  formControlName="county">
+          <mat-error *ngIf="hasError('county', 'required')">County is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Postcode" formControlName="postCode">
+          <mat-error *ngIf="hasError('postCode', 'required')">Postcode is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Country" formControlName="country">
+          <mat-error *ngIf="hasError('country', 'required')">Country is required</mat-error>
+        </mat-form-field>
+        <mat-card-actions>
+          <button *ngIf="!editButtonShow" class="spacing" mat-flat-button color="primary" type="submit" [disabled]="!addressFormGroup.valid" (click)="postCompanyDetails(addressFormGroup.value)">
+              Add Company
+          </button>
+          <button *ngIf="editButtonShow" class="spacing" mat-flat-button color="primary" type="submit" (click)="putCompanyDetails(content)">
+              Save
+          </button>
+          <button *ngIf="editButtonShow" mat-flat-button color="primary" (click)="deleteCompanyDetails()">
+            Delete
+        </button>
+        </mat-card-actions>
+      </form>
     </div>
   </div>
-</div>
+  <ng-template #content  let-cross="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Account Delete</h4>
+        <button type="button" class="close" aria-label="Close" (click)="cross('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to save the changes.
+        </p>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="cross('Cross click')">No</button>
+        <button type="button" class="btn btn-outline-dark" (click)="modalSave()">Yes</button>
+      </div>
+    </ng-template>

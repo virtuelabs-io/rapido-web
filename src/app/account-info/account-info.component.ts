@@ -24,6 +24,7 @@ export class AccountInfoComponent implements OnInit {
   deleteUserMsg: string = ""
   updatedAttribute: Boolean = false
   failedToUpdate: Boolean = false
+  _modalReference = null; 
   private _deleteUserService: DeleteUserService
 
   attribute = {
@@ -45,7 +46,8 @@ export class AccountInfoComponent implements OnInit {
     updateAttributeService: UpdateAttributeService,
     private loginStateService: LoginStateService,
     deleteUserService: DeleteUserService,
-    config: NgbModalConfig, private modalService: NgbModal
+    config: NgbModalConfig, 
+    private modalService: NgbModal
   ) {
     this._profileService = profileService
     this._updateAttributeService = updateAttributeService
@@ -59,22 +61,24 @@ export class AccountInfoComponent implements OnInit {
   fetchUserProfile() {
     let localAttributes = this.attribute
     this._profileService.cognitoUser.getUserAttributes(function(err, result) {
-      for(var i = 0; i < result.length; i++) {
-        if (localAttributes[result[i]["Name"].replace("custom:", "")] != null) {
-          localAttributes[result[i]["Name"].replace("custom:", "")] = result[i].getValue()
+      if(result != null) {
+        for(var i = 0; i < result.length; i++) {
+          if (localAttributes[result[i]["Name"].replace("custom:", "")] != null) {
+            localAttributes[result[i]["Name"].replace("custom:", "")] = result[i].getValue()
+          }
         }
-      }
-      if(localAttributes.sendMePromotions == "true") {
-        localAttributes.sendMePromotionsB = true
-      }
-      if(localAttributes.commViaEmail == "true") {
-        localAttributes.commViaEmailB = true
-      }
-      if(localAttributes.commViaSMS == "true") {
-        localAttributes.commViaSMSB = true
-      }
-      if(localAttributes.personalisation == "true") {
-        localAttributes.personalisationB = true
+        if(localAttributes.sendMePromotions == "true") {
+          localAttributes.sendMePromotionsB = true
+        }
+        if(localAttributes.commViaEmail == "true") {
+          localAttributes.commViaEmailB = true
+        }
+        if(localAttributes.commViaSMS == "true") {
+          localAttributes.commViaSMSB = true
+        }
+        if(localAttributes.personalisation == "true") {
+          localAttributes.personalisationB = true
+        }
       }
     })
   }
@@ -101,14 +105,14 @@ export class AccountInfoComponent implements OnInit {
     )
     this._updateAttributeService.attributeList = registrationUpdate.createUpdateAttributeList()
     const promise = this._updateAttributeService.updateAttributes()
-    promise.then(value => {
+    promise.then(_ => {
       this.fetchUserProfile() // to set value returned from the service
       this.updateButton = false
       this.updatedAttribute = true
       this.viewMode = true
       this.updateMode = false
       this.failedToUpdate = false
-    }).catch(error => {
+    }).catch(_ => {
       this.updateButton = false
       this.updatedAttribute = false
       this.failedToUpdate = true
@@ -116,13 +120,14 @@ export class AccountInfoComponent implements OnInit {
   }
 
   delete(content) {
-    this.modalService.open(content)
+    this._modalReference = this.modalService.open(content,  { centered: true })
   }
 
   yesModalAction() {
     this.deleteButton = true
     const promise = this._deleteUserService.deleteUser()
     promise.then(value => {
+      this._modalReference.close()
       this.failedToDelete = false
       this.deleteButton = false
       this.deletedUser = true

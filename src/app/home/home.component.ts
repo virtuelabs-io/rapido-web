@@ -142,7 +142,7 @@ export class HomeComponent implements OnInit {
       if (data) {
         this.carousel.BrowsingHistory.data = data.hits.hit.map((v,i)=>{
           v.fields.id = v.id
-          v.fields.image = Common.getImageURI(null, v.fields.images[0])
+          v.fields.image = Common.getImageURI(null, v.fields.images[1])
           return v.fields
           })
         if (data.error) {

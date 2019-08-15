@@ -59,7 +59,7 @@ export class TopnavComponent implements OnInit {
     this._cartStateService.updateCartCount(0)
   }
 
-  onSearch(){
+  onSearch(event){
     if(this.searchedText){
       this.router.navigateByUrl('/products')
       this._searchItemService.changeState({
@@ -72,7 +72,7 @@ export class TopnavComponent implements OnInit {
         qdotparser:null
       })
     }
-    
+    event.target.blur();
   }
 
   openSnackBar(message) {
