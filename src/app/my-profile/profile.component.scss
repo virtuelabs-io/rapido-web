@@ -53,3 +53,16 @@
     }
   }
 }
+.questionnaire {
+  .title-div {
+    margin-top: 2%;
+    margin-left: 2%;
+    @media screen and (max-width: $mobile-device) {
+      margin-top: 5%;
+    }
+  }
+  .questions {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}

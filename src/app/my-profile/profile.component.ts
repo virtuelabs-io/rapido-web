@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SessionService } from '../services/authentication/session/session.service';
 
 @Component({
   selector: 'app-profile',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  logInStatus: boolean = false
   profileItems = [
     {
       icon: "#shopping-bag",
@@ -14,16 +16,15 @@ export class ProfileComponent implements OnInit {
       route: "/orders"
     },
     {
-      icon: "#black-and-white-credit-cards",
-      title: "My Payment",
-      description: "Edit or add payment methods",
-      route: "profile/payment"
-    },
-    {
       icon: "#company-details", 
       title: "Company Details",
       description: "Add your company details",
       route: "/profile/companyDetails"
+    },
+    {
+      icon: "#black-and-white-credit-cards",
+      title: "To Be Added",
+      description: "To Be Added"
     },
     {
       icon: "#delivery-truck",
@@ -44,8 +45,17 @@ export class ProfileComponent implements OnInit {
     }
     
   ]
-  constructor(){}
+  constructor(
+    private _sessionService: SessionService
+  ){}
 
-  ngOnInit() {}
+  ngOnInit() {
+    const promise = this._sessionService.retrieveSessionIfExists()
+    promise.then( _ => {
+      this.logInStatus = true
+    }).catch(error => {
+      this.logInStatus = false
+    })
+  }
 
 }

@@ -38,7 +38,7 @@ export class TopnavComponent implements OnInit {
       this._loginStateService.changeState(true);
       this.getCartCount()
     }).catch(error => {
-      this.openSnackBar(error.message);
+    //  this.openSnackBar(error.message);
       this.isSignedIn = false
     })
     this._loginStateService.isLoggedInState.subscribe(state => {

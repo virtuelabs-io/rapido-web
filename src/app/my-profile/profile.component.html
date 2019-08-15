@@ -1,10 +1,10 @@
 <div class="main-div">
   <div class="title-div">
-    <h1>
+    <h2>
       My Account
-    </h1>
+    </h2>
   </div>
-  <div class="rapido-profile">
+  <div *ngIf="logInStatus" class="rapido-profile">
     <div class="rapido-profile-item" *ngFor="let item of profileItems" [routerLink]="[ item.route ]" >
       <div class="icon-div">
         <a class="rapido-icon">
@@ -20,5 +20,87 @@
         <p>{{ item.description }}</p>
       </div>
     </div>
+  </div>
+</div>
+<div class="questionnaire">
+  <div class="title-div">
+    <h2>
+      Questionnaire
+    </h2>
+  </div>
+  <div class="questions">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            How do I check my previous orders ?
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>in case you are not logged in,once in Home screen, click the Log In button on the top bar and route to 
+          page and enter the credentails and then click on the user icon on the top of the page and in the drop down
+          click on your profile item. Once in Profile page click on Orders Cards to view the orders  
+        </p>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              How do I add my company details ?
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <p>in case you are not logged in,once in Home screen, click the Log In button on the top bar and route to 
+            page and enter the credentails and then click on the user icon on the top of the page and in the drop down
+            click on your profile item. Once in Profile page click on Orders Cards to view the orders  
+          </p>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                How do I add a new Delivery Address ?
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>in case you are not logged in,once in Home screen, click the Log In button on the top bar and route to 
+              page and enter the credentails and then click on the user icon on the top of the page and in the drop down
+              click on your profile item. Once in Profile page click on Orders Cards to view the orders  
+            </p>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  How can I edit my profile ?
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <p>in case you are not logged in,once in Home screen, click the Log In button on the top bar and route to 
+                page and enter the credentails and then click on the user icon on the top of the page and in the drop down
+                click on your profile item. Once in Profile page click on Orders Cards to view the orders  
+              </p>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Can I add multiple delivery address ?
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <p>in case you are not logged in,once in Home screen, click the Log In button on the top bar and route to 
+                  page and enter the credentails and then click on the user icon on the top of the page and in the drop down
+                  click on your profile item. Once in Profile page click on Orders Cards to view the orders  
+                </p>
+              </mat-expansion-panel>
+
+              <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Can I checkout without being logged In ?
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <p>in case you are not logged in,once in Home screen, click the Log In button on the top bar and route to 
+                    page and enter the credentails and then click on the user icon on the top of the page and in the drop down
+                    click on your profile item. Once in Profile page click on Orders Cards to view the orders  
+                  </p>
+                </mat-expansion-panel>
+    </mat-accordion>
   </div>
 </div>
