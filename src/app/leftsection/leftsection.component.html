@@ -30,12 +30,12 @@
          <!-- Current selections ends -->
 
          <!-- Products Hierarchy starts -->
-         <mat-accordion multi="true" displayMode="flat" *ngIf='searchedText'>
+         <mat-accordion multi="true" displayMode="flat" *ngIf='category'>
                <div class="h6 pt-4">Products Hierarchy</div>
                <mat-expansion-panel expanded="false">
                      <mat-expansion-panel-header >
                            <mat-panel-title>
-                              {{searchedText}}
+                              {{category}}
                            </mat-panel-title>
                         </mat-expansion-panel-header>
 
