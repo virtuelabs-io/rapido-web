@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Constants } from '../utils/constants';
 import { Router } from '@angular/router';
+import { RouteService } from '../shared-services/route/route.service';
 
 @Component({
   selector: 'app-footer',
@@ -14,7 +15,13 @@ export class FooterComponent implements OnInit {
   durationInSeconds = 5;
   deployedVersion = Constants.environment.version;
   constructor(
-    public router: Router
+    public router: Router,
+    private RouteService : RouteService
   ) { }
   ngOnInit() {}
+
+  handleHelpNaviagte() {
+    this.RouteService.changeRoute('questionnaire');
+    this.router.navigateByUrl('/profile')
+  }
 }

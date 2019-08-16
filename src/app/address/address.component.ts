@@ -63,7 +63,7 @@ export class AddressComponent implements OnInit {
   }
 
   newAddress() {
-    this.RouteService.changeRoute('profile');
+    this.RouteService.changeRoute('profile')
     this.router.navigate(['profile/address/newAddress']);
   }
 }
