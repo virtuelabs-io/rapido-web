@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SearchItemService } from '../shared-services/search-item/search-item.services';
-import { ProductsService } from '../services/products/products.service';
+import { ProductsHierarchyService } from '../services/products/products-hierarchy.service';
 
  @Component({
   selector: 'app-leftsection',
@@ -13,17 +13,18 @@ import { ProductsService } from '../services/products/products.service';
   filterData: any
   prevQuery: Object
   selections: Object
-  constructor(private _searchItemService: SearchItemService, productsService: ProductsService) {
-    this._productsService = productsService
-  }
+  private _productsHierarchyService: ProductsHierarchyService
   fnPriceFilterHandler: Function;
   tags = []
   category: string = ""
+  categories: any
   subcategories: any
   fieldsQuery: any
   searchedText: string = ""
  
-  private _productsService: ProductsService
+  constructor(private _searchItemService: SearchItemService, productsHierarchyService: ProductsHierarchyService) {
+    this._productsHierarchyService = productsHierarchyService
+  }
 
   ngOnInit() {
    this.fieldsQuery = {
@@ -55,14 +56,11 @@ import { ProductsService } from '../services/products/products.service';
       this.tags = hits.hit[0].fields.tags
       debugger
       this.category = hits.hit[0].fields.category
-      let categories = this._productsService.getSubcategory()
-      this.subcategories = categories[this.category]
-      /* subscribe(data => {
-        debugger
-      if (data) {
-        this.subcategories = data[this.category]
-      }
-    }) */
+      this._productsHierarchyService.get()
+        .subscribe(data => {
+          this.categories = data
+          this.subcategories = this.categories[this.category]
+        })
       this.fnPriceFilterHandler = obj => this.priceFilterData(obj);
       this.filterData = [
       {

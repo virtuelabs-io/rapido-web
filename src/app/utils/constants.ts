@@ -11,7 +11,6 @@ export class Constants {
     name: environment.name,
     production: environment.production,
     productSearchEndPoint: environment.productSearchEndPoint,
-    productList: environment.productList,
     version: environment.version,
     staticAssets: environment.staticAssets,
     stripePublicKey: environment.payment.publicKey
