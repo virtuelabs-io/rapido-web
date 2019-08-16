@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { OrdersService } from '../services/orders/orders.service';
 import { Constants } from '../utils/constants';
 import { Router } from '@angular/router';
+import { RouteService } from '../shared-services/route/route.service';
+import { SessionService } from '../services/authentication/session/session.service';
 
 @Component({
   selector: 'app-orders',
@@ -18,13 +20,21 @@ export class OrdersComponent implements OnInit {
 
   constructor(
     orderService: OrdersService,
-    private router: Router
+    private router: Router,
+    private _sessionService: SessionService,
+    private RouteService : RouteService
   ) {
     this._orderService = orderService
   }
 
   ngOnInit() {
-    this.getOrders()
+    const promise = this._sessionService.retrieveSessionIfExists()
+    promise.then( _ => {
+      this.getOrders()
+    }).catch(error => {
+      this.RouteService.changeRoute('orders')
+      this.router.navigateByUrl('/login')
+    })
   }
 
   uniqueOrders(arr, comp) {

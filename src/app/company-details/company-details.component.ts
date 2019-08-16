@@ -6,7 +6,8 @@ import { Router } from '@angular/router';
 import {MatSnackBar} from '@angular/material';
 import { Constants } from '../utils/constants';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
+import { RouteService } from '../shared-services/route/route.service';
+import { SessionService } from '../services/authentication/session/session.service';
 @Component({
   selector: 'app-company-details',
   templateUrl: './company-details.component.html',
@@ -27,7 +28,9 @@ export class CompanyDetailsComponent implements OnInit {
     companyDetailsService: CompanyDetailsService,
     private _snackBar: MatSnackBar,
     config: NgbModalConfig, 
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private _sessionService: SessionService,
+    private RouteService : RouteService
   ) { 
     this._companyDetailsService = companyDetailsService
   }
@@ -43,7 +46,13 @@ export class CompanyDetailsComponent implements OnInit {
       county: new FormControl('', [Validators.required]),
       country: new FormControl('', [Validators.required])
     })
-    this.getCompanyDetails()
+    const promise = this._sessionService.retrieveSessionIfExists()
+    promise.then( _ => {
+      this.getCompanyDetails()
+    }).catch(error => {
+      this.RouteService.changeRoute('profile/companyDetails')
+      this.router.navigateByUrl('/login')
+    })
   }
 
   getCompanyDetails() {

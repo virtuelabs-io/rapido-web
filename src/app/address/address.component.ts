@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AddressDetailsService } from '../services/customer/address-details.service';
 import { RouteService } from '../shared-services/route/route.service';
+import { SessionService } from '../services/authentication/session/session.service';
 
 @Component({
   selector: 'app-address',
@@ -17,11 +18,18 @@ export class AddressComponent implements OnInit {
   constructor( 
     private router: Router,
     addressDetailsService: AddressDetailsService,
-    private RouteService : RouteService,
+    private _sessionService: SessionService,
+    private RouteService : RouteService
   ) {
     this._addressDetailsService = addressDetailsService
     this.showSpinner = true
-    this.getAddressList()
+    const promise = this._sessionService.retrieveSessionIfExists()
+    promise.then( _ => {
+      this.getAddressList()
+    }).catch(error => {
+      this.RouteService.changeRoute('profile/address')
+      this.router.navigateByUrl('/login')
+    })
   }
 
   ngOnInit() {

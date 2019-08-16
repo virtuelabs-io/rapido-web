@@ -5,6 +5,8 @@ import { CartItem } from '../services/cart/cart-item';
 import {MatSnackBar} from '@angular/material';
 import { Router } from '@angular/router';
 import { CartStateService } from '../shared-services/cart-state/cart-state.service';
+import { SessionService } from '../services/authentication/session/session.service';
+import { RouteService } from '../shared-services/route/route.service';
 
 @Component({
   selector: 'app-cart',
@@ -25,13 +27,22 @@ export class CartComponent implements OnInit {
     cartService: CartService,
     private _snackBar: MatSnackBar,
     private router: Router,
-		private _cartStateService: CartStateService
+    private _cartStateService: CartStateService,
+    private _sessionService: SessionService,
+    private RouteService : RouteService
   ) { 
     this._cartService = cartService
   }
 
   ngOnInit() {
-    this.getCartItems()
+    const promise = this._sessionService.retrieveSessionIfExists()
+    promise.then( _ => {
+      this.getCartItems()
+    }).catch(error => {
+      this.RouteService.changeRoute('cart')
+      this.router.navigateByUrl('/login')
+    })
+    
   }
 
   getCartItems() {

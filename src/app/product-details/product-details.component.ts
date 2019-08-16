@@ -9,6 +9,7 @@ import { CartItem } from '../services/cart/cart-item';
 import { Common } from '../../../src/app/utils/common';
 import { Constants } from '../../../src/app/utils/constants';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { RouteService } from '../shared-services/route/route.service';
 
 @Component({
 	selector: 'app-product-details',
@@ -35,6 +36,7 @@ export class ProductDetailsComponent implements OnInit {
 		private cartService: CartService,
 		public router: Router, 
 		private _snackBar: MatSnackBar,
+		private RouteService : RouteService,
 		private route: ActivatedRoute) {
 		this._productsService = productsService
 		this._cartService = cartService
@@ -156,7 +158,8 @@ export class ProductDetailsComponent implements OnInit {
 			this._snackBar.open(`${Constants.SESSION_LOST} please login to add items to cart`,  undefined , {
 				duration: 4000,
 			 })
-			this.router.navigate(['/login', 'redirectToCart'])
+			 this.RouteService.changeRoute('products/details/'+this.itemId)
+			 this.router.navigateByUrl('/login')
 		}
    }
 

@@ -5,6 +5,9 @@ import { Registration } from '../services/authentication/helpers/registration';
 import { DeleteUserService } from '../services/authentication/delete-user/delete-user.service';
 import { LoginStateService } from '../shared-services/login-state/login-state.service';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { RouteService } from '../shared-services/route/route.service';
+import { SessionService } from '../services/authentication/session/session.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-account-info',
@@ -47,7 +50,10 @@ export class AccountInfoComponent implements OnInit {
     private loginStateService: LoginStateService,
     deleteUserService: DeleteUserService,
     config: NgbModalConfig, 
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private router: Router,
+    private _sessionService: SessionService,
+    private RouteService : RouteService
   ) {
     this._profileService = profileService
     this._updateAttributeService = updateAttributeService
@@ -55,7 +61,13 @@ export class AccountInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.fetchUserProfile()
+    const promise = this._sessionService.retrieveSessionIfExists()
+    promise.then( _ => {
+      this.fetchUserProfile()
+    }).catch(error => {
+      this.RouteService.changeRoute('profile/account')
+      this.router.navigateByUrl('/login')
+    })
   }
 
   fetchUserProfile() {
