@@ -54,7 +54,6 @@ import { ProductsHierarchyService } from '../services/products/products-hierarch
     } = respData
     if (hits && hits.hit) {
       this.tags = hits.hit[0].fields.tags
-      debugger
       this.category = hits.hit[0].fields.category
       this._productsHierarchyService.get()
         .subscribe(data => {

@@ -59,6 +59,7 @@ export class ProductResultsComponent implements OnInit {
       this._searchItemService.changeState({
         start: evt.pageIndex * evt.pageSize
       })
+      return this.pageEvent
     }
 
     setPageSizeOptions(setPageSizeOptionsInput: string) {
