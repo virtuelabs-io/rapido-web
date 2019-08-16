@@ -1,6 +1,7 @@
 <div>
   <section>
      <div class="filtersL">
+         <!-- Current selections starts -->
          <mat-accordion multi="true" displayMode="flat" *ngIf='searchedText  || fieldsQuery.price.q || fieldsQuery.rating.q'>
                <div class="h6 pt-4">Current selections</div>
                <mat-expansion-panel expanded="true">
@@ -24,9 +25,28 @@
                            </app-pill-badge>
                         </div>
                      </mat-nav-list>
-                     
                </mat-expansion-panel>
          </mat-accordion> 
+         <!-- Current selections ends -->
+
+         <!-- Products Hierarchy starts -->
+         <mat-accordion multi="true" displayMode="flat" *ngIf='category'>
+               <div class="h6 pt-4">Products Hierarchy</div>
+               <mat-expansion-panel expanded="false">
+                     <mat-expansion-panel-header >
+                           <mat-panel-title>
+                              {{category}}
+                           </mat-panel-title>
+                        </mat-expansion-panel-header>
+
+                     <mat-nav-list>
+                           <mat-list-item *ngFor="let item of this.subcategories" (click)="onPressItem(category + ' ' + item)" >
+                                 {{item}}
+                                 </mat-list-item>
+                     </mat-nav-list>
+               </mat-expansion-panel>
+         </mat-accordion> 
+         <!-- Products Hierarchy ends -->
 
       <mat-accordion multi="true" displayMode="flat" *ngFor="let item of filterData">
            <div class="h6 pt-4">{{item.headerText}}</div>
