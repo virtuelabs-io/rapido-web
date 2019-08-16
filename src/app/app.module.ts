@@ -27,7 +27,6 @@ import { ProductControlsComponent } from './product-controls/product-controls.co
 import { CheckoutComponent } from './checkout/checkout.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { Constants } from './utils/constants';
-// import { Ng5SliderModule } from 'ng5-slider';
 import { RangeSliderComponent } from './range-slider/range-slider.component';
 import { ResendOtpComponent } from './resend-otp/resend-otp.component';
 import { ProfileComponent } from './my-profile/profile.component';
@@ -54,6 +53,7 @@ import { CarouselScrollComponent } from './card/carousel-scroll/carousel-scroll.
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { TableComponent } from './components/table/table.component';
 import { PillBadgeComponent } from './components/common/pill-badge/pill-badge.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
   declarations: [
@@ -124,7 +124,6 @@ import { PillBadgeComponent } from './components/common/pill-badge/pill-badge.co
     MatProgressSpinnerModule,
     MatDialogModule,
     MatTableModule,
-    // Ng5SliderModule,
     NgxStripeModule.forRoot(Constants.environment.stripePublicKey),
     HttpClientModule,
     MatMenuModule,
@@ -141,7 +140,8 @@ import { PillBadgeComponent } from './components/common/pill-badge/pill-badge.co
     MatSelectModule,
     MatSidenavModule,
     NgxPageScrollCoreModule,
-    NgbModule
+    NgbModule,
+    AngularFontAwesomeModule
   ],
   entryComponents: [FilterControlsDialog],
   providers: [],
