@@ -30,6 +30,7 @@ export class AppComponent {
       }
 
       if (event instanceof NavigationEnd) {
+        window.scroll(0,0)
         this.loginStateService.loaderDisable()
       }
 
