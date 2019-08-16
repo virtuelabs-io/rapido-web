@@ -1,4 +1,4 @@
-<div *ngIf="!noResultsFound">
+<div >
   <div>
       <!-- small device filter control starts -->
       <section>
@@ -16,10 +16,14 @@
           <app-leftsection></app-leftsection>
       </div>
         <!-- Cards List div starts -->
-        <div class="row itemListCls col-md-9" >
+        <div class="row itemListCls col-md-9" *ngIf="!noResultsFound">
                 <div *ngFor="let item of productListBind">
                     <app-card [itemList]=item></app-card>
                 </div>
+        </div>
+        
+        <div class="no-results" *ngIf="noResultsFound">
+            We didn't find any results for that search... Please try again.
         </div>
           <!-- Cards list div ends -->
           <div class='m-auto'>
@@ -27,13 +31,10 @@
                 [length]="length"
                 [pageSize]="pageSize"
                 [pageSizeOptions]="pageSizeOptions"
-                (page)="pageEvent = onPageChange($event)">
+                (page)="onPageChange($event)">
             </mat-paginator>
           </div>
     </div>
   </div>
 </div>
 
-<div class="no-results" *ngIf="noResultsFound">
-    We didn't find any results for that search... Please try again.
-  </div>
