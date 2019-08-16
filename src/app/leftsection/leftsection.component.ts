@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SearchItemService } from '../shared-services/search-item/search-item.services';
+import { ProductsService } from '../services/products/products.service';
 
  @Component({
   selector: 'app-leftsection',
@@ -12,12 +13,18 @@ import { SearchItemService } from '../shared-services/search-item/search-item.se
   filterData: any
   prevQuery: Object
   selections: Object
-  constructor(private _searchItemService: SearchItemService) {}
+  constructor(private _searchItemService: SearchItemService, productsService: ProductsService) {
+    this._productsService = productsService
+  }
   fnPriceFilterHandler: Function;
   tags = []
+  category: string = ""
+  subcategories: any
   fieldsQuery: any
   searchedText: string = ""
  
+  private _productsService: ProductsService
+
   ngOnInit() {
    this.fieldsQuery = {
     price: {
@@ -46,6 +53,16 @@ import { SearchItemService } from '../shared-services/search-item/search-item.se
     } = respData
     if (hits && hits.hit) {
       this.tags = hits.hit[0].fields.tags
+      debugger
+      this.category = hits.hit[0].fields.category
+      let categories = this._productsService.getSubcategory()
+      this.subcategories = categories[this.category]
+      /* subscribe(data => {
+        debugger
+      if (data) {
+        this.subcategories = data[this.category]
+      }
+    }) */
       this.fnPriceFilterHandler = obj => this.priceFilterData(obj);
       this.filterData = [
       {

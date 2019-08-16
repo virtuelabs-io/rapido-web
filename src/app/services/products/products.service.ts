@@ -40,4 +40,41 @@ export class ProductsService {
       })
     );
   }
+  
+  getSubcategory(){
+    return {
+      "Watches": [
+          "Smart watch",
+          "Analogue",
+          "Digital",
+          "Classic",
+          "Contemporary & Design",
+          "Fashion",
+          "Swiss Made"
+      ],
+      "Phones": [
+          "Apple",
+          "Samsung",
+          "Nokia",
+          "Motorola",
+          "Redme",
+          "1+"
+      ]
+  }
+    /* let url = Constants.environment.productList
+    this.loginStateService.loaderEnable()
+    return this._http.get<any>(url)
+    .pipe(
+      retry(Constants.RETRY_TIMES),
+      tap( items => {
+        console.log(items)
+        this.loginStateService.loaderDisable()
+      }),
+      catchError(err => {
+        console.log('Error in processing request...', err);
+        this.loginStateService.loaderDisable()
+        return throwError(err);
+      })
+    ); */
+  }
 }
