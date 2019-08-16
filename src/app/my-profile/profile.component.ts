@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SessionService } from '../services/authentication/session/session.service';
+import { RouteService } from '../shared-services/route/route.service';
 
 @Component({
   selector: 'app-profile',
@@ -6,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  logInStatus: boolean = false
+  _previousRoute: any
+  showQuestionnaire: boolean = true
   profileItems = [
     {
       icon: "#shopping-bag",
@@ -14,16 +19,15 @@ export class ProfileComponent implements OnInit {
       route: "/orders"
     },
     {
-      icon: "#black-and-white-credit-cards",
-      title: "My Payment",
-      description: "Edit or add payment methods",
-      route: "profile/payment"
-    },
-    {
       icon: "#company-details", 
       title: "Company Details",
       description: "Add your company details",
       route: "/profile/companyDetails"
+    },
+    {
+      icon: "#black-and-white-credit-cards",
+      title: "To Be Added",
+      description: "To Be Added"
     },
     {
       icon: "#delivery-truck",
@@ -44,8 +48,28 @@ export class ProfileComponent implements OnInit {
     }
     
   ]
-  constructor(){}
+  constructor(
+    private _sessionService: SessionService,
+    private RouteService: RouteService
+  ){}
 
-  ngOnInit() {}
+  ngOnInit() {
+    const promise = this._sessionService.retrieveSessionIfExists()
+    promise.then( _ => {
+      this.logInStatus = true
+    }).catch(error => {
+      this.logInStatus = false
+    })
 
+    this._previousRoute = this.RouteService.getRoute()
+    if(this._previousRoute.value == 'noQuestionnaire') {
+      this.showQuestionnaire = false
+    }
+    else if(this._previousRoute.value == 'questionnaire') {
+      this.showQuestionnaire = true
+    }
+    else {
+      this.showQuestionnaire = false
+    }
+  }
 }
