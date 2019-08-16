@@ -54,6 +54,7 @@ import { CarouselScrollComponent } from './card/carousel-scroll/carousel-scroll.
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { TableComponent } from './components/table/table.component';
 import { PillBadgeComponent } from './components/common/pill-badge/pill-badge.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
   declarations: [
@@ -141,7 +142,8 @@ import { PillBadgeComponent } from './components/common/pill-badge/pill-badge.co
     MatSelectModule,
     MatSidenavModule,
     NgxPageScrollCoreModule,
-    NgbModule
+    NgbModule,
+    AngularFontAwesomeModule
   ],
   entryComponents: [FilterControlsDialog],
   providers: [],
