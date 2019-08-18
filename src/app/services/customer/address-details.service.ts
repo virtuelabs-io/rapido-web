@@ -10,12 +10,12 @@ import { Constants } from '../../utils/constants';
 })
 export class AddressDetailsService extends RapidoHttpService<AddressDetails>{
 
-  constructor(protected _http: HttpClient, protected _profileService: ProfileService) { 
+  constructor(protected _http?: HttpClient, protected _profileService?: ProfileService) {
     super(_http, _profileService)
   }
 
   getAddressDetailsList(){
-    return this.get(Constants.CUSTOMER_APIS.address.apiList,this.addAuthHeader(this.initializeHeaders()))
+    return this.getList(Constants.CUSTOMER_APIS.address.apiList,this.addAuthHeader(this.initializeHeaders()))
   }
 
   getAddressDetails(id: number){
