@@ -4,6 +4,7 @@ import { Order } from '../services/orders/order';
 import { Constants } from '../utils/constants';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RouteService } from '../shared-services/route/route.service';
+import { LoginStateService } from '../shared-services/login-state/login-state.service';
 
 @Component({
   selector: 'app-order-details',
@@ -21,6 +22,7 @@ export class OrderDetailsComponent implements OnInit {
   createdOn: string
   orderId: string
   id: number
+  isLoggedIn: Boolean
   imageUrl: string = Constants.environment.staticAssets
   order: Order = new Order()
   private _orderService: OrdersService
@@ -29,7 +31,8 @@ export class OrderDetailsComponent implements OnInit {
     orderService: OrdersService,
     private router: Router,
     private actRoute: ActivatedRoute,
-    private RouteService: RouteService
+    private RouteService: RouteService,
+    private _loginStateService: LoginStateService
   ) { 
     this._orderService = orderService
   }
@@ -40,12 +43,28 @@ export class OrderDetailsComponent implements OnInit {
       this.newOrder = true
     }
     this.id = parseInt(this.actRoute.snapshot.paramMap.get('id'))
-    this.getOrder()
+    this.check()
   }
 
-  getOrder() {
+  async check() {
+    await this.loginSessinExists().
+		then( _ => this.getOrder()).
+		catch(err => this.handleError(err))
+  }
+
+  async loginSessinExists(){
+    await (this._loginStateService.isLoggedInState.subscribe(state => this.isLoggedIn = state))
+  }
+
+  async handleError(err){
+    this.RouteService.changeRoute('orders/'+this.id+'/details')
+    this.router.navigateByUrl('/login')
+   }
+
+  async getOrder() {
     this.order.order_id = this.id
-    this._orderService.getOrder(this.order.order_id)
+    if(this.isLoggedIn) {
+      await this._orderService.getOrder(this.order.order_id)
     .then((data: any) => {
       if(data['orderItemsObject']) {
         for(let order in data['orderItemsObject']) {
@@ -77,5 +96,9 @@ export class OrderDetailsComponent implements OnInit {
         this.orderedItems = Object.keys(this.orders)
       }
     })
+    }
+    else {
+      await Promise.reject("Login Session doesn't exist!")
+    }
   }
 }

@@ -3,7 +3,6 @@ import { OrdersService } from '../services/orders/orders.service';
 import { Constants } from '../utils/constants';
 import { Router } from '@angular/router';
 import { RouteService } from '../shared-services/route/route.service';
-import { SessionService } from '../services/authentication/session/session.service';
 import { LoginStateService } from '../shared-services/login-state/login-state.service';
 
 @Component({
@@ -23,7 +22,6 @@ export class OrdersComponent implements OnInit {
   constructor(
     orderService: OrdersService,
     private router: Router,
-    private _sessionService: SessionService,
     private RouteService : RouteService,
     private _loginStateService: LoginStateService
   ) {
