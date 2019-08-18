@@ -26,27 +26,27 @@ export class AddressComponent implements OnInit {
   ) {
     this._addressDetailsService = addressDetailsService
     this.showSpinner = true
-    this.check()
+    this.userLogInCheck()
   }
 
-  async check() {
+  async userLogInCheck() {
     await this.loginSessinExists().
 		then( _ => this.getAddressList()).
 		catch(err => this.handleError(err))
   }
 
-  async handleError(err){
+  async handleError(err) {
     this.RouteService.changeRoute('profile/address')
     this.router.navigateByUrl('/login')
    }
 
-  async loginSessinExists(){
+  async loginSessinExists() {
     await (this._loginStateService.isLoggedInState.subscribe(state => this.isLoggedIn = state))
   }
 
   ngOnInit() {
     this.showSpinner = true
-    this.check()
+    this.userLogInCheck()
   }
 
   async getAddressList() {

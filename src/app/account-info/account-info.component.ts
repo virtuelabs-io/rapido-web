@@ -63,22 +63,20 @@ export class AccountInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.check()
+    this.userLogInCheck()
   }
 
-  async check() {
-   
-
+  async userLogInCheck() {
     await this.loginSessinExists().
 		then( _ => this.fetchUserProfile()).
 		catch(err => this.handleError(err))
   }
 
-  async loginSessinExists(){
+  async loginSessinExists() {
     await (this._loginStateService.isLoggedInState.subscribe(state => this.isLoggedIn = state))
  }
 
-  async handleError(err){
+  async handleError(err) {
     this.RouteService.changeRoute('profile/account')
     this.router.navigateByUrl('/login')
    }

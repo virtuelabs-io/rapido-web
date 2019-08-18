@@ -43,20 +43,20 @@ export class OrderDetailsComponent implements OnInit {
       this.newOrder = true
     }
     this.id = parseInt(this.actRoute.snapshot.paramMap.get('id'))
-    this.check()
+    this.userLogInCheck()
   }
 
-  async check() {
+  async userLogInCheck() {
     await this.loginSessinExists().
 		then( _ => this.getOrder()).
 		catch(err => this.handleError(err))
   }
 
-  async loginSessinExists(){
+  async loginSessinExists() {
     await (this._loginStateService.isLoggedInState.subscribe(state => this.isLoggedIn = state))
   }
 
-  async handleError(err){
+  async handleError(err) {
     this.RouteService.changeRoute('orders/'+this.id+'/details')
     this.router.navigateByUrl('/login')
    }
