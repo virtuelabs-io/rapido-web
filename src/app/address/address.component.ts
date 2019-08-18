@@ -37,7 +37,7 @@ export class AddressComponent implements OnInit {
 
   async handleError(err){
     this.RouteService.changeRoute('profile/address')
-  //  this.router.navigateByUrl('/login')
+    this.router.navigateByUrl('/login')
    }
 
   async loginSessinExists(){

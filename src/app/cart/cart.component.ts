@@ -53,7 +53,7 @@ export class CartComponent implements OnInit {
 
  async handleError(err){
   this.RouteService.changeRoute('cart')
- // this.router.navigateByUrl('/login')
+  this.router.navigateByUrl('/login')
  }
 
  async getCartItems() {
