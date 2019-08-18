@@ -21,6 +21,7 @@ import { CartItem } from '../services/cart/cart-item';
 import { CartItemDetails } from '../services/cart/cart-item-details';
 import { OrdersService } from '../services/orders/orders.service';
 import { Order } from '../services/orders/order';
+import { AddressDetailsMockService } from '../services/customer/address-details.mock.service';
 
 @Component({
   selector: 'app-authmock',
@@ -42,6 +43,8 @@ export class AuthmockComponent implements OnInit {
   address_details_id: number;
 
   address_details_result: string;
+
+  mock_address_details_result: string;
 
   cart_item_result: string;
 
@@ -119,6 +122,7 @@ export class AuthmockComponent implements OnInit {
   private _addressDetailsService: AddressDetailsService
   private _cartService: CartService
   private _orderService: OrdersService
+  private _addressDetailsMockService: AddressDetailsMockService
 
   constructor(
     signUpService: SignUpService,
@@ -135,7 +139,8 @@ export class AuthmockComponent implements OnInit {
     companyDetailsService: CompanyDetailsService,
     addressDetailsService: AddressDetailsService,
     cartService: CartService,
-    orderService: OrdersService
+    orderService: OrdersService,
+    addressDetailsMockService: AddressDetailsMockService
     ) {
     this._signUpService = signUpService
     this._profileService = profileService
@@ -152,6 +157,7 @@ export class AuthmockComponent implements OnInit {
     this._addressDetailsService = addressDetailsService
     this._cartService = cartService
     this._orderService = orderService
+    this._addressDetailsMockService = addressDetailsMockService
   }
 
   ngOnInit() {
@@ -363,6 +369,53 @@ export class AuthmockComponent implements OnInit {
       console.log(data)
       this.address_details_id = null
       this.address_details_result = "Sucessfully deleted customer address details and logged!";
+    })
+  }
+
+  getAddressDetailsMock(){
+    this._addressDetailsMockService.getAddressDetails(1)
+    .subscribe(data => {
+      console.log(data)
+      this.mock_address_details_result = "Sucessfully fetched mock address details and logged!";
+    })
+  }
+
+  getAddressDetailsListMock(){
+    this._addressDetailsMockService.getAddressDetailsList()
+    .subscribe(data => {
+      console.log(data)
+      if(data['length'] > 0){
+        console.log('Sucessfully updated the address test id to: 1')
+      }
+      this.mock_address_details_result = "Sucessfully fetched mock address details List and logged!";
+    })
+  }
+
+  postAddressDetailsMock(){
+    this._addressDetailsMockService.postAddressDetails(this.addressDetails)
+    .subscribe(data => {
+      console.log(data)
+      if(data['insertId']){
+        console.log('Sucessfully updated the address test id to: 1')
+      }
+      this.mock_address_details_result = "Sucessfully posted mock address company details and logged!";
+    })
+  }
+
+  putAddressDetailsMock(){
+    this.addressDetails.id = 1
+    this._addressDetailsMockService.putAddressDetails(this.addressDetails)
+    .subscribe(data => {
+      console.log(data)
+      this.mock_address_details_result = "Sucessfully updated mock customer address details and logged!";
+    })
+  }
+
+  deleteAddressDetailsMock(){
+    this._addressDetailsMockService.deleteAddressDetails(1)
+    .subscribe(data => {
+      console.log(data)
+      this.mock_address_details_result = "Sucessfully deleted mock customer address details and logged!";
     })
   }
 
