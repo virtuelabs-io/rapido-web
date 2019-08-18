@@ -4,6 +4,7 @@ import { Constants } from '../utils/constants';
 import { Router } from '@angular/router';
 import { RouteService } from '../shared-services/route/route.service';
 import { SessionService } from '../services/authentication/session/session.service';
+import { LoginStateService } from '../shared-services/login-state/login-state.service';
 
 @Component({
   selector: 'app-orders',
@@ -16,26 +17,38 @@ export class OrdersComponent implements OnInit {
   orders = {}
   products = {}
   currentOrders = []
+  isLoggedIn: Boolean
   cancelledStatus = Constants.ORDER_STATUS[4]
 
   constructor(
     orderService: OrdersService,
     private router: Router,
     private _sessionService: SessionService,
-    private RouteService : RouteService
+    private RouteService : RouteService,
+    private _loginStateService: LoginStateService
   ) {
     this._orderService = orderService
   }
 
   ngOnInit() {
-    const promise = this._sessionService.retrieveSessionIfExists()
-    promise.then( _ => {
-      this.getOrders()
-    }).catch(error => {
-      this.RouteService.changeRoute('orders')
-    //  this.router.navigateByUrl('/login')
-    })
+    this.check()
+    
   }
+
+  async check() {
+    await this.loginSessinExists().
+		then( _ => this.getOrders()).
+		catch(err => this.handleError(err))
+  }
+
+  async loginSessinExists(){
+    await (this._loginStateService.isLoggedInState.subscribe(state => this.isLoggedIn = state))
+  }
+
+  async handleError(err){
+    this.RouteService.changeRoute('orders')
+    this.router.navigateByUrl('/login')
+   }
 
   uniqueOrders(arr, comp) {
     const unique = arr
@@ -47,10 +60,11 @@ export class OrdersComponent implements OnInit {
    return unique;
   }
 
-  getOrders() {
+  async getOrders() {
     this.currentOrders = []
     this.orders = {}
-    this._orderService.getOrders()
+    if(this.isLoggedIn) {
+      await this._orderService.getOrders()
     .then((data: any) => {
       if(data['products']) {
         this.products = data['products']
@@ -74,6 +88,10 @@ export class OrdersComponent implements OnInit {
       }
       this.currentOrders = Object.keys(this.orders).reverse()
     })
+    }
+    else {
+      await Promise.reject("Login Session doesn't exist!")
+    }
   }
 
   cancelOrder(id) {
