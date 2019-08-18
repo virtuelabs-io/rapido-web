@@ -21,6 +21,7 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
 import { HomeComponent } from './home/home.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { CareerPageComponent } from './components/career-page/career-page.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -44,7 +45,8 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
  { path: 'authmock', component: AuthmockComponent},
   { path: 'products', component: ProductResultsComponent },
-  { path: 'products/details/:id', component: ProductDetailsComponent}
+  { path: 'products/details/:id', component: ProductDetailsComponent},
+  { path: 'careers', component: CareerPageComponent}
 ];
 
 @NgModule({
