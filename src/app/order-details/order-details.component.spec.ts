@@ -24,6 +24,8 @@ describe('OrderDetailsComponent', () => {
   }));
 
   beforeEach(() => {
+    router = TestBed.get(Router);
+    router.initialNavigation();
     fixture = TestBed.createComponent(OrderDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
