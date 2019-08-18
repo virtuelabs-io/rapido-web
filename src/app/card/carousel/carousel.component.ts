@@ -4,6 +4,7 @@ import { CartService } from '../../services/cart/cart.service';
 import { CartStateService } from '../../shared-services/cart-state/cart-state.service';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { RouteService } from '../../shared-services/route/route.service';
 
 @Component({
   selector: 'app-carousel',
@@ -23,7 +24,8 @@ export class CarouselComponent implements OnInit {
     private cartService: CartService,
     private _cartStateService: CartStateService,
     private _loginStateService: LoginStateService,
-    public router: Router
+    public router: Router,
+    private RouteService : RouteService
   ) { 
     this._cartService = cartService
 
@@ -89,8 +91,7 @@ export class CarouselComponent implements OnInit {
   }
 
   async handleError(err){
-		if(err=="Login Session doesn't exist!"){
-			this.router.navigate(['/login', 'redirectToCart'])
-		}
+    this.RouteService.changeRoute('')
+    this.router.navigateByUrl('/login')
    }
 }

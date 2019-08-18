@@ -6,6 +6,9 @@ import { Router } from '@angular/router';
 import {MatSnackBar} from '@angular/material';
 import { Constants } from '../utils/constants';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { RouteService } from '../shared-services/route/route.service';
+import { SessionService } from '../services/authentication/session/session.service';
+import { LoginStateService } from '../shared-services/login-state/login-state.service';
 
 @Component({
   selector: 'app-company-details',
@@ -19,6 +22,7 @@ export class CompanyDetailsComponent implements OnInit {
   editButtonShow: boolean = false
   _snackBarMsg: string = ""
   _modalReference = null;  
+  isLoggedIn: Boolean
   companyDetails: CompanyDetails
   addressFormGroup: FormGroup // UI reactive Form Group variable
   private _companyDetailsService: CompanyDetailsService
@@ -27,12 +31,15 @@ export class CompanyDetailsComponent implements OnInit {
     companyDetailsService: CompanyDetailsService,
     private _snackBar: MatSnackBar,
     config: NgbModalConfig, 
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private _sessionService: SessionService,
+    private RouteService : RouteService,
+    private _loginStateService: LoginStateService,
   ) { 
     this._companyDetailsService = companyDetailsService
   }
 
-  ngOnInit() {
+   ngOnInit() {
     this.showSpinner = true
     this.addressFormGroup = new FormGroup({
       name: new FormControl('', [Validators.required]),
@@ -43,35 +50,55 @@ export class CompanyDetailsComponent implements OnInit {
       county: new FormControl('', [Validators.required]),
       country: new FormControl('', [Validators.required])
     })
-    this.getCompanyDetails()
+    this.userLogInCheck()
   }
 
-  getCompanyDetails() {
-    this._companyDetailsService.getCompanyDetails()
-    .subscribe(data => {
-      this.showSpinner = false
-      if(data != null) {
-        this.editButtonShow = true
-        this.addressFormGroup.controls["name"].setValue(data.company_name)
-        this.addressFormGroup.controls["add1"].setValue(data.addr_1)
-        this.addressFormGroup.controls["add2"].setValue(data.addr_2)
-        this.addressFormGroup.controls["town_city"].setValue(data.city)
-        this.addressFormGroup.controls["postCode"].setValue(data.postcode)
-        this.addressFormGroup.controls["country"].setValue(data.country)
-        this.addressFormGroup.controls["county"].setValue(data.county)
-        this._customerId = data.customer_id
-      }
-      else {
-        this.editButtonShow = false
-        this.addressFormGroup.controls["name"].setValue('')
-        this.addressFormGroup.controls["add1"].setValue('')
-        this.addressFormGroup.controls["add2"].setValue('')
-        this.addressFormGroup.controls["town_city"].setValue('')
-        this.addressFormGroup.controls["postCode"].setValue('')
-        this.addressFormGroup.controls["country"].setValue('')
-        this.addressFormGroup.controls["county"].setValue('')
-      }
-    })
+  async userLogInCheck() {
+    await this.loginSessinExists().
+		then( _ => this.getCompanyDetails()).
+		catch(err => this.handleError(err))
+  }
+
+  async loginSessinExists() {
+    await (this._loginStateService.isLoggedInState.subscribe(state => this.isLoggedIn = state))
+ }
+
+  async handleError(err) {
+    this.RouteService.changeRoute('profile/companyDetails')
+    this.router.navigateByUrl('/login')
+   }
+
+   async getCompanyDetails() {
+    if(this.isLoggedIn) {
+      await this._companyDetailsService.getCompanyDetails()
+      .subscribe(data => {
+        this.showSpinner = false
+        if(data != null) {
+          this.editButtonShow = true
+          this.addressFormGroup.controls["name"].setValue(data.company_name)
+          this.addressFormGroup.controls["add1"].setValue(data.addr_1)
+          this.addressFormGroup.controls["add2"].setValue(data.addr_2)
+          this.addressFormGroup.controls["town_city"].setValue(data.city)
+          this.addressFormGroup.controls["postCode"].setValue(data.postcode)
+          this.addressFormGroup.controls["country"].setValue(data.country)
+          this.addressFormGroup.controls["county"].setValue(data.county)
+          this._customerId = data.customer_id
+        }
+        else {
+          this.editButtonShow = false
+          this.addressFormGroup.controls["name"].setValue('')
+          this.addressFormGroup.controls["add1"].setValue('')
+          this.addressFormGroup.controls["add2"].setValue('')
+          this.addressFormGroup.controls["town_city"].setValue('')
+          this.addressFormGroup.controls["postCode"].setValue('')
+          this.addressFormGroup.controls["country"].setValue('')
+          this.addressFormGroup.controls["county"].setValue('')
+        }
+      })
+    }
+    else {
+      await Promise.reject("Login Session doesn't exist!")
+    }
   }
   putCompanyDetails(content) {
     this._modalReference = this.modalService.open(content,  { centered: true })

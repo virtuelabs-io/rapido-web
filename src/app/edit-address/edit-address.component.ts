@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AddressDetails } from '../services/customer/address-details';
 import { AddressDetailsService } from '../services/customer/address-details.service';
-import { parse } from 'url';
-import {FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-address',
@@ -15,17 +14,17 @@ export class EditAddressComponent implements OnInit {
   customer_id: string = ""
   showSpinner: Boolean = false
   addressDetails: AddressDetails
-  private _addressDetailsService: AddressDetailsService
+  public _addressDetailsService: AddressDetailsService
   addressFormGroup: FormGroup // UI reactive Form Group variable
 
   constructor(
+    addressDetailsService: AddressDetailsService,
     private actRoute: ActivatedRoute,
-    private router: Router,
-    addressDetailsService: AddressDetailsService
+    private router: Router
   ) {
-    this._addressDetailsService = addressDetailsService 
+    this._addressDetailsService = addressDetailsService
   }
-  
+
   ngOnInit() {
     this.showSpinner = true
     this.addressFormGroup = new FormGroup({
@@ -53,9 +52,10 @@ export class EditAddressComponent implements OnInit {
       this.addressFormGroup.controls["address_type_id"].setValue(data.address_type_id)
     })
   }
+
   saveAddress() {
     this.showSpinner = true
-    this.addressDetails = new AddressDetails(  
+    this.addressDetails = new AddressDetails(
       this.addressFormGroup.value.name,
       this.addressFormGroup.value.address_type_id,
       this.addressFormGroup.value.add1,

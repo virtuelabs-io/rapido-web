@@ -4,13 +4,13 @@ import { LogInComponent } from './log-in.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
 import {  HttpClientTestingModule } from '@angular/common/http/testing';
-import { Location } from "@angular/common";
+//import { Location } from "@angular/common";
 
 describe('LogInComponent', () => {
   let component: LogInComponent;
   let fixture: ComponentFixture<LogInComponent>;
   let router: Router;
-  let location: Location;
+ // let location: Location;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -19,7 +19,7 @@ describe('LogInComponent', () => {
     })
     .compileComponents();
     router = TestBed.get(Router);
-    location = TestBed.get(Location);
+ //   location = TestBed.get(Location);
     router.initialNavigation();
   }));
 
