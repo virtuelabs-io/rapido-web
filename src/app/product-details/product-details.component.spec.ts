@@ -16,7 +16,7 @@ describe('ProductDetailsComponent', () => {
         HttpClientTestingModule,
         MatTableModule,
         MatSnackBarModule,
-        RouterTestingModule.withRoutes([{ path: 'products/details/:id', component: ProductDetailsComponent }])
+        RouterTestingModule
       ],
       schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
     })

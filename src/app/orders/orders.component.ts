@@ -33,7 +33,7 @@ export class OrdersComponent implements OnInit {
       this.getOrders()
     }).catch(error => {
       this.RouteService.changeRoute('orders')
-      this.router.navigateByUrl('/login')
+    //  this.router.navigateByUrl('/login')
     })
   }
 

@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { CartStateService } from '../shared-services/cart-state/cart-state.service';
 import { SessionService } from '../services/authentication/session/session.service';
 import { RouteService } from '../shared-services/route/route.service';
+import { LoginStateService } from '../shared-services/login-state/login-state.service';
 
 @Component({
   selector: 'app-cart',
@@ -22,6 +23,7 @@ export class CartComponent implements OnInit {
   inCart: Boolean
   laterUse: Boolean = false
   _snackBarMsg: string = ""
+  isLoggedIn: Boolean
   private _cartService: CartService
   constructor(
     cartService: CartService,
@@ -29,27 +31,37 @@ export class CartComponent implements OnInit {
     private router: Router,
     private _cartStateService: CartStateService,
     private _sessionService: SessionService,
-    private RouteService : RouteService
+    private RouteService : RouteService,
+    private _loginStateService: LoginStateService
   ) { 
     this._cartService = cartService
   }
 
-  ngOnInit() {
-    const promise = this._sessionService.retrieveSessionIfExists()
-    promise.then( _ => {
-      this.getCartItems()
-    }).catch(error => {
-      this.RouteService.changeRoute('cart')
-      this.router.navigateByUrl('/login')
-    })
-    
+   ngOnInit() {
+    this.check()
   }
 
-  getCartItems() {
-    this.cartItems = []
-    this.saveforLater = []
-    this.cartAmount = 0
-    this._cartService.getCartItems()
+  async check() {
+    await this.loginSessinExists().
+		then( _ => this.getCartItems()).
+		catch(err => this.handleError(err))
+  }
+
+  async loginSessinExists(){
+    await (this._loginStateService.isLoggedInState.subscribe(state => this.isLoggedIn = state))
+  }
+
+ async handleError(err){
+  this.RouteService.changeRoute('cart')
+ // this.router.navigateByUrl('/login')
+ }
+
+ async getCartItems() {
+  this.cartItems = []
+  this.saveforLater = []
+  this.cartAmount = 0
+  if(this.isLoggedIn){
+    await  this._cartService.getCartItems()
     .then((data: any) => {
       for(var i = 0; i < data.length; i++) {
         if(data[i].cartItem.in_cart) {
@@ -84,6 +96,10 @@ export class CartComponent implements OnInit {
       this.inCartItems = this.cartItems.length
       this._cartStateService.updateCartCount(this.inCartItems)
     })
+    } 
+    else {
+      await Promise.reject("Login Session doesn't exist!")
+    }
   }
 
   async deleteCartItem(id){

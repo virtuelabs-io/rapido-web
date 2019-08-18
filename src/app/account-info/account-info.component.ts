@@ -27,6 +27,7 @@ export class AccountInfoComponent implements OnInit {
   deleteUserMsg: string = ""
   updatedAttribute: Boolean = false
   failedToUpdate: Boolean = false
+  isLoggedIn: Boolean
   _modalReference = null; 
   private _deleteUserService: DeleteUserService
 
@@ -53,7 +54,8 @@ export class AccountInfoComponent implements OnInit {
     private modalService: NgbModal,
     private router: Router,
     private _sessionService: SessionService,
-    private RouteService : RouteService
+    private RouteService : RouteService,
+    private _loginStateService: LoginStateService
   ) {
     this._profileService = profileService
     this._updateAttributeService = updateAttributeService
@@ -61,38 +63,54 @@ export class AccountInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-    const promise = this._sessionService.retrieveSessionIfExists()
-    promise.then( _ => {
-      this.fetchUserProfile()
-    }).catch(error => {
-      this.RouteService.changeRoute('profile/account')
-      this.router.navigateByUrl('/login')
-    })
+    this.check()
   }
 
-  fetchUserProfile() {
+  async check() {
+   
+
+    await this.loginSessinExists().
+		then( _ => this.fetchUserProfile()).
+		catch(err => this.handleError(err))
+  }
+
+  async loginSessinExists(){
+    await (this._loginStateService.isLoggedInState.subscribe(state => this.isLoggedIn = state))
+ }
+
+  async handleError(err){
+    this.RouteService.changeRoute('profile/account')
+    this.router.navigateByUrl('/login')
+   }
+
+   async fetchUserProfile() {
     let localAttributes = this.attribute
-    this._profileService.cognitoUser.getUserAttributes(function(err, result) {
-      if(result != null) {
-        for(var i = 0; i < result.length; i++) {
-          if (localAttributes[result[i]["Name"].replace("custom:", "")] != null) {
-            localAttributes[result[i]["Name"].replace("custom:", "")] = result[i].getValue()
+    if(this.isLoggedIn) {
+      await this._profileService.cognitoUser.getUserAttributes(function(err, result) {
+        if(result != null) {
+          for(var i = 0; i < result.length; i++) {
+            if (localAttributes[result[i]["Name"].replace("custom:", "")] != null) {
+              localAttributes[result[i]["Name"].replace("custom:", "")] = result[i].getValue()
+            }
+          }
+          if(localAttributes.sendMePromotions == "true") {
+            localAttributes.sendMePromotionsB = true
+          }
+          if(localAttributes.commViaEmail == "true") {
+            localAttributes.commViaEmailB = true
+          }
+          if(localAttributes.commViaSMS == "true") {
+            localAttributes.commViaSMSB = true
+          }
+          if(localAttributes.personalisation == "true") {
+            localAttributes.personalisationB = true
           }
         }
-        if(localAttributes.sendMePromotions == "true") {
-          localAttributes.sendMePromotionsB = true
-        }
-        if(localAttributes.commViaEmail == "true") {
-          localAttributes.commViaEmailB = true
-        }
-        if(localAttributes.commViaSMS == "true") {
-          localAttributes.commViaSMSB = true
-        }
-        if(localAttributes.personalisation == "true") {
-          localAttributes.personalisationB = true
-        }
-      }
-    })
+      })  
+    }
+    else {
+      await Promise.reject("Login Session doesn't exist!")
+    }
   }
 
   edit() {

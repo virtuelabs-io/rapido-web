@@ -1,7 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatMenuModule, MatToolbarModule, MatSnackBarModule } from '@angular/material';
 import { TopnavComponent } from './topnav.component';
-import { ButtonComponent } from '../common/button/button.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { DebugElement, Input } from '@angular/core';
@@ -19,7 +18,7 @@ describe('TopnavComponent', () => {
     TestBed.configureTestingModule({
       imports: [ HttpClientTestingModule,
         BrowserAnimationsModule, MatMenuModule, MatToolbarModule, FormsModule, MatSnackBarModule, RouterModule.forRoot([]) ],
-      declarations: [ TopnavComponent, ButtonComponent ]
+      declarations: [ TopnavComponent ]
     })
     .compileComponents();
   }));
