@@ -31,13 +31,13 @@ export class AddressComponent implements OnInit {
 
   async check() {
     await this.loginSessinExists().
-		then( _ => this.getAddressList).
+		then( _ => this.getAddressList()).
 		catch(err => this.handleError(err))
   }
 
   async handleError(err){
     this.RouteService.changeRoute('profile/address')
-    this.router.navigateByUrl('/login')
+  //  this.router.navigateByUrl('/login')
    }
 
   async loginSessinExists(){

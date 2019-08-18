@@ -55,7 +55,7 @@ export class CompanyDetailsComponent implements OnInit {
 
   async check() {
     await this.loginSessinExists().
-		then( _ => this.getCompanyDetails).
+		then( _ => this.getCompanyDetails()).
 		catch(err => this.handleError(err))
   }
 
@@ -65,7 +65,7 @@ export class CompanyDetailsComponent implements OnInit {
 
   async handleError(err){
     this.RouteService.changeRoute('profile/companyDetails')
-    this.router.navigateByUrl('/login')
+  //  this.router.navigateByUrl('/login')
    }
 
    async getCompanyDetails() {
