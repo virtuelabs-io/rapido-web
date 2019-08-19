@@ -4,9 +4,17 @@
       <h4>
         Shopping Cart
       </h4>
-      <h5 *ngIf="!inCart" class="title-no-item-text">
-        No Items in Cart
-      </h5>
+      <div *ngIf="!inCart" class="no-cart-item">
+          <img src="{{ imageUrl }}">
+          <div class="shopping-button">
+              <button mat-flat-button color="primary" routerLink="/">
+                  <span role="status" aria-hidden="true"></span>
+                  Continue Shopping 
+              </button>
+          </div>
+      </div>
+      
+      
     </div>
     <div *ngIf="inCart" class="cart-columns">
       <div class="cart-col-price">
@@ -65,7 +73,7 @@
         </div>
     </div>
   </div>
-  <div *ngIf="!laterUse" class="no-save-for-later-text">
+  <div *ngIf="!laterUse && inCart" class="no-save-for-later-text">
     <h4>
       No items saved for Later
     </h4>
@@ -90,8 +98,8 @@
           <div class="item-thumbnail" [routerLink]="['/products/details', item.id]">
             <img class="image" src="{{ item.icon }}">
           </div>
-          <div class="item-desc" [routerLink]="['/products/details', item.id]">
-            <p><strong>{{ item.title }}</strong></p>
+          <div class="item-desc">
+            <p [routerLink]="['/products/details', item.id]"><strong>{{ item.title }}</strong></p>
             <div>
               <a (click)="deleteCartItem(item.id)">Delete</a> |
               <a (click)="saveForLaterFn(item.id, item.quantity, true)">Move to Cart</a>

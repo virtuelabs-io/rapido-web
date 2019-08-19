@@ -10,8 +10,20 @@
         .title-div {
             margin-top: 2%;
             margin-left: 2%;
-            .title-no-item-text {
-                text-align: center;
+            .no-cart-item {
+                height: 300px;
+                padding-left: 50%;
+                img {
+                    height: 200px;
+                }
+                .shopping-button {
+                    height: 100px;
+                    margin-left: 20%;
+                    margin-top: 5%;
+                }
+                @media screen and (max-width: $mobile-device) {
+                    padding-left: 15%;
+                }
             }
         }
         .cart-columns {
