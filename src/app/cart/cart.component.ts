@@ -24,6 +24,7 @@ export class CartComponent implements OnInit {
   laterUse: Boolean = false
   _snackBarMsg: string = ""
   isLoggedIn: Boolean
+  imageUrl: string =  Constants.environment.staticAssets+'/images/empty-cart.jpg'
   private _cartService: CartService
   constructor(
     cartService: CartService,

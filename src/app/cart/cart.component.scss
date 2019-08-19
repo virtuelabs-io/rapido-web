@@ -10,8 +10,12 @@
         .title-div {
             margin-top: 2%;
             margin-left: 2%;
-            .title-no-item-text {
-                text-align: center;
+            .no-cart-item {
+                height: 300px;
+                padding-left: 50%;
+                img {
+                    height: 200px;
+                }
             }
         }
         .cart-columns {
