@@ -6,8 +6,15 @@
       </h4>
       <div *ngIf="!inCart" class="no-cart-item">
           <img src="{{ imageUrl }}">
-       
+          <div class="shopping-button">
+              <button mat-flat-button color="primary" routerLink="/">
+                  <span role="status" aria-hidden="true"></span>
+                  Continue Shopping 
+              </button>
+          </div>
       </div>
+      
+      
     </div>
     <div *ngIf="inCart" class="cart-columns">
       <div class="cart-col-price">

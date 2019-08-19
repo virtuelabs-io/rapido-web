@@ -16,6 +16,14 @@
                 img {
                     height: 200px;
                 }
+                .shopping-button {
+                    height: 100px;
+                    margin-left: 20%;
+                    margin-top: 5%;
+                }
+                @media screen and (max-width: $mobile-device) {
+                    padding-left: 15%;
+                }
             }
         }
         .cart-columns {
