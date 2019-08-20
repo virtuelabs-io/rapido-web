@@ -55,6 +55,11 @@ export class ProductResultsComponent implements OnInit {
       })
     }
 
+    ngOnDestroy(){
+     localStorage.removeItem('fieldsQuery')
+     localStorage.removeItem('searchedText')
+    }
+
     onPageChange(evt){
       this._searchItemService.changeState({
         start: evt.pageIndex * evt.pageSize
