@@ -27,16 +27,24 @@ import { ProductsHierarchyService } from '../services/products/products-hierarch
   }
 
   ngOnInit() {
-   this.fieldsQuery = {
-    price: {
-     q: null,
-     text: null
-    },
-    rating: {
-     q: null,
-     text: null
+    this.fieldsQuery = {
+      price: {
+      q: null,
+      text: null
+      },
+      rating: {
+      q: null,
+      text: null
+      }
     }
-   }
+    let localFieldsQuery = localStorage.getItem('fieldsQuery')
+    let localSearchedText = localStorage.getItem('searchedText')
+    if(localFieldsQuery && localFieldsQuery !== '[object Object]'){
+      this.fieldsQuery =  JSON.parse(localFieldsQuery);
+    }
+    if(localSearchedText){
+      this.searchedText =  localSearchedText;
+    }
    this._searchItemService.responsePoductListState.subscribe(respData => {
     this.updateProductControls(respData)
   })
@@ -170,6 +178,8 @@ import { ProductsHierarchyService } from '../services/products/products-hierarch
     if (this.searchedText) {
       this._searchItemService.changeState(queryObj)
       if (this.closeDialog) {
+        localStorage.setItem('fieldsQuery', JSON.stringify(this.fieldsQuery));
+         localStorage.setItem('searchedText', this.searchedText);
         this.closeDialog.close()
       }
     }
