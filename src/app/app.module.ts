@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopnavComponent } from './topnav/topnav.component';
 import { AuthmockComponent } from './authmock/authmock.component';
-import { ButtonComponent } from './common/button/button.component';
 import { IconComponent } from './common/icons/icons.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { RoutingComponents } from './app-routing.module';
@@ -60,7 +59,6 @@ import { CareerPageComponent } from './components/career-page/career-page.compon
   declarations: [
     TopnavComponent,
     AuthmockComponent,
-    ButtonComponent,
     IconComponent,
     LogInComponent,
     RoutingComponents,

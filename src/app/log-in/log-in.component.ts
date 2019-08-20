@@ -7,7 +7,7 @@ import { Constants } from '../utils/constants';
 import { LoginStateService } from '../shared-services/login-state/login-state.service';
 import { CartStateService } from '../shared-services/cart-state/cart-state.service';
 import { ResendOtpService } from '../shared-services/resend-otp/resend-otp.services';
-import { Location } from '@angular/common';
+import { RouteService } from '../shared-services/route/route.service';
 
 @Component({
   selector: 'app-log-in',
@@ -17,7 +17,8 @@ import { Location } from '@angular/common';
 export class LogInComponent implements OnInit {
   alertBox: boolean = false
   alertMsg: string = ""
-  _signInResponse: Boolean = false;
+  _signInResponse: Boolean = false
+  _previousRoute: any
   countryCode: string = Constants.DEFAULT_PHONE_CODE; //Constants.DEFAULT_PHONE_CODE;
   mobileNumber: string;
   password: string;
@@ -25,7 +26,6 @@ export class LogInComponent implements OnInit {
   _profileService: ProfileService;
 
   private _signInService: SignInService
-  redirectToCart: any;
   constructor(
     signInService: SignInService,
     profileService: ProfileService,
@@ -34,16 +34,14 @@ export class LogInComponent implements OnInit {
     private cartStateService: CartStateService,
     private resendOtpService : ResendOtpService,
 		private route: ActivatedRoute,
-    private location: Location
+    private RouteService : RouteService
     ) {
     this._signInService = signInService
     this._profileService = profileService
   }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-			this.redirectToCart = params.redirectToCart;
-		});
+    this._previousRoute = this.RouteService.getRoute()
    this.loginStateService.changeState(false);
   }
 
@@ -68,8 +66,8 @@ export class LogInComponent implements OnInit {
         console.log(this._profileService.cognitoUser);
         this._signInResponse = true;
         this.loginStateService.changeState(true);
-        if(this.redirectToCart){
-          this.location.back();
+        if(this._previousRoute.value){
+          this.router.navigateByUrl('/'+this._previousRoute.value)
         }else{
           this.router.navigateByUrl('/');
         }

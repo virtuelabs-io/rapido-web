@@ -5,20 +5,28 @@ import { MatSnackBarModule, MatInputModule, MatCardModule, MatFormFieldModule, M
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Router, Routes } from '@angular/router';
+import { LogInComponent } from '../log-in/log-in.component';
 
 describe('CompanyDetailsComponent', () => {
   let component: CompanyDetailsComponent;
   let fixture: ComponentFixture<CompanyDetailsComponent>;
+  let router: Router;
+  const routes: Routes = [
+    { path: 'login', component: LogInComponent}
+  ]
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ MatSnackBarModule, BrowserAnimationsModule, MatInputModule, HttpClientModule, RouterTestingModule, MatCardModule, MatFormFieldModule,ReactiveFormsModule, MatProgressSpinnerModule, FormsModule ],
-      declarations: [ CompanyDetailsComponent ]
+      imports: [ MatSnackBarModule, BrowserAnimationsModule, MatInputModule, HttpClientModule, RouterTestingModule.withRoutes(routes), MatCardModule, MatFormFieldModule,ReactiveFormsModule, MatProgressSpinnerModule, FormsModule ],
+      declarations: [ CompanyDetailsComponent, LogInComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
+    router = TestBed.get(Router);
+    router.initialNavigation();
     fixture = TestBed.createComponent(CompanyDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

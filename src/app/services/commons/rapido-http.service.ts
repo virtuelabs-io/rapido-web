@@ -13,7 +13,7 @@ export class RapidoHttpService<T> {
 
   protected loginStateService: LoginStateService;
 
-  constructor(protected _http: HttpClient, protected _profileService: ProfileService) {
+  constructor(protected _http?: HttpClient, protected _profileService?: ProfileService) {
     this.loginStateService = new LoginStateService();
   }
 

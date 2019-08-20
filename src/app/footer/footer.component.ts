@@ -21,7 +21,7 @@ export class FooterComponent implements OnInit {
   ngOnInit() {}
 
   handleHelpNaviagte() {
-    this.RouteService.changeRoute('questionnaire');
+    this.RouteService.changeRoute('questionnaire')
     this.router.navigateByUrl('/profile')
   }
 }
