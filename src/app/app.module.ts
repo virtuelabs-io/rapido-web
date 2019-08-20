@@ -54,6 +54,7 @@ import { TableComponent } from './components/table/table.component';
 import { PillBadgeComponent } from './components/common/pill-badge/pill-badge.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { CareerPageComponent } from './components/career-page/career-page.component';
+import { PressReleaseComponent } from './press-release/press-release.component';
 
 @NgModule({
   declarations: [
@@ -97,7 +98,8 @@ import { CareerPageComponent } from './components/career-page/career-page.compon
     CarouselScrollComponent,
     AccountInfoComponent,
     PillBadgeComponent,
-    CareerPageComponent
+    CareerPageComponent,
+    PressReleaseComponent
   ],
   imports: [
     MatSidenavModule,
