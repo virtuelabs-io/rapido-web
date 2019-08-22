@@ -39,6 +39,7 @@ export class CartComponent implements OnInit {
   }
 
    ngOnInit() {
+    this._loginStateService.loaderEnable()
     this.userLogInCheck()
   }
 
@@ -96,10 +97,12 @@ export class CartComponent implements OnInit {
       }
       this.inCartItems = this.cartItems.length
       this._cartStateService.updateCartCount(this.inCartItems)
+      this._loginStateService.loaderDisable()
     })
     } 
     else {
       await Promise.reject("Login Session doesn't exist!")
+      this._loginStateService.loaderDisable()
     }
   }
 
