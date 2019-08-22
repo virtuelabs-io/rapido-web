@@ -19,11 +19,13 @@ export class LoginStateService {
   }
 
   loaderEnable(){
-    this.isLoading.next(true)
+    if(!this.isLoading.value)
+      this.isLoading.next(true)
   }
   
   loaderDisable(){
-    this.isLoading.next(false)
+    if(this.isLoading.value)
+      this.isLoading.next(false)
   }
   
 }
