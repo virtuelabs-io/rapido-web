@@ -4,16 +4,16 @@ import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { TopnavComponent } from './topnav/topnav.component';
+import { TopnavComponent } from './components/topnav/topnav.component';
 import { AuthmockComponent } from './authmock/authmock.component';
 import { IconComponent } from './common/icons/icons.component';
-import { LogInComponent } from './log-in/log-in.component';
+import { LogInComponent } from './components/log-in/log-in.component';
 import { RoutingComponents } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CheckoutComponent } from './checkout/checkout.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { Constants } from './utils/constants';
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, 
@@ -21,22 +21,22 @@ import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule,
   MatSnackBarModule, MatExpansionModule, MatSelectModule, MatPaginatorModule, 
   MatProgressSpinnerModule, MatDialogModule, MatFormFieldModule, MatCardModule,
   MatTableModule  } from '@angular/material';
-import { LeftSectionComponent } from './leftsection/leftsection.component';
-import { CardComponent } from './card/card.component';
-import { RatingComponent } from './rating/rating.component';
-import { ImagesComponent } from './images/images.component';
-import { ProductControlsComponent } from './product-controls/product-controls.component';
-import { ProductResultsComponent } from './product-results/product-results.component';
-import { RangeSliderComponent } from './range-slider/range-slider.component';
+import { LeftSectionComponent } from './components/leftsection/leftsection.component';
+import { CardComponent } from './components/card/card.component';
+import { RatingComponent } from './components/rating/rating.component';
+import { ImagesComponent } from './components/images/images.component';
+import { ProductControlsComponent } from './components/product-controls/product-controls.component';
+import { ProductResultsComponent } from './components/product-results/product-results.component';
+import { RangeSliderComponent } from './components/range-slider/range-slider.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { BusyLoaderComponent } from './components/common/busy-loader/busy-loader.component';
 import { TableComponent } from './components/table/table.component';
 import { PillBadgeComponent } from './components/common/pill-badge/pill-badge.component';
 import { CareerPageComponent } from './components/career-page/career-page.component';
-import { HomeCardComponent } from './card/home-card/home-card.component';
-import { CarouselComponent } from './card/carousel/carousel.component';
-import { CarouselScrollComponent } from './card/carousel-scroll/carousel-scroll.component';
-import { HomeComponent } from './home/home.component';
+import { HomeCardComponent } from './components/card/home-card/home-card.component';
+import { CarouselComponent } from './components/card/carousel/carousel.component';
+import { CarouselScrollComponent } from './components/card/carousel-scroll/carousel-scroll.component';
+import { HomeComponent } from './components/home/home.component';
 
 describe('AppComponent', () => {
   var originalTimeout;
