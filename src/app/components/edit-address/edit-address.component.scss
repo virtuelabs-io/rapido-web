@@ -1,0 +1,67 @@
+@import "../../../assets/scss/custom-bootstrap-variables.scss";
+
+.main-div {
+    display: flex;
+    flex-direction : row;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 10px;
+    margin-top: 5%;
+    .search-text-div {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: left;
+        width: 30%;
+        p {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: left;
+            margin-top: 10%;
+        }
+        .search-postcode-div {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: left;
+            input {
+                width: 40%;
+                border: solid;
+            }
+        }
+        @media screen and (max-width: $mobile-device) {
+            width: 100%;
+            margin-right: 5%;
+            margin-left: 5%;
+        }
+    }
+    .add-address-main {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        border-radius: 10px;
+        width: 50%;
+        .form-details {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+            margin-left: 10%;
+            margin-bottom: 1%;
+            @media screen and (max-width: $mobile-device) {
+                min-width: 100%;
+                margin-left: 1%;
+            }
+            .spacing {
+                margin-right: 10%;
+            }
+        }
+        @media screen and (max-width: $mobile-device) {
+            width: 100%;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+    }
+}
