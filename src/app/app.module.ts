@@ -54,6 +54,7 @@ import { TableComponent } from './components/table/table.component';
 import { PillBadgeComponent } from './components/common/pill-badge/pill-badge.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { CareerPageComponent } from './components/career-page/career-page.component';
+import { CreditsComponent } from './components/credits/credits.component';
 import { PressReleaseComponent } from './press-release/press-release.component';
 
 @NgModule({
@@ -99,6 +100,7 @@ import { PressReleaseComponent } from './press-release/press-release.component';
     AccountInfoComponent,
     PillBadgeComponent,
     CareerPageComponent,
+    CreditsComponent,
     PressReleaseComponent
   ],
   imports: [

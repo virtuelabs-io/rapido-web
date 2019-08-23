@@ -20,7 +20,7 @@ export class CartComponent implements OnInit {
   cartAmount: any = 0
   inCartItems: number = 0
   saveforLater = []
-  inCart: Boolean
+  inCart: Boolean = true
   laterUse: Boolean = false
   _snackBarMsg: string = ""
   isLoggedIn: Boolean
