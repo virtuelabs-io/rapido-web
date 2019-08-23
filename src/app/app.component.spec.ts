@@ -33,6 +33,7 @@ import { BusyLoaderComponent } from './components/common/busy-loader/busy-loader
 import { TableComponent } from './components/table/table.component';
 import { PillBadgeComponent } from './components/common/pill-badge/pill-badge.component';
 import { CareerPageComponent } from './components/career-page/career-page.component';
+import { CreditsComponent  } from './components/credits/credits.component';
 import { HomeCardComponent } from './card/home-card/home-card.component';
 import { CarouselComponent } from './card/carousel/carousel.component';
 import { CarouselScrollComponent } from './card/carousel-scroll/carousel-scroll.component';
@@ -96,6 +97,7 @@ describe('AppComponent', () => {
         BusyLoaderComponent,
         TableComponent,
         PillBadgeComponent,
+        CreditsComponent,
         CareerPageComponent,
         HomeCardComponent,
         CarouselComponent,
