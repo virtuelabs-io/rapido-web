@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SearchItemService } from '../../shared-services/search-item/search-item.services';
+import { SearchItemService } from '../../../shared-services/search-item/search-item.services';
 
 @Component({
   selector: 'app-home-card',

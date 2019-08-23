@@ -1,10 +1,10 @@
 import { Component, Input, OnInit, SimpleChanges, Directive } from '@angular/core';
-import { CartItem } from '../../services/cart/cart-item';
-import { CartService } from '../../services/cart/cart.service';
-import { CartStateService } from '../../shared-services/cart-state/cart-state.service';
-import { LoginStateService } from '../../shared-services/login-state/login-state.service';
+import { CartItem } from '../../../services/cart/cart-item';
+import { CartService } from '../../../services/cart/cart.service';
+import { CartStateService } from '../../../shared-services/cart-state/cart-state.service';
+import { LoginStateService } from '../../../shared-services/login-state/login-state.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RouteService } from '../../shared-services/route/route.service';
+import { RouteService } from '../../../shared-services/route/route.service';
 
 @Component({
   selector: 'app-carousel',
