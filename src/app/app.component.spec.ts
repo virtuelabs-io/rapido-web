@@ -37,6 +37,7 @@ import { HomeCardComponent } from './components/card/home-card/home-card.compone
 import { CarouselComponent } from './components/card/carousel/carousel.component';
 import { CarouselScrollComponent } from './components/card/carousel-scroll/carousel-scroll.component';
 import { HomeComponent } from './components/home/home.component';
+import { CreditsComponent  } from './components/credits/credits.component';
 
 describe('AppComponent', () => {
   var originalTimeout;
@@ -96,6 +97,7 @@ describe('AppComponent', () => {
         BusyLoaderComponent,
         TableComponent,
         PillBadgeComponent,
+        CreditsComponent,
         CareerPageComponent,
         HomeCardComponent,
         CarouselComponent,

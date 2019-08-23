@@ -104,18 +104,18 @@ import { ProductsHierarchyService } from '../../services/products/products-hiera
                 key: 'price desc'
               },
               {
-                desc: 'Customer Review Low to High',
+                desc: 'Rating: Low to High',
                 key: 'rating asc'
               },
               {
-                desc: 'Customer Review High to Low',
+                desc: 'Rating: High to Low',
                 key: 'rating desc'
               }
             ]
           }]
         },
         {
-          'headerText': 'Show related types',
+          'headerText': 'Related searches',
           'expanded': 'false',
           'panel': [{
             'panelTitle': this.searchedText || '',

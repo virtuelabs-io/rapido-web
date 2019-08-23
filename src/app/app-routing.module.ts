@@ -23,6 +23,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { CareerPageComponent } from './components/career-page/career-page.component';
 import { PressReleaseComponent } from './components/press-release/press-release.component';
+import { CreditsComponent } from './components/credits/credits.component';
 
 export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -47,6 +48,7 @@ export const routes: Routes = [
   { path: 'products', component: ProductResultsComponent },
   { path: 'products/details/:id', component: ProductDetailsComponent},
   { path: 'careers', component: CareerPageComponent},
+  { path: 'credits', component: CreditsComponent},
   { path: 'press-release', component: PressReleaseComponent}
 ];
 
