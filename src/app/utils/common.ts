@@ -17,5 +17,15 @@ export class Common {
       })
       );
   }
+  
+  public static allowPositiveNum = (event: any) => {
+    const pattern = /[1-9]/;
+    const inputChar = String.fromCharCode(event.charCode);
+
+    if (!pattern.test(inputChar)) {    
+        // invalid character, prevent input
+        event.preventDefault();
+    }
+}
 
 }
