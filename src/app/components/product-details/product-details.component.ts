@@ -79,9 +79,11 @@ export class ProductDetailsComponent implements OnInit {
 				}
 			})
 		}
-
-
 	}
+
+	keyPress(event: any){
+		Common.allowPositiveNum(event)
+	  }
 
 	updateProductDetails(hits) {
 		let product = hits.hit.filter((val) => {
@@ -115,7 +117,7 @@ export class ProductDetailsComponent implements OnInit {
 	}
 	
 	onChangeQuantity(quant:number) {
-		if(quant < 0){
+		if(Number(quant)< 1){
 			this._snackBar.open(Constants.ORDER_QUANTITY_ERROR,  undefined , {
 				duration: 4000,
 			 })
