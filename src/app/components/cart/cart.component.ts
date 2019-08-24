@@ -153,7 +153,7 @@ export class CartComponent implements OnInit {
       items.push(this.updateCartItem(this.cartItems[i].id, this.cartItems[i].quantity, true))
     }
     this._cartService.postCartItemList(items)
-      .subscribe(data2 => {
+      .subscribe( _ => {
         this.router.navigate(['cart/checkout']);
       })
   }
@@ -162,7 +162,7 @@ export class CartComponent implements OnInit {
     this.cartAmount = 0
     for(var i = 0; i < this.cartItems.length; i++) {
       if(this.cartItems[i].id === id) {
-        if(quantity == 0) {
+        if(!quantity){
           this.cartItems[i].quantity = 1
           this._snackBar.open('Minimun one quantity selected', "", {
             duration: 5000
