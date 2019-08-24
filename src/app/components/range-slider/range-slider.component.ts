@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Common } from 'src/app/utils/common'
 // import { Options, LabelType, ChangeContext, PointerType } from 'ng5-slider';
 
 @Component({
@@ -16,6 +17,10 @@ export class RangeSliderComponent {
       this.selectedMaxVal = this.rangeData.maxValue
     }
     
+  }
+
+  keyPress(event: any){
+    Common.allowPositiveNum(event)
   }
   // options: Options = {
   //   floor: 0,
@@ -42,4 +47,5 @@ export class RangeSliderComponent {
       min:this.selectedMinVal, max:this.selectedMaxVal
     })
   }
+  
 }
