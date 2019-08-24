@@ -43,7 +43,7 @@
             </p>
           </div>
           <div class="item-quantity">
-            <input type="number" maxlength="3" min="1" (change)="quantityChange(item.id, item.quantity )" [(ngModel)]="item.quantity" autocomplete="off" name="quantityBox" class="item-quntity-input" aria-label="Quantity">
+            <input type="number" maxlength="3" min="1" (keypress)="keyPress($event)" (change)="quantityChange(item.id, item.quantity )" [(ngModel)]="item.quantity" autocomplete="off" name="quantityBox" class="item-quntity-input" aria-label="Quantity">
           </div>
         </div>
       </div>    

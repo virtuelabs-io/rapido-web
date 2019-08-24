@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart/cart.service';
 import { Constants } from '../../utils/constants';
+import { Common } from '../../utils/common';
 import { CartItem } from '../../services/cart/cart-item';
 import {MatSnackBar} from '@angular/material';
 import { Router } from '@angular/router';
@@ -53,10 +54,10 @@ export class CartComponent implements OnInit {
     await (this._loginStateService.isLoggedInState.subscribe(state => this.isLoggedIn = state))
   }
 
- async handleError(err) {
-  this.RouteService.changeRoute('cart')
-  this.router.navigateByUrl('/login')
- }
+  async handleError(err) {
+    this.RouteService.changeRoute('cart')
+    this.router.navigateByUrl('/login')
+  }
 
  async getCartItems() {
   this.cartItems = []
@@ -175,4 +176,8 @@ export class CartComponent implements OnInit {
     }
     this.cartAmount = this.cartAmount.toFixed(2)
   }
+
+  keyPress(event: any){
+		Common.allowPositiveNum(event)
+	}
 }
