@@ -20,7 +20,7 @@
         </span> 
         <span class="small p-2">
          <!-- actualPrice saved -->
-         <span>  {{ itemDetails.offer * 100}}% <b>Off</b> </span>
+         <span *ngIf="+itemDetails.offer">  {{ itemDetails.offer * 100}}% <b>Off</b> </span>
         </span>
      </div>
   </div>

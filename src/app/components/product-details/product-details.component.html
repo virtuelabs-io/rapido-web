@@ -47,7 +47,7 @@
                   <span class="a-price-symbol">{{itemDetails.currency}}</span>
                   <s class="a-price-whole">{{Number(mrpPrice).toFixed(2)}}</s>
                 </span>
-              <span class="small ">
+              <span *ngIf="+itemDetails.offer" class="small ">
                 You Save:
                   <span>{{ itemDetails.offer * 100}}%</span>
               </span>
