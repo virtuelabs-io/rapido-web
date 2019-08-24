@@ -13,7 +13,7 @@
         <!-- Actual Price -->
         <span class="a-price-whole">{{ itemDetails.price }}</span>
         </span>
-        <span aria-hidden="true" class="small p-2">
+        <span aria-hidden="true" *ngIf="+itemDetails.offer" class="small p-2">
         <span class="a-price-symbol">£</span>
         <!-- Discounted Price -->
         <s class="a-price-whole">{{ mrpPrice }}</s>

@@ -11,7 +11,7 @@
       <div *ngIf="CarouselConfig.price">
         <span class="card-price">{{ card.currency }}</span>
           <span class="card-price">{{ card.price }}</span>
-          <span aria-hidden="true" class="small p-2 red">
+          <span *ngIf="+card.offer" aria-hidden="true" class="small p-2 red">
             <span>{{ card.currency }}</span>
             <!-- Discounted Price -->
             <s> {{handleMrpRate(card.price, card.offer)}} </s>
