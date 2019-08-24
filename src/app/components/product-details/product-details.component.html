@@ -42,12 +42,12 @@
                   <span class="a-price-symbol">{{itemDetails.currency}}</span>
                   <span class="a-price-whole">{{Number(itemDetails.price).toFixed(2)}}</span>
                 </span>
-                <span aria-hidden="true" class="small ">
+                <span *ngIf="+itemDetails.offer" aria-hidden="true" class="small ">
                     M.R.P.:
                   <span class="a-price-symbol">{{itemDetails.currency}}</span>
                   <s class="a-price-whole">{{Number(mrpPrice).toFixed(2)}}</s>
                 </span>
-              <span class="small ">
+              <span *ngIf="+itemDetails.offer" class="small ">
                 You Save:
                   <span>{{ itemDetails.offer * 100}}%</span>
               </span>
@@ -100,6 +100,7 @@
           <div class="item-quantity d-flex">
               <label class="mr-2">Quantity: </label>
               <input 
+                (keypress)="keyPress($event)"
                 (change)="onChangeQuantity($event.target.value)"
                 [(ngModel)]="quantity" 
                 type="number" 

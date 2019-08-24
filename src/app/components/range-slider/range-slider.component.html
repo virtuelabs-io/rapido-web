@@ -8,7 +8,7 @@
         <div>
             <label>
             <span> £</span>
-            <input type="number" [(ngModel)]="selectedMinVal" [minlength]="selectedMinVal" name="min">
+            <input type="number" [(ngModel)]="selectedMinVal" min="0" (keypress)="keyPress($event)" name="min">
         </label>
             <span class="pr-1">  to  </span>
         <label class="pr-2">

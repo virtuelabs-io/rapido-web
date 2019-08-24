@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Common } from 'src/app/utils/common'
 // import { Options, LabelType, ChangeContext, PointerType } from 'ng5-slider';
 
 @Component({
@@ -15,8 +16,13 @@ export class RangeSliderComponent {
       this.selectedMinVal = this.rangeData.minValue
       this.selectedMaxVal = this.rangeData.maxValue
     }
-    
   }
+
+  keyPress(event: any){
+    Common.allowPositiveNum(event)
+  }
+
+  // Alert: Don't remove this commented code
   // options: Options = {
   //   floor: 0,
   //   ceil: 500,
@@ -38,8 +44,12 @@ export class RangeSliderComponent {
   // }
 
   onSubmitPriceFilter (){
+    if(!this.selectedMinVal){
+      this.selectedMinVal = 1
+    }
     this.rangeData.fnPriceFilterHandler({
       min:this.selectedMinVal, max:this.selectedMaxVal
     })
   }
+  
 }

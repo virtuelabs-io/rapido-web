@@ -43,7 +43,7 @@
             </p>
           </div>
           <div class="item-quantity">
-            <input type="number" maxlength="3" min="1" (change)="quantityChange(item.id, item.quantity )" [(ngModel)]="item.quantity" autocomplete="off" name="quantityBox" class="item-quntity-input" aria-label="Quantity">
+            <input type="number" maxlength="3" min="1" (keypress)="keyPress($event)" (change)="quantityChange(item.id, item.quantity)" [(ngModel)]="item.quantity" autocomplete="off" name="quantityBox" class="item-quntity-input" aria-label="Quantity">
           </div>
         </div>
       </div>    
@@ -88,9 +88,9 @@
       <div class="cart-col-price">
         <span>Price(£)</span>
       </div>
-      <div class="cart-col-quan">
+      <!-- <div class="cart-col-quan">
         <span>Quantity</span>
-      </div>
+      </div> -->
     </div>
     <div class="cart-items-main">
       <div class="cart-items">
@@ -110,9 +110,9 @@
               <strong>{{ item.amount }}</strong>
             </p>
           </div>
-          <div class="item-quantity">
+          <!-- <div class="item-quantity">
             <input type="number" required value="{{ item.quantity }}" name="quantityBox" class="item-quntity-input">
-          </div>
+          </div> -->
         </div>
       </div>    
     </div>

@@ -15,13 +15,13 @@
             <span class="card-price">{{ card.currency }}</span>
             <span class="card-price">{{ card.price }}</span>
 
-            <span aria-hidden="true" class="small p-2 red">
+            <span *ngIf="+card.offer" aria-hidden="true" class="small p-2 red">
               <span class="a-price-symbol">{{ card.currency }}</span>
               <!-- Discounted Price -->
               <s class="a-price-whole">{{ card.mrpPrice }}</s>
             </span> 
 
-              <span class="small p-2">
+              <span *ngIf="+card.offer" class="small p-2">
                 <!-- actualPrice saved -->
                 <span>  {{ card.offer * 100}}% <b>Off</b> </span>
               </span>
