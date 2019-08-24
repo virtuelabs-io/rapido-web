@@ -45,7 +45,7 @@ export class OrdersComponent implements OnInit {
   async handleError(err) {
     this.RouteService.changeRoute('orders')
     this.router.navigateByUrl('/login')
-   }
+  }
 
   uniqueOrders(arr, comp) {
     const unique = arr
