@@ -5,7 +5,9 @@
         Shopping Cart
       </h4>
       <div *ngIf="!inCart" class="no-cart-item">
-          <img src="{{ imageUrl }}">
+        <svg>
+          <use xlink:href="#no-items-in-cart" />
+         </svg>
           <div class="shopping-button">
               <button mat-flat-button color="primary" routerLink="/">
                   <span role="status" aria-hidden="true"></span>
