@@ -1,9 +1,12 @@
 <div class="main-div">
     
     <div class="add-address-main">
-        <div class="title-div">
-            <h2>Company Details</h2>
-          </div>
+      <div class="title-div">
+        <svg>
+          <use xlink:href="#company"/>
+        </svg>
+        <h2>Company Details</h2>
+      </div>
       <form class="form-details" [formGroup]="addressFormGroup" novalidate>
         <mat-form-field>
           <input matInput placeholder="Organisation Name" formControlName="name">
