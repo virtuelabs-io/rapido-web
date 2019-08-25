@@ -86,7 +86,7 @@
   <div *ngIf="laterUse" class="cart-div">
       <div class="title-icon-text">
           <svg>
-            <use xlink:href="#shopping-cart-title" />
+            <use xlink:href="#wishlist" />
           </svg>
           <div class="title-div">
               <h4>
@@ -99,9 +99,6 @@
       <div class="cart-col-price">
         <span>Price(£)</span>
       </div>
-      <!-- <div class="cart-col-quan">
-        <span>Quantity</span>
-      </div> -->
     </div>
     <div class="cart-items-main">
       <div class="cart-items">
@@ -121,9 +118,6 @@
               <strong>{{ item.amount }}</strong>
             </p>
           </div>
-          <!-- <div class="item-quantity">
-            <input type="number" required value="{{ item.quantity }}" name="quantityBox" class="item-quntity-input">
-          </div> -->
         </div>
       </div>    
     </div>
