@@ -3,8 +3,10 @@ import { CartItem } from '../../../services/cart/cart-item';
 import { CartService } from '../../../services/cart/cart.service';
 import { CartStateService } from '../../../shared-services/cart-state/cart-state.service';
 import { LoginStateService } from '../../../shared-services/login-state/login-state.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { RouteService } from '../../../shared-services/route/route.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Constants } from '../../../../../src/app/utils/constants';
 
 @Component({
   selector: 'app-carousel',
@@ -25,7 +27,8 @@ export class CarouselComponent implements OnInit {
     private _cartStateService: CartStateService,
     private _loginStateService: LoginStateService,
     public router: Router,
-    private RouteService : RouteService
+    private RouteService : RouteService,
+    private _snackBar: MatSnackBar
   ) { 
     this._cartService = cartService
 
@@ -69,8 +72,6 @@ export class CarouselComponent implements OnInit {
 		
 		await this.loginSessinExists().
 		then( _ => this.postCartItem(id)).
-		then( _ => this._cartService.getCountOfInCartItems()).
-		then(count => this._cartStateService.updateCartCount(Number(count))).
 		catch(err => this.handleError(err))
   }
 
@@ -79,14 +80,22 @@ export class CarouselComponent implements OnInit {
  }
   
  async postCartItem(id) {
+    this._loginStateService.loaderEnable()
     let cartItem: CartItem = new CartItem()
 		cartItem.product_id = parseInt(id) 
     	cartItem.quantity = 1
 		cartItem.in_cart = true
 		if(this.isLoggedIn){
-			await this._cartService.postCartItem(cartItem).subscribe(data => data)
+			await this._cartService.postCartItem(cartItem).subscribe(data => {
+        this._loginStateService.loaderDisable()
+        this._cartStateService.fetchAndUpdateCartCount()
+        this._snackBar.open(Constants.ITEM_MOVED_TO_CART,  undefined , {
+					duration: 4000,
+				 })
+      })
 		}else{
-			await Promise.reject("Login Session doesn't exist!")
+      this._loginStateService.loaderDisable()
+      await Promise.reject("Login Session doesn't exist!")
 		}
   }
 
