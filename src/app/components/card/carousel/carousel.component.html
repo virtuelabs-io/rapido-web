@@ -1,7 +1,7 @@
 <div class="carousel-title">
   {{ carouselTitle }}
 </div>
-<ngb-carousel class="ngb" interval='0'>
+<ngb-carousel interval='0'>
   <ng-template ngbSlide class="carousel" *ngFor="let template of carouselData">
     <div class="card-holder">
       <div class="card" *ngFor="let card of template">
@@ -11,7 +11,7 @@
             {{ card.name }}
           </div>
           <div *ngIf="carouselConfig.price" [routerLink]="['/products/details', card.id]">
-            
+
             <span class="card-price">{{ card.currency }}</span>
             <span class="card-price">{{ card.price }}</span>
 
@@ -19,7 +19,7 @@
               <span class="a-price-symbol">{{ card.currency }}</span>
               <!-- Discounted Price -->
               <s class="a-price-whole">{{ card.mrpPrice }}</s>
-            </span> 
+            </span>
 
               <span *ngIf="+card.offer" class="small p-2">
                 <!-- actualPrice saved -->
