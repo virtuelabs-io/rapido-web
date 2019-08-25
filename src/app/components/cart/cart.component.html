@@ -84,11 +84,17 @@
     </h4>
   </div>
   <div *ngIf="laterUse" class="cart-div">
-    <div class="title-div">
-      <h4>
-        Saved for later
-      </h4>
-    </div>
+      <div class="title-icon-text">
+          <svg>
+            <use xlink:href="#shopping-cart-title" />
+          </svg>
+          <div class="title-div">
+              <h4>
+                Saved for later
+              </h4>
+            </div>
+        </div>
+    
     <div  class="cart-columns">
       <div class="cart-col-price">
         <span>Price(£)</span>
