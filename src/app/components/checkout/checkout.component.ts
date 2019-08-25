@@ -177,6 +177,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   buy() {
+    this._loginStateService.loaderEnable()
     this._charge.name = this._logInName
     this._charge.amount = this.amount
     this._charge.description = ['Rapidobuild Order',' #', this._orderId].join("")
@@ -191,6 +192,7 @@ export class CheckoutComponent implements OnInit {
           this.charge(this._charge)
         } else if (result.error) {
           // error log
+          this._loginStateService.loaderDisable()
           this._snackBar.open(result.error.message, "", {
             duration: 5000
           });
@@ -202,7 +204,8 @@ export class CheckoutComponent implements OnInit {
     const promise = this.chargeService.chargeCustomer(charge)
     .then(data => {
       this.chargeResult = JSON.stringify(data)
-      this.RouteService.changeRoute('orderCreated');
+      this.RouteService.changeRoute('orderCreated')
+      this._loginStateService.loaderDisable()
       this.router.navigate(['orders', this._charge.order_id, 'details'])
 
     })
