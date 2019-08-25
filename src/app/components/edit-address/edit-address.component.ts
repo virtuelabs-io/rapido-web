@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AddressDetails } from '../../services/customer/address-details';
 import { AddressDetailsService } from '../../services/customer/address-details.service';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { LoginStateService } from '../../shared-services/login-state/login-state.service';
 
 @Component({
   selector: 'app-edit-address',
@@ -12,7 +13,6 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 export class EditAddressComponent implements OnInit {
   id: number = 0
   customer_id: string = ""
-  showSpinner: Boolean = false
   addressDetails: AddressDetails
   public _addressDetailsService: AddressDetailsService
   addressFormGroup: FormGroup // UI reactive Form Group variable
@@ -20,13 +20,14 @@ export class EditAddressComponent implements OnInit {
   constructor(
     addressDetailsService: AddressDetailsService,
     private actRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private _loginStateService: LoginStateService
   ) {
     this._addressDetailsService = addressDetailsService
   }
 
   ngOnInit() {
-    this.showSpinner = true
+    this._loginStateService.loaderEnable()
     this.addressFormGroup = new FormGroup({
       name: new FormControl('', [Validators.required]),
       add1: new FormControl('', [Validators.required]),
@@ -41,7 +42,6 @@ export class EditAddressComponent implements OnInit {
     this._addressDetailsService.getAddressDetails(this.id)
     .subscribe(data => {
       this.customer_id = data.customer_id
-      this.showSpinner = false
       this.addressFormGroup.controls["name"].setValue(data.full_name)
       this.addressFormGroup.controls["add1"].setValue(data.addr_1)
       this.addressFormGroup.controls["add2"].setValue(data.addr_2)
@@ -50,11 +50,12 @@ export class EditAddressComponent implements OnInit {
       this.addressFormGroup.controls["country"].setValue(data.country)
       this.addressFormGroup.controls["county"].setValue(data.county)
       this.addressFormGroup.controls["address_type_id"].setValue(data.address_type_id)
+      this._loginStateService.loaderDisable()
     })
   }
 
   saveAddress() {
-    this.showSpinner = true
+    this._loginStateService.loaderEnable()
     this.addressDetails = new AddressDetails(
       this.addressFormGroup.value.name,
       this.addressFormGroup.value.address_type_id,
@@ -69,7 +70,7 @@ export class EditAddressComponent implements OnInit {
     )
     this._addressDetailsService.putAddressDetails(this.addressDetails)
     .subscribe( _ => {
-      this.showSpinner = false
+      this._loginStateService.loaderDisable()
       this.router.navigate(['profile/address'])
     })
   }
