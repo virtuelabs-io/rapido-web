@@ -27,7 +27,7 @@ export class TopnavComponent implements OnInit {
   constructor(private _sessionService: SessionService,
               private _profileService: ProfileService,
               private _cartService: CartService,
-              public router: Router, 
+              public router: Router,
               private _snackBar: MatSnackBar,
               private _searchItemService: SearchItemService,
               private _cartStateService: CartStateService,
@@ -49,7 +49,6 @@ export class TopnavComponent implements OnInit {
         this.name =  this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.name
       }
     })
-    
     this._cartStateService.cartCountState.subscribe(state => {
       this.cartCount = state;
     })

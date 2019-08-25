@@ -3,17 +3,12 @@ import { Constants } from '../../utils/constants';
 export class Charge {
 
   private _token: string
-  private _amount: number
-  private _currency: string
   private _description: string
   private _name: string
   private _receiptEmail: string
   private _order_id: number
 
-  constructor(
-  ) {
-    this._currency = Constants.DEFAULT_CURRENCY_CODE
-  }
+  constructor() {}
 
   set token(token: string){
     this._token = token
@@ -21,22 +16,6 @@ export class Charge {
 
   get token(){
     return this._token
-  }
-
-  set amount(amount: number){
-    this._amount = amount * 100
-  }
-
-  get amount(){
-    return this._amount
-  }
-
-  set currency(currency: string){
-    this._currency = currency
-  }
-
-  get currency(){
-    return this._currency
   }
 
   set description(description: string){
@@ -74,8 +53,6 @@ export class Charge {
   toJSON(){
     return {
       "token": this._token,
-      "amount": this._amount,
-      "currency": this._currency,
       "description": this._description,
       "name": this._name,
       "receiptEmail": this._receiptEmail,

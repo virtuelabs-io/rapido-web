@@ -53,7 +53,7 @@ export class CheckoutComponent implements OnInit {
   chargeResult: string;
   _charge: Charge = new Charge()
 
-  registerFormGroup: FormGroup // UI reactive Form Group variable 
+  registerFormGroup: FormGroup // UI reactive Form Group variable
   private _orderService: OrdersService
 
   constructor(
@@ -178,7 +178,6 @@ export class CheckoutComponent implements OnInit {
 
   buy() {
     this._charge.name = this._logInName
-    this._charge.amount = this.amount
     this._charge.description = ['Rapidobuild Order',' #', this._orderId].join("")
     this._charge.receiptEmail = this.registeredEmail
     this._charge.order_id = this._orderId
@@ -190,7 +189,6 @@ export class CheckoutComponent implements OnInit {
           this._charge.token = result.token.id
           this.charge(this._charge)
         } else if (result.error) {
-          // error log
           this._snackBar.open(result.error.message, "", {
             duration: 5000
           });
@@ -204,7 +202,6 @@ export class CheckoutComponent implements OnInit {
       this.chargeResult = JSON.stringify(data)
       this.RouteService.changeRoute('orderCreated');
       this.router.navigate(['orders', this._charge.order_id, 'details'])
-
     })
   }
 }
