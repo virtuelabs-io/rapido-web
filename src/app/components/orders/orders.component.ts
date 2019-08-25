@@ -61,6 +61,7 @@ export class OrdersComponent implements OnInit {
     this.currentOrders = []
     this.orders = {}
     if(this.isLoggedIn) {
+      this._loginStateService.loaderEnable()
       await this._orderService.getOrders()
     .then((data: any) => {
       if(data['products']) {
@@ -84,6 +85,7 @@ export class OrdersComponent implements OnInit {
         }
       }
       this.currentOrders = Object.keys(this.orders).reverse()
+      this._loginStateService.loaderDisable()
     })
     }
     else {
@@ -92,6 +94,7 @@ export class OrdersComponent implements OnInit {
   }
 
   cancelOrder(id) {
+    this._loginStateService.loaderEnable()
     this._orderService.cancelOrder(id)
     .subscribe(data => {
       this.getOrders()
