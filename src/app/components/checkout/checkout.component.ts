@@ -144,6 +144,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   createOrder(id) {
+    this._loginStateService.loaderEnable()
     this.order.delivery_address_id = id
     this._orderService.createOrder(this.order)
     .then((data: any) => {
@@ -172,6 +173,7 @@ export class CheckoutComponent implements OnInit {
         }
         this.orderItems = Object.keys(this.orders)
       }
+      this._loginStateService.loaderDisable()
       this.stepperIndex = 1
     })
   }

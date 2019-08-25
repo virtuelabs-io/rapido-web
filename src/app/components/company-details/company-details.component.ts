@@ -17,7 +17,6 @@ import { LoginStateService } from '../../shared-services/login-state/login-state
   providers: [NgbModalConfig, NgbModal]
 })
 export class CompanyDetailsComponent implements OnInit {
-  showSpinner: Boolean = false
   _customerId: string = ""
   editButtonShow: boolean = false
   _snackBarMsg: string = ""
@@ -40,7 +39,6 @@ export class CompanyDetailsComponent implements OnInit {
   }
 
    ngOnInit() {
-    this.showSpinner = true
     this.addressFormGroup = new FormGroup({
       name: new FormControl('', [Validators.required]),
       add1: new FormControl('', [Validators.required]),
@@ -70,9 +68,9 @@ export class CompanyDetailsComponent implements OnInit {
 
    async getCompanyDetails() {
     if(this.isLoggedIn) {
+      this._loginStateService.loaderEnable()
       await this._companyDetailsService.getCompanyDetails()
       .subscribe(data => {
-        this.showSpinner = false
         if(data != null) {
           this.editButtonShow = true
           this.addressFormGroup.controls["name"].setValue(data.company_name)
@@ -94,6 +92,7 @@ export class CompanyDetailsComponent implements OnInit {
           this.addressFormGroup.controls["country"].setValue('')
           this.addressFormGroup.controls["county"].setValue('')
         }
+        this._loginStateService.loaderDisable()
       })
     }
     else {
@@ -104,7 +103,8 @@ export class CompanyDetailsComponent implements OnInit {
     this._modalReference = this.modalService.open(content,  { centered: true })
   }
   modalSave() {
-    this.showSpinner = true
+    this._modalReference.close()
+    this._loginStateService.loaderEnable()
     this._snackBarMsg = Constants.COMPANY_DETAILS_UPDATED
     this.companyDetails = new CompanyDetails(  
       this.addressFormGroup.value.name,
@@ -117,17 +117,16 @@ export class CompanyDetailsComponent implements OnInit {
     )
     this._companyDetailsService.putCompanyDetails(this.companyDetails)
     .subscribe(_ => {
-      this._modalReference.close()
       this.getCompanyDetails()
       this._snackBar.open(this._snackBarMsg, "", {
       duration: 5000
     });
-      this.showSpinner = false
+    this._loginStateService.loaderDisable()
     })
   }
 
   postCompanyDetails(formData) {
-    this.showSpinner = true
+    this._loginStateService.loaderEnable()
     this._snackBarMsg = Constants.COMPANY_DETAILS_ADDED
     this.companyDetails = new CompanyDetails(
       formData.name,
@@ -140,7 +139,7 @@ export class CompanyDetailsComponent implements OnInit {
     )
     this._companyDetailsService.postCompanyDetails(this.companyDetails)
     .subscribe(_ => {
-      this.showSpinner = false
+      this._loginStateService.loaderDisable()
       this._snackBar.open(this._snackBarMsg, "", {
         duration: 5000
       });
@@ -152,7 +151,7 @@ export class CompanyDetailsComponent implements OnInit {
   }
 
   deleteCompanyDetails() {
-    this.showSpinner = true
+    this._loginStateService.loaderEnable()
     this._companyDetailsService.deleteCompanyDetails()
     .subscribe(data => {
       this.getCompanyDetails()

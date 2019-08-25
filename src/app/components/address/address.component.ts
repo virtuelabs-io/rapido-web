@@ -11,7 +11,6 @@ import { LoginStateService } from '../../shared-services/login-state/login-state
   styleUrls: ['./address.component.scss']
 })
 export class AddressComponent implements OnInit {
-  showSpinner: Boolean = false
   address_details_id: number
   isLoggedIn: Boolean
   private _addressDetailsService: AddressDetailsService
@@ -25,7 +24,6 @@ export class AddressComponent implements OnInit {
     private _loginStateService: LoginStateService
   ) {
     this._addressDetailsService = addressDetailsService
-    this.showSpinner = true
     this.userLogInCheck()
   }
 
@@ -45,15 +43,14 @@ export class AddressComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.showSpinner = true
     this.userLogInCheck()
   }
 
   async getAddressList() {
+    this._loginStateService.loaderEnable()
     if(this.isLoggedIn) {
     await  this._addressDetailsService.getAddressDetailsList()
     .subscribe(data => {
-      this.showSpinner = false
       if(data['length'] > 0) {
         this.address_details_id = data[0]['id']
         this.address = data
@@ -61,6 +58,7 @@ export class AddressComponent implements OnInit {
       else if(data['length'] === 0) {
         this.address = data 
       }
+      this._loginStateService.loaderDisable()
     })
     }
     else {
@@ -69,7 +67,7 @@ export class AddressComponent implements OnInit {
   }
 
   addressDelete(id) {
-    this.showSpinner = true
+    this._loginStateService.loaderEnable()
     this._addressDetailsService.deleteAddressDetails(id)
     .subscribe(data => {
       this.address_details_id = null
