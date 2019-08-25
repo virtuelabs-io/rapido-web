@@ -56,6 +56,14 @@
 .questionnaire {
   .title-div {
     margin-left: 2%;
+    margin-top: 1%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    svg {
+      height: 30px;
+      width: 50px;
+    }
     @media screen and (max-width: $mobile-device) {
       margin-top: 5%;
     }
