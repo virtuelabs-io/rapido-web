@@ -1,22 +1,25 @@
 <div class="main-div">
   <div class="cart-div">
-    <div class="title-div">
-      <h4>
-        Shopping Cart
-      </h4>
-      <div *ngIf="!inCart" class="no-cart-item">
-        <svg>
-          <use xlink:href="#no-items-in-cart" />
-         </svg>
-          <div class="shopping-button">
-              <button mat-flat-button color="primary" routerLink="/">
-                  <span role="status" aria-hidden="true"></span>
-                  Continue Shopping 
-              </button>
-          </div>
+    <div class="title-icon-text">
+      <svg>
+        <use xlink:href="#shopping-cart-title" />
+      </svg>
+      <div class="title-div">
+        <h4>
+          Shopping Cart
+        </h4>
       </div>
-      
-      
+    </div>
+    <div *ngIf="!inCart" class="no-cart-item">
+      <svg>
+        <use xlink:href="#no-items-in-cart" />
+      </svg>
+      <div class="shopping-button">
+        <button mat-flat-button color="primary" routerLink="/">
+          <span role="status" aria-hidden="true"></span>
+          Continue Shopping 
+        </button>
+      </div>
     </div>
     <div *ngIf="inCart" class="cart-columns">
       <div class="cart-col-price">
