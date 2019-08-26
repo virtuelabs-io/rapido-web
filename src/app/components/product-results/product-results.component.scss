@@ -38,6 +38,15 @@ div {
     padding: 10px 25px; 
     text-align: center;
     font-size: 28px;
+    margin-top: 5%;
+    .no-result-text {
+        span {
+            font-size: 15px;
+        }
+    }
+    .no-result-icon {
+        margin-top: 1%;
+    }
 }
 
 .btnLeft{
