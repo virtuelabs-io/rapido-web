@@ -158,5 +158,12 @@
 </div>
 
 <div class="no-results" *ngIf=!itemDetails>
-  We didn't find any result for that product id... Please try again.
+  <div class="no-result-icon">
+    <svg>
+      <use xlink:href="#404-error" />
+    </svg>
+  </div>
+  <div class="no-result-text">
+      We are sorry. Page not found
+  </div>
 </div>
