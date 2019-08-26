@@ -7,25 +7,40 @@
     margin-top: 2%;
     .cart-div {
         width: 65%;
-        .title-div {
-            margin-top: 2%;
-            margin-left: 2%;
-            .no-cart-item {
-                height: 300px;
-                padding-left: 50%;
-                img {
-                    height: 200px;
-                }
-                .shopping-button {
-                    height: 100px;
-                    margin-left: 20%;
-                    margin-top: 5%;
-                }
-                @media screen and (max-width: $mobile-device) {
-                    padding-left: 15%;
-                }
+        .title-icon-text {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            padding-left: 2%;
+            svg {
+                height: 30px;
+                width: 30px;
+            }
+            .title-div {
+                padding-left: 1%;
+                width: 100%;
+            }
+            @media screen and (max-width: $mobile-device) {
+                margin-top: 4%;
             }
         }
+        
+        .no-cart-item {
+            height: 300px;
+            padding-left: 50%;
+            img {
+                height: 200px;
+            }
+            .shopping-button {
+                height: 100px;
+                margin-left: 20%;
+                margin-top: 5%;
+            }
+            @media screen and (max-width: $mobile-device) {
+                padding-left: 15%;
+            }
+        }
+        
         .cart-columns {
             display: flex;
             flex-direction: row;
@@ -182,6 +197,6 @@
     }
     @media screen and (max-width: $mobile-device) {
         width: 100%;
-        margin-top: 5%;
+        margin-top: 8%;
     }
 }

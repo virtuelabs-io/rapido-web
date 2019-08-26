@@ -13,6 +13,16 @@
         flex-wrap: wrap;
         justify-content: left;
         width: 30%;
+        .title-div {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            svg {
+                height: 30px;
+                width: 30px;
+                margin-right: 1%;
+            }
+        }
         p {
             display: flex;
             flex-direction: row;

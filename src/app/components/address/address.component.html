@@ -1,5 +1,8 @@
 <div class="main-div">
   <div class="title-div">
+    <svg>
+      <use xlink:href="#delivery-address" />
+    </svg>
     <h4>
       My Addresses
     </h4>
@@ -15,9 +18,6 @@
       </div>
       <div class="text-div">
           <p>Add Address</p>
-      </div>
-      <div class="spinner-div">
-          <mat-spinner strokeWidth="4" [diameter]="50" *ngIf="showSpinner"></mat-spinner>
       </div>
     </a>
     <div class="rapido-add-address-item" *ngFor="let address of address">

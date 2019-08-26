@@ -28,6 +28,7 @@
                 text-align: center;
                 display: table-cell;
                 vertical-align: middle;
+                cursor: pointer;
                 .address-add-icon {
                     a {
                         svg {
@@ -169,6 +170,20 @@
                     }
                     @media screen and (max-width: $mobile-device) {
                         width: 100%;
+                    }
+                }
+                .order-total {
+                    width: 100%;
+                    padding-left: 75%;
+                    margin-top: 2%;
+                    p {
+                        span {
+                            color: red;
+                            font-weight: 800;
+                        }
+                    }
+                    @media screen and (max-width: $mobile-device) {
+                        padding-left: 55%;
                     }
                 }
                 @media screen and (max-width: $mobile-device) {

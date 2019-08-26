@@ -22,8 +22,16 @@
                 </div>
         </div>
         
-        <div class="no-results" *ngIf="noResultsFound">
-            We didn't find any results for that search... Please try again.
+        <div class="no-results row itemListCls col-md-9" *ngIf="noResultsFound">
+            <div class="no-result-text">
+                Sorry we couldn't find any matches for  <u>{{ searchedText }}</u>
+                <br/><span>Maybe your search was too specific, please try searching with another term.</span>
+            </div>
+            <div class="no-result-icon">
+              <svg>
+                <use xlink:href="#not-found" />
+              </svg>
+            </div>
         </div>
           <!-- Cards list div ends -->
           <div class='m-auto'>

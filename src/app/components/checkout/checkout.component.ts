@@ -53,7 +53,7 @@ export class CheckoutComponent implements OnInit {
   chargeResult: string;
   _charge: Charge = new Charge()
 
-  registerFormGroup: FormGroup // UI reactive Form Group variable 
+  registerFormGroup: FormGroup // UI reactive Form Group variable
   private _orderService: OrdersService
 
   constructor(
@@ -144,6 +144,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   createOrder(id) {
+    this._loginStateService.loaderEnable()
     this.order.delivery_address_id = id
     this._orderService.createOrder(this.order)
     .then((data: any) => {
@@ -172,13 +173,14 @@ export class CheckoutComponent implements OnInit {
         }
         this.orderItems = Object.keys(this.orders)
       }
+      this._loginStateService.loaderDisable()
       this.stepperIndex = 1
     })
   }
 
   buy() {
+    this._loginStateService.loaderEnable()
     this._charge.name = this._logInName
-    this._charge.amount = this.amount
     this._charge.description = ['Rapidobuild Order',' #', this._orderId].join("")
     this._charge.receiptEmail = this.registeredEmail
     this._charge.order_id = this._orderId
@@ -191,6 +193,7 @@ export class CheckoutComponent implements OnInit {
           this.charge(this._charge)
         } else if (result.error) {
           // error log
+          this._loginStateService.loaderDisable()
           this._snackBar.open(result.error.message, "", {
             duration: 5000
           });
@@ -202,9 +205,9 @@ export class CheckoutComponent implements OnInit {
     const promise = this.chargeService.chargeCustomer(charge)
     .then(data => {
       this.chargeResult = JSON.stringify(data)
-      this.RouteService.changeRoute('orderCreated');
+      this.RouteService.changeRoute('orderCreated')
+      this._loginStateService.loaderDisable()
       this.router.navigate(['orders', this._charge.order_id, 'details'])
-
     })
   }
 }

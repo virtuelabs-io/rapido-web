@@ -69,6 +69,7 @@ export class OrderDetailsComponent implements OnInit {
   async getOrder() {
     this.order.order_id = this.id
     if(this.isLoggedIn) {
+      this._loginStateService.loaderEnable()
       await this._orderService.getOrder(this.order.order_id)
     .then((data: any) => {
       if(data['orderItemsObject']) {
@@ -99,6 +100,7 @@ export class OrderDetailsComponent implements OnInit {
           }
         }
         this.orderedItems = Object.keys(this.orders)
+        this._loginStateService.loaderDisable()
       }
     })
     }

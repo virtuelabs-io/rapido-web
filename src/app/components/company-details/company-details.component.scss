@@ -17,10 +17,18 @@
         padding-left: 20%;
         padding-right: 20%;
         .title-div {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
             margin-top: 3%;
             margin-bottom: 2%;
             margin-left: 10%;
             border-bottom: 1px solid #e1e4e8;
+            svg {
+                height: 30px;
+                width: 30px;
+                margin-right: 1%;
+            }
             @media screen and (max-width: $mobile-device) {
                 
                 margin-left: 0%;

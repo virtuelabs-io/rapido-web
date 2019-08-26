@@ -80,6 +80,5 @@ describe('EditAddressComponent', () => {
     console.log()
     component.id = 1
     expect(component.saveAddress()).toBeUndefined()
-    expect(component.showSpinner).toBeFalsy()
   }));
 });
