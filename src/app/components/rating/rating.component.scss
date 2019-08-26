@@ -7,6 +7,9 @@ div{
     }
     .size-sm{
         font-size: 150%;
+        @media screen and (max-width: $medium-device) {
+            font-size: 100%;
+        }
     }
     .size-bg{
         font-size: 225%;
