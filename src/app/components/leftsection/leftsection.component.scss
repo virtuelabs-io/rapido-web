@@ -1,0 +1,7 @@
+@import "../../../assets/scss/custom-bootstrap-variables.scss";
+
+:host ::ng-deep .mat-expansion-panel-body {
+    @media screen and (max-width: $medium-device) {
+		padding: 0px;
+	}
+}
