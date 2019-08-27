@@ -5,6 +5,7 @@ import { Constants } from '../../utils/constants';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RouteService } from '../../shared-services/route/route.service';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
+import { CartStateService } from '../../shared-services/cart-state/cart-state.service';
 
 @Component({
   selector: 'app-order-details',
@@ -32,7 +33,8 @@ export class OrderDetailsComponent implements OnInit {
     private router: Router,
     private actRoute: ActivatedRoute,
     private RouteService: RouteService,
-    private _loginStateService: LoginStateService
+    private _loginStateService: LoginStateService,
+    private _cartStateService: CartStateService
   ) { 
     this._orderService = orderService
   }
@@ -65,6 +67,7 @@ export class OrderDetailsComponent implements OnInit {
     this.order.order_id = this.id
     if(this.isLoggedIn) {
       this._loginStateService.loaderEnable()
+      this._cartStateService.fetchAndUpdateCartCount()
       await this._orderService.getOrder(this.order.order_id)
     .then((data: any) => {
       if(data['orderItemsObject']) {
