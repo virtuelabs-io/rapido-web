@@ -148,12 +148,14 @@ export class CartComponent implements OnInit {
   }
 
   postCartItems() {
+    this._loginStateService.loaderEnable()
     let items = [];
     for(var i = 0; i < this.cartItems.length; i++) {
       items.push(this.updateCartItem(this.cartItems[i].id, this.cartItems[i].quantity, true))
     }
     this._cartService.postCartItemList(items)
       .subscribe( _ => {
+        this._loginStateService.loaderDisable()
         this.router.navigate(['cart/checkout']);
       })
   }

@@ -77,14 +77,14 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.showSpinner = true
+    this._loginStateService.loaderEnable()
     this._addressDetailsService.getAddressDetailsList()
     .subscribe(data => {
       if(data['length'] > 0) {
         this.address_details_id = data[0]['id']
         this.address = data
       }
-      this.showSpinner = false
+      this._loginStateService.loaderDisable()
     })
 
     this._loginStateService.isLoggedInState.subscribe(state => {
@@ -134,6 +134,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   getAddressList() {
+    this._loginStateService.loaderEnable()
     this._addressDetailsService.getAddressDetailsList()
     .subscribe(data => {
       this.showSpinner = false
@@ -144,6 +145,7 @@ export class CheckoutComponent implements OnInit {
       else if(data['length'] === 0) {
         this.address = data
       }
+      this._loginStateService.loaderDisable()
     })
   }
 
