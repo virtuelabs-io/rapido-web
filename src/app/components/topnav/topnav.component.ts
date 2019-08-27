@@ -78,7 +78,7 @@ export class TopnavComponent implements OnInit {
         parser:'structured',
         qdotparser:null
       })
-      this.router.navigate(['/products'], { queryParams: { search: decodeURIComponent(queryParams) } })
+      this.router.navigate(['/products'], { queryParams: { search: (queryParams) } })
     }
     event.target.blur();
   }
