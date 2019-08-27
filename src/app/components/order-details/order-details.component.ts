@@ -5,6 +5,7 @@ import { Constants } from '../../utils/constants';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RouteService } from '../../shared-services/route/route.service';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
+import { CompanyDetailsService } from '../../services/customer/company-details.service';
 
 @Component({
   selector: 'app-order-details',
@@ -24,17 +25,23 @@ export class OrderDetailsComponent implements OnInit {
   id: number
   isLoggedIn: Boolean
   imageUrl: string = Constants.environment.staticAssets
+  companyDetails: {}
+  showCompanyDetails: boolean = true
   order: Order = new Order()
   private _orderService: OrdersService
+  private _companyDetailsService: CompanyDetailsService
 
   constructor(
     orderService: OrdersService,
     private router: Router,
     private actRoute: ActivatedRoute,
     private RouteService: RouteService,
-    private _loginStateService: LoginStateService
+    private _loginStateService: LoginStateService,
+    companyDetailsService: CompanyDetailsService
   ) { 
     this._orderService = orderService
+    this._companyDetailsService = companyDetailsService
+    
   }
 
   ngOnInit() {
@@ -65,6 +72,8 @@ export class OrderDetailsComponent implements OnInit {
     this.order.order_id = this.id
     if(this.isLoggedIn) {
       this._loginStateService.loaderEnable()
+      // to fetch the company details..
+      this.getCompanyDetails()
       await this._orderService.getOrder(this.order.order_id)
     .then((data: any) => {
       if(data['orderItemsObject']) {
@@ -98,6 +107,31 @@ export class OrderDetailsComponent implements OnInit {
         this._loginStateService.loaderDisable()
       }
     })
+    }
+    else {
+      await Promise.reject("Login Session doesn't exist!")
+    }
+  }
+
+  async getCompanyDetails() {
+    if(this.isLoggedIn) {
+      await this._companyDetailsService.getCompanyDetails()
+      .subscribe(data => {
+        if(data != null) {
+          this.companyDetails = {
+            name: data.company_name,
+            add1: data.addr_1,
+            add2: data.addr_2,
+            town_city: data.city,
+            postCode: data.postcode,
+            country: data.country,
+            county: data.county
+          }
+        }
+        else {
+          this.showCompanyDetails = false
+        }
+      })
     }
     else {
       await Promise.reject("Login Session doesn't exist!")

@@ -63,20 +63,19 @@
               <br/> {{ orders[order]['address'].country }}
             </div>
       </div>
-      <div class="order-address">
+      <div class="order-address" *ngIf="showCompanyDetails">
         <div class="add-title-div">
           <h5 class="title-div">Company Details</h5>
         </div>
           <div class="address-text">
-              <strong> {{ orders[order]['address'].full_name }} </strong>
-              <br/><p>{{ orders[order]['address'].addr_1 }}
-              <br/> {{ orders[order]['address'].addr_2 }}
-              <br/> {{ orders[order]['address'].city }} 
-              <br/> {{ orders[order]['address'].county }}, {{ orders[order]['address'].postcode }}
-              <br/> {{ orders[order]['address'].country }}
+              <strong> {{ companyDetails.name }} </strong>
+              <br/><p>{{ companyDetails.add1 }}
+              <br/> {{ companyDetails.add2 }}
+              <br/> {{ companyDetails.town_city }} 
+              <br/> {{ companyDetails.county }}, {{ companyDetails.postCode }}
+              <br/> {{ companyDetails.country }}
             </div>
       </div>
     </div>
-    
   </div>
 </div>
