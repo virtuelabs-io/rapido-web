@@ -50,10 +50,7 @@ export class OrderDetailsComponent implements OnInit {
 
   async userLogInCheck() {
     await this.loginSessinExists().
-		then( _ => {
-      this.getOrder()
-      this._cartStateService.fetchAndUpdateCartCount()
-    }).
+		then( _ => this.getOrder()).
 		catch(err => this.handleError(err))
   }
 
@@ -70,6 +67,7 @@ export class OrderDetailsComponent implements OnInit {
     this.order.order_id = this.id
     if(this.isLoggedIn) {
       this._loginStateService.loaderEnable()
+      this._cartStateService.fetchAndUpdateCartCount()
       await this._orderService.getOrder(this.order.order_id)
     .then((data: any) => {
       if(data['orderItemsObject']) {
