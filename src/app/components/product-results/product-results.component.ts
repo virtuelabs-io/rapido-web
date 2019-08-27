@@ -1,8 +1,9 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SearchItemService } from '../../shared-services/search-item/search-item.services';
 import { ProductsService } from '../../services/products/products.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-productresults',
@@ -21,22 +22,25 @@ export class ProductResultsComponent implements OnInit {
 
   private _productsService: ProductsService
   searchedText: string = ""
+  searchUrlParam: string = ""
   responseData: Object
   noResultsFound: boolean = false
   public productList: Array<{id: number, fields: Object}>
   public productListBind: Array<{id: number, fields: Object}>
   constructor(private _searchItemService: SearchItemService,
-              public dialog: MatDialog,
-              productsService: ProductsService) { 
-                this._productsService = productsService
-              }
+    public dialog: MatDialog,
+    productsService: ProductsService,
+    public route: ActivatedRoute) { 
+      this._productsService = productsService
+    }
 
   ngOnInit() {
-    this._searchItemService.currentState.subscribe(query => {
-      if (query.q && query.searchedText){
-        this.searchedText = query.searchedText
-        this._productsService.get(query).
-         subscribe(data => {
+    // this.router.navigate(['/products'], { queryParams: { search: this.searchedText, parseQuery:false } })
+    this.route.queryParams
+      .subscribe(params => {
+        this.searchUrlParam = params.search
+        this._productsService.getFromParams(params.search).
+          subscribe(data => {
             if(data){
               if(data.error || data.hits.found === 0){
                 this.noResultsFound = true
@@ -50,9 +54,8 @@ export class ProductResultsComponent implements OnInit {
               this.length = data.hits && data.hits.found
               this.productListBind =this.productList
             }
-       })
-      }
-      })
+           })
+      });
     }
 
     ngOnDestroy(){

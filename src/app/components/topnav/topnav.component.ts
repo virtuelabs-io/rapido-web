@@ -9,6 +9,7 @@ import { CartStateService } from '../../shared-services/cart-state/cart-state.se
 import { SearchItemService } from '../../shared-services/search-item/search-item.services';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RouteService } from '../../shared-services/route/route.service';
+import { ProductsService } from '../../services/products/products.service';
 
 @NgModule({})
 @Component({
@@ -23,6 +24,7 @@ export class TopnavComponent implements OnInit {
   bannerName: String = Constants.RAPIDO_BUILD
   durationInSeconds = 5;
   cartCount:Number = 0;
+  private _productsService: ProductsService
 
   constructor(private _sessionService: SessionService,
               private _profileService: ProfileService,
@@ -32,7 +34,10 @@ export class TopnavComponent implements OnInit {
               private _searchItemService: SearchItemService,
               private _cartStateService: CartStateService,
               private _loginStateService: LoginStateService,
-              private RouteService : RouteService) {}
+              private RouteService : RouteService,
+              productsService: ProductsService) {
+                this._productsService = productsService
+              }
 
   ngOnInit() {
     const promise = this._sessionService.retrieveSessionIfExists()
@@ -63,16 +68,17 @@ export class TopnavComponent implements OnInit {
 
   onSearch(event){
     if(this.searchedText){
-      this.router.navigateByUrl('/products')
-      this._searchItemService.changeState({
+      let queryParams = this._productsService.buildQuery({
         q: this.searchedText,
-        searchedText: this.searchedText,
-        start: 0,
-        sort: null,
+        size: 15,
         cursor: null,
         return: null,
+        start: 0,
+        sort: null,
+        parser:'structured',
         qdotparser:null
       })
+      this.router.navigate(['/products'], { queryParams: { search: decodeURIComponent(queryParams) } })
     }
     event.target.blur();
   }
