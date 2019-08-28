@@ -8,7 +8,7 @@
     <app-carousel class="rapido-mobile-component"  [carouselConfig]="mobileConfig"  [carouselCard]="carousel.RecommendedSet.data" [carouselTitle]="carousel.RecommendedSet.title"></app-carousel>
   </div>
   <div class="card-holder">
-    <div class="banner-card">
+    <div class="banner-card" (click)="handleSale()" routerLink="/products">
       <img  src="{{banner}}">
     </div>
     <app-home-card [cardDetails]=card class="app-home-card" *ngFor="let card of bannerCard"></app-home-card>  
