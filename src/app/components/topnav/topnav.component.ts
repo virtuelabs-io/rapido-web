@@ -23,8 +23,8 @@ export class TopnavComponent implements OnInit {
   name: String
   searchedText: string = ''
   bannerName: String = Constants.RAPIDO_BUILD
-  durationInSeconds = 5;
-  cartCount:Number = 0;
+  durationInSeconds = 5
+  cartCount:Number = 0
 
   constructor(private _sessionService: SessionService,
               private _profileService: ProfileService,
