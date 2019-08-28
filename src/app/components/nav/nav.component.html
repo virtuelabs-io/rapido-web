@@ -1,0 +1,23 @@
+<app-topnav (toggleSidenav)="navigationSidenav.toggle()">
+</app-topnav>
+
+<mat-sidenav-container autosize>
+  <mat-sidenav fullscreen #navigationSidenav mode="over" role="navigation">
+    <mat-toolbar class="toolbar-row">
+      <mat-toolbar-row>
+        <h2 *ngIf="userLoggedIn" class="toolbar-title"> Hi {{name}} ! </h2>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <mat-nav-list>
+      <a mat-list-item *ngIf="userLoggedIn" (click)="navigationSidenav.close()" [routerLink]="'/profile'"> My Profile </a>
+      <a mat-list-item *ngIf="userLoggedIn" (click)="signOut()" [routerLink]="'/'"> Log Out</a>
+      <a mat-list-item *ngIf="!userLoggedIn" (click)="navigationSidenav.close()" [routerLink]="'/login'"> Log In</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="height: 88vh;">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

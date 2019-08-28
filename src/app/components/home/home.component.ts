@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../services/products/products.service';
 import { Common } from '../../../../src/app/utils/common';
 import { Constants } from '../../../app/utils/constants'
+import { Router } from '@angular/router';
+import { SearchItemService } from '../../shared-services/search-item/search-item.services';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -19,7 +22,9 @@ export class HomeComponent implements OnInit {
 
   private _productsService: ProductsService
   constructor(
-    productsService: ProductsService
+    productsService: ProductsService,
+    private router: Router,
+    private _searchItemService: SearchItemService
   ) { 
     this._productsService = productsService
   }
@@ -40,41 +45,40 @@ export class HomeComponent implements OnInit {
       }
     }
 
-    this.banner = "assets/images/aboutUs_1.jpg"
+    this.banner = "assets/images/sale.jpg"
     this.cardDetails = [
       {
         "title": "Watches",
-        "image": '/assets/images/Watches.jpeg',
+        "image": '/assets/images/watches.jpg',
         "desc": "Find the best photography deals"
       },
       {
-        "title": "Crazy Constructions",
-        "image": '/assets/images/aboutUs_1.jpg',
-        "desc": "Find tools related to construction"
+        "title": "Furnitures",
+        "image": '/assets/images/furnitures.jpg',
+        "desc": "Best of furnitures in store"
       },
       {
-        "title": "Farmer's place",
-        "image": '/assets/images/aboutUs_2.jpg',
+        "title": "Fashion",
+        "image": '/assets/images/fashion.jpg',
         "desc": "Find the best deals here"
       },
       {
-        "title": "We make it possible",
-        "image": '/assets/images/aboutUs_3.jpg',
+        "title": "Laptops",
+        "image": '/assets/images/laptops.jpeg',
         "desc": "Deals you might be interested in"
       } 
     ]
 
     this.bannerCard = [
       {
-        "title": "Fashion photography store",
-        "image": '/assets/images/home_card_1.jpg',
-        "desc": "Find the best photography deals",
-        "price": "Rs. 100000" 
+        "title": "Wallets",
+        "image": '/assets/images/wallets.jpg',
+        "desc": "End of sale"
       },
       {
-        "title": "Crazy Constructions",
-        "image": '/assets/images/aboutUs_1.jpg',
-        "desc": "Find tools related to construction"
+        "title": "Sunglasses",
+        "image": '/assets/images/sunglass.jpg',
+        "desc": "Deals to excite you"
       },
       
     ]
@@ -88,7 +92,7 @@ export class HomeComponent implements OnInit {
 
   recommendedProductList() {
     let query = {
-      q: `watches`,
+      q: `fashion`,
       size: 10
     }
      this._productsService.get(query).
@@ -107,6 +111,22 @@ export class HomeComponent implements OnInit {
         }
       }
     })
+  }
+
+  handleSale() {
+    let searchedText = 'sale'
+    if(searchedText) {
+      this.router.navigateByUrl('/products')
+      this._searchItemService.changeState({
+      q: searchedText,
+      searchedText: searchedText,
+      start: 0,
+      sort: null,
+      cursor: null,
+      return: null,
+      qdotparser:null
+      })
+    }
   }
 
   recommendedSet() {
@@ -134,7 +154,7 @@ export class HomeComponent implements OnInit {
 
   browsedHistory() {
     let query = {
-      q: `watches`,
+      q: `furnitures`,
       size: 10
     }
      this._productsService.get(query).
@@ -142,7 +162,7 @@ export class HomeComponent implements OnInit {
       if (data) {
         this.carousel.BrowsingHistory.data = data.hits.hit.map((v,i)=>{
           v.fields.id = v.id
-          v.fields.image = Common.getImageURI(null, v.fields.images[1])
+          v.fields.image = Common.getImageURI(null, v.fields.images[0])
           return v.fields
           })
         if (data.error) {
