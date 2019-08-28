@@ -10,6 +10,7 @@ import { AddressDetailsMockService } from '../../services/customer/address-detai
 import { AddressDetailsService } from '../../services/customer/address-details.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Common } from 'src/app/utils/common';
+import { AddressDetailsMockData } from 'src/app/services/customer/address-details.mock.data';
 
 describe('AddressComponent', () => {
   let addressDetailsMockService: AddressDetailsService = new AddressDetailsMockService()
@@ -44,9 +45,9 @@ describe('AddressComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should fetch address/s if present', () => {
-    component.getAddressList();
-    console.log(component.address)
-    expect(1).toEqual(1);
+  it('should fetch address/s if present',  () => {
+    component.isLoggedIn = true
+     component.getAddressList();
+    expect(component.address).toEqual(AddressDetailsMockData.addressList)
   });
 });
