@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AddressDetailsService } from '../../services/customer/address-details.service';
 import { RouteService } from '../../shared-services/route/route.service';
 import { SessionService } from '../../services/authentication/session/session.service';
@@ -13,13 +13,14 @@ import { LoginStateService } from '../../shared-services/login-state/login-state
 export class AddressComponent implements OnInit {
   address_details_id: number
   isLoggedIn: Boolean
-  private _addressDetailsService: AddressDetailsService
+  public _addressDetailsService: AddressDetailsService
   address: any
   example:any;
   constructor( 
     private router: Router,
     addressDetailsService: AddressDetailsService,
-    private _sessionService: SessionService,
+    private _sessionService: SessionService,    
+    private actRoute: ActivatedRoute,
     private RouteService : RouteService,
     private _loginStateService: LoginStateService
   ) {
