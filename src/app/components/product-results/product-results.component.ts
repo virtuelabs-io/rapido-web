@@ -3,7 +3,7 @@ import { SearchItemService } from '../../shared-services/search-item/search-item
 import { ProductsService } from '../../services/products/products.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-productresults',

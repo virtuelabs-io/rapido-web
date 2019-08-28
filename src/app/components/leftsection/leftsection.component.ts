@@ -1,19 +1,22 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy  } from '@angular/core';
 import { SearchItemService } from '../../shared-services/search-item/search-item.services';
 import { ProductsHierarchyService } from '../../services/products/products-hierarchy.service';
+import { ProductsService } from '../../services/products/products.service';
+import { Router } from '@angular/router';
 
  @Component({
   selector: 'app-leftsection',
   templateUrl: './leftsection.component.html',
   styleUrls: ['./leftsection.component.scss']
  })
- export class LeftSectionComponent implements OnInit {
+ export class LeftSectionComponent implements OnInit, OnDestroy  {
  
   @Input() closeDialog: any
   filterData: any
   prevQuery: Object
   selections: Object
   private _productsHierarchyService: ProductsHierarchyService
+  private _productsService: ProductsService
   fnPriceFilterHandler: Function;
   tags = []
   category: string = ""
@@ -21,9 +24,15 @@ import { ProductsHierarchyService } from '../../services/products/products-hiera
   subcategories: any
   fieldsQuery: any
   searchedText: string = ""
+  _searchItemServiceSubject: any
+  releatedSearch : any
  
-  constructor(private _searchItemService: SearchItemService, productsHierarchyService: ProductsHierarchyService) {
+  constructor(private _searchItemService: SearchItemService, 
+    productsService: ProductsService,
+    public router: Router,
+    productsHierarchyService: ProductsHierarchyService) {
     this._productsHierarchyService = productsHierarchyService
+    this._productsService = productsService
   }
 
   ngOnInit() {
@@ -48,7 +57,7 @@ import { ProductsHierarchyService } from '../../services/products/products-hiera
    this._searchItemService.responsePoductListState.subscribe(respData => {
     this.updateProductControls(respData)
   })
-  this._searchItemService.currentState.subscribe(query => {
+  this._searchItemServiceSubject = this._searchItemService.currentState.subscribe(query => {
     if (query.searchedText) {
       this.searchedText = query.searchedText
       this.prevQuery = query
@@ -138,7 +147,8 @@ import { ProductsHierarchyService } from '../../services/products/products-hiera
       q: query,
       searchedText: this.searchedText,
       qdotparser: 'structured',
-      parser: null
+      parser: null,
+      size:15
     })
   }
   
@@ -153,7 +163,8 @@ import { ProductsHierarchyService } from '../../services/products/products-hiera
       q: query,
       searchedText: this.searchedText,
       qdotparser: 'structured',
-      parser: null
+      parser: null,
+      size:15
     })
   }
   
@@ -164,19 +175,22 @@ import { ProductsHierarchyService } from '../../services/products/products-hiera
   }
   
   onPressItem(data) {
+    this.releatedSearch = data
     this.updateFilterConditions({
       q: data,
       start: 0,
       sort: null,
       cursor: null,
       return: null,
-      qdotparser: null
+      qdotparser: null,
+      size:15
     })
   }
   
   updateFilterConditions(queryObj) {
     if (this.searchedText) {
-      this._searchItemService.changeState(queryObj)
+      let queryParams = this._productsService.buildQuery(queryObj)
+      this.router.navigate(['/products'], { queryParams: { search: decodeURIComponent(queryParams) } })
       if (this.closeDialog) {
         localStorage.setItem('fieldsQuery', JSON.stringify(this.fieldsQuery));
          localStorage.setItem('searchedText', this.searchedText);
@@ -206,7 +220,20 @@ import { ProductsHierarchyService } from '../../services/products/products-hiera
     } else {
       this.onPressRating(this.fieldsQuery.rating.q)
     }
+  }
   
+  removeReleatedSearch() {
+    this.releatedSearch = null
+    if (!this.fieldsQuery.price.q && !this.fieldsQuery.rating.q) {
+      this.onPressItem(this.searchedText)
+    } else {
+      this.onPressRating(this.fieldsQuery.rating.q)
+    }
+  }
+
+  ngOnDestroy() {
+    console.log('[takeWhile] ngOnDestory');
+    this._searchItemServiceSubject.unsubscribe();
   }
   
   }

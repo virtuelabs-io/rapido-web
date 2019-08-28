@@ -2,7 +2,7 @@
   <section>
      <div class="filtersL">
          <!-- Current selections starts -->
-         <mat-accordion multi="true" displayMode="flat" *ngIf='searchedText  || fieldsQuery'>
+         <mat-accordion multi="true" displayMode="flat" *ngIf='searchedText'>
                <div class="h6 pt-4">Current selections</div>
                <mat-expansion-panel expanded="true">
                      <mat-nav-list>
@@ -10,6 +10,11 @@
                            <app-pill-badge 
                               *ngIf='searchedText'
                               [selType] = 'searchedText'>
+                           </app-pill-badge>
+                           <app-pill-badge 
+                              *ngIf='releatedSearch'
+                              [selValue] = 'releatedSearch'
+                              (removeSelection) = removeReleatedSearch(fieldsQuery)>
                            </app-pill-badge>
                            <app-pill-badge 
                               *ngIf='fieldsQuery.price.q'

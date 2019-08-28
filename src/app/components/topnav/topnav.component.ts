@@ -68,8 +68,9 @@ export class TopnavComponent implements OnInit {
 
   onSearch(event){
     if(this.searchedText){
-      let queryParams = this._productsService.buildQuery({
+      let qObject = {
         q: this.searchedText,
+        searchedText: this.searchedText,
         size: 15,
         cursor: null,
         return: null,
@@ -77,7 +78,9 @@ export class TopnavComponent implements OnInit {
         sort: null,
         parser:'structured',
         qdotparser:null
-      })
+      }
+      let queryParams = this._productsService.buildQuery(qObject)
+      this._searchItemService.changeState(qObject)
       this.router.navigate(['/products'], { queryParams: { search: (queryParams) } })
     }
     event.target.blur();
