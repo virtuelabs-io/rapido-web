@@ -99,6 +99,7 @@ export class CompanyDetailsComponent implements OnInit {
       await Promise.reject("Login Session doesn't exist!")
     }
   }
+  
   putCompanyDetails(content) {
     this._modalReference = this.modalService.open(content,  { centered: true })
   }

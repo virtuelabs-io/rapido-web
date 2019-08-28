@@ -77,14 +77,14 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.showSpinner = true
+    this._loginStateService.loaderEnable()
     this._addressDetailsService.getAddressDetailsList()
     .subscribe(data => {
       if(data['length'] > 0) {
         this.address_details_id = data[0]['id']
         this.address = data
       }
-      this.showSpinner = false
+      this._loginStateService.loaderDisable()
     })
 
     this._loginStateService.isLoggedInState.subscribe(state => {
@@ -93,35 +93,39 @@ export class CheckoutComponent implements OnInit {
         this._logInName = this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.name
       }
     })
-
+    
     this.payment = this.fb.group({
       name: ['', [Validators.required]]
     });
+    
+  }
+
+  ngAfterViewInit() {
     this.stripeService.elements(this.elementsOptions)
-      .subscribe(elements => {
-        this.elements = elements;
-        // Only mount the element the first time
-        if (!this.card) {
-          this.card = this.elements.create('card', {
-            style: {
-              base: {
-                color: '#32325d',
-                fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-                fontSmoothing: 'antialiased',
-                fontSize: '16px',
-                '::placeholder': {
-                  color: '#aab7c4'
-                }
-              },
-              invalid: {
-                color: '#fa755a',
-                iconColor: '#fa755a'
+    .subscribe(elements => {
+      this.elements = elements;
+      // Only mount the element the first time
+      if (!this.card) {
+        this.card = this.elements.create('card', {
+          style: {
+            base: {
+              color: '#32325d',
+              fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+              fontSmoothing: 'antialiased',
+              fontSize: '16px',
+              '::placeholder': {
+                color: '#aab7c4'
               }
+            },
+            invalid: {
+              color: '#fa755a',
+              iconColor: '#fa755a'
             }
-          });
-          this.card.mount('#card-element');
-        }
-      });
+          }
+        });
+        this.card.mount('#card-element');
+      }
+    });
   }
 
   newAddress() {
@@ -130,6 +134,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   getAddressList() {
+    this._loginStateService.loaderEnable()
     this._addressDetailsService.getAddressDetailsList()
     .subscribe(data => {
       this.showSpinner = false
@@ -140,6 +145,7 @@ export class CheckoutComponent implements OnInit {
       else if(data['length'] === 0) {
         this.address = data
       }
+      this._loginStateService.loaderDisable()
     })
   }
 
