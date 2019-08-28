@@ -4,6 +4,7 @@ import { TopnavComponent } from '../topnav/topnav.component';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
 import { ProfileService } from '../../services/authentication/profile/profile.service';
 import { CartStateService } from '../../shared-services/cart-state/cart-state.service';
+import { $ } from 'protractor';
 
 @Component({
   selector: 'app-nav',
@@ -27,6 +28,7 @@ export class NavComponent implements OnInit {
   ngOnInit() {
     this._loginStateService.isLoggedInState.subscribe(state => {
       this.isSignedIn = state
+      this.userLoggedIn = state
       if (state) {
         this.name =  this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.name
       }
@@ -34,6 +36,8 @@ export class NavComponent implements OnInit {
     this._cartStateService.cartCountState.subscribe(state => {
       this.cartCount = state;
     })
+
+    
   }
 
   signOut() {
@@ -41,5 +45,9 @@ export class NavComponent implements OnInit {
     this._loginStateService.changeState(false)
     this._cartStateService.updateCartCount(0)
     this.userLoggedIn = false
+
+   // document.getElementsByClassName("hi")[0]["cancel"] = true
+  // document.querySelector('.sidenav').sideNav('hide')
+  //  this.sidenav.close()
   }
 }
