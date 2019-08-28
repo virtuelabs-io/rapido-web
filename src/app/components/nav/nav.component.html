@@ -1,10 +1,12 @@
+<app-topnav (toggleSidenav)="navigationSidenav.toggle()">
+
+</app-topnav>
 
 
 
+<mat-sidenav-container autosize>
 
-<mat-sidenav-container fullscreen>
-
-  <mat-sidenav #navigationSidenav mode="over" role="navigation">
+  <mat-sidenav fullscreen #navigationSidenav mode="over" role="navigation">
 
     <mat-toolbar>
       <mat-toolbar-row>
@@ -14,16 +16,13 @@
 
     <mat-nav-list>
 
-      <h2 matSubheader> Profile </h2>
-
-      <a mat-list-item routerLink="/" style="height: 0;"></a>
-
-      
-
-      <mat-divider></mat-divider>
-
-      <h2 matSubheader> Categories </h2>
-      <h2 matSubheader> Orders </h2>
+      <a mat-list-item [routerLink]="'/accounts'"> Accounts </a>
+      <a mat-list-item [routerLink]="'/create-account'"> Create Account </a>
+      <a mat-list-item [routerLink]="'/contacts'"> Contacts </a>
+      <a mat-list-item [routerLink]="'/create-contact'"> Create Contact </a>
+      <a mat-list-item [routerLink]="'/activities'"> Activities </a>
+      <a mat-list-item [routerLink]="'/create-activity'"> Create Activity </a>
+      <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
 
       
 
@@ -47,16 +46,14 @@
 
   
 
-  <mat-sidenav-content role="main">
-    <!--
-    <crm-navigation-bar *ngIf="isAuthenticated()" (toggleSidenav)="navigationSidenav.toggle()">
-    </crm-navigation-bar>
-    -->
+  <mat-sidenav-content>
+    <div style="height: 88vh;">
 
-    <app-topnav (toggleSidenav)="navigationSidenav.toggle()">
-
-    </app-topnav>
-    
+      <router-outlet></router-outlet>
+    </div>
   </mat-sidenav-content>
+
+
+
 
 </mat-sidenav-container>
