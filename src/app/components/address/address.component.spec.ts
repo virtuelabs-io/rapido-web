@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AddressComponent } from './address.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -11,12 +11,14 @@ import { AddressDetailsService } from '../../services/customer/address-details.s
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Common } from 'src/app/utils/common';
 import { AddressDetailsMockData } from 'src/app/services/customer/address-details.mock.data';
+import {Location} from "@angular/common";
 
 describe('AddressComponent', () => {
   let addressDetailsMockService: AddressDetailsService = new AddressDetailsMockService()
   let component: AddressComponent;
   let fixture: ComponentFixture<AddressComponent>;
   let router: Router;
+  let location: Location;
 
   const routes: Routes = [
     { path: 'login', component: LogInComponent},
@@ -34,6 +36,7 @@ describe('AddressComponent', () => {
 
   beforeEach(() => {
     router = TestBed.get(Router);
+    location = TestBed.get(Location);
     fixture = TestBed.createComponent(AddressComponent);
     router.initialNavigation();
     component = fixture.componentInstance;
@@ -50,4 +53,26 @@ describe('AddressComponent', () => {
      component.getAddressList();
     expect(component.address).toEqual(AddressDetailsMockData.addressList)
   });
+
+  it('delete functionality',  () => {
+    let data = {
+      fieldCount: 0,
+      affectedRows: 1,
+      insertId: 0,
+      serverStatus: 2,
+      warningCount: 0,
+      message: "",
+      protocol41: true,
+      changedRows: 0
+    }
+     component.addressDelete(1);
+    expect(data).toEqual(AddressDetailsMockData.deleteAddress)
+  });
+
+  it('route to edit component',  fakeAsync(() => {
+    component.addressEdit(1);
+    tick();
+    console.log(location.path())
+    expect(location.path()).toEqual('/profile/address/editAddress/1')
+  }));
 });

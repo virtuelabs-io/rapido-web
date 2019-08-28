@@ -17,7 +17,7 @@ export class AddressComponent implements OnInit {
   address: any
   example:any;
   constructor( 
-    private router: Router,
+    public router: Router,
     addressDetailsService: AddressDetailsService,
     private _sessionService: SessionService,    
     private actRoute: ActivatedRoute,
