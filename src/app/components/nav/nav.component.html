@@ -1,0 +1,62 @@
+
+
+
+
+<mat-sidenav-container fullscreen>
+
+  <mat-sidenav #navigationSidenav mode="over" role="navigation">
+
+    <mat-toolbar>
+      <mat-toolbar-row>
+        <h2 class="toolbar-title"> App Title </h2>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <mat-nav-list>
+
+      <h2 matSubheader> Profile </h2>
+
+      <a mat-list-item routerLink="/" style="height: 0;"></a>
+
+      
+
+      <mat-divider></mat-divider>
+
+      <h2 matSubheader> Categories </h2>
+      <h2 matSubheader> Orders </h2>
+
+      
+
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+
+  <mat-sidenav #commandbarSidenav position="end" mode="side" class="crm-command-bar-sidenav">
+
+    <mat-list style="padding: 10px;">
+
+      <h2 matSubheader> Categories </h2>
+      <h2 matSubheader> Orders </h2>
+
+    </mat-list>
+
+   
+
+  </mat-sidenav>
+
+  
+
+  <mat-sidenav-content role="main">
+    <!--
+    <crm-navigation-bar *ngIf="isAuthenticated()" (toggleSidenav)="navigationSidenav.toggle()">
+    </crm-navigation-bar>
+    -->
+
+    <app-topnav (toggleSidenav)="navigationSidenav.toggle()">
+
+    </app-topnav>
+    
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

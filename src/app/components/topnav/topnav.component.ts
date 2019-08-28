@@ -1,4 +1,4 @@
-import { Component, OnInit, NgModule } from '@angular/core';
+import { Component, OnInit, NgModule, EventEmitter, Output  } from '@angular/core';
 import { SessionService } from '../../services/authentication/session/session.service';
 import { ProfileService } from '../../services/authentication/profile/profile.service';
 import { CartService } from '../../services/cart/cart.service';
@@ -9,6 +9,7 @@ import { CartStateService } from '../../shared-services/cart-state/cart-state.se
 import { SearchItemService } from '../../shared-services/search-item/search-item.services';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RouteService } from '../../shared-services/route/route.service';
+import { NavComponent } from '../nav/nav.component';
 
 @NgModule({})
 @Component({
@@ -17,6 +18,7 @@ import { RouteService } from '../../shared-services/route/route.service';
   styleUrls: ['./topnav.component.scss']
 })
 export class TopnavComponent implements OnInit {
+  @Output() toggleSidenav = new EventEmitter<void>();
   isSignedIn: Boolean = false
   name: String
   searchedText: string = ''
