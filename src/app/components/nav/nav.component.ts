@@ -45,9 +45,5 @@ export class NavComponent implements OnInit {
     this._loginStateService.changeState(false)
     this._cartStateService.updateCartCount(0)
     this.userLoggedIn = false
-
-   // document.getElementsByClassName("hi")[0]["cancel"] = true
-  // document.querySelector('.sidenav').sideNav('hide')
-  //  this.sidenav.close()
   }
 }

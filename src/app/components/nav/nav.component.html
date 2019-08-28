@@ -2,8 +2,8 @@
 </app-topnav>
 
 <mat-sidenav-container autosize>
-  <mat-sidenav fullscreen #navigationSidenav class="hi" mode="over" role="navigation">
-    <mat-toolbar>
+  <mat-sidenav fullscreen #navigationSidenav mode="over" role="navigation">
+    <mat-toolbar class="toolbar-row">
       <mat-toolbar-row>
         <h2 *ngIf="userLoggedIn" class="toolbar-title"> Hi {{name}} ! </h2>
       </mat-toolbar-row>
