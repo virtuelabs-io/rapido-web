@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SearchItemService } from '../../shared-services/search-item/search-item.services';
+import { LoginStateService } from '../../shared-services/login-state/login-state.service';
 import { ProductsService } from '../../services/products/products.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Query } from '../../services/products/query.interface';
 
 @Component({
   selector: 'app-productresults',
   templateUrl: './product-results.component.html',
   styleUrls: ['./product-results.component.scss']
 })
-export class ProductResultsComponent implements OnInit {
+export class ProductResultsComponent implements OnInit, OnDestroy {
 
   // MatPaginator Inputs
   length = 100;
@@ -27,9 +29,13 @@ export class ProductResultsComponent implements OnInit {
   noResultsFound: boolean = false
   public productList: Array<{id: number, fields: Object}>
   public productListBind: Array<{id: number, fields: Object}>
+  _searchItemServicecurrentState: any
+  prevQuery: Query
   constructor(private _searchItemService: SearchItemService,
     public dialog: MatDialog,
     productsService: ProductsService,
+    public loginStateService: LoginStateService,
+    public router: Router,
     public route: ActivatedRoute) { 
       this._productsService = productsService
     }
@@ -38,12 +44,14 @@ export class ProductResultsComponent implements OnInit {
     // this.router.navigate(['/products'], { queryParams: { search: this.searchedText, parseQuery:false } })
     this.route.queryParams
       .subscribe(params => {
+        this.loginStateService.loaderEnable()
         this.searchUrlParam = params.search
         this._productsService.getFromParams(params.search).
           subscribe(data => {
             if(data){
               if(data.error || data.hits.found === 0){
                 this.noResultsFound = true
+                this.loginStateService.loaderDisable()
                 return;
               }
               this.noResultsFound = false
@@ -53,20 +61,29 @@ export class ProductResultsComponent implements OnInit {
               this.productList = data.hits.hit
               this.length = data.hits && data.hits.found
               this.productListBind =this.productList
+              this.loginStateService.loaderDisable()
             }
            })
       });
+      this._searchItemServicecurrentState = this._searchItemService.currentState.subscribe(query => {
+        if (query.searchedText) {
+          this.searchedText = query.searchedText
+          this.prevQuery = query
+        }
+      })
     }
 
     ngOnDestroy(){
      localStorage.removeItem('fieldsQuery')
      localStorage.removeItem('searchedText')
+     this._searchItemServicecurrentState.unsubscribe();
     }
 
     onPageChange(evt){
-      this._searchItemService.changeState({
-        start: evt.pageIndex * evt.pageSize
-      })
+      this.prevQuery.start = evt.pageIndex * evt.pageSize
+      let queryParams = this._productsService.buildQuery(this.prevQuery)
+      this._searchItemService.changeState(this.prevQuery)
+      this.router.navigate(['/products'], { queryParams: { search: (queryParams) } })
     }
 
     setPageSizeOptions(setPageSizeOptionsInput: string) {

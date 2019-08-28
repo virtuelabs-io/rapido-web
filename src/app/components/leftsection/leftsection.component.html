@@ -14,6 +14,7 @@
                            <app-pill-badge 
                               *ngIf='releatedSearch'
                               [selValue] = 'releatedSearch'
+                              selType = 'Releated'
                               (removeSelection) = removeReleatedSearch(fieldsQuery)>
                            </app-pill-badge>
                            <app-pill-badge 
@@ -45,7 +46,7 @@
                         </mat-expansion-panel-header>
 
                      <mat-nav-list>
-                           <mat-list-item *ngFor="let item of this.subcategories" (click)="onPressItem(category + ' ' + item)" >
+                           <mat-list-item *ngFor="let item of this.subcategories" (click)="onPressItem(category, item)" >
                                  {{item}}
                                  </mat-list-item>
                      </mat-nav-list>
@@ -63,7 +64,7 @@
               </mat-expansion-panel-header>
               <mat-nav-list [ngSwitch]="panelList.panelType">
                  <div *ngSwitchCase="'link'">
-                    <mat-list-item (click)="onPressItem(panelData)" *ngFor="let panelData of panelList.panelData">
+                    <mat-list-item (click)="onPressItem(searchedText, panelData)" *ngFor="let panelData of panelList.panelData">
                     <a matLine>{{panelData}}</a>
                     </mat-list-item>
                  </div>

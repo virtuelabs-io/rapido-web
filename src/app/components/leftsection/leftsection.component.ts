@@ -24,7 +24,8 @@ import { Router } from '@angular/router';
   subcategories: any
   fieldsQuery: any
   searchedText: string = ""
-  _searchItemServiceSubject: any
+  _searchItemServicecurrentState: any
+  _searchItemServiceResponsePoductListState: any
   releatedSearch : any
  
   constructor(private _searchItemService: SearchItemService, 
@@ -38,12 +39,12 @@ import { Router } from '@angular/router';
   ngOnInit() {
     this.fieldsQuery = {
       price: {
-      q: null,
-      text: null
+        q: null,
+        text: null
       },
       rating: {
-      q: null,
-      text: null
+        q: null,
+        text: null
       }
     }
     let localFieldsQuery = localStorage.getItem('fieldsQuery')
@@ -54,15 +55,16 @@ import { Router } from '@angular/router';
     if(localSearchedText){
       this.searchedText =  localSearchedText;
     }
-   this._searchItemService.responsePoductListState.subscribe(respData => {
-    this.updateProductControls(respData)
-  })
-  this._searchItemServiceSubject = this._searchItemService.currentState.subscribe(query => {
-    if (query.searchedText) {
-      this.searchedText = query.searchedText
-      this.prevQuery = query
-    }
-  })
+    this._searchItemServiceResponsePoductListState =  this._searchItemService.responsePoductListState.subscribe(respData => {
+      this.updateProductControls(respData)
+    })
+    
+    this._searchItemServicecurrentState = this._searchItemService.currentState.subscribe(query => {
+      if (query.searchedText) {
+        this.searchedText = query.searchedText
+        this.prevQuery = query
+      }
+    })
   }
   
   updateProductControls(respData) {
@@ -72,11 +74,14 @@ import { Router } from '@angular/router';
     if (hits && hits.hit) {
       this.tags = hits.hit[0].fields.tags
       this.category = hits.hit[0].fields.category
-      this._productsHierarchyService.get()
+      // if(this.subcategories){
+        this._productsHierarchyService.get()
         .subscribe(data => {
           this.categories = data
           this.subcategories = this.categories[this.category]
         })
+      // }
+      
       this.fnPriceFilterHandler = obj => this.priceFilterData(obj);
       this.filterData = [
       {
@@ -92,7 +97,7 @@ import { Router } from '@angular/router';
               'panelType': 'priceslider',
               'panelData': {
                 'fnPriceFilterHandler': this.fnPriceFilterHandler,
-                'maxValue': 500, //dynamic
+                'maxValue': 500000, //dynamic
                 'minValue': 0 //dynamic
               }
             }
@@ -137,7 +142,7 @@ import { Router } from '@angular/router';
   }
   
   priceFilterData(range) {
-    let query = `(and '${this.searchedText}' (range field=price [${range.min}, ${range.max}]))`
+    let query = `(and '${this.searchedText + (this.releatedSearch ? ' '+ this.releatedSearch : '')}' (range field=price [${range.min}, ${range.max}]))`
     if (this.fieldsQuery.rating.q) {
       query = `(and '${this.searchedText}' (and (range field=rating [${this.fieldsQuery.rating.q},${Number(5)}]) (range field=price [${range.min},${range.max}])))`
     }
@@ -148,12 +153,13 @@ import { Router } from '@angular/router';
       searchedText: this.searchedText,
       qdotparser: 'structured',
       parser: null,
-      size:15
+      size:15,
+      start:0
     })
   }
   
   onPressRating(val) {
-    let query = `(and '${this.searchedText}' (range field=rating [${val},${Number(5)}]))`
+    let query = `(and '${this.searchedText + (this.releatedSearch ? ' '+this.releatedSearch : '')}' (range field=rating [${val},${Number(5)}]))`
     if (this.fieldsQuery.price.q) {
       query = `(and '${this.searchedText}' (and (range field=rating [${val},${Number(5)}]) (range field=price ${this.fieldsQuery.price.q})))`
     }
@@ -164,7 +170,8 @@ import { Router } from '@angular/router';
       searchedText: this.searchedText,
       qdotparser: 'structured',
       parser: null,
-      size:15
+      size:15,
+      start:0
     })
   }
   
@@ -174,22 +181,23 @@ import { Router } from '@angular/router';
     })
   }
   
-  onPressItem(data) {
-    this.releatedSearch = data
+  onPressItem(data, subCategory) {
+    if(subCategory){
+      data = data + ' ' + subCategory 
+      this.releatedSearch = subCategory
+    }
     this.updateFilterConditions({
       q: data,
-      start: 0,
       sort: null,
       cursor: null,
       return: null,
-      qdotparser: null,
-      size:15
+      qdotparser: null
     })
   }
   
   updateFilterConditions(queryObj) {
     if (this.searchedText) {
-      let queryParams = this._productsService.buildQuery(queryObj)
+      let queryParams = this._productsService.buildQuery({...this.prevQuery, ...queryObj})
       this.router.navigate(['/products'], { queryParams: { search: decodeURIComponent(queryParams) } })
       if (this.closeDialog) {
         localStorage.setItem('fieldsQuery', JSON.stringify(this.fieldsQuery));
@@ -202,7 +210,7 @@ import { Router } from '@angular/router';
   removeRating() {
     this.fieldsQuery.rating.q = null
     if (!this.fieldsQuery.price.q && !this.fieldsQuery.rating.q) {
-      this.onPressItem(this.searchedText)
+      this.onPressItem(this.searchedText, null)
     } else {
       let priceRange = JSON.parse(this.fieldsQuery.price.q)
       if (priceRange)
@@ -216,7 +224,7 @@ import { Router } from '@angular/router';
   removePrice() {
     this.fieldsQuery.price.q = null
     if (!this.fieldsQuery.price.q && !this.fieldsQuery.rating.q) {
-      this.onPressItem(this.searchedText)
+      this.onPressItem(this.searchedText, null)
     } else {
       this.onPressRating(this.fieldsQuery.rating.q)
     }
@@ -224,16 +232,12 @@ import { Router } from '@angular/router';
   
   removeReleatedSearch() {
     this.releatedSearch = null
-    if (!this.fieldsQuery.price.q && !this.fieldsQuery.rating.q) {
-      this.onPressItem(this.searchedText)
-    } else {
-      this.onPressRating(this.fieldsQuery.rating.q)
-    }
+    this.onPressItem(this.searchedText, null)
   }
 
   ngOnDestroy() {
-    console.log('[takeWhile] ngOnDestory');
-    this._searchItemServiceSubject.unsubscribe();
+    this._searchItemServicecurrentState.unsubscribe();
+    this._searchItemServiceResponsePoductListState.unsubscribe();
   }
   
   }
