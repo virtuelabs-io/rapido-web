@@ -1,5 +1,18 @@
 <div class="container authmock-body">
   <div class="col-md-12">
+    <h2>Ratings</h2><hr>
+    <button class="btn btn-primary" type="submit" (click)="createRating()">createRating</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="updateRating()">updateRating</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="getCustomerRating()">getCustomerRating</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="getAllCustomerRatings()">getAllCustomerRatings</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="deleteCustomerRating()">deleteCustomerRating</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="helpfulRatingIncrement()">helpfulRatingIncrement</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="deactivateRating()">deactivateRating</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="getProductRatings()">getProductRatings</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="getProductRatingsSummary()">getProductRatingsSummary</button><br><br>
+    <h5>{{ rating_result }}</h5>
+  </div>
+  <div class="col-md-12">
     <h2>Orders</h2><hr>
     <button class="btn btn-primary" type="submit" (click)="createOrder()">createOrder</button><br><br>
     <button class="btn btn-primary" type="submit" (click)="confirmOrder()">confirmOrder</button><br><br>

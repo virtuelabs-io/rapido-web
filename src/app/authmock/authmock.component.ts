@@ -22,6 +22,8 @@ import { CartItemDetails } from '../services/cart/cart-item-details';
 import { OrdersService } from '../services/orders/orders.service';
 import { Order } from '../services/orders/order';
 import { AddressDetailsMockService } from '../services/customer/address-details.mock.service';
+import { Rating } from '../services/ratings/rating';
+import { RatingsService } from '../services/ratings/ratings.service';
 
 @Component({
   selector: 'app-authmock',
@@ -49,6 +51,8 @@ export class AuthmockComponent implements OnInit {
   cart_item_result: string;
 
   order_result: string;
+
+  rating_result: string;
 
   companyDetails: CompanyDetails = new CompanyDetails(
     "Sample pvt ltd",
@@ -82,6 +86,8 @@ export class AuthmockComponent implements OnInit {
     "true",
     "true"
   );
+
+  rating: Rating = new Rating()
 
   order: Order = new Order()
 
@@ -123,6 +129,7 @@ export class AuthmockComponent implements OnInit {
   private _cartService: CartService
   private _orderService: OrdersService
   private _addressDetailsMockService: AddressDetailsMockService
+  private _ratingsService: RatingsService
 
   constructor(
     signUpService: SignUpService,
@@ -140,7 +147,8 @@ export class AuthmockComponent implements OnInit {
     addressDetailsService: AddressDetailsService,
     cartService: CartService,
     orderService: OrdersService,
-    addressDetailsMockService: AddressDetailsMockService
+    addressDetailsMockService: AddressDetailsMockService,
+    ratingsService: RatingsService
     ) {
     this._signUpService = signUpService
     this._profileService = profileService
@@ -158,6 +166,7 @@ export class AuthmockComponent implements OnInit {
     this._cartService = cartService
     this._orderService = orderService
     this._addressDetailsMockService = addressDetailsMockService
+    this._ratingsService = ratingsService
   }
 
   ngOnInit() {
@@ -558,6 +567,113 @@ export class AuthmockComponent implements OnInit {
     .then((data: any) => {
       console.log(data)
       this.order_result = "Sucessfully fetched orders and logged!";
+    })
+  }
+
+  createRating(){
+    this.rating.product_id = 33
+    this.rating.title = "Value for money"
+    this.rating.rating = 3
+    this.rating.summary = "A very good product"
+    this._ratingsService.createRating(this.rating)
+    .subscribe(data => {
+      console.log(data)
+      if(data){
+        console.log('Sucessfully created a rating')
+      }
+      this.rating_result = "Sucessfully created a rating";
+    })
+  }
+
+  updateRating(){
+    this.rating.id = 3
+    this.rating.title = "Value for money updated"
+    this.rating.rating = 4
+    this.rating.summary = "A very good product updated"
+    this._ratingsService.updateRating(this.rating)
+    .subscribe(data => {
+      console.log(data)
+      if(data){
+        console.log('Sucessfully updated a rating')
+      }
+      this.rating_result = "Sucessfully updated a rating";
+    })
+  }
+
+  getCustomerRating(){
+    this._ratingsService.getCustomerRating(3)
+    .subscribe(data => {
+      console.log(data)
+      if(data){
+        console.log('Sucessfully fetched a rating')
+      }
+      this.rating_result = "Sucessfully fetched a rating";
+    })
+  }
+
+  getAllCustomerRatings(){
+    this._ratingsService.getAllCustomerRatings()
+    .subscribe(data => {
+      console.log(data)
+      if(data){
+        console.log('Sucessfully fetched all rating')
+      }
+      this.rating_result = "Sucessfully fetched all rating";
+    })
+  }
+
+  deleteCustomerRating(){
+    this._ratingsService.deleteCustomerRating(3)
+    .subscribe(data => {
+      console.log(data)
+      if(data){
+        console.log('Sucessfully deleted rating')
+      }
+      this.rating_result = "Sucessfully deleted rating";
+    })
+  }
+
+  helpfulRatingIncrement(){
+    this._ratingsService.helpfulRatingIncrement(3)
+    .subscribe(data => {
+      console.log(data)
+      if(data){
+        console.log('Sucessfully helpfulRatingIncrement')
+      }
+      this.rating_result = "Sucessfully helpfulRatingIncrement";
+    })
+  }
+
+  deactivateRating(){
+    this._ratingsService.deactivateRating(3)
+    .subscribe(data => {
+      console.log(data)
+      if(data){
+        console.log('Sucessfully deactivateRating')
+      }
+      this.rating_result = "Sucessfully deactivateRating";
+    })
+  }
+
+  getProductRatings(){
+    this._ratingsService.getProductRatings(33)
+    .subscribe(data => {
+      console.log(data)
+      if(data){
+        console.log('Sucessfully getProductRatings')
+      }
+      this.rating_result = "Sucessfully getProductRatings";
+    })
+  }
+
+  getProductRatingsSummary(){
+    this._ratingsService.getProductRatingsSummary(33)
+    .subscribe(data => {
+      console.log(data)
+      if(data){
+        console.log('Sucessfully getProductRatingsSummary')
+      }
+      this.rating_result = "Sucessfully getProductRatingsSummary";
     })
   }
 }
