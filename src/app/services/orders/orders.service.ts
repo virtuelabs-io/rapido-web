@@ -111,6 +111,10 @@ export class OrdersService extends RapidoHttpService<Order> {
     return this.get([Constants.ORDERS_APIS.api, 'orders', 'checkProductPurchase', String(product_id)].join("/"), this.addAuthHeader(this.initializeHeaders()))
   }
 
+  getDeliveryOptions(){
+    return this.get([Constants.ORDERS_APIS.api, 'orders', 'getDeliveryOptions'].join("/"))
+  }
+
   getProductDetails(orderItems: any){
     let _items: Array<String> = [Constants.SEARCH_QUERY.openBracketOr]
     for(let _item in orderItems){
