@@ -552,6 +552,15 @@ export class AuthmockComponent implements OnInit {
     })
   }
 
+  checkProductPurchase(){
+    console.log("checkProductPurchase order for: 9")
+    this._orderService.checkProductPurchase(9)
+    .subscribe(data => {
+      console.log(data)
+      this.order_result = "Sucessfully checkProductPurchase";
+    })
+  }
+
   getOrder(){
     this.order.order_id = 103
     console.log("Fetching order for:", this.order.order_id)
