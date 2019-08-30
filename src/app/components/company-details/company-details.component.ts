@@ -3,18 +3,18 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { CompanyDetails } from '../../services/customer/company-details';
 import { CompanyDetailsService } from '../../services/customer/company-details.service';
 import { Router } from '@angular/router';
-import {MatSnackBar} from '@angular/material';
+import { MatSnackBar, MatDialog } from '@angular/material';
 import { Constants } from '../../utils/constants';
-import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RouteService } from '../../shared-services/route/route.service';
 import { SessionService } from '../../services/authentication/session/session.service';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
+import { ConfirmationDialogComponent } from '../../components/confirmation-dialog/confirmation-dialog.component';
+
 
 @Component({
   selector: 'app-company-details',
   templateUrl: './company-details.component.html',
-  styleUrls: ['./company-details.component.scss'],
-  providers: [NgbModalConfig, NgbModal]
+  styleUrls: ['./company-details.component.scss']
 })
 export class CompanyDetailsComponent implements OnInit {
   _customerId: string = ""
@@ -25,6 +25,7 @@ export class CompanyDetailsComponent implements OnInit {
   deleteRes: any
   postRes: any
   putRes: any
+  dialogRef: any
   companyDetails: CompanyDetails
   addressFormGroup: FormGroup // UI reactive Form Group variable
   public _companyDetailsService: CompanyDetailsService
@@ -32,11 +33,10 @@ export class CompanyDetailsComponent implements OnInit {
     public router: Router,
     companyDetailsService: CompanyDetailsService,
     private _snackBar: MatSnackBar,
-    config: NgbModalConfig, 
-    public modalService: NgbModal,
     private _sessionService: SessionService,
     private RouteService : RouteService,
     public _loginStateService: LoginStateService,
+    public dialog: MatDialog
   ) { 
     this._companyDetailsService = companyDetailsService
   }
@@ -103,11 +103,19 @@ export class CompanyDetailsComponent implements OnInit {
     }
   }
   
-  putCompanyDetails(content) {
-    this._modalReference = this.modalService.open(content,  { centered: true })
+  putCompanyDetails() {
+     this.dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '350px',
+      data: "Do you confirm to save the changes?"
+    });
+    this.dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        this.modalSave()
+      }
+    });
   }
+  
   modalSave() {
-    this._modalReference.close()
     this._loginStateService.loaderEnable()
     this._snackBarMsg = Constants.COMPANY_DETAILS_UPDATED
     this.companyDetails = new CompanyDetails(  

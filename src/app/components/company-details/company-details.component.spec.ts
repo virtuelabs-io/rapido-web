@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { CompanyDetailsComponent } from './company-details.component';
-import { MatSnackBarModule, MatInputModule, MatCardModule, MatFormFieldModule, MatProgressSpinnerModule } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA ,MatDialogModule, MatSnackBarModule, MatInputModule, MatCardModule, MatFormFieldModule, MatProgressSpinnerModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,8 +11,8 @@ import { CompanyDetailsMockData } from 'src/app/services/customer/company-detail
 import { CompanyDetailsMockService } from '../../services/customer/company-details.mock.service';
 import { CompanyDetailsService } from '../../services/customer/company-details.service';
 import {Location} from "@angular/common";
-import { LoginStateService } from '../../shared-services/login-state/login-state.service';
-import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ConfirmationDialogComponent } from '../../components/confirmation-dialog/confirmation-dialog.component';
+import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 
 describe('CompanyDetailsComponent', () => {
   let companyDetailsMockService: CompanyDetailsService = new CompanyDetailsMockService()
@@ -20,7 +20,6 @@ describe('CompanyDetailsComponent', () => {
   let fixture: ComponentFixture<CompanyDetailsComponent>;
   let router: Router;
   let location: Location;
-  let modalService: NgbModal;
   const routes: Routes = [
     { path: 'login', component: LogInComponent},
     { path: 'profile/companyDetails', component: CompanyDetailsComponent }
@@ -28,18 +27,21 @@ describe('CompanyDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ MatSnackBarModule, BrowserAnimationsModule, MatInputModule, HttpClientModule, RouterTestingModule.withRoutes(routes), MatCardModule, MatFormFieldModule,ReactiveFormsModule, MatProgressSpinnerModule, FormsModule ],
-      declarations: [ CompanyDetailsComponent, LogInComponent ],
-      providers: [NgbModalConfig, NgbModal]
-    })
-    .compileComponents();
+      imports: [  MatDialogModule, MatSnackBarModule, BrowserAnimationsModule, MatInputModule, HttpClientModule, RouterTestingModule.withRoutes(routes), MatCardModule, MatFormFieldModule,ReactiveFormsModule, MatProgressSpinnerModule, FormsModule ],
+      declarations: [ ConfirmationDialogComponent, CompanyDetailsComponent, LogInComponent ],
+      providers: [
+        {provide: MatDialogRef, useValue: {}},
+        { provide: MAT_DIALOG_DATA, useValue: [] }
+      ]
+    }).overrideModule(BrowserDynamicTestingModule, {
+      set: { entryComponents: [ ConfirmationDialogComponent ] }
+    }).compileComponents();
   }));
 
   beforeEach(() => {
     router = TestBed.get(Router);
     location = TestBed.get(Location);
     fixture = TestBed.createComponent(CompanyDetailsComponent);
-    modalService = TestBed.get(NgbModal);
     router.initialNavigation();
     component = fixture.componentInstance;
     component._companyDetailsService = companyDetailsMockService;
@@ -87,10 +89,8 @@ describe('CompanyDetailsComponent', () => {
     component.addressFormGroup.controls["postCode"].setValue("12345")
     component.addressFormGroup.controls["country"].setValue("country")
     component.addressFormGroup.controls["county"].setValue("county") 
-    console.log('lets see')
-    let content = ''
-    component._modalReference = modalService.open(content)
+    component.putCompanyDetails()
     component.modalSave()
     expect(component.putRes).toBeTruthy(CompanyDetailsMockData.putComapnyDetails)
-  });
+  }); 
 });
