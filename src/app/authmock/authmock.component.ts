@@ -561,6 +561,15 @@ export class AuthmockComponent implements OnInit {
     })
   }
 
+  getDeliveryOptions(){
+    console.log("getDeliveryOptions fired")
+    this._orderService.getDeliveryOptions()
+    .subscribe(data => {
+      console.log(data)
+      this.order_result = "Sucessfully getched getDeliveryOptions";
+    })
+  }
+
   getOrder(){
     this.order.order_id = 103
     console.log("Fetching order for:", this.order.order_id)
