@@ -77,6 +77,7 @@ export class Constants {
   public static PAYMENT_APIS = environment.payment
   public static CART_APIS = environment.cart
   public static ORDERS_APIS = environment.orders
+  public static RATINGS_APIS = environment.ratings
 
   public static ADDRESS_TYPES = [
     {
