@@ -22,18 +22,21 @@ export class CompanyDetailsComponent implements OnInit {
   _snackBarMsg: string = ""
   _modalReference = null;  
   isLoggedIn: Boolean
+  deleteRes: any
+  postRes: any
+  putRes: any
   companyDetails: CompanyDetails
   addressFormGroup: FormGroup // UI reactive Form Group variable
-  private _companyDetailsService: CompanyDetailsService
+  public _companyDetailsService: CompanyDetailsService
   constructor(
-    private router: Router,
+    public router: Router,
     companyDetailsService: CompanyDetailsService,
     private _snackBar: MatSnackBar,
     config: NgbModalConfig, 
-    private modalService: NgbModal,
+    public modalService: NgbModal,
     private _sessionService: SessionService,
     private RouteService : RouteService,
-    private _loginStateService: LoginStateService,
+    public _loginStateService: LoginStateService,
   ) { 
     this._companyDetailsService = companyDetailsService
   }
@@ -117,7 +120,8 @@ export class CompanyDetailsComponent implements OnInit {
       this.addressFormGroup.value.add2
     )
     this._companyDetailsService.putCompanyDetails(this.companyDetails)
-    .subscribe(_ => {
+    .subscribe( data => {
+      this.putRes = data
       this.getCompanyDetails()
       this._snackBar.open(this._snackBarMsg, "", {
       duration: 5000
@@ -139,7 +143,8 @@ export class CompanyDetailsComponent implements OnInit {
       formData.add2
     )
     this._companyDetailsService.postCompanyDetails(this.companyDetails)
-    .subscribe(_ => {
+    .subscribe( data => {
+      this.postRes = data
       this._loginStateService.loaderDisable()
       this._snackBar.open(this._snackBarMsg, "", {
         duration: 5000
@@ -155,6 +160,7 @@ export class CompanyDetailsComponent implements OnInit {
     this._loginStateService.loaderEnable()
     this._companyDetailsService.deleteCompanyDetails()
     .subscribe(data => {
+      this.deleteRes = data
       this.getCompanyDetails()
     })
   }

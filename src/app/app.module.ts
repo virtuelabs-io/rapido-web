@@ -146,7 +146,7 @@ import { NavComponent } from './components/nav/nav.component';
     MatSelectModule,
     MatSidenavModule,
     NgxPageScrollCoreModule,
-    NgbModule,
+    NgbModule.forRoot(),
     AngularFontAwesomeModule
   ],
   entryComponents: [FilterControlsDialog],

@@ -72,7 +72,6 @@ describe('AddressComponent', () => {
   it('route to edit component',  fakeAsync(() => {
     component.addressEdit(1);
     tick();
-    console.log(location.path())
     expect(location.path()).toEqual('/profile/address/editAddress/1')
   }));
 });
