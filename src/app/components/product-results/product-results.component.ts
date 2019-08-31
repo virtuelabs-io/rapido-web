@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { SearchItemService } from '../../shared-services/search-item/search-item.services';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
 import { ProductsService } from '../../services/products/products.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { PageEvent } from '@angular/material/paginator';
+import { PageEvent, MatPaginator } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Query } from '../../services/products/query.interface';
 
@@ -14,6 +14,7 @@ import { Query } from '../../services/products/query.interface';
 })
 export class ProductResultsComponent implements OnInit, OnDestroy {
 
+  @ViewChild(MatPaginator) paginator: MatPaginator
   // MatPaginator Inputs
   length = 100;
   pageSize = 15;
@@ -31,6 +32,8 @@ export class ProductResultsComponent implements OnInit, OnDestroy {
   public productListBind: Array<{id: number, fields: Object}>
   _searchItemServicecurrentState: any
   prevQuery: Query
+  
+  
   constructor(private _searchItemService: SearchItemService,
     public dialog: MatDialog,
     productsService: ProductsService,
@@ -46,7 +49,9 @@ export class ProductResultsComponent implements OnInit, OnDestroy {
       .subscribe(params => {
         this.loginStateService.loaderEnable()
         this.searchUrlParam = params.search
-        this._productsService.getFromParams(params.search).
+        let qObject = JSON.parse(params.search)
+        this._searchItemService.changeState(qObject)
+        this._productsService.get(qObject).
           subscribe(data => {
             if(data){
               if(data.error || data.hits.found === 0){
@@ -61,6 +66,7 @@ export class ProductResultsComponent implements OnInit, OnDestroy {
               this.productList = data.hits.hit
               this.length = data.hits && data.hits.found
               this.productListBind =this.productList
+              this.paginator.pageIndex = 0;
               this.loginStateService.loaderDisable()
             }
            })

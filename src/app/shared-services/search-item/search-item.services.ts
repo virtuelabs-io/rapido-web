@@ -11,6 +11,7 @@ export class SearchItemService {
   _query: Query = {
     q: '',
     searchedText: '',
+    releatedSearch: '',
     size: 15,
     cursor: null,
     return: null,
@@ -47,7 +48,8 @@ export class SearchItemService {
   constructor() {}
 
   changeState(state: any) {
-    this.searchItemText.next({...this.searchItemText.value, ...state})
+    if(JSON.stringify(this.searchItemText.value) !== JSON.stringify(state))
+      this.searchItemText.next({...this.searchItemText.value, ...state})
   }
 
   changeRespProdListState(respData) {

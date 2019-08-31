@@ -3,6 +3,7 @@ import { SearchItemService } from '../../shared-services/search-item/search-item
 import { ProductsHierarchyService } from '../../services/products/products-hierarchy.service';
 import { ProductsService } from '../../services/products/products.service';
 import { Router } from '@angular/router';
+import { Query } from 'src/app/services/products/query.interface'
 
  @Component({
   selector: 'app-leftsection',
@@ -13,7 +14,7 @@ import { Router } from '@angular/router';
  
   @Input() closeDialog: any
   filterData: any
-  prevQuery: Object
+  prevQuery: Query
   selections: Object
   private _productsHierarchyService: ProductsHierarchyService
   private _productsService: ProductsService
@@ -62,6 +63,7 @@ import { Router } from '@angular/router';
     this._searchItemServicecurrentState = this._searchItemService.currentState.subscribe(query => {
       if (query.searchedText) {
         this.searchedText = query.searchedText
+        this.releatedSearch = query.releatedSearch
         this.prevQuery = query
       }
     })
@@ -169,9 +171,7 @@ import { Router } from '@angular/router';
       q: query,
       searchedText: this.searchedText,
       qdotparser: 'structured',
-      parser: null,
-      size:15,
-      start:0
+      parser: null
     })
   }
   
@@ -183,22 +183,26 @@ import { Router } from '@angular/router';
   
   onPressItem(data, subCategory) {
     if(subCategory){
-      data = data + ' ' + subCategory 
+      let prevSearchText = this.releatedSearch ? this.category + ' ' + this.releatedSearch : this.searchedText
+      data = this.prevQuery.q.replace(prevSearchText, (this.category + ' ' + subCategory))
       this.releatedSearch = subCategory
+    }else{
+      data = this.searchedText
     }
     this.updateFilterConditions({
       q: data,
       sort: null,
       cursor: null,
       return: null,
-      qdotparser: null
+      qdotparser: null,
+      releatedSearch:this.releatedSearch
     })
   }
   
   updateFilterConditions(queryObj) {
     if (this.searchedText) {
-      let queryParams = this._productsService.buildQuery({...this.prevQuery, ...queryObj})
-      this.router.navigate(['/products'], { queryParams: { search: decodeURIComponent(queryParams) } })
+      let qObject = {...this.prevQuery, ...queryObj}
+      this.router.navigate(['/products'], { queryParams: { search: JSON.stringify(qObject) } })
       if (this.closeDialog) {
         localStorage.setItem('fieldsQuery', JSON.stringify(this.fieldsQuery));
          localStorage.setItem('searchedText', this.searchedText);
@@ -210,7 +214,11 @@ import { Router } from '@angular/router';
   removeRating() {
     this.fieldsQuery.rating.q = null
     if (!this.fieldsQuery.price.q && !this.fieldsQuery.rating.q) {
-      this.onPressItem(this.searchedText, null)
+      let qSearch = this.searchedText
+      if(this.releatedSearch){
+        qSearch = this.category +' '+  this.releatedSearch
+      }
+      this.onPressItem(qSearch, null)
     } else {
       let priceRange = JSON.parse(this.fieldsQuery.price.q)
       if (priceRange)
@@ -224,15 +232,19 @@ import { Router } from '@angular/router';
   removePrice() {
     this.fieldsQuery.price.q = null
     if (!this.fieldsQuery.price.q && !this.fieldsQuery.rating.q) {
-      this.onPressItem(this.searchedText, null)
+      let qSearch = this.searchedText
+      if(this.releatedSearch){
+        qSearch = this.category +' '+  this.releatedSearch
+      }
+      this.onPressItem(qSearch, null)
     } else {
       this.onPressRating(this.fieldsQuery.rating.q)
     }
   }
   
   removeReleatedSearch() {
+    this.onPressItem(this.searchedText + ' ' + this.releatedSearch, null)
     this.releatedSearch = null
-    this.onPressItem(this.searchedText, null)
   }
 
   ngOnDestroy() {

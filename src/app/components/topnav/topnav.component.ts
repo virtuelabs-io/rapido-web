@@ -71,6 +71,7 @@ export class TopnavComponent implements OnInit {
       let qObject = {
         q: this.searchedText,
         searchedText: this.searchedText,
+        releatedSearch: null,
         size: 15,
         cursor: null,
         return: null,
@@ -79,9 +80,8 @@ export class TopnavComponent implements OnInit {
         parser:'structured',
         qdotparser:null
       }
-      let queryParams = this._productsService.buildQuery(qObject)
-      this._searchItemService.changeState(qObject)
-      this.router.navigate(['/products'], { queryParams: { search: (queryParams) } })
+      // this._searchItemService.changeState(qObject)
+      this.router.navigate(['/products'], { queryParams: { search: JSON.stringify(qObject) } })
     }
     event.target.blur();
   }
