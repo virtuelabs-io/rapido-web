@@ -40,14 +40,16 @@ describe('CartComponent', () => {
   });
 
   it('should create', () => {
+    component.isLoggedIn = true
     expect(component).toBeTruthy();
   });
 
-  it('fetch cart items if present', async() => {
+  it('fetch cart items if present', (async () => {
     component.isLoggedIn = true
     await component.getCartItems()
+    console.log('--------lets watch this---------')
     console.log(component.fetchRes)
     console.log(CartMockData.getCartItems)
-    expect(component).toBeTruthy();
-  });
+    expect(component.fetchRes).toEqual(CartMockData.getCartItems);
+  }));
 });
