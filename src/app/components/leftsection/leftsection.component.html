@@ -46,7 +46,7 @@
                         </mat-expansion-panel-header>
 
                      <mat-nav-list>
-                           <mat-list-item *ngFor="let item of this.subcategories" (click)="onPressItem(category, item)" >
+                           <mat-list-item *ngFor="let item of this.subcategories" (click)="onPressItem(searchedText, item)" >
                                  {{item}}
                                  </mat-list-item>
                      </mat-nav-list>

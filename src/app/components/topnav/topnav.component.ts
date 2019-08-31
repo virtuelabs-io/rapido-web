@@ -68,10 +68,21 @@ export class TopnavComponent implements OnInit {
 
   onSearch(event){
     if(this.searchedText){
+      let fieldsQuery = {
+        price: {
+          q: null,
+          text: null
+        },
+        rating: {
+          q: null,
+          text: null
+        }
+      }
       let qObject = {
         q: this.searchedText,
         searchedText: this.searchedText,
         releatedSearch: null,
+        fieldsQuery: JSON.stringify(fieldsQuery),
         size: 15,
         cursor: null,
         return: null,

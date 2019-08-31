@@ -64,6 +64,7 @@ import { Query } from 'src/app/services/products/query.interface'
       if (query.searchedText) {
         this.searchedText = query.searchedText
         this.releatedSearch = query.releatedSearch
+        this.fieldsQuery = (query.fieldsQuery)
         this.prevQuery = query
       }
     })
@@ -195,12 +196,13 @@ import { Query } from 'src/app/services/products/query.interface'
       cursor: null,
       return: null,
       qdotparser: null,
-      releatedSearch:this.releatedSearch
+      releatedSearch: this.releatedSearch
     })
   }
   
   updateFilterConditions(queryObj) {
     if (this.searchedText) {
+      queryObj.fieldsQuery = this.fieldsQuery
       let qObject = {...this.prevQuery, ...queryObj}
       this.router.navigate(['/products'], { queryParams: { search: JSON.stringify(qObject) } })
       if (this.closeDialog) {

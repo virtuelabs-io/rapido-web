@@ -8,5 +8,6 @@ export interface Query {
   parser?:string,
   searchedText?:string,
   releatedSearch?:string,
+  fieldsQuery?:string,
   qdotparser?: string
 }

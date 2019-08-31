@@ -12,6 +12,7 @@ export class SearchItemService {
     q: '',
     searchedText: '',
     releatedSearch: '',
+    fieldsQuery: '',
     size: 15,
     cursor: null,
     return: null,
