@@ -55,18 +55,8 @@ describe('AddressComponent', () => {
   });
 
   it('delete functionality',  () => {
-    let data = {
-      fieldCount: 0,
-      affectedRows: 1,
-      insertId: 0,
-      serverStatus: 2,
-      warningCount: 0,
-      message: "",
-      protocol41: true,
-      changedRows: 0
-    }
      component.addressDelete(1);
-    expect(data).toEqual(AddressDetailsMockData.deleteAddress)
+    expect(component.delRes).toEqual(AddressDetailsMockData.deleteAddress)
   });
 
   it('route to edit component',  fakeAsync(() => {

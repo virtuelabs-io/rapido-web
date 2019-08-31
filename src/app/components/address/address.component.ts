@@ -15,6 +15,7 @@ export class AddressComponent implements OnInit {
   isLoggedIn: Boolean
   public _addressDetailsService: AddressDetailsService
   address: any
+  delRes: any
   example:any;
   constructor( 
     public router: Router,
@@ -71,6 +72,7 @@ export class AddressComponent implements OnInit {
     this._loginStateService.loaderEnable()
     this._addressDetailsService.deleteAddressDetails(id)
     .subscribe(data => {
+      this.delRes = data
       this.address_details_id = null
       this.getAddressList()
     })
