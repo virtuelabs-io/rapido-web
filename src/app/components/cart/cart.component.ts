@@ -3,7 +3,7 @@ import { CartService } from '../../services/cart/cart.service';
 import { Constants } from '../../utils/constants';
 import { Common } from '../../utils/common';
 import { CartItem } from '../../services/cart/cart-item';
-import {MatSnackBar} from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { CartStateService } from '../../shared-services/cart-state/cart-state.service';
 import { SessionService } from '../../services/authentication/session/session.service';
@@ -18,6 +18,7 @@ import { LoginStateService } from '../../shared-services/login-state/login-state
 export class CartComponent implements OnInit {
   _imageUrl: string = Constants.environment.staticAssets
   cartItems = []
+  fetchRes: any
   cartAmount: any = 0
   inCartItems: number = 0
   saveforLater = []
@@ -26,7 +27,7 @@ export class CartComponent implements OnInit {
   _snackBarMsg: string = ""
   isLoggedIn: Boolean
   imageUrl: string =  Constants.environment.staticAssets+'/images/empty-cart.jpg'
-  private _cartService: CartService
+  public _cartService: CartService
   constructor(
     cartService: CartService,
     private _snackBar: MatSnackBar,
@@ -66,6 +67,7 @@ export class CartComponent implements OnInit {
   if(this.isLoggedIn){
     await  this._cartService.getCartItems()
     .then((data: any) => {
+      this.fetchRes = data
       for(var i = 0; i < data.length; i++) {
         if(data[i].cartItem.in_cart) {
           this.inCart = true
