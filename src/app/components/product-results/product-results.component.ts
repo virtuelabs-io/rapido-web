@@ -44,7 +44,6 @@ export class ProductResultsComponent implements OnInit, OnDestroy {
     }
 
   ngOnInit() {
-    // this.router.navigate(['/products'], { queryParams: { search: this.searchedText, parseQuery:false } })
     this.route.queryParams
       .subscribe(params => {
         this.loginStateService.loaderEnable()
@@ -66,7 +65,7 @@ export class ProductResultsComponent implements OnInit, OnDestroy {
               this.productList = data.hits.hit
               this.length = data.hits && data.hits.found
               this.productListBind =this.productList
-              this.paginator.pageIndex = 0;
+              // this.paginator.pageIndex = 0;
               this.loginStateService.loaderDisable()
             }
            })
@@ -86,10 +85,9 @@ export class ProductResultsComponent implements OnInit, OnDestroy {
     }
 
     onPageChange(evt){
-      this.prevQuery.start = evt.pageIndex * evt.pageSize
-      let queryParams = this._productsService.buildQuery(this.prevQuery)
-      this._searchItemService.changeState(this.prevQuery)
-      this.router.navigate(['/products'], { queryParams: { search: (queryParams) } })
+      let pageNum = evt.pageIndex * evt.pageSize
+      let qObject = {...this.prevQuery, ...{ start: pageNum }}
+      this.router.navigate(['/products'], { queryParams: { search: JSON.stringify(qObject) } })
     }
 
     setPageSizeOptions(setPageSizeOptionsInput: string) {

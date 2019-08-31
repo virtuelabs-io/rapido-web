@@ -22,17 +22,31 @@ export class HomeCardComponent implements OnInit {
   }
 
   cardClick(searchedText) {
-    if(searchedText) {
-      this.router.navigateByUrl('/products')
-      this._searchItemService.changeState({
-      q: searchedText,
-      searchedText: searchedText,
-      start: 0,
-      sort: null,
-      cursor: null,
-      return: null,
-      qdotparser:null
-      })
+    if(searchedText){
+      let fieldsQuery = {
+        price: {
+          q: null,
+          text: null
+        },
+        rating: {
+          q: null,
+          text: null
+        }
+      }
+      let qObject = {
+        q: searchedText,
+        searchedText: searchedText,
+        releatedSearch: null,
+        fieldsQuery: JSON.stringify(fieldsQuery),
+        size: 15,
+        cursor: null,
+        return: null,
+        start: 0,
+        sort: null,
+        parser:'structured',
+        qdotparser:null
+      }
+      this.router.navigate(['/products'], { queryParams: { search: JSON.stringify(qObject) } })
     }
   }
 }

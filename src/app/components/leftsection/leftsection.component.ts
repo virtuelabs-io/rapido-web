@@ -64,26 +64,26 @@ import { Query } from 'src/app/services/products/query.interface'
       if (query.searchedText) {
         this.searchedText = query.searchedText
         this.releatedSearch = query.releatedSearch
-        this.fieldsQuery = (query.fieldsQuery)
+        if(typeof query.fieldsQuery === 'string'){
+          this.fieldsQuery = JSON.parse(query.fieldsQuery)
+        }else {
+          this.fieldsQuery = query.fieldsQuery
+        }
         this.prevQuery = query
       }
     })
   }
   
   updateProductControls(respData) {
-    let {
-      hits
-    } = respData
+    let { hits } = respData
     if (hits && hits.hit) {
       this.tags = hits.hit[0].fields.tags
       this.category = hits.hit[0].fields.category
-      // if(this.subcategories){
         this._productsHierarchyService.get()
         .subscribe(data => {
           this.categories = data
           this.subcategories = this.categories[this.category]
         })
-      // }
       
       this.fnPriceFilterHandler = obj => this.priceFilterData(obj);
       this.filterData = [
