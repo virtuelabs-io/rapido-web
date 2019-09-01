@@ -10,7 +10,7 @@ import { Constants } from '../../utils/constants';
 })
 export class CompanyDetailsService extends RapidoHttpService<CompanyDetails>{
 
-  constructor(protected _http: HttpClient, protected _profileService: ProfileService) { 
+  constructor(protected _http?: HttpClient, protected _profileService?: ProfileService) { 
     super(_http, _profileService)
   }
 

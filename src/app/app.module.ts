@@ -57,6 +57,7 @@ import { CareerPageComponent } from './components/career-page/career-page.compon
 import { PressReleaseComponent } from './components/press-release/press-release.component';
 import { CreditsComponent } from './components/credits/credits.component';
 import { NavComponent } from './components/nav/nav.component';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -103,7 +104,8 @@ import { NavComponent } from './components/nav/nav.component';
     CareerPageComponent,
     CreditsComponent,
     PressReleaseComponent,
-    NavComponent
+    NavComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     MatSidenavModule,
@@ -146,10 +148,10 @@ import { NavComponent } from './components/nav/nav.component';
     MatSelectModule,
     MatSidenavModule,
     NgxPageScrollCoreModule,
-    NgbModule,
+    NgbModule.forRoot(),
     AngularFontAwesomeModule
   ],
-  entryComponents: [FilterControlsDialog],
+  entryComponents: [ FilterControlsDialog, ConfirmationDialogComponent ],
   providers: [ ],
   bootstrap: [ AppComponent ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

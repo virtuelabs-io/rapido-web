@@ -5,8 +5,12 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { MatProgressSpinnerModule, MatFormFieldModule, MatCardModule, MatInputModule } from '@angular/material';
+import { AddressDetailsMockData } from 'src/app/services/customer/address-details.mock.data';
+import { AddressDetailsService } from '../../services/customer/address-details.service';
+import { AddressDetailsMockService } from '../../services/customer/address-details.mock.service';
 
 describe('AddAddressComponent', () => {
+  let addressDetailsMockService: AddressDetailsService = new AddressDetailsMockService()
   let component: AddAddressComponent;
   let fixture: ComponentFixture<AddAddressComponent>;
 
@@ -45,4 +49,19 @@ describe('AddAddressComponent', () => {
     expect(component.addressFormGroup.controls['county'].hasError('required')).toBeFalsy()
     expect(component.addressFormGroup.controls['country'].hasError('required')).toBeFalsy()
   }));
+// need to check for the add address..
+  /*it('add new address', () => {
+    let formData = {
+      name: 'name',
+      add1: 'xyz',
+      town_city: 'charles land',
+      county: 'county',
+      country: 'country',
+      postCode: 'postcode',
+      add2: 'add2'
+    }
+    component.addAddress(formData)
+    console.log(component.addRes)
+    expect(component.addRes).toEqual(AddressDetailsMockData.postAddress);
+  });  */
 });
