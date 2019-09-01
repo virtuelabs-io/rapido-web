@@ -13,9 +13,9 @@ import { CartItemDetails } from './cart-item-details';
 })
 export class CartService extends RapidoHttpService<CartItem> {
 
-  private _productService: ProductsService
+  public _productService: ProductsService
 
-  constructor(protected _http: HttpClient, protected _profileService: ProfileService, productService: ProductsService) {
+  constructor(protected _http?: HttpClient, protected _profileService?: ProfileService, productService?: ProductsService) {
     super(_http, _profileService)
     this._productService = productService
   }

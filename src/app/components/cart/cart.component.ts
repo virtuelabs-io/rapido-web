@@ -3,7 +3,7 @@ import { CartService } from '../../services/cart/cart.service';
 import { Constants } from '../../utils/constants';
 import { Common } from '../../utils/common';
 import { CartItem } from '../../services/cart/cart-item';
-import {MatSnackBar} from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { CartStateService } from '../../shared-services/cart-state/cart-state.service';
 import { SessionService } from '../../services/authentication/session/session.service';
@@ -18,6 +18,7 @@ import { LoginStateService } from '../../shared-services/login-state/login-state
 export class CartComponent implements OnInit {
   _imageUrl: string = Constants.environment.staticAssets
   cartItems = []
+  fetchRes: any
   cartAmount: any = 0
   inCartItems: number = 0
   saveforLater = []
@@ -25,8 +26,11 @@ export class CartComponent implements OnInit {
   laterUse: Boolean = false
   _snackBarMsg: string = ""
   isLoggedIn: Boolean
+  deleteRes: any
+  postCartItemsRes: any
+  saveForLaterRes: any
   imageUrl: string =  Constants.environment.staticAssets+'/images/empty-cart.jpg'
-  private _cartService: CartService
+  public _cartService: CartService
   constructor(
     cartService: CartService,
     private _snackBar: MatSnackBar,
@@ -66,6 +70,7 @@ export class CartComponent implements OnInit {
   if(this.isLoggedIn){
     await  this._cartService.getCartItems()
     .then((data: any) => {
+      this.fetchRes = data
       for(var i = 0; i < data.length; i++) {
         if(data[i].cartItem.in_cart) {
           this.inCart = true
@@ -110,7 +115,8 @@ export class CartComponent implements OnInit {
   async deleteCartItem(id){
     this._snackBarMsg = Constants.ITWM_DELETE_CART
     await this._cartService.deleteCartItem(id)
-    .subscribe( _ => {
+    .subscribe( data => {
+      this.deleteRes = data
       this._snackBar.open(this._snackBarMsg, "", {
         duration: 5000
       });
@@ -131,7 +137,8 @@ export class CartComponent implements OnInit {
       this._snackBarMsg = Constants.ITWM_SAVE_LATER
     }
     this._cartService.postCartItem(cartItem)
-    .subscribe(_ => {
+    .subscribe( data => {
+      this.saveForLaterRes = data
       this._snackBar.open(this._snackBarMsg, "", {
         duration: 5000
       });
@@ -154,7 +161,8 @@ export class CartComponent implements OnInit {
       items.push(this.updateCartItem(this.cartItems[i].id, this.cartItems[i].quantity, true))
     }
     this._cartService.postCartItemList(items)
-      .subscribe( _ => {
+      .subscribe( data => {
+        this.postCartItemsRes = data
         this._loginStateService.loaderDisable()
         this.router.navigate(['cart/checkout']);
       })
