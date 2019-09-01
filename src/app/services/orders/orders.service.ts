@@ -12,7 +12,7 @@ import { ProductsService } from '../products/products.service';
 })
 export class OrdersService extends RapidoHttpService<Order> {
 
-  private _productService: ProductsService
+  public _productService: ProductsService
 
   constructor(protected _http?: HttpClient, protected _profileService?: ProfileService, productService?: ProductsService) {
     super(_http, _profileService)
