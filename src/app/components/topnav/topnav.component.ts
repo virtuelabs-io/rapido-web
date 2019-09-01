@@ -1,4 +1,4 @@
-import { Component, OnInit, NgModule } from '@angular/core';
+import { Component, OnInit, NgModule, EventEmitter, Output  } from '@angular/core';
 import { SessionService } from '../../services/authentication/session/session.service';
 import { ProfileService } from '../../services/authentication/profile/profile.service';
 import { CartService } from '../../services/cart/cart.service';
@@ -10,6 +10,7 @@ import { SearchItemService } from '../../shared-services/search-item/search-item
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RouteService } from '../../shared-services/route/route.service';
 import { ProductsService } from '../../services/products/products.service';
+import { NavComponent } from '../nav/nav.component';
 
 @NgModule({})
 @Component({
@@ -18,14 +19,14 @@ import { ProductsService } from '../../services/products/products.service';
   styleUrls: ['./topnav.component.scss']
 })
 export class TopnavComponent implements OnInit {
+  @Output() toggleSidenav = new EventEmitter<void>();
   isSignedIn: Boolean = false
   name: String
   searchedText: string = ''
   bannerName: String = Constants.RAPIDO_BUILD
-  durationInSeconds = 5;
-  cartCount:Number = 0;
+  durationInSeconds = 5
+  cartCount:Number = 0
   private _productsService: ProductsService
-
   constructor(private _sessionService: SessionService,
               private _profileService: ProfileService,
               private _cartService: CartService,

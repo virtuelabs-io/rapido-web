@@ -38,6 +38,7 @@ import { CarouselComponent } from './components/card/carousel/carousel.component
 import { CarouselScrollComponent } from './components/card/carousel-scroll/carousel-scroll.component';
 import { HomeComponent } from './components/home/home.component';
 import { CreditsComponent  } from './components/credits/credits.component';
+import { NavComponent } from './components/nav/nav.component';
 
 describe('AppComponent', () => {
   var originalTimeout;
@@ -81,6 +82,7 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         TopnavComponent,
+        NavComponent,
         AuthmockComponent,
         IconComponent,
         LogInComponent,

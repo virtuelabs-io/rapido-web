@@ -56,6 +56,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { CareerPageComponent } from './components/career-page/career-page.component';
 import { PressReleaseComponent } from './components/press-release/press-release.component';
 import { CreditsComponent } from './components/credits/credits.component';
+import { NavComponent } from './components/nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -101,7 +102,8 @@ import { CreditsComponent } from './components/credits/credits.component';
     PillBadgeComponent,
     CareerPageComponent,
     CreditsComponent,
-    PressReleaseComponent
+    PressReleaseComponent,
+    NavComponent
   ],
   imports: [
     MatSidenavModule,
@@ -148,7 +150,7 @@ import { CreditsComponent } from './components/credits/credits.component';
     AngularFontAwesomeModule
   ],
   entryComponents: [FilterControlsDialog],
-  providers: [],
+  providers: [ ],
   bootstrap: [ AppComponent ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
