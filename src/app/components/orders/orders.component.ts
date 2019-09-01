@@ -11,12 +11,14 @@ import { LoginStateService } from '../../shared-services/login-state/login-state
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent implements OnInit {
-  private _orderService: OrdersService
+  public _orderService: OrdersService
   imageUrl: string = Constants.environment.staticAssets
   orders = {}
   products = {}
   currentOrders = []
   isLoggedIn: Boolean
+  fetchOrdersRes: any
+  cancelOrderRes: any
   cancelledStatus = Constants.ORDER_STATUS[4]
 
   constructor(
@@ -64,6 +66,7 @@ export class OrdersComponent implements OnInit {
       this._loginStateService.loaderEnable()
       await this._orderService.getOrders()
     .then((data: any) => {
+      this.fetchOrdersRes = data
       if(data['products']) {
         this.products = data['products']
       }
@@ -97,6 +100,7 @@ export class OrdersComponent implements OnInit {
     this._loginStateService.loaderEnable()
     this._orderService.cancelOrder(id)
     .subscribe(data => {
+      this.cancelOrderRes = data
       this.getOrders()
     })
   }
