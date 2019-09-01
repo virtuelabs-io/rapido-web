@@ -37,6 +37,10 @@ export class CartMockService extends CartService{
        })
     }
 
+    postCartItem() {
+        return of(CartMockData.postCartItem)
+    }
+
     postCartItemList() {
         return of(CartMockData.postCartItemList)
     }

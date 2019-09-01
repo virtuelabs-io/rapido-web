@@ -48,6 +48,17 @@ export class CartMockData {
         warningCount: 0
     }
 
+    public static postCartItem = {
+        affectedRows: 1,
+        changedRows: 0,
+        fieldCount: 0,
+        insertId: 0,
+        message: "",
+        protocol41: true,
+        serverStatus: 2,
+        warningCount: 0
+    }
+
     public static deleteCartItem = {
         affectedRows: 1,
         changedRows: 0,
