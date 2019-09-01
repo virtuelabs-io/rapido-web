@@ -3,18 +3,18 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { CompanyDetails } from '../../services/customer/company-details';
 import { CompanyDetailsService } from '../../services/customer/company-details.service';
 import { Router } from '@angular/router';
-import {MatSnackBar} from '@angular/material';
+import { MatSnackBar, MatDialog } from '@angular/material';
 import { Constants } from '../../utils/constants';
-import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RouteService } from '../../shared-services/route/route.service';
 import { SessionService } from '../../services/authentication/session/session.service';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
+import { ConfirmationDialogComponent } from '../../components/confirmation-dialog/confirmation-dialog.component';
+
 
 @Component({
   selector: 'app-company-details',
   templateUrl: './company-details.component.html',
-  styleUrls: ['./company-details.component.scss'],
-  providers: [NgbModalConfig, NgbModal]
+  styleUrls: ['./company-details.component.scss']
 })
 export class CompanyDetailsComponent implements OnInit {
   _customerId: string = ""
@@ -22,18 +22,21 @@ export class CompanyDetailsComponent implements OnInit {
   _snackBarMsg: string = ""
   _modalReference = null;  
   isLoggedIn: Boolean
+  deleteRes: any
+  postRes: any
+  putRes: any
+  dialogRef: any
   companyDetails: CompanyDetails
   addressFormGroup: FormGroup // UI reactive Form Group variable
-  private _companyDetailsService: CompanyDetailsService
+  public _companyDetailsService: CompanyDetailsService
   constructor(
-    private router: Router,
+    public router: Router,
     companyDetailsService: CompanyDetailsService,
     private _snackBar: MatSnackBar,
-    config: NgbModalConfig, 
-    private modalService: NgbModal,
     private _sessionService: SessionService,
     private RouteService : RouteService,
-    private _loginStateService: LoginStateService,
+    public _loginStateService: LoginStateService,
+    public dialog: MatDialog
   ) { 
     this._companyDetailsService = companyDetailsService
   }
@@ -100,11 +103,19 @@ export class CompanyDetailsComponent implements OnInit {
     }
   }
   
-  putCompanyDetails(content) {
-    this._modalReference = this.modalService.open(content,  { centered: true })
+  putCompanyDetails() {
+     this.dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '350px',
+      data: "Do you confirm to save the changes?"
+    });
+    this.dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        this.modalSave()
+      }
+    });
   }
+  
   modalSave() {
-    this._modalReference.close()
     this._loginStateService.loaderEnable()
     this._snackBarMsg = Constants.COMPANY_DETAILS_UPDATED
     this.companyDetails = new CompanyDetails(  
@@ -117,7 +128,8 @@ export class CompanyDetailsComponent implements OnInit {
       this.addressFormGroup.value.add2
     )
     this._companyDetailsService.putCompanyDetails(this.companyDetails)
-    .subscribe(_ => {
+    .subscribe( data => {
+      this.putRes = data
       this.getCompanyDetails()
       this._snackBar.open(this._snackBarMsg, "", {
       duration: 5000
@@ -139,7 +151,8 @@ export class CompanyDetailsComponent implements OnInit {
       formData.add2
     )
     this._companyDetailsService.postCompanyDetails(this.companyDetails)
-    .subscribe(_ => {
+    .subscribe( data => {
+      this.postRes = data
       this._loginStateService.loaderDisable()
       this._snackBar.open(this._snackBarMsg, "", {
         duration: 5000
@@ -155,6 +168,7 @@ export class CompanyDetailsComponent implements OnInit {
     this._loginStateService.loaderEnable()
     this._companyDetailsService.deleteCompanyDetails()
     .subscribe(data => {
+      this.deleteRes = data
       this.getCompanyDetails()
     })
   }

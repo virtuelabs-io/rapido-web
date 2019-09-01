@@ -77,7 +77,7 @@ describe('AppComponent', () => {
         MatListModule,
         MatSelectModule,
         MatTableModule,
-        NgbModule
+        NgbModule.forRoot()
       ],
       declarations: [
         AppComponent,
