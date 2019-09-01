@@ -1,64 +1,52 @@
-import { AddressDetails } from './address-details';
+import { Order } from './order';
 
+let orders = {
+    orderItemsObject: {
+        13: {
+            1: {
+                addr_1: "K 004 , Bren Trillium Apartments",
+                addr_2: "Hosur Rd, Electronic City",
+                address_type_id: 1,
+                city: "BENGALURU",
+                country: "India",
+                county: "KARNATAKA",
+                created_on: "2019-08-31T10:33:59.000Z",
+                delivery_address_id: 1,
+                delivery_cost: 0,
+                full_name: "Anirup Patnaik",
+                id: 13,
+                item_vat: 44.6,
+                order_price: 222.99,
+                order_price_total: 267.59,
+                order_status_id: 2,
+                postcode: "560100",
+                product_id: 1,
+                quantity: 1,
+                total_price: 222.99,
+                unit_price: 222.99,
+                vat: 44.6
+            }
+        }
+    },
+    products: {
+        1: {
+            currency: "£",
+            images: [
+                "/images/products/1/image1.jpg",
+                "/images/products/1/image1.jpg",
+                "/images/products/1/image1.jpg",
+                "/images/products/1/image1.jpg"
+            ],
+            name: "Samsung Galaxy Watch Active 40mm Silver"
+        }
+    }
+}
+export class OrdersMockData {
 
-export class AddressDetailsMockData {
+  public static orders = orders
+  
 
-  public static addressList: AddressDetails[] = [
-    new AddressDetails(
-      "Full name",
-      1,
-      "addr_1",
-      "city",
-      "county",
-      "country",
-      "postcode",
-      "addr_2"
-    )
-  ]
-
-  public static address: AddressDetails = new AddressDetails(
-    "Full name",
-    1,
-    "addr_1",
-    "city",
-    "county",
-    "country",
-    "postcode",
-    "addr_2"
-  )
-
-  public static postAddress = {
-    fieldCount: 0,
-    affectedRows: 1,
-    insertId: 7,
-    serverStatus: 2,
-    warningCount: 0,
-    message: "",
-    protocol41: true,
-    changedRows: 0
-  }
-
-  public static putAddress = {
-    fieldCount: 0,
-    affectedRows: 1,
-    insertId: 0,
-    serverStatus: 2,
-    warningCount: 0,
-    message: "(Rows matched: 1  Changed: 1  Warnings: 0",
-    protocol41: true,
-    changedRows: 1
-  }
-
-  public static deleteAddress = {
-    fieldCount: 0,
-    affectedRows: 1,
-    insertId: 0,
-    serverStatus: 2,
-    warningCount: 0,
-    message: "",
-    protocol41: true,
-    changedRows: 0
-  }
+  
 }
 
 

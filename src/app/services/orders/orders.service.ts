@@ -14,7 +14,7 @@ export class OrdersService extends RapidoHttpService<Order> {
 
   private _productService: ProductsService
 
-  constructor(protected _http: HttpClient, protected _profileService: ProfileService, productService: ProductsService) {
+  constructor(protected _http?: HttpClient, protected _profileService?: ProfileService, productService?: ProductsService) {
     super(_http, _profileService)
     this._productService = productService
   }
