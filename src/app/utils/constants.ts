@@ -16,6 +16,8 @@ export class Constants {
     stripePublicKey: environment.payment.publicKey
   }
 
+  public static RAPIDO_SESSION_ID = "rapido_session_id";
+
   public static DEFAULT_PHONE_CODE = "+44";
   public static INDIA_PHONE_CODE = "+91";
   public static DEFAULT_CURRENCY_CODE = "gbp";

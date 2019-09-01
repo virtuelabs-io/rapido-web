@@ -5,6 +5,7 @@ import { AddressDetailsService } from '../../services/customer/address-details.s
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Location } from '@angular/common';
 import { RouteService } from '../../shared-services/route/route.service';
+import { LoginStateService } from '../../shared-services/login-state/login-state.service';
 
 @Component({
   selector: 'app-add-address',
@@ -16,21 +17,21 @@ export class AddAddressComponent implements OnInit {
   _previousRoute: any = ""
   address_details_id: number
   name: string = ""
-  showSpinner: Boolean = false
+  addRes: any
   addressDetails: AddressDetails
-  private _addressDetailsService: AddressDetailsService
+  public _addressDetailsService: AddressDetailsService
   addressFormGroup: FormGroup // UI reactive Form Group variable
 
   constructor( private router: Router,
                addressDetailsService: AddressDetailsService,
                private location: Location,
-               private RouteService: RouteService
+               private RouteService: RouteService,
+               private _loginStateService: LoginStateService
   ) { 
       this._addressDetailsService = addressDetailsService
     }
 
   ngOnInit() {
-
     this._previousRoute = this.RouteService.getRoute()
     this.addressFormGroup = new FormGroup({
       name: new FormControl('', [Validators.required]),
@@ -43,7 +44,7 @@ export class AddAddressComponent implements OnInit {
     })
   }
   addAddress(formData) {
-    this.showSpinner = true
+    this._loginStateService.loaderEnable()
     this.addressDetails = new AddressDetails(  
       formData.name,
       //Constants.ADDRESS_TYPES[0].value,
@@ -57,6 +58,8 @@ export class AddAddressComponent implements OnInit {
     )
     this._addressDetailsService.postAddressDetails(this.addressDetails)
     .subscribe(data => {
+      console.log(data)
+      this.addRes = data
       if(data['insertId']) {
         this.address_details_id = data['insertId']
         this.location.back();
