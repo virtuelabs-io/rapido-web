@@ -47,17 +47,19 @@ describe('AddressComponent', () => {
   });
 
   it('should create', () => {
+    component.isLoggedIn = true
     expect(component).toBeTruthy();
   });
 
   it('should fetch address/s if present',  () => {
     component.isLoggedIn = true
-     component.getAddressList();
+    component.getAddressList();
     expect(component.address).toEqual(AddressDetailsMockData.addressList)
   });
 
   it('delete functionality',  () => {
-     component.addressDelete(1);
+    component.isLoggedIn = true
+    component.addressDelete(1);
     expect(component.delRes).toEqual(AddressDetailsMockData.deleteAddress)
   });
 

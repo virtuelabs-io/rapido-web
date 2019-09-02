@@ -56,12 +56,14 @@ describe('OrdersComponent', () => {
 
   it('cancel order',(async () => {
     let id = 13
+    component.isLoggedIn = true
     await component.cancelOrder(id)
     expect(component.cancelOrderRes).toEqual(OrdersMockData.deleteOrder);
   }));
 
   it('navigate to product detail page',(async () => {
     let id = 13
+    component.isLoggedIn = true
     await component.cancelOrder(id)
     expect(component.cancelOrderRes).toEqual(OrdersMockData.deleteOrder);
   }));

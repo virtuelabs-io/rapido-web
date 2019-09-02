@@ -51,6 +51,7 @@ describe('CompanyDetailsComponent', () => {
   });
 
   it('should create', () => {
+    component.isLoggedIn = true
     expect(component).toBeTruthy();
   });
 
@@ -79,11 +80,13 @@ describe('CompanyDetailsComponent', () => {
   });
 
   it('delete company details', () => {
+    component.isLoggedIn = true
     component.deleteCompanyDetails()
     expect(component.deleteRes).toBeTruthy(CompanyDetailsMockData.deleteCompany)
   });
 
   it('update company details', () => {
+    component.isLoggedIn = true
     component.addressFormGroup.controls["name"].setValue("XYZ Company Pvt Ltd.")
     component.addressFormGroup.controls["add1"].setValue("add1")
     component.addressFormGroup.controls["add2"].setValue("add2")

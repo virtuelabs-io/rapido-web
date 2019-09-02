@@ -27,6 +27,7 @@ describe('CarouselComponent', () => {
   });
 
   it('should create', () => {
+    component.isLoggedIn = true
     expect(component).toBeTruthy();
   });
 });
