@@ -79,7 +79,6 @@ describe('EditAddressComponent', () => {
   }));
 
   it('Save Address sucessfully', async(() => {
-    console.log()
     component.id = 1
     expect(component.saveAddress()).toBeUndefined()
   }));

@@ -47,9 +47,7 @@ describe('OrderDetailsComponent', () => {
     component.isLoggedIn = true
     component.id = 13
     await component.getOrder()
-    console.log('---------watch this----------')
-    console.log(component.fetchOrderRes)
     expect(component.fetchOrderRes).toEqual(OrdersMockData.orderDetail);
-    console.log('test case finished !')
+
   }));
 });

@@ -162,10 +162,7 @@ export class CompanyDetailsComponent implements OnInit {
   }
 
   cancelAddAddress() {
-    console.log('-------route test start-------')
-    this.router.navigate(['profile/companyDetails']);
-    console.log('-------route test end-------')
-
+    this.ngZone.run(() =>this.router.navigate(['profile/companyDetails'])).then()
   }
 
   deleteCompanyDetails() {

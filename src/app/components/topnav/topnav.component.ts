@@ -42,7 +42,6 @@ export class TopnavComponent implements OnInit {
   ngOnInit() {
     const promise = this._sessionService.retrieveSessionIfExists()
     if (!localStorage.getItem(Constants.RAPIDO_SESSION_ID)){
-      console.log("New session created!")
       localStorage.setItem(Constants.RAPIDO_SESSION_ID, uuid())
     }
     promise.then( _ => {

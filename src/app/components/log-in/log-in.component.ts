@@ -64,7 +64,6 @@ export class LogInComponent implements OnInit {
       this._signInService.login().
       then(value => {
         this.progressSpinner = false
-        console.log(this._profileService.cognitoUser);
         this._signInResponse = true;
         this.loginStateService.changeState(true);
         if(this._previousRoute.value){

@@ -34,7 +34,6 @@ export class ProductsService {
       retry(Constants.RETRY_TIMES),
       tap( _ => this.loginStateService.loaderDisable()),
       catchError(err => {
-        console.log('Error in processing request...', err);
         this.loginStateService.loaderDisable()
         return throwError(err);
       })

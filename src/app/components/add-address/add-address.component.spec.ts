@@ -61,7 +61,6 @@ describe('AddAddressComponent', () => {
       add2: 'add2'
     }
     component.addAddress(formData)
-    console.log(component.addRes)
     expect(component.addRes).toEqual(AddressDetailsMockData.postAddress);
   });  */
 });
