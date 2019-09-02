@@ -34,7 +34,9 @@ describe('CartComponent', () => {
   beforeEach(() => {
     router = TestBed.get(Router);
     fixture = TestBed.createComponent(CartComponent);
-    router.initialNavigation();
+    fixture.ngZone.run(() => {
+      router.initialNavigation();
+    });
     component = fixture.componentInstance;
     component._cartService = cartMockService
     fixture.detectChanges();

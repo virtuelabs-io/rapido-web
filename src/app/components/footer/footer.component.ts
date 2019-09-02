@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { Constants } from '../../utils/constants';
 import { Router } from '@angular/router';
 import { RouteService } from '../../shared-services/route/route.service';
@@ -19,13 +19,14 @@ export class FooterComponent implements OnInit {
   constructor(
     public router: Router,
     private RouteService : RouteService,
-    private _loginStateService: LoginStateService
+    private _loginStateService: LoginStateService,
+    private ngZone: NgZone
   ) { }
   ngOnInit() {}
 
   handleHelpNaviagte() {
     this.RouteService.changeRoute('questionnaire')
-    this.router.navigateByUrl('/profile')
+    this.ngZone.run(() =>this.router.navigate(['profile'])).then()
   }
 
   handleProfileNavigate() {
@@ -36,7 +37,7 @@ export class FooterComponent implements OnInit {
     await this.loginSessinExists().
     then( async _ => { 
       if(this.isLoggedIn) {
-        this.router.navigateByUrl('/profile')
+        this.ngZone.run(() =>this.router.navigate(['profile'])).then()
       }
       else {
         await Promise.reject("Login Session doesn't exist!")

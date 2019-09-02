@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { ProductsService } from '../../services/products/products.service';
 import { Common } from '../../../../src/app/utils/common';
 import { Constants } from '../../../app/utils/constants'
@@ -24,7 +24,8 @@ export class HomeComponent implements OnInit {
   constructor(
     productsService: ProductsService,
     private router: Router,
-    private _searchItemService: SearchItemService
+    private _searchItemService: SearchItemService,
+    private ngZone: NgZone
   ) { 
     this._productsService = productsService
   }
@@ -116,7 +117,7 @@ export class HomeComponent implements OnInit {
   handleSale() {
     let searchedText = 'sale'
     if(searchedText) {
-      this.router.navigateByUrl('/products')
+      this.ngZone.run(() =>this.router.navigate(['products'])).then()
       this._searchItemService.changeState({
       q: searchedText,
       searchedText: searchedText,

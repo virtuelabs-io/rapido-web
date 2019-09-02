@@ -18,13 +18,14 @@ describe('LogInComponent', () => {
       declarations: [ LogInComponent ]
     })
     .compileComponents();
-    router = TestBed.get(Router);
- //   location = TestBed.get(Location);
-    router.initialNavigation();
   }));
 
   beforeEach(() => {
+    router = TestBed.get(Router);
     fixture = TestBed.createComponent(LogInComponent);
+    fixture.ngZone.run(() => {
+      router.initialNavigation();
+    });
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

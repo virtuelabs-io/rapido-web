@@ -1,4 +1,4 @@
-import { Component, OnInit, NgModule } from '@angular/core';
+import { Component, OnInit, NgModule, NgZone } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ChargeService } from '../../services/payment/charge.service';
 import { StripeService, Elements, Element as StripeElement, ElementsOptions } from "ngx-stripe";
@@ -68,7 +68,8 @@ export class CheckoutComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     addressDetailsService: AddressDetailsService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private ngZone: NgZone
   ) {
     this._addressDetailsService = addressDetailsService
     this._orderService = orderService
@@ -130,7 +131,7 @@ export class CheckoutComponent implements OnInit {
 
   newAddress() {
     this.RouteService.changeRoute('cart');
-    this.router.navigate(['profile/address/newAddress']);
+    this.ngZone.run(() =>this.router.navigate(['profile/address/newAddress'])).then()
   }
 
   getAddressList() {
@@ -213,7 +214,7 @@ export class CheckoutComponent implements OnInit {
       this.chargeResult = JSON.stringify(data)
       this.RouteService.changeRoute('orderCreated')
       this._loginStateService.loaderDisable()
-      this.router.navigate(['orders', this._charge.order_id, 'details'])
+      this.ngZone.run(() =>this.router.navigate(['orders', this._charge.order_id, 'details'])).then()
     })
   }
 }

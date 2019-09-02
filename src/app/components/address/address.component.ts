@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AddressDetailsService } from '../../services/customer/address-details.service';
 import { RouteService } from '../../shared-services/route/route.service';
@@ -23,7 +23,8 @@ export class AddressComponent implements OnInit {
     private _sessionService: SessionService,    
     private actRoute: ActivatedRoute,
     private RouteService : RouteService,
-    private _loginStateService: LoginStateService
+    private _loginStateService: LoginStateService,
+    private ngZone: NgZone
   ) {
     this._addressDetailsService = addressDetailsService
     this.userLogInCheck()
@@ -78,11 +79,11 @@ export class AddressComponent implements OnInit {
     })
   }
   addressEdit(id) {
-    this.router.navigate(['profile/address/editAddress', id])
+    this.ngZone.run(() =>this.router.navigate(['profile/address/editAddress', id])).then()
   }
 
   newAddress() {
     this.RouteService.changeRoute('profile')
-    this.router.navigate(['profile/address/newAddress']);
+    this.ngZone.run(() =>this.router.navigate(['profile/address/newAddress'])).then()
   }
 }

@@ -25,6 +25,12 @@ export class OrdersMockService extends OrdersService{
       })
     }
 
+    getOrder() {
+      return new Promise(resolve=>{
+        resolve(OrdersMockData.orderDetail)
+      })
+    }
+
     cancelOrder(order_id: number){
       return of(OrdersMockData.deleteOrder)
     }

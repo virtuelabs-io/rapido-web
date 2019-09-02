@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { OrdersService } from '../../services/orders/orders.service';
 import { Constants } from '../../utils/constants';
 import { Router } from '@angular/router';
@@ -25,7 +25,8 @@ export class OrdersComponent implements OnInit {
     orderService: OrdersService,
     private router: Router,
     private RouteService : RouteService,
-    private _loginStateService: LoginStateService
+    private _loginStateService: LoginStateService,
+    private ngZone: NgZone
   ) {
     this._orderService = orderService
   }
@@ -106,6 +107,7 @@ export class OrdersComponent implements OnInit {
   }
 
   orderDetails(id) {
-    this.router.navigate(['orders', id, 'details'])
+   this.ngZone.run(() =>this.router.navigate(['orders', id, 'details'])).then()
+
   }
 }

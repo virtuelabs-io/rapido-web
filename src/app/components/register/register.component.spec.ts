@@ -83,7 +83,7 @@ describe('RegisterComponent', () => {
   }));
 
   it('Password should match the pattern', async(() => {
-    component.registerFormGroup.controls['password'].setValue("abcdefg")
+    component.registerFormGroup.controls['password'].setValue("Asdf")
     expect(component.registerFormGroup.controls['password'].hasError('pattern')).toBeTruthy()
   }));
 

@@ -47,7 +47,9 @@ describe('EditAddressComponent', () => {
   beforeEach(() => {
     router = TestBed.get(Router)
     fixture = TestBed.createComponent(EditAddressComponent);
-    router.initialNavigation();
+    fixture.ngZone.run(() => {
+      router.initialNavigation();
+    });
     component = fixture.componentInstance;
     component._addressDetailsService = addressDetailsMockService
     fixture.detectChanges();

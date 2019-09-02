@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { SearchItemService } from '../../../shared-services/search-item/search-item.services';
 
@@ -15,7 +15,8 @@ export class HomeCardComponent implements OnInit {
   }
   constructor(
     private router: Router,
-    private _searchItemService: SearchItemService
+    private _searchItemService: SearchItemService,
+    private ngZone: NgZone
   ) { }
 
   ngOnInit() {
@@ -23,7 +24,7 @@ export class HomeCardComponent implements OnInit {
 
   cardClick(searchedText) {
     if(searchedText) {
-      this.router.navigateByUrl('/products')
+      this.ngZone.run(() =>this.router.navigate(['products'])).then()
       this._searchItemService.changeState({
       q: searchedText,
       searchedText: searchedText,

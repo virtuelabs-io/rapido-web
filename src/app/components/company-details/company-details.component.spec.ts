@@ -42,7 +42,9 @@ describe('CompanyDetailsComponent', () => {
     router = TestBed.get(Router);
     location = TestBed.get(Location);
     fixture = TestBed.createComponent(CompanyDetailsComponent);
-    router.initialNavigation();
+    fixture.ngZone.run(() => {
+      router.initialNavigation();
+    });
     component = fixture.componentInstance;
     component._companyDetailsService = companyDetailsMockService;
     fixture.detectChanges();

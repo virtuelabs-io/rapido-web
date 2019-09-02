@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { CompanyDetails } from '../../services/customer/company-details';
 import { CompanyDetailsService } from '../../services/customer/company-details.service';
@@ -36,7 +36,8 @@ export class CompanyDetailsComponent implements OnInit {
     private _sessionService: SessionService,
     private RouteService : RouteService,
     public _loginStateService: LoginStateService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private ngZone: NgZone
   ) { 
     this._companyDetailsService = companyDetailsService
   }
@@ -161,7 +162,10 @@ export class CompanyDetailsComponent implements OnInit {
   }
 
   cancelAddAddress() {
+    console.log('-------route test start-------')
     this.router.navigate(['profile/companyDetails']);
+    console.log('-------route test end-------')
+
   }
 
   deleteCompanyDetails() {

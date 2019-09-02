@@ -41,9 +41,53 @@ let orders = {
         }
     }
 }
+
+let orderDetail = {
+    orderItemsObject: {
+        17: {
+            35: {
+                addr_1: "46 Broadway",
+                addr_2: "Address Line 2",
+                address_type_id: 1,
+                city: "Pontypridd",
+                country: "United Kingdom",
+                county: "KA County",
+                created_on: "2019-08-31T17:05:58.000Z",
+                delivery_address_id: 6,
+                delivery_cost: 0,
+                full_name: "Sangram Reddy",
+                id: 17,
+                item_vat: 299.8,
+                order_price: 1499,
+                order_price_total: 1798.8,
+                order_status_id: 2,
+                postcode: "CF37 1BD",
+                product_id: 35,
+                quantity: 1,
+                total_price: 1499,
+                unit_price: 1499,
+                vat: 299.8
+            }
+        }
+    },
+    products: {
+        35: {
+            currency: "£",
+            images: [
+                "/images/products/1/image1.jpg",
+                "/images/products/1/image1.jpg",
+                "/images/products/1/image1.jpg",
+                "/images/products/1/image1.jpg"
+            ],
+            name: "Samsung Galaxy Watch Active 40mm Silver"
+        }
+    }
+}
 export class OrdersMockData {
 
   public static orders = orders
+
+  public static orderDetail = orderDetail
 
   public static deleteOrder = {
     affectedRows: 1,

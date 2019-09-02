@@ -38,7 +38,9 @@ describe('AddressComponent', () => {
     router = TestBed.get(Router);
     location = TestBed.get(Location);
     fixture = TestBed.createComponent(AddressComponent);
-    router.initialNavigation();
+    fixture.ngZone.run(() => {
+      router.initialNavigation();
+    });
     component = fixture.componentInstance;
     component._addressDetailsService = addressDetailsMockService
     fixture.detectChanges();

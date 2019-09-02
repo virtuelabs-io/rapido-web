@@ -35,6 +35,9 @@ describe('OrdersComponent', () => {
     router = TestBed.get(Router);
     location = TestBed.get(Location);
     fixture = TestBed.createComponent(OrdersComponent);
+    fixture.ngZone.run(() => {
+      router.initialNavigation();
+    });
     component = fixture.componentInstance;
     component._orderService = ordersMockService
     fixture.detectChanges();
