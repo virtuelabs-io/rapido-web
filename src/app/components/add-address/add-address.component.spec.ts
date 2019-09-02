@@ -25,6 +25,8 @@ describe('AddAddressComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AddAddressComponent);
     component = fixture.componentInstance;
+    component._addressDetailsService = addressDetailsMockService
+
     fixture.detectChanges();
   });
 
@@ -49,8 +51,9 @@ describe('AddAddressComponent', () => {
     expect(component.addressFormGroup.controls['county'].hasError('required')).toBeFalsy()
     expect(component.addressFormGroup.controls['country'].hasError('required')).toBeFalsy()
   }));
-// need to check for the add address..
-  /*it('add new address', () => {
+
+  it('add new address',  () => {
+    let id = 1
     let formData = {
       name: 'name',
       add1: 'xyz',
@@ -62,5 +65,5 @@ describe('AddAddressComponent', () => {
     }
     component.addAddress(formData)
     expect(component.addRes).toEqual(AddressDetailsMockData.postAddress);
-  });  */
+  });
 });

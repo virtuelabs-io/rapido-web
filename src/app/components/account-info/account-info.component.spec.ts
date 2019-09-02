@@ -25,7 +25,6 @@ describe('AccountInfoComponent', () => {
   }));
 
   beforeEach(() => {
-    
     router = TestBed.get(Router);
     fixture = TestBed.createComponent(AccountInfoComponent);
     fixture.ngZone.run(() => {
