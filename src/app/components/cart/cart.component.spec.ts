@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import {  MatSnackBarModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import {  MatStepperModule, MatSnackBarModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import { CartComponent } from './cart.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,14 +19,14 @@ describe('CartComponent', () => {
   let router: Router;
 
   const routes: Routes = [
-    { path: 'login', component: LogInComponent}
-   // { path: 'cart/checkout', component: CheckoutComponent}
+    { path: 'login', component: LogInComponent},
+    { path: 'cart/checkout', component: CheckoutComponent}
   ]
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [  BrowserAnimationsModule, RouterTestingModule, RouterTestingModule.withRoutes(routes), MatSnackBarModule, HttpClientModule,MatInputModule, MatFormFieldModule, FormsModule, ReactiveFormsModule ],
-      declarations: [ CartComponent, LogInComponent ]
+      imports: [  MatStepperModule, BrowserAnimationsModule, RouterTestingModule, RouterTestingModule.withRoutes(routes), MatSnackBarModule, HttpClientModule,MatInputModule, MatFormFieldModule, FormsModule, ReactiveFormsModule ],
+      declarations: [ CartComponent, LogInComponent, CheckoutComponent ]
     })
     .compileComponents();
   }));
