@@ -47,6 +47,7 @@ export class ProductResultsComponent implements OnInit, OnDestroy {
     this.route.queryParams
       .subscribe(params => {
         this.loginStateService.loaderEnable()
+        if(params && params.search){
         this.searchUrlParam = params.search
         let qObject = JSON.parse(params.search)
         this._searchItemService.changeState(qObject)
@@ -69,6 +70,7 @@ export class ProductResultsComponent implements OnInit, OnDestroy {
               this.loginStateService.loaderDisable()
             }
            })
+          }
       });
       this._searchItemServicecurrentState = this._searchItemService.currentState.subscribe(query => {
         if (query.searchedText) {

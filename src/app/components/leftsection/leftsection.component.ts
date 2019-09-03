@@ -64,7 +64,7 @@ import { Query } from 'src/app/services/products/query.interface'
       if (query.searchedText) {
         this.searchedText = query.searchedText
         this.releatedSearch = query.releatedSearch
-        if(typeof query.fieldsQuery === 'string'){
+        if(query.fieldsQuery && typeof query.fieldsQuery === 'string'){
           this.fieldsQuery = JSON.parse(query.fieldsQuery)
         }else {
           this.fieldsQuery = query.fieldsQuery
@@ -75,6 +75,7 @@ import { Query } from 'src/app/services/products/query.interface'
   }
   
   updateProductControls(respData) {
+    try{
     let { hits } = respData
     if (hits && hits.hit) {
       this.tags = hits.hit[0].fields.tags
@@ -142,6 +143,10 @@ import { Query } from 'src/app/services/products/query.interface'
         }
       ]
     }
+  }
+  catch(e){
+    console.log('something went wrong')
+  }
   }
   
   priceFilterData(range) {
@@ -215,25 +220,32 @@ import { Query } from 'src/app/services/products/query.interface'
   
   removeRating() {
     this.fieldsQuery.rating.q = null
-    if (!this.fieldsQuery.price.q && !this.fieldsQuery.rating.q) {
-      let qSearch = this.searchedText
-      if(this.releatedSearch){
-        qSearch = this.category +' '+  this.releatedSearch
+    if(this.fieldsQuery && this.fieldsQuery.price){
+      if (!this.fieldsQuery.price.q) {
+          let qSearch = this.searchedText
+          if(this.releatedSearch){
+            qSearch = this.category +' '+  this.releatedSearch
+          }
+          this.onPressItem(qSearch, null)
+      } else {
+          let priceRange = this.fieldsQuery.price.q
+          if(typeof this.fieldsQuery.price.q === 'string'){
+            priceRange = JSON.parse(this.fieldsQuery.price.q)
+          }
+          if (priceRange){
+            this.priceFilterData({
+              min: priceRange[0],
+              max: priceRange[1]
+            })
+          }
       }
-      this.onPressItem(qSearch, null)
-    } else {
-      let priceRange = JSON.parse(this.fieldsQuery.price.q)
-      if (priceRange)
-        this.priceFilterData({
-          min: priceRange[0],
-          max: priceRange[1]
-        })
     }
   }
   
   removePrice() {
     this.fieldsQuery.price.q = null
-    if (!this.fieldsQuery.price.q && !this.fieldsQuery.rating.q) {
+    if(this.fieldsQuery && this.fieldsQuery.price){
+    if (!this.fieldsQuery.rating.q) {
       let qSearch = this.searchedText
       if(this.releatedSearch){
         qSearch = this.category +' '+  this.releatedSearch
@@ -242,6 +254,7 @@ import { Query } from 'src/app/services/products/query.interface'
     } else {
       this.onPressRating(this.fieldsQuery.rating.q)
     }
+  }
   }
   
   removeReleatedSearch() {
