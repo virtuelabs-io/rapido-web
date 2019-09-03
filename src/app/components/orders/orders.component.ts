@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { OrdersService } from '../../services/orders/orders.service';
 import { Constants } from '../../utils/constants';
 import { Router } from '@angular/router';
@@ -11,19 +11,22 @@ import { LoginStateService } from '../../shared-services/login-state/login-state
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent implements OnInit {
-  private _orderService: OrdersService
+  public _orderService: OrdersService
   imageUrl: string = Constants.environment.staticAssets
   orders = {}
   products = {}
   currentOrders = []
   isLoggedIn: Boolean
+  fetchOrdersRes: any
+  cancelOrderRes: any
   cancelledStatus = Constants.ORDER_STATUS[4]
 
   constructor(
     orderService: OrdersService,
     private router: Router,
     private RouteService : RouteService,
-    private _loginStateService: LoginStateService
+    private _loginStateService: LoginStateService,
+    private ngZone: NgZone
   ) {
     this._orderService = orderService
   }
@@ -64,6 +67,7 @@ export class OrdersComponent implements OnInit {
       this._loginStateService.loaderEnable()
       await this._orderService.getOrders()
     .then((data: any) => {
+      this.fetchOrdersRes = data
       if(data['products']) {
         this.products = data['products']
       }
@@ -97,11 +101,13 @@ export class OrdersComponent implements OnInit {
     this._loginStateService.loaderEnable()
     this._orderService.cancelOrder(id)
     .subscribe(data => {
+      this.cancelOrderRes = data
       this.getOrders()
     })
   }
 
   orderDetails(id) {
-    this.router.navigate(['orders', id, 'details'])
+   this.ngZone.run(() =>this.router.navigate(['orders', id, 'details'])).then()
+
   }
 }

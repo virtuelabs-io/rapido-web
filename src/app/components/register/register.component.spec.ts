@@ -3,21 +3,33 @@ import { MatToolbarModule, MatStepperModule, MatFormFieldModule, MatIconModule, 
 import { RegisterComponent } from './register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LogInComponent } from '../log-in/log-in.component';
+import { Router, Routes } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
+  let router: Router;
+
+  const routes: Routes = [
+    { path: 'login', component: LogInComponent}
+  ]
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ BrowserAnimationsModule, MatToolbarModule, MatStepperModule, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatIconModule, MatCheckboxModule, MatCardModule, MatInputModule  ],
+      imports: [ RouterTestingModule, BrowserAnimationsModule, MatToolbarModule, MatStepperModule, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatIconModule, MatCheckboxModule, MatCardModule, MatInputModule  ],
       declarations: [ RegisterComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
+    router = TestBed.get(Router);
     fixture = TestBed.createComponent(RegisterComponent);
+    fixture.ngZone.run(() => {
+      router.initialNavigation();
+    });
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -83,7 +95,7 @@ describe('RegisterComponent', () => {
   }));
 
   it('Password should match the pattern', async(() => {
-    component.registerFormGroup.controls['password'].setValue("abcdefg")
+    component.registerFormGroup.controls['password'].setValue("Asdf")
     expect(component.registerFormGroup.controls['password'].hasError('pattern')).toBeTruthy()
   }));
 

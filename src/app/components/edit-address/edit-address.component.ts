@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AddressDetails } from '../../services/customer/address-details';
 import { AddressDetailsService } from '../../services/customer/address-details.service';
@@ -21,7 +21,8 @@ export class EditAddressComponent implements OnInit {
     addressDetailsService: AddressDetailsService,
     private actRoute: ActivatedRoute,
     private router: Router,
-    private _loginStateService: LoginStateService
+    private _loginStateService: LoginStateService,
+    private ngZone: NgZone
   ) {
     this._addressDetailsService = addressDetailsService
   }
@@ -71,12 +72,12 @@ export class EditAddressComponent implements OnInit {
     this._addressDetailsService.putAddressDetails(this.addressDetails)
     .subscribe( _ => {
       this._loginStateService.loaderDisable()
-      this.router.navigate(['profile/address'])
+      this.ngZone.run(() =>this.router.navigate(['profile/address'])).then()
     })
   }
 
   cancelAddAddress() {
-    this.router.navigate(['profile/address'])
+    this.ngZone.run(() =>this.router.navigate(['profile/address'])).then()
   }
 
   public hasError = (controlName: string, errorName: string) => {

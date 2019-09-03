@@ -36,7 +36,6 @@ export class AppComponent {
 
       if (event instanceof NavigationError) {
         this.loginStateService.loaderDisable()
-          console.log(event.error);
       }
       
       if (event instanceof ActivationEnd ) {

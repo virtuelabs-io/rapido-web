@@ -8,6 +8,8 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RouteService } from '../../shared-services/route/route.service';
 import { SessionService } from '../../services/authentication/session/session.service';
 import { Router } from '@angular/router';
+import { ConfirmationDialogComponent } from '../../components/confirmation-dialog/confirmation-dialog.component';
+import {  MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-account-info',
@@ -28,6 +30,7 @@ export class AccountInfoComponent implements OnInit {
   updatedAttribute: Boolean = false
   failedToUpdate: Boolean = false
   isLoggedIn: Boolean
+  dialogRef: any
   _modalReference = null; 
   private _deleteUserService: DeleteUserService
 
@@ -55,7 +58,8 @@ export class AccountInfoComponent implements OnInit {
     private router: Router,
     private _sessionService: SessionService,
     private RouteService : RouteService,
-    private _loginStateService: LoginStateService
+    private _loginStateService: LoginStateService,
+    public dialog: MatDialog
   ) {
     this._profileService = profileService
     this._updateAttributeService = updateAttributeService
@@ -147,8 +151,17 @@ export class AccountInfoComponent implements OnInit {
     })
   }
 
-  delete(content) {
-    this._modalReference = this.modalService.open(content,  { centered: true })
+  delete() {
+    this.dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '350px',
+      data: "Are you sure you want to delete the account. Once deleted, your account can't be recovered"
+    });
+    this.dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        this.yesModalAction()
+      }
+    });
+   // this._modalReference = this.modalService.open(content,  { centered: true })
   }
 
   yesModalAction() {
