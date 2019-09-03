@@ -151,7 +151,7 @@ export class AccountInfoComponent implements OnInit {
     })
   }
 
-  delete(content) {
+  delete() {
     this.dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: '350px',
       data: "Are you sure you want to delete the account. Once deleted, your account can't be recovered"
