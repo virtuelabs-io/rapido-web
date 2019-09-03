@@ -92,7 +92,6 @@ export class TopnavComponent implements OnInit {
         parser:'structured',
         qdotparser:null
       }
-      // this._searchItemService.changeState(qObject)
       this.router.navigate(['/products'], { queryParams: { search: JSON.stringify(qObject) } })
     }
     event.target.blur();

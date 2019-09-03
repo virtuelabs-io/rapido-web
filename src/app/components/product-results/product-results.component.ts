@@ -50,6 +50,9 @@ export class ProductResultsComponent implements OnInit, OnDestroy {
         if(params && params.search){
         this.searchUrlParam = params.search
         let qObject = JSON.parse(params.search)
+        if(history.state && history.state.navigationId==1){
+          qObject.start = 0 // resetting results to page 1
+        }
         this._searchItemService.changeState(qObject)
         this._productsService.get(qObject).
           subscribe(data => {
