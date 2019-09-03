@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { RouteService } from '../../shared-services/route/route.service';
 import { ProductsService } from '../../services/products/products.service';
 import { NavComponent } from '../nav/nav.component';
+import { v4 as uuid } from 'uuid';
 
 @NgModule({})
 @Component({
@@ -42,6 +43,10 @@ export class TopnavComponent implements OnInit {
 
   ngOnInit() {
     const promise = this._sessionService.retrieveSessionIfExists()
+    if (!localStorage.getItem(Constants.RAPIDO_SESSION_ID)){
+      console.log("New session created!")
+      localStorage.setItem(Constants.RAPIDO_SESSION_ID, uuid())
+    }
     promise.then( _ => {
       this._loginStateService.changeState(true);
       this.getCartCount()
