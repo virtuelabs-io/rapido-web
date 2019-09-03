@@ -14,7 +14,7 @@ export class ProductsService {
   constructor(private _http: HttpClient,
     private loginStateService: LoginStateService) { }
 
-  buildQuery(_query: Query): string {
+    private buildQuery(_query: Query): string {
     let queryKeys: string[] = [];
     for(let key in _query){
       if(_query[key] != null){
@@ -32,21 +32,6 @@ export class ProductsService {
 
   get(_query: Query): Observable<any> {
     let url = Constants.environment.productSearchEndPoint + this.buildQuery(_query)
-    this.loginStateService.loaderEnable()
-    return this._http.get<any>(url)
-    .pipe(
-      retry(Constants.RETRY_TIMES),
-      tap( _ => this.loginStateService.loaderDisable()),
-      catchError(err => {
-        console.log('Error in processing request...', err);
-        this.loginStateService.loaderDisable()
-        return throwError(err);
-      })
-    );
-  }
-  
-  getFromParams(_query): Observable<any> {
-    let url = Constants.environment.productSearchEndPoint + (_query)
     this.loginStateService.loaderEnable()
     return this._http.get<any>(url)
     .pipe(
