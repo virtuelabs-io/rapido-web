@@ -53,10 +53,8 @@ export class ProductDetailsComponent implements OnInit {
 		// get product details
 		if (this.itemId) {
 			this._searchItemService.responsePoductListState.subscribe(respData => {
-				let {
-					hits
-				} = respData
-				if (hits.hit[0].id) {
+				let { hits } = respData
+				if (hits.hit.length == 1  && hits.hit[0].id) {
 					this.updateProductDetails(hits)
 				} else {
 					let query = {
