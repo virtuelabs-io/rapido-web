@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SearchItemService } from '../../../shared-services/search-item/search-item.services';
+import { Common } from '../../../utils/common';
 
 @Component({
   selector: 'app-home-card',
@@ -22,30 +23,8 @@ export class HomeCardComponent implements OnInit {
   }
 
   cardClick(searchedText) {
-    if(searchedText){
-      let fieldsQuery = {
-        price: {
-          q: null,
-          text: null
-        },
-        rating: {
-          q: null,
-          text: null
-        }
-      }
-      let qObject = {
-        q: searchedText,
-        searchedText: searchedText,
-        releatedSearch: null,
-        fieldsQuery: JSON.stringify(fieldsQuery),
-        size: 15,
-        cursor: null,
-        return: null,
-        start: 0,
-        sort: null,
-        parser:'structured',
-        qdotparser:null
-      }
+    let qObject = Common.searchProducts(searchedText)
+    if(qObject){
       this.router.navigate(['/products'], { queryParams: { search: JSON.stringify(qObject) } })
     }
   }

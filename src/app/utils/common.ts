@@ -55,6 +55,7 @@ export class Common {
       }
       return qObject;
     } else {
+      console.log('Search text is empty')
       return null;
     }
 
