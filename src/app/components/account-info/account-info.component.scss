@@ -14,8 +14,17 @@
         padding-right: 20%;
         margin-bottom: 20px;
         .title-div {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
             margin-top: 3%;
             border-bottom: 1px solid #e1e4e8;
+            svg {
+                height: 30px;
+                width: 30px;
+                margin-right: 1%;
+                margin-top: 0.4%;
+              }
         }
         .rapido-account-info-div {
             display: flex;

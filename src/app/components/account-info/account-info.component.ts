@@ -161,7 +161,6 @@ export class AccountInfoComponent implements OnInit {
         this.yesModalAction()
       }
     });
-   // this._modalReference = this.modalService.open(content,  { centered: true })
   }
 
   yesModalAction() {
