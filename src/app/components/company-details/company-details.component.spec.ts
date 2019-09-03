@@ -94,7 +94,6 @@ describe('CompanyDetailsComponent', () => {
     component.addressFormGroup.controls["postCode"].setValue("12345")
     component.addressFormGroup.controls["country"].setValue("country")
     component.addressFormGroup.controls["county"].setValue("county") 
-    component.putCompanyDetails()
     component.modalSave()
     expect(component.putRes).toBeTruthy(CompanyDetailsMockData.putComapnyDetails)
   }); 

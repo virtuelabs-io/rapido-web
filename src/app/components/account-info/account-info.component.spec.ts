@@ -4,9 +4,11 @@ import { AccountInfoComponent } from './account-info.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
-import { MatFormFieldModule, MatCardModule, MatInputModule, MatCheckboxModule, MatIconModule, MatExpansionModule } from '@angular/material';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA, MatFormFieldModule, MatCardModule, MatInputModule, MatCheckboxModule, MatIconModule, MatExpansionModule } from '@angular/material';
 import { Router, Routes } from '@angular/router';
 import { LogInComponent } from '../log-in/log-in.component';
+import { ConfirmationDialogComponent } from '../../components/confirmation-dialog/confirmation-dialog.component';
+import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 
 describe('AccountInfoComponent', () => {
   let component: AccountInfoComponent;
@@ -18,10 +20,15 @@ describe('AccountInfoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule, MatFormFieldModule, MatCardModule, MatIconModule, MatExpansionModule, RouterTestingModule.withRoutes(routes), HttpClientModule, MatCheckboxModule, MatInputModule, BrowserAnimationsModule ],
-      declarations: [ AccountInfoComponent, LogInComponent ]
-    })
-    .compileComponents();
+      imports: [ MatDialogModule, FormsModule, MatFormFieldModule, MatCardModule, MatIconModule, MatExpansionModule, RouterTestingModule.withRoutes(routes), HttpClientModule, MatCheckboxModule, MatInputModule, BrowserAnimationsModule ],
+      declarations: [ AccountInfoComponent, LogInComponent, ConfirmationDialogComponent ],
+      providers: [
+        {provide: MatDialogRef, useValue: {}},
+        { provide: MAT_DIALOG_DATA, useValue: [] }
+      ]
+    }).overrideModule(BrowserDynamicTestingModule, {
+      set: { entryComponents: [ ConfirmationDialogComponent ] }
+    }).compileComponents();
   }));
 
   beforeEach(() => {

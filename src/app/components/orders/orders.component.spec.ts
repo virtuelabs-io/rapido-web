@@ -61,16 +61,16 @@ describe('OrdersComponent', () => {
     expect(component.cancelOrderRes).toEqual(OrdersMockData.deleteOrder);
   }));
 
-  it('navigate to product detail page',(async () => {
-    let id = 13
-    component.isLoggedIn = true
-    await component.cancelOrder(id)
-    expect(component.cancelOrderRes).toEqual(OrdersMockData.deleteOrder);
-  }));
-
-  it('route to edit component',  fakeAsync(() => {
+  it('route to order details component',  fakeAsync(() => {
     component.orderDetails(13);
     tick();
     expect(location.path()).toEqual('/orders/13/details')
+  }));
+
+  it('map the fetched orders to the UI controls',(async () => {
+    component.isLoggedIn = true
+    await component.getOrders()
+    expect(component.fetchOrdersRes.orderItemsObject[13][1].order_price).toEqual(component.orders[13].price)
+    expect(component.fetchOrdersRes.products[1].name).toEqual(component.products[1].name)
   }));
 });

@@ -11,6 +11,7 @@ import { StripeService, Elements, Element as StripeElement, ElementsOptions } fr
 import { NgxStripeModule } from 'ngx-stripe';
 import { Charge } from '../../services/payment/charge';
 import { ChargeService } from '../../services/payment/charge.service';
+import { InjectionToken } from "@angular/core";
 
 describe('CheckoutComponent', () => {
   let component: CheckoutComponent;
@@ -25,7 +26,7 @@ describe('CheckoutComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      providers: [ StripeService,
+      providers: [ StripeService
      //   { provide: APP_CONFIG, useValue: ElementsOptions }
       ],
       imports: [ MatStepperModule, BrowserAnimationsModule, RouterTestingModule, RouterTestingModule.withRoutes(routes), MatSnackBarModule, HttpClientModule,MatInputModule, MatFormFieldModule, FormsModule, ReactiveFormsModule ],
