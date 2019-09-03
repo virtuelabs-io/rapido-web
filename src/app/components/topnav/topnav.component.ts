@@ -10,8 +10,8 @@ import { SearchItemService } from '../../shared-services/search-item/search-item
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RouteService } from '../../shared-services/route/route.service';
 import { ProductsService } from '../../services/products/products.service';
-import { NavComponent } from '../nav/nav.component';
 import { v4 as uuid } from 'uuid';
+import { Common } from './../../utils/common'
 
 @NgModule({})
 @Component({
@@ -73,7 +73,7 @@ export class TopnavComponent implements OnInit {
   }
 
   onSearch(event){
-    if(this.searchedText){
+    /* if(this.searchedText){
       let fieldsQuery = {
         price: {
           q: null,
@@ -97,6 +97,10 @@ export class TopnavComponent implements OnInit {
         parser:'structured',
         qdotparser:null
       }
+      this.router.navigate(['/products'], { queryParams: { search: JSON.stringify(qObject) } })
+    } */
+    let qObject = Common.searchProducts(this.searchedText)
+    if(qObject){
       this.router.navigate(['/products'], { queryParams: { search: JSON.stringify(qObject) } })
     }
     event.target.blur();

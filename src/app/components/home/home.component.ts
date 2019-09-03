@@ -114,18 +114,10 @@ export class HomeComponent implements OnInit {
   }
 
   handleSale() {
-    let searchedText = 'sale'
-    if(searchedText) {
-      this.router.navigateByUrl('/products')
-      this._searchItemService.changeState({
-      q: searchedText,
-      searchedText: searchedText,
-      start: 0,
-      sort: null,
-      cursor: null,
-      return: null,
-      qdotparser:null
-      })
+    let searchedText = 'sale' // should be dynamic...
+    let qObject = Common.searchProducts(searchedText)
+    if(qObject){
+      this.router.navigate(['/products'], { queryParams: { search: JSON.stringify(qObject) } })
     }
   }
 

@@ -26,6 +26,38 @@ export class Common {
         // invalid character, prevent input
         event.preventDefault();
     }
-}
+  }
+  
+  public static searchProducts = (searchText: any) => {
+    if(searchText){
+      let fieldsQuery = {
+        price: {
+          q: null,
+          text: null
+        },
+        rating: {
+          q: null,
+          text: null
+        }
+      }
+      let qObject = {
+        q: searchText,
+        searchedText: searchText,
+        releatedSearch: null,
+        fieldsQuery: JSON.stringify(fieldsQuery),
+        size: 15,
+        cursor: null,
+        return: null,
+        start: 0,
+        sort: null,
+        parser:'structured',
+        qdotparser:null
+      }
+      return qObject;
+    } else {
+      return null;
+    }
+
+  }
 
 }
