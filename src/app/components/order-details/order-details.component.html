@@ -29,7 +29,8 @@
           <div class="order-items">
               <div class="order-items-list" *ngFor="let item of orders[order].items">
                 <div class="order-item-status">
-                    <span>{{ orders[order].category }}</span>
+                    <span class="status-label-success" *ngIf="orders[order].category != cancelledStatus">{{ orders[order].category }}</span>
+                    <span class="status-label-cancelled" *ngIf="orders[order].category == cancelledStatus">{{ orders[order].category }}</span>
                 </div>
                 <div class="item">
                     <div class="item-thumbnail">

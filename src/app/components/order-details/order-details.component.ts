@@ -28,7 +28,8 @@ export class OrderDetailsComponent implements OnInit {
   fetchOrderRes: any
   imageUrl: string = Constants.environment.staticAssets
   companyDetails: {}
-  showCompanyDetails: boolean = true
+  showCompanyDetails: boolean = false
+  cancelledStatus = Constants.ORDER_STATUS[4]
   order: Order = new Order()
   public _orderService: OrdersService
   private _companyDetailsService: CompanyDetailsService
@@ -132,6 +133,7 @@ export class OrderDetailsComponent implements OnInit {
             country: data.country,
             county: data.county
           }
+          this.showCompanyDetails = true
         }
         else {
           this.showCompanyDetails = false

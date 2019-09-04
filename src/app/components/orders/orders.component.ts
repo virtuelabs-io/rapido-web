@@ -4,6 +4,8 @@ import { Constants } from '../../utils/constants';
 import { Router } from '@angular/router';
 import { RouteService } from '../../shared-services/route/route.service';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
+import { ConfirmationDialogComponent } from '../../components/confirmation-dialog/confirmation-dialog.component';
+import {  MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-orders',
@@ -16,6 +18,7 @@ export class OrdersComponent implements OnInit {
   orders = {}
   products = {}
   currentOrders = []
+  dialogRef: any
   isLoggedIn: Boolean
   fetchOrdersRes: any
   cancelOrderRes: any
@@ -26,7 +29,8 @@ export class OrdersComponent implements OnInit {
     private router: Router,
     private RouteService : RouteService,
     private _loginStateService: LoginStateService,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    public dialog: MatDialog
   ) {
     this._orderService = orderService
   }
@@ -98,6 +102,18 @@ export class OrdersComponent implements OnInit {
   }
 
   cancelOrder(id) {
+    this.dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '350px',
+      data: "Are you sure you want to cancel this order"
+    });
+    this.dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        this.yesModalAction(id)
+      }
+    });
+  }
+
+  yesModalAction(id) {
     this._loginStateService.loaderEnable()
     this._orderService.cancelOrder(id)
     .subscribe(data => {
