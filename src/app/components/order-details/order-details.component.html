@@ -1,10 +1,15 @@
 <div class="payment-div">
   <div class="order-address-div" *ngFor="let order of orderedItems">
     <div class="order-div">
-      <div class="title-div">
-        <h4>
-          Summary
-        </h4>
+      <div class="icon-title">
+        <svg>
+          <use xlink:href="#menu" />
+        </svg>
+        <div class="title-div">
+          <h4>
+            Order Summary
+          </h4>
+        </div>
       </div>
       <div class="thanks-div" *ngIf="newOrder">
         <p>Thank you for shopping with us !</p>

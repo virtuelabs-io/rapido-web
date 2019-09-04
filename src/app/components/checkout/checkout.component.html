@@ -57,7 +57,7 @@
               </div>
               <div class="cart-columns">
                 <div class="cart-col-price">
-                  <span>Price(£)</span>
+                  <span>Price({{ currency }})</span>
                 </div>
                 <div class="cart-col-quan">
                   <span>Quantity</span>
@@ -84,7 +84,7 @@
                     </div>
               </div>
               <div class="order-total">
-                <p>Order Total: {{ orders[order].currency }}<span> {{ amount }}</span></p>
+                <p>Order Total: {{ currency }}<span> {{ amount }}</span></p>
               </div>
             </div>
             
@@ -111,7 +111,7 @@
               </mat-form-field>
               <div id="card-element" class="field"></div><br>
                 <div class="buy-cart-button">
-                  <button class="btn btn-primary buy-button" (click)="buy()">Pay £{{ amount }}</button>
+                  <button class="btn btn-primary buy-button" (click)="buy()">Pay {{ currency }}{{ amount }}</button>
                 <button class="btn btn-primary buy-button" routerLink="/cart">Edit Order</button>
                 </div>
               </div>
