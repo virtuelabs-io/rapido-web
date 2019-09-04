@@ -10,6 +10,10 @@ import { OrdersMockService } from '../../services/orders/orders.mock.service';
 import { OrdersService } from 'src/app/services/orders/orders.service';
 import {Location} from "@angular/common";
 import { OrderDetailsComponent } from '../order-details/order-details.component';
+import { MatDialogModule} from '@angular/material';
+import { ConfirmationDialogComponent } from '../../components/confirmation-dialog/confirmation-dialog.component';
+import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 
 describe('OrdersComponent', () => {
   let ordersMockService: OrdersService = new OrdersMockService()
@@ -25,8 +29,10 @@ describe('OrdersComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule, RouterTestingModule.withRoutes(routes), HttpClientModule ],
-      declarations: [ OrdersComponent, LogInComponent, OrderDetailsComponent ]
+      imports: [  BrowserAnimationsModule, MatDialogModule, FormsModule, RouterTestingModule.withRoutes(routes), HttpClientModule ],
+      declarations: [ OrdersComponent, LogInComponent, OrderDetailsComponent, ConfirmationDialogComponent ],
+    }).overrideModule(BrowserDynamicTestingModule, {
+      set: { entryComponents: [ ConfirmationDialogComponent ] }
     })
     .compileComponents();
   }));
@@ -57,7 +63,7 @@ describe('OrdersComponent', () => {
   it('cancel order',(async () => {
     let id = 13
     component.isLoggedIn = true
-    await component.cancelOrder(id)
+    await component.yesModalAction(id)
     expect(component.cancelOrderRes).toEqual(OrdersMockData.deleteOrder);
   }));
 
