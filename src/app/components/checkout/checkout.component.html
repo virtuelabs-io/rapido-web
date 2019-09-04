@@ -6,6 +6,9 @@
       <form class="form-container">
         <div class="address-div">
           <div class="title-div">
+            <svg>
+              <use xlink:href="#delivery-address" />
+            </svg>
             <h4>
               My Addresses
             </h4>
@@ -51,6 +54,9 @@
           <div class="order-address-div"  *ngFor="let order of orderItems">
             <div class="order-div">
               <div class="title-div">
+                <svg>
+                  <use xlink:href="#box" />
+                </svg>
                 <h4>
                     Order Items
                 </h4>
@@ -104,7 +110,12 @@
           </div>
 
           <div class="pay-div">
-            <h4>Payment</h4>
+            <div class="icon-title">
+                <svg>
+                    <use xlink:href="#give-money"/>
+                  </svg>
+                  <h4>Payment</h4>
+            </div>
             <div class="payment-det">
               <mat-form-field class="">
                 <input matInput [(ngModel)]="registeredEmail" name="email" placeholder="Invoice sent to">

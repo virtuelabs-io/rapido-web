@@ -5,8 +5,16 @@
     flex-direction: column;
     flex-wrap: nowrap;
     .title-div {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
         margin-top: 5%;
         margin-left: 15%;
+        svg {
+            height: 30px;
+            width: 30px;
+            margin-right: 1%;
+        }
         @media screen and (max-width: $small-device) {
              margin-left: 2%;    
          }

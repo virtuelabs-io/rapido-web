@@ -2,7 +2,15 @@
 .main-div {
     .address-div {
         .title-div {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
             margin-top: 2%;
+            svg {
+                height: 30px;
+                width: 30px;
+                margin-right: 1%;
+            }
             @media screen and (max-width: $mobile-device) {
                 margin-top: 5%;
             }
@@ -99,6 +107,20 @@
                 flex-direction: column;
                 flex-wrap: nowrap;
                 width: 65%;
+                .title-div {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    margin-top: 2%;
+                    svg {
+                        height: 30px;
+                        width: 30px;
+                        margin-right: 1%;
+                    }
+                    @media screen and (max-width: $mobile-device) {
+                        margin-top: 5%;
+                    }
+                }
                 .cart-columns {
                     display: flex;
                     flex-direction: row;
@@ -242,12 +264,24 @@
         }
         .pay-div {
             border-top: 3px solid #e1e4e8;
-            h4 {
-                margin-top: 2%;
-                @media screen and (max-width: $small-device) {
-                    margin-top: 4%;
+            .icon-title {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                svg {
+                    height: 30px;
+                    width: 30px;
+                    margin-right: 1%;
+                    margin-top: 2%;
+                }
+                h4 {
+                    margin-top: 2%;
+                    @media screen and (max-width: $small-device) {
+                        margin-top: 4%;
+                    }
                 }
             }
+            
             .payment-det {
                 display: flex;
                 flex-direction: column;
