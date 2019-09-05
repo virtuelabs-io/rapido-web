@@ -18,8 +18,12 @@ export class ProductsService {
       if(_query[key] != null){
         if(key != 'searchedText'){
           if(key != 'fieldsQuery'){
-            if(key != 'releatedSearch'){
-              queryKeys.push(key.replace("qdot", "q.") + "=" + String(_query[key]))
+            if(key != 'rating'){
+              if(key != 'price'){
+                if(key != 'releatedSearch'){
+                  queryKeys.push(key.replace("qdot", "q.") + "=" + String(_query[key]))
+                }
+              }
             }
           }
         }

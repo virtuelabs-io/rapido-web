@@ -163,7 +163,9 @@ import { Common } from 'src/app/utils/common'
       qdotparser: 'structured',
       parser: null,
       size:15,
-      start:0
+      start:0,
+      price:`[${range.min}, ${range.max}]`,
+      rating:this.fieldsQuery.rating.q || ''
     })
   }
   
@@ -178,7 +180,9 @@ import { Common } from 'src/app/utils/common'
       q: query,
       searchedText: this.searchedText,
       qdotparser: 'structured',
-      parser: null
+      parser: null,
+      rating:val,
+      price: this.fieldsQuery.price.q || ''
     })
   }
   
@@ -202,7 +206,9 @@ import { Common } from 'src/app/utils/common'
       cursor: null,
       return: null,
       qdotparser: null,
-      releatedSearch: this.releatedSearch
+      releatedSearch: this.releatedSearch,
+      rating: this.fieldsQuery.rating.q,
+      price: this.fieldsQuery.price.q
     })
   }
   

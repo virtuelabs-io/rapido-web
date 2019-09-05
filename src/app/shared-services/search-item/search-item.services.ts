@@ -18,7 +18,9 @@ export class SearchItemService {
     return: null,
     start: null,
     sort: null,
-    parser:'structured'
+    parser:'structured',
+    rating:null,
+    price:null
   }
 
   _responseData = {

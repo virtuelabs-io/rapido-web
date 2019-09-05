@@ -47,20 +47,30 @@ export class Common {
   }
 
   public static decodeUrlParams = (_query: Query) => {
+    let updatedQuery = JSON.parse(JSON.stringify(_query))
     let fieldsQuery = {
       price: {
-        q: null,
-        text: null
+        q: updatedQuery.price,
+        text: updatedQuery.price
       },
       rating: {
-        q: null,
-        text: null
+        q: updatedQuery.rating,
+        text: updatedQuery.rating
       }
     }
-    
+    if(updatedQuery.rating && updatedQuery.price){
+      updatedQuery.q = `(and '${updatedQuery.searchedText + (updatedQuery.releatedSearch ? ' ' + updatedQuery.releatedSearch : '')}' (and (range field=rating [${updatedQuery.rating},${Number(5)}]) (range field=price ${updatedQuery.price})))`
+    }else if(updatedQuery.rating){
+      updatedQuery.q = `(and '${updatedQuery.searchedText + (updatedQuery.releatedSearch ? ' ' + updatedQuery.releatedSearch : '')}' (range field=rating [${updatedQuery.rating},${Number(5)}]))`
+    }else if(updatedQuery.price){
+      updatedQuery.q =  `(and '${updatedQuery.searchedText + (updatedQuery.releatedSearch ? ' '+ updatedQuery.releatedSearch : '')}' (range field=price ${updatedQuery.price}))`
+    }else if(!updatedQuery.price && !updatedQuery.rating){
+      updatedQuery.q = `${(updatedQuery.searchedText ? updatedQuery.searchedText : updatedQuery.q) + (updatedQuery.releatedSearch ? ' ' + updatedQuery.releatedSearch : '')}` || updatedQuery.q
+    }
+
     let defaultQuery = {
       q: '',
-      searchedText: _query.searchedText || _query.q,
+      searchedText: updatedQuery.searchedText || updatedQuery.q,
       releatedSearch: '',
       size: 15,
       cursor: null,
@@ -71,15 +81,17 @@ export class Common {
       fieldsQuery: JSON.stringify(fieldsQuery),
     }
     
-    return {...defaultQuery, ..._query}
+    return {...defaultQuery, ...updatedQuery}
   }
 
   public static setUrlParams = (_query: Query) => {
-    Object.keys(_query).forEach((key) => {
-      if((_query[key] == null) || key == 'parser' || key == 'size' || key == 'fieldsQuery'){
-        delete _query[key]
+    let updatedQuery = JSON.parse(JSON.stringify(_query))
+    Object.keys(updatedQuery).forEach((key) => {
+      if(updatedQuery[key] == null || updatedQuery[key] == '' || key == 'parser' || key == 'size' || key == 'fieldsQuery'){
+        delete updatedQuery[key]
       }});
-    return _query
+      updatedQuery.q = updatedQuery.searchedText || updatedQuery.q
+    return updatedQuery
   }
   
 }

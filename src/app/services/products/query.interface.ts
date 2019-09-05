@@ -9,5 +9,7 @@ export interface Query {
   searchedText?:string,
   releatedSearch?:string,
   fieldsQuery?:string,
-  qdotparser?: string
+  qdotparser?: string,
+  rating?:string,
+  price?:string
 }

@@ -25,7 +25,7 @@ export class HomeCardComponent implements OnInit {
   cardClick(searchedText) {
     let qObject = Common.searchProducts(searchedText)
     if(qObject){
-      this.router.navigate(['/products'], { queryParams: { search: JSON.stringify(qObject) } })
+      this.router.navigate(['/products'], { queryParams: qObject })
     }
   }
 }
