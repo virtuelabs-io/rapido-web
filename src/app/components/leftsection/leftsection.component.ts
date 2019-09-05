@@ -4,6 +4,7 @@ import { ProductsHierarchyService } from '../../services/products/products-hiera
 import { ProductsService } from '../../services/products/products.service';
 import { Router } from '@angular/router';
 import { Query } from 'src/app/services/products/query.interface'
+import { Common } from 'src/app/utils/common'
 
  @Component({
   selector: 'app-leftsection',
@@ -209,7 +210,8 @@ import { Query } from 'src/app/services/products/query.interface'
     if (this.searchedText) {
       queryObj.fieldsQuery = this.fieldsQuery
       let qObject = {...this.prevQuery, ...queryObj}
-      this.router.navigate(['/products'], { queryParams: qObject })
+      let urlParams = Common.setUrlParams(qObject)
+      this.router.navigate(['/products'], { queryParams: urlParams })
       if (this.closeDialog) {
         localStorage.setItem('fieldsQuery', JSON.stringify(this.fieldsQuery));
          localStorage.setItem('searchedText', this.searchedText);

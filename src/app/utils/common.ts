@@ -60,7 +60,7 @@ export class Common {
     
     let defaultQuery = {
       q: '',
-      searchedText: '',
+      searchedText: _query.searchedText || _query.q,
       releatedSearch: '',
       size: 15,
       cursor: null,
@@ -74,4 +74,12 @@ export class Common {
     return {...defaultQuery, ..._query}
   }
 
+  public static setUrlParams = (_query: Query) => {
+    Object.keys(_query).forEach((key) => {
+      if((_query[key] == null) || key == 'parser' || key == 'size' || key == 'fieldsQuery'){
+        delete _query[key]
+      }});
+    return _query
+  }
+  
 }
