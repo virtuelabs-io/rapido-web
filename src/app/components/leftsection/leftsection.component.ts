@@ -209,7 +209,7 @@ import { Query } from 'src/app/services/products/query.interface'
     if (this.searchedText) {
       queryObj.fieldsQuery = this.fieldsQuery
       let qObject = {...this.prevQuery, ...queryObj}
-      this.router.navigate(['/products'], { queryParams: { search: JSON.stringify(qObject) } })
+      this.router.navigate(['/products'], { queryParams: qObject })
       if (this.closeDialog) {
         localStorage.setItem('fieldsQuery', JSON.stringify(this.fieldsQuery));
          localStorage.setItem('searchedText', this.searchedText);

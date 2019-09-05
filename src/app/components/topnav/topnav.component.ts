@@ -73,35 +73,9 @@ export class TopnavComponent implements OnInit {
   }
 
   onSearch(event){
-    /* if(this.searchedText){
-      let fieldsQuery = {
-        price: {
-          q: null,
-          text: null
-        },
-        rating: {
-          q: null,
-          text: null
-        }
-      }
-      let qObject = {
-        q: this.searchedText,
-        searchedText: this.searchedText,
-        releatedSearch: null,
-        fieldsQuery: JSON.stringify(fieldsQuery),
-        size: 15,
-        cursor: null,
-        return: null,
-        start: 0,
-        sort: null,
-        parser:'structured',
-        qdotparser:null
-      }
-      this.router.navigate(['/products'], { queryParams: { search: JSON.stringify(qObject) } })
-    } */
     let qObject = Common.searchProducts(this.searchedText)
     if(qObject){
-      this.router.navigate(['/products'], { queryParams: { search: JSON.stringify(qObject) } })
+      this.router.navigate(['/products'], { queryParams: qObject })
     }
     event.target.blur();
   }

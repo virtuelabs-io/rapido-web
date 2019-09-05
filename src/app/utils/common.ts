@@ -1,4 +1,10 @@
+import { Injectable } from '@angular/core';
 import { Constants } from './constants';
+import { Query } from './../../../src/app/services/products/query.interface';
+
+@Injectable({
+  providedIn: 'root'
+})
 
 export class Common {
 
@@ -30,35 +36,42 @@ export class Common {
   
   public static searchProducts = (searchText: any) => {
     if(searchText){
-      let fieldsQuery = {
-        price: {
-          q: null,
-          text: null
-        },
-        rating: {
-          q: null,
-          text: null
-        }
-      }
       let qObject = {
-        q: searchText,
-        searchedText: searchText,
-        releatedSearch: null,
-        fieldsQuery: JSON.stringify(fieldsQuery),
-        size: 15,
-        cursor: null,
-        return: null,
-        start: 0,
-        sort: null,
-        parser:'structured',
-        qdotparser:null
+        q: searchText
       }
       return qObject;
     } else {
       console.log('Search text is empty')
       return null;
     }
+  }
 
+  public static decodeUrlParams = (_query: Query) => {
+    let fieldsQuery = {
+      price: {
+        q: null,
+        text: null
+      },
+      rating: {
+        q: null,
+        text: null
+      }
+    }
+    
+    let defaultQuery = {
+      q: '',
+      searchedText: '',
+      releatedSearch: '',
+      size: 15,
+      cursor: null,
+      return: null,
+      start: null,
+      sort: null,
+      parser:'structured',
+      fieldsQuery: JSON.stringify(fieldsQuery),
+    }
+    
+    return {...defaultQuery, ..._query}
   }
 
 }

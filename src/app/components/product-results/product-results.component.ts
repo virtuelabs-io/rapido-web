@@ -6,6 +6,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { PageEvent, MatPaginator } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Query } from '../../services/products/query.interface';
+import { Common } from '../../utils/common';
 
 @Component({
   selector: 'app-productresults',
@@ -25,7 +26,6 @@ export class ProductResultsComponent implements OnInit, OnDestroy {
 
   private _productsService: ProductsService
   searchedText: string = ""
-  searchUrlParam: string = ""
   responseData: Object
   noResultsFound: boolean = false
   public productList: Array<{id: number, fields: Object}>
@@ -47,9 +47,8 @@ export class ProductResultsComponent implements OnInit, OnDestroy {
     this.route.queryParams
       .subscribe(params => {
         this.loginStateService.loaderEnable()
-        if(params && params.search){
-        this.searchUrlParam = params.search
-        let qObject = JSON.parse(params.search)
+        if(params && params.q){
+        let qObject = Common.decodeUrlParams(params)
         if(history.state && history.state.navigationId==1){
           qObject.start = 0 // resetting results to page 1
         }
