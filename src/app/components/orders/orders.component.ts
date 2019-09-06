@@ -23,6 +23,8 @@ export class OrdersComponent implements OnInit {
   fetchOrdersRes: any
   cancelOrderRes: any
   cancelledStatus = Constants.ORDER_STATUS[4]
+  incomplete = Constants.ORDER_STATUS[1]
+  paid = Constants.ORDER_STATUS[2]
 
   constructor(
     orderService: OrdersService,

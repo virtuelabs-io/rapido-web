@@ -7,11 +7,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { Router, Routes } from '@angular/router';
 import { LogInComponent } from '../log-in/log-in.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { StripeService, Elements, Element as StripeElement, ElementsOptions } from "ngx-stripe";
-import { NgxStripeModule } from 'ngx-stripe';
-import { Charge } from '../../services/payment/charge';
-import { ChargeService } from '../../services/payment/charge.service';
-import { InjectionToken } from "@angular/core";
+import { StripeService, Element as StripeElement } from "ngx-stripe";
 
 describe('CheckoutComponent', () => {
   let component: CheckoutComponent;

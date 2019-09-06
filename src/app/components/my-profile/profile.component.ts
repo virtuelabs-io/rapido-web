@@ -16,35 +16,41 @@ export class ProfileComponent implements OnInit {
       icon: "#shopping-bag",
       title: "My Orders",
       description: "Track, return or buy things again",
-      route: "/orders"
+      route: "/orders",
+      id: '1'
     },
     {
       icon: "#company-details", 
       title: "Company Details",
       description: "Add your company details",
-      route: "/profile/companyDetails"
+      route: "/profile/companyDetails",
+      id: '2'
     },
     {
       icon: "#black-and-white-credit-cards",
       title: "To Be Added",
-      description: "To Be Added"
+      description: "To Be Added",
+      id: '3'
     },
     {
       icon: "#delivery-truck",
       title: "My Addresses",
       description: "Track, return or buy things again",
-      route: "/profile/address"
+      route: "/profile/address",
+      id: '4'
     },
     {
       icon: "#settings-work-tool",
       title: "Account Settings",
       description: "Set up your account",
-      route: "/profile/account"
+      route: "/profile/account",
+      id: '5'
     },
     {
       icon: "#log-in",
       title: "To Be Added",
-      description: "To Be Added"
+      description: "To Be Added",
+      id: '6'
     }
     
   ]
