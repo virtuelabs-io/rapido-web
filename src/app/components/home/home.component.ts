@@ -59,13 +59,13 @@ export class HomeComponent implements OnInit {
         "desc": "Best of furnitures in store"
       },
       {
-        "title": "Fashion",
-        "image": '/assets/images/fashion.jpg',
+        "title": "Paint",
+        "image": '/assets/images/86-Asian-Paint-full.jpeg',
         "desc": "Find the best deals here"
       },
       {
-        "title": "Laptops",
-        "image": '/assets/images/laptops.jpeg',
+        "title": "Bricks",
+        "image": '/assets/images/bricks.jpeg',
         "desc": "Deals you might be interested in"
       } 
     ]
