@@ -22,6 +22,7 @@ export class LogInComponent implements OnInit {
   countryCode: string = Constants.DEFAULT_PHONE_CODE; //Constants.DEFAULT_PHONE_CODE;
   mobileNumber: string;
   password: string;
+  isLoggedIn: Boolean
   progressSpinner: Boolean = false
   _profileService: ProfileService;
 
@@ -43,7 +44,31 @@ export class LogInComponent implements OnInit {
 
   ngOnInit() {
     this._previousRoute = this.RouteService.getRoute()
-   this.loginStateService.changeState(false);
+    this.userLogInCheck()
+  }
+
+  async userLogInCheck() {
+    await this.loginSessinExists().
+		then( _ => this.moveToPreviousRoute()).
+		catch(err => this.handleError(err))
+  }
+
+  async loginSessinExists() {
+    await (this.loginStateService.isLoggedInState.subscribe(state => this.isLoggedIn = state))
+  }
+
+  async handleError(err) {
+    this.RouteService.changeRoute('cart')
+    this.router.navigateByUrl('/login')
+  }
+
+  async moveToPreviousRoute() {
+    if(this.isLoggedIn) {
+      this.router.navigateByUrl('')
+    }  
+    else {
+      this.loginStateService.changeState(false)
+    }
   }
 
   closeAlert() {

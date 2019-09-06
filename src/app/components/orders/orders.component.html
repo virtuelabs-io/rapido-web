@@ -1,5 +1,8 @@
 <div class="main-div">
   <div class="title-div">
+    <svg>
+      <use xlink:href="#diagram" />
+    </svg>    
     <h4>Your Orders</h4>
   </div>
   <div class="order-card" *ngFor="let order of currentOrders">
@@ -42,7 +45,7 @@
       </div>
       <div class="item-action">
           <button mat-button (click)="orderDetails(order)" class="action-but">Order Details</button>
-          <button mat-button *ngIf="orders[order].category != cancelledStatus" (click)="cancelOrder(order)" class="action-but">Cancel Order</button>
+          <button mat-button *ngIf="(orders[order].category == paid || orders[order].category == incomplete)" (click)="cancelOrder(order)" class="action-but">Cancel Order</button>
       </div>
     </div>
   </div>

@@ -6,6 +6,9 @@
       <form class="form-container">
         <div class="address-div">
           <div class="title-div">
+            <svg>
+              <use xlink:href="#delivery-address" />
+            </svg>
             <h4>
               My Addresses
             </h4>
@@ -51,13 +54,16 @@
           <div class="order-address-div"  *ngFor="let order of orderItems">
             <div class="order-div">
               <div class="title-div">
+                <svg>
+                  <use xlink:href="#box" />
+                </svg>
                 <h4>
                     Order Items
                 </h4>
               </div>
               <div class="cart-columns">
                 <div class="cart-col-price">
-                  <span>Price(£)</span>
+                  <span>Price({{ currency }})</span>
                 </div>
                 <div class="cart-col-quan">
                   <span>Quantity</span>
@@ -84,7 +90,7 @@
                     </div>
               </div>
               <div class="order-total">
-                <p>Order Total: {{ orders[order].currency }}<span> {{ amount }}</span></p>
+                <p>Order Total: {{ currency }}<span> {{ amount }}</span></p>
               </div>
             </div>
             
@@ -104,14 +110,19 @@
           </div>
 
           <div class="pay-div">
-            <h4>Payment</h4>
+            <div class="icon-title">
+                <svg>
+                    <use xlink:href="#give-money"/>
+                  </svg>
+                  <h4>Payment</h4>
+            </div>
             <div class="payment-det">
               <mat-form-field class="">
                 <input matInput [(ngModel)]="registeredEmail" name="email" placeholder="Invoice sent to">
               </mat-form-field>
               <div id="card-element" class="field"></div><br>
                 <div class="buy-cart-button">
-                  <button class="btn btn-primary buy-button" (click)="buy()">Pay £{{ amount }}</button>
+                  <button class="btn btn-primary buy-button" (click)="buy()">Pay {{ currency }}{{ amount }}</button>
                 <button class="btn btn-primary buy-button" routerLink="/cart">Edit Order</button>
                 </div>
               </div>

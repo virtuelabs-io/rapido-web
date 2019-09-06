@@ -33,6 +33,7 @@ export class CheckoutComponent implements OnInit {
   registeredEmail: string = ""
   _logInName: string
   amount: any
+  currency: string 
   orderItems = []
   orders = {}
   products = []
@@ -176,6 +177,7 @@ export class CheckoutComponent implements OnInit {
             this.orders[order]['address'].postcode = data['orderItemsObject'][order][product].postcode
             this.orders[order]['address'].country = data['orderItemsObject'][order][product].country
             this.amount = data['orderItemsObject'][order][product].order_price.toFixed(2)
+            this.currency = data['products'][product].currency
           }
         }
         this.orderItems = Object.keys(this.orders)

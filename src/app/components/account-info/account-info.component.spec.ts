@@ -15,7 +15,7 @@ describe('AccountInfoComponent', () => {
   let fixture: ComponentFixture<AccountInfoComponent>;
   let router: Router;
   const routes: Routes = [
-    { path: 'login', component: LogInComponent}
+    { path: 'login', component: LogInComponent }
   ]
 
   beforeEach(async(() => {
