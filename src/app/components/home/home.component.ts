@@ -89,6 +89,10 @@ export class HomeComponent implements OnInit {
      this.recommendedProductList()
      this.recommendedSet()
      this.browsedHistory()
+     if(document.getElementById("idSearchInput")){
+      let ele  = document.getElementById("idSearchInput")
+      ele['value'] = null
+     }
   }
 
   recommendedProductList() {

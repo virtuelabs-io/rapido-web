@@ -77,7 +77,10 @@ export class TopnavComponent implements OnInit {
     if(qObject){
       this.router.navigate(['/products'], { queryParams: qObject })
     }
-    event.target.blur();
+    if(event.target[0] && event.target[0].value){
+      // event.target[0].value = null  // Don't delete this line
+      event.target[0].blur();
+    }
   }
 
   openSnackBar(message) {
