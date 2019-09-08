@@ -1,4 +1,4 @@
- import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Query } from '../../services/products/query.interface';
 
@@ -11,12 +11,16 @@ export class SearchItemService {
   _query: Query = {
     q: '',
     searchedText: '',
+    releatedSearch: '',
+    fieldsQuery: '',
     size: 15,
     cursor: null,
     return: null,
     start: null,
     sort: null,
-    parser:'structured'
+    parser:'structured',
+    rating:null,
+    price:null
   }
 
   _responseData = {
@@ -47,7 +51,8 @@ export class SearchItemService {
   constructor() {}
 
   changeState(state: any) {
-    this.searchItemText.next({...this.searchItemText.value, ...state})
+    if(JSON.stringify(this.searchItemText.value) !== JSON.stringify(state))
+      this.searchItemText.next({...this.searchItemText.value, ...state})
   }
 
   changeRespProdListState(respData) {

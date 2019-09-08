@@ -89,6 +89,10 @@ export class HomeComponent implements OnInit {
      this.recommendedProductList()
      this.recommendedSet()
      this.browsedHistory()
+     if(document.getElementById("idSearchInput")){
+      let ele  = document.getElementById("idSearchInput")
+      ele['value'] = null
+     }
   }
 
   recommendedProductList() {
@@ -115,18 +119,10 @@ export class HomeComponent implements OnInit {
   }
 
   handleSale() {
-    let searchedText = 'sale'
-    if(searchedText) {
-      this.ngZone.run(() =>this.router.navigate(['products'])).then()
-      this._searchItemService.changeState({
-      q: searchedText,
-      searchedText: searchedText,
-      start: 0,
-      sort: null,
-      cursor: null,
-      return: null,
-      qdotparser:null
-      })
+    let searchedText = 'sale' // should be dynamic...
+    let qObject = Common.searchProducts(searchedText)
+    if(qObject){
+      this.router.navigate(['/products'], { queryParams: { search: JSON.stringify(qObject) } })
     }
   }
 

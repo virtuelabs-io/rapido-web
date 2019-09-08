@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { SearchItemService } from '../../../shared-services/search-item/search-item.services';
+import { Common } from '../../../utils/common';
 
 @Component({
   selector: 'app-home-card',
@@ -23,17 +24,9 @@ export class HomeCardComponent implements OnInit {
   }
 
   cardClick(searchedText) {
-    if(searchedText) {
-      this.ngZone.run(() =>this.router.navigate(['products'])).then()
-      this._searchItemService.changeState({
-      q: searchedText,
-      searchedText: searchedText,
-      start: 0,
-      sort: null,
-      cursor: null,
-      return: null,
-      qdotparser:null
-      })
+    let qObject = Common.searchProducts(searchedText)
+    if(qObject){
+      this.router.navigate(['/products'], { queryParams: qObject })
     }
   }
 }

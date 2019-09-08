@@ -9,8 +9,9 @@ import { CartStateService } from '../../shared-services/cart-state/cart-state.se
 import { SearchItemService } from '../../shared-services/search-item/search-item.services';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RouteService } from '../../shared-services/route/route.service';
-import { NavComponent } from '../nav/nav.component';
+import { ProductsService } from '../../services/products/products.service';
 import { v4 as uuid } from 'uuid';
+import { Common } from './../../utils/common'
 
 @NgModule({})
 @Component({
@@ -26,7 +27,7 @@ export class TopnavComponent implements OnInit {
   bannerName: String = Constants.RAPIDO_BUILD
   durationInSeconds = 5
   cartCount:Number = 0
-
+  private _productsService: ProductsService
   constructor(private _sessionService: SessionService,
               private _profileService: ProfileService,
               private _cartService: CartService,
@@ -36,8 +37,10 @@ export class TopnavComponent implements OnInit {
               private _cartStateService: CartStateService,
               private _loginStateService: LoginStateService,
               private RouteService : RouteService,
-              private ngZone: NgZone
-              ) {}
+              productsService: ProductsService,
+              private ngZone: NgZone) {
+                this._productsService = productsService
+              }
 
   ngOnInit() {
     const promise = this._sessionService.retrieveSessionIfExists()
@@ -70,19 +73,14 @@ export class TopnavComponent implements OnInit {
   }
 
   onSearch(event){
-    if(this.searchedText){
-      this.ngZone.run(() =>this.router.navigate(['products'])).then()
-      this._searchItemService.changeState({
-        q: this.searchedText,
-        searchedText: this.searchedText,
-        start: 0,
-        sort: null,
-        cursor: null,
-        return: null,
-        qdotparser:null
-      })
+    let qObject = Common.searchProducts(this.searchedText)
+    if(qObject){
+      this.router.navigate(['/products'], { queryParams: qObject })
     }
-    event.target.blur();
+    if(event.target[0] && event.target[0].value){
+      // event.target[0].value = null  // Don't delete this line
+      event.target[0].blur();
+    }
   }
 
   openSnackBar(message) {
