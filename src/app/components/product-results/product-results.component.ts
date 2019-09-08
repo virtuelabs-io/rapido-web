@@ -49,9 +49,7 @@ export class ProductResultsComponent implements OnInit, OnDestroy {
         this.loginStateService.loaderEnable()
         if(params && params.q){
         let qObject = Common.decodeUrlParams(params)
-        if(history.state && history.state.navigationId==1){
-          qObject.start = 0 // resetting results to page 1
-        }
+        this.paginator.pageIndex = Math.ceil(qObject.start / qObject.size)
         this._searchItemService.changeState(qObject)
         this._productsService.get(qObject).
           subscribe(data => {
@@ -90,7 +88,8 @@ export class ProductResultsComponent implements OnInit, OnDestroy {
     onPageChange(evt){
       let pageNum = evt.pageIndex * evt.pageSize
       let qObject = {...this.prevQuery, ...{ start: pageNum }}
-      this.router.navigate(['/products'], { queryParams: { search: JSON.stringify(qObject) } })
+      let urlParams = Common.setUrlParams(qObject)
+      this.router.navigate(['/products'], { queryParams: urlParams })
     }
 
     setPageSizeOptions(setPageSizeOptionsInput: string) {

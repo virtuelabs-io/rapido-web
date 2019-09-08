@@ -188,7 +188,8 @@ import { Common } from 'src/app/utils/common'
   
   onPressSort(data) {
     this.updateFilterConditions({
-      sort: data
+      sort: data,
+      start:0
     })
   }
   
