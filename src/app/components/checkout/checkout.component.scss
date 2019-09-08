@@ -208,6 +208,9 @@
                 @media screen and (max-width: $mobile-device) {
                     width: 100%;
                 }
+                @media screen and (max-width: $small-device) {
+                    width: 100%;
+                }
             }
             .order-address {
                 display: flex;
