@@ -9,6 +9,7 @@ import { Common } from '../../../../src/app/utils/common';
 export class ImagesComponent implements OnInit {
 
   @Input() imgSrc
+  @Input() imgTitle
   constructor() { }
 
   ngOnInit() {
