@@ -130,22 +130,10 @@
                     .cart-col-price {
                         width: 35%;
                         text-align: right;
-                      //  margin-left: 15%;
-                        @media screen and (max-width: $mobile-device) {
-                        //    margin-left: 8%;
-                         //   margin-right: 2%;
-                        }
                     }
                     .cart-col-quan {
                         width: 75%;
                         text-align: right;
-                      //  margin-left: 55%;
-                        @media screen and (max-width: $mobile-device) {            
-                        //    margin-left: 60%;
-                        }
-                    }
-                    @media screen and (max-width: $mobile-device) {
-                      //  width: 90%;
                     }
                 }
                 .order-items-main {
@@ -154,8 +142,6 @@
                     flex-wrap: nowrap;
                     .order-items {
                         width: 100%;
-                      //  margin-right: 5%;
-                      //  margin-left: 5%;
                         .order-items-list {
                             display: flex;
                             flex-direction: row;
@@ -190,9 +176,6 @@
                                 padding-left: 2%;
                                 padding-right: 2%;
                                 text-align: center;
-                                @media screen and (max-width: $small-device) {
-                                  //  padding-left: 10%;
-                                }
                             }
                         }
                     }
@@ -202,7 +185,6 @@
                 }
                 .order-charges {
                     width: 100%;
-                 //   padding-left: 75%;
                     text-align: right;
                     span {
                         span {
@@ -210,13 +192,9 @@
                             font-weight: 800;
                         }
                     }
-                    @media screen and (max-width: $mobile-device) {
-                       // padding-left: 55%;
-                    }
                 }
                 .order-total {
                     width: 100%;
-                  //  padding-left: 75%;
                     margin-top: 2%;
                     border-top: 1px solid #e1e4e8;
                     text-align: right;
@@ -225,9 +203,6 @@
                             color: red;
                             font-weight: 800;
                         }
-                    }
-                    @media screen and (max-width: $mobile-device) {
-                       // padding-left: 55%;
                     }
                 }
                 @media screen and (max-width: $mobile-device) {
