@@ -266,8 +266,9 @@ import { Common } from 'src/app/utils/common'
   }
   
   removeReleatedSearch() {
-    this.onPressItem(this.searchedText + ' ' + this.releatedSearch, null)
     this.releatedSearch = null
+    this.onPressItem(this.searchedText, null)
+    // this.onPressItem(this.searchedText + ' ' + this.releatedSearch, null)
   }
 
   ngOnDestroy() {

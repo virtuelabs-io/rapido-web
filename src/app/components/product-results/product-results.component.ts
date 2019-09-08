@@ -56,7 +56,7 @@ export class ProductResultsComponent implements OnInit, OnDestroy {
         this._productsService.get(qObject).
           subscribe(data => {
             if(data){
-              if(data.error || data.hits.found === 0){
+              if(data.error || data.hits.found === 0 || (!(data && data.hits && data.hits.hit))){
                 this.noResultsFound = true
                 this.loginStateService.loaderDisable()
                 return;
@@ -64,9 +64,8 @@ export class ProductResultsComponent implements OnInit, OnDestroy {
               this.noResultsFound = false
               this.responseData = data
               this._searchItemService.changeRespProdListState(data)
-              if(data && data.hits && data.hits.hit)
               this.productList = data.hits.hit
-              this.length = data.hits && data.hits.found
+              this.length = data.hits && data.hits.found // for pagination
               this.productListBind =this.productList
               // this.paginator.pageIndex = 0;
               this.loginStateService.loaderDisable()
