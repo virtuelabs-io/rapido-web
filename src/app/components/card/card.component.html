@@ -1,5 +1,5 @@
 <div class="card p-2 main-div" [routerLink]="['/products/details', itemList.id]">
-  <app-images [imgSrc]=itemDetails.images></app-images>
+  <app-images [imgSrc]=itemDetails.images [imgTitle]=itemDetails.name></app-images>
   <div class="card-body">
      <h6>
         <a>

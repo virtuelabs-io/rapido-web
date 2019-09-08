@@ -3,6 +3,7 @@ import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ProductResultsComponent } from './product-results.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import {  HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ProductResultsComponent', () => {
   let component: ProductResultsComponent;
@@ -12,7 +13,7 @@ describe('ProductResultsComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ ProductResultsComponent ],
       schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
-      imports:[MatDialogModule, HttpClientTestingModule]
+      imports:[MatDialogModule, HttpClientTestingModule, RouterTestingModule]
     })
     .compileComponents();
   }));

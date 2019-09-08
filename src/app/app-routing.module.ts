@@ -46,6 +46,7 @@ export const routes: Routes = [
   { path: '', component: HomeComponent },
  { path: 'authmock', component: AuthmockComponent},
   { path: 'products', component: ProductResultsComponent },
+  { path: 'products/:search', component: ProductResultsComponent },
   { path: 'products/details/:id', component: ProductDetailsComponent},
   { path: 'careers', component: CareerPageComponent},
   { path: 'credits', component: CreditsComponent},
