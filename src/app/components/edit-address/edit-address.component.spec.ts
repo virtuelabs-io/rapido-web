@@ -47,7 +47,9 @@ describe('EditAddressComponent', () => {
   beforeEach(() => {
     router = TestBed.get(Router)
     fixture = TestBed.createComponent(EditAddressComponent);
-    router.initialNavigation();
+    fixture.ngZone.run(() => {
+      router.initialNavigation();
+    });
     component = fixture.componentInstance;
     component._addressDetailsService = addressDetailsMockService
     fixture.detectChanges();
@@ -77,7 +79,6 @@ describe('EditAddressComponent', () => {
   }));
 
   it('Save Address sucessfully', async(() => {
-    console.log()
     component.id = 1
     expect(component.saveAddress()).toBeUndefined()
   }));

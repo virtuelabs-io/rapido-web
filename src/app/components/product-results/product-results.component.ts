@@ -104,7 +104,6 @@ export class ProductResultsComponent implements OnInit, OnDestroy {
       });
   
       // dialogRef.afterClosed().subscribe(result => {
-      //   console.log('The dialog was closed');
       // });
     }
   }

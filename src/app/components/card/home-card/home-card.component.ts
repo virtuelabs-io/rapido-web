@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { SearchItemService } from '../../../shared-services/search-item/search-item.services';
 import { Common } from '../../../utils/common';
@@ -16,7 +16,8 @@ export class HomeCardComponent implements OnInit {
   }
   constructor(
     private router: Router,
-    private _searchItemService: SearchItemService
+    private _searchItemService: SearchItemService,
+    private ngZone: NgZone
   ) { }
 
   ngOnInit() {

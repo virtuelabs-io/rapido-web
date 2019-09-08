@@ -25,11 +25,13 @@ export class OrderDetailsComponent implements OnInit {
   orderId: string
   id: number
   isLoggedIn: Boolean
+  fetchOrderRes: any
   imageUrl: string = Constants.environment.staticAssets
   companyDetails: {}
-  showCompanyDetails: boolean = true
+  showCompanyDetails: boolean = false
+  cancelledStatus = Constants.ORDER_STATUS[4]
   order: Order = new Order()
-  private _orderService: OrdersService
+  public _orderService: OrdersService
   private _companyDetailsService: CompanyDetailsService
 
   constructor(
@@ -79,6 +81,7 @@ export class OrderDetailsComponent implements OnInit {
       this._cartStateService.fetchAndUpdateCartCount()
       await this._orderService.getOrder(this.order.order_id)
     .then((data: any) => {
+      this.fetchOrderRes = data
       if(data['orderItemsObject']) {
         for(let order in data['orderItemsObject']) {
           if(data['products']) {
@@ -130,6 +133,7 @@ export class OrderDetailsComponent implements OnInit {
             country: data.country,
             county: data.county
           }
+          this.showCompanyDetails = true
         }
         else {
           this.showCompanyDetails = false

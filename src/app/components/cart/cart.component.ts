@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { CartService } from '../../services/cart/cart.service';
 import { Constants } from '../../utils/constants';
 import { Common } from '../../utils/common';
@@ -38,7 +38,8 @@ export class CartComponent implements OnInit {
     private _cartStateService: CartStateService,
     private _sessionService: SessionService,
     private RouteService : RouteService,
-    private _loginStateService: LoginStateService
+    private _loginStateService: LoginStateService,
+    private ngZone: NgZone
   ) { 
     this._cartService = cartService
   }
@@ -164,7 +165,7 @@ export class CartComponent implements OnInit {
       .subscribe( data => {
         this.postCartItemsRes = data
         this._loginStateService.loaderDisable()
-        this.router.navigate(['cart/checkout']);
+        this.ngZone.run(() =>this.router.navigate(['cart/checkout'])).then()
       })
   }
 

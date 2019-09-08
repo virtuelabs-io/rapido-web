@@ -8,7 +8,7 @@
     </h2>
   </div>
   <div class="rapido-profile">
-    <div class="rapido-profile-item" *ngFor="let item of profileItems" [routerLink]="[ item.route ]" >
+    <div id= "{{'id' + item.id}}" class="rapido-profile-item" *ngFor="let item of profileItems" [routerLink]="[ item.route ]" >
       <div class="icon-div">
         <a class="rapido-icon">
           <svg aria-hidden="true" aria-haspopup="menu">
@@ -27,12 +27,12 @@
 </div>
 <div *ngIf="showQuestionnaire" class="questionnaire">
   <div class="title-div">
+    <svg>
+      <use xlink:href="#questionnaire" />
+    </svg>
     <h2>
       Questionnaire
     </h2>
-    <svg>
-      <use xlink:href="#questionnaire" />
-     </svg>
   </div>
   <div class="questions">
     <mat-accordion>

@@ -38,24 +38,28 @@ describe('AddressComponent', () => {
     router = TestBed.get(Router);
     location = TestBed.get(Location);
     fixture = TestBed.createComponent(AddressComponent);
-    router.initialNavigation();
+    fixture.ngZone.run(() => {
+      router.initialNavigation();
+    });
     component = fixture.componentInstance;
     component._addressDetailsService = addressDetailsMockService
     fixture.detectChanges();
   });
 
   it('should create', () => {
+    component.isLoggedIn = true
     expect(component).toBeTruthy();
   });
 
   it('should fetch address/s if present',  () => {
     component.isLoggedIn = true
-     component.getAddressList();
+    component.getAddressList();
     expect(component.address).toEqual(AddressDetailsMockData.addressList)
   });
 
   it('delete functionality',  () => {
-     component.addressDelete(1);
+    component.isLoggedIn = true
+    component.addressDelete(1);
     expect(component.delRes).toEqual(AddressDetailsMockData.deleteAddress)
   });
 
@@ -64,4 +68,16 @@ describe('AddressComponent', () => {
     tick();
     expect(location.path()).toEqual('/profile/address/editAddress/1')
   }));
+
+  it('should map the fetched data to the UI control',  () => {
+    component.isLoggedIn = true
+    component.getAddressList();
+    expect(component.address[0].full_name).toEqual(AddressDetailsMockData.addressList[0].full_name)
+    expect(component.address[0].addr_1).toEqual(AddressDetailsMockData.addressList[0].addr_1)
+    expect(component.address[0].addr_2).toEqual(AddressDetailsMockData.addressList[0].addr_2)
+    expect(component.address[0].city).toEqual(AddressDetailsMockData.addressList[0].city)
+    expect(component.address[0].county).toEqual(AddressDetailsMockData.addressList[0].county)
+    expect(component.address[0].postcode).toEqual(AddressDetailsMockData.addressList[0].postcode)
+    expect(component.address[0].country).toEqual(AddressDetailsMockData.addressList[0].country)
+  });
 });

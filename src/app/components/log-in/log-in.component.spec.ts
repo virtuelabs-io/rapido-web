@@ -1,30 +1,45 @@
 import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
 import { LogInComponent } from './log-in.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Router } from '@angular/router';
+import { Router , Routes} from '@angular/router';
 import {  HttpClientTestingModule } from '@angular/common/http/testing';
-//import { Location } from "@angular/common";
+import { Location } from "@angular/common";
+import { RegisterComponent } from '../register/register.component';
+import { MatToolbarModule, MatStepperModule, MatFormFieldModule, MatIconModule, MatCheckboxModule, MatCardModule, MatInputModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TermsConditionsComponent } from '../terms-conditions/terms-conditions.component';
+import { PrivacyPolicyComponent } from '../privacy-policy/privacy-policy.component';
+import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
 
 describe('LogInComponent', () => {
   let component: LogInComponent;
   let fixture: ComponentFixture<LogInComponent>;
   let router: Router;
- // let location: Location;
+  let location: Location;
+
+  const routes: Routes = [
+    { path: 'register', component: RegisterComponent},
+    { path: 'terms', component: TermsConditionsComponent},
+    { path: 'privacy-policy', component: PrivacyPolicyComponent},
+    { path: 'forgotpassword', component: ForgotPasswordComponent}
+
+  ]
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule, RouterTestingModule,HttpClientTestingModule ],
-      declarations: [ LogInComponent ]
+      imports: [ ReactiveFormsModule, MatToolbarModule, MatStepperModule, MatFormFieldModule, MatIconModule, MatCheckboxModule, MatCardModule, MatInputModule, FormsModule, RouterTestingModule.withRoutes(routes),HttpClientTestingModule ],
+      declarations: [ LogInComponent, RegisterComponent, TermsConditionsComponent, PrivacyPolicyComponent, ForgotPasswordComponent ]
     })
     .compileComponents();
-    router = TestBed.get(Router);
- //   location = TestBed.get(Location);
-    router.initialNavigation();
   }));
 
   beforeEach(() => {
+    router = TestBed.get(Router)
+    location = TestBed.get(Location)
     fixture = TestBed.createComponent(LogInComponent);
+    fixture.ngZone.run(() => {
+      router.initialNavigation();
+    });
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -62,7 +77,34 @@ describe('LogInComponent', () => {
 
   it('should contain 10 digits for mobile number', async(() => {
     component.mobileNumber = "1234567890";
-    //component.login();
     expect(component.mobileNumber.length).toEqual(10);
   }));
+
+  it('should navigate to Register component', () => {
+    document.getElementById('LogInComponent-register').click();
+    fixture.whenStable().then(() => {
+      expect(location.path()).toEqual('/register')
+    });
+  });
+
+  it('should navigate to Terms of service component', () => {
+    document.getElementById('LogInComponent-terms').click();
+    fixture.whenStable().then(() => {
+      expect(location.path()).toEqual('/terms')
+    });
+  });
+
+  it('should navigate to Privacy policy component', () => {
+    document.getElementById('LogInComponent-privacy').click();
+    fixture.whenStable().then(() => {
+      expect(location.path()).toEqual('/privacy-policy')
+    });
+  });
+
+  it('should navigate to Register component', () => {
+    document.getElementById('idForgotPassord').click();
+    fixture.whenStable().then(() => {
+      expect(location.path()).toEqual('/forgotpassword')
+    });
+  });
 });

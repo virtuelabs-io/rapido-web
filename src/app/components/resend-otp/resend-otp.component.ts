@@ -45,7 +45,6 @@ export class ResendOtpComponent implements OnInit {
   ngOnInit() {
     this._resendOtpService.currentNumber.subscribe(state => {
       this.mobileNumber = state
-      console.log(this.mobileNumber)
     })
     // Instantiating form group and setting default values for reg form
 		this.otpReqFormGroup = new FormGroup({

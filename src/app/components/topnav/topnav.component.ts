@@ -1,4 +1,4 @@
-import { Component, OnInit, NgModule, EventEmitter, Output  } from '@angular/core';
+import { Component, OnInit, NgModule, EventEmitter, Output, NgZone  } from '@angular/core';
 import { SessionService } from '../../services/authentication/session/session.service';
 import { ProfileService } from '../../services/authentication/profile/profile.service';
 import { CartService } from '../../services/cart/cart.service';
@@ -37,14 +37,14 @@ export class TopnavComponent implements OnInit {
               private _cartStateService: CartStateService,
               private _loginStateService: LoginStateService,
               private RouteService : RouteService,
-              productsService: ProductsService) {
+              productsService: ProductsService,
+              private ngZone: NgZone) {
                 this._productsService = productsService
               }
 
   ngOnInit() {
     const promise = this._sessionService.retrieveSessionIfExists()
     if (!localStorage.getItem(Constants.RAPIDO_SESSION_ID)){
-      console.log("New session created!")
       localStorage.setItem(Constants.RAPIDO_SESSION_ID, uuid())
     }
     promise.then( _ => {
@@ -69,7 +69,7 @@ export class TopnavComponent implements OnInit {
     this._profileService.cognitoUser.signOut()
     this._loginStateService.changeState(false)
     this._cartStateService.updateCartCount(0)
-    this.router.navigateByUrl('')
+    this.ngZone.run(() =>this.router.navigate([''])).then()
   }
 
   onSearch(event){
@@ -95,6 +95,6 @@ export class TopnavComponent implements OnInit {
 
   handleProfileNavigation() {
     this.RouteService.changeRoute('noQuestionnaire');
-    this.router.navigateByUrl('/profile')
+    this.ngZone.run(() =>this.router.navigate(['profile'])).then()
   }
 }

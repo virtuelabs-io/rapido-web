@@ -16,7 +16,6 @@ export class ProductsHierarchyService {
     return this._http.get<any>(url).pipe(
       retry(Constants.RETRY_TIMES),
       catchError(err => {
-        console.log('Error in processing request...', err);
         return throwError(err);
       })
     );

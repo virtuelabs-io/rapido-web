@@ -42,13 +42,16 @@ describe('CompanyDetailsComponent', () => {
     router = TestBed.get(Router);
     location = TestBed.get(Location);
     fixture = TestBed.createComponent(CompanyDetailsComponent);
-    router.initialNavigation();
+    fixture.ngZone.run(() => {
+      router.initialNavigation();
+    });
     component = fixture.componentInstance;
     component._companyDetailsService = companyDetailsMockService;
     fixture.detectChanges();
   });
 
   it('should create', () => {
+    component.isLoggedIn = true
     expect(component).toBeTruthy();
   });
 
@@ -77,11 +80,13 @@ describe('CompanyDetailsComponent', () => {
   });
 
   it('delete company details', () => {
+    component.isLoggedIn = true
     component.deleteCompanyDetails()
     expect(component.deleteRes).toBeTruthy(CompanyDetailsMockData.deleteCompany)
   });
 
   it('update company details', () => {
+    component.isLoggedIn = true
     component.addressFormGroup.controls["name"].setValue("XYZ Company Pvt Ltd.")
     component.addressFormGroup.controls["add1"].setValue("add1")
     component.addressFormGroup.controls["add2"].setValue("add2")
@@ -89,7 +94,6 @@ describe('CompanyDetailsComponent', () => {
     component.addressFormGroup.controls["postCode"].setValue("12345")
     component.addressFormGroup.controls["country"].setValue("country")
     component.addressFormGroup.controls["county"].setValue("county") 
-    component.putCompanyDetails()
     component.modalSave()
     expect(component.putRes).toBeTruthy(CompanyDetailsMockData.putComapnyDetails)
   }); 

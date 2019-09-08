@@ -1,4 +1,4 @@
-import { Component, OnInit, NgModule } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { SignInService } from '../../services/authentication/sign-in/sign-in.service';
 import { ProfileService } from '../../services/authentication/profile/profile.service';
 import { Router } from '@angular/router';
@@ -22,6 +22,7 @@ export class LogInComponent implements OnInit {
   countryCode: string = Constants.DEFAULT_PHONE_CODE; //Constants.DEFAULT_PHONE_CODE;
   mobileNumber: string;
   password: string;
+  isLoggedIn: Boolean
   progressSpinner: Boolean = false
   _profileService: ProfileService;
 
@@ -34,7 +35,8 @@ export class LogInComponent implements OnInit {
     private cartStateService: CartStateService,
     private resendOtpService : ResendOtpService,
 		private route: ActivatedRoute,
-    private RouteService : RouteService
+    private RouteService : RouteService,
+    private ngZone: NgZone
     ) {
     this._signInService = signInService
     this._profileService = profileService
@@ -42,7 +44,31 @@ export class LogInComponent implements OnInit {
 
   ngOnInit() {
     this._previousRoute = this.RouteService.getRoute()
-   this.loginStateService.changeState(false);
+    this.userLogInCheck()
+  }
+
+  async userLogInCheck() {
+    await this.loginSessinExists().
+		then( _ => this.moveToPreviousRoute()).
+		catch(err => this.handleError(err))
+  }
+
+  async loginSessinExists() {
+    await (this.loginStateService.isLoggedInState.subscribe(state => this.isLoggedIn = state))
+  }
+
+  async handleError(err) {
+    this.RouteService.changeRoute('cart')
+    this.router.navigateByUrl('/login')
+  }
+
+  async moveToPreviousRoute() {
+    if(this.isLoggedIn) {
+      this.router.navigateByUrl('')
+    }  
+    else {
+      this.loginStateService.changeState(false)
+    }
   }
 
   closeAlert() {
@@ -50,7 +76,7 @@ export class LogInComponent implements OnInit {
   }
 
   navigateToForgotPassword() {
-    this.router.navigateByUrl('/forgotpassword');
+    this.ngZone.run(() =>this.router.navigate(['forgotpassword'])).then()
   }
 
   login() {
@@ -63,13 +89,13 @@ export class LogInComponent implements OnInit {
       this._signInService.login().
       then(value => {
         this.progressSpinner = false
-        console.log(this._profileService.cognitoUser);
         this._signInResponse = true;
         this.loginStateService.changeState(true);
         if(this._previousRoute.value){
-          this.router.navigateByUrl('/'+this._previousRoute.value)
+          this.ngZone.run(() =>this.router.navigate(['/'+this._previousRoute.value])).then()
         }else{
-          this.router.navigateByUrl('/');
+          this.ngZone.run(() =>this.router.navigate([''])).then()
+
         }
         this.cartStateService.fetchAndUpdateCartCount()
         
@@ -80,8 +106,8 @@ export class LogInComponent implements OnInit {
         this.alertMsg = error.data.message
         this.password = ""
         if(error.data.code === "UserNotConfirmedException") {
-          this.resendOtpService.changeNumber(this.mobileNumber);
-          this.router.navigateByUrl('/resendotp');
+          this.resendOtpService.changeNumber(this.mobileNumber)
+          this.ngZone.run(() =>this.router.navigate(['resendotp'])).then()
         }
       })
     }

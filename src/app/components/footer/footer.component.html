@@ -11,22 +11,22 @@
         <h5 class="font-weight-bold mt-3 mb-4">Get to Know Us</h5>
         <ul class="list-unstyled">
           <li>
-            <a [routerLink]="['/aboutus']">About Us</a>
+            <a id="FooterComponent-aboutus" routerLink="/aboutus" class="about-us">About Us</a>
           </li>
           <li>
-            <a [routerLink]="['/careers']">Careers</a>
+            <a id="FooterComponent-careers" routerLink="/careers">Careers</a>
           </li>
           <li>
-            <a [routerLink]="['/press-release']">Press Releases</a>
+            <a id="FooterComponent-press" routerLink="/press-release">Press Releases</a>
           </li>
           <li>
-            <a [routerLink]="['/credits']">Credits</a>
+            <a id="FooterComponent-credits" routerLink="/credits">Credits</a>
           </li>
           <li>
-              <a [routerLink]="['/terms']">Terms of Service</a>
+              <a id="FooterComponent-terms" routerLink="/terms">Terms of Service</a>
             </li>
             <li>
-              <a [routerLink]="['/privacy-policy']">Privacy Policy</a>
+              <a id="FooterComponent-privacy" routerLink="/privacy-policy">Privacy Policy</a>
             </li>
         </ul>
       </div>
@@ -35,16 +35,16 @@
         <h5 class="font-weight-bold mt-3 mb-4">Connect With Us</h5>
         <ul class="list-unstyled">
           <li>
-            <a [routerLink]="">Facebook</a>
+            <a id="FooterComponent-facebook" routerLink="">Facebook</a>
           </li>
           <li>
-            <a [routerLink]="">Twitter</a>
+            <a id="FooterComponent-twitter" routerLink="">Twitter</a>
           </li>
           <li>
-            <a [routerLink]="">Instagram</a>
+            <a id="FooterComponent-instagram" routerLink="">Instagram</a>
           </li>
           <li>
-            <a [routerLink]="">Linked In</a>
+            <a id="FooterComponent-linkedin" routerLink="">Linked In</a>
           </li>
         </ul>
       </div>
@@ -53,10 +53,10 @@
         <h5 class="font-weight-bold mt-3 mb-4">We are there for You</h5>
         <ul class="list-unstyled">
           <li>
-            <a (click)="handleProfileNavigate()">Your Account</a>
+            <a id="FooterComponent-account" (click)="handleProfileNavigate()">Your Account</a>
           </li>
           <li>
-            <a [routerLink]="">Returns Center</a>
+            <a id="FooterComponent-return" routerLink="">Returns Center</a>
           </li>
           <li>
             <a (click)="handleHelpNaviagte()">Help</a>

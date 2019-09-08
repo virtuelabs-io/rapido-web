@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { OrdersService } from '../../services/orders/orders.service';
 import { Constants } from '../../utils/constants';
 import { Router } from '@angular/router';
 import { RouteService } from '../../shared-services/route/route.service';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
+import { ConfirmationDialogComponent } from '../../components/confirmation-dialog/confirmation-dialog.component';
+import {  MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-orders',
@@ -11,19 +13,26 @@ import { LoginStateService } from '../../shared-services/login-state/login-state
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent implements OnInit {
-  private _orderService: OrdersService
+  public _orderService: OrdersService
   imageUrl: string = Constants.environment.staticAssets
   orders = {}
   products = {}
   currentOrders = []
+  dialogRef: any
   isLoggedIn: Boolean
+  fetchOrdersRes: any
+  cancelOrderRes: any
   cancelledStatus = Constants.ORDER_STATUS[4]
+  incomplete = Constants.ORDER_STATUS[1]
+  paid = Constants.ORDER_STATUS[2]
 
   constructor(
     orderService: OrdersService,
     private router: Router,
     private RouteService : RouteService,
-    private _loginStateService: LoginStateService
+    private _loginStateService: LoginStateService,
+    private ngZone: NgZone,
+    public dialog: MatDialog
   ) {
     this._orderService = orderService
   }
@@ -64,6 +73,7 @@ export class OrdersComponent implements OnInit {
       this._loginStateService.loaderEnable()
       await this._orderService.getOrders()
     .then((data: any) => {
+      this.fetchOrdersRes = data
       if(data['products']) {
         this.products = data['products']
       }
@@ -94,14 +104,28 @@ export class OrdersComponent implements OnInit {
   }
 
   cancelOrder(id) {
+    this.dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '350px',
+      data: "Are you sure you want to cancel this order"
+    });
+    this.dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        this.yesModalAction(id)
+      }
+    });
+  }
+
+  yesModalAction(id) {
     this._loginStateService.loaderEnable()
     this._orderService.cancelOrder(id)
     .subscribe(data => {
+      this.cancelOrderRes = data
       this.getOrders()
     })
   }
 
   orderDetails(id) {
-    this.router.navigate(['orders', id, 'details'])
+   this.ngZone.run(() =>this.router.navigate(['orders', id, 'details'])).then()
+
   }
 }

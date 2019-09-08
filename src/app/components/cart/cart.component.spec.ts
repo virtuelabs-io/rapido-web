@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import {  MatSnackBarModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import {  MatStepperModule, MatSnackBarModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import { CartComponent } from './cart.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,14 +19,14 @@ describe('CartComponent', () => {
   let router: Router;
 
   const routes: Routes = [
-    { path: 'login', component: LogInComponent}
-   // { path: 'cart/checkout', component: CheckoutComponent}
+    { path: 'login', component: LogInComponent},
+    { path: 'cart/checkout', component: CheckoutComponent}
   ]
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [  BrowserAnimationsModule, RouterTestingModule, RouterTestingModule.withRoutes(routes), MatSnackBarModule, HttpClientModule,MatInputModule, MatFormFieldModule, FormsModule, ReactiveFormsModule ],
-      declarations: [ CartComponent, LogInComponent ]
+      imports: [  MatStepperModule, BrowserAnimationsModule, RouterTestingModule, RouterTestingModule.withRoutes(routes), MatSnackBarModule, HttpClientModule,MatInputModule, MatFormFieldModule, FormsModule, ReactiveFormsModule ],
+      declarations: [ CartComponent, LogInComponent, CheckoutComponent ]
     })
     .compileComponents();
   }));
@@ -34,7 +34,9 @@ describe('CartComponent', () => {
   beforeEach(() => {
     router = TestBed.get(Router);
     fixture = TestBed.createComponent(CartComponent);
-    router.initialNavigation();
+    fixture.ngZone.run(() => {
+      router.initialNavigation();
+    });
     component = fixture.componentInstance;
     component._cartService = cartMockService
     fixture.detectChanges();
@@ -87,5 +89,27 @@ describe('CartComponent', () => {
     ]
     await component.postCartItems()
     expect(component.postCartItemsRes).toEqual(CartMockData.postCartItemList);
+  }));
+
+  it('bind the cart details to the UI controls', (async () => {
+    component.isLoggedIn = true
+    await component.getCartItems()
+    expect(component.fetchRes[0].cartItem.quantity).toEqual(component.cartItems[0].quantity)
+    expect(parseFloat(component.fetchRes[0].itemDetails.price).toFixed(2)).toEqual(component.cartItems[0].amount)
+    expect(component.fetchRes[0].itemDetails.name).toEqual(component.cartItems[0].title)
+  }));
+
+  it('Minimum quantity check in cart', (async () => {
+    component.isLoggedIn = true
+    await component.getCartItems()
+    component.quantityChange(1,0)
+    expect(component.cartItems[0].quantity).toEqual(1)
+  }));
+
+  it('negative quntity check for the cart items', (async () => {
+    component.isLoggedIn = true
+    await component.getCartItems()
+    component.quantityChange(1,2)
+    expect(component.cartAmount).toEqual('32998.00')
   }));
 });
