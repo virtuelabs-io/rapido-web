@@ -64,9 +64,7 @@ export class Common {
       updatedQuery.q = `(and '${updatedQuery.searchedText + (updatedQuery.releatedSearch ? ' ' + updatedQuery.releatedSearch : '')}' (range field=rating [${updatedQuery.rating},${Number(5)}]))`
     }else if(updatedQuery.price){
       updatedQuery.q =  `(and '${updatedQuery.searchedText + (updatedQuery.releatedSearch ? ' '+ updatedQuery.releatedSearch : '')}' (range field=price ${updatedQuery.price}))`
-    }/* else if(!updatedQuery.price && !updatedQuery.rating){
-      updatedQuery.q = `${(updatedQuery.searchedText ? updatedQuery.searchedText : updatedQuery.q) + (updatedQuery.releatedSearch ? ' ' + updatedQuery.releatedSearch : '')}` || updatedQuery.q
-    } */
+    }
 
     let defaultQuery = {
       q: '',
