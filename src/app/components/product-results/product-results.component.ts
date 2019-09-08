@@ -56,7 +56,7 @@ export class ProductResultsComponent implements OnInit, OnDestroy {
         this._productsService.get(qObject).
           subscribe(data => {
             if(data){
-              if(data.error || data.hits.found === 0 || (!(data && data.hits && data.hits.hit))){
+              if(data.error || data.hits.found === 0 || (!(data && data.hits && data.hits.hit.length))){
                 this.noResultsFound = true
                 this.loginStateService.loaderDisable()
                 return;

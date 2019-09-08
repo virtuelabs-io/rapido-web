@@ -73,7 +73,6 @@ export class TopnavComponent implements OnInit {
   }
 
   onSearch(event){
-    debugger
     let qObject = Common.searchProducts(this.searchedText)
     if(qObject){
       this.router.navigate(['/products'], { queryParams: qObject })
