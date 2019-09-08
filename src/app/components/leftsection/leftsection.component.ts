@@ -205,7 +205,7 @@ import { Common } from 'src/app/utils/common'
       sort: null,
       cursor: null,
       return: null,
-      qdotparser: null,
+      qdotparser: (this.fieldsQuery.rating.q || this.fieldsQuery.price.q) ? 'structured' : null,
       releatedSearch: this.releatedSearch,
       rating: this.fieldsQuery.rating.q,
       price: this.fieldsQuery.price.q

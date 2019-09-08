@@ -55,7 +55,7 @@ export class Common {
       },
       rating: {
         q: updatedQuery.rating,
-        text: updatedQuery.rating+'+'
+        text: updatedQuery.rating ? updatedQuery.rating +'+' : updatedQuery.rating
       }
     }
     if(updatedQuery.rating && updatedQuery.price){
