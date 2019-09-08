@@ -18,12 +18,13 @@
           <p>Ordered On: {{ orders[order].date }}  <span> |  Order#: {{ order }}</span></p>
       </div>
       <div class="cart-columns">
+          <div class="cart-col-quan">
+              <span>Quantity</span>
+            </div>
         <div class="cart-col-price">
           <span>Price(£)</span>
         </div>
-        <div class="cart-col-quan">
-          <span>Quantity</span>
-        </div>
+        
       </div>
       <div class="order-items-main">
           <div class="order-items">
@@ -39,18 +40,28 @@
                       <div class="item-desc">
                         <p><strong>{{ products[item.product_id].name }}</strong></p>
                       </div>
+                      <div class="item-quantity">
+                          <span>{{ item.quantity }}</span>
+                        </div>
                       <div class="item-price">
                         <p>
                           <strong>{{ item.unit_price }}</strong>
                         </p>
                       </div>
-                      <div class="item-quantity">
-                        <span>{{ item.quantity }}</span>
-                      </div>
+                      
                 </div>
               </div>
+              <div class="order-charges">
+                  <span> Subtotal : {{ orders[order].currency }}<span> {{ orders[order].order_price }}</span></span>
+                </div>
+                <div class="order-charges">
+                  <span>+ VAT : {{ orders[order].currency }}<span> {{ orders[order].vat  }}</span></span>
+                </div>
+                <div class="order-charges">
+                  <span>+ Delivery Charges : {{ orders[order].currency }}<span> {{ orders[order].delivery_cost  }}</span></span>
+                </div>
                 <div class="order-total">
-                  <p>Order Total: {{ orders[order].currency }}<span> {{ orders[order].order_price }}</span></p>
+                  <p>Order Total : {{ orders[order].currency }}<span> {{ orders[order].order_price_total }}</span></p>
               </div>
             </div>
       </div>

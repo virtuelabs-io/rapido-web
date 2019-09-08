@@ -54,16 +54,20 @@
                 margin-right: 5%;
                 border-bottom: 1px solid #e1e4e8;
                 .cart-col-price {
-                    margin-left: 55%;
+                    width: 35%;
+                        text-align: right;
+                  //  margin-left: 55%;
                     @media screen and (max-width: $mobile-device) {
-                        margin-left: 60%;
+                      //  margin-left: 60%;
                     }
                 }
                 .cart-col-quan {
-                    margin-left: 15%;
+                    width: 75%;
+                        text-align: right;
+                   // margin-left: 15%;
                     @media screen and (max-width: $mobile-device) {
-                        margin-left: 8%;
-                        margin-right: 2%;
+                       // margin-left: 8%;
+                     //   margin-right: 2%;
                     }
                 }
                 @media screen and (max-width: $mobile-device) {
@@ -118,10 +122,11 @@
                                 padding-left: 2%;
                                 width: 25%;
                                 color: #B12704;
+                                text-align: right;
                             }
                             .item-quantity {
                                 width: 20%;
-                                text-align: left;
+                                text-align: center;
                                 padding-left: 2%;
                                 padding-right: 2%;
                                 @media screen and (max-width: $small-device) {
@@ -131,10 +136,23 @@
                         }
                         
                     }
+                    .order-charges {
+                        width: 100%;
+                      //  padding-left: 75%;
+                        text-align: right;
+                        span {
+                            span {
+                                color: red;
+                                font-weight: 800;
+                            }
+                        }
+                    }
                     .order-total {
                         width: 100%;
-                        padding-left: 75%;
+                      //  padding-left: 75%;
                         margin-top: 2%;
+                        text-align: right;
+                        border-top: 1px solid #e1e4e8;
                         p {
                             span {
                                 color: red;
@@ -142,7 +160,7 @@
                             }
                         }
                         @media screen and (max-width: $mobile-device) {
-                            padding-left: 55%;
+                           // padding-left: 55%;
                         }
                     }
                 }
@@ -151,6 +169,10 @@
                 }
             }
             @media screen and (max-width: $mobile-device) {
+                margin-top: 5%;
+                width: 100%;
+            }
+            @media screen and (max-width: $small-device) {
                 margin-top: 5%;
                 width: 100%;
             }
