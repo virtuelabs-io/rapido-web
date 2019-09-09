@@ -160,13 +160,18 @@
 			display: flex;
 			flex-direction: column;
 			flex-wrap: nowrap;
+			margin-bottom: 1%;
+			padding-bottom: 1%;
+			border-bottom: 1px solid #e1e4e8;
 			.icon-name {
-
+				span {
+					color: #767676;
+				}
 			}
 			.customer-rating {
 				display: flex;
-			flex-direction: row;
-			flex-wrap: nowrap;
+				flex-direction: row;
+				flex-wrap: nowrap;
 				padding-left: 2%;
 				.review-title {
 					margin-top: 0.6%;
@@ -176,6 +181,30 @@
 			.review-date {
 				padding-left: 2.6%;
 				font-size: medium;
+			}
+			.verified-purchase {
+				padding-left: 2.6%;
+				span {
+					color: #B12704;
+				}
+			}
+			.review-desc {
+				margin-top: 1%;
+				padding-left: 2.6%;
+			}
+			.helpful-count {
+				margin-top: 2%;
+				padding-left: 2.6%;
+				span {
+					color: #767676;
+				}
+			}
+			.review-feedback {
+				margin-top: 1%;
+				padding-left: 2.6%;
+				a {
+					margin-left: 2%;
+				}
 			}
 		}
 		@media screen and (max-width: $mobile-device) {

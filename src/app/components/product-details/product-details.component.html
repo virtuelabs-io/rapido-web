@@ -205,7 +205,7 @@
     </div>
   </div>
   <div class="right-section">
-    <div class="review-holder">
+    <div class="review-holder" *ngFor="let rate of rate">
       <div class="icon-name">
         <a  class="rapido-icon mat-button rapido-icon-hider">
           <i class="fa fa-user fa-2x pt-1"></i>
@@ -218,6 +218,23 @@
       </div>
       <div class="review-date">
         <span>2 April 2017</span>
+      </div>
+      <div class="verified-purchase">
+        <span>Verified Purchase</span>
+      </div>
+      <div class="review-desc">
+        <span>Overall good watch, but In night or no light condition, this is of no use. Rs 10000 approx doesn't have radium. 
+          The whole thing fell apart there. !!!</span>
+      </div>
+      <div class="helpful-count">
+        <span>16 people found this helpful</span>
+      </div>
+      <div class="review-feedback">
+        <button mat-flat-button color="primary" routerLink="/">
+          <span role="status" aria-hidden="true"></span>
+          Helpful
+        </button>
+        <a href="">Report Abuse</a>
       </div>
     </div>
   </div>
