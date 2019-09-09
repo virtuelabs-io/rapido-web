@@ -120,16 +120,34 @@
 						}
                     }
                     .rate-percentage {
-                        text-align: right;
+                        text-align: center;
                         width: 20%;
                     }
                 }
             }
         }
         .give-rating {
-            height: 200px;
+            height: 150px;
             padding: 1%;
-            border-bottom: 1px solid #e1e4e8;
+			border-bottom: 1px solid #e1e4e8;
+			.title {
+				span {
+					font-size: larger;
+					font-weight: 600;
+				}
+			}
+			.desc {
+				margin-top: 3%;
+				padding-left: 5%;
+				span {
+					font-weight: 300;
+					font-size: medium;
+				}
+			}
+			.action {
+				margin-top: 1%;
+				padding-left: 5%;
+			}
         }
     }
     .right-section {
