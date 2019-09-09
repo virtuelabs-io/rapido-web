@@ -28,6 +28,7 @@ export class ProductDetailsComponent implements OnInit {
 	totalPrice: Number|string
 	Number:Function
 	quantity:number
+	rate: any
 	isLoggedIn:Boolean
 	constructor(productsService: ProductsService,
 		private _searchItemService: SearchItemService,
@@ -43,7 +44,28 @@ export class ProductDetailsComponent implements OnInit {
 	}
 
 	ngOnInit() {
-
+		this.rate = [
+			{
+				'field': '5 star',
+				'rate': 60
+			},
+			{
+				'field': '4 star',
+				'rate': 50
+			},
+			{
+				'field': '3 star',
+				'rate': 30
+			},
+			{
+				'field': '2 star',
+				'rate': 40
+			},
+			{
+				'field': '1 star',
+				'rate': 10
+			}
+		]
 		this.Number = Number
 		// get current product id
 		this.route.params.subscribe(params => {

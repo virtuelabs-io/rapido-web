@@ -10,7 +10,7 @@ import { IconComponent } from './common/icons/icons.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { RoutingComponents } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, 
+import { MatProgressBarModule, MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, 
           MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, 
           MatSnackBarModule, MatExpansionModule, MatSelectModule, MatPaginatorModule, 
           MatProgressSpinnerModule, MatDialogModule, MatCardModule,
@@ -108,6 +108,7 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
     ConfirmationDialogComponent
   ],
   imports: [
+    MatProgressBarModule,
     MatSidenavModule,
     BrowserModule,
     AppRoutingModule,

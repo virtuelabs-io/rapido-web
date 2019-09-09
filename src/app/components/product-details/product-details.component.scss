@@ -77,3 +77,67 @@
 .quantity{
 	height: fit-content;
 }
+
+.product-ratings {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-top: 1px solid #e1e4e8;
+    padding-top: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
+    .left-section {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        width: 30%;
+        .rating-bars {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            height: 200px;
+            padding: 1%;
+            border-bottom: 1px solid #e1e4e8;
+            .title {
+                span {
+                    font-size: larger;
+                    font-weight: 600;
+                }
+            }
+            .rating-bar-indicator {
+                .rating-bar-holder {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    .rate-group {
+						width: 20%;
+						text-align: center;
+                    }
+                    .indicator {
+						width: 60%;
+						.rate-bar {
+							margin-bottom: 2%;
+						}
+                    }
+                    .rate-percentage {
+                        text-align: right;
+                        width: 20%;
+                    }
+                }
+            }
+        }
+        .give-rating {
+            height: 200px;
+            padding: 1%;
+            border-bottom: 1px solid #e1e4e8;
+        }
+    }
+    .right-section {
+        width: 70%;
+        padding: 1%;
+    }
+}
+
+:host ::ng-deep .mat-progress-bar {
+    height: 20px;
+}
