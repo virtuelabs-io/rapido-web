@@ -29,6 +29,7 @@ import { Common } from 'src/app/utils/common'
   _searchItemServicecurrentState: any
   _searchItemServiceResponsePoductListState: any
   releatedSearch : any
+  currency : any
  
   constructor(private _searchItemService: SearchItemService, 
     productsService: ProductsService,
@@ -81,6 +82,7 @@ import { Common } from 'src/app/utils/common'
     if (hits && hits.hit) {
       this.tags = hits.hit[0].fields.tags
       this.category = hits.hit[0].fields.category
+      this.currency = hits.hit[0].fields.currency
         this._productsHierarchyService.get()
         .subscribe(data => {
           this.categories = data
@@ -98,7 +100,7 @@ import { Common } from 'src/app/utils/common'
               'panelData': ["4", "3", "2", "1"]
             },
             {
-              'panelTitle': 'Price',
+              'panelTitle': `Price(${this.currency})`,
               'panelType': 'priceslider',
               'panelData': {
                 'fnPriceFilterHandler': this.fnPriceFilterHandler,
