@@ -136,18 +136,22 @@ export class ProductDetailsComponent implements OnInit {
 	}
 		
 	async postCartItem(){
+		this._loginStateService.loaderEnable()
 		let cartItem: CartItem = new CartItem()
 		cartItem.product_id = parseInt(this.itemId) 
     	cartItem.quantity = this.quantity
 		cartItem.in_cart = true
 		if(this.isLoggedIn){
 			await this._cartService.postCartItem(cartItem).subscribe(data => {
+				this._loginStateService.loaderDisable()
 				this._snackBar.open(Constants.ITEM_MOVED_TO_CART,  undefined , {
 					duration: 4000,
+					horizontalPosition: 'center'
 				 })
 				 this._cartStateService.fetchAndUpdateCartCount()
 			})
 		}else{
+			this._loginStateService.loaderDisable()
 			await Promise.reject("Login Session doesn't exist!")
 		}
 	}
