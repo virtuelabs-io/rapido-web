@@ -20,7 +20,7 @@ export class ProductDetailsComponent implements OnInit {
 
 	private _productsService: ProductsService
 	private _cartService: CartService
-	itemDetails: any
+	itemDetails: any = 1 // initializing value
 	imagePreviewURI: any
 	imageDetails: any
 	itemId: any
@@ -65,11 +65,9 @@ export class ProductDetailsComponent implements OnInit {
 					this._productsService.get(query).
 					subscribe(data => {
 						if (data) {
-							if (data.error) {
+							if (data.error || data.hits.found === 0) {
+								this.itemDetails = null
 								throw Error('error')
-							}
-							if (data.hits.found === 0) {
-								return;
 							}
 							this.updateProductDetails(data.hits)
 						}
