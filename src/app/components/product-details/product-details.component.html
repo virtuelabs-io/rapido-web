@@ -205,7 +205,7 @@
     </div>
   </div>
   <div class="right-section">
-    <div class="review-holder" *ngFor="let rate of rate">
+    <div class="review-holder" *ngFor="let review of filteredReview">
       <div class="icon-name">
         <a  class="rapido-icon mat-button rapido-icon-hider">
           <i class="fa fa-user fa-2x pt-1"></i>
@@ -213,21 +213,20 @@
         <span>Anonymous</span>
       </div>
       <div class="customer-rating">
-        <app-rating styleClass='size-sm' [currentRate]=4.0></app-rating>
-          <span class="review-title">Overall good watch, but In night or no light condition</span>
+        <app-rating styleClass='size-sm' [currentRate]="review.rate"></app-rating>
+          <span class="review-title">{{review.title}}</span>
       </div>
       <div class="review-date">
-        <span>2 April 2017</span>
+        <span>{{review.date}}</span>
       </div>
       <div class="verified-purchase">
         <span>Verified Purchase</span>
       </div>
       <div class="review-desc">
-        <span>Overall good watch, but In night or no light condition, this is of no use. Rs 10000 approx doesn't have radium. 
-          The whole thing fell apart there. !!!</span>
+        <span>{{review.desc}}</span>
       </div>
       <div class="helpful-count">
-        <span>16 people found this helpful</span>
+        <span>{{review.helpfulStat}}</span>
       </div>
       <div class="review-feedback">
         <button mat-flat-button color="primary" routerLink="/">
@@ -236,6 +235,15 @@
         </button>
         <a href="">Report Abuse</a>
       </div>
+      
     </div>
+    <div class='m-auto'>
+        <mat-paginator 
+            [length]="length"
+            [pageSize]="pageSize"
+            [pageSizeOptions]="pageSizeOptions"
+            (page)="pageEvent = $event; onPaginateChange($event)">
+        </mat-paginator>
+      </div>
   </div>
 </div>

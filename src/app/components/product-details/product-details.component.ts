@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SearchItemService } from '../../shared-services/search-item/search-item.services';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
@@ -10,6 +10,7 @@ import { Common } from '../../../../src/app/utils/common';
 import { Constants } from '../../../../src/app/utils/constants';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RouteService } from '../../shared-services/route/route.service';
+import { PageEvent, MatPaginator } from '@angular/material/paginator';
 
 @Component({
 	selector: 'app-product-details',
@@ -18,6 +19,7 @@ import { RouteService } from '../../shared-services/route/route.service';
 })
 export class ProductDetailsComponent implements OnInit {
 
+	@ViewChild(MatPaginator) paginator: MatPaginator
 	private _productsService: ProductsService
 	private _cartService: CartService
 	itemDetails: any
@@ -29,7 +31,12 @@ export class ProductDetailsComponent implements OnInit {
 	Number:Function
 	quantity:number
 	rate: any
+	reviews: any
+	filteredReview: any
 	isLoggedIn:Boolean
+	length = 5
+	pageSize = 3
+  	pageSizeOptions: number[] = [2];
 	constructor(productsService: ProductsService,
 		private _searchItemService: SearchItemService,
 		private _loginStateService: LoginStateService,
@@ -66,6 +73,46 @@ export class ProductDetailsComponent implements OnInit {
 				'rate': 10
 			}
 		]
+		this.reviews = [
+			{
+				'rate': '1.0',
+				'title': 'Overall good watch, but In night or no light condition',
+				'date': '2 April 2017',
+				'desc': 'Overall good watch, but In night or no light condition, this is of no use. Rs 10000 approx doesnt have radium.The whole thing fell apart there. !!!',
+				'helpfulStat': '6 people found this helpful'
+			},
+			{
+				'rate': '2.0',
+				'title': 'Overall good watch, but In night or no light condition',
+				'date': '2 April 2017',
+				'desc': 'Overall good watch, but In night or no light condition, this is of no use. Rs 10000 approx doesnt have radium.The whole thing fell apart there. !!!',
+				'helpfulStat': '6 people found this helpful'
+			},
+			{
+				'rate': '3.0',
+				'title': 'Overall good watch, but In night or no light condition',
+				'date': '2 April 2017',
+				'desc': 'Overall good watch, but In night or no light condition, this is of no use. Rs 10000 approx doesnt have radium.The whole thing fell apart there. !!!',
+				'helpfulStat': '6 people found this helpful'
+			},
+			{
+				'rate': '4.0',
+				'title': 'Overall good watch, but In night or no light condition',
+				'date': '2 April 2017',
+				'desc': 'Overall good watch, but In night or no light condition, this is of no use. Rs 10000 approx doesnt have radium.The whole thing fell apart there. !!!',
+				'helpfulStat': '6 people found this helpful'
+			},
+			{
+				'rate': '5.0',
+				'title': 'Overall good watch, but In night or no light condition',
+				'date': '2 April 2017',
+				'desc': 'Overall good watch, but In night or no light condition, this is of no use. Rs 10000 approx doesnt have radium.The whole thing fell apart there. !!!',
+				'helpfulStat': '6 people found this helpful'
+			}
+		]
+		this.filteredReview = this.reviews.slice(0, this.pageSize)
+	//	this.rate.paginator = this.paginator
+		this.paginator.pageIndex = 0
 		this.Number = Number
 		// get current product id
 		this.route.params.subscribe(params => {
@@ -185,5 +232,14 @@ export class ProductDetailsComponent implements OnInit {
 			 this.router.navigateByUrl('/login')
 		}
    }
+
+   onPaginateChange(data) {
+	if(data.pageIndex == 0) {
+		this.filteredReview = this.reviews.slice(data.pageIndex*data.pageSize, data.pageSize);
+	}
+	else {
+		this.filteredReview = this.reviews.slice(data.pageIndex*data.pageSize, data.pageSize+data.pageIndex*data.pageSize);
+	}
+  }
 
 }
