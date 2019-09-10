@@ -16,7 +16,7 @@
           <app-leftsection></app-leftsection>
       </div>
         <!-- Cards List div starts -->
-        <div class="row itemListCls col-md-9" *ngIf="!noResultsFound">
+        <div class="row itemListCls col-md-9 pt-5" *ngIf="!noResultsFound">
                 <div *ngFor="let item of productListBind">
                     <app-card [itemList]=item></app-card>
                 </div>

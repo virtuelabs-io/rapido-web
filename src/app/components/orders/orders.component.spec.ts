@@ -76,7 +76,7 @@ describe('OrdersComponent', () => {
   it('map the fetched orders to the UI controls',(async () => {
     component.isLoggedIn = true
     await component.getOrders()
-    expect(component.fetchOrdersRes.orderItemsObject[13][1].order_price).toEqual(component.orders[13].price)
+    expect(component.fetchOrdersRes.orderItemsObject[13][1].order_price_total).toEqual(component.orders[13].price)
     expect(component.fetchOrdersRes.products[1].name).toEqual(component.products[1].name)
   }));
 });

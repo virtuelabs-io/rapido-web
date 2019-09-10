@@ -29,6 +29,7 @@ export class CartComponent implements OnInit {
   deleteRes: any
   postCartItemsRes: any
   saveForLaterRes: any
+  currency: any
   imageUrl: string =  Constants.environment.staticAssets+'/images/empty-cart.jpg'
   public _cartService: CartService
   constructor(
@@ -72,6 +73,7 @@ export class CartComponent implements OnInit {
     await  this._cartService.getCartItems()
     .then((data: any) => {
       this.fetchRes = data
+      this.currency = data[0].itemDetails.currency
       for(var i = 0; i < data.length; i++) {
         if(data[i].cartItem.in_cart) {
           this.inCart = true
