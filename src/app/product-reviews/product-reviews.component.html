@@ -6,7 +6,7 @@
       <span>Anonymous</span>
     </div>
     <div class="customer-rating">
-      <app-rating styleClass='size-sm' [currentRate]="review.rate"></app-rating>
+      <app-rating styleClass='size-sm' [currentRate]="review.rating"></app-rating>
         <span class="review-title">{{review.title}}</span>
     </div>
     <div class="review-date">
@@ -16,13 +16,13 @@
       <span>Verified Purchase</span>
     </div>
     <div class="review-desc">
-      <span>{{review.desc}}</span>
+      <span>{{review.summary}}</span>
     </div>
     <div class="helpful-count">
-      <span>{{review.helpfulStat}}</span>
+      <span>{{review.helpful}} people found this helpful</span>
     </div>
     <div class="review-feedback">
-      <button mat-flat-button color="primary" routerLink="/">
+      <button mat-flat-button color="primary" (click)="helpfulRatingIncrement(review.id)">
         <span role="status" aria-hidden="true"></span>
         Helpful
       </button>

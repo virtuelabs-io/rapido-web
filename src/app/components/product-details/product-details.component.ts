@@ -11,6 +11,7 @@ import { Constants } from '../../../../src/app/utils/constants';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RouteService } from '../../shared-services/route/route.service';
 import { PageEvent, MatPaginator } from '@angular/material/paginator';
+import { RatingsService } from '../../services/ratings/ratings.service';
 
 @Component({
 	selector: 'app-product-details',
@@ -36,7 +37,9 @@ export class ProductDetailsComponent implements OnInit {
 	isLoggedIn:Boolean
 	length = 5
 	pageSize = 3
-  	pageSizeOptions: number[] = [2];
+	pageSizeOptions: number[] = [2];
+	private _ratingsService: RatingsService
+
 	constructor(productsService: ProductsService,
 		private _searchItemService: SearchItemService,
 		private _loginStateService: LoginStateService,
@@ -45,9 +48,11 @@ export class ProductDetailsComponent implements OnInit {
 		public router: Router, 
 		private _snackBar: MatSnackBar,
 		private RouteService : RouteService,
+		ratingsService: RatingsService,
 		private route: ActivatedRoute) {
 		this._productsService = productsService
 		this._cartService = cartService
+		this._ratingsService = ratingsService
 	}
 
 	ngOnInit() {
@@ -73,44 +78,8 @@ export class ProductDetailsComponent implements OnInit {
 				'rate': 10
 			}
 		]
-		this.reviews = [
-			{
-				'rate': '1.0',
-				'title': 'Overall good watch, but In night or no light condition',
-				'date': '2 April 2017',
-				'desc': 'Overall good watch, but In night or no light condition, this is of no use. Rs 10000 approx doesnt have radium.The whole thing fell apart there. !!!',
-				'helpfulStat': '6 people found this helpful'
-			},
-			{
-				'rate': '2.0',
-				'title': 'Overall good watch, but In night or no light condition',
-				'date': '2 April 2017',
-				'desc': 'Overall good watch, but In night or no light condition, this is of no use. Rs 10000 approx doesnt have radium.The whole thing fell apart there. !!!',
-				'helpfulStat': '6 people found this helpful'
-			},
-			{
-				'rate': '3.0',
-				'title': 'Overall good watch, but In night or no light condition',
-				'date': '2 April 2017',
-				'desc': 'Overall good watch, but In night or no light condition, this is of no use. Rs 10000 approx doesnt have radium.The whole thing fell apart there. !!!',
-				'helpfulStat': '6 people found this helpful'
-			},
-			{
-				'rate': '4.0',
-				'title': 'Overall good watch, but In night or no light condition',
-				'date': '2 April 2017',
-				'desc': 'Overall good watch, but In night or no light condition, this is of no use. Rs 10000 approx doesnt have radium.The whole thing fell apart there. !!!',
-				'helpfulStat': '6 people found this helpful'
-			},
-			{
-				'rate': '5.0',
-				'title': 'Overall good watch, but In night or no light condition',
-				'date': '2 April 2017',
-				'desc': 'Overall good watch, but In night or no light condition, this is of no use. Rs 10000 approx doesnt have radium.The whole thing fell apart there. !!!',
-				'helpfulStat': '6 people found this helpful'
-			}
-		]
-		this.filteredReview = this.reviews.slice(0, this.pageSize)
+		
+		//this.filteredReview = this.reviews.slice(0, this.pageSize)
 	//	this.rate.paginator = this.paginator
 		this.paginator.pageIndex = 0
 		this.Number = Number
@@ -122,6 +91,7 @@ export class ProductDetailsComponent implements OnInit {
 		// get product details
 		if (this.itemId) {
 			this._searchItemService.responsePoductListState.subscribe(respData => {
+				this.fetchProductRatings()
 				let { hits } = respData
 				if (hits.hit.length == 1  && hits.hit[0].id) {
 					this.updateProductDetails(hits)
@@ -150,7 +120,16 @@ export class ProductDetailsComponent implements OnInit {
 
 	keyPress(event: any){
 		Common.allowPositiveNum(event)
-	  }
+	}
+
+	fetchProductRatings() {
+		this._ratingsService.getProductRatings(33)
+		.subscribe(data => {
+			console.log(data)
+			this.reviews = data
+			this.filteredReview = this.reviews.slice(0, this.pageSize)
+		})
+	}
 
 	updateProductDetails(hits) {
 		let product = hits.hit.filter((val) => {
@@ -196,7 +175,6 @@ export class ProductDetailsComponent implements OnInit {
 	}
 	
 	async addItemsToCart() {
-		
 		await this.loginSessinExists().
 		then( _ => this.postCartItem()).
 		catch(err => this.handleError(err))
