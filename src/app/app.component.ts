@@ -2,7 +2,6 @@ import { Component, Inject } from '@angular/core';
 import { PageScrollService } from 'ngx-page-scroll-core';
 import { DOCUMENT } from '@angular/common';
 import { Router, Event, NavigationStart, NavigationEnd, NavigationError, ActivationEnd  } from '@angular/router';
-import { LoginStateService } from 'src/app/shared-services/login-state/login-state.service';
 import { Config } from 'src/app/utils/config'
 
 @Component({
@@ -14,7 +13,6 @@ export class AppComponent {
   
   showNavBar: Boolean = true
   constructor(private router: Router,
-    private loginStateService: LoginStateService,
     private pageScrollService: PageScrollService, 
     @Inject(DOCUMENT) private document: any){ }
 
@@ -25,19 +23,6 @@ export class AppComponent {
     });
     
     this.router.events.subscribe((event: Event) => {
-      if (event instanceof NavigationStart) {
-        this.loginStateService.loaderEnable()
-      }
-
-      if (event instanceof NavigationEnd) {
-        window.scroll(0,0)
-        this.loginStateService.loaderDisable()
-      }
-
-      if (event instanceof NavigationError) {
-        this.loginStateService.loaderDisable()
-      }
-      
       if (event instanceof ActivationEnd ) {
         this.handleNavBarVisibility(event)
       }

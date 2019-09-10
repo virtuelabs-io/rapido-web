@@ -20,7 +20,7 @@ export class ProductDetailsComponent implements OnInit {
 
 	private _productsService: ProductsService
 	private _cartService: CartService
-	itemDetails: any
+	itemDetails: any = 1 // initializing value
 	imagePreviewURI: any
 	imageDetails: any
 	itemId: any
@@ -65,11 +65,9 @@ export class ProductDetailsComponent implements OnInit {
 					this._productsService.get(query).
 					subscribe(data => {
 						if (data) {
-							if (data.error) {
+							if (data.error || data.hits.found === 0) {
+								this.itemDetails = null
 								throw Error('error')
-							}
-							if (data.hits.found === 0) {
-								return;
 							}
 							this.updateProductDetails(data.hits)
 						}
@@ -138,18 +136,22 @@ export class ProductDetailsComponent implements OnInit {
 	}
 		
 	async postCartItem(){
+		this._loginStateService.loaderEnable()
 		let cartItem: CartItem = new CartItem()
 		cartItem.product_id = parseInt(this.itemId) 
     	cartItem.quantity = this.quantity
 		cartItem.in_cart = true
 		if(this.isLoggedIn){
 			await this._cartService.postCartItem(cartItem).subscribe(data => {
+				this._loginStateService.loaderDisable()
 				this._snackBar.open(Constants.ITEM_MOVED_TO_CART,  undefined , {
 					duration: 4000,
+					horizontalPosition: 'center'
 				 })
 				 this._cartStateService.fetchAndUpdateCartCount()
 			})
 		}else{
+			this._loginStateService.loaderDisable()
 			await Promise.reject("Login Session doesn't exist!")
 		}
 	}
