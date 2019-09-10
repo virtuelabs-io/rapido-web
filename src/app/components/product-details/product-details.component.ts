@@ -79,8 +79,6 @@ export class ProductDetailsComponent implements OnInit {
 			}
 		]
 		
-		//this.filteredReview = this.reviews.slice(0, this.pageSize)
-	//	this.rate.paginator = this.paginator
 		this.paginator.pageIndex = 0
 		this.Number = Number
 		// get current product id
@@ -92,6 +90,7 @@ export class ProductDetailsComponent implements OnInit {
 		if (this.itemId) {
 			this._searchItemService.responsePoductListState.subscribe(respData => {
 				this.fetchProductRatings()
+				this.getProductRatingsSummary()
 				let { hits } = respData
 				if (hits.hit.length == 1  && hits.hit[0].id) {
 					this.updateProductDetails(hits)
@@ -128,6 +127,18 @@ export class ProductDetailsComponent implements OnInit {
 			console.log(data)
 			this.reviews = data
 			this.filteredReview = this.reviews.slice(0, this.pageSize)
+		})
+	}
+
+	getProductRatingsSummary(){
+		this._ratingsService.getProductRatingsSummary(33)
+		.subscribe(data => {
+		  console.log(data)
+		  let sum: any
+		  sum = data
+		  for(var i = 0; i < sum.length; i++) {
+			console.log(sum)
+		  }
 		})
 	}
 

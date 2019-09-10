@@ -39,7 +39,7 @@ export class ProductReviewsComponent implements OnInit {
         console.log(id2, v.id, this.filteredReview[i].helpful)
         this.filteredReview[i].helpful += 1
         }
-        })
+      })
     })
   }
 
