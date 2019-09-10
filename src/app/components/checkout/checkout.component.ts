@@ -32,7 +32,10 @@ export class CheckoutComponent implements OnInit {
   isLinear = false;
   registeredEmail: string = ""
   _logInName: string
-  amount: any
+  itemTotal: any
+  orderTotal: any
+  deliveryCharges: any
+  vatTotal: any
   currency: string 
   orderItems = []
   orders = {}
@@ -176,7 +179,10 @@ export class CheckoutComponent implements OnInit {
             this.orders[order]['address'].county = data['orderItemsObject'][order][product].county
             this.orders[order]['address'].postcode = data['orderItemsObject'][order][product].postcode
             this.orders[order]['address'].country = data['orderItemsObject'][order][product].country
-            this.amount = data['orderItemsObject'][order][product].order_price.toFixed(2)
+            this.itemTotal = data['orderItemsObject'][order][product].order_price.toFixed(2)
+            this.vatTotal = data['orderItemsObject'][order][product].vat.toFixed(2)
+            this.deliveryCharges = data['orderItemsObject'][order][product].delivery_cost.toFixed(2)
+            this.orderTotal = data['orderItemsObject'][order][product].order_price_total.toFixed(2)
             this.currency = data['products'][product].currency
           }
         }

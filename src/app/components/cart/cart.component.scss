@@ -47,32 +47,35 @@
             flex-direction: row;
             flex-wrap: nowrap;
             margin-left: 2%;
+            margin-right: 2%;
             border-bottom: 1px solid #e1e4e8;
             .cart-col-price {
-                margin-left: 55%;
-                @media screen and (max-width: $mobile-device) {
-                    margin-left: 60%;
-                }
+                width: 35%;
+                    text-align: right;
+            }
+            .later-col-price {
+                width: 80%;
+                text-align: right;
             }
             .cart-col-quan {
-                margin-left: 15%;
+                width: 75%;
+                text-align: right;
                 @media screen and (max-width: $mobile-device) {
-                    margin-left: 8%;
-                    margin-right: 2%;
+                    width: 85%;
                 }
-            }
-            @media screen and (max-width: $mobile-device) {
-                width: 90%;
+                @media screen and (max-width: $small-device) {
+                    width: 85%;
+                }
             }
         }
         .cart-items-main {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
+            padding-left: 2%;
+            padding-right: 2%;
             .cart-items {
                 width: 100%;
-                margin-right: 5%;
-                margin-left: 5%;
                 .cart-items-list {
                     display: flex;
                     flex-direction: row;
@@ -97,11 +100,13 @@
                         cursor: pointer;
                     }
                     .item-price {
+                        text-align: right;
                         padding-left: 2%;
                         width: 25%;
                         color: #B12704;
                     }
                     .item-quantity {
+                        text-align: center;
                         width: 20%;
                         .item-quntity-input {
                             width: 60%;
@@ -112,6 +117,10 @@
                         }
                     }
                 }
+                @media screen and (max-width: $mobile-device) {
+                    padding-left: 2%;
+                    padding-right: 2%;
+                }
             }
             @media screen and (max-width: $mobile-device) {
                 width: 100%;
@@ -119,7 +128,12 @@
         }
         @media screen and (max-width: $mobile-device) {
             width: 100%
-          }
+        }
+        @media screen and (max-width: $small-device) {
+            width: 100%;
+            padding-left: 2%;
+            padding-right: 2%;
+        }
     }
 
     .terms-conditions {

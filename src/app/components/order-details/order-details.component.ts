@@ -95,6 +95,9 @@ export class OrderDetailsComponent implements OnInit {
           for(let product in data['orderItemsObject'][order]) {
             this.orders[order].currency = data['products'][product]['currency']
             this.orders[order].order_price = data['orderItemsObject'][order][product].order_price
+            this.orders[order].order_price_total = data['orderItemsObject'][order][product].order_price_total
+            this.orders[order].delivery_cost = data['orderItemsObject'][order][product].delivery_cost
+            this.orders[order].vat = data['orderItemsObject'][order][product].vat
             this.orders[order].date = data['orderItemsObject'][order][product]['created_on'].split('T')[0]
             this.orders[order].shipTo = data['orderItemsObject'][order][product]['full_name']
             this.orders[order].category = Constants.ORDER_STATUS[data['orderItemsObject'][order][product]['order_status_id']]
