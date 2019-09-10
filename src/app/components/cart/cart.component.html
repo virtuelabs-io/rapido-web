@@ -22,11 +22,11 @@
       </div>
     </div>
     <div *ngIf="inCart" class="cart-columns">
-      <div class="cart-col-price">
-        <span>Price(£)</span>
-      </div>
       <div class="cart-col-quan">
         <span>Quantity</span>
+      </div>
+      <div class="cart-col-price">
+        <span>Price({{currency}})</span>
       </div>
     </div>
     <div *ngIf="inCart" class="cart-items-main">
@@ -42,13 +42,13 @@
               <a (click)="saveForLaterFn(item.id, item.quantity, false)">Save for Later</a>
             </div>
           </div>
+          <div class="item-quantity">
+            <input type="number" maxlength="3" min="1" (keypress)="keyPress($event)" (change)="quantityChange(item.id, item.quantity)" [(ngModel)]="item.quantity" autocomplete="off" name="quantityBox" class="item-quntity-input" aria-label="Quantity">
+          </div>
           <div class="item-price">
             <p>
               <strong>{{ item.amount }}</strong>
             </p>
-          </div>
-          <div class="item-quantity">
-            <input type="number" maxlength="3" min="1" (keypress)="keyPress($event)" (change)="quantityChange(item.id, item.quantity)" [(ngModel)]="item.quantity" autocomplete="off" name="quantityBox" class="item-quntity-input" aria-label="Quantity">
           </div>
         </div>
       </div>    
@@ -67,7 +67,7 @@
       <div class="card-amount-title">
         <span>
           <strong>Total ({{inCartItems}} items): </strong>
-          £
+          {{currency}}
         </span>
         <span class="span-class">  
           <strong>{{cartAmount}}</strong>
@@ -84,20 +84,19 @@
     </h4>
   </div>
   <div *ngIf="laterUse" class="cart-div">
-      <div class="title-icon-text">
-          <svg>
-            <use xlink:href="#wishlist" />
-          </svg>
-          <div class="title-div">
-              <h4>
-                Saved for later
-              </h4>
-            </div>
-        </div>
-    
+    <div class="title-icon-text">
+      <svg>
+        <use xlink:href="#wishlist" />
+      </svg>
+      <div class="title-div">
+        <h4>
+          Saved for later
+        </h4>
+      </div>
+    </div>
     <div  class="cart-columns">
-      <div class="cart-col-price">
-        <span>Price(£)</span>
+      <div class="later-col-price">
+        <span>Price({{currency}})</span>
       </div>
     </div>
     <div class="cart-items-main">
