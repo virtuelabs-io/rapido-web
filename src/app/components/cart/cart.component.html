@@ -26,7 +26,7 @@
         <span>Quantity</span>
       </div>
       <div class="cart-col-price">
-        <span>Price(£)</span>
+        <span>Price({{currency}})</span>
       </div>
     </div>
     <div *ngIf="inCart" class="cart-items-main">
@@ -67,7 +67,7 @@
       <div class="card-amount-title">
         <span>
           <strong>Total ({{inCartItems}} items): </strong>
-          £
+          {{currency}}
         </span>
         <span class="span-class">  
           <strong>{{cartAmount}}</strong>
@@ -96,7 +96,7 @@
     </div>
     <div  class="cart-columns">
       <div class="later-col-price">
-        <span>Price(£)</span>
+        <span>Price({{currency}})</span>
       </div>
     </div>
     <div class="cart-items-main">
