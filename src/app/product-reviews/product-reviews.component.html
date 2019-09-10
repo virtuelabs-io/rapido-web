@@ -1,0 +1,31 @@
+<div class="review-holder" *ngFor="let review of filteredReview">
+    <div class="icon-name">
+      <a  class="rapido-icon mat-button rapido-icon-hider">
+        <i class="fa fa-user fa-2x pt-1"></i>
+      </a>
+      <span>Anonymous</span>
+    </div>
+    <div class="customer-rating">
+      <app-rating styleClass='size-sm' [currentRate]="review.rate"></app-rating>
+        <span class="review-title">{{review.title}}</span>
+    </div>
+    <div class="review-date">
+      <span>{{review.date}}</span>
+    </div>
+    <div class="verified-purchase">
+      <span>Verified Purchase</span>
+    </div>
+    <div class="review-desc">
+      <span>{{review.desc}}</span>
+    </div>
+    <div class="helpful-count">
+      <span>{{review.helpfulStat}}</span>
+    </div>
+    <div class="review-feedback">
+      <button mat-flat-button color="primary" routerLink="/">
+        <span role="status" aria-hidden="true"></span>
+        Helpful
+      </button>
+      <a href="">Report Abuse</a>
+    </div>
+  </div>

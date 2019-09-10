@@ -59,6 +59,7 @@ import { CreditsComponent } from './components/credits/credits.component';
 import { NavComponent } from './components/nav/nav.component';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { RatingBarComponent } from './rating-bar/rating-bar.component';
+import { ProductReviewsComponent } from './product-reviews/product-reviews.component';
 
 @NgModule({
   declarations: [
@@ -107,7 +108,8 @@ import { RatingBarComponent } from './rating-bar/rating-bar.component';
     PressReleaseComponent,
     NavComponent,
     ConfirmationDialogComponent,
-    RatingBarComponent
+    RatingBarComponent,
+    ProductReviewsComponent
   ],
   imports: [
     MatProgressBarModule,
