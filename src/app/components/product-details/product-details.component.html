@@ -175,19 +175,7 @@
       <div class="title">
         <span>10 customer reviews</span>
       </div>
-      <div class="rating-bar-indicator">
-        <div class="rating-bar-holder" *ngFor="let rate of rate">
-          <div class="rate-group">
-            <span>{{rate.field}}</span>
-          </div>
-          <div class="indicator">
-            <mat-progress-bar mode="determinate" class="rate-bar" value="{{rate.rate}}"></mat-progress-bar>
-          </div>
-          <div class="rate-percentage">
-            <span>{{rate.rate}}%</span>
-          </div>
-        </div>
-      </div>
+      <app-rating-bar [rate]=rate></app-rating-bar>
     </div>
     <div class="give-rating">
       <div class="title">
