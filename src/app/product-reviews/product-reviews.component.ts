@@ -28,18 +28,22 @@ export class ProductReviewsComponent implements OnInit {
   helpfulRatingIncrement(id) {
     let id2 = id
     this._ratingsService.helpfulRatingIncrement(id)
-    .subscribe(data => {
-      console.log(id2)
-    //  this.filteredReview[id2].helpful += 1
-      console.log(data)
-
-
+    .subscribe(_ => {
       this.filteredReview.map((v, i)=>{
         if(v.id == id2){
         console.log(id2, v.id, this.filteredReview[i].helpful)
         this.filteredReview[i].helpful += 1
         }
       })
+    })
+  }
+
+  deactivateRating(id) {
+    this._ratingsService.deactivateRating(id)
+    .subscribe(data => {
+      if(data){
+        console.log('Sucessfully deactivateRating')
+      }
     })
   }
 
