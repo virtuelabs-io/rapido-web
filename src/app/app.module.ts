@@ -58,8 +58,8 @@ import { PressReleaseComponent } from './components/press-release/press-release.
 import { CreditsComponent } from './components/credits/credits.component';
 import { NavComponent } from './components/nav/nav.component';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
-import { RatingBarComponent } from './rating-bar/rating-bar.component';
-import { ProductReviewsComponent } from './product-reviews/product-reviews.component';
+import { RatingBarComponent } from './components/rating-bar/rating-bar.component';
+import { ProductReviewsComponent } from './components/product-reviews/product-reviews.component';
 
 @NgModule({
   declarations: [
