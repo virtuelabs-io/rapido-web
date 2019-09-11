@@ -16,7 +16,7 @@ export class RatingsMockData {
 
     public static ratingDetails: Rating[] = [ratings]
 
-    public static productRatingsSummary: Rating = ratings
+    public static productRatingsSummary: Rating[] = [ratings]
     
     public static helpfulRatingIncrement = {
         fieldCount: 0,
@@ -30,14 +30,14 @@ export class RatingsMockData {
     }
 
     public static deactivateRating = {
-        fieldCount: 0,
         affectedRows: 1,
+        changedRows: 1,
+        fieldCount: 0,
         insertId: 0,
-        serverStatus: 2,
-        warningCount: 0,
         message: "(Rows matched: 1  Changed: 1  Warnings: 0",
         protocol41: true,
-        changedRows: 1
+        serverStatus: 2,
+        warningCount: 0
     }
 
    

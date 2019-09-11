@@ -47,6 +47,6 @@ export class RatingsService extends RapidoHttpService<Rating>{
   }
 
   getProductRatingsSummary(product_id: Number){
-    return this.get([Constants.RATINGS_APIS.api, "product", "summary", String(product_id)].join("/"))
+    return this.getList([Constants.RATINGS_APIS.api, "product", "summary", String(product_id)].join("/"))
   }
 }
