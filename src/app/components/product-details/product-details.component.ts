@@ -37,7 +37,7 @@ export class ProductDetailsComponent implements OnInit {
 	isLoggedIn:Boolean
 	reviewCount: number = 0
 	length : number
-	pageSize = 3
+	pageSize = 1
 	pageSizeOptions: number[] = [2];
 	public _ratingsService: RatingsService
 

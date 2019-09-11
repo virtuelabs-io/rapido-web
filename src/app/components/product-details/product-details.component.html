@@ -199,7 +199,7 @@
         [length]="length"
         [pageSize]="pageSize"
         [pageSizeOptions]="pageSizeOptions"
-        (page)="pageEvent = $event; onPaginateChange($event)">
+        (page)="onPaginateChange($event)">
       </mat-paginator>
     </div>
   </div>
