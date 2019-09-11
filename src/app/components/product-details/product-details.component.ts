@@ -23,7 +23,7 @@ export class ProductDetailsComponent implements OnInit {
 	@ViewChild(MatPaginator) paginator: MatPaginator
 	private _productsService: ProductsService
 	private _cartService: CartService
-	itemDetails: any = 1 // initializing value
+	itemDetails: any 
 	imagePreviewURI: any
 	imageDetails: any
 	itemId: any
