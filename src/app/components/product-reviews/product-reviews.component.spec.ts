@@ -4,7 +4,7 @@ import { ProductReviewsComponent } from './product-reviews.component';
 import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { Router, Routes } from '@angular/router';
-import { LogInComponent } from '../components/log-in/log-in.component';
+import { LogInComponent } from '../../components/log-in/log-in.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { RatingsMockData} from 'src/app/services/ratings/ratings.mock.data';
 import { RatingsMockService} from 'src/app/services/ratings/ratings.mock.service';

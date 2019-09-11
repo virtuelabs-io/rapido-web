@@ -48,5 +48,4 @@ describe('ProductDetailsComponent', () => {
     component.getProductRatingsSummary(33)
     expect(component.rate).toEqual(RatingsMockData.productRatingsSummary);
   });
-
 });

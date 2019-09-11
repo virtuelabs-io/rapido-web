@@ -28,5 +28,4 @@ export class RatingBarComponent implements OnInit {
       this.rate[i].count = (this.rate[i].count/this.reviewCount)*100
     }
   }
-
 }

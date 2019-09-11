@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { RatingsService } from '../services/ratings/ratings.service';
-import { LoginStateService } from '../shared-services/login-state/login-state.service';
-import { RouteService } from '../shared-services/route/route.service';
+import { RatingsService } from '../../services/ratings/ratings.service';
+import { LoginStateService } from '../../shared-services/login-state/login-state.service';
+import { RouteService } from '../../shared-services/route/route.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -52,13 +52,12 @@ export class ProductReviewsComponent implements OnInit {
 
   async helpfulRatingIncrement(id) {
     if(this.isLoggedIn) {
-      let id2 = id
       await this._ratingsService.helpfulRatingIncrement(id)
       .subscribe(data => {
         this.resHelpfulCount = data
         this.filteredReview.map((v, i)=>{
-          if(v.id == id2){
-          console.log(id2, v.id, this.filteredReview[i].helpful)
+          if(v.id == id){
+          console.log(id, v.id, this.filteredReview[i].helpful)
           this.filteredReview[i].helpful += 1
           }
         })
@@ -83,5 +82,4 @@ export class ProductReviewsComponent implements OnInit {
       await Promise.reject("Login Session doesn't exist!")
     }
   }
-
 }

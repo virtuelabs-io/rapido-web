@@ -40,8 +40,8 @@ import { CarouselScrollComponent } from './components/card/carousel-scroll/carou
 import { HomeComponent } from './components/home/home.component';
 import { CreditsComponent  } from './components/credits/credits.component';
 import { NavComponent } from './components/nav/nav.component';
-import { ProductReviewsComponent } from './product-reviews/product-reviews.component';
-import { RatingBarComponent } from './rating-bar/rating-bar.component';
+import { ProductReviewsComponent } from './components/product-reviews/product-reviews.component';
+import { RatingBarComponent } from './components/rating-bar/rating-bar.component';
 
 describe('AppComponent', () => {
   var originalTimeout;

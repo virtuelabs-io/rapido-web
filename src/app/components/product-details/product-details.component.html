@@ -185,22 +185,22 @@
         <span>Share your thoughts with other customers</span>
       </div>
       <div class="action">
-          <button mat-flat-button color="primary" routerLink="/">
-            <span role="status" aria-hidden="true"></span>
-            Write a product review 
-          </button>
+        <button mat-flat-button color="primary" routerLink="/">
+          <span role="status" aria-hidden="true"></span>
+          Write a product review 
+        </button>
       </div>
     </div>
   </div>
   <div class="right-section">
     <app-product-reviews [filteredReview]=filteredReview [productId]=itemId></app-product-reviews>
     <div class='m-auto'>
-        <mat-paginator 
-            [length]="length"
-            [pageSize]="pageSize"
-            [pageSizeOptions]="pageSizeOptions"
-            (page)="pageEvent = $event; onPaginateChange($event)">
-        </mat-paginator>
-      </div>
+      <mat-paginator 
+        [length]="length"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="pageEvent = $event; onPaginateChange($event)">
+      </mat-paginator>
+    </div>
   </div>
 </div>
