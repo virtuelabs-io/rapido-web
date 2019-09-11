@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ProductDetailsComponent } from 'src/app/components/product-details/product-details.component';
 import { ProductReviewsComponent } from './product-reviews.component';
+import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('ProductReviewsComponent', () => {
   let component: ProductReviewsComponent;
@@ -8,7 +10,9 @@ describe('ProductReviewsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProductReviewsComponent ]
+      imports: [HttpClientModule],
+      declarations: [ ProductReviewsComponent, ProductDetailsComponent ],
+      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));

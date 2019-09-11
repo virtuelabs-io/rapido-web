@@ -20,7 +20,8 @@ import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule,
   MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, 
   MatSnackBarModule, MatExpansionModule, MatSelectModule, MatPaginatorModule, 
   MatProgressSpinnerModule, MatDialogModule, MatFormFieldModule, MatCardModule,
-  MatTableModule  } from '@angular/material';
+  MatTableModule,  
+  MatProgressBarModule} from '@angular/material';
 import { LeftSectionComponent } from './components/leftsection/leftsection.component';
 import { CardComponent } from './components/card/card.component';
 import { RatingComponent } from './components/rating/rating.component';
@@ -39,6 +40,8 @@ import { CarouselScrollComponent } from './components/card/carousel-scroll/carou
 import { HomeComponent } from './components/home/home.component';
 import { CreditsComponent  } from './components/credits/credits.component';
 import { NavComponent } from './components/nav/nav.component';
+import { ProductReviewsComponent } from './product-reviews/product-reviews.component';
+import { RatingBarComponent } from './rating-bar/rating-bar.component';
 
 describe('AppComponent', () => {
   var originalTimeout;
@@ -77,6 +80,7 @@ describe('AppComponent', () => {
         MatListModule,
         MatSelectModule,
         MatTableModule,
+        MatProgressBarModule,
         NgbModule.forRoot()
       ],
       declarations: [
@@ -104,7 +108,9 @@ describe('AppComponent', () => {
         HomeCardComponent,
         CarouselComponent,
         CarouselScrollComponent,
-        HomeComponent
+        HomeComponent,
+        ProductReviewsComponent,
+        RatingBarComponent
       ],
     }).compileComponents();
   }));

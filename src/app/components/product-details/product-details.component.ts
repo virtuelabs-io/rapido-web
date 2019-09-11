@@ -10,7 +10,7 @@ import { Common } from '../../../../src/app/utils/common';
 import { Constants } from '../../../../src/app/utils/constants';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RouteService } from '../../shared-services/route/route.service';
-import { PageEvent, MatPaginator } from '@angular/material/paginator';
+import { MatPaginator } from '@angular/material/paginator';
 import { RatingsService } from '../../services/ratings/ratings.service';
 
 @Component({
@@ -36,10 +36,10 @@ export class ProductDetailsComponent implements OnInit {
 	filteredReview: any
 	isLoggedIn:Boolean
 	reviewCount: number = 0
-	length = 5
+	length : number
 	pageSize = 3
 	pageSizeOptions: number[] = [2];
-	private _ratingsService: RatingsService
+	public _ratingsService: RatingsService
 
 	constructor(productsService: ProductsService,
 		private _searchItemService: SearchItemService,
@@ -57,7 +57,7 @@ export class ProductDetailsComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.paginator.pageIndex = 0
+		//this.paginator.pageIndex = 0
 		this.Number = Number
 		// get current product id
 		this.route.params.subscribe(params => {
@@ -67,8 +67,6 @@ export class ProductDetailsComponent implements OnInit {
 		// get product details
 		if (this.itemId) {
 			this._searchItemService.responsePoductListState.subscribe(respData => {
-				this.fetchProductRatings()
-				this.getProductRatingsSummary()
 				let { hits } = respData
 				if (hits.hit.length == 1  && hits.hit[0].id) {
 					this.updateProductDetails(hits)
@@ -97,17 +95,18 @@ export class ProductDetailsComponent implements OnInit {
 		Common.allowPositiveNum(event)
 	}
 
-	fetchProductRatings() {
-		this._ratingsService.getProductRatings(33)
+	fetchProductRatings(id) {
+		this._ratingsService.getProductRatings(id)
 		.subscribe(data => {
 			console.log(data)
 			this.reviews = data
+			this.length = this.reviews.length
 			this.filteredReview = this.reviews.slice(0, this.pageSize)
 		})
 	}
 
-	getProductRatingsSummary(){
-		this._ratingsService.getProductRatingsSummary(33)
+	getProductRatingsSummary(id) {
+		this._ratingsService.getProductRatingsSummary(id)
 		.subscribe(data => {
 		  this.rate = data
 		  for(var i = 0; i < this.rate.length; i++) {
@@ -127,6 +126,9 @@ export class ProductDetailsComponent implements OnInit {
 		this.mrpPrice = (this.itemDetails.price * (1 + parseFloat(this.itemDetails.offer))).toFixed(2)
 		this.totalPrice = this.itemDetails.price
 		this.quantity = 1
+
+		this.fetchProductRatings(this.itemId)
+		this.getProductRatingsSummary(this.itemId)
 	}
 
 	setImageValue(index = 0) {
