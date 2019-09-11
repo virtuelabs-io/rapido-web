@@ -35,6 +35,7 @@ export class ProductDetailsComponent implements OnInit {
 	reviews: any
 	filteredReview: any
 	isLoggedIn:Boolean
+	reviewCount: number = 0
 	length = 5
 	pageSize = 3
 	pageSizeOptions: number[] = [2];
@@ -56,29 +57,6 @@ export class ProductDetailsComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.rate = [
-			{
-				'field': '5 star',
-				'rate': 60
-			},
-			{
-				'field': '4 star',
-				'rate': 50
-			},
-			{
-				'field': '3 star',
-				'rate': 30
-			},
-			{
-				'field': '2 star',
-				'rate': 40
-			},
-			{
-				'field': '1 star',
-				'rate': 10
-			}
-		]
-		
 		this.paginator.pageIndex = 0
 		this.Number = Number
 		// get current product id
@@ -131,11 +109,9 @@ export class ProductDetailsComponent implements OnInit {
 	getProductRatingsSummary(){
 		this._ratingsService.getProductRatingsSummary(33)
 		.subscribe(data => {
-		  console.log(data)
-		  let sum: any
-		  sum = data
-		  for(var i = 0; i < sum.length; i++) {
-			console.log(sum)
+		  this.rate = data
+		  for(var i = 0; i < this.rate.length; i++) {
+			this.reviewCount += this.rate[i].count
 		  }
 		})
 	}
