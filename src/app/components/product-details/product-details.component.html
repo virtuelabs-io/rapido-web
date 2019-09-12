@@ -193,7 +193,7 @@
     </div>
   </div>
   <div class="right-section" *ngIf="reviewCount">
-    <app-product-reviews [filteredReview]=filteredReview [productId]=itemId></app-product-reviews>
+    <app-product-reviews [filteredReview]=filteredReview [productId]=itemId [action]="false" [feedback]="true"></app-product-reviews>
     <div class='m-auto'>
       <mat-paginator 
         [length]="length"
