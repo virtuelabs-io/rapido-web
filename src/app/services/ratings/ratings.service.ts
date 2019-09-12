@@ -10,7 +10,7 @@ import { Constants } from '../../utils/constants';
 })
 export class RatingsService extends RapidoHttpService<Rating>{
 
-  constructor(protected _http: HttpClient, protected _profileService: ProfileService) {
+  constructor(protected _http?: HttpClient, protected _profileService?: ProfileService) {
     super(_http, _profileService)
   }
 
@@ -43,10 +43,10 @@ export class RatingsService extends RapidoHttpService<Rating>{
   }
 
   getProductRatings(product_id: Number){
-    return this.get([Constants.RATINGS_APIS.api, "product", String(product_id)].join("/"))
+    return this.getList([Constants.RATINGS_APIS.api, "product", String(product_id)].join("/"))
   }
 
   getProductRatingsSummary(product_id: Number){
-    return this.get([Constants.RATINGS_APIS.api, "product", "summary", String(product_id)].join("/"))
+    return this.getList([Constants.RATINGS_APIS.api, "product", "summary", String(product_id)].join("/"))
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SearchItemService } from '../../shared-services/search-item/search-item.services';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
@@ -10,6 +10,8 @@ import { Common } from '../../../../src/app/utils/common';
 import { Constants } from '../../../../src/app/utils/constants';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RouteService } from '../../shared-services/route/route.service';
+import { MatPaginator } from '@angular/material/paginator';
+import { RatingsService } from '../../services/ratings/ratings.service';
 
 @Component({
 	selector: 'app-product-details',
@@ -18,6 +20,7 @@ import { RouteService } from '../../shared-services/route/route.service';
 })
 export class ProductDetailsComponent implements OnInit {
 
+	@ViewChild(MatPaginator) paginator: MatPaginator
 	private _productsService: ProductsService
 	private _cartService: CartService
 	itemDetails: any 
@@ -28,7 +31,16 @@ export class ProductDetailsComponent implements OnInit {
 	totalPrice: Number|string
 	Number:Function
 	quantity:number
+	rate: any
+	reviews: any
+	filteredReview: any
 	isLoggedIn:Boolean
+	reviewCount: number = 0
+	length : number
+	pageSize = 1
+	pageSizeOptions: number[] = [2];
+	public _ratingsService: RatingsService
+
 	constructor(productsService: ProductsService,
 		private _searchItemService: SearchItemService,
 		private _loginStateService: LoginStateService,
@@ -37,13 +49,15 @@ export class ProductDetailsComponent implements OnInit {
 		public router: Router, 
 		private _snackBar: MatSnackBar,
 		private RouteService : RouteService,
+		ratingsService: RatingsService,
 		private route: ActivatedRoute) {
 		this._productsService = productsService
 		this._cartService = cartService
+		this._ratingsService = ratingsService
 	}
 
 	ngOnInit() {
-
+		//this.paginator.pageIndex = 0
 		this.Number = Number
 		// get current product id
 		this.route.params.subscribe(params => {
@@ -79,7 +93,26 @@ export class ProductDetailsComponent implements OnInit {
 
 	keyPress(event: any){
 		Common.allowPositiveNum(event)
-	  }
+	}
+
+	fetchProductRatings(id) {
+		this._ratingsService.getProductRatings(id)
+		.subscribe(data => {
+			this.reviews = data
+			this.length = this.reviews.length
+			this.filteredReview = this.reviews.slice(0, this.pageSize)
+		})
+	}
+
+	getProductRatingsSummary(id) {
+		this._ratingsService.getProductRatingsSummary(id)
+		.subscribe(data => {
+		  this.rate = data
+		  this.rate.map((v, i)=>{
+			this.reviewCount += v.count
+		  })
+		})
+	}
 
 	updateProductDetails(hits) {
 		let product = hits.hit.filter((val) => {
@@ -92,6 +125,9 @@ export class ProductDetailsComponent implements OnInit {
 		this.mrpPrice = (this.itemDetails.price * (1 + parseFloat(this.itemDetails.offer))).toFixed(2)
 		this.totalPrice = this.itemDetails.price
 		this.quantity = 1
+
+		this.fetchProductRatings(this.itemId)
+		this.getProductRatingsSummary(this.itemId)
 	}
 
 	setImageValue(index = 0) {
@@ -125,7 +161,6 @@ export class ProductDetailsComponent implements OnInit {
 	}
 	
 	async addItemsToCart() {
-		
 		await this.loginSessinExists().
 		then( _ => this.postCartItem()).
 		catch(err => this.handleError(err))
@@ -165,5 +200,14 @@ export class ProductDetailsComponent implements OnInit {
 			 this.router.navigateByUrl('/login')
 		}
    }
+
+   onPaginateChange(data) {
+	if(data.pageIndex == 0) {
+		this.filteredReview = this.reviews.slice(data.pageIndex*data.pageSize, data.pageSize);
+	}
+	else {
+		this.filteredReview = this.reviews.slice(data.pageIndex*data.pageSize, data.pageSize+data.pageIndex*data.pageSize);
+	}
+  }
 
 }

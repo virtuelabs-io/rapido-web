@@ -167,3 +167,40 @@
       We are sorry. Page not found
   </div>
 </div>
+
+<!-- Product ratings starts -->
+<div class="product-ratings">
+  <div class="left-section">
+    <div class="rating-bars">
+      <div class="title">
+        <span>10 customer reviews</span>
+      </div>
+      <app-rating-bar [rate]=rate [reviewCount]=reviewCount></app-rating-bar>
+    </div>
+    <div class="give-rating">
+      <div class="title">
+        <span>Review this product</span>
+      </div>
+      <div class="desc">
+        <span>Share your thoughts with other customers</span>
+      </div>
+      <div class="action">
+        <button mat-flat-button color="primary" routerLink="/">
+          <span role="status" aria-hidden="true"></span>
+          Write a product review 
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="right-section">
+    <app-product-reviews [filteredReview]=filteredReview [productId]=itemId></app-product-reviews>
+    <div class='m-auto'>
+      <mat-paginator 
+        [length]="length"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="onPaginateChange($event)">
+      </mat-paginator>
+    </div>
+  </div>
+</div>

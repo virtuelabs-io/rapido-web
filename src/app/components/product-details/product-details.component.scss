@@ -77,3 +77,87 @@
 .quantity{
 	height: fit-content;
 }
+
+.product-ratings {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-top: 1px solid #e1e4e8;
+    padding-top: 2%;
+    padding-left: 2%;
+	padding-right: 2%;
+	overflow: hidden;
+    .left-section {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+		width: 30%;
+		height: 350px;
+		overflow:hidden;  //code added to prevent scroll
+    //	position:absolute;
+        .rating-bars {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            height: 200px;
+            padding: 1%;
+            border-bottom: 1px solid #e1e4e8;
+            .title {
+                span {
+                    font-size: larger;
+                    font-weight: 600;
+                }
+            }
+            
+        }
+        .give-rating {
+            height: 150px;
+            padding: 1%;
+			border-bottom: 1px solid #e1e4e8;
+			.title {
+				span {
+					font-size: larger;
+					font-weight: 600;
+				}
+			}
+			.desc {
+				margin-top: 3%;
+				padding-left: 5%;
+				span {
+					font-weight: 300;
+					font-size: medium;
+				}
+			}
+			.action {
+				margin-top: 1%;
+				padding-left: 5%;
+			}
+		}
+		@media screen and (max-width: $mobile-device) {
+			width: 100%;
+		}
+    }
+    .right-section {
+        width: 70%;
+		padding: 1%;
+		height: 800px;
+		overflow: auto;  //code added
+
+		@media screen and (max-width: $mobile-device) {
+			width: 100%;
+		}
+    }
+}
+
+:host ::ng-deep .mat-progress-bar {
+    height: 20px;
+}
+
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+// need to see if we need this..as the above class i.e webkit-scrollbar is working fine.
+::-webkit-scrollbar { 
+    display: none; 
+}
