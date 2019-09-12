@@ -95,8 +95,8 @@ export class ProductDetailsComponent implements OnInit {
 		Common.allowPositiveNum(event)
 	}
 
-	fetchProductRatings(id) {
-		this._ratingsService.getProductRatings(id)
+	async fetchProductRatings(id) {
+		await this._ratingsService.getProductRatings(id)
 		.subscribe(data => {
 			this.reviews = data
 			this.length = this.reviews.length
@@ -104,8 +104,8 @@ export class ProductDetailsComponent implements OnInit {
 		})
 	}
 
-	getProductRatingsSummary(id) {
-		this._ratingsService.getProductRatingsSummary(id)
+	async getProductRatingsSummary(id) {
+		await this._ratingsService.getProductRatingsSummary(id)
 		.subscribe(data => {
 		  this.rate = data
 		  this.rate.map((v, i)=>{

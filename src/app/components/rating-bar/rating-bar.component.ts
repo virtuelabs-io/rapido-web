@@ -25,7 +25,7 @@ export class RatingBarComponent implements OnInit {
 
   calculate() {
     this.rate.map((v, i)=>{
-			this.rate[i].count = (v.count/this.reviewCount)*100
+			this.rate[i].percent = (v.count/this.reviewCount)*100
 		})
   }
 }

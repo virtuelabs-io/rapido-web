@@ -171,7 +171,7 @@
 <!-- Product ratings starts -->
 <div class="product-ratings">
   <div class="left-section">
-    <div class="rating-bars">
+    <div class="rating-bars" *ngIf="reviewCount">
       <div class="title">
         <span>{{reviewCount}} customer reviews</span>
       </div>
@@ -192,7 +192,7 @@
       </div>
     </div>
   </div>
-  <div class="right-section">
+  <div class="right-section" *ngIf="reviewCount">
     <app-product-reviews [filteredReview]=filteredReview [productId]=itemId></app-product-reviews>
     <div class='m-auto'>
       <mat-paginator 
