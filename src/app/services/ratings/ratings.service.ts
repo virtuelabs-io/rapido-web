@@ -27,7 +27,7 @@ export class RatingsService extends RapidoHttpService<Rating>{
   }
 
   getAllCustomerRatings(){
-    return this.get(Constants.RATINGS_APIS.api, this.addAuthHeader(this.initializeHeaders()))
+    return this.getList(Constants.RATINGS_APIS.api, this.addAuthHeader(this.initializeHeaders()))
   }
 
   deleteCustomerRating(id: Number){

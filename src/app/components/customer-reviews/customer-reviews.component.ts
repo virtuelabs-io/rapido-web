@@ -12,7 +12,7 @@ import { RatingsService } from '../../services/ratings/ratings.service';
 export class CustomerReviewsComponent implements OnInit {
   reviews: any
   isLoggedIn: Boolean
-  private _ratingsService: RatingsService
+  public _ratingsService: RatingsService
   constructor(
     private RouteService : RouteService,
     private _loginStateService: LoginStateService,

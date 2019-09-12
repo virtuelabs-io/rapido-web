@@ -32,5 +32,7 @@ export class RatingsMockService extends RatingsService{
         return of(RatingsMockData.deactivateRating)
     }
     
-    
+    getAllCustomerRatings(){
+        return of(RatingsMockData.ratingDetails)
+      }
 }

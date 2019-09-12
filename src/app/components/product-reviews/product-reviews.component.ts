@@ -21,6 +21,7 @@ export class ProductReviewsComponent implements OnInit {
   @Input() productId: number
   @Input() action: Boolean
   @Input() feedback: Boolean
+  @Input() writer: Boolean
   isLoggedIn: Boolean
   resAbuse: any
   resHelpfulCount: any

@@ -1,5 +1,9 @@
 <div class="review-holder" *ngFor="let review of filteredReview">
-  <div class="icon-name">
+  <div class="product-id" *ngIf="!writer">
+    Product ID : 
+    <a>{{review.product_id}}</a>
+  </div>
+  <div class="icon-name" *ngIf="writer">
     <a  class="rapido-icon mat-button rapido-icon-hider">
       <i class="fa fa-user fa-2x pt-1"></i>
     </a>
