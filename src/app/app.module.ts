@@ -10,7 +10,7 @@ import { IconComponent } from './common/icons/icons.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { RoutingComponents } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, 
+import { MatProgressBarModule, MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, 
           MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, 
           MatSnackBarModule, MatExpansionModule, MatSelectModule, MatPaginatorModule, 
           MatProgressSpinnerModule, MatDialogModule, MatCardModule,
@@ -58,6 +58,8 @@ import { PressReleaseComponent } from './components/press-release/press-release.
 import { CreditsComponent } from './components/credits/credits.component';
 import { NavComponent } from './components/nav/nav.component';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { RatingBarComponent } from './components/rating-bar/rating-bar.component';
+import { ProductReviewsComponent } from './components/product-reviews/product-reviews.component';
 
 @NgModule({
   declarations: [
@@ -105,9 +107,12 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
     CreditsComponent,
     PressReleaseComponent,
     NavComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    RatingBarComponent,
+    ProductReviewsComponent
   ],
   imports: [
+    MatProgressBarModule,
     MatSidenavModule,
     BrowserModule,
     AppRoutingModule,
