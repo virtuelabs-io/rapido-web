@@ -58,6 +58,7 @@ import { PressReleaseComponent } from './components/press-release/press-release.
 import { CreditsComponent } from './components/credits/credits.component';
 import { NavComponent } from './components/nav/nav.component';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { CustomerReviewsComponent } from './components/customer-reviews/customer-reviews.component';
 
 @NgModule({
   declarations: [
@@ -105,7 +106,8 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
     CreditsComponent,
     PressReleaseComponent,
     NavComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    CustomerReviewsComponent
   ],
   imports: [
     MatSidenavModule,

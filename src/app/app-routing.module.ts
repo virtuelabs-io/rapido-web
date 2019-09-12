@@ -24,6 +24,7 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { CareerPageComponent } from './components/career-page/career-page.component';
 import { PressReleaseComponent } from './components/press-release/press-release.component';
 import { CreditsComponent } from './components/credits/credits.component';
+import { CustomerReviewsComponent } from './components/customer-reviews/customer-reviews.component';
 
 export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -50,7 +51,8 @@ export const routes: Routes = [
   { path: 'products/details/:id', component: ProductDetailsComponent},
   { path: 'careers', component: CareerPageComponent},
   { path: 'credits', component: CreditsComponent},
-  { path: 'press-release', component: PressReleaseComponent}
+  { path: 'press-release', component: PressReleaseComponent},
+  { path: 'profile/my-reviews', component: CustomerReviewsComponent}
 ];
 
 @NgModule({
@@ -81,5 +83,6 @@ export const RoutingComponents = [
   CheckoutComponent,
   AuthmockComponent,
   ProductDetailsComponent,
-  PressReleaseComponent
+  PressReleaseComponent,
+  CustomerReviewsComponent
 ];
