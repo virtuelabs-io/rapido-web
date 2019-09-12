@@ -8,9 +8,12 @@
     padding-bottom: 1%;
     border-bottom: 1px solid #e1e4e8;
     .product-id {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
         padding-left: 2%;
         margin-top: 2%;
-        a {
+        div {
             cursor: pointer;
             color: $primary;
         }

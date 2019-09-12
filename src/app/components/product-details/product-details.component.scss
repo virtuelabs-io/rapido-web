@@ -105,7 +105,7 @@
             .title {
 				margin-bottom: 3%;
                 span {
-                    font-size: larger;
+					font-size: x-large;
                     font-weight: 700;
                 }
             }
@@ -161,4 +161,8 @@
 // need to see if we need this..as the above class i.e webkit-scrollbar is working fine.
 ::-webkit-scrollbar { 
     display: none; 
+}
+
+:host ::ng-deep .mat-paginator-container {
+	justify-content: center;
 }

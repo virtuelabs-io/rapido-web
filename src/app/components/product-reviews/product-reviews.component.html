@@ -1,7 +1,7 @@
 <div class="review-holder" *ngFor="let review of filteredReview">
   <div class="product-id" *ngIf="!writer">
-    Product ID : 
-    <a>{{review.product_id}}</a>
+    Product : &nbsp;  
+    <div [routerLink]="['/products/details', review.product_id]">{{review.product_id}}</div>
   </div>
   <div class="icon-name" *ngIf="writer">
     <a  class="rapido-icon mat-button rapido-icon-hider">
