@@ -98,7 +98,6 @@ export class ProductDetailsComponent implements OnInit {
 	fetchProductRatings(id) {
 		this._ratingsService.getProductRatings(id)
 		.subscribe(data => {
-			console.log(data)
 			this.reviews = data
 			this.length = this.reviews.length
 			this.filteredReview = this.reviews.slice(0, this.pageSize)
