@@ -32,6 +32,7 @@ export class ProductDetailsComponent implements OnInit {
 	Number:Function
 	quantity:number
 	rate: any
+	rateSummary: any
 	reviews: any
 	filteredReview: any
 	isLoggedIn:Boolean
@@ -57,6 +58,28 @@ export class ProductDetailsComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		this.rateSummary = [
+			{
+				count: 0,
+				rating: 1
+			},
+			{
+				count: 0,
+				rating: 2
+			},
+			{
+				count: 0,
+				rating: 3
+			},
+			{
+				count: 0,
+				rating: 4
+			},
+			{
+				count: 0,
+				rating: 5
+			}
+		]
 		//this.paginator.pageIndex = 0
 		this.Number = Number
 		// get current product id
@@ -110,7 +133,9 @@ export class ProductDetailsComponent implements OnInit {
 		  this.rate = data
 		  this.rate.map((v, i)=>{
 			this.reviewCount += v.count
+			this.rateSummary[v.rating-1].count = v.count
 		  })
+		  this.rateSummary.reverse()
 		})
 	}
 

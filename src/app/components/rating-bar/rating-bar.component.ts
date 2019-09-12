@@ -7,7 +7,6 @@ import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 })
 export class RatingBarComponent implements OnInit {
   @Input()  rate = []
-
   @Input()  reviewCount = 0
   constructor() { }
 
