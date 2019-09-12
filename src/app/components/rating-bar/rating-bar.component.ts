@@ -13,19 +13,19 @@ export class RatingBarComponent implements OnInit {
 
   ngOnInit() {
     if(this.rate) {
-      this.calculate(this.rate)
+      this.calculate()
     }
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if(this.rate) {
-      this.calculate(this.rate)
+      this.calculate()
     }
   }
 
-  calculate(rate) {
-    for(var i = 0; i < rate.length; i++) {
-      this.rate[i].count = (this.rate[i].count/this.reviewCount)*100
-    }
+  calculate() {
+    this.rate.map((v, i)=>{
+			this.rate[i].count = (v.count/this.reviewCount)*100
+		})
   }
 }

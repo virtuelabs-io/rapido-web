@@ -57,7 +57,6 @@ export class ProductReviewsComponent implements OnInit {
         this.resHelpfulCount = data
         this.filteredReview.map((v, i)=>{
           if(v.id == id){
-          console.log(id, v.id, this.filteredReview[i].helpful)
           this.filteredReview[i].helpful += 1
           }
         })

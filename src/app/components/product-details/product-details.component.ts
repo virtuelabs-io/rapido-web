@@ -109,9 +109,9 @@ export class ProductDetailsComponent implements OnInit {
 		this._ratingsService.getProductRatingsSummary(id)
 		.subscribe(data => {
 		  this.rate = data
-		  for(var i = 0; i < this.rate.length; i++) {
-			this.reviewCount += this.rate[i].count
-		  }
+		  this.rate.map((v, i)=>{
+			this.reviewCount += v.count
+		  })
 		})
 	}
 
