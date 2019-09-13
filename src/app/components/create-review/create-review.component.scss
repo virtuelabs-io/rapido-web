@@ -1,0 +1,27 @@
+@import "../../../assets/scss/custom-bootstrap-variables.scss";
+
+.main-div {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 2%;
+    .review-div {
+        margin-bottom: 2%;
+        padding: 1%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        .title {
+            margin-top: 5%;
+        }
+        .overall-rating {
+            span {
+                font-size: larger;
+                font-weight: 500;
+            }
+        }
+        .actions {
+            text-align: right;
+        }
+    }
+}

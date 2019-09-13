@@ -185,7 +185,7 @@
         <span>Share your thoughts with other customers</span>
       </div>
       <div class="action">
-        <button mat-flat-button color="primary" routerLink="/">
+        <button mat-flat-button color="primary" (click)="handleCreateReview(itemId)">
           <span role="status" aria-hidden="true"></span>
           Write a product review 
         </button>

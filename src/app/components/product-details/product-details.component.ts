@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, NgZone } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SearchItemService } from '../../shared-services/search-item/search-item.services';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
@@ -51,6 +51,7 @@ export class ProductDetailsComponent implements OnInit {
 		private _snackBar: MatSnackBar,
 		private RouteService : RouteService,
 		ratingsService: RatingsService,
+		private ngZone: NgZone,
 		private route: ActivatedRoute) {
 		this._productsService = productsService
 		this._cartService = cartService
@@ -235,4 +236,7 @@ export class ProductDetailsComponent implements OnInit {
 	}
   }
 
+  handleCreateReview(id) {
+	this.ngZone.run(() =>this.router.navigate(['review/create/product', id])).then()
+  }
 }
