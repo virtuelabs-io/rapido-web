@@ -77,7 +77,7 @@
                     <mat-list-item (click)="onPressRating(val)" *ngFor='let val of panelList.panelData'>
                     <!-- Based on rating value filters are applied -->
                     <a matLine >
-                       <app-rating [currentRate]='val'></app-rating>
+                       <app-rating [readonly]=true [currentRate]='val'></app-rating>
                        <span class='pl-2' >{{val}} +</span>
                     </a>
                     </mat-list-item>

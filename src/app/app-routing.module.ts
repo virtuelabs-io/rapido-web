@@ -54,7 +54,7 @@ export const routes: Routes = [
   { path: 'credits', component: CreditsComponent},
   { path: 'press-release', component: PressReleaseComponent},
   { path: 'profile/my-reviews', component: CustomerReviewsComponent},
-  { path: 'review/create/product/:id', component: CreateReviewComponent}
+  { path: 'review/create/product', component: CreateReviewComponent}
 ];
 
 @NgModule({

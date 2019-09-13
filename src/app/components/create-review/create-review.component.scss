@@ -4,23 +4,62 @@
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    margin-left: 30%;
-    margin-right: 30%;
+    margin-left: 20%;
+    margin-right: 20%;
     margin-top: 2%;
     .review-div {
         margin-bottom: 2%;
         padding: 1%;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        .title {
-            margin-top: 5%;
+        .product-details {
+            display: flex;
+            flex-direction: column;
+            .title {
+                margin-top: 5%;
+            }
+            .product-name {
+
+            }
+            .product-image {
+                text-align: center;
+                .image {
+                    width: 150px;
+                }
+            }
+            border-bottom: 1px solid #e1e4e8;
         }
+        
         .overall-rating {
+            border-bottom: 1px solid #e1e4e8;
+            div {
+                margin-top: 1%;
+            }
             span {
                 font-size: larger;
                 font-weight: 500;
             }
         }
+        .review-desc, .review-title {
+            display: flex;
+            flex-direction: column;
+            margin-top: 2%;
+            border-bottom: 1px solid #e1e4e8;
+            span {
+                color: #767676!important;
+            }
+            textarea {
+                margin-top: 2%;
+                margin-bottom: 2%;
+                height: 100px;
+            }
+            .title {
+                margin-top: 2%;
+                margin-bottom: 2%;
+                height: 40px;
+            }
+        }
         .actions {
+            margin-top: 2%;
             text-align: right;
         }
     }

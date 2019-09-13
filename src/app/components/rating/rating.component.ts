@@ -9,10 +9,11 @@ export class RatingComponent implements OnInit {
 
   @Input() currentRate:string
   @Input() styleClass:string
+  @Input() readonly:Boolean
+  
   constructor() {
    }
 
   ngOnInit() {
   }
-
 }

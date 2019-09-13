@@ -10,7 +10,7 @@
     <span>Anonymous</span>
   </div>
   <div class="customer-rating">
-    <app-rating styleClass='size-sm' [currentRate]="review.rating"></app-rating>
+    <app-rating styleClass='size-sm' [readonly]=true [currentRate]="review.rating"></app-rating>
     <span class="review-title">{{review.title}}</span>
   </div>
   <div class="review-date">
