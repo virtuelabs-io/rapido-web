@@ -6,6 +6,8 @@ import { ProductsService } from '../../services/products/products.service';
 import { Common } from '../../../../src/app/utils/common';
 import { RouteService } from '../../shared-services/route/route.service';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
+import { MatSnackBar } from '@angular/material';
+import { Constants } from '../../utils/constants';
 
 @Component({
   selector: 'app-edit-review',
@@ -33,7 +35,8 @@ export class EditReviewComponent implements OnInit {
     private RouteService : RouteService,
     private _loginStateService: LoginStateService,
     private router: Router,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private _snackBar: MatSnackBar
   ) { 
     this._ratingsService = ratingsService
     this._productsService = productsService
@@ -46,7 +49,6 @@ export class EditReviewComponent implements OnInit {
   }
 
   async userLogInCheck() {
-    this._loginStateService.loaderEnable()
     await this.loginSessinExists().
 		then( _ => this.getReviewDetails()).
 		catch(err => this.handleError(err))
@@ -59,10 +61,6 @@ export class EditReviewComponent implements OnInit {
   async handleError(err) {
     this.RouteService.changeRoute('review/create/product/'+this._productId)
     this.router.navigateByUrl('/login')
-  }
-
-  onVoted(rateValue) {
-    this.rate = rateValue
   }
 
   async getReviewDetails() {
@@ -85,10 +83,6 @@ export class EditReviewComponent implements OnInit {
       await this._productsService.get(query).
       subscribe(data => {
         if (data) {
-          if (data.error || data.hits.found === 0) {
-          //  this.itemDetails = null
-            throw Error('error')
-          }
           this.imageDetails  = Common.getImageURI(data.hits.hit[0].fields.images, null)
           this.image = this.imageDetails[0]
           this.title = data.hits.hit[0].fields.name
@@ -109,14 +103,11 @@ export class EditReviewComponent implements OnInit {
     this.rating.rating = this.rate
     this.rating.summary = this.review_summary
     this._ratingsService.updateRating(this.rating)
-    .subscribe(data => {
-      console.log(data)
+    .subscribe(_ => {
+      this._snackBar.open(Constants.REVIEW_UPDATED_SUCCESSFULLY, "", {
+        duration: 5000
+      });
       this.ngZone.run(() =>this.router.navigate(['profile/my-reviews'] )).then()
-      if(data){
-        console.log('Sucessfully updated a rating')
-      }
-     // this.rating_result = "Sucessfully updated a rating";
     })
   }
-
 }

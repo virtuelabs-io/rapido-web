@@ -237,6 +237,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   handleCreateReview(id) {
+	this.RouteService.changeRoute('products/details/'+id)
 	this.ngZone.run(() =>this.router.navigate(['review/create/product', id] )).then()
   }
 }

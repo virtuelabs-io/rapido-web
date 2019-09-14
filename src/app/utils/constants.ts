@@ -141,6 +141,7 @@ export class Constants {
 
   public static REVIEW_ADDED_SUCCESSFULLY = "Review added successfully"
   public static REVIEW_DELETED_SUCCESSFULLY = "Review deleted successfully"
+  public static REVIEW_UPDATED_SUCCESSFULLY = "Review updated successfully"
   public static REVIEW_DEACTIVATED_SUCCESSFULLY = "Review deactivated"
   public static REVIEW_HELPFUL_INCREMENT = "You found the review helpful"
 }
