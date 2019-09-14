@@ -40,7 +40,7 @@ export class CustomerReviewsComponent implements OnInit {
   }
 
   async handleError(err) {
-    this.RouteService.changeRoute('cart')
+    this.RouteService.changeRoute('profile/my-reviews')
     this.router.navigateByUrl('/login')
   }
 

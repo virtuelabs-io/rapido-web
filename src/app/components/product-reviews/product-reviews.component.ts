@@ -3,6 +3,8 @@ import { RatingsService } from '../../services/ratings/ratings.service';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
 import { RouteService } from '../../shared-services/route/route.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Constants } from '../../../../src/app/utils/constants';
 
 @Component({
   selector: 'app-product-reviews',
@@ -34,7 +36,8 @@ export class ProductReviewsComponent implements OnInit {
     private _loginStateService: LoginStateService,
     private RouteService : RouteService,
     private router: Router,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private _snackBar: MatSnackBar
   ) { 
     this._ratingsService = ratingsService
   }
@@ -57,32 +60,43 @@ export class ProductReviewsComponent implements OnInit {
   }
 
   async helpfulRatingIncrement(id) {
+    this._loginStateService.loaderEnable()
     if(this.isLoggedIn) {
       await this._ratingsService.helpfulRatingIncrement(id)
       .subscribe(data => {
+        this._snackBar.open(Constants.REVIEW_HELPFUL_INCREMENT,  undefined , {
+          duration: 4000,
+         })
         this.resHelpfulCount = data
         this.filteredReview.map((v, i)=>{
           if(v.id == id){
           this.filteredReview[i].helpful += 1
           }
         })
+        this._loginStateService.loaderDisable()
       })
     }
     else {
+      this._loginStateService.loaderDisable()
       await this.handleError('e')
       await Promise.reject("Login Session doesn't exist!")
-
     }
   }
 
   async deactivateRating(id) {
+    this._loginStateService.loaderEnable()
     if(this.isLoggedIn) {
       await this._ratingsService.deactivateRating(id)
       .subscribe(data => {
+        this._loginStateService.loaderDisable()
+        this._snackBar.open(Constants.REVIEW_DEACTIVATED_SUCCESSFULLY,  undefined , {
+          duration: 4000,
+         })
         this.resAbuse = data
       })
     }
     else {
+      this._loginStateService.loaderDisable()
       await this.handleError('e')
       await Promise.reject("Login Session doesn't exist!")
     }
@@ -92,12 +106,21 @@ export class ProductReviewsComponent implements OnInit {
     this.ngZone.run(() =>this.router.navigate(['review/edit/review', id] )).then()
   }
 
-  deleteReview(id) {
+  async deleteReview(id) {
     this._loginStateService.loaderEnable()
-    this._ratingsService.deleteCustomerRating(id)
-    .subscribe(data => {
-      console.log(data)
-      this.fetchCustomerReviews.emit()
-    }) 
+    if(this.isLoggedIn) {
+      await this._ratingsService.deleteCustomerRating(id)
+      .subscribe(_ => {
+        this._snackBar.open(Constants.REVIEW_DELETED_SUCCESSFULLY,  undefined , {
+          duration: 4000,
+        })
+        this.fetchCustomerReviews.emit()
+      })
+    }
+    else {
+      this._loginStateService.loaderDisable()
+      await this.handleError('e')
+      await Promise.reject("Login Session doesn't exist!")
+    }
   }
 }

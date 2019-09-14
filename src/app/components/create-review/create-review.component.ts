@@ -6,6 +6,8 @@ import { ProductsService } from '../../services/products/products.service';
 import { Common } from '../../../../src/app/utils/common';
 import { RouteService } from '../../shared-services/route/route.service';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Constants } from '../../../../src/app/utils/constants';
 
 @Component({
   selector: 'app-create-review',
@@ -22,6 +24,7 @@ export class CreateReviewComponent implements OnInit {
   title: string
   review_summary: string = ""
   review_title: string = ""
+  _previousRoute: any
   rating: Rating = new Rating()
   private _ratingsService: RatingsService
   private _productsService: ProductsService
@@ -32,7 +35,8 @@ export class CreateReviewComponent implements OnInit {
     private RouteService : RouteService,
     private _loginStateService: LoginStateService,
     private router: Router,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private _snackBar: MatSnackBar
   ) { 
     this._ratingsService = ratingsService
     this._productsService = productsService
@@ -40,6 +44,7 @@ export class CreateReviewComponent implements OnInit {
 
   ngOnInit() {
     this._loginStateService.loaderEnable()
+    this._previousRoute = this.RouteService.getRoute()
     this._productId = parseInt(this.actRoute.snapshot.paramMap.get('id'))
     this.userLogInCheck()
   }
@@ -58,10 +63,10 @@ export class CreateReviewComponent implements OnInit {
     this.RouteService.changeRoute('review/create/product/'+this._productId)
     this.router.navigateByUrl('/login')
   }
-
-  onVoted(rateValue) {
+// let this be commented for now..we will refactor it later...
+  /*onVoted(rateValue) {
     this.rate = rateValue
-  }
+  }*/
 
   async getProductDetails() {
     let query = {
@@ -73,10 +78,6 @@ export class CreateReviewComponent implements OnInit {
       await this._productsService.get(query).
       subscribe(data => {
         if (data) {
-          if (data.error || data.hits.found === 0) {
-          //  this.itemDetails = null
-            throw Error('error')
-          }
           this.imageDetails  = Common.getImageURI(data.hits.hit[0].fields.images, null)
           this.image = this.imageDetails[0]
           this.title = data.hits.hit[0].fields.name
@@ -91,17 +92,22 @@ export class CreateReviewComponent implements OnInit {
   }
 
   submitReview() {
+    this._loginStateService.loaderEnable()
     this.rating.product_id = this._productId
     this.rating.title = this.review_title
     this.rating.rating = this.rate
     this.rating.summary = this.review_summary
     this._ratingsService.createRating(this.rating)
     .subscribe(data => {
-      console.log(data)
-      if(data){
-        console.log('Sucessfully created a rating')
+      this._loginStateService.loaderDisable()
+      this._snackBar.open(Constants.REVIEW_ADDED_SUCCESSFULLY,  undefined , {
+        duration: 4000,
+       })
+      if(this._previousRoute.value){
+        this.ngZone.run(() =>this.router.navigate(['/'+this._previousRoute.value])).then()
+      }else{
+        this.ngZone.run(() =>this.router.navigate([''])).then()
       }
-     // this.rating_result = "Sucessfully created a rating";
     })
   }
 }
