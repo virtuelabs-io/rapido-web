@@ -62,6 +62,7 @@ import { CustomerReviewsComponent } from './components/customer-reviews/customer
 import { RatingBarComponent } from './components/rating-bar/rating-bar.component';
 import { ProductReviewsComponent } from './components/product-reviews/product-reviews.component';
 import { CreateReviewComponent } from './components/create-review/create-review.component';
+import { EditReviewComponent } from './components/edit-review/edit-review.component';
 
 @NgModule({
   declarations: [
@@ -113,7 +114,8 @@ import { CreateReviewComponent } from './components/create-review/create-review.
     ConfirmationDialogComponent,
     RatingBarComponent,
     ProductReviewsComponent,
-    CreateReviewComponent
+    CreateReviewComponent,
+    EditReviewComponent
   ],
   imports: [
     MatProgressBarModule,

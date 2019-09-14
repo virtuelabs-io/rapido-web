@@ -589,7 +589,7 @@ export class AuthmockComponent implements OnInit {
   }
 
   createRating(){
-    this.rating.product_id = 100
+    this.rating.product_id = 90
     this.rating.title = "Value for money to the best of it"
     this.rating.rating = 5
     this.rating.summary = "A very good product. One of the best in the market"

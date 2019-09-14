@@ -8,13 +8,14 @@ import { RouteService } from '../../shared-services/route/route.service';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
 
 @Component({
-  selector: 'app-create-review',
-  templateUrl: './create-review.component.html',
-  styleUrls: ['./create-review.component.scss']
+  selector: 'app-edit-review',
+  templateUrl: './edit-review.component.html',
+  styleUrls: ['./edit-review.component.scss']
 })
-export class CreateReviewComponent implements OnInit {
+export class EditReviewComponent implements OnInit {
 
   _productId: number = 0
+  _reviewId: any
   imageDetails: any
   isLoggedIn: Boolean
   rate: number
@@ -40,13 +41,13 @@ export class CreateReviewComponent implements OnInit {
 
   ngOnInit() {
     this._loginStateService.loaderEnable()
-    this._productId = parseInt(this.actRoute.snapshot.paramMap.get('id'))
+    this._reviewId = parseInt(this.actRoute.snapshot.paramMap.get('id'))
     this.userLogInCheck()
   }
 
   async userLogInCheck() {
     await this.loginSessinExists().
-		then( _ => this.getProductDetails()).
+		then( _ => this.getReviewDetails()).
 		catch(err => this.handleError(err))
   }
 
@@ -63,9 +64,19 @@ export class CreateReviewComponent implements OnInit {
     this.rate = rateValue
   }
 
-  async getProductDetails() {
+  async getReviewDetails() {
+    this._ratingsService.getCustomerRating(this._reviewId)
+    .subscribe(data => {
+      this.rate = data.rating
+      this.review_summary = data.summary
+      this.review_title = data.title
+      this.getProductDetails(data.product_id)
+    })
+  }
+
+  async getProductDetails(product_id) {
     let query = {
-      q: `(term field=_id ${this._productId})`,
+      q: `(term field=_id ${product_id})`,
       size: 10,
       qdotparser: 'structured'
     }
@@ -104,4 +115,5 @@ export class CreateReviewComponent implements OnInit {
      // this.rating_result = "Sucessfully created a rating";
     })
   }
+
 }

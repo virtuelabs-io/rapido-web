@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, NgZone } from '@angular/core';
 import { RatingsService } from '../../services/ratings/ratings.service';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
 import { RouteService } from '../../shared-services/route/route.service';
@@ -31,7 +31,8 @@ export class ProductReviewsComponent implements OnInit {
     ratingsService: RatingsService,
     private _loginStateService: LoginStateService,
     private RouteService : RouteService,
-    private router: Router
+    private router: Router,
+    private ngZone: NgZone
   ) { 
     this._ratingsService = ratingsService
   }
@@ -83,5 +84,9 @@ export class ProductReviewsComponent implements OnInit {
       await this.handleError('e')
       await Promise.reject("Login Session doesn't exist!")
     }
+  }
+
+  editReview(id) {
+    this.ngZone.run(() =>this.router.navigate(['review/edit/review', id] )).then()
   }
 }
