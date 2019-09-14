@@ -16,17 +16,24 @@
       <div>
         <span>Overall Rating</span>
       </div>
-      <app-rating styleClass='size-bg' [readonly]=false [currentRate]=rate></app-rating>
+      <!--<app-rating styleClass='size-bg' [currentRate]=rate [readonly]=false (fetchRate)="onVoted($event)"></app-rating>
+      
+
+-->
+
+      <ngb-rating class="rating" max="5"  [(rate)]="rate" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="false"></ngb-rating>
+
+      <pre>Rate: <b>{{rate}}</b></pre>
     </div>
     <div class="review-desc">
       <h5>Add a written review</h5>
       <span>You could mention "value for money", "for travelling" and "material quality".</span>
-      <textarea matInput placeholder="What did you like or dislike? What did you use this product for?"></textarea>
+      <textarea matInput [(ngModel)]='review_summary' placeholder="What did you like or dislike? What did you use this product for?"></textarea>
     </div>
     <div class="review-title">
         <h5>Add a title</h5>
-        <span>Sum up your review in one line</span>
-        <textarea class="title" matInput placeholder="What's most important to know"></textarea>
+        <span>Sum up your review in one line (max upto 25 characters)</span>
+        <textarea class="title" matInput [(ngModel)]='review_title' placeholder="What's most important to know"></textarea>
     </div>
     <div class="actions">
       <button mat-flat-button color="primary" (click)="submitReview()">

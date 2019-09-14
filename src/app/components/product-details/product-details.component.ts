@@ -238,13 +238,6 @@ export class ProductDetailsComponent implements OnInit {
 
   handleCreateReview(id) {
 	console.log(this.imagePreviewURI, this.itemDetails.name)
-	this.ngZone.run(() =>this.router.navigate(['review/create/product'], 
-	{queryParams : 
-		{
-			id:  id ,
-			image : this.imagePreviewURI,
-			title:  this.itemDetails.name
-		}
-	})).then()
+	this.ngZone.run(() =>this.router.navigate(['review/create/product', id] )).then()
   }
 }

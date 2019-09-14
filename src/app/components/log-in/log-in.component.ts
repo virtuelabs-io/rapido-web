@@ -43,6 +43,7 @@ export class LogInComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loginStateService.loaderDisable()
     this._previousRoute = this.RouteService.getRoute()
     this.userLogInCheck()
   }
