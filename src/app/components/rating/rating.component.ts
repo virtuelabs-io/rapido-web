@@ -10,7 +10,7 @@ export class RatingComponent implements OnInit {
   @Input() currentRate:string
   @Input() styleClass:string
   @Input() readonly:Boolean
-  @Output() fetchRate = new EventEmitter<string>();
+  @Output() fetchRate = new EventEmitter<string>()
 
   rate2: number
   constructor() {

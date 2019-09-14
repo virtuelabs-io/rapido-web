@@ -56,7 +56,9 @@ export class CustomerReviewsComponent implements OnInit {
       await Promise.reject("Login Session doesn't exist!")
       this._loginStateService.loaderDisable()
     }
-    
   }
 
+  fetchData() {
+    this.fetchCustomerReviews()
+  }
 }

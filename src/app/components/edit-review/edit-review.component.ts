@@ -46,6 +46,7 @@ export class EditReviewComponent implements OnInit {
   }
 
   async userLogInCheck() {
+    this._loginStateService.loaderEnable()
     await this.loginSessinExists().
 		then( _ => this.getReviewDetails()).
 		catch(err => this.handleError(err))
@@ -101,18 +102,20 @@ export class EditReviewComponent implements OnInit {
     }
   }
 
-  submitReview() {
-    this.rating.product_id = this._productId
+  updateRating() {
+    this._loginStateService.loaderEnable()
+    this.rating.id = this._reviewId
     this.rating.title = this.review_title
     this.rating.rating = this.rate
     this.rating.summary = this.review_summary
-    this._ratingsService.createRating(this.rating)
+    this._ratingsService.updateRating(this.rating)
     .subscribe(data => {
       console.log(data)
+      this.ngZone.run(() =>this.router.navigate(['profile/my-reviews'] )).then()
       if(data){
-        console.log('Sucessfully created a rating')
+        console.log('Sucessfully updated a rating')
       }
-     // this.rating_result = "Sucessfully created a rating";
+     // this.rating_result = "Sucessfully updated a rating";
     })
   }
 

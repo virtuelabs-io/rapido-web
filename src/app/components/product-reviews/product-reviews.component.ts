@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, NgZone } from '@angular/core';
+import { Component, OnInit, Input, Output, NgZone, EventEmitter } from '@angular/core';
 import { RatingsService } from '../../services/ratings/ratings.service';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
 import { RouteService } from '../../shared-services/route/route.service';
@@ -22,6 +22,8 @@ export class ProductReviewsComponent implements OnInit {
   @Input() action: Boolean
   @Input() feedback: Boolean
   @Input() writer: Boolean
+  @Output() fetchCustomerReviews = new EventEmitter<string>()
+
   isLoggedIn: Boolean
   resAbuse: any
   resHelpfulCount: any
@@ -88,5 +90,14 @@ export class ProductReviewsComponent implements OnInit {
 
   editReview(id) {
     this.ngZone.run(() =>this.router.navigate(['review/edit/review', id] )).then()
+  }
+
+  deleteReview(id) {
+    this._loginStateService.loaderEnable()
+    this._ratingsService.deleteCustomerRating(id)
+    .subscribe(data => {
+      console.log(data)
+      this.fetchCustomerReviews.emit()
+    }) 
   }
 }
