@@ -1,7 +1,6 @@
 export class GuestAddressDetails {
 
   constructor(
-    private _session_id: string,
     private _full_name: string,
     private _address_type_id: number,
     private _addr_1: string,
@@ -13,14 +12,6 @@ export class GuestAddressDetails {
     private _phone_no: string,
     private _addr_2?: string,
   ) {}
-
-  set session_id(session_id: string){
-    this._session_id = session_id
-  }
-
-  get session_id(){
-    return this._session_id
-  }
 
   set full_name(full_name: string){
     this._full_name = full_name
@@ -104,7 +95,6 @@ export class GuestAddressDetails {
 
   toJSON(){
     return {
-      "session_id": this._session_id,
       "full_name": this._full_name,
       "address_type_id": this._address_type_id,
       "addr_1": this._addr_1,
