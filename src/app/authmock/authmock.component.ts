@@ -24,6 +24,12 @@ import { Order } from '../services/orders/order';
 import { AddressDetailsMockService } from '../services/customer/address-details.mock.service';
 import { Rating } from '../services/ratings/rating';
 import { RatingsService } from '../services/ratings/ratings.service';
+import { GuestAddressDetails } from '../services/guests/guest-address-details';
+import { GuestAddressService } from '../services/guests/guest-address.service';
+import { GuestCartService } from '../services/guests/guest-cart.service';
+import { GuestOrdersService } from '../services/guests/guest-orders.service';
+import { GuestOrder } from '../services/guests/guest-order';
+import { GuestCartItem } from '../services/guests/guest-cart-item';
 
 @Component({
   selector: 'app-authmock',
@@ -54,6 +60,8 @@ export class AuthmockComponent implements OnInit {
 
   rating_result: string;
 
+  guest_result: string;
+
   companyDetails: CompanyDetails = new CompanyDetails(
     "Sample pvt ltd",
     "addr_1",
@@ -74,6 +82,25 @@ export class AuthmockComponent implements OnInit {
     "postcode",
     "addr_2"
   )
+
+  guestAddressDetails: GuestAddressDetails = new GuestAddressDetails(
+    "Full name",
+    1, // check Constants.ADDRESS_TYPES for different types of addresses. Only those should be used
+    "addr_1",
+    "city",
+    "county",
+    "country",
+    "postcode",
+    "simple@example.com",
+    "+445346432431",
+    "addr_2"
+  )
+
+  guestOrder: GuestOrder = new GuestOrder()
+
+  guestCartProductId: number
+
+  guestCartItem: GuestCartItem = new GuestCartItem()
 
   _registration: Registration = new Registration(
     "+447783307487",
@@ -130,6 +157,9 @@ export class AuthmockComponent implements OnInit {
   private _orderService: OrdersService
   private _addressDetailsMockService: AddressDetailsMockService
   private _ratingsService: RatingsService
+  private _guestAddressService: GuestAddressService
+  private _guestCartService: GuestCartService
+  private _guestOrderService: GuestOrdersService
 
   constructor(
     signUpService: SignUpService,
@@ -148,7 +178,10 @@ export class AuthmockComponent implements OnInit {
     cartService: CartService,
     orderService: OrdersService,
     addressDetailsMockService: AddressDetailsMockService,
-    ratingsService: RatingsService
+    ratingsService: RatingsService,
+    guestAddressService: GuestAddressService,
+    guestCartService: GuestCartService,
+    guestOrderService: GuestOrdersService,
     ) {
     this._signUpService = signUpService
     this._profileService = profileService
@@ -167,6 +200,9 @@ export class AuthmockComponent implements OnInit {
     this._orderService = orderService
     this._addressDetailsMockService = addressDetailsMockService
     this._ratingsService = ratingsService
+    this._guestAddressService = guestAddressService
+    this._guestCartService = guestCartService
+    this._guestOrderService = guestOrderService
   }
 
   ngOnInit() {
@@ -692,6 +728,106 @@ export class AuthmockComponent implements OnInit {
         console.log('Sucessfully getProductRatingsSummary')
       }
       this.rating_result = "Sucessfully getProductRatingsSummary";
+    })
+  }
+
+  makeGuestCartItem(): GuestCartItem {
+    this.guestCartProductId = Math.floor(Math.random() * 10)
+    this.guestCartProductId = this.guestCartProductId < 1 ? this.guestCartProductId+1 : this.guestCartProductId
+    let guestCartItem: GuestCartItem = new GuestCartItem()
+    guestCartItem.product_id = this.guestCartProductId
+    guestCartItem.quantity = Math.floor(Math.random() * 10) + 1
+    this.guestCartItem.product_id = this.guestCartProductId
+    console.log("Created guest product with id:", guestCartItem.product_id)
+    return guestCartItem
+  }
+
+  updateGuestCartItem(product_id: number): GuestCartItem {
+    let guestCartItem: GuestCartItem = new GuestCartItem()
+    guestCartItem.product_id = product_id
+    guestCartItem.quantity = Math.floor(Math.random() * 10) + 1
+    console.log("Updated guest product with id:", guestCartItem.product_id)
+    this.guestCartItem.product_id = guestCartItem.product_id
+    return guestCartItem
+  }
+
+  getGuestCartItems(){
+    this._guestCartService.getGuestCartItems()
+    .then((data: any) => {
+      console.log(data)
+      this.guest_result = "Sucessfully fetched guest cart items and logged!";
+    })
+  }
+
+  getCountOfGuestCartItems(){
+    this._guestCartService.getCountOfGuestCartItems()
+    .then((data: any) => {
+      console.log(data)
+      this.guest_result = "Sucessfully fetched getCountOfGuestCartItems and logged!";
+    })
+  }
+
+  postGuestCartItem(){
+    this._guestCartService.postGuestCartItem(this.makeGuestCartItem())
+    .subscribe(data => {
+      console.log(data)
+      this.guest_result = "Sucessfully posted guest cart item and logged!";
+    })
+  }
+
+  postGuestCartItemList(){
+    this._guestCartService.getGuestCartItems()
+    .then((data: any) => {
+      console.log("Data before change", data)
+      console.log(data)
+      let items = [];
+      let ele: any;
+      for (ele in data) {
+        console.log(ele, data[ele])
+        items.push(this.updateGuestCartItem(data[ele].guestCartItem.product_id))
+      }
+      console.log("Data after change", items)
+      this._guestCartService.postGuestCartItemList(items)
+      .subscribe(data2 => {
+        console.log("Cart confirmed data", data2)
+        this.guest_result = "Sucessfully posted guest cart items and logged!";
+      })
+    })
+  }
+
+  deleteGuestCartItem(){
+    this._guestCartService.deleteGuestCartItem(this.guestCartItem)
+    .subscribe(data => {
+      console.log(data)
+      this.guest_result = "Sucessfully deleted guest item and logged!";
+    })
+  }
+
+  deleteGuestCartItems(){
+    this._guestCartService.deleteGuestCartItems()
+    .subscribe(data => {
+      console.log(data)
+      this.guest_result = "Sucessfully deleted guest cart items and logged!";
+    })
+  }
+
+  postGuestAddressDetails(){
+    this._guestAddressService.postGuestAddressDetails(this.guestAddressDetails)
+    .subscribe(data => {
+      console.log(data)
+      if(data['insertId']){
+        this.address_details_id = data['insertId']
+        console.log('Sucessfully updated the address test id to: ' + String(this.address_details_id))
+      }
+      this.guest_result = "Sucessfully posted guest address details and logged!";
+    })
+  }
+
+  createGuestOrder(){
+    this._guestOrderService.createGuestOrder(this.guestOrder)
+    .then((data: any) => {
+      console.log(data)
+      this.guest_result = "Sucessfully created guest order and logged!";
     })
   }
 }

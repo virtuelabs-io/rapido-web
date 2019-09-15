@@ -1,28 +1,30 @@
 import { Injectable } from '@angular/core';
 import { RapidoHttpService } from '../commons/rapido-http.service';
+import { GuestCharge } from './guest-charge';
 import { HttpClient } from '@angular/common/http';
 import { ProfileService } from '../authentication/profile/profile.service';
 import { Constants } from '../../utils/constants';
 import { Query } from '../products/query.interface';
 import { ProductsService } from '../products/products.service';
-import { GuestOrder } from './guest-order';
 
 @Injectable({
   providedIn: 'root'
 })
-export class GuestOrdersService extends RapidoHttpService<GuestOrder> {
+export class GuestChargeService extends RapidoHttpService<GuestCharge> {
 
-  public _productService: ProductsService
+  private _productService: ProductsService
 
-  constructor(protected _http?: HttpClient, protected _profileService?: ProfileService, productService?: ProductsService) {
+  constructor(protected _http: HttpClient, protected _profileService: ProfileService, productService: ProductsService) {
     super(_http, _profileService)
     this._productService = productService
   }
 
-  createGuestOrder(guestOrder: GuestOrder) {
+  chargeCustomer(guestCharge: GuestCharge){
+    guestCharge.session_id = localStorage.getItem(Constants.RAPIDO_SESSION_ID)
+    guestCharge.description = [guestCharge.description, "SID:", guestCharge.session_id].join(" ")
     return new Promise(resolve=>{
       let orderItemsObject;
-      this.post([Constants.GUESTS_APIS.api, localStorage.getItem(Constants.RAPIDO_SESSION_ID), 'orders'].join("/"), guestOrder)
+      this.post([Constants.PAYMENT_APIS.api, "charge-guest"].join("/"), guestCharge, this.addAuthHeader(this.initializeHeaders()))
         .subscribe(data => {
           if (data[0].length > 0){
             orderItemsObject = this.formatOrderItems(data[0])
@@ -34,7 +36,7 @@ export class GuestOrdersService extends RapidoHttpService<GuestOrder> {
                 ))
               })
           } else {
-            resolve ({ error: "Error creating an order! Try again!" })
+            resolve ({ error: "Error confirming your order! Try again!" })
           }
         })
     });

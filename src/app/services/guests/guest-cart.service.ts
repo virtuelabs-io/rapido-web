@@ -41,6 +41,15 @@ export class GuestCartService extends RapidoHttpService<GuestCartItem> {
     });
   }
 
+  getCountOfGuestCartItems(){
+    return new Promise(resolve=>{
+      this.getList([Constants.GUESTS_APIS.api, localStorage.getItem(Constants.RAPIDO_SESSION_ID), 'cart', 'items'].join("/"))
+        .subscribe(data => {
+          resolve(data.length)
+        })
+    });
+  }
+
   postGuestCartItem(guestCartItem: GuestCartItem){
     return this.post([Constants.GUESTS_APIS.api, localStorage.getItem(Constants.RAPIDO_SESSION_ID), 'cart', 'item'].join("/"), guestCartItem)
   }
