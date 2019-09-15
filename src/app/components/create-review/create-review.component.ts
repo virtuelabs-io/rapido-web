@@ -9,6 +9,7 @@ import { LoginStateService } from '../../shared-services/login-state/login-state
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Constants } from '../../../../src/app/utils/constants';
 import { OrdersService } from '../../services/orders/orders.service';
+import {FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-create-review',
@@ -23,14 +24,13 @@ export class CreateReviewComponent implements OnInit {
   rate: number
   image: any
   title: string
-  review_summary: string = ""
-  review_title: string = ""
   _previousRoute: any
   disableSubmitReview: Boolean = false
   rating: Rating = new Rating()
   private _ratingsService: RatingsService
   private _productsService: ProductsService
   private _orderService: OrdersService
+  registerFormGroup: FormGroup 
 
   constructor(
     private actRoute: ActivatedRoute,
@@ -53,8 +53,21 @@ export class CreateReviewComponent implements OnInit {
     this._previousRoute = this.RouteService.getRoute()
     this._productId = parseInt(this.actRoute.snapshot.paramMap.get('id'))
     this.userLogInCheck()
+    this.registerFormGroup = new FormGroup({
+			
+      summary: new FormControl('', [Validators.required]),
+      title: new FormControl('', [Validators.required])
+			
+	
+			
+		})
   }
 
+  // Form control show/hide error messages
+	public hasError = (controlName: string, errorName: string) => {
+		return this.registerFormGroup.controls[controlName].hasError(errorName)
+  }
+  
   async userLogInCheck() {
     await this.loginSessinExists().
 		then( _ => this.getProductDetails()).
@@ -111,12 +124,13 @@ export class CreateReviewComponent implements OnInit {
 		})
 	}
 
-  submitReview() {
+  submitReview(form) {
+    console.log(form)
     this._loginStateService.loaderEnable()
     this.rating.product_id = this._productId
-    this.rating.title = this.review_title
+    this.rating.title = form.title
     this.rating.rating = this.rate
-    this.rating.summary = this.review_summary
+    this.rating.summary = form.summary
     this._ratingsService.createRating(this.rating)
     .subscribe(data => {
       this._loginStateService.loaderDisable()
@@ -128,6 +142,6 @@ export class CreateReviewComponent implements OnInit {
       }else{
         this.ngZone.run(() =>this.router.navigate([''])).then()
       }
-    })
+    }) 
   }
 }

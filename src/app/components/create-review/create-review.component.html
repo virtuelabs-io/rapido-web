@@ -1,5 +1,10 @@
 <div class="main-div">
   <div class="review-div">
+      <form [formGroup]="registerFormGroup" 
+      class="form-container" 
+      autocomplete="off"
+      novalidate 
+      (ngSubmit)="submitReview(registerFormGroup.value)" >
     <div class="product-details">
       <div class="title">
         <svg>
@@ -19,23 +24,33 @@
         <span>Overall Rating</span>
       </div>
       <!--<app-rating styleClass='size-bg' [currentRate]=rate [readonly]=false (fetchRate)="onVoted($event)"></app-rating>-->
+      
       <ngb-rating class="rating" max="5"  [(rate)]="rate" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="false"></ngb-rating>
     </div>
     <div class="review-desc">
       <h5>Add a written review</h5>
       <span>You could mention "value for money", "for travelling" and "material quality".</span>
-      <textarea matInput [(ngModel)]='review_summary' placeholder="What did you like or dislike? What did you use this product for?"></textarea>
+      <mat-form-field>
+          <textarea matInput formControlName="summary" placeholder="What did you like or dislike? What did you use this product for?"></textarea>
+          <mat-error *ngIf="hasError('summary', 'required')">Mobile number is required</mat-error>
+      </mat-form-field>
+      
     </div>
     <div class="review-title">
         <h5>Add a title</h5>
         <span>Sum up your review in one line (max upto 25 characters)</span>
-        <textarea class="title" matInput [(ngModel)]='review_title' placeholder="What's most important to know"></textarea>
+        <mat-form-field>
+            <textarea class="title" matInput formControlName="title" placeholder="What's most important to know"></textarea>
+            <mat-error *ngIf="hasError('title', 'required')">Mobile number is required</mat-error>
+        </mat-form-field>
+        
     </div>
     <div class="actions">
-      <button mat-flat-button color="primary" (click)="submitReview()" [disabled]="disableSubmitReview">
+      <button mat-flat-button color="primary" type="submit" [disabled]="disableSubmitReview || !registerFormGroup.valid || !this.rate">
         <span role="status" aria-hidden="true"></span>
         Submit Review
       </button>
-    </div>    
+    </div>  
+    </form>  
   </div>
 </div>
