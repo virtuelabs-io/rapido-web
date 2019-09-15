@@ -125,7 +125,6 @@ export class ProductDetailsComponent implements OnInit {
 	}
 
 	checkProductPurchase() {
-		console.log("checkProductPurchase order for: 9")
 		this._orderService.checkProductPurchase(this.itemId)
 		.subscribe(data => {
 			if(data[0].length == 0)

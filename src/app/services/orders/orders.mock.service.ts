@@ -34,6 +34,4 @@ export class OrdersMockService extends OrdersService{
     cancelOrder(order_id: number){
       return of(OrdersMockData.deleteOrder)
     }
-
-
 }

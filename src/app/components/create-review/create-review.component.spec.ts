@@ -1,25 +1,59 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateReviewComponent } from './create-review.component';
+import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Router, Routes } from '@angular/router';
+import { CustomerReviewsComponent } from '../customer-reviews/customer-reviews.component';
+import {  HttpClientTestingModule } from '@angular/common/http/testing';
+import { MatSnackBarModule } from '@angular/material';
+import { LogInComponent } from '../log-in/log-in.component';
+import { RatingsService} from 'src/app/services/ratings/ratings.service';
+import { RatingsMockService} from 'src/app/services/ratings/ratings.mock.service';
+import { RatingsMockData } from 'src/app/services/ratings/ratings.mock.data';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('CreateReviewComponent', () => {
+  let ratingMockService: RatingsService = new RatingsMockService()
   let component: CreateReviewComponent;
   let fixture: ComponentFixture<CreateReviewComponent>;
+  let router: Router;
+
+  const routes: Routes = [
+    { path: 'login', component: LogInComponent}
+  ]
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreateReviewComponent ]
+      imports: [ BrowserAnimationsModule, MatSnackBarModule, HttpClientTestingModule, RouterTestingModule.withRoutes(routes),FormsModule, ReactiveFormsModule ],
+      declarations: [ CreateReviewComponent, CustomerReviewsComponent, LogInComponent ],
+      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
+    router = TestBed.get(Router);
     fixture = TestBed.createComponent(CreateReviewComponent);
+    fixture.ngZone.run(() => {
+      router.initialNavigation();
+    });
     component = fixture.componentInstance;
+    component._ratingsService = ratingMockService
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should create review', () => {
+    component.isLoggedIn = true
+    component._productId = 12
+    component.rate = 3
+    component.registerFormGroup.controls['summary'].setValue("wow..awesome product")
+    component.registerFormGroup.controls['title'].setValue("beautiful")
+    component.submitReview(component.registerFormGroup.value)
+    expect(component.submitRes).toEqual(RatingsMockData.createRating);
   });
 });

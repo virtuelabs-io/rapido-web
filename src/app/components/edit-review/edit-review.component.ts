@@ -23,10 +23,11 @@ export class EditReviewComponent implements OnInit {
   rate: number
   image: any
   title: string
+  updateRes: any
   review_summary: string = ""
   review_title: string = ""
   rating: Rating = new Rating()
-  private _ratingsService: RatingsService
+  public _ratingsService: RatingsService
   private _productsService: ProductsService
   constructor(
     private actRoute: ActivatedRoute,
@@ -103,7 +104,8 @@ export class EditReviewComponent implements OnInit {
     this.rating.rating = this.rate
     this.rating.summary = this.review_summary
     this._ratingsService.updateRating(this.rating)
-    .subscribe(_ => {
+    .subscribe( data => {
+      this.updateRes = data
       this._snackBar.open(Constants.REVIEW_UPDATED_SUCCESSFULLY, "", {
         duration: 5000
       });

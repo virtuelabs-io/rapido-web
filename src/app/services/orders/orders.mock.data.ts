@@ -99,9 +99,4 @@ export class OrdersMockData {
         serverStatus: 2,
         warningCount: 0
     }
-
 }
-
-
-
-

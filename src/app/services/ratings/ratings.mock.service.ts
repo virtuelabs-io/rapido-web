@@ -34,5 +34,13 @@ export class RatingsMockService extends RatingsService{
     
     getAllCustomerRatings(){
         return of(RatingsMockData.ratingDetails)
-      }
+    }
+
+    createRating(){
+        return of(RatingsMockData.createRating)
+    }
+
+    updateRating(){
+        return of(RatingsMockData.updateRating)
+    }
 }

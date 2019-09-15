@@ -88,11 +88,11 @@ export class ProductReviewsComponent implements OnInit {
     if(this.isLoggedIn) {
       await this._ratingsService.deactivateRating(id)
       .subscribe(data => {
+        this.resAbuse = data
         this._loginStateService.loaderDisable()
         this._snackBar.open(Constants.REVIEW_DEACTIVATED_SUCCESSFULLY,  undefined , {
           duration: 4000,
          })
-        this.resAbuse = data
       })
     }
     else {
