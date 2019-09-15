@@ -2,6 +2,9 @@
   <div class="review-div">
     <div class="product-details">
       <div class="title">
+        <svg>
+          <use xlink:href="#add-review" />
+        </svg>
         <h3>Review your purchase</h3>
       </div>
       <div class="product-name">
@@ -11,14 +14,12 @@
           <img class="image" src="{{ image }}">
       </div>
     </div>
-    
     <div class="overall-rating">
       <div>
         <span>Overall Rating</span>
       </div>
       <!--<app-rating styleClass='size-bg' [currentRate]=rate [readonly]=false (fetchRate)="onVoted($event)"></app-rating>-->
       <ngb-rating class="rating" max="5"  [(rate)]="rate" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="false"></ngb-rating>
-      <pre>Rate: <b>{{rate}}</b></pre>
     </div>
     <div class="review-desc">
       <h5>Add a written review</h5>
@@ -31,7 +32,7 @@
         <textarea class="title" matInput [(ngModel)]='review_title' placeholder="What's most important to know"></textarea>
     </div>
     <div class="actions">
-      <button mat-flat-button color="primary" (click)="submitReview()">
+      <button mat-flat-button color="primary" (click)="submitReview()" [disabled]="disableSubmitReview">
         <span role="status" aria-hidden="true"></span>
         Submit Review
       </button>

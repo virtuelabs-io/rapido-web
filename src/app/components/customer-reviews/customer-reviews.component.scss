@@ -8,8 +8,16 @@
     margin-left: 30%;
     margin-right: 30%;
     .title {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
         margin-bottom: 2%;
         margin-top: 2%;
+        svg {
+            height: 30px;
+            width: 40px;
+            padding-right: 1%;
+        }
     }
     @media screen and (max-width: $mobile-device) {
         margin-top: 5%;

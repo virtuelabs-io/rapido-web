@@ -144,4 +144,5 @@ export class Constants {
   public static REVIEW_UPDATED_SUCCESSFULLY = "Review updated successfully"
   public static REVIEW_DEACTIVATED_SUCCESSFULLY = "Review deactivated"
   public static REVIEW_HELPFUL_INCREMENT = "You found the review helpful"
+  public static UNAUTHORIZED_REVIEW_CREATE = "You can only add a review only when you purchase the product and its delivered to you"
 }

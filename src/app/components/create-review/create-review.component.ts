@@ -8,6 +8,7 @@ import { RouteService } from '../../shared-services/route/route.service';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Constants } from '../../../../src/app/utils/constants';
+import { OrdersService } from '../../services/orders/orders.service';
 
 @Component({
   selector: 'app-create-review',
@@ -25,9 +26,12 @@ export class CreateReviewComponent implements OnInit {
   review_summary: string = ""
   review_title: string = ""
   _previousRoute: any
+  disableSubmitReview: Boolean = false
   rating: Rating = new Rating()
   private _ratingsService: RatingsService
   private _productsService: ProductsService
+  private _orderService: OrdersService
+
   constructor(
     private actRoute: ActivatedRoute,
     ratingsService: RatingsService,
@@ -36,10 +40,12 @@ export class CreateReviewComponent implements OnInit {
     private _loginStateService: LoginStateService,
     private router: Router,
     private ngZone: NgZone,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    orderService: OrdersService
   ) { 
     this._ratingsService = ratingsService
     this._productsService = productsService
+    this._orderService = orderService
   }
 
   ngOnInit() {
@@ -75,6 +81,7 @@ export class CreateReviewComponent implements OnInit {
       qdotparser: 'structured'
     }
     if(this.isLoggedIn) {
+      await this.checkProductPurchase()
       await this._productsService.get(query).
       subscribe(data => {
         if (data) {
@@ -90,6 +97,19 @@ export class CreateReviewComponent implements OnInit {
       this._loginStateService.loaderDisable()
     }
   }
+
+  async checkProductPurchase() {
+		console.log("checkProductPurchase order for: 9")
+		await this._orderService.checkProductPurchase(this._productId)
+		.subscribe(data => {
+			if(data[0].length == 0) {
+        this.disableSubmitReview = true
+        this._snackBar.open(Constants.UNAUTHORIZED_REVIEW_CREATE,  undefined , {
+          duration: 4000,
+         })
+      }	
+		})
+	}
 
   submitReview() {
     this._loginStateService.loaderEnable()

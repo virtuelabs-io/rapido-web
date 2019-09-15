@@ -178,7 +178,7 @@
       </div>
       <app-rating-bar [rate]=rateSummary [reviewCount]=reviewCount></app-rating-bar>
     </div>
-    <div class="give-rating">
+    <div class="give-rating" *ngIf="canReviewProduct">
       <div class="title">
         <span>Review this product</span>
       </div>

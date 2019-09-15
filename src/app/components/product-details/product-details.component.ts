@@ -12,6 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { RouteService } from '../../shared-services/route/route.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { RatingsService } from '../../services/ratings/ratings.service';
+import { OrdersService } from '../../services/orders/orders.service';
 
 @Component({
 	selector: 'app-product-details',
@@ -39,8 +40,10 @@ export class ProductDetailsComponent implements OnInit {
 	reviewCount: number = 0
 	length : number
 	pageSize = 1
-	pageSizeOptions: number[] = [2];
+	pageSizeOptions: number[] = [2]
+	canReviewProduct: Boolean = true
 	public _ratingsService: RatingsService
+	private _orderService: OrdersService
 
 	constructor(productsService: ProductsService,
 		private _searchItemService: SearchItemService,
@@ -52,10 +55,12 @@ export class ProductDetailsComponent implements OnInit {
 		private RouteService : RouteService,
 		ratingsService: RatingsService,
 		private ngZone: NgZone,
+		orderService: OrdersService,
 		private route: ActivatedRoute) {
 		this._productsService = productsService
 		this._cartService = cartService
 		this._ratingsService = ratingsService
+		this._orderService = orderService
 	}
 
 	ngOnInit() {
@@ -87,7 +92,7 @@ export class ProductDetailsComponent implements OnInit {
 		this.route.params.subscribe(params => {
 			this.itemId = params.id;
 		});
-
+		this.checkProductPurchase()
 		// get product details
 		if (this.itemId) {
 			this._searchItemService.responsePoductListState.subscribe(respData => {
@@ -117,6 +122,15 @@ export class ProductDetailsComponent implements OnInit {
 
 	keyPress(event: any){
 		Common.allowPositiveNum(event)
+	}
+
+	checkProductPurchase() {
+		console.log("checkProductPurchase order for: 9")
+		this._orderService.checkProductPurchase(this.itemId)
+		.subscribe(data => {
+			if(data[0].length == 0)
+		  		this.canReviewProduct = false
+		})
 	}
 
 	async fetchProductRatings(id) {
