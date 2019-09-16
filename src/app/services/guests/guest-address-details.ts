@@ -1,4 +1,4 @@
-export class AddressDetails {
+export class GuestAddressDetails {
 
   constructor(
     private _full_name: string,
@@ -8,9 +8,9 @@ export class AddressDetails {
     private _county: string,
     private _country: string,
     private _postcode: string,
+    private _email: string,
+    private _phone_no: string,
     private _addr_2?: string,
-    private _customer_id?: string,
-    private _id?: number
   ) {}
 
   set full_name(full_name: string){
@@ -69,28 +69,28 @@ export class AddressDetails {
     return this._postcode
   }
 
+  set email(email: string){
+    this._email = email
+  }
+
+  get email(){
+    return this._email
+  }
+
+  set phone_no(phone_no: string){
+    this._phone_no = phone_no
+  }
+
+  get phone_no(){
+    return this._phone_no
+  }
+
   set addr_2(addr_2: string){
     this._addr_2 = addr_2
   }
 
   get addr_2(){
     return this._addr_2
-  }
-
-  set customer_id(customer_id: string){
-    this._customer_id = customer_id
-  }
-
-  get customer_id(){
-    return this._customer_id
-  }
-
-  set id(id: number){
-    this._id = id
-  }
-
-  get id(){
-    return this._id
   }
 
   toJSON(){
@@ -102,9 +102,9 @@ export class AddressDetails {
       "county": this._county,
       "country": this._country,
       "postcode": this._postcode,
+      "email": this._email,
+      "phone_no": this._phone_no,
       "addr_2": this._addr_2,
-      "customer_id": this._customer_id,
-      "id": this._id
     }
   }
 }

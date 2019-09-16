@@ -1,5 +1,17 @@
 <div class="container authmock-body">
   <div class="col-md-12">
+    <h2>Guest Checkout</h2><hr>
+    <button class="btn btn-primary" type="submit" (click)="getGuestCartItems()">getGuestCartItems</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="getCountOfGuestCartItems()">getCountOfGuestCartItems</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="postGuestCartItem()">postGuestCartItem</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="postGuestCartItemList()">postGuestCartItemList</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="deleteGuestCartItem()">deleteGuestCartItem</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="deleteGuestCartItems()">deleteGuestCartItems</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="postGuestAddressDetails()">postGuestAddressDetails</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="createGuestOrder()">createGuestOrder</button><br><br>
+    <h5>{{ guest_result }}</h5>
+  </div>
+  <div class="col-md-12">
     <h2>Ratings</h2><hr>
     <button class="btn btn-primary" type="submit" (click)="createRating()">createRating</button><br><br>
     <button class="btn btn-primary" type="submit" (click)="updateRating()">updateRating</button><br><br>
