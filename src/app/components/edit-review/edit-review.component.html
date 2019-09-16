@@ -1,39 +1,50 @@
 <div class="main-div">
-    <div class="review-div">
-      <div class="product-details">
-        <div class="title">
-          <h3>Review your purchase</h3>
+  <div class="review-div">
+      <form [formGroup]="registerFormGroup" 
+      class="form-container" 
+      autocomplete="off"
+      novalidate
+      (ngSubmit)="updateRating(registerFormGroup.value)" >
+        <div class="product-details">
+          <div class="title">
+            <h3>Review your purchase</h3>
+          </div>
+          <div class="product-name">
+            <span>{{title}}</span>
+          </div>
+          <div class="product-image">
+              <img class="image" src="{{ image }}">
+          </div>
         </div>
-        <div class="product-name">
-          <span>{{title}}</span>
+        <div class="overall-rating">
+          <div>
+            <span>Overall Rating</span>
+          </div>
+          <!--<app-rating styleClass='size-bg' [currentRate]=rate [readonly]=false (fetchRate)="onVoted($event)"></app-rating>-->
+          <ngb-rating class="rating" max="5"  [(rate)]="rate" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="false"></ngb-rating>
         </div>
-        <div class="product-image">
-            <img class="image" src="{{ image }}">
+        <div class="review-desc">
+          <h5>Add a written review</h5>
+          <span>You could mention "value for money", "for travelling" and "material quality".</span>
+          <mat-form-field>
+              <textarea matInput formControlName="summary" placeholder="What did you like or dislike? What did you use this product for?"></textarea>
+              <mat-error *ngIf="hasError('summary', 'required')">Review summary is required</mat-error>
+          </mat-form-field>
         </div>
-      </div>
-      
-      <div class="overall-rating">
-        <div>
-          <span>Overall Rating</span>
+        <div class="review-title">
+            <h5>Add a title</h5>
+            <span>Sum up your review in one line (max upto 25 characters)</span>
+            <mat-form-field>
+              <textarea class="title" matInput formControlName="title" placeholder="What's most important to know"></textarea>
+              <mat-error *ngIf="hasError('title', 'required')">Review title is required</mat-error>
+            </mat-form-field>
         </div>
-        <!--<app-rating styleClass='size-bg' [currentRate]=rate [readonly]=false (fetchRate)="onVoted($event)"></app-rating>-->
-        <ngb-rating class="rating" max="5"  [(rate)]="rate" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="false"></ngb-rating>
-      </div>
-      <div class="review-desc">
-        <h5>Add a written review</h5>
-        <span>You could mention "value for money", "for travelling" and "material quality".</span>
-        <textarea matInput [(ngModel)]='review_summary' placeholder="What did you like or dislike? What did you use this product for?"></textarea>
-      </div>
-      <div class="review-title">
-          <h5>Add a title</h5>
-          <span>Sum up your review in one line (max upto 25 characters)</span>
-          <textarea class="title" matInput [(ngModel)]='review_title' placeholder="What's most important to know"></textarea>
-      </div>
-      <div class="actions">
-        <button mat-flat-button color="primary" (click)="updateRating()">
-          <span role="status" aria-hidden="true"></span>
-          Update Review
-        </button>
-      </div>    
-    </div>
+        <div class="actions">
+          <button mat-flat-button color="primary" type="submit" [disabled]="!registerFormGroup.valid || !this.rate">
+            <span role="status" aria-hidden="true"></span>
+            Update Review
+          </button>
+        </div>    
+    </form>
   </div>
+</div>

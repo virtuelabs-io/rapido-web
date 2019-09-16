@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, NgModule } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Rating } from '../../services/ratings/rating';
 import { RatingsService } from '../../services/ratings/ratings.service';
@@ -8,6 +8,15 @@ import { RouteService } from '../../shared-services/route/route.service';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
 import { MatSnackBar } from '@angular/material';
 import { Constants } from '../../utils/constants';
+import {FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+
+@NgModule({
+	imports: [
+		FormBuilder,
+		Validators,
+		FormGroup
+	]
+})
 
 @Component({
   selector: 'app-edit-review',
@@ -24,11 +33,11 @@ export class EditReviewComponent implements OnInit {
   image: any
   title: string
   updateRes: any
-  review_summary: string = ""
-  review_title: string = ""
   rating: Rating = new Rating()
   public _ratingsService: RatingsService
   private _productsService: ProductsService
+  registerFormGroup: FormGroup
+
   constructor(
     private actRoute: ActivatedRoute,
     ratingsService: RatingsService,
@@ -47,6 +56,15 @@ export class EditReviewComponent implements OnInit {
     this._loginStateService.loaderEnable()
     this._reviewId = parseInt(this.actRoute.snapshot.paramMap.get('id'))
     this.userLogInCheck()
+    this.registerFormGroup = new FormGroup({
+      summary: new FormControl('', [Validators.required]),
+      title: new FormControl('', [Validators.required])	
+		})
+  }
+
+  // Form control show/hide error messages
+	public hasError = (controlName: string, errorName: string) => {
+		return this.registerFormGroup.controls[controlName].hasError(errorName)
   }
 
   async userLogInCheck() {
@@ -68,8 +86,8 @@ export class EditReviewComponent implements OnInit {
     this._ratingsService.getCustomerRating(this._reviewId)
     .subscribe(data => {
       this.rate = data.rating
-      this.review_summary = data.summary
-      this.review_title = data.title
+      this.registerFormGroup.controls['summary'].setValue(data.summary)
+      this.registerFormGroup.controls['title'].setValue(data.title)
       this.getProductDetails(data.product_id)
     })
   }
@@ -97,12 +115,12 @@ export class EditReviewComponent implements OnInit {
     }
   }
 
-  updateRating() {
+  updateRating(form) {
     this._loginStateService.loaderEnable()
     this.rating.id = this._reviewId
-    this.rating.title = this.review_title
+    this.rating.title = form.title
     this.rating.rating = this.rate
-    this.rating.summary = this.review_summary
+    this.rating.summary = form.summary
     this._ratingsService.updateRating(this.rating)
     .subscribe( data => {
       this.updateRes = data

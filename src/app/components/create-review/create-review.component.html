@@ -31,7 +31,7 @@
         <span>You could mention "value for money", "for travelling" and "material quality".</span>
         <mat-form-field>
           <textarea matInput formControlName="summary" placeholder="What did you like or dislike? What did you use this product for?"></textarea>
-          <mat-error *ngIf="hasError('summary', 'required')">Mobile number is required</mat-error>
+          <mat-error *ngIf="hasError('summary', 'required')">Review summary is required</mat-error>
         </mat-form-field>
       </div>
       <div class="review-title">
@@ -39,7 +39,7 @@
         <span>Sum up your review in one line (max upto 25 characters)</span>
         <mat-form-field>
           <textarea class="title" matInput formControlName="title" placeholder="What's most important to know"></textarea>
-          <mat-error *ngIf="hasError('title', 'required')">Mobile number is required</mat-error>
+          <mat-error *ngIf="hasError('title', 'required')">Review title is required</mat-error>
         </mat-form-field>  
       </div>
       <div class="actions">
