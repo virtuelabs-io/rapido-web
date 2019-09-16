@@ -51,6 +51,6 @@ export class RatingsService extends RapidoHttpService<Rating>{
   }
 
   checkProductReview(product_id: Number){
-    return this.get([Constants.RATINGS_APIS.api, "product", "check", String(product_id)].join("/"))
+    return this.get([Constants.RATINGS_APIS.api, "product", "check", String(product_id)].join("/"), this.addAuthHeader(this.initializeHeaders()))
   }
 }
