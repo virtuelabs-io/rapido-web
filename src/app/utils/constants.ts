@@ -80,6 +80,7 @@ export class Constants {
   public static CART_APIS = environment.cart
   public static ORDERS_APIS = environment.orders
   public static RATINGS_APIS = environment.ratings
+  public static GUESTS_APIS = environment.guests
 
   public static ADDRESS_TYPES = [
     {
