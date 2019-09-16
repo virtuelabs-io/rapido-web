@@ -731,6 +731,17 @@ export class AuthmockComponent implements OnInit {
     })
   }
 
+  checkProductReview(){
+    this._ratingsService.checkProductReview(33)
+    .subscribe(data => {
+      console.log(data)
+      if(data){
+        console.log('Sucessfully checkProductReview')
+      }
+      this.rating_result = "Sucessfully checkProductReview";
+    })
+  }
+
   makeGuestCartItem(): GuestCartItem {
     this.guestCartProductId = Math.floor(Math.random() * 10)
     this.guestCartProductId = this.guestCartProductId < 1 ? this.guestCartProductId+1 : this.guestCartProductId
