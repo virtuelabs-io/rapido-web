@@ -250,7 +250,6 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   handleCreateReview(id) {
-
 	this._ratingsService.checkProductReview(id)
     .subscribe(data => {
       console.log(data)
@@ -264,6 +263,5 @@ export class ProductDetailsComponent implements OnInit {
 	  }
     })
 	//this.RouteService.changeRoute('products/details/'+id)
-	
   }
 }

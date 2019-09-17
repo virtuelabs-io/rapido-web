@@ -87,6 +87,57 @@
     padding-left: 2%;
 	padding-right: 2%;
 	overflow: hidden;
+	.small-section {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+		width: 30%;
+		height: 150px;
+		overflow:hidden;  //code added to prevent scroll
+    //	position:absolute;
+        .rating-bars {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            height: 200px;
+            padding: 1%;
+            border-bottom: 1px solid #e1e4e8;
+            .title {
+				margin-bottom: 3%;
+                span {
+					font-size: x-large;
+                    font-weight: 700;
+                }
+            }
+            
+        }
+        .give-rating {
+            height: 150px;
+            padding: 1%;
+			border-bottom: 1px solid #e1e4e8;
+			.title {
+				span {
+					font-size: larger;
+					font-weight: 600;
+				}
+			}
+			.desc {
+				margin-top: 3%;
+				padding-left: 5%;
+				span {
+					font-weight: 300;
+					font-size: medium;
+				}
+			}
+			.action {
+				margin-top: 1%;
+				padding-left: 5%;
+			}
+		}
+		@media screen and (max-width: $mobile-device) {
+			width: 100%;
+		}
+    }
     .left-section {
         display: flex;
         flex-direction: column;
@@ -147,7 +198,18 @@
 		@media screen and (max-width: $mobile-device) {
 			width: 100%;
 		}
-    }
+	}
+
+	.no-review-found {
+		height: 150px;
+		width: 70%;
+		text-align: center;
+		margin-top: 70px;
+		font-style: italic;
+		@media screen and (max-width: $mobile-device) {
+			width: 100%;
+		}
+	}
 }
 
 :host ::ng-deep .mat-progress-bar {

@@ -171,7 +171,7 @@
 
 <!-- Product ratings starts -->
 <div class="product-ratings">
-  <div class="left-section">
+  <div [ngClass]="reviewCount == true?'left-section':'small-section'">
     <div class="rating-bars" *ngIf="reviewCount">
       <div class="title">
         <span>{{reviewCount}} customer reviews</span>
@@ -203,5 +203,8 @@
         (page)="onPaginateChange($event)">
       </mat-paginator>
     </div>
+  </div>
+  <div class="no-review-found" *ngIf="!reviewCount">
+    <div>No reviews found..Your review will help us inprove the product</div>
   </div>
 </div>
