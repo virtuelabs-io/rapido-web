@@ -47,13 +47,23 @@ describe('EditReviewComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should create review', () => {
+  it('should update review', () => {
     component.isLoggedIn = true
     component._reviewId = 4
-    component.review_title = "Too good product !"
+    component.registerFormGroup.controls['title'].setValue("wow..awesome product")
     component.rate = 5
-    component.review_summary = "Awesome product"
-    component.updateRating()
+    component.registerFormGroup.controls['summary'].setValue("wow..awesome product")
+    component.updateRating(component.registerFormGroup.value)
     expect(component.updateRes).toEqual(RatingsMockData.updateRating);
+  });
+
+  it('should throw error when no title is entered', () => {
+    component.registerFormGroup.controls['title'].setValue('')
+    expect(component.registerFormGroup.controls['title'].hasError('required')).toBeTruthy()
+  });
+
+  it('should throw error when no summary is entered', () => {
+    component.registerFormGroup.controls['summary'].setValue('')
+    expect(component.registerFormGroup.controls['summary'].hasError('required')).toBeTruthy()
   });
 });

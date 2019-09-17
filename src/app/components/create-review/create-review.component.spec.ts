@@ -56,4 +56,14 @@ describe('CreateReviewComponent', () => {
     component.submitReview(component.registerFormGroup.value)
     expect(component.submitRes).toEqual(RatingsMockData.createRating);
   });
+
+  it('should throw error when no title is entered', () => {
+    component.registerFormGroup.controls['title'].setValue('')
+    expect(component.registerFormGroup.controls['title'].hasError('required')).toBeTruthy()
+  });
+
+  it('should throw error when no summary is entered', () => {
+    component.registerFormGroup.controls['summary'].setValue('')
+    expect(component.registerFormGroup.controls['summary'].hasError('required')).toBeTruthy()
+  });
 });

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, NgZone, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, Output, NgZone, EventEmitter } from '@angular/core';
 import { RatingsService } from '../../services/ratings/ratings.service';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
 import { RouteService } from '../../shared-services/route/route.service';
@@ -12,14 +12,7 @@ import { Constants } from '../../../../src/app/utils/constants';
   styleUrls: ['./product-reviews.component.scss']
 })
 export class ProductReviewsComponent implements OnInit {
-  @Input()  filteredReview = [{
-    rating: "",
-    title: "",
-    date: "",
-    summary: "",
-    helpful: "",
-    id: ""
-  }]
+  @Input()  filteredReview = []
   @Input() productId: number
   @Input() action: Boolean
   @Input() feedback: Boolean
@@ -30,6 +23,7 @@ export class ProductReviewsComponent implements OnInit {
   resAbuse: any
   resHelpfulCount: any
   id: any
+  reviews: any
   public _ratingsService: RatingsService
   constructor(
     ratingsService: RatingsService,
@@ -46,8 +40,14 @@ export class ProductReviewsComponent implements OnInit {
     this.userLogInCheck()
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    this.userLogInCheck()
+  }
+
   async userLogInCheck() {
-    await this.loginSessinExists()
+    await this.loginSessinExists().
+    then( _ => this.formatReviews()).
+		catch(err => this.handleError(err))
   }
 
   async loginSessinExists() {
@@ -57,6 +57,28 @@ export class ProductReviewsComponent implements OnInit {
   async handleError(err) {
     this.RouteService.changeRoute('products/details/'+this.productId)
     this.router.navigateByUrl('/login')
+  }
+
+  async formatReviews() {
+    this._loginStateService.loaderEnable()
+    if(this.isLoggedIn) {
+      if(this.filteredReview) {
+        this.filteredReview.map((v, i)=>{
+          if(v.updated_on == '' || v.updated_on == null) {
+          this.filteredReview[i].updated_on = v.created_on.split('T')[0]
+          }
+          else {
+            this.filteredReview[i].updated_on = v.updated_on.split('T')[0]
+          }
+        })
+        this._loginStateService.loaderDisable()
+      }
+    }
+    else {
+      this._loginStateService.loaderDisable()
+      await this.handleError('e')
+      await Promise.reject("Login Session doesn't exist!")
+    }
   }
 
   async helpfulRatingIncrement(id) {

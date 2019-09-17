@@ -250,7 +250,20 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   handleCreateReview(id) {
-	this.RouteService.changeRoute('products/details/'+id)
-	this.ngZone.run(() =>this.router.navigate(['review/create/product', id] )).then()
+
+	this._ratingsService.checkProductReview(id)
+    .subscribe(data => {
+      console.log(data)
+      if(data.length){
+		
+		console.log('Sucessfully checkProductReview')
+		this.ngZone.run(() =>this.router.navigate(['review/edit/review', data[0].id] )).then()
+	  }
+	  else {
+		this.ngZone.run(() =>this.router.navigate(['review/create/product', id] )).then()
+	  }
+    })
+	//this.RouteService.changeRoute('products/details/'+id)
+	
   }
 }
