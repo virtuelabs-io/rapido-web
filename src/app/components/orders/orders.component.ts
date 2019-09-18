@@ -6,6 +6,7 @@ import { RouteService } from '../../shared-services/route/route.service';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
 import { ConfirmationDialogComponent } from '../../components/confirmation-dialog/confirmation-dialog.component';
 import {  MatDialog } from '@angular/material';
+import { RatingsService } from '../../services/ratings/ratings.service';
 
 @Component({
   selector: 'app-orders',
@@ -24,7 +25,9 @@ export class OrdersComponent implements OnInit {
   cancelOrderRes: any
   cancelledStatus = Constants.ORDER_STATUS[4]
   incomplete = Constants.ORDER_STATUS[1]
+  delivered = Constants.ORDER_STATUS[3]
   paid = Constants.ORDER_STATUS[2]
+  public _ratingsService: RatingsService
 
   constructor(
     orderService: OrdersService,
@@ -32,9 +35,11 @@ export class OrdersComponent implements OnInit {
     private RouteService : RouteService,
     private _loginStateService: LoginStateService,
     private ngZone: NgZone,
+    ratingsService: RatingsService,
     public dialog: MatDialog
   ) {
     this._orderService = orderService
+    this._ratingsService = ratingsService
   }
 
   ngOnInit() {
@@ -126,6 +131,20 @@ export class OrdersComponent implements OnInit {
 
   orderDetails(id) {
    this.ngZone.run(() =>this.router.navigate(['orders', id, 'details'])).then()
+  }
 
+  handleReview(productId) {
+    this._loginStateService.loaderEnable()
+    this._ratingsService.checkProductReview(productId)
+    .subscribe(data => {
+      if(data.length){
+        this._loginStateService.loaderDisable()
+		    this.ngZone.run(() =>this.router.navigate(['review/edit/review', data[0].id] )).then()
+	    }
+      else {
+        this._loginStateService.loaderDisable()
+        this.ngZone.run(() =>this.router.navigate(['review/create/product', productId] )).then()
+      }
+    })
   }
 }
