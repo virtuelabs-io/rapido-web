@@ -24,7 +24,7 @@
           <span>Overall Rating</span>
         </div>
         <!--<app-rating styleClass='size-bg' [currentRate]=rate [readonly]=false (fetchRate)="onVoted($event)"></app-rating>-->
-        <ngb-rating class="rating" max="5"  [(rate)]="rate" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="false"></ngb-rating>
+        <ngb-rating class="rating" max="5"  [(rate)]="rate"  [readonly]="false"></ngb-rating>
       </div>
       <div class="review-desc">
         <h5>Add a written review</h5>
