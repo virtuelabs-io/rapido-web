@@ -115,6 +115,7 @@ export class ProductReviewsComponent implements OnInit {
         this._snackBar.open(Constants.REVIEW_DEACTIVATED_SUCCESSFULLY,  undefined , {
           duration: 4000,
          })
+         this.fetchCustomerReviews.emit()
       })
     }
     else {

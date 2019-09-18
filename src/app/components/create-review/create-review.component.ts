@@ -141,11 +141,7 @@ export class CreateReviewComponent implements OnInit {
       this._snackBar.open(Constants.REVIEW_ADDED_SUCCESSFULLY,  undefined , {
         duration: 4000,
        })
-      if(this._previousRoute.value){
-        this.ngZone.run(() =>this.router.navigate(['/'+this._previousRoute.value])).then()
-      }else{
-        this.ngZone.run(() =>this.router.navigate([''])).then()
-      }
+       this.ngZone.run(() =>this.router.navigate(['profile/my-reviews'])).then()
     }) 
   }
 }

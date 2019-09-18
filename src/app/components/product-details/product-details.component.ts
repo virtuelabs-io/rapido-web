@@ -145,12 +145,22 @@ export class ProductDetailsComponent implements OnInit {
 		await this._ratingsService.getProductRatingsSummary(id)
 		.subscribe(data => {
 		  this.rate = data
-		  this.rate.map((v, i)=>{
-			this.reviewCount += v.count
-			this.rateSummary[v.rating-1].count = v.count
-		  })
-		  this.rateSummary.reverse()
+		  if(this.rate.length) {
+			this.rate.map((v, i)=>{
+				this.reviewCount += v.count
+				this.rateSummary[v.rating-1].count = v.count
+			})
+			this.rateSummary.reverse()
+		  }
+		  else {
+			  this.reviewCount = 0
+		  }
 		})
+	}
+
+	fetchRatingsAfterDeactivate(id) {
+		this.fetchProductRatings(id)
+		this.getProductRatingsSummary(id)
 	}
 
 	updateProductDetails(hits) {
@@ -261,6 +271,6 @@ export class ProductDetailsComponent implements OnInit {
 		this._loginStateService.loaderDisable()
 		this.ngZone.run(() =>this.router.navigate(['review/create/product', id] )).then()
 	  }
-    })
+	})
   }
 }

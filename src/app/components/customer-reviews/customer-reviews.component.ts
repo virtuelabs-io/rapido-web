@@ -12,6 +12,7 @@ import { RatingsService } from '../../services/ratings/ratings.service';
 export class CustomerReviewsComponent implements OnInit {
   reviews: any
   isLoggedIn: Boolean
+  noReviews: Boolean = true
   public _ratingsService: RatingsService
   constructor(
     private RouteService : RouteService,
@@ -48,7 +49,12 @@ export class CustomerReviewsComponent implements OnInit {
     if(this.isLoggedIn){
       await this._ratingsService.getAllCustomerRatings()
       .subscribe(data => {
-      this.reviews = data
+        if(data.length) {
+          this.reviews = data
+        }
+        else {
+          this.noReviews = false
+        }
       this._loginStateService.loaderDisable()
       })
     }
