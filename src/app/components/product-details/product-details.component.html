@@ -29,8 +29,8 @@
         </h3>
          <app-rating 
          styleClass='size-bg'
+         [readonly]=true
          [currentRate]='itemDetails.rating'>
-
          </app-rating>
          
          <hr/>
@@ -169,15 +169,15 @@
 </div>
 
 <!-- Product ratings starts -->
-<div class="product-ratings">
-  <div class="left-section">
-    <div class="rating-bars">
+<div class="product-ratings" *ngIf="(isLoggedIn && canReviewProduct) || reviewCount">
+  <div [ngClass]="reviewCount == 1?'left-section':'small-section'">
+    <div class="rating-bars" *ngIf="reviewCount">
       <div class="title">
-        <span>10 customer reviews</span>
+        <span>{{reviewCount}} customer reviews</span>
       </div>
-      <app-rating-bar [rate]=rate [reviewCount]=reviewCount></app-rating-bar>
+      <app-rating-bar [rate]=rateSummary [reviewCount]=reviewCount></app-rating-bar>
     </div>
-    <div class="give-rating">
+    <div class="give-rating" *ngIf="canReviewProduct && isLoggedIn">
       <div class="title">
         <span>Review this product</span>
       </div>
@@ -185,15 +185,16 @@
         <span>Share your thoughts with other customers</span>
       </div>
       <div class="action">
-        <button mat-flat-button color="primary" routerLink="/">
+        <button mat-flat-button color="primary" (click)="handleCreateReview(itemId)">
           <span role="status" aria-hidden="true"></span>
           Write a product review 
         </button>
       </div>
     </div>
   </div>
-  <div class="right-section">
-    <app-product-reviews [filteredReview]=filteredReview [productId]=itemId></app-product-reviews>
+  <div class="right-section" *ngIf="reviewCount">
+    <app-product-reviews 
+    (fetchCustomerReviews)=fetchRatingsAfterDeactivate(itemId) [filteredReview]=filteredReview [productId]=itemId [action]=false [feedback]=true [writer]=true></app-product-reviews>
     <div class='m-auto'>
       <mat-paginator 
         [length]="length"
@@ -202,5 +203,8 @@
         (page)="onPaginateChange($event)">
       </mat-paginator>
     </div>
+  </div>
+  <div class="no-review-found" *ngIf="canReviewProduct && !reviewCount && isLoggedIn">
+    <div>No reviews found..Your review will help us inprove the product</div>
   </div>
 </div>

@@ -607,7 +607,7 @@ export class AuthmockComponent implements OnInit {
   }
 
   getOrder(){
-    this.order.order_id = 103
+    this.order.order_id = 70
     console.log("Fetching order for:", this.order.order_id)
     this._orderService.getOrder(this.order.order_id)
     .then((data: any) => {
@@ -625,7 +625,7 @@ export class AuthmockComponent implements OnInit {
   }
 
   createRating(){
-    this.rating.product_id = 9
+    this.rating.product_id = 90
     this.rating.title = "Value for money to the best of it"
     this.rating.rating = 5
     this.rating.summary = "A very good product. One of the best in the market"

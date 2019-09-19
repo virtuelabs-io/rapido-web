@@ -123,6 +123,11 @@
                         .price-tag {
                             color: #B12704;
                         }
+                        .add-review {
+                            margin-top: 1%;
+                            width: 20%;
+                            cursor: pointer !important;
+                        }
                     }
                 }
                 @media screen and (max-width: $mobile-device) {

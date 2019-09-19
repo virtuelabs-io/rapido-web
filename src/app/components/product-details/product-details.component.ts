@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, NgZone } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SearchItemService } from '../../shared-services/search-item/search-item.services';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
@@ -12,6 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { RouteService } from '../../shared-services/route/route.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { RatingsService } from '../../services/ratings/ratings.service';
+import { OrdersService } from '../../services/orders/orders.service';
 
 @Component({
 	selector: 'app-product-details',
@@ -32,14 +33,17 @@ export class ProductDetailsComponent implements OnInit {
 	Number:Function
 	quantity:number
 	rate: any
+	rateSummary: any
 	reviews: any
 	filteredReview: any
 	isLoggedIn:Boolean
 	reviewCount: number = 0
 	length : number
 	pageSize = 1
-	pageSizeOptions: number[] = [2];
+	pageSizeOptions: number[] = [2]
+	canReviewProduct: Boolean = true
 	public _ratingsService: RatingsService
+	private _orderService: OrdersService
 
 	constructor(productsService: ProductsService,
 		private _searchItemService: SearchItemService,
@@ -50,20 +54,46 @@ export class ProductDetailsComponent implements OnInit {
 		private _snackBar: MatSnackBar,
 		private RouteService : RouteService,
 		ratingsService: RatingsService,
+		private ngZone: NgZone,
+		orderService: OrdersService,
 		private route: ActivatedRoute) {
 		this._productsService = productsService
 		this._cartService = cartService
 		this._ratingsService = ratingsService
+		this._orderService = orderService
 	}
 
 	ngOnInit() {
+		this.rateSummary = [
+			{
+				count: 0,
+				rating: 1
+			},
+			{
+				count: 0,
+				rating: 2
+			},
+			{
+				count: 0,
+				rating: 3
+			},
+			{
+				count: 0,
+				rating: 4
+			},
+			{
+				count: 0,
+				rating: 5
+			}
+		]
 		//this.paginator.pageIndex = 0
 		this.Number = Number
 		// get current product id
 		this.route.params.subscribe(params => {
 			this.itemId = params.id;
 		});
-
+		this.checkUserLogIn()
+		//this.checkProductPurchase()
 		// get product details
 		if (this.itemId) {
 			this._searchItemService.responsePoductListState.subscribe(respData => {
@@ -95,8 +125,24 @@ export class ProductDetailsComponent implements OnInit {
 		Common.allowPositiveNum(event)
 	}
 
-	fetchProductRatings(id) {
-		this._ratingsService.getProductRatings(id)
+	async checkUserLogIn() {
+		await this.loginSessinExists().
+    	then( _ => this.checkProductPurchase())
+	}
+
+	checkProductPurchase() {
+		if(this.isLoggedIn) {
+			this._orderService.checkProductPurchase(this.itemId)
+			.subscribe(data => {
+				if(data[0].length == 0)
+					this.canReviewProduct = false
+			})
+		}
+		
+	}
+
+	async fetchProductRatings(id) {
+		await this._ratingsService.getProductRatings(id)
 		.subscribe(data => {
 			this.reviews = data
 			this.length = this.reviews.length
@@ -104,14 +150,26 @@ export class ProductDetailsComponent implements OnInit {
 		})
 	}
 
-	getProductRatingsSummary(id) {
-		this._ratingsService.getProductRatingsSummary(id)
+	async getProductRatingsSummary(id) {
+		await this._ratingsService.getProductRatingsSummary(id)
 		.subscribe(data => {
 		  this.rate = data
-		  this.rate.map((v, i)=>{
-			this.reviewCount += v.count
-		  })
+		  if(this.rate.length) {
+			this.rate.map((v, i)=>{
+				this.reviewCount += v.count
+				this.rateSummary[v.rating-1].count = v.count
+			})
+			this.rateSummary.reverse()
+		  }
+		  else {
+			  this.reviewCount = 0
+		  }
 		})
+	}
+
+	fetchRatingsAfterDeactivate(id) {
+		this.fetchProductRatings(id)
+		this.getProductRatingsSummary(id)
 	}
 
 	updateProductDetails(hits) {
@@ -210,4 +268,18 @@ export class ProductDetailsComponent implements OnInit {
 	}
   }
 
+  handleCreateReview(id) {
+	this._loginStateService.loaderEnable()
+	this._ratingsService.checkProductReview(id)
+    .subscribe(data => {
+      if(data.length){
+		this._loginStateService.loaderDisable()
+		this.ngZone.run(() =>this.router.navigate(['review/edit/review', data[0].id] )).then()
+	  }
+	  else {
+		this._loginStateService.loaderDisable()
+		this.ngZone.run(() =>this.router.navigate(['review/create/product', id] )).then()
+	  }
+	})
+  }
 }

@@ -58,8 +58,11 @@ import { PressReleaseComponent } from './components/press-release/press-release.
 import { CreditsComponent } from './components/credits/credits.component';
 import { NavComponent } from './components/nav/nav.component';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { CustomerReviewsComponent } from './components/customer-reviews/customer-reviews.component';
 import { RatingBarComponent } from './components/rating-bar/rating-bar.component';
 import { ProductReviewsComponent } from './components/product-reviews/product-reviews.component';
+import { CreateReviewComponent } from './components/create-review/create-review.component';
+import { EditReviewComponent } from './components/edit-review/edit-review.component';
 
 @NgModule({
   declarations: [
@@ -107,9 +110,12 @@ import { ProductReviewsComponent } from './components/product-reviews/product-re
     CreditsComponent,
     PressReleaseComponent,
     NavComponent,
+    CustomerReviewsComponent,
     ConfirmationDialogComponent,
     RatingBarComponent,
-    ProductReviewsComponent
+    ProductReviewsComponent,
+    CreateReviewComponent,
+    EditReviewComponent
   ],
   imports: [
     MatProgressBarModule,

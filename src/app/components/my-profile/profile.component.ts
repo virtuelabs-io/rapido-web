@@ -27,9 +27,10 @@ export class ProfileComponent implements OnInit {
       id: '2'
     },
     {
-      icon: "#black-and-white-credit-cards",
-      title: "To Be Added",
-      description: "To Be Added",
+      icon: "#rating",
+      title: "My Reviews",
+      description: "Track all your reviews",
+      route: "/profile/my-reviews",
       id: '3'
     },
     {
