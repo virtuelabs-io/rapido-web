@@ -47,7 +47,6 @@ export class ProductReviewsComponent implements OnInit {
   async userLogInCheck() {
     await this.loginSessinExists().
     then( _ => this.formatReviews())
-	//	catch(err => this.handleError(err))
   }
 
   async loginSessinExists() {

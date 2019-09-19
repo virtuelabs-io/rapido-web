@@ -143,7 +143,6 @@
         flex-direction: column;
         flex-wrap: nowrap;
 		width: 30%;
-	//	height: 350px;
 		overflow:hidden;  //code added to prevent scroll
         .rating-bars {
             display: flex;
@@ -191,7 +190,6 @@
     .right-section {
         width: 70%;
 		padding: 1%;
-	//	height: 800px;
 		overflow: auto;  //code added
 
 		@media screen and (max-width: $mobile-device) {
