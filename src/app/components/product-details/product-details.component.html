@@ -169,7 +169,7 @@
 </div>
 
 <!-- Product ratings starts -->
-<div class="product-ratings">
+<div class="product-ratings" *ngIf="(isLoggedIn && canReviewProduct) || reviewCount">
   <div [ngClass]="reviewCount == 1?'left-section':'small-section'">
     <div class="rating-bars" *ngIf="reviewCount">
       <div class="title">
@@ -177,7 +177,7 @@
       </div>
       <app-rating-bar [rate]=rateSummary [reviewCount]=reviewCount></app-rating-bar>
     </div>
-    <div class="give-rating" *ngIf="canReviewProduct">
+    <div class="give-rating" *ngIf="canReviewProduct && isLoggedIn">
       <div class="title">
         <span>Review this product</span>
       </div>
@@ -204,7 +204,7 @@
       </mat-paginator>
     </div>
   </div>
-  <div class="no-review-found" *ngIf="!reviewCount">
+  <div class="no-review-found" *ngIf="canReviewProduct && !reviewCount && isLoggedIn">
     <div>No reviews found..Your review will help us inprove the product</div>
   </div>
 </div>

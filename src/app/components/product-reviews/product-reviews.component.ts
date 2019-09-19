@@ -46,8 +46,8 @@ export class ProductReviewsComponent implements OnInit {
 
   async userLogInCheck() {
     await this.loginSessinExists().
-    then( _ => this.formatReviews()).
-		catch(err => this.handleError(err))
+    then( _ => this.formatReviews())
+	//	catch(err => this.handleError(err))
   }
 
   async loginSessinExists() {
@@ -61,7 +61,6 @@ export class ProductReviewsComponent implements OnInit {
 
   async formatReviews() {
     this._loginStateService.loaderEnable()
-    if(this.isLoggedIn) {
       if(this.filteredReview) {
         this.filteredReview.map((v, i)=>{
           if(v.updated_on == '' || v.updated_on == null) {
@@ -73,12 +72,7 @@ export class ProductReviewsComponent implements OnInit {
         })
         this._loginStateService.loaderDisable()
       }
-    }
-    else {
-      this._loginStateService.loaderDisable()
-      await this.handleError('e')
-      await Promise.reject("Login Session doesn't exist!")
-    }
+    
   }
 
   async helpfulRatingIncrement(id) {

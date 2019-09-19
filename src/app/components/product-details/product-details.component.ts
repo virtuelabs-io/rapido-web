@@ -92,7 +92,8 @@ export class ProductDetailsComponent implements OnInit {
 		this.route.params.subscribe(params => {
 			this.itemId = params.id;
 		});
-		this.checkProductPurchase()
+		this.checkUserLogIn()
+		//this.checkProductPurchase()
 		// get product details
 		if (this.itemId) {
 			this._searchItemService.responsePoductListState.subscribe(respData => {
@@ -124,12 +125,20 @@ export class ProductDetailsComponent implements OnInit {
 		Common.allowPositiveNum(event)
 	}
 
+	async checkUserLogIn() {
+		await this.loginSessinExists().
+    	then( _ => this.checkProductPurchase())
+	}
+
 	checkProductPurchase() {
-		this._orderService.checkProductPurchase(this.itemId)
-		.subscribe(data => {
-			if(data[0].length == 0)
-		  		this.canReviewProduct = false
-		})
+		if(this.isLoggedIn) {
+			this._orderService.checkProductPurchase(this.itemId)
+			.subscribe(data => {
+				if(data[0].length == 0)
+					this.canReviewProduct = false
+			})
+		}
+		
 	}
 
 	async fetchProductRatings(id) {
