@@ -219,6 +219,7 @@ import { Common } from 'src/app/utils/common'
     if (this.searchedText) {
       queryObj.fieldsQuery = this.fieldsQuery
       let qObject = {...this.prevQuery, ...queryObj}
+      this._searchItemService.changeState(qObject)
       let urlParams = Common.setUrlParams(qObject)
       this.router.navigate(['/products'], { queryParams: urlParams })
       if (this.closeDialog) {
