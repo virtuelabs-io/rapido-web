@@ -13,6 +13,10 @@ export class CustomerReviewsComponent implements OnInit {
   reviews: any
   isLoggedIn: Boolean
   noReviews: Boolean = true
+  length: number
+  pageSize = 2
+  pageSizeOptions: number[] = [2]
+  filteredReview: any
   public _ratingsService: RatingsService
   constructor(
     private RouteService : RouteService,
@@ -51,6 +55,8 @@ export class CustomerReviewsComponent implements OnInit {
       .subscribe(data => {
         if(data.length) {
           this.reviews = data
+          this.length = data.length
+          this.filteredReview = this.reviews.slice(0, this.pageSize)
         }
         else {
           this.noReviews = false
@@ -67,4 +73,13 @@ export class CustomerReviewsComponent implements OnInit {
   fetchData() {
     this.fetchCustomerReviews()
   }
+
+  onPaginateChange(data) {
+    if(data.pageIndex == 0) {
+      this.filteredReview = this.reviews.slice(data.pageIndex*data.pageSize, data.pageSize);
+    }
+    else {
+      this.filteredReview = this.reviews.slice(data.pageIndex*data.pageSize, data.pageSize+data.pageIndex*data.pageSize);
+    }
+  }   
 }
