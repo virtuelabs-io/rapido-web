@@ -20,7 +20,8 @@ describe('CreateReviewComponent', () => {
   let router: Router;
 
   const routes: Routes = [
-    { path: 'login', component: LogInComponent}
+    { path: 'login', component: LogInComponent},
+    { path: 'profile/my-reviews', component: CustomerReviewsComponent}
   ]
 
   beforeEach(async(() => {
