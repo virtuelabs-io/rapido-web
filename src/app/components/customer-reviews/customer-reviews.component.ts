@@ -26,7 +26,6 @@ export class CustomerReviewsComponent implements OnInit {
     ratingsService: RatingsService
   ) { 
     this._ratingsService = ratingsService
-
   }
 
   ngOnInit() {

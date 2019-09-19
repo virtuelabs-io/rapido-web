@@ -1,7 +1,7 @@
 <div class="rating-bar-indicator">
     <div class="rating-bar-holder" *ngFor="let rate of rate">
       <div class="rate-group">
-        <span>{{rate.rating}}-star</span>
+        <span>{{rate.rating}}&nbsp;star</span>
       </div>
       <div class="indicator">
         <mat-progress-bar mode="determinate" class="rate-bar" value="{{rate.percent}}"></mat-progress-bar>

@@ -71,7 +71,6 @@ export class ProductReviewsComponent implements OnInit {
         })
         this._loginStateService.loaderDisable()
       }
-    
   }
 
   async helpfulRatingIncrement(id) {
