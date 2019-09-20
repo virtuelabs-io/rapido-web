@@ -197,8 +197,7 @@ import { Common } from 'src/app/utils/common'
   
   onPressItem(data, subCategory) {
     if(subCategory){
-      data = this.releatedSearch ? this.releatedSearch : this.searchedText // this.category + ' ' + 
-      // data = this.prevQuery.q.replace(prevSearchText,  subCategory) //this.category + ' ' + 
+      data = this.releatedSearch ? this.releatedSearch : this.searchedText
       this.releatedSearch = subCategory
     }else{
       data = this.searchedText
