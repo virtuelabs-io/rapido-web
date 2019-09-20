@@ -63,6 +63,7 @@ import { RatingBarComponent } from './components/rating-bar/rating-bar.component
 import { ProductReviewsComponent } from './components/product-reviews/product-reviews.component';
 import { CreateReviewComponent } from './components/create-review/create-review.component';
 import { EditReviewComponent } from './components/edit-review/edit-review.component';
+import { GuestCheckoutComponent } from './components/guest-checkout/guest-checkout.component';
 
 @NgModule({
   declarations: [
@@ -115,7 +116,8 @@ import { EditReviewComponent } from './components/edit-review/edit-review.compon
     RatingBarComponent,
     ProductReviewsComponent,
     CreateReviewComponent,
-    EditReviewComponent
+    EditReviewComponent,
+    GuestCheckoutComponent
   ],
   imports: [
     MatProgressBarModule,

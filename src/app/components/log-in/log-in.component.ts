@@ -126,4 +126,8 @@ export class LogInComponent implements OnInit {
       }
     }
   }
+
+  handleGuest() {
+    this.ngZone.run(() =>this.router.navigate(['cart/guest-checkout'])).then()
+  }
 }
