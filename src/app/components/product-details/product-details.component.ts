@@ -272,14 +272,18 @@ export class ProductDetailsComponent implements OnInit {
 	this._loginStateService.loaderEnable()
 	this._ratingsService.checkProductReview(id)
     .subscribe(data => {
-      if(data.length){
+      this.handleReviewNavigation(data, id)
+	})
+  }
+
+  handleReviewNavigation(data, id) {
+	if(data.length){
 		this._loginStateService.loaderDisable()
 		this.ngZone.run(() =>this.router.navigate(['review/edit/review', data[0].id] )).then()
-	  }
-	  else {
+	}
+	else {
 		this._loginStateService.loaderDisable()
 		this.ngZone.run(() =>this.router.navigate(['review/create/product', id] )).then()
-	  }
-	})
+	}
   }
 }

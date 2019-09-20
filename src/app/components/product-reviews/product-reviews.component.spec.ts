@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { ProductDetailsComponent } from 'src/app/components/product-details/product-details.component';
 import { ProductReviewsComponent } from './product-reviews.component';
 import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -12,21 +12,25 @@ import { RatingsService} from 'src/app/services/ratings/ratings.service';
 import { MatSnackBarModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditReviewComponent } from '../edit-review/edit-review.component';
+import {Location} from "@angular/common";
 
 describe('ProductReviewsComponent', () => {
   let ratingMockService: RatingsService = new RatingsMockService()
   let component: ProductReviewsComponent;
   let fixture: ComponentFixture<ProductReviewsComponent>;
   let router: Router;
+  let location: Location;
 
   const routes: Routes = [
-    { path: 'login', component: LogInComponent }
+    { path: 'login', component: LogInComponent },
+    { path: 'review/edit/review/:id', component: EditReviewComponent}
   ]
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ FormsModule, ReactiveFormsModule, BrowserAnimationsModule, MatSnackBarModule,HttpClientModule, RouterTestingModule.withRoutes(routes) ],
-      declarations: [ ProductReviewsComponent, ProductDetailsComponent, LogInComponent ],
+      declarations: [ ProductReviewsComponent, ProductDetailsComponent, LogInComponent, EditReviewComponent ],
       schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
@@ -34,6 +38,7 @@ describe('ProductReviewsComponent', () => {
 
   beforeEach(() => {
     router = TestBed.get(Router);
+    location = TestBed.get(Location);
     fixture = TestBed.createComponent(ProductReviewsComponent);
     fixture.ngZone.run(() => {
       router.initialNavigation();
@@ -58,4 +63,12 @@ describe('ProductReviewsComponent', () => {
     component.helpfulRatingIncrement(3)
     expect(component.resHelpfulCount).toEqual(RatingsMockData.helpfulRatingIncrement)
   });
+
+  it('route to Edit Review component',  fakeAsync(() => {
+    component.isLoggedIn = true
+    let id = 8
+    component.editReview(id)
+    tick()
+    expect(location.path()).toEqual('/review/edit/review/8')
+  }));
 });

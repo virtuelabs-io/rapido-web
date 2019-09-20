@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TermsConditionsComponent } from '../terms-conditions/terms-conditions.component';
 import { PrivacyPolicyComponent } from '../privacy-policy/privacy-policy.component';
 import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
+import { GuestCheckoutComponent } from '../guest-checkout/guest-checkout.component';
 
 describe('LogInComponent', () => {
   let component: LogInComponent;
@@ -21,14 +22,15 @@ describe('LogInComponent', () => {
     { path: 'register', component: RegisterComponent},
     { path: 'terms', component: TermsConditionsComponent},
     { path: 'privacy-policy', component: PrivacyPolicyComponent},
-    { path: 'forgotpassword', component: ForgotPasswordComponent}
+    { path: 'forgotpassword', component: ForgotPasswordComponent},
+    { path: 'cart/guest-checkout', component: GuestCheckoutComponent}
 
   ]
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ ReactiveFormsModule, MatToolbarModule, MatStepperModule, MatFormFieldModule, MatIconModule, MatCheckboxModule, MatCardModule, MatInputModule, FormsModule, RouterTestingModule.withRoutes(routes),HttpClientTestingModule ],
-      declarations: [ LogInComponent, RegisterComponent, TermsConditionsComponent, PrivacyPolicyComponent, ForgotPasswordComponent ]
+      declarations: [ LogInComponent, RegisterComponent, TermsConditionsComponent, PrivacyPolicyComponent, ForgotPasswordComponent, GuestCheckoutComponent ]
     })
     .compileComponents();
   }));

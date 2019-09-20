@@ -1,9 +1,10 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateReviewComponent } from './create-review.component';
 import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router, Routes } from '@angular/router';
+import {Location} from "@angular/common";
 import { CustomerReviewsComponent } from '../customer-reviews/customer-reviews.component';
 import {  HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatSnackBarModule } from '@angular/material';
@@ -18,6 +19,7 @@ describe('CreateReviewComponent', () => {
   let component: CreateReviewComponent;
   let fixture: ComponentFixture<CreateReviewComponent>;
   let router: Router;
+  let location: Location;
 
   const routes: Routes = [
     { path: 'login', component: LogInComponent},
@@ -35,6 +37,7 @@ describe('CreateReviewComponent', () => {
 
   beforeEach(() => {
     router = TestBed.get(Router);
+    location = TestBed.get(Location);
     fixture = TestBed.createComponent(CreateReviewComponent);
     fixture.ngZone.run(() => {
       router.initialNavigation();
@@ -67,4 +70,15 @@ describe('CreateReviewComponent', () => {
     component.registerFormGroup.controls['summary'].setValue('')
     expect(component.registerFormGroup.controls['summary'].hasError('required')).toBeTruthy()
   });
+
+  it('route to My Reviews page from create review component',  fakeAsync(() => {
+    component.isLoggedIn = true
+    component._productId = 13
+    component.rate = 3
+    component.registerFormGroup.controls['summary'].setValue("wow..awesome product")
+    component.registerFormGroup.controls['title'].setValue("beautiful")
+    component.submitReview(component.registerFormGroup.value)
+    tick(10000);
+    expect(location.path()).toEqual('/profile/my-reviews')
+  }));
 });
