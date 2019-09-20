@@ -1,3 +1,143 @@
-<p>
-  guest-checkout works!
-</p>
+<div class="main-div">
+  <mat-horizontal-stepper [linear]="isLinear" #stepper [selectedIndex]="stepperIndex">
+    <!-- Delivery address step-->
+    <mat-step [stepControl]="registerFormGroup">
+      <ng-template matStepLabel>Select Delivery Address</ng-template>
+      <form class="form-container">
+        <div class="address-div">
+          <div class="title-div">
+            <svg>
+              <use xlink:href="#delivery-address" />
+            </svg>
+            <h4>
+              My Addresses
+            </h4>
+          </div>
+          <div class="rapido-add-address">
+            <a class="rapido-add-address-icon" (click)="newAddress()">
+              <div class="address-add-icon">
+                <a class="">
+                  <svg aria-hidden="true" aria-haspopup="menu">
+                    <use xlink:href="#add"/>
+                  </svg>
+                </a>
+              </div>
+              <div class="text-div">
+                <p>Add Address</p>
+              </div>
+            </a>
+            <div class="rapido-add-address-item" *ngFor="let address of address">
+              <div class="address-text">
+                <strong> {{ address.full_name }} </strong>
+                <br/><p>{{ address.addr_1 }}
+                <br/> {{ address.addr_2 }}
+                <br/> {{ address.city }} 
+                <br/> {{ address.county }}, {{ address.postcode }}
+                <br/> {{ address.country }}
+              </div>
+              <div class="card-actions">
+                <button mat-flat-button color="primary" class="delivery-add-button" (click)="createOrder(address.id)">
+                  Deliver to this Address
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>          
+    </mat-step>
+
+  <!-- payment step -->
+    <mat-step [stepControl]="registerFormGroup">
+      <ng-template matStepLabel>Make a payment</ng-template>
+      <form>
+        <div class="payment-div">
+          <div class="order-address-div"  *ngFor="let order of orderItems">
+            <div class="order-div">
+              <div class="title-div">
+                <svg>
+                  <use xlink:href="#box" />
+                </svg>
+                <h4>
+                    Order Items
+                </h4>
+              </div>
+              <div class="cart-columns">
+                <div class="cart-col-quan">
+                  <span>Quantity</span>
+                </div>
+                <div class="cart-col-price">
+                  <span>Price({{ currency }})</span>
+                </div>
+              </div>
+              <div class="order-items-main">
+                <div class="order-items">
+                  <div class="order-items-list" *ngFor="let item of orders[order].items">
+                    <div class="item-thumbnail">
+                      <img class="image" src="{{ imageUrl + products[item.product_id].images[0] }}">
+                    </div>
+                    <div class="item-desc">
+                      <p><strong>{{ products[item.product_id].name }}</strong></p>
+                    </div>
+                    <div class="item-quantity">
+                      <span>{{ item.quantity }}</span>
+                    </div>
+                    <div class="item-price">
+                      <p>
+                        <strong>{{ item.unit_price.toFixed(2) }}</strong>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="order-charges">
+                <span> Subtotal : {{ currency }}<span>{{ itemTotal }}</span></span>
+              </div>
+              <div class="order-charges">
+                <span>+ VAT : {{ currency }}<span> {{ vatTotal }}</span></span>
+              </div>
+              <div class="order-charges">
+                <span>+ Delivery Charges : {{ currency }}<span> {{ deliveryCharges }}</span></span>
+              </div>
+              <div class="order-total">
+                <p>Order Total : {{ currency }}<span> {{ orderTotal }}</span></p>
+              </div>
+            </div>
+            
+            <div class="order-address">
+              <div class="add-title-div">
+                <h5 class="title-div">Delivery Address</h5>
+              </div>
+                <div class="address-text">
+                  <strong> {{ orders[order]['address'].full_name }} </strong>
+                  <br/><p>{{ orders[order]['address'].addr_1 }}
+                  <br/> {{ orders[order]['address'].addr_2 }}
+                  <br/> {{ orders[order]['address'].city }} 
+                  <br/> {{ orders[order]['address'].county }}, {{ orders[order]['address'].postcode }}
+                  <br/> {{ orders[order]['address'].country }}
+                </div>
+            </div>
+          </div>
+
+          <div class="pay-div">
+            <div class="icon-title">
+              <svg>
+                <use xlink:href="#give-money"/>
+              </svg>
+              <h4>Payment</h4>
+            </div>
+            <div class="payment-det">
+              <mat-form-field class="">
+                <input matInput [(ngModel)]="registeredEmail" name="email" placeholder="Invoice sent to">
+              </mat-form-field>
+              <div id="card-element" class="field"></div><br>
+                <div class="buy-cart-button">
+                  <button class="btn btn-primary buy-button" (click)="buy()">Pay {{ currency }}{{ orderTotal }}</button>
+                <button class="btn btn-primary buy-button" routerLink="/cart">Edit Order</button>
+                </div>
+              </div>
+            </div>
+        </div>
+      </form>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>
