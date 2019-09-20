@@ -1,0 +1,47 @@
+@import "../../../assets/scss/custom-bootstrap-variables.scss";
+
+.main-div {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-top: 2%;
+    margin-left: 30%;
+    margin-right: 30%;
+    .title {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        margin-bottom: 2%;
+        margin-top: 2%;
+        svg {
+            height: 30px;
+            width: 40px;
+            padding-right: 1%;
+        }
+    }
+    .no-review-div {
+        display: flex;
+        flex-direction: column;
+        height: 300px;
+        margin-top: 40px;
+        .icon {
+            width: 130px;
+            height: 130px;
+            margin-left: 35%;
+            margin-right: 35%;
+        }
+        span {
+            font-style: italic;
+        }
+    }
+    @media screen and (max-width: $mobile-device) {
+        margin-top: 5%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}
+
+:host ::ng-deep .mat-paginator-container {
+    justify-content: center;
+    background-color: #fafafa;
+}

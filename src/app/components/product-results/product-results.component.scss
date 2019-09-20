@@ -55,3 +55,7 @@ div {
     align-items:center; 
 }
 
+:host ::ng-deep .mat-paginator-container {
+    justify-content: center;
+    background-color: #fafafa;
+}

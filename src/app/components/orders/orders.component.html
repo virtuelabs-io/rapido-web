@@ -40,6 +40,7 @@
               <span>{{ products[item.product_id].currency }} </span>
               <span class="price-tag">{{ item.unit_price }}</span>
             </span>
+            <a *ngIf="(orders[order].category == delivered)" class="add-review" (click)="handleReview(item.product_id)">Write a review</a>
           </div>
         </div>
       </div>

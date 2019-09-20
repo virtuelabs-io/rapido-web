@@ -40,8 +40,27 @@ export class RatingsMockData {
         warningCount: 0
     }
 
-   
- 
+    public static createRating = {
+        affectedRows: 0,
+        changedRows: 0,
+        fieldCount: 0,
+        insertId: 0,
+        message: "",
+        protocol41: true,
+        serverStatus: 2,
+        warningCount: 0
+    }
+
+    public static updateRating = {
+        affectedRows: 0,
+        changedRows: 0,
+        fieldCount: 0,
+        insertId: 0,
+        message: "",
+        protocol41: true,
+        serverStatus: 2,
+        warningCount: 0
+    }
 }
 
 

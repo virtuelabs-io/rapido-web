@@ -140,4 +140,10 @@ export class Constants {
   public static COMPANY_DETAILS_ADDED = "Company Details has been added"
   public static COMPANY_DETAILS_UPDATED = "Company Details has been updated"
 
+  public static REVIEW_ADDED_SUCCESSFULLY = "Review added successfully"
+  public static REVIEW_DELETED_SUCCESSFULLY = "Review deleted successfully"
+  public static REVIEW_UPDATED_SUCCESSFULLY = "Review updated successfully"
+  public static REVIEW_DEACTIVATED_SUCCESSFULLY = "Review deactivated"
+  public static REVIEW_HELPFUL_INCREMENT = "You found the review helpful"
+  public static UNAUTHORIZED_REVIEW_CREATE = "You can only add a review only when you purchase the product and its delivered to you"
 }

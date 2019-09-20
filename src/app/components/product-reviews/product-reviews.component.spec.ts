@@ -9,6 +9,9 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { RatingsMockData} from 'src/app/services/ratings/ratings.mock.data';
 import { RatingsMockService} from 'src/app/services/ratings/ratings.mock.service';
 import { RatingsService} from 'src/app/services/ratings/ratings.service';
+import { MatSnackBarModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('ProductReviewsComponent', () => {
   let ratingMockService: RatingsService = new RatingsMockService()
@@ -22,7 +25,7 @@ describe('ProductReviewsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ HttpClientModule, RouterTestingModule.withRoutes(routes) ],
+      imports: [ FormsModule, ReactiveFormsModule, BrowserAnimationsModule, MatSnackBarModule,HttpClientModule, RouterTestingModule.withRoutes(routes) ],
       declarations: [ ProductReviewsComponent, ProductDetailsComponent, LogInComponent ],
       schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
     })
@@ -44,13 +47,13 @@ describe('ProductReviewsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should report  abuse', () => {
+  it('should report abuse', () => {
     component.isLoggedIn = true
     component.deactivateRating(3)
     expect(component.resAbuse).toEqual(RatingsMockData.deactivateRating)
   });
 
-  it('should report  abuse', () => {
+  it('should report helpful', () => {
     component.isLoggedIn = true
     component.helpfulRatingIncrement(3)
     expect(component.resHelpfulCount).toEqual(RatingsMockData.helpfulRatingIncrement)
