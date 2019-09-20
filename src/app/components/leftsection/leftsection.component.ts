@@ -153,7 +153,7 @@ import { Common } from 'src/app/utils/common'
   }
   
   priceFilterData(range) {
-    let query = `(and '${this.searchedText + (this.releatedSearch ? ' '+ this.releatedSearch : '')}' (range field=price [${range.min}, ${range.max}]))`
+    let query = `(and '${(this.releatedSearch ? this.releatedSearch : this.searchedText)}' (range field=price [${range.min}, ${range.max}]))`
     if (this.fieldsQuery.rating.q) {
       query = `(and '${this.searchedText}' (and (range field=rating [${this.fieldsQuery.rating.q},${Number(5)}]) (range field=price [${range.min},${range.max}])))`
     }
@@ -172,7 +172,7 @@ import { Common } from 'src/app/utils/common'
   }
   
   onPressRating(val) {
-    let query = `(and '${this.searchedText + (this.releatedSearch ? ' '+this.releatedSearch : '')}' (range field=rating [${val},${Number(5)}]))`
+    let query = `(and '${(this.releatedSearch ? this.releatedSearch : this.searchedText)}' (range field=rating [${val},${Number(5)}]))`
     if (this.fieldsQuery.price.q) {
       query = `(and '${this.searchedText}' (and (range field=rating [${val},${Number(5)}]) (range field=price ${this.fieldsQuery.price.q})))`
     }
@@ -197,8 +197,8 @@ import { Common } from 'src/app/utils/common'
   
   onPressItem(data, subCategory) {
     if(subCategory){
-      let prevSearchText = this.releatedSearch ? this.category + ' ' + this.releatedSearch : this.searchedText
-      data = this.prevQuery.q.replace(prevSearchText, (this.category + ' ' + subCategory))
+      data = this.releatedSearch ? this.releatedSearch : this.searchedText // this.category + ' ' + 
+      // data = this.prevQuery.q.replace(prevSearchText,  subCategory) //this.category + ' ' + 
       this.releatedSearch = subCategory
     }else{
       data = this.searchedText
@@ -236,7 +236,7 @@ import { Common } from 'src/app/utils/common'
       if (!this.fieldsQuery.price.q) {
           let qSearch = this.searchedText
           if(this.releatedSearch){
-            qSearch = this.category +' '+  this.releatedSearch
+            qSearch = this.releatedSearch
           }
           this.onPressItem(qSearch, null)
       } else {
@@ -260,7 +260,7 @@ import { Common } from 'src/app/utils/common'
     if (!this.fieldsQuery.rating.q) {
       let qSearch = this.searchedText
       if(this.releatedSearch){
-        qSearch = this.category +' '+  this.releatedSearch
+        qSearch = this.releatedSearch
       }
       this.onPressItem(qSearch, null)
     } else {
@@ -272,7 +272,6 @@ import { Common } from 'src/app/utils/common'
   removeReleatedSearch() {
     this.releatedSearch = null
     this.onPressItem(this.searchedText, null)
-    // this.onPressItem(this.searchedText + ' ' + this.releatedSearch, null)
   }
 
   ngOnDestroy() {

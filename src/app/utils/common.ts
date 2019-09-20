@@ -59,11 +59,11 @@ export class Common {
       }
     }
     if(updatedQuery.rating && updatedQuery.price){
-      updatedQuery.q = `(and '${updatedQuery.searchedText + (updatedQuery.releatedSearch ? ' ' + updatedQuery.releatedSearch : '')}' (and (range field=rating [${updatedQuery.rating},${Number(5)}]) (range field=price ${updatedQuery.price})))`
+      updatedQuery.q = `(and '${(updatedQuery.releatedSearch ? updatedQuery.releatedSearch : updatedQuery.searchedText)}' (and (range field=rating [${updatedQuery.rating},${Number(5)}]) (range field=price ${updatedQuery.price})))`
     }else if(updatedQuery.rating){
-      updatedQuery.q = `(and '${updatedQuery.searchedText + (updatedQuery.releatedSearch ? ' ' + updatedQuery.releatedSearch : '')}' (range field=rating [${updatedQuery.rating},${Number(5)}]))`
+      updatedQuery.q = `(and '${(updatedQuery.releatedSearch ? updatedQuery.releatedSearch : updatedQuery.searchedText)}' (range field=rating [${updatedQuery.rating},${Number(5)}]))`
     }else if(updatedQuery.price){
-      updatedQuery.q =  `(and '${updatedQuery.searchedText + (updatedQuery.releatedSearch ? ' '+ updatedQuery.releatedSearch : '')}' (range field=price ${updatedQuery.price}))`
+      updatedQuery.q =  `(and '${(updatedQuery.releatedSearch ? updatedQuery.releatedSearch : updatedQuery.searchedText)}' (range field=price ${updatedQuery.price}))`
     }
 
     let defaultQuery = {
