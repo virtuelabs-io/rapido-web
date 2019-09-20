@@ -98,7 +98,7 @@ export class LogInComponent implements OnInit {
           this.ngZone.run(() =>this.router.navigate([''])).then()
 
         }
-        this.cartStateService.fetchAndUpdateCartCount()
+        this.cartStateService.fetchAndUpdateCartCount(true)
         
       }).catch(error => {
         this.progressSpinner = false
