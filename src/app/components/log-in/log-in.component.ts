@@ -8,6 +8,7 @@ import { LoginStateService } from '../../shared-services/login-state/login-state
 import { CartStateService } from '../../shared-services/cart-state/cart-state.service';
 import { ResendOtpService } from '../../shared-services/resend-otp/resend-otp.services';
 import { RouteService } from '../../shared-services/route/route.service';
+import { CartService } from '../../services/cart/cart.service';
 
 @Component({
   selector: 'app-log-in',
@@ -18,6 +19,7 @@ export class LogInComponent implements OnInit {
   alertBox: boolean = false
   alertMsg: string = ""
   _signInResponse: Boolean = false
+  cartCount:Number = 0
   _previousRoute: any
   countryCode: string = Constants.DEFAULT_PHONE_CODE; //Constants.DEFAULT_PHONE_CODE;
   mobileNumber: string;
@@ -36,7 +38,9 @@ export class LogInComponent implements OnInit {
     private resendOtpService : ResendOtpService,
 		private route: ActivatedRoute,
     private RouteService : RouteService,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private _cartStateService: CartStateService,
+    private _cartService: CartService
     ) {
     this._signInService = signInService
     this._profileService = profileService
@@ -92,13 +96,12 @@ export class LogInComponent implements OnInit {
         this.progressSpinner = false
         this._signInResponse = true;
         this.loginStateService.changeState(true);
+        this.cartStateService.fetchAndUpdateCartCount(true)
         if(this._previousRoute.value){
           this.ngZone.run(() =>this.router.navigate(['/'+this._previousRoute.value])).then()
         }else{
           this.ngZone.run(() =>this.router.navigate([''])).then()
-
         }
-        this.cartStateService.fetchAndUpdateCartCount(true)
         
       }).catch(error => {
         this.progressSpinner = false
