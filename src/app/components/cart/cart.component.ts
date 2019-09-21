@@ -133,6 +133,9 @@ export class CartComponent implements OnInit {
             quantity: data[i].guestCartItem.quantity
           })
       }
+      if(!this.cartItems.length) {
+        this.inCart = false
+      }
       this._cartStateService.fetchAndUpdateCartCount(this.isLoggedIn)
       this._loginStateService.loaderDisable()
     })
@@ -204,16 +207,22 @@ export class CartComponent implements OnInit {
 
   postCartItems() {
     this._loginStateService.loaderEnable()
-    let items = [];
-    for(var i = 0; i < this.cartItems.length; i++) {
-      items.push(this.updateCartItem(this.cartItems[i].id, this.cartItems[i].quantity, true))
-    }
-    this._cartService.postCartItemList(items)
-      .subscribe( data => {
-        this.postCartItemsRes = data
-        this._loginStateService.loaderDisable()
-        this.ngZone.run(() =>this.router.navigate(['cart/checkout'])).then()
+    if(this.isLoggedIn) {
+      let items = [];
+      for(var i = 0; i < this.cartItems.length; i++) {
+        items.push(this.updateCartItem(this.cartItems[i].id, this.cartItems[i].quantity, true))
+      }
+      this._cartService.postCartItemList(items)
+        .subscribe( data => {
+          this.postCartItemsRes = data
+          this._loginStateService.loaderDisable()
+          this.ngZone.run(() =>this.router.navigate(['cart/checkout'])).then()
       })
+    }
+    else {
+      this.RouteService.changeRoute('cart/guest-checkout')
+      this.router.navigateByUrl('/login')
+    }
   }
 
   quantityChange(id, quantity) {

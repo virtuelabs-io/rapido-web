@@ -142,9 +142,15 @@ export class LogInComponent implements OnInit {
         this._signInResponse = true;
         this.loginStateService.changeState(true);
         this.cartStateService.fetchAndUpdateCartCount(true)
-        if(this._previousRoute.value){
+        if(this._previousRoute.value && this._previousRoute.value !== 'cart/guest-checkout'){
+          this.RouteService.changeRoute('')
           this.ngZone.run(() =>this.router.navigate(['/'+this._previousRoute.value])).then()
-        }else{
+        }
+        else if(this._previousRoute.value && this._previousRoute.value == 'cart/guest-checkout') {
+          this.RouteService.changeRoute('')
+          this.ngZone.run(() =>this.router.navigate(['/cart'])).then()
+        }
+        else{
           this.ngZone.run(() =>this.router.navigate([''])).then()
         }
         
@@ -175,12 +181,31 @@ export class LogInComponent implements OnInit {
     }
   }
 
-  handleGuest() {
+  async handleGuest() {
     if(this._previousRoute.value){
+      if(this._previousRoute.value == 'cart/guest-checkout') {
+        await this.postGuestCartItems()
+      }
       this.ngZone.run(() =>this.router.navigate(['/'+this._previousRoute.value])).then()
     }
     else {
-      this.ngZone.run(() =>this.router.navigate(['cart/guest-checkout'])).then()
+      this.ngZone.run(() =>this.router.navigate([''])).then()
     }
+  }
+
+  async postGuestCartItems() {
+    this.loginStateService.loaderEnable()
+    let items = [];
+      await this.fetchGuestCart()
+      for(var i = 0; i < this.guestCartItems.length; i++) {
+        items.push(this.updateCartItem(this.guestCartItems[i].guestCartItem.product_id, this.guestCartItems[i].guestCartItem.quantity, true))
+      }
+      await this._guestCartService.postGuestCartItemList(items)
+        .subscribe( data => {
+          console.log('guest cart successfully posted')
+          console.log(data)
+          this.loginStateService.loaderDisable()
+          this.ngZone.run(() =>this.router.navigate(['cart/checkout'])).then()
+      })
   }
 }
