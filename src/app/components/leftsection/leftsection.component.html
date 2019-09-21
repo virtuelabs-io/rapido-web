@@ -61,6 +61,15 @@
                  <mat-panel-title>
                     {{panelList.panelTitle}}
                  </mat-panel-title>
+                 <div *ngIf="panelList.panelType==='sort' && sortByType.value" class="bg-gradient-primary rounded-pill pl-1 pr-1 mr-4">
+                    <b class="text-capitalize">{{sortByType.value}} </b>
+                    <i class="fa" 
+                        [ngClass]="{
+                           'fa-sort-amount-asc':sortByType.asc,
+                           'fa-sort-amount-desc':sortByType.desc
+                        }">
+                     </i>
+                 </div>
               </mat-expansion-panel-header>
               <mat-nav-list [ngSwitch]="panelList.panelType">
                  <div *ngSwitchCase="'link'">

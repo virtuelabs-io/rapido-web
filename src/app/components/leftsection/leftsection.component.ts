@@ -5,6 +5,7 @@ import { ProductsService } from '../../services/products/products.service';
 import { Router } from '@angular/router';
 import { Query } from 'src/app/services/products/query.interface'
 import { Common } from 'src/app/utils/common'
+import { LoginStateService } from 'src/app/shared-services/login-state/login-state.service';
 
  @Component({
   selector: 'app-leftsection',
@@ -30,6 +31,11 @@ import { Common } from 'src/app/utils/common'
   _searchItemServiceResponsePoductListState: any
   releatedSearch : any
   currency : any
+  sortByType = {
+    value: '',
+    asc: false, 
+    desc: false
+  }
  
   constructor(private _searchItemService: SearchItemService, 
     productsService: ProductsService,
@@ -72,6 +78,15 @@ import { Common } from 'src/app/utils/common'
           this.fieldsQuery = query.fieldsQuery
         }
         this.prevQuery = query
+        if(query.sort){
+          this.onPressSort(query.sort)
+        }else{
+          this.sortByType = {
+            value: '',
+            asc: false, 
+            desc: false
+          }
+        }
       }
     })
   }
@@ -153,7 +168,7 @@ import { Common } from 'src/app/utils/common'
   }
   
   priceFilterData(range) {
-    let query = `(and '${this.searchedText + (this.releatedSearch ? ' '+ this.releatedSearch : '')}' (range field=price [${range.min}, ${range.max}]))`
+    let query = `(and '${(this.releatedSearch ? this.releatedSearch : this.searchedText)}' (range field=price [${range.min}, ${range.max}]))`
     if (this.fieldsQuery.rating.q) {
       query = `(and '${this.searchedText}' (and (range field=rating [${this.fieldsQuery.rating.q},${Number(5)}]) (range field=price [${range.min},${range.max}])))`
     }
@@ -172,7 +187,7 @@ import { Common } from 'src/app/utils/common'
   }
   
   onPressRating(val) {
-    let query = `(and '${this.searchedText + (this.releatedSearch ? ' '+this.releatedSearch : '')}' (range field=rating [${val},${Number(5)}]))`
+    let query = `(and '${(this.releatedSearch ? this.releatedSearch : this.searchedText)}' (range field=rating [${val},${Number(5)}]))`
     if (this.fieldsQuery.price.q) {
       query = `(and '${this.searchedText}' (and (range field=rating [${val},${Number(5)}]) (range field=price ${this.fieldsQuery.price.q})))`
     }
@@ -189,6 +204,18 @@ import { Common } from 'src/app/utils/common'
   }
   
   onPressSort(data) {
+    this.sortByType.desc = false
+    this.sortByType.asc = false
+    try{
+      if(data.split(' ')[1] === "asc"){
+          this.sortByType.asc = true
+      }else if(data.split(' ')[1] === "desc"){
+          this.sortByType.desc = true
+      }
+    }catch(error){
+      console.error(error, `:\t Error with Query Syntax`)
+    }
+    this.sortByType.value = data
     this.updateFilterConditions({
       sort: data,
       start:0
@@ -197,15 +224,13 @@ import { Common } from 'src/app/utils/common'
   
   onPressItem(data, subCategory) {
     if(subCategory){
-      let prevSearchText = this.releatedSearch ? this.category + ' ' + this.releatedSearch : this.searchedText
-      data = this.prevQuery.q.replace(prevSearchText, (this.category + ' ' + subCategory))
+      data = subCategory
       this.releatedSearch = subCategory
     }else{
       data = this.searchedText
     }
     this.updateFilterConditions({
       q: data,
-      sort: null,
       cursor: null,
       return: null,
       qdotparser: (this.fieldsQuery.rating.q || this.fieldsQuery.price.q) ? 'structured' : null,
@@ -219,6 +244,7 @@ import { Common } from 'src/app/utils/common'
     if (this.searchedText) {
       queryObj.fieldsQuery = this.fieldsQuery
       let qObject = {...this.prevQuery, ...queryObj}
+      this._searchItemService.changeState(qObject)
       let urlParams = Common.setUrlParams(qObject)
       this.router.navigate(['/products'], { queryParams: urlParams })
       if (this.closeDialog) {
@@ -235,7 +261,7 @@ import { Common } from 'src/app/utils/common'
       if (!this.fieldsQuery.price.q) {
           let qSearch = this.searchedText
           if(this.releatedSearch){
-            qSearch = this.category +' '+  this.releatedSearch
+            qSearch = this.releatedSearch
           }
           this.onPressItem(qSearch, null)
       } else {
@@ -259,7 +285,7 @@ import { Common } from 'src/app/utils/common'
     if (!this.fieldsQuery.rating.q) {
       let qSearch = this.searchedText
       if(this.releatedSearch){
-        qSearch = this.category +' '+  this.releatedSearch
+        qSearch = this.releatedSearch
       }
       this.onPressItem(qSearch, null)
     } else {
@@ -271,7 +297,6 @@ import { Common } from 'src/app/utils/common'
   removeReleatedSearch() {
     this.releatedSearch = null
     this.onPressItem(this.searchedText, null)
-    // this.onPressItem(this.searchedText + ' ' + this.releatedSearch, null)
   }
 
   ngOnDestroy() {
