@@ -150,24 +150,29 @@ export class CartComponent implements OnInit {
 
 // true - save for later , false - move to cart
   saveForLaterFn(id, quantity, bol) {
-    let cartItem: CartItem = new CartItem()
-    cartItem.product_id = id
-    cartItem.quantity = quantity
-    cartItem.in_cart = bol
-    if(bol) {
-      this._snackBarMsg = Constants.ITEM_MOVED_TO_CART
+    if(this.isLoggedIn) {
+      let cartItem: CartItem = new CartItem()
+      cartItem.product_id = id
+      cartItem.quantity = quantity
+      cartItem.in_cart = bol
+      if(bol) {
+        this._snackBarMsg = Constants.ITEM_MOVED_TO_CART
+      }
+      else {
+        this._snackBarMsg = Constants.ITWM_SAVE_LATER
+      }
+      this._cartService.postCartItem(cartItem)
+      .subscribe( data => {
+        this.saveForLaterRes = data
+        this._snackBar.open(this._snackBarMsg, "", {
+          duration: 5000
+        });
+        this.getCartItems()
+      })
     }
     else {
-      this._snackBarMsg = Constants.ITWM_SAVE_LATER
+      this.handleError('e')
     }
-    this._cartService.postCartItem(cartItem)
-    .subscribe( data => {
-      this.saveForLaterRes = data
-      this._snackBar.open(this._snackBarMsg, "", {
-        duration: 5000
-      });
-      this.getCartItems()
-    })
   }
 
   updateCartItem(product_id: number, quant: number, in_cart: boolean): CartItem {
