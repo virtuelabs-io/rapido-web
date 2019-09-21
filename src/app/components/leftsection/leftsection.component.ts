@@ -224,7 +224,7 @@ import { LoginStateService } from 'src/app/shared-services/login-state/login-sta
   
   onPressItem(data, subCategory) {
     if(subCategory){
-      data = this.releatedSearch ? this.releatedSearch : this.searchedText
+      data = subCategory
       this.releatedSearch = subCategory
     }else{
       data = this.searchedText
