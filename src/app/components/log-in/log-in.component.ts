@@ -9,6 +9,8 @@ import { CartStateService } from '../../shared-services/cart-state/cart-state.se
 import { ResendOtpService } from '../../shared-services/resend-otp/resend-otp.services';
 import { RouteService } from '../../shared-services/route/route.service';
 import { CartService } from '../../services/cart/cart.service';
+import { GuestCartService } from '../../services/guests/guest-cart.service';
+import { CartItem } from '../../services/cart/cart-item';
 
 @Component({
   selector: 'app-log-in',
@@ -25,9 +27,10 @@ export class LogInComponent implements OnInit {
   mobileNumber: string;
   password: string;
   isLoggedIn: Boolean
+  guestCartItems:  any
   progressSpinner: Boolean = false
   _profileService: ProfileService;
-
+  private _guestCartService: GuestCartService
   private _signInService: SignInService
   constructor(
     signInService: SignInService,
@@ -40,10 +43,12 @@ export class LogInComponent implements OnInit {
     private RouteService : RouteService,
     private ngZone: NgZone,
     private _cartStateService: CartStateService,
-    private _cartService: CartService
+    private _cartService: CartService,
+    guestCartService: GuestCartService
     ) {
     this._signInService = signInService
     this._profileService = profileService
+    this._guestCartService = guestCartService
   }
 
   ngOnInit() {
@@ -83,16 +88,56 @@ export class LogInComponent implements OnInit {
   navigateToForgotPassword() {
     this.ngZone.run(() =>this.router.navigate(['forgotpassword'])).then()
   }
+  
+  async handleUserlogin() {
+    await this.fetchGuestCart().
+    then( _ => this.login()).
+    then(_=> this.postGuestCart())
+  }
 
-  login() {
+  async postGuestCart() {
+    console.log('lets end it here 1')
+    this.loginStateService.loaderEnable()
+    let items = [];
+    for(var i = 0; i < this.guestCartItems.length; i++) {
+      items.push(this.updateCartItem(this.guestCartItems[i].guestCartItem.product_id, this.guestCartItems[i].guestCartItem.quantity, true))
+    }
+    console.log(items)
+    this._cartService.postCartItemList(items)
+      .subscribe( data => {
+        console.log('lets end it here 2')
+        console.log(data)
+        this.loginStateService.loaderDisable()
+      })
+  }
+
+  updateCartItem(product_id: number, quant: number, in_cart: boolean): CartItem {
+    let cartItem: CartItem = new CartItem()
+    cartItem.product_id = product_id
+    cartItem.quantity = quant
+    cartItem.in_cart = in_cart
+    return cartItem
+  }
+
+  async fetchGuestCart() {
+    // fetching the guest cart items if any....
+    await this._guestCartService.getGuestCartItems()
+    .then((data: any) => {
+      console.log('lets start this')
+      this.guestCartItems = data
+    })
+  }
+
+  async login() {
     this.progressSpinner = true
     if(this.mobileNumber && this.password && this.mobileNumber.length === 10) {
       this._signInService.signInData = {
         Username: [ this.countryCode,this.mobileNumber ].join(""),
         Password: this.password
       }
-      this._signInService.login().
+      await this._signInService.login().
       then(value => {
+        console.log(this.guestCartItems)
         this.progressSpinner = false
         this._signInResponse = true;
         this.loginStateService.changeState(true);
