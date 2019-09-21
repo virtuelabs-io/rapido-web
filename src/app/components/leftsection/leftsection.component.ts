@@ -5,6 +5,7 @@ import { ProductsService } from '../../services/products/products.service';
 import { Router } from '@angular/router';
 import { Query } from 'src/app/services/products/query.interface'
 import { Common } from 'src/app/utils/common'
+import { LoginStateService } from 'src/app/shared-services/login-state/login-state.service';
 
  @Component({
   selector: 'app-leftsection',
@@ -30,6 +31,11 @@ import { Common } from 'src/app/utils/common'
   _searchItemServiceResponsePoductListState: any
   releatedSearch : any
   currency : any
+  sortByType = {
+    value: '',
+    asc: false, 
+    desc: false
+  }
  
   constructor(private _searchItemService: SearchItemService, 
     productsService: ProductsService,
@@ -72,6 +78,15 @@ import { Common } from 'src/app/utils/common'
           this.fieldsQuery = query.fieldsQuery
         }
         this.prevQuery = query
+        if(query.sort){
+          this.onPressSort(query.sort)
+        }else{
+          this.sortByType = {
+            value: '',
+            asc: false, 
+            desc: false
+          }
+        }
       }
     })
   }
@@ -189,6 +204,18 @@ import { Common } from 'src/app/utils/common'
   }
   
   onPressSort(data) {
+    this.sortByType.desc = false
+    this.sortByType.asc = false
+    try{
+      if(data.split(' ')[1] === "asc"){
+          this.sortByType.asc = true
+      }else if(data.split(' ')[1] === "desc"){
+          this.sortByType.desc = true
+      }
+    }catch(error){
+      console.error(error, `:\t Error with Query Syntax`)
+    }
+    this.sortByType.value = data
     this.updateFilterConditions({
       sort: data,
       start:0
@@ -204,7 +231,6 @@ import { Common } from 'src/app/utils/common'
     }
     this.updateFilterConditions({
       q: data,
-      sort: null,
       cursor: null,
       return: null,
       qdotparser: (this.fieldsQuery.rating.q || this.fieldsQuery.price.q) ? 'structured' : null,
