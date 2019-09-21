@@ -186,7 +186,9 @@ export class LogInComponent implements OnInit {
       if(this._previousRoute.value == 'cart/guest-checkout') {
         await this.postGuestCartItems()
       }
-      this.ngZone.run(() =>this.router.navigate(['/'+this._previousRoute.value])).then()
+      else {
+        this.ngZone.run(() =>this.router.navigate(['/'+this._previousRoute.value])).then()
+      }
     }
     else {
       this.ngZone.run(() =>this.router.navigate([''])).then()
@@ -205,7 +207,7 @@ export class LogInComponent implements OnInit {
           console.log('guest cart successfully posted')
           console.log(data)
           this.loginStateService.loaderDisable()
-          this.ngZone.run(() =>this.router.navigate(['cart/checkout'])).then()
+          this.ngZone.run(() =>this.router.navigate(['/'+this._previousRoute.value])).then()
       })
   }
 }

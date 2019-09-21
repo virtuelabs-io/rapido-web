@@ -24,7 +24,7 @@ export class GuestChargeService extends RapidoHttpService<GuestCharge> {
     guestCharge.description = [guestCharge.description, "SID:", guestCharge.session_id].join(" ")
     return new Promise(resolve=>{
       let orderItemsObject;
-      this.post([Constants.PAYMENT_APIS.api, "charge-guest"].join("/"), guestCharge, this.addAuthHeader(this.initializeHeaders()))
+      this.post([Constants.PAYMENT_APIS.api, "charge-guest"].join("/"), guestCharge)
         .subscribe(data => {
           if (data[0].length > 0){
             orderItemsObject = this.formatOrderItems(data[0])

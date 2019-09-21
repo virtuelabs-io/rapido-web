@@ -3,47 +3,57 @@
     <!-- Delivery address step-->
     <mat-step [stepControl]="registerFormGroup">
       <ng-template matStepLabel>Select Delivery Address</ng-template>
-      <form class="form-container">
         <div class="address-div">
-          <div class="title-div">
-            <svg>
-              <use xlink:href="#delivery-address" />
-            </svg>
-            <h4>
-              My Addresses
-            </h4>
-          </div>
-          <div class="rapido-add-address">
-            <a class="rapido-add-address-icon" (click)="newAddress()">
-              <div class="address-add-icon">
-                <a class="">
-                  <svg aria-hidden="true" aria-haspopup="menu">
-                    <use xlink:href="#add"/>
-                  </svg>
-                </a>
-              </div>
-              <div class="text-div">
-                <p>Add Address</p>
-              </div>
-            </a>
-            <div class="rapido-add-address-item" *ngFor="let address of address">
-              <div class="address-text">
-                <strong> {{ address.full_name }} </strong>
-                <br/><p>{{ address.addr_1 }}
-                <br/> {{ address.addr_2 }}
-                <br/> {{ address.city }} 
-                <br/> {{ address.county }}, {{ address.postcode }}
-                <br/> {{ address.country }}
-              </div>
-              <div class="card-actions">
-                <button mat-flat-button color="primary" class="delivery-add-button" (click)="createOrder(address.id)">
-                  Deliver to this Address
+          <div class="add-address-main">
+            <form class="form-details" [formGroup]="addressFormGroup" novalidate>
+              <mat-form-field>
+                <input matInput placeholder="Name"  formControlName="name">
+                <mat-error *ngIf="hasError('name', 'required')">Name is required</mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Moble Number"  formControlName="mobileNumber">
+                <mat-error *ngIf="hasError('mobileNumber', 'required')">Mobile Number is required</mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="mail id"  formControlName="mail">
+                <mat-error *ngIf="hasError('mail', 'required')">email ID is required</mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Address Line 1"  formControlName="add1">
+                <mat-error *ngIf="hasError('add1', 'required')">Address1 is required</mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Address Line 2"  formControlName="add2">
+                <mat-error *ngIf="hasError('add2', 'required')">Address2 is required</mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Town / City"  formControlName="town_city">
+                <mat-error *ngIf="hasError('town_city', 'required')">Town/City is required</mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="County"  formControlName="county">
+                <mat-error *ngIf="hasError('county', 'required')">County is required</mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Postcode" formControlName="postCode">
+                <mat-error *ngIf="hasError('postCode', 'required')">Post Code is required</mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Country"  formControlName="country">
+                <mat-error *ngIf="hasError('country', 'required')">Country is required</mat-error>
+              </mat-form-field>
+              <mat-card-actions>
+                <button class="spacing" mat-flat-button color="primary" type="submit" [disabled]="!addressFormGroup.valid" (click)="createGuestOrder(addressFormGroup.value)">
+                    <!-- <span *ngIf="_progressSpinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> -->
+                    Deliver to this Address
                 </button>
-              </div>
-            </div>
+              </mat-card-actions>
+            </form>
           </div>
-        </div>
-      </form>          
+          <div class="delivery-pricing">
+
+          </div>
+        </div>    
     </mat-step>
 
   <!-- payment step -->
