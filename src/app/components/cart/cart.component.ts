@@ -10,6 +10,7 @@ import { SessionService } from '../../services/authentication/session/session.se
 import { RouteService } from '../../shared-services/route/route.service';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
 import { GuestCartService } from '../../services/guests/guest-cart.service';
+import { GuestCartItem } from 'src/app/services/guests/guest-cart-item';
 
 @Component({
   selector: 'app-cart',
@@ -31,6 +32,7 @@ export class CartComponent implements OnInit {
   postCartItemsRes: any
   saveForLaterRes: any
   currency: any
+  guestCartItem: GuestCartItem = new GuestCartItem()
   imageUrl: string =  Constants.environment.staticAssets+'/images/empty-cart.jpg'
   public _cartService: CartService
   private _guestCartService: GuestCartService
@@ -70,6 +72,7 @@ export class CartComponent implements OnInit {
   }
 
  async getCartItems() {
+  this._loginStateService.loaderEnable()
   this.cartItems = []
   this.saveforLater = []
   this.cartAmount = 0
@@ -130,22 +133,38 @@ export class CartComponent implements OnInit {
             quantity: data[i].guestCartItem.quantity
           })
       }
-     // this.guest_result = "Sucessfully fetched guest cart items and logged!";
-    })
+      this._cartStateService.fetchAndUpdateCartCount(this.isLoggedIn)
       this._loginStateService.loaderDisable()
+    })
     }
   }
 
   async deleteCartItem(id){
-    this._snackBarMsg = Constants.ITWM_DELETE_CART
-    await this._cartService.deleteCartItem(id)
-    .subscribe( data => {
-      this.deleteRes = data
-      this._snackBar.open(this._snackBarMsg, "", {
-        duration: 5000
-      });
-      this.getCartItems()
-    })
+    this._loginStateService.loaderEnable()
+    if(this.isLoggedIn) {
+      this._snackBarMsg = Constants.ITWM_DELETE_CART
+      await this._cartService.deleteCartItem(id)
+      .subscribe( data => {
+        this.deleteRes = data
+        this._snackBar.open(this._snackBarMsg, "", {
+          duration: 5000
+        });
+        this.getCartItems()
+      })
+    }
+    else {
+      this._snackBarMsg = Constants.ITWM_DELETE_CART
+      this.guestCartItem.product_id = id
+      this.guestCartItem.quantity = 1
+      await this._guestCartService.deleteGuestCartItem(this.guestCartItem)
+      .subscribe(data => {
+        this.deleteRes = data
+        this._snackBar.open(this._snackBarMsg, "", {
+          duration: 5000
+        });
+        this.getCartItems()
+      })
+    }
   }
 
 // true - save for later , false - move to cart
