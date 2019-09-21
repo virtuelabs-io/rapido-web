@@ -9,6 +9,7 @@ import { CartStateService } from '../../shared-services/cart-state/cart-state.se
 import { SessionService } from '../../services/authentication/session/session.service';
 import { RouteService } from '../../shared-services/route/route.service';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
+import { GuestCartService } from '../../services/guests/guest-cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -32,6 +33,8 @@ export class CartComponent implements OnInit {
   currency: any
   imageUrl: string =  Constants.environment.staticAssets+'/images/empty-cart.jpg'
   public _cartService: CartService
+  private _guestCartService: GuestCartService
+
   constructor(
     cartService: CartService,
     private _snackBar: MatSnackBar,
@@ -40,9 +43,11 @@ export class CartComponent implements OnInit {
     private _sessionService: SessionService,
     private RouteService : RouteService,
     private _loginStateService: LoginStateService,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    guestCartService: GuestCartService
   ) { 
     this._cartService = cartService
+    this._guestCartService = guestCartService
   }
 
    ngOnInit() {
@@ -52,8 +57,7 @@ export class CartComponent implements OnInit {
 
   async userLogInCheck() {
     await this.loginSessinExists().
-		then( _ => this.getCartItems()).
-		catch(err => this.handleError(err))
+		then( _ => this.getCartItems())
   }
 
   async loginSessinExists() {
@@ -112,7 +116,22 @@ export class CartComponent implements OnInit {
     })
     } 
     else {
-      await Promise.reject("Login Session doesn't exist!")
+     await this._guestCartService.getGuestCartItems()
+    .then((data: any) => {
+      console.log(data)
+      for(var i = 0; i < data.length; i++) {
+          this.inCart = true
+          this.cartAmount += (parseFloat(data[i].itemDetails.price) * data[i].guestCartItem.quantity)
+          this.cartItems.push({
+            id: data[i].guestCartItem.product_id,
+            icon: this._imageUrl+data[i].itemDetails.images[0],
+            title: data[i].itemDetails.name,
+            amount: parseFloat(data[i].itemDetails.price).toFixed(2),
+            quantity: data[i].guestCartItem.quantity
+          })
+      }
+     // this.guest_result = "Sucessfully fetched guest cart items and logged!";
+    })
       this._loginStateService.loaderDisable()
     }
   }
