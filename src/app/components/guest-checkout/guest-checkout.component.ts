@@ -1,5 +1,5 @@
-import { Component, OnInit, NgZone } from '@angular/core';
-import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { Component, OnInit, NgZone, NgModule } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { GuestAddressService } from '../../services/guests/guest-address.service';
 import { GuestAddressDetails } from '../../services/guests/guest-address-details';
 import { GuestOrder } from '../../services/guests/guest-order';
@@ -12,6 +12,15 @@ import { GuestCharge } from '../../services/payment/guest-charge';
 import {MatSnackBar} from '@angular/material';
 import { RouteService } from '../../shared-services/route/route.service';
 import { Router } from '@angular/router';
+import { ProfileService } from '../../services/authentication/profile/profile.service';
+
+@NgModule({
+	imports: [
+		FormBuilder,
+		Validators,
+		FormGroup
+	]
+})
 
 @Component({
   selector: 'app-guest-checkout',
@@ -25,6 +34,7 @@ export class GuestCheckoutComponent implements OnInit {
   addRes: any
   orders = {}
   products = []
+  orderedDate: any
   itemTotal: any
   orderTotal: any
   deliveryCharges: any
@@ -34,6 +44,8 @@ export class GuestCheckoutComponent implements OnInit {
   _orderId: any
   imageUrl: string = Constants.environment.staticAssets
   stepperIndex: number = 0
+  registeredEmail: string = ""
+  _logInName: string
   payment: FormGroup;
   // optional parameters
   elementsOptions: ElementsOptions = {
@@ -57,7 +69,8 @@ export class GuestCheckoutComponent implements OnInit {
     private _snackBar: MatSnackBar,
     private router: Router,
     private RouteService : RouteService,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private _profileService: ProfileService
   ) { 
     this._guestAddressService = guestAddressService
     this._guestOrderService = guestOrderService
@@ -74,8 +87,16 @@ export class GuestCheckoutComponent implements OnInit {
       country: new FormControl('', [Validators.required]),
       mobileNumber: new FormControl('', [Validators.required]),
       mail: new FormControl('', [Validators.required])
-
     })
+
+    this._loginStateService.isLoggedInState.subscribe(state => {
+      if (state) {
+        this.registeredEmail = this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.email
+        this._logInName = this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.name
+      }
+    })
+    let d = new Date()
+    this.orderedDate = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()
   }
 
   ngAfterViewInit() {
@@ -182,9 +203,9 @@ export class GuestCheckoutComponent implements OnInit {
   
   buy() {
     this._loginStateService.loaderEnable()
-    this._charge.name = 'Anirup'
+    this._charge.name = this._logInName
     this._charge.description = ['Rapidobuild Order',' #', this._orderId].join("")
-    this._charge.receiptEmail = 'anirup049@gmail.com'
+    this._charge.receiptEmail = this.registeredEmail
     this._charge.order_id = this._orderId
     const name = this._charge.name
     this.stripeService
@@ -208,9 +229,8 @@ export class GuestCheckoutComponent implements OnInit {
     .then(data => {
       console.log('payment success')
       this.chargeResult = JSON.stringify(data)
-      this.RouteService.changeRoute('orderCreated')
       this._loginStateService.loaderDisable()
-      this.ngZone.run(() =>this.router.navigate(['orders', this._charge.order_id, 'details'])).then()
+      this.stepperIndex = 2
     })
   }
 }

@@ -28,6 +28,7 @@ export class LogInComponent implements OnInit {
   password: string;
   isLoggedIn: Boolean
   guestCartItems:  any
+  gotoRoute: any
   progressSpinner: Boolean = false
   _profileService: ProfileService;
   private _guestCartService: GuestCartService
@@ -143,8 +144,9 @@ export class LogInComponent implements OnInit {
         this.loginStateService.changeState(true);
         this.cartStateService.fetchAndUpdateCartCount(true)
         if(this._previousRoute.value && this._previousRoute.value !== 'cart/guest-checkout'){
+          this.gotoRoute = this._previousRoute.value
           this.RouteService.changeRoute('')
-          this.ngZone.run(() =>this.router.navigate(['/'+this._previousRoute.value])).then()
+          this.ngZone.run(() =>this.router.navigate(['/'+this.gotoRoute])).then()
         }
         else if(this._previousRoute.value && this._previousRoute.value == 'cart/guest-checkout') {
           this.RouteService.changeRoute('')

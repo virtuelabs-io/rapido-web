@@ -122,6 +122,9 @@ export class CartComponent implements OnInit {
      await this._guestCartService.getGuestCartItems()
     .then((data: any) => {
       console.log(data)
+      if(data.length) {
+        this.currency = data[0].itemDetails.currency
+      }
       for(var i = 0; i < data.length; i++) {
           this.inCart = true
           this.cartAmount += (parseFloat(data[i].itemDetails.price) * data[i].guestCartItem.quantity)
@@ -136,7 +139,10 @@ export class CartComponent implements OnInit {
       if(!this.cartItems.length) {
         this.inCart = false
       }
-      this._cartStateService.fetchAndUpdateCartCount(this.isLoggedIn)
+      this.cartAmount = this.cartAmount.toFixed(2)
+      this.inCartItems = this.cartItems.length
+      this._cartStateService.updateCartCount(this.inCartItems)
+    //  this._cartStateService.fetchAndUpdateCartCount(this.isLoggedIn)
       this._loginStateService.loaderDisable()
     })
     }

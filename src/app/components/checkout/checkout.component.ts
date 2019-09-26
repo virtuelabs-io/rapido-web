@@ -61,7 +61,6 @@ export class CheckoutComponent implements OnInit {
   private _orderService: OrdersService
 
   constructor(
-   // private fb: FormBuilder, // by Sangram
     private _formBuilder: FormBuilder,
     private stripeService: StripeService,
     private chargeService: ChargeService,
