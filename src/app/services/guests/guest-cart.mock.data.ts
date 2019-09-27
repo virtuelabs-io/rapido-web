@@ -1,9 +1,8 @@
-import { CartItem } from './cart-item';
-import { CartItemDetails } from './cart-item-details';
-import { CartService } from './cart.service';
+import { GuestCartItem } from './guest-cart-item';
+import { GuestCartItemDetails } from './guest-cart-item-details';
+import { GuestCartService } from './guest-cart.service';
 
-let cartItem = new CartItem()
-cartItem.in_cart = true
+let cartItem = new GuestCartItem()
 cartItem.product_id = 1
 cartItem.quantity = 2
 let itemDetails = {
@@ -18,24 +17,20 @@ let itemDetails = {
     offer: "0.2",
     price: "16499.0"
 }
-let cartItemDetails = new CartItemDetails(
+let cartItemDetails = new GuestCartItemDetails(
     cartItem,
     itemDetails
 )
-export class CartMockData {
+export class GuestCartMockData {
 
-    public static getCartItems: CartItemDetails[] = [
+    public static getCartItems: GuestCartItemDetails[] = [
         cartItemDetails
     ]
 
-    public static getCartItem: CartItem = cartItem
+    public static getCartItem: GuestCartItem = cartItem
     
 
     public static cartCount: number = 5
-
-    public static getSavedForLater: CartItem[] = [
-        cartItem
-    ]
 
     public static postCartItemList = {
         affectedRows: 1,

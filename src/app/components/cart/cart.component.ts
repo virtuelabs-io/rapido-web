@@ -35,7 +35,7 @@ export class CartComponent implements OnInit {
   guestCartItem: GuestCartItem = new GuestCartItem()
   imageUrl: string =  Constants.environment.staticAssets+'/images/empty-cart.jpg'
   public _cartService: CartService
-  private _guestCartService: GuestCartService
+  public _guestCartService: GuestCartService
 
   constructor(
     cartService: CartService,
@@ -68,7 +68,8 @@ export class CartComponent implements OnInit {
 
   async handleError(err) {
     this.RouteService.changeRoute('cart')
-    this.router.navigateByUrl('/login')
+    this.ngZone.run(() =>this.router.navigate(['login'])).then()
+
   }
 
  async getCartItems() {
@@ -121,6 +122,7 @@ export class CartComponent implements OnInit {
     else {
      await this._guestCartService.getGuestCartItems()
     .then((data: any) => {
+      this.fetchRes = data
       if(data.length) {
         this.currency = data[0].itemDetails.currency
       }
@@ -230,9 +232,10 @@ export class CartComponent implements OnInit {
       }
       this._guestCartService.postGuestCartItemList(items)
         .subscribe( data => {
+          this.postCartItemsRes = data
           this._loginStateService.loaderDisable()
           this.RouteService.changeRoute('cart/guest-checkout')
-          this.router.navigateByUrl('/login')
+          this.ngZone.run(() =>this.router.navigate(['login'])).then()
       })
     }
   }
