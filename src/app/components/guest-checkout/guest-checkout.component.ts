@@ -228,7 +228,45 @@ export class GuestCheckoutComponent implements OnInit {
       this.chargeResult = JSON.stringify(data)
       this._loginStateService.loaderDisable()
       this._cartStateService.fetchAndUpdateCartCount(false)
+      this.orderSummary(data)
       this.stepperIndex = 2
     })
+  }
+
+  orderSummary(data) {
+    this.orderItems = []
+    this.orders = {}
+    if(data['orderItemsObject']) {
+      for(let order in data['orderItemsObject']) {
+        if(data['products']) {
+          this.products = data['products']
+        }
+        if(this.orders[order] == undefined) {
+          this.orders[order] = {}
+          this.orders[order]['items'] = []
+          this.orders[order]['address'] = {}
+        }
+        this._orderId = order
+        for(let product in data['orderItemsObject'][order]) {
+         this.orders[order]['items'].push(data['orderItemsObject'][order][product])
+          this.orders[order]['address'].full_name = data['orderItemsObject'][order][product].full_name
+          this.orders[order]['address'].addr_1 = data['orderItemsObject'][order][product].addr_1
+          this.orders[order]['address'].addr_2 = data['orderItemsObject'][order][product].addr_2
+          this.orders[order]['address'].city = data['orderItemsObject'][order][product].city
+          this.orders[order]['address'].county = data['orderItemsObject'][order][product].county
+          this.orders[order]['address'].postcode = data['orderItemsObject'][order][product].postcode
+          this.orders[order]['address'].country = data['orderItemsObject'][order][product].country
+          this.orders[order].category = Constants.ORDER_STATUS[data['orderItemsObject'][order][product]['order_status_id']]
+          this.itemTotal = data['orderItemsObject'][order][product].order_price.toFixed(2)
+          this.vatTotal = data['orderItemsObject'][order][product].vat.toFixed(2)
+          this.deliveryCharges = data['orderItemsObject'][order][product].delivery_cost.toFixed(2)
+          this.orderTotal = data['orderItemsObject'][order][product].order_price_total.toFixed(2)
+          this.currency = data['products'][product].currency
+          this.registeredEmail = data['orderItemsObject'][order][product].email
+        }
+      }
+      this.orderItems = Object.keys(this.orders)
+    }
+    this._loginStateService.loaderDisable()
   }
 }
