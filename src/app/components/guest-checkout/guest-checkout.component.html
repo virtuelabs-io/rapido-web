@@ -1,5 +1,5 @@
 <div class="main-div">
-  <mat-horizontal-stepper [linear]="isLinear" #stepper [selectedIndex]="stepperIndex">
+  <mat-horizontal-stepper [linear]="true" #stepper [selectedIndex]="stepperIndex">
     <!-- Delivery address step-->
     <mat-step [stepControl]="addressFormGroup">
       <ng-template matStepLabel>Select Delivery Address</ng-template>
@@ -59,7 +59,7 @@
     </mat-step>
 
   <!-- payment step -->
-    <mat-step [stepControl]="registerFormGroup">
+    <mat-step [stepControl]="addressFormGroup">
       <ng-template matStepLabel>Make a payment</ng-template>
       <form>
         <div class="payment-div">
@@ -152,7 +152,7 @@
       </form>
     </mat-step>
 
-    <mat-step [stepControl]="registerFormGroup">
+    <mat-step [stepControl]="addressFormGroup">
       <ng-template matStepLabel>Order Details</ng-template>
       <form>
         <div class="payment-div">
