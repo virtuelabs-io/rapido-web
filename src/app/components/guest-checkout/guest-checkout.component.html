@@ -1,7 +1,7 @@
 <div class="main-div">
   <mat-horizontal-stepper [linear]="isLinear" #stepper [selectedIndex]="stepperIndex">
     <!-- Delivery address step-->
-    <mat-step [stepControl]="registerFormGroup">
+    <mat-step [stepControl]="addressFormGroup">
       <ng-template matStepLabel>Select Delivery Address</ng-template>
         <div class="address-div">
           <div class="add-address-main">

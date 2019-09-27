@@ -40,7 +40,7 @@ export class LogInComponent implements OnInit {
     private cartStateService: CartStateService,
     private resendOtpService : ResendOtpService,
 		private route: ActivatedRoute,
-    private RouteService : RouteService,
+    public RouteService : RouteService,
     private ngZone: NgZone,
     private _cartStateService: CartStateService,
     private _cartService: CartService,
