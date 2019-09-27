@@ -11,12 +11,15 @@
                 <mat-error *ngIf="hasError('name', 'required')">Name is required</mat-error>
               </mat-form-field>
               <mat-form-field>
+                <span matPrefix>{{countryCode}} &nbsp;</span>
                 <input matInput placeholder="Moble Number"  formControlName="mobileNumber">
                 <mat-error *ngIf="hasError('mobileNumber', 'required')">Mobile Number is required</mat-error>
+                <mat-error *ngIf="hasError('mobileNumber', 'pattern') || hasError('mobileNumber', 'min') || hasError('mobileNumber', 'max') ">Invalid entry</mat-error>
               </mat-form-field>
               <mat-form-field>
-                <input matInput placeholder="mail id"  formControlName="mail">
-                <mat-error *ngIf="hasError('mail', 'required')">email ID is required</mat-error>
+                <input matInput placeholder="Enter your email"  formControlName="email">
+                <mat-error *ngIf="hasError('email', 'required')">email ID is required</mat-error>
+                <mat-error *ngIf="hasError('email', 'email')">Incorrect email ID</mat-error>
               </mat-form-field>
               <mat-form-field>
                 <input matInput placeholder="Address Line 1"  formControlName="add1">
@@ -44,7 +47,6 @@
               </mat-form-field>
               <mat-card-actions>
                 <button class="spacing" mat-flat-button color="primary" type="submit" [disabled]="!addressFormGroup.valid" (click)="createGuestOrder(addressFormGroup.value)">
-                    <!-- <span *ngIf="_progressSpinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> -->
                     Deliver to this Address
                 </button>
               </mat-card-actions>

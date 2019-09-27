@@ -44,6 +44,7 @@ export class GuestCheckoutComponent implements OnInit {
   orderItems = []
   _orderId: any
   imageUrl: string = Constants.environment.staticAssets
+  countryCode: string = Constants.DEFAULT_PHONE_CODE
   stepperIndex: number = 0
   registeredEmail: string = ""
   _logInName: string
@@ -87,8 +88,8 @@ export class GuestCheckoutComponent implements OnInit {
       postCode: new FormControl('', [Validators.required]),
       county: new FormControl('', [Validators.required]),
       country: new FormControl('', [Validators.required]),
-      mobileNumber: new FormControl('', [Validators.required]),
-      mail: new FormControl('', [Validators.required])
+      mobileNumber: new FormControl('', [Validators.required, , Validators.pattern('^[0-9]+$'), Validators.min(1000000000), Validators.max(9999999999)]),
+      email: new FormControl('', [Validators.required, , Validators.email])
     })
 
     this._loginStateService.isLoggedInState.subscribe(state => {
