@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { LogInComponent } from './log-in.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router , Routes} from '@angular/router';
@@ -10,6 +10,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TermsConditionsComponent } from '../terms-conditions/terms-conditions.component';
 import { PrivacyPolicyComponent } from '../privacy-policy/privacy-policy.component';
 import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
+import { GuestCheckoutComponent } from '../guest-checkout/guest-checkout.component';
+import { HomeComponent } from '../home/home.component';
+import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { OrdersComponent } from '../orders/orders.component';
 
 describe('LogInComponent', () => {
   let component: LogInComponent;
@@ -21,14 +25,18 @@ describe('LogInComponent', () => {
     { path: 'register', component: RegisterComponent},
     { path: 'terms', component: TermsConditionsComponent},
     { path: 'privacy-policy', component: PrivacyPolicyComponent},
-    { path: 'forgotpassword', component: ForgotPasswordComponent}
+    { path: 'forgotpassword', component: ForgotPasswordComponent},
+    { path: 'cart/guest-checkout', component: GuestCheckoutComponent},
+    { path: '', component: HomeComponent},
+    { path: 'orders', component: OrdersComponent}
 
   ]
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ ReactiveFormsModule, MatToolbarModule, MatStepperModule, MatFormFieldModule, MatIconModule, MatCheckboxModule, MatCardModule, MatInputModule, FormsModule, RouterTestingModule.withRoutes(routes),HttpClientTestingModule ],
-      declarations: [ LogInComponent, RegisterComponent, TermsConditionsComponent, PrivacyPolicyComponent, ForgotPasswordComponent ]
+      declarations: [ OrdersComponent, HomeComponent, LogInComponent, RegisterComponent, TermsConditionsComponent, PrivacyPolicyComponent, ForgotPasswordComponent, GuestCheckoutComponent ],
+      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));
@@ -64,7 +72,6 @@ describe('LogInComponent', () => {
     component.login();
     expect(component.alertMsg).toEqual("Please enter mobile number");
     expect(component.alertBox).toBeTruthy();
-    expect(component.progressSpinner).toBeFalsy();
   }));
 
   it('should throw error alert for missing password', async(() => {
@@ -72,7 +79,6 @@ describe('LogInComponent', () => {
     component.login();
     expect(component.alertMsg).toEqual("Please enter password");
     expect(component.alertBox).toBeTruthy();
-    expect(component.progressSpinner).toBeFalsy();
   }));
 
   it('should contain 10 digits for mobile number', async(() => {
@@ -107,4 +113,18 @@ describe('LogInComponent', () => {
       expect(location.path()).toEqual('/forgotpassword')
     });
   });
+
+  it('should navigate to Home component when clicked on Proceed as Guest', fakeAsync(() => {
+    component.RouteService.changeRoute('')
+    component.handleGuest()
+    tick()
+    expect(location.path()).toEqual('/');
+  }));
+
+  it('should navigate to Checkout component when clicked on Proceed as Guest', fakeAsync(() => {
+    component.RouteService.changeRoute('cart/guest-checkout')
+    component.handleGuest()
+    tick()
+    expect(location.path()).toEqual('/cart/guest-checkout');
+  }));
 });

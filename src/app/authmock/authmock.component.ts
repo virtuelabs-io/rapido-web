@@ -835,6 +835,7 @@ export class AuthmockComponent implements OnInit {
   }
 
   createGuestOrder(){
+    console.log(this.guestOrder)
     this._guestOrderService.createGuestOrder(this.guestOrder)
     .then((data: any) => {
       console.log(data)

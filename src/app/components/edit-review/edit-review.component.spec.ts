@@ -1,8 +1,9 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { EditReviewComponent } from './edit-review.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router, Routes } from '@angular/router';
+import {Location} from "@angular/common";
 import { CustomerReviewsComponent } from '../customer-reviews/customer-reviews.component';
 import {  HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatSnackBarModule } from '@angular/material';
@@ -17,6 +18,7 @@ describe('EditReviewComponent', () => {
   let component: EditReviewComponent;
   let fixture: ComponentFixture<EditReviewComponent>;
   let router: Router;
+  let location: Location;
 
   const routes: Routes = [
     { path: 'login', component: LogInComponent},
@@ -34,6 +36,7 @@ describe('EditReviewComponent', () => {
 
   beforeEach(() => {
     router = TestBed.get(Router);
+    location = TestBed.get(Location);
     fixture = TestBed.createComponent(EditReviewComponent);
     fixture.ngZone.run(() => {
       router.initialNavigation();
@@ -66,4 +69,15 @@ describe('EditReviewComponent', () => {
     component.registerFormGroup.controls['summary'].setValue('')
     expect(component.registerFormGroup.controls['summary'].hasError('required')).toBeTruthy()
   });
+
+  it('route to My Reviews page from create review component',  fakeAsync(() => {
+    component.isLoggedIn = true
+    component._reviewId = 4
+    component.registerFormGroup.controls['title'].setValue("wow..awesome product")
+    component.rate = 5
+    component.registerFormGroup.controls['summary'].setValue("wow..awesome product")
+    component.updateRating(component.registerFormGroup.value)
+    tick(10000);
+    expect(location.path()).toEqual('/profile/my-reviews')
+  }));
 });

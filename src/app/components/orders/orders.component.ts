@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, NgModule } from '@angular/core';
 import { OrdersService } from '../../services/orders/orders.service';
 import { Constants } from '../../utils/constants';
 import { Router } from '@angular/router';
@@ -7,6 +7,16 @@ import { LoginStateService } from '../../shared-services/login-state/login-state
 import { ConfirmationDialogComponent } from '../../components/confirmation-dialog/confirmation-dialog.component';
 import {  MatDialog } from '@angular/material';
 import { RatingsService } from '../../services/ratings/ratings.service';
+import {FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
+
+@NgModule({
+	imports: [
+		FormBuilder,
+		Validators,
+    FormGroup,
+    ReactiveFormsModule
+	]
+})
 
 @Component({
   selector: 'app-orders',
@@ -137,14 +147,18 @@ export class OrdersComponent implements OnInit {
     this._loginStateService.loaderEnable()
     this._ratingsService.checkProductReview(productId)
     .subscribe(data => {
-      if(data.length){
-        this._loginStateService.loaderDisable()
-		    this.ngZone.run(() =>this.router.navigate(['review/edit/review', data[0].id] )).then()
-	    }
-      else {
-        this._loginStateService.loaderDisable()
-        this.ngZone.run(() =>this.router.navigate(['review/create/product', productId] )).then()
-      }
+      this.handleReviewNavigation(data, productId)
     })
+  }
+
+  handleReviewNavigation(data, productId) {
+    if(data.length){
+      this._loginStateService.loaderDisable()
+      this.ngZone.run(() =>this.router.navigate(['review/edit/review', data[0].id] )).then()
+    }
+    else {
+      this._loginStateService.loaderDisable()
+      this.ngZone.run(() =>this.router.navigate(['review/create/product', productId] )).then()
+    }
   }
 }

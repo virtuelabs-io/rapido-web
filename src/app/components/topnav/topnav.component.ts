@@ -12,6 +12,7 @@ import { RouteService } from '../../shared-services/route/route.service';
 import { ProductsService } from '../../services/products/products.service';
 import { v4 as uuid } from 'uuid';
 import { Common } from './../../utils/common'
+import { GuestCartService } from '../../services/guests/guest-cart.service';
 
 @NgModule({})
 @Component({
@@ -28,6 +29,8 @@ export class TopnavComponent implements OnInit {
   durationInSeconds = 5
   cartCount:Number = 0
   private _productsService: ProductsService
+  private _guestCartService: GuestCartService
+
   constructor(private _sessionService: SessionService,
               private _profileService: ProfileService,
               private _cartService: CartService,
@@ -38,8 +41,10 @@ export class TopnavComponent implements OnInit {
               private _loginStateService: LoginStateService,
               private RouteService : RouteService,
               productsService: ProductsService,
+              guestCartService: GuestCartService,
               private ngZone: NgZone) {
                 this._productsService = productsService
+                this._guestCartService = guestCartService
               }
 
   ngOnInit() {
@@ -53,22 +58,25 @@ export class TopnavComponent implements OnInit {
     }).catch(error => {
     //  this.openSnackBar(error.message);
       this.isSignedIn = false
+      this.getCartCount()
     })
     this._loginStateService.isLoggedInState.subscribe(state => {
       this.isSignedIn = state
       if (state) {
         this.name =  this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.name
       }
+      this.getCartCount()
     })
     this._cartStateService.cartCountState.subscribe(state => {
       this.cartCount = state;
     })
+   // this.getCartCount()
   }
 
   signOut() {
     this._profileService.cognitoUser.signOut()
     this._loginStateService.changeState(false)
-    this._cartStateService.updateCartCount(0)
+    this._cartStateService.fetchAndUpdateCartCount(false)
     this.ngZone.run(() =>this.router.navigate([''])).then()
   }
 
@@ -90,10 +98,20 @@ export class TopnavComponent implements OnInit {
   }
 
   getCartCount(){
-    this._cartService.getCountOfInCartItems()
+    if(this.isSignedIn) {
+      this._cartService.getCountOfInCartItems()
         .then((count: any) => {
           this.cartCount = count
+          this._cartStateService.fetchAndUpdateCartCount(true)
         })
+    }
+    else {
+      this._guestCartService.getCountOfGuestCartItems()
+        .then((count: any) => {
+          this.cartCount = count
+          this._cartStateService.fetchAndUpdateCartCount(false)
+        })
+    }
   }
 
   handleProfileNavigation() {

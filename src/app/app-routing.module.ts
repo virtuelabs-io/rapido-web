@@ -27,6 +27,7 @@ import { CreditsComponent } from './components/credits/credits.component';
 import { CustomerReviewsComponent } from './components/customer-reviews/customer-reviews.component';
 import { CreateReviewComponent } from './components/create-review/create-review.component';
 import { EditReviewComponent } from './components/edit-review/edit-review.component';
+import { GuestCheckoutComponent } from './components/guest-checkout/guest-checkout.component';
 
 export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -56,7 +57,8 @@ export const routes: Routes = [
   { path: 'press-release', component: PressReleaseComponent},
   { path: 'profile/my-reviews', component: CustomerReviewsComponent},
   { path: 'review/create/product/:id', component: CreateReviewComponent},
-  { path: 'review/edit/review/:id', component: EditReviewComponent}
+  { path: 'review/edit/review/:id', component: EditReviewComponent},
+  { path: 'cart/guest-checkout', component: GuestCheckoutComponent}
 ];
 
 @NgModule({
@@ -90,5 +92,6 @@ export const RoutingComponents = [
   PressReleaseComponent,
   CustomerReviewsComponent,
   CreateReviewComponent,
-  EditReviewComponent
+  EditReviewComponent,
+  GuestCheckoutComponent
 ];

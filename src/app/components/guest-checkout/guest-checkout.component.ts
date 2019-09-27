@@ -1,17 +1,19 @@
-import { Component, OnInit, NgModule, NgZone } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { ChargeService } from '../../services/payment/charge.service';
-import { StripeService, Elements, Element as StripeElement, ElementsOptions } from "ngx-stripe";
-import { Charge } from '../../services/payment/charge';
-import { Constants } from '../../utils/constants';
-import { Router } from '@angular/router';
-import { AddressDetailsService } from '../../services/customer/address-details.service';
-import { RouteService } from '../../shared-services/route/route.service';
-import { OrdersService } from '../../services/orders/orders.service';
-import { Order } from '../../services/orders/order';
+import { Component, OnInit, NgZone, NgModule } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { GuestAddressService } from '../../services/guests/guest-address.service';
+import { GuestAddressDetails } from '../../services/guests/guest-address-details';
+import { GuestOrder } from '../../services/guests/guest-order';
+import { GuestOrdersService } from '../../services/guests/guest-orders.service';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
-import { ProfileService } from '../../services/authentication/profile/profile.service';
+import { Constants } from '../../utils/constants';
+import { StripeService, Elements, Element as StripeElement, ElementsOptions } from "ngx-stripe";
+import { GuestChargeService } from '../../services/payment/guest-charge.service';
+import { GuestCharge } from '../../services/payment/guest-charge';
 import {MatSnackBar} from '@angular/material';
+import { RouteService } from '../../shared-services/route/route.service';
+import { Router } from '@angular/router';
+import { ProfileService } from '../../services/authentication/profile/profile.service';
+import { CartStateService } from '../../shared-services/cart-state/cart-state.service';
 
 @NgModule({
 	imports: [
@@ -22,31 +24,30 @@ import {MatSnackBar} from '@angular/material';
 })
 
 @Component({
-  selector: 'app-checkout',
-  templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.scss']
+  selector: 'app-guest-checkout',
+  templateUrl: './guest-checkout.component.html',
+  styleUrls: ['./guest-checkout.component.scss']
 })
-export class CheckoutComponent implements OnInit {
-  imageUrl: string = Constants.environment.staticAssets
-  _orderId: any
-  isLinear = false;
-  registeredEmail: string = ""
-  _logInName: string
+export class GuestCheckoutComponent implements OnInit {
+  _previousRoute: any = ""
+  address_details_id: number
+  name: string = ""
+  addRes: any
+  orders = {}
+  products = []
+  orderedDate: any
   itemTotal: any
   orderTotal: any
   deliveryCharges: any
   vatTotal: any
   currency: string 
   orderItems = []
-  orders = {}
-  products = []
+  _orderId: any
+  imageUrl: string = Constants.environment.staticAssets
+  countryCode: string = Constants.DEFAULT_PHONE_CODE
   stepperIndex: number = 0
-  order: Order = new Order()
-  showSpinner: Boolean = false
-  address_details_id: number
-  private _addressDetailsService: AddressDetailsService
-  address: any
-  example:any
+  registeredEmail: string = ""
+  _logInName: string
   payment: FormGroup;
   // optional parameters
   elementsOptions: ElementsOptions = {
@@ -55,40 +56,40 @@ export class CheckoutComponent implements OnInit {
   elements: Elements;
   card: StripeElement;
   chargeResult: string;
-  _charge: Charge = new Charge()
-
-  registerFormGroup: FormGroup // UI reactive Form Group variable
-  private _orderService: OrdersService
+  _charge: GuestCharge = new GuestCharge()
+  addressFormGroup: FormGroup // UI reactive Form Group variable
+  private _guestAddressService: GuestAddressService
+  private _guestOrderService: GuestOrdersService
+  guestOrder: GuestOrder = new GuestOrder()
 
   constructor(
-    private _formBuilder: FormBuilder,
-    private stripeService: StripeService,
-    private chargeService: ChargeService,
-    private RouteService : RouteService,
-    orderService: OrdersService,
+    guestAddressService: GuestAddressService,
+    guestOrderService: GuestOrdersService,
     private _loginStateService: LoginStateService,
-    private _profileService: ProfileService,
-    private fb: FormBuilder,
-    private router: Router,
-    addressDetailsService: AddressDetailsService,
+    private stripeService: StripeService,
+    private guestChargeService: GuestChargeService,
     private _snackBar: MatSnackBar,
-    private ngZone: NgZone
-  ) {
-    this._addressDetailsService = addressDetailsService
-    this._orderService = orderService
-    this.showSpinner = true
-    this.getAddressList()
+    private router: Router,
+    private RouteService : RouteService,
+    private ngZone: NgZone,
+    private _profileService: ProfileService,
+    private _cartStateService: CartStateService
+  ) { 
+    this._guestAddressService = guestAddressService
+    this._guestOrderService = guestOrderService
   }
 
   ngOnInit() {
-    this._loginStateService.loaderEnable()
-    this._addressDetailsService.getAddressDetailsList()
-    .subscribe(data => {
-      if(data['length'] > 0) {
-        this.address_details_id = data[0]['id']
-        this.address = data
-      }
-      this._loginStateService.loaderDisable()
+    this.addressFormGroup = new FormGroup({
+      name: new FormControl('', [Validators.required]),
+      add1: new FormControl('', [Validators.required]),
+      add2: new FormControl('', [Validators.required]),
+      town_city: new FormControl('', [Validators.required]),
+      postCode: new FormControl('', [Validators.required]),
+      county: new FormControl('', [Validators.required]),
+      country: new FormControl('', [Validators.required]),
+      mobileNumber: new FormControl('', [Validators.required, , Validators.pattern('^[0-9]+$'), Validators.min(1000000000), Validators.max(9999999999)]),
+      email: new FormControl('', [Validators.required, , Validators.email])
     })
 
     this._loginStateService.isLoggedInState.subscribe(state => {
@@ -97,11 +98,8 @@ export class CheckoutComponent implements OnInit {
         this._logInName = this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.name
       }
     })
-    
-    this.payment = this.fb.group({
-      name: ['', [Validators.required]]
-    });
-    
+    let d = new Date()
+    this.orderedDate = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()
   }
 
   ngAfterViewInit() {
@@ -132,31 +130,14 @@ export class CheckoutComponent implements OnInit {
     });
   }
 
-  newAddress() {
-    this.RouteService.changeRoute('cart');
-    this.ngZone.run(() =>this.router.navigate(['profile/address/newAddress'])).then()
+  async createGuestOrder(formData) {
+    this._loginStateService.loaderEnable()
+    await this.postGuestAddressDetails(formData).
+		then( _ => this.order())
   }
 
-  getAddressList() {
-    this._loginStateService.loaderEnable()
-    this._addressDetailsService.getAddressDetailsList()
-    .subscribe(data => {
-      this.showSpinner = false
-      if(data['length'] > 0) {
-        this.address_details_id = data[0]['id']
-        this.address = data
-      }
-      else if(data['length'] === 0) {
-        this.address = data
-      }
-      this._loginStateService.loaderDisable()
-    })
-  }
-
-  createOrder(id) {
-    this._loginStateService.loaderEnable()
-    this.order.delivery_address_id = id
-    this._orderService.createOrder(this.order)
+  async order(){
+    await this._guestOrderService.createGuestOrder(this.guestOrder)
     .then((data: any) => {
       if(data['orderItemsObject']) {
         for(let order in data['orderItemsObject']) {
@@ -183,6 +164,7 @@ export class CheckoutComponent implements OnInit {
             this.deliveryCharges = data['orderItemsObject'][order][product].delivery_cost.toFixed(2)
             this.orderTotal = data['orderItemsObject'][order][product].order_price_total.toFixed(2)
             this.currency = data['products'][product].currency
+            this.registeredEmail = data['orderItemsObject'][order][product].email
           }
         }
         this.orderItems = Object.keys(this.orders)
@@ -192,6 +174,31 @@ export class CheckoutComponent implements OnInit {
     })
   }
 
+  async postGuestAddressDetails(formData){
+    let guestAddressDetails: GuestAddressDetails = new GuestAddressDetails(
+      formData.name,
+      1, // check Constants.ADDRESS_TYPES for different types of addresses. Only those should be used
+      formData.add1,
+      formData.town_city,
+      formData.county,
+      formData.country,
+      formData.postCode,
+      formData.mail,
+      formData.mobileNumber,
+      formData.add2
+    )
+    await this._guestAddressService.postGuestAddressDetails(guestAddressDetails)
+    .subscribe(data => {
+      if(data['insertId']){
+        this.address_details_id = data['insertId']
+      }
+    })
+  }
+
+  public hasError = (controlName: string, errorName: string) => {
+		return this.addressFormGroup.controls[controlName].hasError(errorName)
+  }
+  
   buy() {
     this._loginStateService.loaderEnable()
     this._charge.name = this._logInName
@@ -215,13 +222,13 @@ export class CheckoutComponent implements OnInit {
       });
   }
 
-  charge(charge: Charge) {
-    const promise = this.chargeService.chargeCustomer(charge)
+  charge(charge: GuestCharge) {
+    const promise = this.guestChargeService.chargeCustomer(charge)
     .then(data => {
       this.chargeResult = JSON.stringify(data)
-      this.RouteService.changeRoute('orderCreated')
       this._loginStateService.loaderDisable()
-      this.ngZone.run(() =>this.router.navigate(['orders', this._charge.order_id, 'details'])).then()
+      this._cartStateService.fetchAndUpdateCartCount(false)
+      this.stepperIndex = 2
     })
   }
 }

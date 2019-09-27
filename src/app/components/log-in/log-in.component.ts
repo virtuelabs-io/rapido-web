@@ -8,6 +8,9 @@ import { LoginStateService } from '../../shared-services/login-state/login-state
 import { CartStateService } from '../../shared-services/cart-state/cart-state.service';
 import { ResendOtpService } from '../../shared-services/resend-otp/resend-otp.services';
 import { RouteService } from '../../shared-services/route/route.service';
+import { CartService } from '../../services/cart/cart.service';
+import { GuestCartService } from '../../services/guests/guest-cart.service';
+import { CartItem } from '../../services/cart/cart-item';
 
 @Component({
   selector: 'app-log-in',
@@ -18,14 +21,16 @@ export class LogInComponent implements OnInit {
   alertBox: boolean = false
   alertMsg: string = ""
   _signInResponse: Boolean = false
+  cartCount:Number = 0
   _previousRoute: any
   countryCode: string = Constants.DEFAULT_PHONE_CODE; //Constants.DEFAULT_PHONE_CODE;
   mobileNumber: string;
   password: string;
   isLoggedIn: Boolean
-  progressSpinner: Boolean = false
+  guestCartItems:  any
+  gotoRoute: any
   _profileService: ProfileService;
-
+  private _guestCartService: GuestCartService
   private _signInService: SignInService
   constructor(
     signInService: SignInService,
@@ -35,11 +40,15 @@ export class LogInComponent implements OnInit {
     private cartStateService: CartStateService,
     private resendOtpService : ResendOtpService,
 		private route: ActivatedRoute,
-    private RouteService : RouteService,
-    private ngZone: NgZone
+    public RouteService : RouteService,
+    private ngZone: NgZone,
+    private _cartStateService: CartStateService,
+    private _cartService: CartService,
+    guestCartService: GuestCartService
     ) {
     this._signInService = signInService
     this._profileService = profileService
+    this._guestCartService = guestCartService
   }
 
   ngOnInit() {
@@ -79,30 +88,69 @@ export class LogInComponent implements OnInit {
   navigateToForgotPassword() {
     this.ngZone.run(() =>this.router.navigate(['forgotpassword'])).then()
   }
+  
+  async handleUserlogin() {
+    this.loginStateService.loaderEnable()
+    await this.fetchGuestCart().
+    then( _ => this.login()).
+    then(_=> this.postGuestCart())
+  }
 
-  login() {
-    this.progressSpinner = true
+  async postGuestCart() {
+    this.loginStateService.loaderEnable()
+    let items = [];
+    for(var i = 0; i < this.guestCartItems.length; i++) {
+      items.push(this.updateCartItem(this.guestCartItems[i].guestCartItem.product_id, this.guestCartItems[i].guestCartItem.quantity, true))
+    }
+    this._cartService.postCartItemList(items)
+      .subscribe( data => {
+        this.loginStateService.loaderDisable()
+      })
+  }
+
+  updateCartItem(product_id: number, quant: number, in_cart: boolean): CartItem {
+    let cartItem: CartItem = new CartItem()
+    cartItem.product_id = product_id
+    cartItem.quantity = quant
+    cartItem.in_cart = in_cart
+    return cartItem
+  }
+
+  async fetchGuestCart() {
+    // fetching the guest cart items if any....
+    await this._guestCartService.getGuestCartItems()
+    .then((data: any) => {
+      this.guestCartItems = data
+    })
+  }
+
+  async login() {
     if(this.mobileNumber && this.password && this.mobileNumber.length === 10) {
       this._signInService.signInData = {
         Username: [ this.countryCode,this.mobileNumber ].join(""),
         Password: this.password
       }
-      this._signInService.login().
+      await this._signInService.login().
       then(value => {
-        this.progressSpinner = false
         this._signInResponse = true;
         this.loginStateService.changeState(true);
-        if(this._previousRoute.value){
-          this.ngZone.run(() =>this.router.navigate(['/'+this._previousRoute.value])).then()
-        }else{
-          this.ngZone.run(() =>this.router.navigate([''])).then()
-
+        this.cartStateService.fetchAndUpdateCartCount(true)
+        this.loginStateService.loaderDisable()
+        if(this._previousRoute.value && this._previousRoute.value !== 'cart/guest-checkout'){
+          this.gotoRoute = this._previousRoute.value
+          this.RouteService.changeRoute('')
+          this.ngZone.run(() =>this.router.navigate(['/'+this.gotoRoute])).then()
         }
-        this.cartStateService.fetchAndUpdateCartCount()
+        else if(this._previousRoute.value && this._previousRoute.value == 'cart/guest-checkout') {
+          this.RouteService.changeRoute('')
+          this.ngZone.run(() =>this.router.navigate(['/cart'])).then()
+        }
+        else{
+          this.ngZone.run(() =>this.router.navigate([''])).then()
+        }
         
       }).catch(error => {
-        this.progressSpinner = false
-        this._signInResponse = false;
+        this._signInResponse = false
         this.alertBox = true;
         this.alertMsg = error.data.message
         this.password = ""
@@ -113,7 +161,6 @@ export class LogInComponent implements OnInit {
       })
     }
     else {
-      this.progressSpinner = false;
       this.alertBox = true;
       if(!this.mobileNumber) {
         this.alertMsg = Constants.NO_MOBILE_NUMBER;
@@ -124,6 +171,15 @@ export class LogInComponent implements OnInit {
       else if(!this.password) {
         this.alertMsg = Constants.NO_PASSWORD;
       }
+    }
+  }
+
+  async handleGuest() {
+    if(this._previousRoute.value){
+      this.ngZone.run(() =>this.router.navigate(['/'+this._previousRoute.value])).then()
+    }
+    else {
+      this.ngZone.run(() =>this.router.navigate([''])).then()
     }
   }
 }

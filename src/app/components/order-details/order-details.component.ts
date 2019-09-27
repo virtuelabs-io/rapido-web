@@ -78,7 +78,7 @@ export class OrderDetailsComponent implements OnInit {
       this._loginStateService.loaderEnable()
       // to fetch the company details..
       this.getCompanyDetails()
-      this._cartStateService.fetchAndUpdateCartCount()
+      this._cartStateService.fetchAndUpdateCartCount(this.isLoggedIn)
       await this._orderService.getOrder(this.order.order_id)
     .then((data: any) => {
       this.fetchOrderRes = data

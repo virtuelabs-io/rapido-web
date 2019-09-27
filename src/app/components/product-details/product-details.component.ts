@@ -13,6 +13,8 @@ import { RouteService } from '../../shared-services/route/route.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { RatingsService } from '../../services/ratings/ratings.service';
 import { OrdersService } from '../../services/orders/orders.service';
+import { GuestCartService } from '../../services/guests/guest-cart.service';
+import { GuestCartItem } from '../../services/guests/guest-cart-item';
 
 @Component({
 	selector: 'app-product-details',
@@ -44,6 +46,7 @@ export class ProductDetailsComponent implements OnInit {
 	canReviewProduct: Boolean = true
 	public _ratingsService: RatingsService
 	private _orderService: OrdersService
+	private _guestCartService: GuestCartService
 
 	constructor(productsService: ProductsService,
 		private _searchItemService: SearchItemService,
@@ -56,11 +59,13 @@ export class ProductDetailsComponent implements OnInit {
 		ratingsService: RatingsService,
 		private ngZone: NgZone,
 		orderService: OrdersService,
+		guestCartService: GuestCartService,
 		private route: ActivatedRoute) {
 		this._productsService = productsService
 		this._cartService = cartService
 		this._ratingsService = ratingsService
 		this._orderService = orderService
+		this._guestCartService = guestCartService
 	}
 
 	ngOnInit() {
@@ -220,8 +225,7 @@ export class ProductDetailsComponent implements OnInit {
 	
 	async addItemsToCart() {
 		await this.loginSessinExists().
-		then( _ => this.postCartItem()).
-		catch(err => this.handleError(err))
+		then( _ => this.postCartItem())
 	}
 
 	async loginSessinExists(){
@@ -230,22 +234,32 @@ export class ProductDetailsComponent implements OnInit {
 		
 	async postCartItem(){
 		this._loginStateService.loaderEnable()
-		let cartItem: CartItem = new CartItem()
-		cartItem.product_id = parseInt(this.itemId) 
-    	cartItem.quantity = this.quantity
-		cartItem.in_cart = true
 		if(this.isLoggedIn){
-			await this._cartService.postCartItem(cartItem).subscribe(data => {
+			let cartItem: CartItem = new CartItem()
+			cartItem.product_id = parseInt(this.itemId) 
+			cartItem.quantity = this.quantity
+			cartItem.in_cart = true
+			await this._cartService.postCartItem(cartItem).subscribe(_ => {
+				this._cartStateService.fetchAndUpdateCartCount(this.isLoggedIn)
 				this._loginStateService.loaderDisable()
 				this._snackBar.open(Constants.ITEM_MOVED_TO_CART,  undefined , {
 					duration: 4000,
 					horizontalPosition: 'center'
 				 })
-				 this._cartStateService.fetchAndUpdateCartCount()
 			})
 		}else{
-			this._loginStateService.loaderDisable()
-			await Promise.reject("Login Session doesn't exist!")
+			let guestCartItem: GuestCartItem = new GuestCartItem()
+			guestCartItem.product_id = parseInt(this.itemId)
+			guestCartItem.quantity = this.quantity
+			this._guestCartService.postGuestCartItem(guestCartItem)
+			.subscribe(_ => {
+				this._cartStateService.fetchAndUpdateCartCount(this.isLoggedIn)
+				this._loginStateService.loaderDisable()
+				this._snackBar.open(Constants.ITEM_MOVED_TO_CART,  undefined , {
+					duration: 4000,
+					horizontalPosition: 'center'
+				 })
+			})
 		}
 	}
 
@@ -272,14 +286,18 @@ export class ProductDetailsComponent implements OnInit {
 	this._loginStateService.loaderEnable()
 	this._ratingsService.checkProductReview(id)
     .subscribe(data => {
-      if(data.length){
+      this.handleReviewNavigation(data, id)
+	})
+  }
+
+  handleReviewNavigation(data, id) {
+	if(data.length){
 		this._loginStateService.loaderDisable()
 		this.ngZone.run(() =>this.router.navigate(['review/edit/review', data[0].id] )).then()
-	  }
-	  else {
+	}
+	else {
 		this._loginStateService.loaderDisable()
 		this.ngZone.run(() =>this.router.navigate(['review/create/product', id] )).then()
-	  }
-	})
+	}
   }
 }

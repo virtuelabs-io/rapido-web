@@ -14,6 +14,10 @@ import { MatDialogModule} from '@angular/material';
 import { ConfirmationDialogComponent } from '../../components/confirmation-dialog/confirmation-dialog.component';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { EditReviewComponent } from '../edit-review/edit-review.component';
+import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { CreateReviewComponent } from '../create-review/create-review.component';
 
 describe('OrdersComponent', () => {
   let ordersMockService: OrdersService = new OrdersMockService()
@@ -24,13 +28,16 @@ describe('OrdersComponent', () => {
 
   const routes: Routes = [
     { path: 'login', component: LogInComponent},
-    { path: 'orders/:id/details', component: OrderDetailsComponent}
+    { path: 'orders/:id/details', component: OrderDetailsComponent},
+    { path: 'review/edit/review/:id', component: EditReviewComponent},
+    { path: 'review/create/product/:id', component: CreateReviewComponent}
   ]
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [  BrowserAnimationsModule, MatDialogModule, FormsModule, RouterTestingModule.withRoutes(routes), HttpClientModule ],
-      declarations: [ OrdersComponent, LogInComponent, OrderDetailsComponent, ConfirmationDialogComponent ],
+      imports: [  ReactiveFormsModule, BrowserAnimationsModule, MatDialogModule, FormsModule, RouterTestingModule.withRoutes(routes), HttpClientModule ],
+      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
+      declarations: [ OrdersComponent, LogInComponent, OrderDetailsComponent, ConfirmationDialogComponent, EditReviewComponent, CreateReviewComponent ],
     }).overrideModule(BrowserDynamicTestingModule, {
       set: { entryComponents: [ ConfirmationDialogComponent ] }
     })
@@ -78,5 +85,27 @@ describe('OrdersComponent', () => {
     await component.getOrders()
     expect(component.fetchOrdersRes.orderItemsObject[13][1].order_price_total).toEqual(component.orders[13].price)
     expect(component.fetchOrdersRes.products[1].name).toEqual(component.products[1].name)
+  }));
+
+  it('route to Edit Review component from Orders component',  fakeAsync(() => {
+    component.isLoggedIn = true
+    let data = [
+      {
+        id: 8
+      }
+    ]
+    let productId = 51
+    component.handleReviewNavigation(data, productId)
+    tick()
+    expect(location.path()).toEqual('/review/edit/review/8')
+  }));
+
+  it('route to Create Review component from Orders component',  fakeAsync(() => {
+    component.isLoggedIn = true
+    let data = []
+    let productId = 51
+    component.handleReviewNavigation(data, productId)
+    tick()
+    expect(location.path()).toEqual('/review/create/product/51')
   }));
 });

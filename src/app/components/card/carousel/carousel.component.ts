@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { RouteService } from '../../../shared-services/route/route.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Constants } from '../../../../../src/app/utils/constants';
+import { GuestCartService } from '../../../services/guests/guest-cart.service';
+import { GuestCartItem } from '../../../services/guests/guest-cart-item';
 
 @Component({
   selector: 'app-carousel',
@@ -22,16 +24,19 @@ export class CarouselComponent implements OnInit {
   config: any
   isLoggedIn:Boolean
   private _cartService: CartService
+  private _guestCartService: GuestCartService
+
   constructor(
     private cartService: CartService,
     private _cartStateService: CartStateService,
     private _loginStateService: LoginStateService,
     public router: Router,
     private RouteService : RouteService,
-    private _snackBar: MatSnackBar
-  ) { 
+    private _snackBar: MatSnackBar,
+    guestCartService: GuestCartService
+  ) {
     this._cartService = cartService
-
+    this._guestCartService = guestCartService
   }
 
   ngOnInit() {
@@ -71,8 +76,7 @@ export class CarouselComponent implements OnInit {
   async handleCart(id) {
 		
 		await this.loginSessinExists().
-		then( _ => this.postCartItem(id)).
-		catch(err => this.handleError(err))
+		then( _ => this.postCartItem(id))
   }
 
   async loginSessinExists(){
@@ -81,21 +85,31 @@ export class CarouselComponent implements OnInit {
   
  async postCartItem(id) {
     this._loginStateService.loaderEnable()
-    let cartItem: CartItem = new CartItem()
-		cartItem.product_id = parseInt(id) 
-    	cartItem.quantity = 1
-		cartItem.in_cart = true
 		if(this.isLoggedIn){
-			await this._cartService.postCartItem(cartItem).subscribe(data => {
+      let cartItem: CartItem = new CartItem()
+      cartItem.product_id = parseInt(id) 
+      cartItem.quantity = 1
+      cartItem.in_cart = true
+			await this._cartService.postCartItem(cartItem).subscribe(_ => {
+        this._cartStateService.fetchAndUpdateCartCount(this.isLoggedIn)
         this._loginStateService.loaderDisable()
-        this._cartStateService.fetchAndUpdateCartCount()
         this._snackBar.open(Constants.ITEM_MOVED_TO_CART,  undefined , {
 					duration: 4000,
 				 })
       })
 		}else{
-      this._loginStateService.loaderDisable()
-      await Promise.reject("Login Session doesn't exist!")
+      let guestCartItem: GuestCartItem = new GuestCartItem()
+			guestCartItem.product_id = parseInt(id)
+			guestCartItem.quantity = 1
+			this._guestCartService.postGuestCartItem(guestCartItem)
+			.subscribe(_ => {
+        this._cartStateService.fetchAndUpdateCartCount(this.isLoggedIn)
+        this._loginStateService.loaderDisable()
+				this._snackBar.open(Constants.ITEM_MOVED_TO_CART,  undefined , {
+					duration: 4000,
+					horizontalPosition: 'center'
+				 })
+			})
 		}
   }
 

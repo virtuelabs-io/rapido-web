@@ -19,9 +19,11 @@
         Password <a id="idForgotPassord" class="label-link tag" routerLink="/forgotpassword" (click)="navigateToForgotPassword()">Forgot password?</a>
       </label>
       <input type="password" [(ngModel)]="password" name="password" id="password" class="form-control form-control input-block" tabindex="2">
-      <button type="submit" (click)="login()" name="commit" value="Log in" tabindex="3" class="btn btn-primary btn-block" data-disable-with="Signing in…">
-        <span *ngIf="progressSpinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-        Submit
+      <button type="submit" (click)="handleUserlogin()" name="commit" value="Log in" tabindex="3" class="btn btn-primary btn-block" data-disable-with="Signing in…">
+        Log In
+      </button>
+      <button type="submit" (click)="handleGuest()" name="commit" value="Log in" tabindex="3" class="btn btn-primary btn-block" data-disable-with="Signing in…">
+        Proceed as Guest
       </button>
     </div>
   </form>
