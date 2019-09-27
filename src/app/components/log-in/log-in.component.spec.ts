@@ -66,7 +66,6 @@ describe('LogInComponent', () => {
     component.login();
     expect(component.alertMsg).toEqual("Please enter mobile number");
     expect(component.alertBox).toBeTruthy();
-    expect(component.progressSpinner).toBeFalsy();
   }));
 
   it('should throw error alert for missing password', async(() => {
@@ -74,7 +73,6 @@ describe('LogInComponent', () => {
     component.login();
     expect(component.alertMsg).toEqual("Please enter password");
     expect(component.alertBox).toBeTruthy();
-    expect(component.progressSpinner).toBeFalsy();
   }));
 
   it('should contain 10 digits for mobile number', async(() => {

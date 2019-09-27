@@ -29,7 +29,6 @@ export class LogInComponent implements OnInit {
   isLoggedIn: Boolean
   guestCartItems:  any
   gotoRoute: any
-  progressSpinner: Boolean = false
   _profileService: ProfileService;
   private _guestCartService: GuestCartService
   private _signInService: SignInService
@@ -91,23 +90,20 @@ export class LogInComponent implements OnInit {
   }
   
   async handleUserlogin() {
+    this.loginStateService.loaderEnable()
     await this.fetchGuestCart().
     then( _ => this.login()).
     then(_=> this.postGuestCart())
   }
 
   async postGuestCart() {
-    console.log('lets end it here 1')
     this.loginStateService.loaderEnable()
     let items = [];
     for(var i = 0; i < this.guestCartItems.length; i++) {
       items.push(this.updateCartItem(this.guestCartItems[i].guestCartItem.product_id, this.guestCartItems[i].guestCartItem.quantity, true))
     }
-    console.log(items)
     this._cartService.postCartItemList(items)
       .subscribe( data => {
-        console.log('lets end it here 2')
-        console.log(data)
         this.loginStateService.loaderDisable()
       })
   }
@@ -124,13 +120,11 @@ export class LogInComponent implements OnInit {
     // fetching the guest cart items if any....
     await this._guestCartService.getGuestCartItems()
     .then((data: any) => {
-      console.log('lets start this')
       this.guestCartItems = data
     })
   }
 
   async login() {
-    this.progressSpinner = true
     if(this.mobileNumber && this.password && this.mobileNumber.length === 10) {
       this._signInService.signInData = {
         Username: [ this.countryCode,this.mobileNumber ].join(""),
@@ -138,11 +132,10 @@ export class LogInComponent implements OnInit {
       }
       await this._signInService.login().
       then(value => {
-        console.log(this.guestCartItems)
-        this.progressSpinner = false
         this._signInResponse = true;
         this.loginStateService.changeState(true);
         this.cartStateService.fetchAndUpdateCartCount(true)
+        this.loginStateService.loaderDisable()
         if(this._previousRoute.value && this._previousRoute.value !== 'cart/guest-checkout'){
           this.gotoRoute = this._previousRoute.value
           this.RouteService.changeRoute('')
@@ -157,8 +150,7 @@ export class LogInComponent implements OnInit {
         }
         
       }).catch(error => {
-        this.progressSpinner = false
-        this._signInResponse = false;
+        this._signInResponse = false
         this.alertBox = true;
         this.alertMsg = error.data.message
         this.password = ""
@@ -169,7 +161,6 @@ export class LogInComponent implements OnInit {
       })
     }
     else {
-      this.progressSpinner = false;
       this.alertBox = true;
       if(!this.mobileNumber) {
         this.alertMsg = Constants.NO_MOBILE_NUMBER;
@@ -185,31 +176,10 @@ export class LogInComponent implements OnInit {
 
   async handleGuest() {
     if(this._previousRoute.value){
-      if(this._previousRoute.value == 'cart/guest-checkout') {
-        await this.postGuestCartItems()
-      }
-      else {
-        this.ngZone.run(() =>this.router.navigate(['/'+this._previousRoute.value])).then()
-      }
+      this.ngZone.run(() =>this.router.navigate(['/'+this._previousRoute.value])).then()
     }
     else {
       this.ngZone.run(() =>this.router.navigate([''])).then()
     }
-  }
-
-  async postGuestCartItems() {
-    this.loginStateService.loaderEnable()
-    let items = [];
-      await this.fetchGuestCart()
-      for(var i = 0; i < this.guestCartItems.length; i++) {
-        items.push(this.updateCartItem(this.guestCartItems[i].guestCartItem.product_id, this.guestCartItems[i].guestCartItem.quantity, true))
-      }
-      await this._guestCartService.postGuestCartItemList(items)
-        .subscribe( data => {
-          console.log('guest cart successfully posted')
-          console.log(data)
-          this.loginStateService.loaderDisable()
-          this.ngZone.run(() =>this.router.navigate(['/'+this._previousRoute.value])).then()
-      })
   }
 }

@@ -121,7 +121,6 @@ export class CartComponent implements OnInit {
     else {
      await this._guestCartService.getGuestCartItems()
     .then((data: any) => {
-      console.log(data)
       if(data.length) {
         this.currency = data[0].itemDetails.currency
       }
@@ -213,8 +212,8 @@ export class CartComponent implements OnInit {
 
   postCartItems() {
     this._loginStateService.loaderEnable()
+    let items = [];
     if(this.isLoggedIn) {
-      let items = [];
       for(var i = 0; i < this.cartItems.length; i++) {
         items.push(this.updateCartItem(this.cartItems[i].id, this.cartItems[i].quantity, true))
       }
@@ -226,8 +225,15 @@ export class CartComponent implements OnInit {
       })
     }
     else {
-      this.RouteService.changeRoute('cart/guest-checkout')
-      this.router.navigateByUrl('/login')
+      for(var i = 0; i < this.cartItems.length; i++) {
+        items.push(this.updateCartItem(this.cartItems[i].id, this.cartItems[i].quantity, true))
+      }
+      this._guestCartService.postGuestCartItemList(items)
+        .subscribe( data => {
+          this._loginStateService.loaderDisable()
+          this.RouteService.changeRoute('cart/guest-checkout')
+          this.router.navigateByUrl('/login')
+      })
     }
   }
 

@@ -13,6 +13,7 @@ import {MatSnackBar} from '@angular/material';
 import { RouteService } from '../../shared-services/route/route.service';
 import { Router } from '@angular/router';
 import { ProfileService } from '../../services/authentication/profile/profile.service';
+import { CartStateService } from '../../shared-services/cart-state/cart-state.service';
 
 @NgModule({
 	imports: [
@@ -70,7 +71,8 @@ export class GuestCheckoutComponent implements OnInit {
     private router: Router,
     private RouteService : RouteService,
     private ngZone: NgZone,
-    private _profileService: ProfileService
+    private _profileService: ProfileService,
+    private _cartStateService: CartStateService
   ) { 
     this._guestAddressService = guestAddressService
     this._guestOrderService = guestOrderService
@@ -128,6 +130,7 @@ export class GuestCheckoutComponent implements OnInit {
   }
 
   async createGuestOrder(formData) {
+    this._loginStateService.loaderEnable()
     await this.postGuestAddressDetails(formData).
 		then( _ => this.order())
   }
@@ -135,9 +138,6 @@ export class GuestCheckoutComponent implements OnInit {
   async order(){
     await this._guestOrderService.createGuestOrder(this.guestOrder)
     .then((data: any) => {
-      console.log('created guest order')
-      console.log(data)
-      
       if(data['orderItemsObject']) {
         for(let order in data['orderItemsObject']) {
           if(data['products']) {
@@ -163,6 +163,7 @@ export class GuestCheckoutComponent implements OnInit {
             this.deliveryCharges = data['orderItemsObject'][order][product].delivery_cost.toFixed(2)
             this.orderTotal = data['orderItemsObject'][order][product].order_price_total.toFixed(2)
             this.currency = data['products'][product].currency
+            this.registeredEmail = data['orderItemsObject'][order][product].email
           }
         }
         this.orderItems = Object.keys(this.orders)
@@ -187,13 +188,9 @@ export class GuestCheckoutComponent implements OnInit {
     )
     await this._guestAddressService.postGuestAddressDetails(guestAddressDetails)
     .subscribe(data => {
-      console.log('created guest address')
-      console.log(data)
       if(data['insertId']){
         this.address_details_id = data['insertId']
-        console.log('Sucessfully updated the address test id to: ' + String(this.address_details_id))
       }
-     // this.guest_result = "Sucessfully posted guest address details and logged!";
     })
   }
 
@@ -227,9 +224,9 @@ export class GuestCheckoutComponent implements OnInit {
   charge(charge: GuestCharge) {
     const promise = this.guestChargeService.chargeCustomer(charge)
     .then(data => {
-      console.log('payment success')
       this.chargeResult = JSON.stringify(data)
       this._loginStateService.loaderDisable()
+      this._cartStateService.fetchAndUpdateCartCount(false)
       this.stepperIndex = 2
     })
   }
