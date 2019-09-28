@@ -180,22 +180,28 @@
                   <span>Price({{ currency }})</span>
                 </div>
               </div>
-              <div class="order-items-main">
+              <div class="ordered-items-main">
                 <div class="order-items">
                   <div class="order-items-list" *ngFor="let item of orders[order].items">
-                    <div class="item-thumbnail">
-                      <img class="image" src="{{ imageUrl + products[item.product_id].images[0] }}">
+                    <div class="order-item-status">
+                      <span class="status-label-success" *ngIf="orders[order].category != cancelledStatus">{{ orders[order].category }}</span>
+                      <span class="status-label-cancelled" *ngIf="orders[order].category == cancelledStatus">{{ orders[order].category }}</span>
                     </div>
-                    <div class="item-desc">
-                      <p><strong>{{ products[item.product_id].name }}</strong></p>
-                    </div>
-                    <div class="item-quantity">
-                      <span>{{ item.quantity }}</span>
-                    </div>
-                    <div class="item-price">
-                      <p>
-                        <strong>{{ item.unit_price.toFixed(2) }}</strong>
-                      </p>
+                    <div class="product-prop">
+                      <div class="item-thumbnail">
+                        <img class="image" src="{{ imageUrl + products[item.product_id].images[0] }}">
+                      </div>
+                      <div class="item-desc">
+                        <p><strong>{{ products[item.product_id].name }}</strong></p>
+                      </div>
+                      <div class="item-quantity">
+                        <span>{{ item.quantity }}</span>
+                      </div>
+                      <div class="item-price">
+                        <p>
+                          <strong>{{ item.unit_price.toFixed(2) }}</strong>
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>

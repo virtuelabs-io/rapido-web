@@ -76,7 +76,7 @@
                     display: flex;
                     flex-direction: row;
                     flex-wrap: nowrap;
-                    margin-left: 2%;
+                  //  margin-left: 2%;
                     border-bottom: 1px solid #e1e4e8;
                     .cart-col-price {
                         width: 35%;
@@ -98,6 +98,7 @@
                             flex-direction: row;
                             flex-wrap: wrap;
                             margin-top: 2%;
+                            min-height: 150px;
                             border-bottom: 1px solid #e1e4e8;
                             a {
                                 cursor: pointer;
@@ -127,6 +128,72 @@
                                 padding-left: 2%;
                                 padding-right: 2%;
                                 text-align: center;
+                            }
+                        }
+                    }
+                    @media screen and (max-width: $mobile-device) {
+                        width: 100%;
+                    }
+                }
+                .ordered-items-main {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    .order-items {
+                        width: 100%;
+                        .order-items-list {
+                            display: flex;
+                            flex-direction: column;
+                            flex-wrap: wrap;
+                            margin-top: 1%;
+                            padding-bottom: 1%;
+                            min-height: 150px;
+                            border-bottom: 1px solid #e1e4e8;
+                            a {
+                                cursor: pointer;
+                                color: $primary;
+                            }
+                            .order-item-status {
+                                .status-label-success {
+                                    font-weight: 700!important;
+                                    font-size: 20px!important;
+                                    color: green;
+                                }
+                                .status-label-cancelled {
+                                    font-weight: 700!important;
+                                    font-size: 20px!important;
+                                    color: #B12704;
+                                }
+                            }
+                            .product-prop {
+                                display: flex;
+                                flex-direction: row;
+                                flex-wrap: wrap;
+                                margin-bottom: 1%;
+                                .item-thumbnail {
+                                    width: 20%;
+                                    padding: 0 3% 3%;
+                                    .image {
+                                        width: 80%;
+                                        padding-bottom: 1%;
+                                    }
+                                }
+                                .item-desc {
+                                    width: 35%;
+                                }
+                                .item-price {
+                                    padding-left: 2%;
+                                    width: 25%;
+                                    color: #B12704;
+                                    text-align: right;
+                                }
+                                .item-quantity {
+                                    width: 20%;
+                                    text-align: left;
+                                    padding-left: 2%;
+                                    padding-right: 2%;
+                                    text-align: center;
+                                }
                             }
                         }
                     }

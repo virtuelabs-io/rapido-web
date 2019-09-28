@@ -60,10 +60,9 @@
                 .cart-col-quan {
                     width: 75%;
                     text-align: right;
-                }
-                @media screen and (max-width: $mobile-device) {
-                    width: 90%;
-                    margin-left: 1%;
+                    @media screen and (max-width: $mobile-device) {
+                        width: 95%;
+                    }
                 }
             }
             .order-items-main {
@@ -80,6 +79,7 @@
                         flex-wrap: wrap;
                         margin-top: 1%;
                         padding-bottom: 1%;
+                        min-height: 150px;
                         border-bottom: 1px solid #e1e4e8;
                         .order-item-status {
                             .status-label-success {
@@ -196,6 +196,9 @@
                     @media screen and (max-width: $small-device) {
                         height: 40px;   
                     }
+                    @media screen and (max-width: $medium-device) {
+                        width: 100%;   
+                    }
                 }
                 .address-text {
                     margin-top: 2%;
@@ -209,6 +212,9 @@
                 @media screen and (max-width: $small-device) {
                     margin-left: 0%;
                     margin-right: 0%;
+                }
+                @media screen and (max-width: $medium-device) {
+                    height: 350px;   
                 }
             }
             @media screen and (max-width: $small-device) {
