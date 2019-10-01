@@ -181,7 +181,7 @@ export class LogInComponent implements OnInit {
     }
   }
 
-  async handleGuest() {
+  handleGuest() {
     if(this._previousRoute.value){
       this.ngZone.run(() =>this.router.navigate(['/'+this._previousRoute.value])).then()
     }
