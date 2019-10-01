@@ -183,7 +183,7 @@ export class GuestCheckoutComponent implements OnInit {
       formData.county,
       formData.country,
       formData.postCode,
-      formData.mail,
+      formData.email,
       formData.mobileNumber,
       formData.add2
     )
