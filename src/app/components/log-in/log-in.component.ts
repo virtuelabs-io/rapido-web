@@ -90,7 +90,7 @@ export class LogInComponent implements OnInit {
   }
   
   async handleUserlogin() {
-    this.loginStateService.loaderEnable()
+   // this.loginStateService.loaderEnable()
     await this.fetchGuestCart().
     then( _ => this.login()).
     then(_=> this.postGuestCart())
@@ -102,10 +102,15 @@ export class LogInComponent implements OnInit {
     for(var i = 0; i < this.guestCartItems.length; i++) {
       items.push(this.updateCartItem(this.guestCartItems[i].guestCartItem.product_id, this.guestCartItems[i].guestCartItem.quantity, true))
     }
-    this._cartService.postCartItemList(items)
+    if(items.length) {
+      this._cartService.postCartItemList(items)
       .subscribe( data => {
         this.loginStateService.loaderDisable()
       })
+    }
+    else {
+      this.loginStateService.loaderDisable()
+    }
   }
 
   updateCartItem(product_id: number, quant: number, in_cart: boolean): CartItem {
@@ -125,6 +130,7 @@ export class LogInComponent implements OnInit {
   }
 
   async login() {
+    this.loginStateService.loaderEnable()
     if(this.mobileNumber && this.password && this.mobileNumber.length === 10) {
       this._signInService.signInData = {
         Username: [ this.countryCode,this.mobileNumber ].join(""),
@@ -150,6 +156,7 @@ export class LogInComponent implements OnInit {
         }
         
       }).catch(error => {
+        this.loginStateService.loaderDisable()
         this._signInResponse = false
         this.alertBox = true;
         this.alertMsg = error.data.message
