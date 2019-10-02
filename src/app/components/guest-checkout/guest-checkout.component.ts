@@ -131,11 +131,12 @@ export class GuestCheckoutComponent implements OnInit {
   }
 
   async createGuestOrder(formData) {
-    await this.postGuestAddressDetails(formData).
-		then( _ => this.order())
+    await this.postGuestAddressDetails(formData)
   }
 
   async order(){
+    this.orders = []
+    this.orderItems = []
     this._loginStateService.loaderEnable()
     await this._guestOrderService.createGuestOrder(this.guestOrder)
     .then((data: any) => {
@@ -144,6 +145,10 @@ export class GuestCheckoutComponent implements OnInit {
           if(data['products']) {
             this.products = data['products']
           }
+          this.orders[order] = {}
+          this.orders[order]['items'] = []
+          this.orders[order]['address'] = {}
+          
           if(this.orders[order] == undefined) {
             this.orders[order] = {}
             this.orders[order]['items'] = []
@@ -190,6 +195,7 @@ export class GuestCheckoutComponent implements OnInit {
     )
     await this._guestAddressService.postGuestAddressDetails(guestAddressDetails)
     .subscribe(data => {
+      this.order()
       if(data['insertId']){
         this.address_details_id = data['insertId']
       }
