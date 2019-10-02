@@ -131,12 +131,12 @@ export class GuestCheckoutComponent implements OnInit {
   }
 
   async createGuestOrder(formData) {
-    this._loginStateService.loaderEnable()
     await this.postGuestAddressDetails(formData).
 		then( _ => this.order())
   }
 
   async order(){
+    this._loginStateService.loaderEnable()
     await this._guestOrderService.createGuestOrder(this.guestOrder)
     .then((data: any) => {
       if(data['orderItemsObject']) {
@@ -175,6 +175,7 @@ export class GuestCheckoutComponent implements OnInit {
   }
 
   async postGuestAddressDetails(formData){
+    this._loginStateService.loaderEnable()
     let guestAddressDetails: GuestAddressDetails = new GuestAddressDetails(
       formData.name,
       1, // check Constants.ADDRESS_TYPES for different types of addresses. Only those should be used
