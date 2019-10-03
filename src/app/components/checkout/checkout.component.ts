@@ -101,7 +101,7 @@ export class CheckoutComponent implements OnInit {
 
   async userLogInCheck() {
     await this.loginSessinExists().
-		then( _ => this.getAddressList())
+		  then( _ => this.getAddressList())
   }
 
   async loginSessinExists() {
