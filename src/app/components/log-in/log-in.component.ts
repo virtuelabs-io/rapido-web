@@ -102,13 +102,15 @@ export class LogInComponent implements OnInit {
     for(var i = 0; i < this.guestCartItems.length; i++) {
       items.push(this.updateCartItem(this.guestCartItems[i].guestCartItem.product_id, this.guestCartItems[i].guestCartItem.quantity, true))
     }
-    if(items.length) {
-      this._cartService.postCartItemList(items)
-      .subscribe( data => {
+    if(items.length && this._signInResponse) {
+      await this._cartService.postCartItemList(items)
+      .subscribe( _ => {
         this.loginStateService.loaderDisable()
+        this.handleRouteAfterLogIn()
       })
     }
-    else {
+    else if(this._signInResponse) {
+      this.handleRouteAfterLogIn()
       this.loginStateService.loaderDisable()
     }
   }
@@ -142,18 +144,7 @@ export class LogInComponent implements OnInit {
         this.loginStateService.changeState(true);
         this.cartStateService.fetchAndUpdateCartCount(true)
         this.loginStateService.loaderDisable()
-        if(this._previousRoute.value && this._previousRoute.value !== 'cart/guest-checkout'){
-          this.gotoRoute = this._previousRoute.value
-          this.RouteService.changeRoute('')
-          this.ngZone.run(() =>this.router.navigate(['/'+this.gotoRoute])).then()
-        }
-        else if(this._previousRoute.value && this._previousRoute.value == 'cart/guest-checkout') {
-          this.RouteService.changeRoute('')
-          this.ngZone.run(() =>this.router.navigate(['/cart'])).then()
-        }
-        else{
-          this.ngZone.run(() =>this.router.navigate([''])).then()
-        }
+        
         
       }).catch(error => {
         this.loginStateService.loaderDisable()
@@ -178,6 +169,21 @@ export class LogInComponent implements OnInit {
       else if(!this.password) {
         this.alertMsg = Constants.NO_PASSWORD;
       }
+    }
+  }
+
+  handleRouteAfterLogIn() {
+    if(this._previousRoute.value && this._previousRoute.value !== 'cart/guest-checkout'){
+      this.gotoRoute = this._previousRoute.value
+      this.RouteService.changeRoute('')
+      this.ngZone.run(() =>this.router.navigate(['/'+this.gotoRoute])).then()
+    }
+    else if(this._previousRoute.value && this._previousRoute.value == 'cart/guest-checkout') {
+      this.RouteService.changeRoute('')
+      this.ngZone.run(() =>this.router.navigate(['/cart'])).then()
+    }
+    else{
+      this.ngZone.run(() =>this.router.navigate([''])).then()
     }
   }
 
