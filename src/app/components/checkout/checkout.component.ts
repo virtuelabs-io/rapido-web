@@ -39,6 +39,7 @@ export class CheckoutComponent implements OnInit {
   currency: string 
   orderItems = []
   orders = {}
+  isLoggedIn: Boolean
   products = []
   stepperIndex: number = 0
   order: Order = new Order()
@@ -77,31 +78,34 @@ export class CheckoutComponent implements OnInit {
     this._addressDetailsService = addressDetailsService
     this._orderService = orderService
     this.showSpinner = true
-    this.getAddressList()
+    this.userLogInCheck()
   }
 
   ngOnInit() {
     this._loginStateService.loaderEnable()
-    this._addressDetailsService.getAddressDetailsList()
-    .subscribe(data => {
-      if(data['length'] > 0) {
-        this.address_details_id = data[0]['id']
-        this.address = data
-      }
-      this._loginStateService.loaderDisable()
-    })
-
     this._loginStateService.isLoggedInState.subscribe(state => {
       if (state) {
+        this.getAddressList()
         this.registeredEmail = this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.email
         this._logInName = this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.name
       }
+      else {
+        this._loginStateService.loaderDisable()
+        this.ngZone.run(() =>this.router.navigate([''])).then()
+      }
     })
-    
     this.payment = this.fb.group({
       name: ['', [Validators.required]]
     });
-    
+  }
+
+  async userLogInCheck() {
+    await this.loginSessinExists()
+		      .then( _ => this.getAddressList())
+  }
+
+  async loginSessinExists() {
+    await (this._loginStateService.isLoggedInState.subscribe(state => this.isLoggedIn = state))
   }
 
   ngAfterViewInit() {
@@ -139,18 +143,24 @@ export class CheckoutComponent implements OnInit {
 
   getAddressList() {
     this._loginStateService.loaderEnable()
-    this._addressDetailsService.getAddressDetailsList()
-    .subscribe(data => {
-      this.showSpinner = false
-      if(data['length'] > 0) {
-        this.address_details_id = data[0]['id']
-        this.address = data
-      }
-      else if(data['length'] === 0) {
-        this.address = data
-      }
+    if(this.isLoggedIn) {
+      this._addressDetailsService.getAddressDetailsList()
+      .subscribe(data => {
+        this.showSpinner = false
+        if(data['length'] > 0) {
+          this.address_details_id = data[0]['id']
+          this.address = data
+        }
+        else if(data['length'] === 0) {
+          this.address = data
+        }
+        this._loginStateService.loaderDisable()
+      })
+    }
+    else {
       this._loginStateService.loaderDisable()
-    })
+      this.ngZone.run(() =>this.router.navigate([''])).then()
+    }
   }
 
   createOrder(id) {

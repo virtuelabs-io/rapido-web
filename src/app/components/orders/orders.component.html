@@ -13,7 +13,7 @@
       </div>
       <div class="date-div">
           <span class="label">Total: </span>
-          <span>{{ orders[order].currency }}{{ orders[order].price }}</span>
+          <span>{{ orders[order].currency }}{{ orders[order].price.toFixed(2) }}</span>
       </div>
       <div class="date-div">
           <span class="label">Ship To: </span>
@@ -38,7 +38,7 @@
             <a [routerLink]="['/products/details', item.product_id]">{{ products[item.product_id].name }}</a>
             <span>
               <span>{{ products[item.product_id].currency }} </span>
-              <span class="price-tag">{{ item.unit_price }}</span>
+              <span class="price-tag">{{ item.unit_price.toFixed(2) }}</span>
             </span>
             <a *ngIf="(orders[order].category == delivered)" class="add-review" (click)="handleReview(item.product_id)">Write a review</a>
           </div>
