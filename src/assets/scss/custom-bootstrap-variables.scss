@@ -81,3 +81,10 @@ $text-home-header-color:rgba(0, 0, 0, 0.84);
 // Background
 $background-color-primary: #E8F3EC;
 $background-color-secondary: #D7EFEE;
+
+.custom-modalbox {
+  mat-dialog-container {
+      background: black !important;
+    //  margin-top: -270px;
+  }
+}

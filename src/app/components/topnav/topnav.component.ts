@@ -13,8 +13,10 @@ import { ProductsService } from '../../services/products/products.service';
 import { v4 as uuid } from 'uuid';
 import { Common } from './../../utils/common'
 import { GuestCartService } from '../../services/guests/guest-cart.service';
+import { ProductMenuComponent } from '../product-menu/product-menu.component';
 
-@NgModule({})
+@NgModule({
+})
 @Component({
   selector: 'app-topnav',
   templateUrl: './topnav.component.html',
@@ -71,6 +73,10 @@ export class TopnavComponent implements OnInit {
       this.cartCount = state;
     })
    // this.getCartCount()
+  }
+
+  closeMenu() {
+    //this.dialog.close(this);
   }
 
   signOut() {
