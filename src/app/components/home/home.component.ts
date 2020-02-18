@@ -136,7 +136,40 @@ export class HomeComponent implements OnInit {
       
     },
     {
-      'title':'Insulation'
+      'title':'Insulation',
+      details: 
+        [
+          {
+            'header': 'Access Panels',
+            data: [
+              {
+              'title': 'Accoustic'
+              },{
+                'title': 'Airtight'
+              }
+            ]
+          },
+          {
+            'header': 'Membranes',
+            data: [
+              {
+              'title': 'Breather'
+              },{
+                'title': 'DPC'
+              },{
+                'title': 'DPM'
+              }
+            ]
+          },{
+            'header': 'Access Panels',
+            data: [
+              {
+              'title': 'Accoustic'
+              }
+            ]
+          }
+          
+        ]
     },{
       'title':'Ceilings'
     },{
