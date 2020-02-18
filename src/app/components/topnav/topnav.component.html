@@ -58,14 +58,11 @@
         </div>
      </div>
   </mat-toolbar-row>
-  <mat-toolbar-row class="secondary-toolbar">
-     <div class="block">
-        <div class="block-search">
-           <form (ngSubmit)="onSearch($event)">
-              <input id="idSearchInput" type="text" placeholder="Search for materials..." name="search" [(ngModel)]="searchedText">
-              <button type="submit" style="display:none">hidden submit</button>
-           </form>
-        </div>
-     </div>
-  </mat-toolbar-row>
+  <mat-toolbar-row>
+   <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>Item 1</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu> 
+ </mat-toolbar-row>
 </mat-toolbar>
