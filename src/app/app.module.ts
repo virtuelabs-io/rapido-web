@@ -14,7 +14,7 @@ import { MatProgressBarModule, MatStepperModule, MatInputModule, MatCheckboxModu
           MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, 
           MatSnackBarModule, MatExpansionModule, MatSelectModule, MatPaginatorModule, 
           MatProgressSpinnerModule, MatDialogModule, MatCardModule,
-          MatFormFieldModule, MatTableModule  } from '@angular/material';
+          MatFormFieldModule, MatTableModule, MatTreeModule  } from '@angular/material';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ProductResultsComponent } from './components/product-results/product-results.component';
 import { FilterControlsDialog } from './components/product-results/product-results.component';
@@ -164,6 +164,7 @@ import { ProductMenuMobileComponent } from './components/product-menu-mobile/pro
     MatProgressSpinnerModule,
     MatSelectModule,
     MatSidenavModule,
+    MatTreeModule,
     NgxPageScrollCoreModule,
     NgbModule.forRoot(),
     AngularFontAwesomeModule
