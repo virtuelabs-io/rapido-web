@@ -1,15 +1,4 @@
-<ul class="horizontal">
-  <li *ngFor="let cat of productCategories"><a class="toolbar-data" href="#">{{cat.title}}</a>
-     <div class="dropdown">
-        <div class="column" *ngFor="let temp of cat.details">
-           <p class="mega-menu-col-header">{{temp.header}}</p>
-           <ul>
-              <li *ngFor="let data of temp.data"><a href="#">{{data.title}}</a></li>
-           </ul>
-        </div>
-     </div>
-  </li>
-</ul>
+<app-product-menu></app-product-menu>
 
 <div class="home-div">
   <div class="card-holder">

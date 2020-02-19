@@ -64,6 +64,7 @@ import { ProductReviewsComponent } from './components/product-reviews/product-re
 import { CreateReviewComponent } from './components/create-review/create-review.component';
 import { EditReviewComponent } from './components/edit-review/edit-review.component';
 import { GuestCheckoutComponent } from './components/guest-checkout/guest-checkout.component';
+import { ProductMenuComponent } from './components/product-menu/product-menu.component';
 
 @NgModule({
   declarations: [
@@ -117,7 +118,8 @@ import { GuestCheckoutComponent } from './components/guest-checkout/guest-checko
     ProductReviewsComponent,
     CreateReviewComponent,
     EditReviewComponent,
-    GuestCheckoutComponent
+    GuestCheckoutComponent,
+    ProductMenuComponent
   ],
   imports: [
     MatProgressBarModule,
