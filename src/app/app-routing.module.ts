@@ -28,6 +28,7 @@ import { CustomerReviewsComponent } from './components/customer-reviews/customer
 import { CreateReviewComponent } from './components/create-review/create-review.component';
 import { EditReviewComponent } from './components/edit-review/edit-review.component';
 import { GuestCheckoutComponent } from './components/guest-checkout/guest-checkout.component';
+import { ProductMenuMobileComponent } from './components/product-menu-mobile/product-menu-mobile.component';
 
 export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -58,7 +59,8 @@ export const routes: Routes = [
   { path: 'profile/my-reviews', component: CustomerReviewsComponent},
   { path: 'review/create/product/:id', component: CreateReviewComponent},
   { path: 'review/edit/review/:id', component: EditReviewComponent},
-  { path: 'cart/guest-checkout', component: GuestCheckoutComponent}
+  { path: 'cart/guest-checkout', component: GuestCheckoutComponent},
+  { path: 'categories', component: ProductMenuMobileComponent}
 ];
 
 @NgModule({
@@ -93,5 +95,6 @@ export const RoutingComponents = [
   CustomerReviewsComponent,
   CreateReviewComponent,
   EditReviewComponent,
-  GuestCheckoutComponent
+  GuestCheckoutComponent,
+  ProductMenuMobileComponent
 ];
