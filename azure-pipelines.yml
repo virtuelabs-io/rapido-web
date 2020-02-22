@@ -7,6 +7,9 @@ trigger:
     - master
     - feature/*
     - bug/*
+  tags:
+    include:
+    - v*
 
 variables:
   imageName: 'rapido-web'
@@ -31,16 +34,17 @@ steps:
 
 - script: |
     rm -rf ./src/environments/environment.ts
-    aws s3 cp s3://rapido-build-secrets-bucket/environment.staging.ts ./src/environments/environment.staging.ts
-    aws s3 cp s3://rapido-build-secrets-bucket/environment.prod.ts ./src/environments/environment.prod.ts
-    aws s3 cp s3://rapido-build-secrets-bucket/environment.prod.ts ./src/environments/environment.ts
+    aws s3 cp s3://$DEV_RAPIDO_BUILD_SECRETS_BUCKET/environment.staging.ts ./src/environments/environment.staging.ts
+    aws s3 cp s3://$DEV_RAPIDO_BUILD_SECRETS_BUCKET/environment.prod.ts ./src/environments/environment.prod.ts
+    aws s3 cp s3://$DEV_RAPIDO_BUILD_SECRETS_BUCKET/environment.prod.ts ./src/environments/environment.ts
     export COMMIT_ID=$(git rev-parse --short HEAD)
     echo $COMMIT_ID
     sed -i -e "s/GIT_COMMIT/$COMMIT_ID/g" ./src/environments/environment*ts
     cat ./src/environments/environment.*.ts
   env:
-    AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
-    AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
+    AWS_ACCESS_KEY_ID: $(DEV_AWS_ACCESS_KEY_ID)
+    AWS_SECRET_ACCESS_KEY: $(DEV_AWS_SECRET_ACCESS_KEY)
+    DEV_RAPIDO_BUILD_SECRETS_BUCKET: $(DEV_RAPIDO_BUILD_SECRETS_BUCKET)
   displayName: 'Fetch secrets from AWS and format env files'
 
 - task: NodeTool@0
@@ -57,6 +61,11 @@ steps:
     npm run testheadless
   displayName: 'Running tests'
 
+- script: |
+    npm run prodTestheadless
+  displayName: 'Running prod tests'
+  condition: startsWith(variables['build.sourceBranch'], 'refs/tags/v')
+
 - task: PublishTestResults@2
   inputs:
     testResultsFiles: '**/TESTS-*.xml'
@@ -71,8 +80,13 @@ steps:
     reportDirectory: '$(System.DefaultWorkingDirectory)/coverage/rapido-web'
 
 - script: |
+    npm run devbuild
+  displayName: 'Dev build'
+
+- script: |
     npm run prodbuild
   displayName: 'Prod build'
+  condition: startsWith(variables['build.sourceBranch'], 'refs/tags/v')
 
 - script: |
     docker build -t $DOCKER_REPO/$(imageName):v$(major).$(minor).$(patch) .
@@ -88,8 +102,8 @@ steps:
     docker push $DOCKER_REPO/$(imageName):latest
   condition: eq(variables['Build.SourceBranch'], 'refs/heads/disabled')
   env:
-    AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
-    AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
+    AWS_ACCESS_KEY_ID: $(DEV_AWS_ACCESS_KEY_ID)
+    AWS_SECRET_ACCESS_KEY: $(DEV_AWS_SECRET_ACCESS_KEY)
     DOCKER_REPO: $(DOCKER_REPO)
   displayName: 'Disabled: Publish docker image to ECR'
 
@@ -97,18 +111,25 @@ steps:
     aws s3 sync ${PWD}/dist/rapido-web/. s3://$DEV_RAPIDO_BUILD_S3_BUCKET
   condition: eq(variables['Build.Reason'], 'PullRequest')
   env:
-    AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
-    AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
-    DOCKER_REPO: $(DOCKER_REPO)
+    AWS_ACCESS_KEY_ID: $(DEV_AWS_ACCESS_KEY_ID)
+    AWS_SECRET_ACCESS_KEY: $(DEV_AWS_SECRET_ACCESS_KEY)
     DEV_RAPIDO_BUILD_S3_BUCKET: $(DEV_RAPIDO_BUILD_S3_BUCKET)
-  displayName: 'Deploying distribution to dev environment'
+  displayName: 'Deploying to DEV'
+
+- script: |
+    aws s3 sync ${PWD}/dist/rapido-web/. s3://$DEV_RAPIDO_BUILD_S3_BUCKET
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+  env:
+    AWS_ACCESS_KEY_ID: $(DEV_AWS_ACCESS_KEY_ID)
+    AWS_SECRET_ACCESS_KEY: $(DEV_AWS_SECRET_ACCESS_KEY)
+    DEV_RAPIDO_BUILD_S3_BUCKET: $(DEV_RAPIDO_BUILD_S3_BUCKET)
+  displayName: 'Deploying to STAGING'
 
 - script: |
     aws s3 sync ${PWD}/dist/rapido-web/. s3://$PROD_RAPIDO_BUILD_S3_BUCKET
-  condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+    condition: startsWith(variables['build.sourceBranch'], 'refs/tags/v')
   env:
-    AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
-    AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
-    DOCKER_REPO: $(DOCKER_REPO)
-    PROD_RAPIDO_BUILD_S3_BUCKET: $(DEV_RAPIDO_BUILD_S3_BUCKET) # TODO: Change it PROD_RAPIDO_BUILD_S3_BUCKET when going live
-  displayName: 'Deploying distribution to prod environment'
+    AWS_ACCESS_KEY_ID: $(PROD_AWS_ACCESS_KEY_ID)
+    AWS_SECRET_ACCESS_KEY: $(PROD_AWS_SECRET_ACCESS_KEY)
+    PROD_RAPIDO_BUILD_S3_BUCKET: $(PROD_RAPIDO_BUILD_S3_BUCKET)
+  displayName: 'Deploying to PROD'
