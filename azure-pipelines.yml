@@ -127,7 +127,7 @@ steps:
 
 - script: |
     aws s3 sync ${PWD}/dist/rapido-web/. s3://$PROD_RAPIDO_BUILD_S3_BUCKET
-    condition: startsWith(variables['build.sourceBranch'], 'refs/tags/v')
+  condition: startsWith(variables['build.sourceBranch'], 'refs/tags/v')
   env:
     AWS_ACCESS_KEY_ID: $(PROD_AWS_ACCESS_KEY_ID)
     AWS_SECRET_ACCESS_KEY: $(PROD_AWS_SECRET_ACCESS_KEY)
