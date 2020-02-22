@@ -4,10 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "devbuild": "ng build",
-    "prodbuild": "ng build --prod",
+    "devbuild": "ng build --prod --configuration=staging",
+    "prodbuild": "ng build --prod --configuration=production",
     "test": "ng test --watch=false --code-coverage --reporters junit --environment staging",
     "testheadless": "ng test --browsers=ChromeHeadless --watch=false --code-coverage --reporters junit --environment staging",
+    "prodTestheadless": "ng test --browsers=ChromeHeadless --watch=false --code-coverage --reporters junit --environment prod",
     "livetest": "ng test --browsers=Chrome",
     "lint": "ng lint",
     "e2e": "ng e2e"
