@@ -38,7 +38,7 @@
             }
             .thanks-div {
                 padding-left: 2%;
-                color: green;
+                color: $order-details-thanks-mgs;
             }
             .order-id-date {
                 padding-left: 2%;
@@ -52,7 +52,7 @@
                 flex-wrap: nowrap;
                 margin-left: 5%;
                 margin-right: 5%;
-                border-bottom: 1px solid #e1e4e8;
+                border-bottom: 1px solid  $order-details-columns-border-bottom;
                 .cart-col-price {
                     width: 35%;
                     text-align: right;
@@ -80,17 +80,17 @@
                         margin-top: 1%;
                         padding-bottom: 1%;
                         min-height: 150px;
-                        border-bottom: 1px solid #e1e4e8;
+                        border-bottom: 1px solid $order-details-columns-border-bottom;
                         .order-item-status {
                             .status-label-success {
                                 font-weight: 700!important;
                                 font-size: 20px!important;
-                                color: green;
+                                color: $order-details-item-status-sucess;
                             }
                             .status-label-cancelled {
                                 font-weight: 700!important;
                                 font-size: 20px!important;
-                                color: #B12704;
+                                color: $order-details-item-status-cancelled;
                             }
                         }
                         .item {
@@ -112,7 +112,7 @@
                             .item-price {
                                 padding-left: 2%;
                                 width: 25%;
-                                color: #B12704;
+                                color: $order-details-price-color;
                                 text-align: right;
                             }
                             .item-quantity {
@@ -132,7 +132,7 @@
                         text-align: right;
                         span {
                             span {
-                                color: #B12704;
+                                color: $order-details-price-color;
                                 font-weight: 800;
                             }
                         }
@@ -141,10 +141,10 @@
                         width: 100%;
                         margin-top: 2%;
                         text-align: right;
-                        border-top: 1px solid #e1e4e8;
+                        border-top: 1px solid $order-details-total-border-bottom;
                         p {
                             span {
-                                color: #B12704;
+                                color: $order-details-price-color;
                                 font-weight: 800;
                             }
                         }
@@ -176,17 +176,17 @@
                 border-radius: 6px;
                 border-width: 1px;
                 box-sizing: border-box;
-                border-color: #C7C7C7;
+                border-color: $order-details-address-border-color;
                 box-shadow: 0 2px 1px 0 rgba(0,0,0,.16);
                 border-style: solid;
                 .add-title-div {
-                    background-color: black;
+                    background-color: $order-details-address-title-background;
                     height: 20%;
                     .title-div {
                         margin-top: 5%;
                         margin-bottom: 2%;
                         text-align: center;
-                        color: white;
+                        color: $order-details-address-title-color;
                         @media screen and (max-width: $small-device) {
                             margin-top: 1.5%;
                             margin-bottom: 1%;
@@ -226,7 +226,7 @@
         
     }
     .pay-div {
-        border-top: 3px solid #e1e4e8;
+        border-top: 3px solid $order-details-pay-div-border-top;
         h4 {
             margin-top: 2%;
         }

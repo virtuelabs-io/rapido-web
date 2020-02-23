@@ -19,7 +19,7 @@
         flex-wrap: nowrap;
         height: 370px;
         width: 25%;
-        background-color: white;
+        background-color: $carousel-scroll-background;
         margin: 1%;
         cursor: pointer;
         .card-content {
@@ -38,9 +38,10 @@
             .text-margin {
                 margin-left: 2%;
                 margin-right: 2%;
+                color: $carousel-scroll-font;
             }
             .card-price {
-                color: red;
+                color: $carousel-scroll-card-price;
             }
         }
         @media screen and (max-width: $mobile-device) {

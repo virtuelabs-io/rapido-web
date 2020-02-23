@@ -1,14 +1,14 @@
 @import "../../../assets/scss/custom-bootstrap-variables.scss";
 
 .horizontal{
-	background: black;
+	background: $secondary-toolbar-background;
 	display: flex;
 	list-style: none;
 	justify-content: space-around;
 	position: relative;
 }
 .toolbar-data {
-    color: white !important;
+    color: $secondary-toolbar-font !important;
     @media screen and (max-width: $small-device) {
         display: none !important;
     }
@@ -22,14 +22,14 @@
 }
 
 .horizontal li a{
-	color: black;
+	color: $mega-menu-font;
 	text-decoration: none;
 	display: block;
 	padding: 10px 15px;
 }
 .column{
 	padding: 0 15px 15px;
-	color: black;
+	color: $mega-menu-column-header;
 }
 .column ul{
 	list-style: none;
@@ -45,7 +45,7 @@
 	left: 0;
 	display: flex;
 	justify-content: space-between;
-	background: white;
+	background: $mega-menu-background;
     visibility: hidden;
     z-index: 1;
 }
@@ -54,8 +54,8 @@
 }
 
 .horizontal li:hover .toolbar-data {
-    background-color: white;
-    color: black !important;
+    background-color: $secondary-toolbar-background-hover;
+    color: $secondary-toolbar-font-hover !important;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }

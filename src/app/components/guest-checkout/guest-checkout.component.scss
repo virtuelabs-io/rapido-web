@@ -64,7 +64,7 @@
                 }
                 .thanks-div {
                     padding-left: 2%;
-                    color: green;
+                    color: $checkout-thanks-div;
                 }
                 .order-id-date {
                     padding-left: 2%;
@@ -76,8 +76,7 @@
                     display: flex;
                     flex-direction: row;
                     flex-wrap: nowrap;
-                  //  margin-left: 2%;
-                    border-bottom: 1px solid #e1e4e8;
+                    border-bottom: 1px solid $checkout-border;
                     .cart-col-price {
                         width: 35%;
                         text-align: right;
@@ -99,10 +98,10 @@
                             flex-wrap: wrap;
                             margin-top: 2%;
                             min-height: 150px;
-                            border-bottom: 1px solid #e1e4e8;
+                            border-bottom: 1px solid $checkout-border;
                             a {
                                 cursor: pointer;
-                                color: $primary;
+                                color: $checkout-order-items-list;
                             }
                             .item-thumbnail {
                                 width: 20%;
@@ -119,7 +118,7 @@
                             .item-price {
                                 padding-left: 2%;
                                 width: 25%;
-                                color: #B12704;
+                                color: $checkout-item-price-color;
                                 text-align: right;
                             }
                             .item-quantity {
@@ -148,21 +147,21 @@
                             margin-top: 1%;
                             padding-bottom: 1%;
                             min-height: 150px;
-                            border-bottom: 1px solid #e1e4e8;
+                            border-bottom: 1px solid $checkout-border;
                             a {
                                 cursor: pointer;
-                                color: $primary;
+                                color: $checkout-order-items-list;
                             }
                             .order-item-status {
                                 .status-label-success {
                                     font-weight: 700!important;
                                     font-size: 20px!important;
-                                    color: green;
+                                    color: $checkout-item-status-sucess;
                                 }
                                 .status-label-cancelled {
                                     font-weight: 700!important;
                                     font-size: 20px!important;
-                                    color: #B12704;
+                                    color: $checkout-item-status-cancelled;
                                 }
                             }
                             .product-prop {
@@ -184,7 +183,7 @@
                                 .item-price {
                                     padding-left: 2%;
                                     width: 25%;
-                                    color: #B12704;
+                                    color: $checkout-item-price-color;
                                     text-align: right;
                                 }
                                 .item-quantity {
@@ -206,7 +205,7 @@
                     text-align: right;
                     span {
                         span {
-                            color: #B12704;
+                            color: $checkout-item-price-color;
                             font-weight: 800;
                         }
                     }
@@ -214,11 +213,11 @@
                 .order-total {
                     width: 100%;
                     margin-top: 2%;
-                    border-top: 1px solid #e1e4e8;
+                    border-top: 1px solid $checkout-order-total-border-top;
                     text-align: right;
                     p {
                         span {
-                            color: #B12704;
+                            color: $checkout-item-price-color;
                             font-weight: 800;
                         }
                     }
@@ -242,17 +241,17 @@
                 border-radius: 6px;
                 border-width: 1px;
                 box-sizing: border-box;
-                border-color: #C7C7C7;
+                border-color: $checkout-order-address-border-color;
                 box-shadow: 0 2px 1px 0 rgba(0,0,0,.16);
                 border-style: solid;
                 .add-title-div {
-                    background-color: black;
+                    background-color: $checkout-order-add-title-div-background-color;
                     height: 20%;
                     .title-div {
                         margin-top: 5%;
                         margin-bottom: 2%;
                         text-align: center;
-                        color: white;
+                        color: $checkout-order-address-title-div;
                         @media screen and (max-width: $small-device) {
                             margin-top: 3%;
                             margin-bottom: 1%;
@@ -281,7 +280,7 @@
             }
         }
         .pay-div {
-            border-top: 3px solid #e1e4e8;
+            border-top: 3px solid $checkout-border;
             .icon-title {
                 display: flex;
                 flex-direction: row;
@@ -331,22 +330,22 @@
   
     border: 1px solid transparent;
     border-radius: 4px;
-    background-color: white;
+    background-color: $checkout-StripeElement-background;
   
-    box-shadow: 0 1px 3px 0 #e6ebf1;
+    box-shadow: 0 1px 3px 0 $checkout-StripeElement-box-shadow;
     -webkit-transition: box-shadow 150ms ease;
     transition: box-shadow 150ms ease;
   }
   
   .StripeElement--focus {
-    box-shadow: 0 1px 3px 0 #cfd7df;
+    box-shadow: 0 1px 3px 0 $checkout-StripeElement-focus-box-shadow;
   }
   
   .StripeElement--invalid {
-    border-color: #fa755a;
+    border-color: $checkout-StripeElement-invalid-border-color;
   }
   
   .StripeElement--webkit-autofill {
-    background-color: #fefde5 !important;
+    background-color: $checkout-StripeElement-webkit-autofill-background !important;
   }
 
