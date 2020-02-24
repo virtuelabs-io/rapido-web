@@ -10,13 +10,37 @@ import { Config } from 'src/app/utils/config'
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  
+  cookieMessage: String = "This website uses cookies to ensure you get the best experience on our website"
+  cookieDismiss: String = 'GOT IT'
   showNavBar: Boolean = true
+  cookieLinkText: String = "Learn More"
   constructor(private router: Router,
     private pageScrollService: PageScrollService, 
     @Inject(DOCUMENT) private document: any){ }
 
   ngOnInit(){
+    // cookies implementation...
+    let cc = window as any;
+       cc.cookieconsent.initialise({
+         palette: {
+           popup: {
+             background: "#000"
+           },
+           button: {
+             background: "#ffe000",//"#f2c811",
+             text: "#164969"
+           }
+         },
+         theme: "classic",
+         content: {
+           message: this.cookieMessage,
+           dismiss: this.cookieDismiss,
+           link: this.cookieLinkText
+           //href: environment.Frontend + "/dataprivacy" 
+         }
+       });
+
+
     this.pageScrollService.scroll({
       document: this.document,
       scrollTarget: '.nav-top',
