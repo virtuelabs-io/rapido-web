@@ -21,6 +21,10 @@
     font-weight: bold;
 }
 
+.column ul li a:hover {
+	color: $primary;
+}
+
 .horizontal li a{
 	color: $mega-menu-font;
 	text-decoration: none;

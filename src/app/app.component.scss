@@ -2,3 +2,19 @@
     // TODO: uncomment to get the footer stuck to the bottom.
  //   min-height: calc(100vh - 585px);
 }
+
+.cookie {
+    z-index: 1;
+    background: black;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 50px;
+    color: white;
+    padding-top: 10px;
+    padding-left: 2%;
+    button {
+        margin-left: 50%;
+    }
+}

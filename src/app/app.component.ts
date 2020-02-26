@@ -19,26 +19,26 @@ export class AppComponent {
     @Inject(DOCUMENT) private document: any){ }
 
   ngOnInit(){
-    // cookies implementation...
-    let cc = window as any;
-       cc.cookieconsent.initialise({
-         palette: {
-           popup: {
-             background: "#000"
-           },
-           button: {
-             background: "#ffe000",//"#f2c811",
-             text: "#164969"
-           }
-         },
-         theme: "classic",
-         content: {
-           message: this.cookieMessage,
-           dismiss: this.cookieDismiss,
-           link: this.cookieLinkText
-           //href: environment.Frontend + "/dataprivacy" 
-         }
-       });
+    // // cookies implementation...
+    // let cc = window as any;
+    //    cc.cookieconsent.initialise({
+    //      palette: {
+    //        popup: {
+    //          background: "#000"
+    //        },
+    //        button: {
+    //          background: "#ffe000",//"#f2c811",
+    //          text: "#164969"
+    //        }
+    //      },
+    //      theme: "classic",
+    //      content: {
+    //        message: this.cookieMessage,
+    //        dismiss: this.cookieDismiss,
+    //        link: this.cookieLinkText
+    //        //href: environment.Frontend + "/dataprivacy" 
+    //      }
+    //    });
 
 
     this.pageScrollService.scroll({
