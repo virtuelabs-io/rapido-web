@@ -1,16 +1,5 @@
 <div class="main-div">
-  <div class="cart-div">
-    <div class="title-icon-text">
-      <svg>
-        <use xlink:href="#shopping-cart-title" />
-      </svg>
-      <div class="title-div">
-        <h4>
-          Shopping Cart
-        </h4>
-      </div>
-    </div>
-    <div *ngIf="!inCart" class="no-cart-item">
+  <div *ngIf="!inCart" class="no-cart-item">
       <svg>
         <use xlink:href="#no-items-in-cart" />
       </svg>
@@ -21,6 +10,18 @@
         </button>
       </div>
     </div>
+  <div *ngIf="inCart"  class="cart-div">
+    <div class="title-icon-text">
+      <svg>
+        <use xlink:href="#shopping-cart-title" />
+      </svg>
+      <div class="title-div">
+        <h4>
+          Shopping Cart
+        </h4>
+      </div>
+    </div>
+    
     <div *ngIf="inCart" class="cart-columns">
       <div class="cart-col-quan">
         <span>Quantity</span>
@@ -125,7 +126,7 @@
     <span>
       The price and availability of items at Rapidobuild.com are subject to change. 
       The shopping cart is a temporary place to store a list of your items and reflects each item's most recent price.
-      Do you have a promotional code? We'll ask you to enter your claim code when it's time to pay.
+      <!-- Do you have a promotional code? We'll ask you to enter your claim code when it's time to pay. -->
     </span>
   </div>
 </div>

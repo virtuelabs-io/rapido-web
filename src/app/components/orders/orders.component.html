@@ -5,7 +5,19 @@
     </svg>    
     <h4>Your Orders</h4>
   </div>
-  <div class="order-card" *ngFor="let order of currentOrders">
+  <div *ngIf="!currentOrders.length" class="order-empty-card">
+    <svg>
+      <use xlink:href="#no-items-in-cart" />
+    </svg>
+    <div class="shopping-button">
+      <button mat-flat-button color="primary" routerLink="/">
+        <span role="status" aria-hidden="true"></span>
+        Continue Shopping 
+      </button>
+    </div>
+  </div>
+  <div *ngIf="currentOrders">
+    <div class="order-card" *ngFor="let order of currentOrders">
     <div class="order-card-header">
       <div class="date-div">
         <span class="label">Order placed: </span>
@@ -50,4 +62,6 @@
       </div>
     </div>
   </div>
+  </div>
+
 </div>
