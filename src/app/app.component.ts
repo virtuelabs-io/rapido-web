@@ -3,6 +3,8 @@ import { PageScrollService } from 'ngx-page-scroll-core';
 import { DOCUMENT } from '@angular/common';
 import { Router, Event, NavigationStart, NavigationEnd, NavigationError, ActivationEnd  } from '@angular/router';
 import { Config } from 'src/app/utils/config'
+import { Constants } from './utils/constants';
+import { v4 as uuid } from 'uuid';
 
 @Component({
   selector: 'app-root',
@@ -13,33 +15,19 @@ export class AppComponent {
   cookieMessage: String = "This website uses cookies to ensure you get the best experience on our website"
   cookieDismiss: String = 'GOT IT'
   showNavBar: Boolean = true
+  isConsentGranted: Boolean = false
   cookieLinkText: String = "Learn More"
   constructor(private router: Router,
     private pageScrollService: PageScrollService, 
     @Inject(DOCUMENT) private document: any){ }
 
   ngOnInit(){
-    // // cookies implementation...
-    // let cc = window as any;
-    //    cc.cookieconsent.initialise({
-    //      palette: {
-    //        popup: {
-    //          background: "#000"
-    //        },
-    //        button: {
-    //          background: "#ffe000",//"#f2c811",
-    //          text: "#164969"
-    //        }
-    //      },
-    //      theme: "classic",
-    //      content: {
-    //        message: this.cookieMessage,
-    //        dismiss: this.cookieDismiss,
-    //        link: this.cookieLinkText
-    //        //href: environment.Frontend + "/dataprivacy" 
-    //      }
-    //    });
-
+    if (!localStorage.getItem(Constants.RAPIDO_COOKIES_PERMISSION)){
+     // localStorage.setItem(Constants.RAPIDO_COOKIES_PERMISSION, uuid())
+      this.isConsentGranted = false
+    } else {
+      this.isConsentGranted = true
+    }
 
     this.pageScrollService.scroll({
       document: this.document,
@@ -51,7 +39,11 @@ export class AppComponent {
         this.handleNavBarVisibility(event)
       }
   });
-  
+  }
+
+  handleCookieAcceptance() {
+    localStorage.setItem(Constants.RAPIDO_COOKIES_PERMISSION, uuid())
+    this.isConsentGranted = true
   }
 
   handleNavBarVisibility(event){

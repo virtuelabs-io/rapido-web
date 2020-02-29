@@ -167,7 +167,8 @@ import { ProductMenuMobileComponent } from './components/product-menu-mobile/pro
     MatTreeModule,
     NgxPageScrollCoreModule,
     NgbModule.forRoot(),
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    MatTreeModule
   ],
   entryComponents: [ FilterControlsDialog, ConfirmationDialogComponent ],
   providers: [ ],

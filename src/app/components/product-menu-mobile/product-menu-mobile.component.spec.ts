@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductMenuMobileComponent } from './product-menu-mobile.component';
+import { MatTreeModule, MatIconModule } from '@angular/material';
 
 describe('ProductMenuMobileComponent', () => {
   let component: ProductMenuMobileComponent;
@@ -8,6 +9,7 @@ describe('ProductMenuMobileComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ MatTreeModule, MatIconModule ],
       declarations: [ ProductMenuMobileComponent ]
     })
     .compileComponents();

@@ -17,6 +17,7 @@ export class Constants {
   }
 
   public static RAPIDO_SESSION_ID = "rapido_session_id";
+  public static RAPIDO_COOKIES_PERMISSION = "rapido_cookies_permission";
 
   public static DEFAULT_PHONE_CODE = "+44";
   public static INDIA_PHONE_CODE = "+91";
