@@ -4,7 +4,7 @@
         <div class="column" *ngFor="let temp of cat.details">
            <p class="mega-menu-col-header">{{temp.header}}</p>
            <ul>
-              <li *ngFor="let data of temp.data"><a href="#">{{data.title}}</a></li>
+              <li *ngFor="let data of temp.data"><a (click)="handleNavigation(data.title)">{{data.title}}</a></li>
            </ul>
         </div>
      </div>

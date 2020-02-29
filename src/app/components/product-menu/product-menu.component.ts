@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Common } from '../../../../src/app/utils/common';
 
 @Component({
   selector: 'app-product-menu',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductMenuComponent implements OnInit {
   productCategories = []
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.productCategories = [{
@@ -18,7 +22,7 @@ export class ProductMenuComponent implements OnInit {
             'header': 'Access Panels',
             data: [
               {
-              'title': 'Accoustic'
+              'title': 'Watches'
               },{
                 'title': 'Airtight'
               },{
@@ -159,6 +163,13 @@ export class ProductMenuComponent implements OnInit {
     },{
       'title':'Interiors'
     }]
+  }
+
+  handleNavigation(searchedText) {
+    let qObject = Common.searchProducts(searchedText)
+    if(qObject){
+      this.router.navigate(['/products'], { queryParams: qObject })
+    }
   }
 
 }
