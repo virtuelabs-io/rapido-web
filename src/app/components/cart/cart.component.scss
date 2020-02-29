@@ -179,6 +179,7 @@
         .card-amount-inner {
             width: 100%;
             height: 40%;
+            margin-top: 10%;
             background-color: $cart-card-amount-inner!important;
             .card-amount-title {
                 margin-left: 5%;
@@ -201,6 +202,7 @@
             }
             @media screen and (max-width: $mobile-device) {
                 height: 90px;
+                margin-top: 5%;
             }
         }
         @media screen and (max-width: $small-device) {

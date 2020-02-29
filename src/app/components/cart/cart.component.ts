@@ -22,6 +22,7 @@ export class CartComponent implements OnInit {
   cartItems = []
   fetchRes: any
   cartAmount: any = 0
+  freeDelivery: Boolean = false
   inCartItems: number = 0
   saveforLater = []
   inCart: Boolean = true
@@ -108,6 +109,7 @@ export class CartComponent implements OnInit {
         }
       }
       this.cartAmount = this.cartAmount.toFixed(2)
+      this.freeDeliveryCheck()
       if(!this.saveforLater.length) {
         this.laterUse = false
       }
@@ -257,9 +259,18 @@ export class CartComponent implements OnInit {
       this.cartAmount += (parseFloat(this.cartItems[i].amount) * this.cartItems[i].quantity)
     }
     this.cartAmount = this.cartAmount.toFixed(2)
+    this.freeDeliveryCheck()
   }
 
   keyPress(event: any){
 		Common.allowPositiveNum(event)
-	}
+  }
+  
+  freeDeliveryCheck() {
+    if(this.cartAmount > 300) {
+      this.freeDelivery = true
+    } else {
+      this.freeDelivery = false
+    }
+  }
 }

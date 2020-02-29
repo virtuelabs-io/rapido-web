@@ -55,7 +55,7 @@
     </div>
   </div>
   <div *ngIf="inCart" class="cart-amount">
-    <div class="card-info">
+    <div class="card-info" *ngIf="freeDelivery">
       <span class="green-text">
         Your order is eligible for FREE Delivery.
       </span>
