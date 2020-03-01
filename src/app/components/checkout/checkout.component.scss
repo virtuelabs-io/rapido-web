@@ -262,42 +262,88 @@
                 }
             }
         }
-        .pay-div {
-            border-top: 3px solid $checkout-cart-columns-border-bottom;
-            .icon-title {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: nowrap;
-                svg {
-                    height: 30px;
-                    width: 30px;
-                    margin-right: 1%;
-                    margin-top: 2%;
-                }
-                h4 {
-                    margin-top: 2%;
-                    @media screen and (max-width: $small-device) {
-                        margin-top: 4%;
+        .payments {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            .pay-div {  
+                width: 100%;
+                border-top: 3px solid $checkout-cart-columns-border-bottom;
+                .icon-title {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    svg {
+                        height: 30px;
+                        width: 30px;
+                        margin-right: 1%;
+                        margin-top: 2%;
+                    }
+                    h4 {
+                        margin-top: 2%;
+                        @media screen and (max-width: $small-device) {
+                            margin-top: 4%;
+                        }
                     }
                 }
-            }
-            
-            .payment-det {
-                display: flex;
-                flex-direction: column;
-                flex-wrap: nowrap;
-                width: 50%;
-                .buy-cart-button {
+                
+                .pay {
                     display: flex;
                     flex-direction: row;
                     flex-wrap: wrap;
-                    .buy-button {
-                        width: 40%;
-                        margin-right: 10%;
+                    .payment-det {
+                        display: flex;
+                        flex-direction: column;
+                        flex-wrap: wrap;
+                        width: 50%;
+                        .buy-cart-button {
+                            display: flex;
+                            flex-direction: row;
+                            flex-wrap: wrap;
+                            height: 40px;
+                            .buy-button {
+                                width: 40%;
+                                margin-right: 10%;
+                            }
+                        }
+                        @media screen and (max-width: $small-device) {
+                            width: 100%;
+                        }
                     }
-                }
-                @media screen and (max-width: $small-device) {
-                    width: 100%;
+    
+                    .payment-option {
+                        width: 50%;
+                        padding-left: 20%;
+                        .payment-cards {
+                            display: flex;
+                            flex-direction: column;
+                            flex-wrap: nowrap;
+                            border: 1px solid green;
+                            border-radius: 10px;
+                            text-align: center;
+                            .payment-cards-text {
+                                align-items: center;
+                            }
+                            .payment-cards-icons {
+                                svg {
+                                    height: 60px;
+                                    width: 60px;
+                                    margin-right: 10px;
+                                    @media screen and (max-width: $small-device) {
+                                        height: 40px;
+                                        width: 40px;
+                                    }
+                                }
+                            }
+                            @media screen and (max-width: $small-device) {
+                                margin-top: 30px;
+                            }
+                        }
+                        @media screen and (max-width: $small-device) {
+                            width: 100%;
+                            padding: 0px;
+                        }
+                    }
                 }
             }
         }

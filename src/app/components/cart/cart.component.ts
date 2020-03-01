@@ -143,6 +143,7 @@ export class CartComponent implements OnInit {
         this.inCart = false
       }
       this.cartAmount = this.cartAmount.toFixed(2)
+      this.freeDeliveryCheck()
       this.inCartItems = this.cartItems.length
       this._cartStateService.updateCartCount(this.inCartItems)
     //  this._cartStateService.fetchAndUpdateCartCount(this.isLoggedIn)
