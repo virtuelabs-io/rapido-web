@@ -80,10 +80,19 @@ export class TopnavComponent implements OnInit {
   }
 
   signOut() {
-    this._profileService.cognitoUser.signOut()
-    this._loginStateService.changeState(false)
-    this._cartStateService.fetchAndUpdateCartCount(false)
-    this.ngZone.run(() =>this.router.navigate([''])).then()
+    var that = this
+    this.signOutCall().then(function() {
+      that._loginStateService.changeState(false)
+    that._cartStateService.fetchAndUpdateCartCount(false)
+    that.ngZone.run(() =>that.router.navigate([''])).then()
+    })
+  }
+
+  signOutCall(): Promise<any> {
+    return new Promise((resolve,reject)=>{ 
+      this._profileService.cognitoUser.signOut()
+      resolve()
+    })
   }
 
   onSearch(event){
