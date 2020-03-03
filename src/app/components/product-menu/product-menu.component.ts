@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Common } from '../../../../src/app/utils/common';
+import { Constants } from '../../utils/constants';
 
 @Component({
   selector: 'app-product-menu',
@@ -9,11 +10,13 @@ import { Common } from '../../../../src/app/utils/common';
 })
 export class ProductMenuComponent implements OnInit {
   productCategories = []
+  disclaimerReq: Boolean
   constructor(
     private router: Router
   ) { }
 
   ngOnInit() {
+    this.disclaimerReq = (Constants.environment.name == "STAGE" || Constants.environment.name == "DEV") ? true : false
     this.productCategories = [{
       'title':'Building Material',
       details: 
@@ -171,5 +174,4 @@ export class ProductMenuComponent implements OnInit {
       this.router.navigate(['/products'], { queryParams: qObject })
     }
   }
-
 }

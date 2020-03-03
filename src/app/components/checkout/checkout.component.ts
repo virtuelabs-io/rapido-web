@@ -60,7 +60,7 @@ export class CheckoutComponent implements OnInit {
 
   registerFormGroup: FormGroup // UI reactive Form Group variable
   private _orderService: OrdersService
-
+  disclaimerReq: Boolean
   constructor(
     private _formBuilder: FormBuilder,
     private stripeService: StripeService,
@@ -82,6 +82,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.disclaimerReq = (Constants.environment.name == "STAGE" || Constants.environment.name == "DEV") ? true : false
     this._loginStateService.loaderEnable()
     this._loginStateService.isLoggedInState.subscribe(state => {
       if (state) {

@@ -1,4 +1,5 @@
-<ul class="horizontal">
+<ul class="horizontal"
+[ngClass]="{'disclaimer-stage': disclaimerReq === true}">
   <li *ngFor="let cat of productCategories"><a class="toolbar-data" href="#">{{cat.title}}</a>
      <div class="dropdown">
         <div class="column" *ngFor="let temp of cat.details">

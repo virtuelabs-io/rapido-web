@@ -1,0 +1,17 @@
+@import "../../../assets/scss/custom-bootstrap-variables.scss";
+
+.title-div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-top: 2%;
+  //  margin-left: 15%;
+    svg {
+        height: 30px;
+        width: 30px;
+        margin-right: 1%;
+      }
+    @media screen and (max-width: $mobile-device) {
+         margin-top: 15%;    
+     }
+}

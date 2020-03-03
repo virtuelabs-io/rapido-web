@@ -1,4 +1,4 @@
-<div class="main-div">
+<div class="main-div" [ngClass]="{'stage-disclaimer': disclaimerReq === true}">
   <mat-horizontal-stepper [linear]="isLinear" #stepper [selectedIndex]="stepperIndex">
     <!-- Delivery address step-->
     <mat-step [stepControl]="registerFormGroup">

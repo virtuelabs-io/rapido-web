@@ -9,7 +9,8 @@
   <app-footer></app-footer>
 </div>
 
-<div class="stage-app-info">
+<div *ngIf="disclaimerReq"
+[ngClass]="{'stage-app-info': disclaimerReq === true}">
   <div class="cookie-text">
     This website is just for testing purpose. For purchases, please use rapidobuild.com
   </div>

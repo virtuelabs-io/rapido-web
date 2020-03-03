@@ -17,11 +17,13 @@ export class AppComponent {
   showNavBar: Boolean = true
   isConsentGranted: Boolean = false
   cookieLinkText: String = "Learn More"
+  disclaimerReq: Boolean
   constructor(private router: Router,
     private pageScrollService: PageScrollService, 
     @Inject(DOCUMENT) private document: any){ }
 
   ngOnInit(){
+    this.disclaimerReq = (Constants.environment.name == "STAGE" || Constants.environment.name == "DEV") ? true : false
     if (!localStorage.getItem(Constants.RAPIDO_COOKIES_PERMISSION)){
      // localStorage.setItem(Constants.RAPIDO_COOKIES_PERMISSION, uuid())
       this.isConsentGranted = false

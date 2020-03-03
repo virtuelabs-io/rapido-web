@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FlatTreeControl} from '@angular/cdk/tree';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
+import { Common } from '../../../../src/app/utils/common';
+import { Router } from '@angular/router';
 
 interface FoodNode {
   name: string;
@@ -121,12 +123,19 @@ export class ProductMenuMobileComponent implements OnInit {
 
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
-  constructor() {
+  constructor(private router: Router) {
     this.dataSource.data = TREE_DATA;
   }
 
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
 
   ngOnInit() {
+  }
+
+  handleNavigation(searchedText) {
+    let qObject = Common.searchProducts(searchedText)
+    if(qObject){
+      this.router.navigate(['/products'], { queryParams: qObject })
+    }
   }
 }
