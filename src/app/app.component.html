@@ -10,9 +10,10 @@
 </div>
 
 <div *ngIf="disclaimerReq"
-[ngClass]="{'stage-app-info': disclaimerReq === true}">
+[ngClass]="{'stage-app-info': disclaimerReq }">
   <div class="cookie-text">
-    This website is just for testing purpose. For purchases, please use rapidobuild.com
+    This website is just for testing purpose. For purchases, please use 
+    <a target="_blank" href="https://rapidobuild.com">https://rapidobuild.com</a>
   </div>
 </div>
 
@@ -27,5 +28,3 @@
     </button>
   </div>
 </div>
-
-<!-- <app-cookie-consent *ngIf="!isConsentGranted"></app-cookie-consent> -->
