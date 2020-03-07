@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { Common } from '../../../../src/app/utils/common';
 import { Constants } from '../../utils/constants';
@@ -12,7 +12,8 @@ export class ProductMenuComponent implements OnInit {
   productCategories = []
   disclaimerReq: Boolean
   constructor(
-    private router: Router
+    private router: Router,
+    private ngZone: NgZone
   ) { }
 
   ngOnInit() {
@@ -171,7 +172,7 @@ export class ProductMenuComponent implements OnInit {
   handleNavigation(searchedText) {
     let qObject = Common.searchProducts(searchedText)
     if(qObject){
-      this.router.navigate(['/products'], { queryParams: qObject })
+      this.ngZone.run(() => this.router.navigate(['/products'], { queryParams: qObject })).then()
     }
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import {FlatTreeControl} from '@angular/cdk/tree';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
 import { Common } from '../../../../src/app/utils/common';
@@ -100,7 +100,6 @@ interface ExampleFlatNode {
   level: number;
 }
 
-
 @Component({
   selector: 'app-product-menu-mobile',
   templateUrl: './product-menu-mobile.component.html',
@@ -123,7 +122,8 @@ export class ProductMenuMobileComponent implements OnInit {
 
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+    private ngZone: NgZone) {
     this.dataSource.data = TREE_DATA;
   }
 
@@ -135,7 +135,7 @@ export class ProductMenuMobileComponent implements OnInit {
   handleNavigation(searchedText) {
     let qObject = Common.searchProducts(searchedText)
     if(qObject){
-      this.router.navigate(['/products'], { queryParams: qObject })
+      this.ngZone.run(() => this.router.navigate(['/products'], { queryParams: qObject })).then()
     }
   }
 }
