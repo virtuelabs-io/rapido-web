@@ -1,7 +1,8 @@
 <app-topnav (toggleSidenav)="navigationSidenav.toggle()">
 </app-topnav>
 
-<mat-sidenav-container autosize>
+<mat-sidenav-container [ngClass]="{'disclaimer-stage': disclaimerReq }"
+autosize>
   <mat-sidenav fullscreen #navigationSidenav mode="over" role="navigation">
     <mat-toolbar class="toolbar-row">
       <mat-toolbar-row>

@@ -5,6 +5,7 @@ import { LoginStateService } from '../../shared-services/login-state/login-state
 import { ProfileService } from '../../services/authentication/profile/profile.service';
 import { CartStateService } from '../../shared-services/cart-state/cart-state.service';
 import { $ } from 'protractor';
+import { Constants } from '../../utils/constants';
 
 @Component({
   selector: 'app-nav',
@@ -15,6 +16,7 @@ import { $ } from 'protractor';
 export class NavComponent implements OnInit {
   @ViewChild('commandbarSidenav') public sidenav: MatSidenav;
   isSignedIn: Boolean = false
+  disclaimerReq: Boolean
   name: string
   cartCount:Number = 0
   userLoggedIn: Boolean
@@ -26,6 +28,7 @@ export class NavComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.disclaimerReq = (Constants.environment.name == "STAGE" || Constants.environment.name == "DEV") ? true : false
     this._loginStateService.isLoggedInState.subscribe(state => {
       this.isSignedIn = state
       this.userLoggedIn = state

@@ -1,4 +1,4 @@
-<div class="main-div" [ngClass]="{'stage-disclaimer': disclaimerReq === true}">
+<div class="main-div">
   <mat-horizontal-stepper [linear]="isLinear" #stepper [selectedIndex]="stepperIndex">
     <!-- Delivery address step-->
     <mat-step [stepControl]="registerFormGroup">
@@ -115,6 +115,7 @@
                   <br/> {{ orders[order]['address'].county }}, {{ orders[order]['address'].postcode }}
                   <br/> {{ orders[order]['address'].country }}
                 </div>
+                  <p class="delivery-time">Your order will be delivered in 3 to 5 business days.</p>
             </div>
           </div>
 

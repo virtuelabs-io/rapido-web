@@ -111,7 +111,7 @@
             <img class="image" src="{{ item.icon }}">
           </div>
           <div class="item-desc">
-            <p [routerLink]="['/products/details', item.id]"><strong>{{ item.title }}</strong></p>
+            <p class="text-clamp" [routerLink]="['/products/details', item.id]"><strong>{{ item.title }}</strong></p>
             <div>
               <a (click)="deleteCartItem(item.id)">Delete</a> |
               <a (click)="saveForLaterFn(item.id, item.quantity, true)">Move to Cart</a>
