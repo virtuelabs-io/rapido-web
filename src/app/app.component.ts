@@ -25,7 +25,6 @@ export class AppComponent {
   ngOnInit(){
     this.disclaimerReq = (Constants.environment.name == "STAGE" || Constants.environment.name == "DEV") ? true : false
     if (!localStorage.getItem(Constants.RAPIDO_COOKIES_PERMISSION)){
-     // localStorage.setItem(Constants.RAPIDO_COOKIES_PERMISSION, uuid())
       this.isConsentGranted = false
     } else {
       this.isConsentGranted = true
@@ -44,7 +43,7 @@ export class AppComponent {
   }
 
   handleCookieAcceptance() {
-    localStorage.setItem(Constants.RAPIDO_COOKIES_PERMISSION, uuid())
+    localStorage.setItem(Constants.RAPIDO_COOKIES_PERMISSION, '1')
     this.isConsentGranted = true
   }
 

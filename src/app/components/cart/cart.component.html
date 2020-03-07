@@ -63,6 +63,11 @@
           Select this option at checkout.
       </span>
     </div>
+    <div class="delivery-msg" *ngIf="!freeDelivery">
+      <span class="green-text">
+        Shop for {{currency}}300 and get a free delivery
+      </span>
+    </div>
     <div class="card-amount-inner">
       <div class="card-amount-title">
         <span>
