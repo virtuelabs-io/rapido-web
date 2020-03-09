@@ -43,6 +43,8 @@ import { NavComponent } from './components/nav/nav.component';
 import { ProductReviewsComponent } from './components/product-reviews/product-reviews.component';
 import { RatingBarComponent } from './components/rating-bar/rating-bar.component';
 import { ProductMenuComponent } from './components/product-menu/product-menu.component';
+import { StageDisclaimerComponent } from './components/stage-disclaimer/stage-disclaimer.component';
+import { CookieConsentComponent } from './components/cookie-consent/cookie-consent.component';
 
 describe('AppComponent', () => {
   var originalTimeout;
@@ -113,7 +115,9 @@ describe('AppComponent', () => {
         HomeComponent,
         ProductReviewsComponent,
         RatingBarComponent,
-        ProductMenuComponent
+        ProductMenuComponent,
+        StageDisclaimerComponent,
+        CookieConsentComponent
       ],
     }).compileComponents();
   }));
