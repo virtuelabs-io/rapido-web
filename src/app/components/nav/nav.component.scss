@@ -33,4 +33,12 @@
   .app-nav-list-icon {
     margin: 0 12px 0 12px;
   }
+
+  :host ::ng-deep .mat-drawer-content {
+    position: relative;
+    z-index: 1;
+    display: block;
+    height: 100%;
+    overflow: hidden;
+}
   
