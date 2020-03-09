@@ -272,7 +272,7 @@ export class CartComponent implements OnInit {
   }
   
   freeDeliveryCheck() {
-    if(this.cartAmount > 300) {
+    if(this.cartAmount > this.freeDeliveryMinOrder) {
       this.freeDelivery = true
     } else {
       this.freeDelivery = false
