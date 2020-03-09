@@ -143,10 +143,19 @@
 }
 
 .stick-top {
-    position: sticky;
-    position: -webkit-sticky; /* For macOS/iOS Safari */
+    
+	position: -webkit-sticky; /* For macOS/iOS Safari */
+	position: sticky;
     top: 0; /* Sets the sticky toolbar to be on top */
-    z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+    z-index: 9; /* Ensure that your app's content doesn't overlap the toolbar */
+}
+
+.stick-top > * {
+	//-webkit-transform: translateZ(0);
+	z-index: 1;
+	position: fixed;
+	background-color: $primary;
+	top: 0;
 }
 
 svg{

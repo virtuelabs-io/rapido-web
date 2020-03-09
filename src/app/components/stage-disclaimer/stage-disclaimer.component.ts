@@ -14,5 +14,4 @@ export class StageDisclaimerComponent implements OnInit {
   ngOnInit() {    
     this.disclaimerReq = (Constants.environment.name !== "PROD") ? true : false
   }
-
 }
