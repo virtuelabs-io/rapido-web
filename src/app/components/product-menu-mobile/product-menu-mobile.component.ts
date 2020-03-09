@@ -3,13 +3,9 @@ import {FlatTreeControl} from '@angular/cdk/tree';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
 import { Common } from '../../../../src/app/utils/common';
 import { Router } from '@angular/router';
-
-interface FoodNode {
-  name: string;
-  children?: FoodNode[];
-}
-
-const TREE_DATA: FoodNode[] = [
+import { TreeNode } from './tree-node';
+import { FlatNode } from './flat-node';
+const TREE_DATA: TreeNode[] = [
   {
     name: 'Building Material',
     children: [
@@ -94,19 +90,13 @@ const TREE_DATA: FoodNode[] = [
   }
 ];
 
-interface ExampleFlatNode {
-  expandable: boolean;
-  name: string;
-  level: number;
-}
-
 @Component({
   selector: 'app-product-menu-mobile',
   templateUrl: './product-menu-mobile.component.html',
   styleUrls: ['./product-menu-mobile.component.scss']
 })
 export class ProductMenuMobileComponent implements OnInit {
-  private _transformer = (node: FoodNode, level: number) => {
+  private _transformer = (node: TreeNode, level: number) => {
     return {
       expandable: !!node.children && node.children.length > 0,
       name: node.name,
@@ -114,7 +104,7 @@ export class ProductMenuMobileComponent implements OnInit {
     };
   }
 
-  treeControl = new FlatTreeControl<ExampleFlatNode>(
+  treeControl = new FlatTreeControl<FlatNode>(
     node => node.level, node => node.expandable);
 
   treeFlattener = new MatTreeFlattener(
@@ -127,7 +117,7 @@ export class ProductMenuMobileComponent implements OnInit {
     this.dataSource.data = TREE_DATA;
   }
 
-  hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
+  hasChild = (_: number, node: FlatNode) => node.expandable;
 
   ngOnInit() {
   }
