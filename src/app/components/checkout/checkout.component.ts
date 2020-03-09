@@ -27,6 +27,7 @@ import {MatSnackBar} from '@angular/material';
   styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent implements OnInit {
+  deliveryDateInterval = Constants.DELIVERY_DATE_INTERVAL
   imageUrl: string = Constants.environment.staticAssets
   _orderId: any
   isLinear = false;

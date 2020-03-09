@@ -57,15 +57,15 @@
   <div *ngIf="inCart" class="cart-amount">
     <div class="card-info" *ngIf="freeDelivery">
       <span class="green-text">
-        Your order is eligible for FREE Delivery.
+        {{freeDeliveryMessage}}
       </span>
       <span>
-          Select this option at checkout.
+          {{freeDeliveryAtCheckout}}
       </span>
     </div>
     <div class="delivery-msg" *ngIf="!freeDelivery">
       <span class="green-text">
-        Shop for {{currency}}300 and get a free delivery
+        Shop for {{currency}}{{freeDeliveryMinOrder}} and get a free delivery
       </span>
     </div>
     <div class="card-amount-inner">
@@ -128,9 +128,7 @@
   </div>
   <div class="terms-conditions">
     <span>
-      The price and availability of items at Rapidobuild.com are subject to change. 
-      The shopping cart is a temporary place to store a list of your items and reflects each item's most recent price.
-      Do you have a promotional code? We'll ask you to enter your claim code when it's time to pay.
+      {{CartDisclaimer}}
     </span>
   </div>
 </div>

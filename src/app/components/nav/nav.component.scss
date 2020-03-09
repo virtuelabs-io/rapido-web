@@ -1,10 +1,14 @@
+@import "../../../assets/scss/custom-bootstrap-variables.scss";
 
   .mat-sidenav-container {
     height: 100%;
   }
 
   .disclaimer-stage {
-    margin-top: 1.7%;
+    margin-top: 1.55%;
+    @media screen and (max-width: $mobile-device) {
+      margin-top: 10%;
+    }
   }
 
   .toolbar-row {

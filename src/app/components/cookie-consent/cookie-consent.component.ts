@@ -19,7 +19,7 @@ export class CookieConsentComponent implements OnInit {
   }
 
   handleCookieAcceptance() {
-    localStorage.setItem(Constants.RAPIDO_COOKIES_PERMISSION, '1')
+    localStorage.setItem(Constants.RAPIDO_COOKIES_PERMISSION, 'true')
     this.isConsentGranted = true
   }
 }

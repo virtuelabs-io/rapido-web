@@ -18,6 +18,10 @@ import { GuestCartItem } from 'src/app/services/guests/guest-cart-item';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
+  freeDeliveryMinOrder: Number = Constants.MIN_ORDER_PRICE_FOR_FREE_DELIVERY
+  freeDeliveryMessage: String = Constants.FREE_DELIVERY_MESSAGE
+  freeDeliveryAtCheckout: String = Constants.SELECT_FREE_DELIVERY_AT_CHECKOUT
+  CartDisclaimer: String = Constants.CART_DISCLAIMER
   _imageUrl: string = Constants.environment.staticAssets
   cartItems = []
   fetchRes: any

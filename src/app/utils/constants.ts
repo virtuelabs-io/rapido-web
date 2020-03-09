@@ -137,6 +137,10 @@ export class Constants {
   public static ITWM_SAVE_LATER = "Item has been saved for later";
   public static SESSION_LOST = "Login Session doesn't exist";
   public static ORDER_QUANTITY_ERROR = "Order quantity can't be less than one";
+  public static MIN_ORDER_PRICE_FOR_FREE_DELIVERY = 300;
+  public static FREE_DELIVERY_MESSAGE = "Your order is eligible for FREE Delivery."
+  public static SELECT_FREE_DELIVERY_AT_CHECKOUT = "Select this option at checkout."
+  public static CART_DISCLAIMER = "The price and availability of items at Rapidobuild.com are subject to change.The shopping cart is a temporary place to store a list of your items and reflects each item's most recent price. Do you have a promotional code? We'll ask you to enter your claim code when it's time to pay."
 
   public static COMPANY_DETAILS_ADDED = "Company Details has been added"
   public static COMPANY_DETAILS_UPDATED = "Company Details has been updated"
@@ -147,4 +151,6 @@ export class Constants {
   public static REVIEW_DEACTIVATED_SUCCESSFULLY = "Review deactivated"
   public static REVIEW_HELPFUL_INCREMENT = "You found the review helpful"
   public static UNAUTHORIZED_REVIEW_CREATE = "You can only add a review only when you purchase the product and its delivered to you"
+
+  public static DELIVERY_DATE_INTERVAL = "Your order will be delivered in 3 to 5 business days."
 }
