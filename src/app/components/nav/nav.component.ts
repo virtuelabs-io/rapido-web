@@ -4,7 +4,6 @@ import { TopnavComponent } from '../topnav/topnav.component';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
 import { ProfileService } from '../../services/authentication/profile/profile.service';
 import { CartStateService } from '../../shared-services/cart-state/cart-state.service';
-import { $ } from 'protractor';
 import { Constants } from '../../utils/constants';
 
 @Component({
@@ -28,7 +27,7 @@ export class NavComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.disclaimerReq = (Constants.environment.name == "STAGE" || Constants.environment.name == "DEV") ? true : false
+    this.disclaimerReq = (Constants.environment.name !== "PROD") ? true : false
     this._loginStateService.isLoggedInState.subscribe(state => {
       this.isSignedIn = state
       this.userLoggedIn = state
@@ -39,8 +38,6 @@ export class NavComponent implements OnInit {
     this._cartStateService.cartCountState.subscribe(state => {
       this.cartCount = state;
     })
-
-    
   }
 
   signOut() {

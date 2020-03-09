@@ -16,6 +16,8 @@ export class Constants {
     stripePublicKey: environment.payment.publicKey
   }
 
+  public static PROD_REDIRECT = "https://rapidobuild.com"
+
   public static RAPIDO_SESSION_ID = "rapido_session_id";
   public static RAPIDO_COOKIES_PERMISSION = "rapido_cookies_permission";
 

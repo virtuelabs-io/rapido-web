@@ -8,6 +8,7 @@ import { Constants } from '../../utils/constants';
 })
 export class StageDisclaimerComponent implements OnInit {
   disclaimerReq: Boolean
+  prodRedirect = Constants.PROD_REDIRECT
   constructor() { }
 
   ngOnInit() {    
