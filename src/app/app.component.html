@@ -9,22 +9,6 @@
   <app-footer></app-footer>
 </div>
 
-<div *ngIf="disclaimerReq"
-[ngClass]="{'stage-app-info': disclaimerReq }">
-  <div class="cookie-text">
-    This website is just for testing purpose. For purchases, please use 
-    <a target="_blank" href="https://rapidobuild.com">https://rapidobuild.com</a>
-  </div>
-</div>
+<app-stage-disclaimer></app-stage-disclaimer>
 
-<div class="cookie" *ngIf="!isConsentGranted">
-  <div class="cookie-text">
-    This website uses cookies to ensure you get the best experience on our website
-  </div>
-  <div class="cookie-action">
-    <button mat-flat-button color="primary" (click)="handleCookieAcceptance()">
-      <span role="status" aria-hidden="true"></span>
-      GOT IT
-    </button>
-  </div>
-</div>
+<app-cookie-consent></app-cookie-consent>

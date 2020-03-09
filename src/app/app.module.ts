@@ -66,6 +66,8 @@ import { EditReviewComponent } from './components/edit-review/edit-review.compon
 import { GuestCheckoutComponent } from './components/guest-checkout/guest-checkout.component';
 import { ProductMenuComponent } from './components/product-menu/product-menu.component';
 import { ProductMenuMobileComponent } from './components/product-menu-mobile/product-menu-mobile.component';
+import { StageDisclaimerComponent } from './components/stage-disclaimer/stage-disclaimer.component';
+import { CookieConsentComponent } from './components/cookie-consent/cookie-consent.component';
 
 @NgModule({
   declarations: [
@@ -121,7 +123,9 @@ import { ProductMenuMobileComponent } from './components/product-menu-mobile/pro
     EditReviewComponent,
     GuestCheckoutComponent,
     ProductMenuComponent,
-    ProductMenuMobileComponent
+    ProductMenuMobileComponent,
+    StageDisclaimerComponent,
+    CookieConsentComponent
   ],
   imports: [
     MatProgressBarModule,
