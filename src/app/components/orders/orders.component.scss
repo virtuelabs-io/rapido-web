@@ -28,7 +28,7 @@
         margin-bottom: 2%;
         border-width: 2px;
         box-sizing: border-box;
-        border-color: white;
+        border-color: $order-card-border-color;
         box-shadow: 0 2px 1px 0 rgba(0,0,0,.16);
         border-style: solid;
         .order-card-header {
@@ -38,9 +38,9 @@
             background: linear-gradient(to bottom,rgba(0,0,0,.14),rgba(0,0,0,.03) 3px,transparent);
             height: 20%;
             border-bottom: 1px solid;
-            border-color: black !important;
-            background-color: black;
-            color: white;
+            border-color: $order-card-header-border-color !important;
+            background-color: $order-card-header-background;
+            color: $order-card-header-text;
             .date-div {
                 display: flex;
                 flex-direction: column;
@@ -86,19 +86,19 @@
                     .status-label-success {
                         font-weight: 700!important;
                         font-size: 20px!important;
-                        color: green;
+                        color: $order-item-status-sucess;
                     }
                     .status-label-cancelled {
                         font-weight: 700!important;
                         font-size: 20px!important;
-                        color: #B12704;
+                        color: $order-item-status-cancelled;
                     }
                 }
                 .item-detail {
                     display: flex;
                     flex-direction: row;
                     flex-wrap: nowrap;
-                    border-bottom: 1px solid #e1e4e8;
+                    border-bottom: 1px solid $order-item-detail-border-bottom;
                     margin-bottom: 2%;
                     .item-image {
                         width: 25%;
@@ -114,19 +114,19 @@
                         flex-wrap: nowrap;
                         width: 75%;
                         a {
-                            color: black;
+                            color: $order-item-text;
                             cursor: pointer !important;
                         }
                         a:hover { 
-                            color: $primary;
+                            color: $order-item-text-hover;
                         }
                         .price-tag {
-                            color: #B12704;
+                            color: $order-price-tag;
                         }
                         .add-review {
                             margin-top: 1%;
                             width: 20%;
-                            color: $primary;
+                            color: $order-add-review;
                             cursor: pointer !important;
                         }
                     }
@@ -142,7 +142,7 @@
                 width: 20%;
                 margin-left: 5%;
                 .action-but {
-                    background-color: $primary;
+                    background-color: $order-item-action-background;
                     margin-top: 2%;
                 }
                 @media screen and (max-width: $small-device) {

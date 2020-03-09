@@ -1,11 +1,9 @@
 @import "../../../assets/scss/custom-bootstrap-variables.scss";
 
 .main {
-   // position: absolute;
-  //  bottom: 0;
-    background-color: black;
+    background-color: $footer-background;
     a {
-        color: white;
+        color: $footer-font-color;
         text-decoration: none;
         background-color: transparent;
     }
@@ -13,7 +11,7 @@
         color: $primary;
     }
     h5 {
-        color: white;
+        color: $footer-heading-color;
     }
     
     .nav-footer-line {
@@ -22,12 +20,12 @@
     }
     
     .footer-rapido-icon {
-        color: white;
+        color: $footer-icon-color;
         margin-top: 1%;
     }
     
     .footer-countries {
-        color: white;
+        color: $footer-countries-color;
         font-size: small;
     }
     
@@ -37,20 +35,12 @@
 }
 
 a:hover {
-    color: $primary;
+    color: $footer-font-color-hover;
     cursor:pointer;
 }
 
-
-
-
-.footer-countries {
-    color: white;
-    font-size: small;
-}
-
 .nav-line {
-    border-top: 1px solid #3a4553;
+    border-top: 1px solid $footer-nav-line;
 }
 
 .commit-color {

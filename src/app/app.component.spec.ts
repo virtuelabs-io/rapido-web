@@ -20,7 +20,7 @@ import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule,
   MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, 
   MatSnackBarModule, MatExpansionModule, MatSelectModule, MatPaginatorModule, 
   MatProgressSpinnerModule, MatDialogModule, MatFormFieldModule, MatCardModule,
-  MatTableModule,  
+  MatTableModule, MatTreeModule, 
   MatProgressBarModule} from '@angular/material';
 import { LeftSectionComponent } from './components/leftsection/leftsection.component';
 import { CardComponent } from './components/card/card.component';
@@ -42,6 +42,9 @@ import { CreditsComponent  } from './components/credits/credits.component';
 import { NavComponent } from './components/nav/nav.component';
 import { ProductReviewsComponent } from './components/product-reviews/product-reviews.component';
 import { RatingBarComponent } from './components/rating-bar/rating-bar.component';
+import { ProductMenuComponent } from './components/product-menu/product-menu.component';
+import { StageDisclaimerComponent } from './components/stage-disclaimer/stage-disclaimer.component';
+import { CookieConsentComponent } from './components/cookie-consent/cookie-consent.component';
 
 describe('AppComponent', () => {
   var originalTimeout;
@@ -81,7 +84,8 @@ describe('AppComponent', () => {
         MatSelectModule,
         MatTableModule,
         MatProgressBarModule,
-        NgbModule.forRoot()
+        NgbModule.forRoot(),
+        MatTreeModule
       ],
       declarations: [
         AppComponent,
@@ -110,7 +114,10 @@ describe('AppComponent', () => {
         CarouselScrollComponent,
         HomeComponent,
         ProductReviewsComponent,
-        RatingBarComponent
+        RatingBarComponent,
+        ProductMenuComponent,
+        StageDisclaimerComponent,
+        CookieConsentComponent
       ],
     }).compileComponents();
   }));

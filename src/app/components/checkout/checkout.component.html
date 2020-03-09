@@ -76,7 +76,7 @@
                       <img class="image" src="{{ imageUrl + products[item.product_id].images[0] }}">
                     </div>
                     <div class="item-desc">
-                      <p><strong>{{ products[item.product_id].name }}</strong></p>
+                      <p class="text-clamp"><strong>{{ products[item.product_id].name }}</strong></p>
                     </div>
                     <div class="item-quantity">
                       <span>{{ item.quantity }}</span>
@@ -115,27 +115,54 @@
                   <br/> {{ orders[order]['address'].county }}, {{ orders[order]['address'].postcode }}
                   <br/> {{ orders[order]['address'].country }}
                 </div>
+                  <div class="delivery-time">{{deliveryDateInterval}}</div>
             </div>
           </div>
 
-          <div class="pay-div">
-            <div class="icon-title">
-              <svg>
-                <use xlink:href="#give-money"/>
-              </svg>
-              <h4>Payment</h4>
-            </div>
-            <div class="payment-det">
-              <mat-form-field class="">
-                <input matInput [(ngModel)]="registeredEmail" name="email" placeholder="Invoice sent to">
-              </mat-form-field>
-              <div id="card-element" class="field"></div><br>
-                <div class="buy-cart-button">
-                  <button class="btn btn-primary buy-button" (click)="buy()">Pay {{ currency }}{{ orderTotal }}</button>
-                <button class="btn btn-primary buy-button" routerLink="/cart">Edit Order</button>
-                </div>
+          <div class="payments">
+            <div class="pay-div">
+              <div class="icon-title">
+                <svg>
+                  <use xlink:href="#give-money"/>
+                </svg>
+                <h4>Payment</h4>
               </div>
-            </div>
+              <div class="pay">
+                <div class="payment-det">
+                  <mat-form-field class="">
+                    <input matInput [(ngModel)]="registeredEmail" name="email" placeholder="Invoice sent to">
+                  </mat-form-field>
+                  <div id="card-element" class="field"></div><br>
+                    <div class="buy-cart-button">
+                      <button class="btn btn-primary buy-button" (click)="buy()">Pay {{ currency }}{{ orderTotal }}</button>
+                    <button class="btn btn-primary buy-button" routerLink="/cart">Edit Order</button>
+                    </div>
+                  </div>
+                  <div class="payment-option">
+                    <div class="payment-cards">
+                      <div class="payment-cards-text">
+                        We accept payments in all cards
+                      </div>
+                      <div class="payment-cards-icons">
+                        <svg>
+                          <use xlink:href="#mastercard"/>
+                        </svg>
+                        <svg>
+                          <use xlink:href="#maestro"/>
+                        </svg>
+                        <svg>
+                          <use xlink:href="#visa"/>
+                        </svg>
+                        <svg>
+                          <use xlink:href="#amex"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              
+              </div>
+          </div>
         </div>
       </form>
     </mat-step>

@@ -32,11 +32,11 @@
                     width: 150px;
                 }
             }
-            border-bottom: 1px solid #e1e4e8;
+            border-bottom: 1px solid $create-review-border-bottom;
         }
         
         .overall-rating {
-            border-bottom: 1px solid #e1e4e8;
+            border-bottom: 1px solid $create-review-border-bottom;
             div {
                 margin-top: 1%;
             }
@@ -54,9 +54,9 @@
             display: flex;
             flex-direction: column;
             margin-top: 2%;
-            border-bottom: 1px solid #e1e4e8;
+            border-bottom: 1px solid $create-review-border-bottom;
             span {
-                color: #767676!important;
+                color: $create-review-review-title-color !important;
                 font-size: 12px;
             }
             textarea {

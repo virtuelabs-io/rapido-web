@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { PageScrollService } from 'ngx-page-scroll-core';
 import { DOCUMENT } from '@angular/common';
-import { Router, Event, NavigationStart, NavigationEnd, NavigationError, ActivationEnd  } from '@angular/router';
+import { Router, Event, ActivationEnd  } from '@angular/router';
 import { Config } from 'src/app/utils/config'
 
 @Component({
@@ -10,7 +10,6 @@ import { Config } from 'src/app/utils/config'
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  
   showNavBar: Boolean = true
   constructor(private router: Router,
     private pageScrollService: PageScrollService, 
@@ -26,8 +25,7 @@ export class AppComponent {
       if (event instanceof ActivationEnd ) {
         this.handleNavBarVisibility(event)
       }
-  });
-  
+    });
   }
 
   handleNavBarVisibility(event){

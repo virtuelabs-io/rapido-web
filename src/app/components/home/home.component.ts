@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   bannerCard: any
   banner: string
   scroll: any
+  productCategories = []
 
   private _productsService: ProductsService
   constructor(
@@ -122,7 +123,7 @@ export class HomeComponent implements OnInit {
     let searchedText = 'sale' // should be dynamic...
     let qObject = Common.searchProducts(searchedText)
     if(qObject){
-      this.router.navigate(['/products'], { queryParams: { search: JSON.stringify(qObject) } })
+      this.router.navigate(['/products'], { queryParams: qObject })
     }
   }
 

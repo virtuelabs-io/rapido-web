@@ -15,7 +15,6 @@ describe('CarouselComponent', () => {
       imports: [ HttpClientModule, RouterTestingModule, MatSnackBarModule ],
       declarations: [ CarouselComponent, HomeComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
-
     })
     .compileComponents();
   }));
