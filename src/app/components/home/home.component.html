@@ -5,14 +5,20 @@
     <app-home-card [cardDetails]=card class="app-home-card" *ngFor="let card of cardDetails"></app-home-card>  
   </div>
 
-  <div class="card-spin-holder">
-    <div class="card-spin">
-      <div class="card-circle">
-        <div class="card-circle-front">
-
-        </div>
-        <div class="card-circle-back">
-          
+  <div class="card-flip-holder">
+    <div class="card-flip" *ngFor="let data of [1,2,3,4]">
+      <div class="circle-container">
+        <div class="outer-ring"></div>
+        <!-- Used for more of a gyroscope type effect
+        <div class="outer-outer-ring"></div>
+        -->
+        <div class="circle">
+          <div class="front">
+            <p>START</p>
+          </div>
+          <div class="back">
+            <img class="back-logo" src="//theelevationgroup.com/img/logo.svg" alt="The Elevation Group Logo" />
+          </div>
         </div>
       </div>
     </div>
