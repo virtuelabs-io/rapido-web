@@ -16,7 +16,10 @@ export class Constants {
     stripePublicKey: environment.payment.publicKey
   }
 
+  public static PROD_REDIRECT = "https://rapidobuild.com"
+
   public static RAPIDO_SESSION_ID = "rapido_session_id";
+  public static RAPIDO_COOKIES_PERMISSION = "rapido_cookies_permission";
 
   public static DEFAULT_PHONE_CODE = "+44";
   public static INDIA_PHONE_CODE = "+91";
@@ -35,7 +38,8 @@ export class Constants {
   public static NO_PASSWORD = "Please enter password";
   public static INVALID_MOBILE_NUMBER = "Not a valid number";
   public static PASSWORD_CHANGED_SUCCESS_MESSAGE = "Password Changed successfully ";
-
+  public static NO_COUNTRY_CODE = "Please enter country code";
+  
   public static SUCCESSFUL_REGISTRATION = "User successfully registered!";
 
   public static ERROR_RESEND_CONFIRMATIONN_CODE = "Error while resending confirmation code";
@@ -137,6 +141,10 @@ export class Constants {
   public static SESSION_LOST = "Login Session doesn't exist";
   public static ORDER_QUANTITY_ERROR = "Order quantity can't be less than one";
   public static EXCEEDED_ORDER_QUANTITY_ERROR = "Order quantity can't be more than 100";
+  public static MIN_ORDER_PRICE_FOR_FREE_DELIVERY = 300;
+  public static FREE_DELIVERY_MESSAGE = "Your order is eligible for FREE Delivery."
+  public static SELECT_FREE_DELIVERY_AT_CHECKOUT = "Select this option at checkout."
+  public static CART_DISCLAIMER = "The price and availability of items at Rapidobuild.com are subject to change.The shopping cart is a temporary place to store a list of your items and reflects each item's most recent price. Do you have a promotional code? We'll ask you to enter your claim code when it's time to pay."
 
   public static COMPANY_DETAILS_ADDED = "Company Details has been added"
   public static COMPANY_DETAILS_UPDATED = "Company Details has been updated"
@@ -147,4 +155,6 @@ export class Constants {
   public static REVIEW_DEACTIVATED_SUCCESSFULLY = "Review deactivated"
   public static REVIEW_HELPFUL_INCREMENT = "You found the review helpful"
   public static UNAUTHORIZED_REVIEW_CREATE = "You can only add a review only when you purchase the product and its delivered to you"
+
+  public static DELIVERY_DATE_INTERVAL = "Your order will be delivered in 3 to 5 business days."
 }

@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {  HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule } from '@angular/forms';
 import { TopnavComponent } from '../topnav/topnav.component';
-import { MatSnackBarModule, MatMenuModule, MatIconModule, MatSidenavModule, MatToolbarModule, MatListModule } from '@angular/material';
+import { MatSnackBarModule, MatMenuModule, MatIconModule, MatSidenavModule, MatToolbarModule, MatListModule, MatTreeModule } from '@angular/material';
 describe('NavComponent', () => {
   let component: NavComponent;
   let fixture: ComponentFixture<NavComponent>;
@@ -14,7 +14,7 @@ describe('NavComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [  MatSnackBarModule, MatMenuModule, MatIconModule, MatSidenavModule, MatListModule, MatToolbarModule, HttpClientTestingModule,
-        BrowserAnimationsModule,  FormsModule, RouterModule.forRoot([]) ],
+        BrowserAnimationsModule,  FormsModule, RouterModule.forRoot([]), MatTreeModule ],
       declarations: [ NavComponent, TopnavComponent ]
     })
     .compileComponents();

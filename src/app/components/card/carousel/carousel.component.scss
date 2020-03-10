@@ -25,7 +25,7 @@
             flex-direction: column;
             flex-wrap: nowrap;
             width: 18%;
-            background-color: white;
+            background-color: $carousel-background;
             padding: 1%;
             margin: 1%;
             padding-bottom: 1%;
@@ -44,14 +44,14 @@
                     display: flex;
                     flex-wrap: wrap;
                     padding-top: 1%;
-                    color: black;
+                    color: $carousel-font;
                     @media screen and (max-width: $medium-device) {
                         padding-left: 0%;
                     }
                 }
                 div {
                     .card-price {
-                        color: red;
+                        color: $carousel-card-price;
                     }
                 }
             }
@@ -77,7 +77,7 @@
     margin-bottom: 10%;
     width: 2% !important;
     margin-top: 10%;
-    background-color: black;
+    background-color: $carousel-arrow-background;
     @media screen and (max-width: $medium-device) {
         width: 4% !important;
         margin-top: 15%;

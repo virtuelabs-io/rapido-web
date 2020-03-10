@@ -29,7 +29,7 @@
       flex-direction: row;
       flex-wrap: nowrap;
       padding: 0% 2%;
-      background-color: $primary;
+      background-color: $profile-background;
       margin: 1%;
       border-radius: 4px;
       width: 31.25%;
@@ -54,7 +54,7 @@
         display: flex;
         flex-direction: column;
         justify-items: left;
-        color: black;
+        color: $profile-content-color;
       }
       @media screen and (max-width: $mobile-device) {
         min-width: 100%;

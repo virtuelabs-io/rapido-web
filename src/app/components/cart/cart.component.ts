@@ -18,10 +18,15 @@ import { GuestCartItem } from 'src/app/services/guests/guest-cart-item';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
+  freeDeliveryMinOrder: Number = Constants.MIN_ORDER_PRICE_FOR_FREE_DELIVERY
+  freeDeliveryMessage: String = Constants.FREE_DELIVERY_MESSAGE
+  freeDeliveryAtCheckout: String = Constants.SELECT_FREE_DELIVERY_AT_CHECKOUT
+  CartDisclaimer: String = Constants.CART_DISCLAIMER
   _imageUrl: string = Constants.environment.staticAssets
   cartItems = []
   fetchRes: any
   cartAmount: any = 0
+  freeDelivery: Boolean = false
   inCartItems: number = 0
   saveforLater = []
   inCart: Boolean = true
@@ -108,6 +113,7 @@ export class CartComponent implements OnInit {
         }
       }
       this.cartAmount = this.cartAmount.toFixed(2)
+      this.freeDeliveryCheck()
       if(!this.saveforLater.length) {
         this.laterUse = false
       }
@@ -141,6 +147,7 @@ export class CartComponent implements OnInit {
         this.inCart = false
       }
       this.cartAmount = this.cartAmount.toFixed(2)
+      this.freeDeliveryCheck()
       this.inCartItems = this.cartItems.length
       this._cartStateService.updateCartCount(this.inCartItems)
     //  this._cartStateService.fetchAndUpdateCartCount(this.isLoggedIn)
@@ -257,9 +264,18 @@ export class CartComponent implements OnInit {
       this.cartAmount += (parseFloat(this.cartItems[i].amount) * this.cartItems[i].quantity)
     }
     this.cartAmount = this.cartAmount.toFixed(2)
+    this.freeDeliveryCheck()
   }
 
   keyPress(event: any){
 		Common.allowPositiveNum(event)
-	}
+  }
+  
+  freeDeliveryCheck() {
+    if(this.cartAmount > this.freeDeliveryMinOrder) {
+      this.freeDelivery = true
+    } else {
+      this.freeDelivery = false
+    }
+  }
 }

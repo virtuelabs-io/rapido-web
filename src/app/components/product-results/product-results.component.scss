@@ -5,8 +5,8 @@ div {
         section{
             display: none;
             button{
-                background: $black;
-                color: $white;
+                background: $product-details-button-background;
+                color: $product-details-button-color;
             }
         }
         @media screen and (max-width: $small-device) {
@@ -57,5 +57,5 @@ div {
 
 :host ::ng-deep .mat-paginator-container {
     justify-content: center;
-    background-color: #fafafa;
+    background-color: $product-details-paginator;
 }

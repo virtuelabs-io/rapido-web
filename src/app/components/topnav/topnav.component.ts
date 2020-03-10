@@ -13,8 +13,10 @@ import { ProductsService } from '../../services/products/products.service';
 import { v4 as uuid } from 'uuid';
 import { Common } from './../../utils/common'
 import { GuestCartService } from '../../services/guests/guest-cart.service';
+import { ProductMenuComponent } from '../product-menu/product-menu.component';
 
-@NgModule({})
+@NgModule({
+})
 @Component({
   selector: 'app-topnav',
   templateUrl: './topnav.component.html',
@@ -73,11 +75,24 @@ export class TopnavComponent implements OnInit {
    // this.getCartCount()
   }
 
+  closeMenu() {
+    //this.dialog.close(this);
+  }
+
   signOut() {
-    this._profileService.cognitoUser.signOut()
-    this._loginStateService.changeState(false)
-    this._cartStateService.fetchAndUpdateCartCount(false)
-    this.ngZone.run(() =>this.router.navigate([''])).then()
+    var that = this
+    this.signOutCall().then(function() {
+      that._loginStateService.changeState(false)
+    that._cartStateService.fetchAndUpdateCartCount(false)
+    that.ngZone.run(() =>that.router.navigate([''])).then()
+    })
+  }
+
+  signOutCall(): Promise<any> {
+    return new Promise((resolve,reject)=>{ 
+      this._profileService.cognitoUser.signOut()
+      resolve()
+    })
   }
 
   onSearch(event){

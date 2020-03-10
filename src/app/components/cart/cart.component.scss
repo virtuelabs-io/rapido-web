@@ -48,10 +48,10 @@
             flex-wrap: nowrap;
             margin-left: 2%;
             margin-right: 2%;
-            border-bottom: 1px solid #e1e4e8;
+            border-bottom: 1px solid $cart-columns-border-bottom;
             .cart-col-price {
                 width: 35%;
-                    text-align: right;
+                text-align: right;
             }
             .later-col-price {
                 width: 80%;
@@ -81,10 +81,10 @@
                     flex-direction: row;
                     flex-wrap: wrap;
                     margin-top: 2%;
-                    border-bottom: 1px solid #e1e4e8;
+                    border-bottom: 1px solid $cart-columns-border-bottom;
                     a {
                         cursor: pointer;
-                        color: $primary;
+                        color: $cart-item-actions;
                     }
                     .item-thumbnail {
                         width: 20%;
@@ -103,14 +103,14 @@
                         text-align: right;
                         padding-left: 2%;
                         width: 25%;
-                        color: #B12704;
+                        color: $cart-item-price;
                     }
                     .item-quantity {
                         text-align: center;
                         width: 20%;
                         .item-quntity-input {
                             width: 60%;
-                            border: 1px solid #666;
+                            border: 1px solid $cart-item-quntity-input;
                             border-radius: 30px;
                             padding: 8px 5px 8px 20px;
                             width: 70px;
@@ -162,7 +162,7 @@
         border-radius: 6px;
         border-width: 1px;
         box-sizing: border-box;
-        border-color: #C7C7C7;
+        border-color: $cart-amount-border-color;
         box-shadow: 0 2px 1px 0 rgba(0,0,0,.16);
         border-style: solid;
         .card-info {
@@ -173,20 +173,34 @@
             margin-right: 2%;
             .green-text {
                 font-size: 14px;
-                color: green;
+                color: $cart-free-delivery-text;
+            }
+        }
+        .delivery-msg {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 2%;
+            margin-left: 2%;
+            margin-right: 2%;
+            .green-text {
+                font-size: 16px;
+                color: $cart-free-delivery-text;
+                text-align: center;
+                width: 100%;
             }
         }
         .card-amount-inner {
             width: 100%;
             height: 40%;
-            background-color: #f3f3f3!important;
+            margin-top: 10%;
+            background-color: $cart-card-amount-inner!important;
             .card-amount-title {
                 margin-left: 5%;
                 margin-top: 5%;
                 margin-right: 5%;
                 text-align: center;
                 .span-class {
-                    color: #B12704;
+                    color: $cart-card-price-color;
                 }
             }
             .card-amount-checkout {
@@ -196,11 +210,12 @@
                     margin-bottom: 1%;
                     margin-top: 1%;
                     width: 100%;
-                    background-color: $primary;
+                    background-color: $cart-checkout-button;
                 }
             }
             @media screen and (max-width: $mobile-device) {
                 height: 90px;
+                margin-top: 5%;
             }
         }
         @media screen and (max-width: $small-device) {
@@ -212,6 +227,6 @@
     }
     @media screen and (max-width: $mobile-device) {
         width: 100%;
-        margin-top: 8%;
+        margin-top: 12%;
     }
 }

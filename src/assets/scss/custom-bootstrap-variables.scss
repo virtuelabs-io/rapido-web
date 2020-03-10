@@ -81,3 +81,176 @@ $text-home-header-color:rgba(0, 0, 0, 0.84);
 // Background
 $background-color-primary: #E8F3EC;
 $background-color-secondary: #D7EFEE;
+
+// secondary toolbar
+$secondary-toolbar-background: $black;
+$secondary-toolbar-font: $white;
+$secondary-toolbar-background-hover: $white;
+$secondary-toolbar-font-hover: $black;
+
+//mega menu
+$mega-menu-font: $black;
+$mega-menu-column-header: $black;
+$mega-menu-background: $white;
+
+// nav bar
+$nav-bar-items-border: $primary;
+$nav-bar-search-icon: $gray-light;
+$nav-bar-text-font: $black;
+
+// home card
+$home-card-background: $white;
+$home-card-heading: $black;
+$home-card-font: $black;
+
+// carousel scroll
+$carousel-scroll-background: $white;
+$carousel-scroll-card-price: $red;
+$carousel-scroll-font: $black;
+
+// carousel
+$carousel-background: $white;
+$carousel-font: $black;
+$carousel-card-price: $red;
+$carousel-arrow-background: $black;
+
+// footer
+$footer-font-color: $white;
+$footer-heading-color: $white;
+$footer-background: $black;
+$footer-font-color-hover: $primary;
+$footer-icon-color: $white;
+$footer-countries-color: $white;
+$footer-nav-line: #3a4553;
+
+// cart
+$cart-columns-border-bottom: #e1e4e8;
+$cart-item-price: #B12704;
+$cart-item-quntity-input: #666;
+$cart-amount-border-color: #C7C7C7;
+$cart-free-delivery-text: $green;
+$cart-card-amount-inner: #f3f3f3;
+$cart-card-price-color: #B12704;
+$cart-checkout-button: $primary;
+$cart-item-actions: $primary;
+
+// address
+$address-add-new-border-color: #C7C7C7;
+$address-text:  $black;
+$address-item-border-color: #C7C7C7;
+$address-action: $primary;
+
+// profile
+$profile-background: $primary;
+$profile-content-color: $black;
+
+// order
+$order-card-border-color: $white;
+$order-card-header-text: $white;
+$order-card-header-background: $black;
+$order-card-header-border-color: $black;
+$order-item-status-sucess: $green;
+$order-item-status-cancelled: #B12704;
+$order-item-detail-border-bottom: #e1e4e8;
+$order-item-text: $black;
+$order-item-text-hover: $primary;
+$order-price-tag: #B12704;
+$order-add-review: $primary;
+$order-item-action-background: $primary;
+
+// order details
+$order-details-thanks-mgs: $green;
+$order-details-columns-border-bottom: #e1e4e8;
+$order-details-total-border-bottom: #e1e4e8;
+$order-details-pay-div-border-top: #e1e4e8;
+$order-details-item-status-sucess: $green;
+$order-details-item-status-cancelled: #B12704;
+$order-details-price-color: #B12704;
+$order-details-address-border-color: #C7C7C7;
+$order-details-address-title-color: $white;
+$order-details-address-title-background: $black;
+
+// company details
+$company-details-title-div-border-bottom: #e1e4e8;
+
+// account info
+$account-info-boader: #e1e4e8;
+
+// customer review
+$customer-review-paginator-background: #fafafa;
+
+// product reviews
+$product-reviews-verified-purchase: #B12704;
+$product-reviews-helpful-count: #767676;
+$product-reviews-review-feedback-color: $primary;
+$product-reviews-icon-name-color: #767676;
+$product-reviews-border-bottom: #e1e4e8;
+$product-reviews-product-id: $primary;
+
+// edit review
+$edit-reviews-border-bottom: #e1e4e8;
+$edit-reviews-review-title-color: #767676;
+
+// career page
+$career-page-job-card-border-color: $white;
+$career-page-job-card-background-color: $white;
+
+// checkout and guest checkout
+$checkout-add-address-icon-border-color: #C7C7C7;
+$checkout-text-div-color: $black;
+$checkout-cart-columns-border-bottom: #e1e4e8;
+$checkout-order-total-border-top: #e1e4e8;
+$checkout-order-items-list: $primary;
+$checkout-item-price-color: #B12704;
+$checkout-order-address-border-color: #C7C7C7;
+$checkout-order-add-title-div-background-color: $black;
+$checkout-order-address-title-div: $white;
+$checkout-StripeElement-background: $white;
+$checkout-StripeElement-box-shadow: #e6ebf1;
+$checkout-StripeElement-focus-box-shadow: #cfd7df;
+$checkout-StripeElement-invalid-border-color: #fa755a;
+$checkout-StripeElement-webkit-autofill-background: #fefde5;
+$checkout-border: #e1e4e8;
+$checkout-item-status-sucess: $green;
+$checkout-item-status-cancelled: #B12704;
+$checkout-thanks-div: $green;
+$checkout-delivery-time: $green;
+
+// create review
+$create-review-border-bottom: #e1e4e8;
+$create-review-review-title-color: #767676;
+
+// forgot password
+$forgot-password-h5-color: $green;
+
+// login
+$login-auth-form-body-background: $white;
+$login-auth-form-body-border: #d8dee2;
+$login-form-control-background: $white;
+$login-form-control-border: #d1d5da;
+$login-form-control-color: #24292e;
+$login-create-account-callout-border: #d8dee2;
+
+// product details
+$product-details-item-quntity-input-color: #666;
+$product-details-thumbnail-active: $primary;
+$product-details-border: #e1e4e8;
+$product-details-paginator: #fafafa;
+
+// product results
+$product-details-button-background: $black;
+$product-details-button-color: $white; 
+
+// rating
+$rating-ngb-rating-color: $yellow;
+
+// resend otp
+$resend-otp-loginButton: $primary;
+
+
+
+
+
+
+
+

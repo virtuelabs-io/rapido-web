@@ -50,7 +50,7 @@
 		input {
 			margin-top: 4px;
 			width: 50%;
-			border-color: $primary;
+			border-color: $nav-bar-items-border;
 			border: none;
 			border-radius: 20px;
 			padding-left: 10px;
@@ -62,7 +62,7 @@
 			position: relative;
 			right: 30px;
 			bottom: 1px;
-			color: $gray-light;
+			color: $nav-bar-search-icon;
 		}
 		@media screen and (max-width: $small-device) {
 			visibility: hidden;
@@ -97,7 +97,7 @@
 			padding-left: 20%;
 			.tag {
 				font-weight: 400;
-				color: black;
+				color: $nav-bar-text-font;
 				font-size: smaller;
 				padding-top: 50px;
 				margin-top: 20px;
@@ -142,49 +142,20 @@
 	cursor: pointer;
 }
 
-.secondary-toolbar {
-	display: none;
-	height: 25px;
-	.block-search {
-		width: 100%;
-		 ::-webkit-input-placeholder {
-			text-align: center;
-		}
-		 :-moz-placeholder {
-			/* Firefox 18- */
-			text-align: center;
-		}
-		 ::-moz-placeholder {
-			/* Firefox 19+ */
-			text-align: center;
-		}
-		 :-ms-input-placeholder {
-			text-align: center;
-		}
-		input {
-			margin-left: 10%;
-			margin-right: 10%;
-			margin-top: 4px;
-			width: 80%;
-			border-color: $primary;
-			border-radius: 20px;
-			padding-left: 10px;
-			padding-right: 10px;
-			outline: none;
-			text-align: left !important;
-			border: 1px solid;
-		}
-	}
-	@media screen and (max-width: $small-device) {
-		display: block;
-	}
+.stick-top {
+    
+	position: -webkit-sticky; /* For macOS/iOS Safari */
+	position: sticky;
+    top: 0; /* Sets the sticky toolbar to be on top */
+    z-index: 9; /* Ensure that your app's content doesn't overlap the toolbar */
 }
 
-.stick-top {
-    position: sticky;
-    position: -webkit-sticky; /* For macOS/iOS Safari */
-    top: 0; /* Sets the sticky toolbar to be on top */
-    z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+.stick-top > * {
+	//-webkit-transform: translateZ(0);
+	z-index: 1;
+	position: fixed;
+	background-color: $primary;
+	top: 0;
 }
 
 svg{

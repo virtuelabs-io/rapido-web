@@ -14,7 +14,7 @@ import { MatProgressBarModule, MatStepperModule, MatInputModule, MatCheckboxModu
           MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, 
           MatSnackBarModule, MatExpansionModule, MatSelectModule, MatPaginatorModule, 
           MatProgressSpinnerModule, MatDialogModule, MatCardModule,
-          MatFormFieldModule, MatTableModule  } from '@angular/material';
+          MatFormFieldModule, MatTableModule, MatTreeModule  } from '@angular/material';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ProductResultsComponent } from './components/product-results/product-results.component';
 import { FilterControlsDialog } from './components/product-results/product-results.component';
@@ -64,6 +64,10 @@ import { ProductReviewsComponent } from './components/product-reviews/product-re
 import { CreateReviewComponent } from './components/create-review/create-review.component';
 import { EditReviewComponent } from './components/edit-review/edit-review.component';
 import { GuestCheckoutComponent } from './components/guest-checkout/guest-checkout.component';
+import { ProductMenuComponent } from './components/product-menu/product-menu.component';
+import { ProductMenuMobileComponent } from './components/product-menu-mobile/product-menu-mobile.component';
+import { StageDisclaimerComponent } from './components/stage-disclaimer/stage-disclaimer.component';
+import { CookieConsentComponent } from './components/cookie-consent/cookie-consent.component';
 
 @NgModule({
   declarations: [
@@ -117,7 +121,11 @@ import { GuestCheckoutComponent } from './components/guest-checkout/guest-checko
     ProductReviewsComponent,
     CreateReviewComponent,
     EditReviewComponent,
-    GuestCheckoutComponent
+    GuestCheckoutComponent,
+    ProductMenuComponent,
+    ProductMenuMobileComponent,
+    StageDisclaimerComponent,
+    CookieConsentComponent
   ],
   imports: [
     MatProgressBarModule,
@@ -160,9 +168,11 @@ import { GuestCheckoutComponent } from './components/guest-checkout/guest-checko
     MatProgressSpinnerModule,
     MatSelectModule,
     MatSidenavModule,
+    MatTreeModule,
     NgxPageScrollCoreModule,
     NgbModule.forRoot(),
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    MatTreeModule
   ],
   entryComponents: [ FilterControlsDialog, ConfirmationDialogComponent ],
   providers: [ ],

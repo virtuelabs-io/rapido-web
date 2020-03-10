@@ -1,0 +1,24 @@
+@import "../../../assets/scss/custom-bootstrap-variables.scss";
+
+.title-div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-top: 2%;
+    svg {
+        height: 30px;
+        width: 30px;
+        margin-right: 1%;
+      }
+    @media screen and (max-width: $mobile-device) {
+         margin-top: 15%;    
+     }
+}
+
+mat-tree-node {
+  cursor: pointer;
+}
+
+mat-tree-node:hover {
+  color: $primary;
+}

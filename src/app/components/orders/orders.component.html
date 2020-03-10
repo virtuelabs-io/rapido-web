@@ -39,15 +39,14 @@
     <div class="order-card-items">
       <div class="item">
         <div class="item-status">
-          <span class="status-label-success" *ngIf="orders[order].category != cancelledStatus">{{ orders[order].category }}</span>
-          <span class="status-label-cancelled" *ngIf="orders[order].category == cancelledStatus">{{ orders[order].category }}</span>
+          <span [ngClass]="orders[order].category == cancelledStatus ? 'status-label-cancelled' : 'status-label-success'">{{ orders[order].category }}</span>
         </div>
         <div class="item-detail" *ngFor="let item of orders[order].items">
           <div class="item-image" [routerLink]="['/products/details', item.product_id]">
               <img class="image" src="{{ imageUrl + products[item.product_id].images[0] }}">
           </div>
           <div class="item-desc-price">
-            <a [routerLink]="['/products/details', item.product_id]">{{ products[item.product_id].name }}</a>
+            <a class="text-clamp" [routerLink]="['/products/details', item.product_id]">{{ products[item.product_id].name }}</a>
             <span>
               <span>{{ products[item.product_id].currency }} </span>
               <span class="price-tag">{{ item.unit_price.toFixed(2) }}</span>

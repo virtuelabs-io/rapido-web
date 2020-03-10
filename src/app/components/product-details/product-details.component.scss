@@ -27,7 +27,7 @@
 		.item-quantity{
 			// width: 15%;
 			.item-quntity-input {
-				border: 1px solid #666;
+				border: 1px solid $product-details-item-quntity-input-color;
 				border-radius: 20px;
 				padding: 8px 5px 8px 20px;
 				// width: 50px;
@@ -57,7 +57,7 @@
 }
 
 .thumbnail-active {
-	border: 2px solid $primary !important;
+	border: 2px solid $product-details-thumbnail-active !important;
 }
 
 .thumbnail-inactive {
@@ -82,7 +82,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    border-top: 1px solid #e1e4e8;
+    border-top: 1px solid $product-details-border;
     padding-top: 2%;
     padding-left: 2%;
 	padding-right: 2%;
@@ -101,7 +101,7 @@
             flex-wrap: nowrap;
             height: 200px;
             padding: 1%;
-            border-bottom: 1px solid #e1e4e8;
+            border-bottom: 1px solid $product-details-border;
             .title {
 				margin-bottom: 3%;
                 span {
@@ -113,7 +113,7 @@
         .give-rating {
             height: 150px;
             padding: 1%;
-			border-bottom: 1px solid #e1e4e8;
+			border-bottom: 1px solid $product-details-border;
 			.title {
 				span {
 					font-size: larger;
@@ -149,7 +149,7 @@
             flex-wrap: nowrap;
             height: 200px;
             padding: 1%;
-            border-bottom: 1px solid #e1e4e8;
+            border-bottom: 1px solid $product-details-border;
             .title {
 				margin-bottom: 3%;
                 span {
@@ -161,7 +161,7 @@
         .give-rating {
             height: 150px;
             padding: 1%;
-			border-bottom: 1px solid #e1e4e8;
+			border-bottom: 1px solid $product-details-border;
 			.title {
 				span {
 					font-size: larger;
@@ -222,5 +222,5 @@
 
 :host ::ng-deep .mat-paginator-container {
 	justify-content: center;
-	background-color: #fafafa;
+	background-color: $product-details-paginator;
 }

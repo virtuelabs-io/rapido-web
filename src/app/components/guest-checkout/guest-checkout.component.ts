@@ -29,6 +29,7 @@ import { CartStateService } from '../../shared-services/cart-state/cart-state.se
   styleUrls: ['./guest-checkout.component.scss']
 })
 export class GuestCheckoutComponent implements OnInit {
+  deliveryDateInterval = Constants.DELIVERY_DATE_INTERVAL
   _previousRoute: any = ""
   address_details_id: number
   name: string = ""

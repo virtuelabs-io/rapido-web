@@ -18,7 +18,7 @@
             flex-direction: row;
             flex-wrap: nowrap;
             margin-top: 3%;
-            border-bottom: 1px solid #e1e4e8;
+            border-bottom: 1px solid $account-info-boader;
             svg {
                 height: 30px;
                 width: 30px;
@@ -59,7 +59,7 @@
             flex-wrap: wrap !important;
             margin-top: 2%;
             .title-div {
-                border-bottom: 1px solid #e1e4e8;
+                border-bottom: 1px solid $account-info-boader;
             }
             .delete-div {
                 display: flex;
