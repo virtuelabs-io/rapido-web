@@ -69,6 +69,7 @@ import { ProductMenuMobileComponent } from './components/product-menu-mobile/pro
 import { StageDisclaimerComponent } from './components/stage-disclaimer/stage-disclaimer.component';
 import { CookieConsentComponent } from './components/cookie-consent/cookie-consent.component';
 import { FlipCaseComponent } from './components/card/flip-case/flip-case.component';
+import { HomeCardFlipComponent } from './components/card/home-card-flip/home-card-flip.component';
 
 @NgModule({
   declarations: [
@@ -127,7 +128,8 @@ import { FlipCaseComponent } from './components/card/flip-case/flip-case.compone
     ProductMenuMobileComponent,
     StageDisclaimerComponent,
     CookieConsentComponent,
-    FlipCaseComponent
+    FlipCaseComponent,
+    HomeCardFlipComponent
   ],
   imports: [
     MatProgressBarModule,

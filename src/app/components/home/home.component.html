@@ -5,8 +5,11 @@
     <app-home-card [cardDetails]=card class="app-home-card" *ngFor="let card of cardDetails"></app-home-card>  
   </div>
 
-  <app-flip-case></app-flip-case>
 
+
+    <div class="card-holder">
+      <app-home-card-flip [cardDetails]=card class="app-home-card" *ngFor="let card of cardDetails"></app-home-card-flip>  
+    </div>
 
 
   <div class="carousel-holder">
