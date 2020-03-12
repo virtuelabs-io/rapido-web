@@ -17,6 +17,13 @@
     <app-carousel class="rapido-tablet-component"  [carouselConfig]="tabletConfig"  [carouselCard]="carousel.RecommendedSet.data" [carouselTitle]="carousel.RecommendedSet.title"></app-carousel>
     <app-carousel class="rapido-mobile-component"  [carouselConfig]="mobileConfig"  [carouselCard]="carousel.RecommendedSet.data" [carouselTitle]="carousel.RecommendedSet.title"></app-carousel>
   </div>
+
+  <div class="carousel-holder">
+    <app-carousel-flip class="rapido-desktop-component" [carouselConfig]="desktopConfig" [carouselCard]="carousel.RecommendedSet.data" [carouselTitle]="carousel.RecommendedSet.title"></app-carousel-flip>
+    <app-carousel-flip class="rapido-tablet-component"  [carouselConfig]="tabletConfig"  [carouselCard]="carousel.RecommendedSet.data" [carouselTitle]="carousel.RecommendedSet.title"></app-carousel-flip>
+    <app-carousel-flip class="rapido-mobile-component"  [carouselConfig]="mobileConfig"  [carouselCard]="carousel.RecommendedSet.data" [carouselTitle]="carousel.RecommendedSet.title"></app-carousel-flip>
+  </div>
+
   <div class="card-holder">
     <div class="banner-card" (click)="handleSale()">
       <img  src="{{banner}}">
