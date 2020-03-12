@@ -9,7 +9,8 @@
         <img class="back-logo" src="{{ flipImage }}" alt="The Elevation Group Logo" />
       </div>
       <div class="back">
-        <img class="back-logo" src="{{ flipBackImage }}" alt="The Elevation Group Logo" />
+        <img *ngIf="!flipBackImage" class="back-logo" src="//theelevationgroup.com/img/logo.svg" alt="The Elevation Group Logo" />
+        <img *ngIf="flipBackImage" class="back-logo" src="{{ flipBackImage }}" alt="The Elevation Group Logo" />
       </div>
     </div>
   </div>
