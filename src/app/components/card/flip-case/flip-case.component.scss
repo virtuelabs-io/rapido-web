@@ -1,5 +1,4 @@
 @import "../../../../assets/scss/custom-bootstrap-variables.scss";
-@import url(https://fonts.googleapis.com/css?family=Cabin:700);
 
 .circle-container {
     display: flex;
@@ -28,7 +27,7 @@
 }
 		
 .circle, .outer-ring, .outer-outer-ring {
-	transition: 0.5s;
+	transition: 0.8s;
 	transform-style: preserve-3d;
 	transition-timing-function: cubic-bezier(0.785, 0.135, 0.150, 0.860);
 }

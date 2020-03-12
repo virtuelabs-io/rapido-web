@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class FlipCaseComponent implements OnInit {
   @Input()  flipImage = ""
+  @Input() flipBackImage = ""
   constructor() { }
 
   ngOnInit() {

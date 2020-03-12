@@ -7,7 +7,7 @@
       <div class="card" *ngFor="let card of template">
         <div class="card-content">
           <div class="card-flip-holder">
-            <app-flip-case *ngIf="carouselConfig.image" [flipImage]=card.image></app-flip-case>
+            <app-flip-case *ngIf="carouselConfig.image" [flipBackImage]=card.image2 [flipImage]=card.image1></app-flip-case>
           </div>
           
           <!-- <img *ngIf="carouselConfig.image" class="card-image" src="{{ card.image }}" [routerLink]="['/products/details', card.id]"> -->
