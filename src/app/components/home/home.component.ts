@@ -44,6 +44,10 @@ export class HomeComponent implements OnInit {
       BrowsingHistory:  {
         "title": "Previously Browsed Products",
         "data": []
+      },
+      newAddedProductSet:  {
+        "title": "Newly Added Product",
+        "data": []
       }
     }
 
@@ -90,6 +94,7 @@ export class HomeComponent implements OnInit {
      this.recommendedProductList()
      this.recommendedSet()
      this.browsedHistory()
+     this.newAddedProductSet()
      if(document.getElementById("idSearchInput")){
       let ele  = document.getElementById("idSearchInput")
       ele['value'] = null
@@ -161,6 +166,30 @@ export class HomeComponent implements OnInit {
         this.carousel.BrowsingHistory.data = data.hits.hit.map((v,i)=>{
           v.fields.id = v.id
           v.fields.image = Common.getImageURI(null, v.fields.images[0])
+          return v.fields
+          })
+        if (data.error) {
+          throw Error('error')
+        }
+        if (data.hits.found === 0) {
+          return;
+        }
+      }
+    })
+  }
+
+  newAddedProductSet() {
+    let query = {
+      q: `watches`,
+      size: 10
+    }
+     this._productsService.get(query).
+    subscribe(data => {
+      if (data) {
+        this.carousel.newAddedProductSet.data = data.hits.hit.map((v,i)=>{
+          v.fields.id = v.id
+          v.fields.image1 = Common.getImageURI(null, v.fields.images[0])
+          v.fields.image2 = Common.getImageURI(null, v.fields.images[1])
           return v.fields
           })
         if (data.error) {
