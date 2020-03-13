@@ -1,9 +1,11 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, ViewChild } from '@angular/core';
 import { ProductsService } from '../../services/products/products.service';
 import { Common } from '../../../../src/app/utils/common';
 import { Constants } from '../../../app/utils/constants'
 import { Router } from '@angular/router';
 import { SearchItemService } from '../../shared-services/search-item/search-item.services';
+import { NgbCarousel } from '@ng-bootstrap/ng-bootstrap';
+import { NgbSlideEvent } from '@ng-bootstrap/ng-bootstrap/carousel/carousel';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +13,15 @@ import { SearchItemService } from '../../shared-services/search-item/search-item
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  // images = [62, 83, 466, 965, 982, 1043, 738].map((n) => `https://picsum.photos/id/${n}/900/500`);
+
+  images = ['/assets/images/image_car4.jpg','/assets/images/image_car2.jpg','/assets/images/image_car3.jpg']
+  paused = false;
+  unpauseOnArrow = false;
+  pauseOnIndicator = false;
+  pauseOnHover = true;
+  // @ViewChild('carousel2', {static : true}) carousel2: NgbCarousel;
+  
   cardDetails: any
   carousel: any
   desktopConfig: any
@@ -201,4 +212,24 @@ export class HomeComponent implements OnInit {
       }
     })
   }
+
+  togglePaused() {
+    if (this.paused) {
+      this.carousel.cycle();
+    } else {
+      this.carousel.pause();
+    }
+    this.paused = !this.paused;
+  }
+
+  // onSlide(slideEvent: NgbSlideEvent) {
+  //   if (this.unpauseOnArrow && slideEvent.paused &&
+  //     (slideEvent.source === NgbSlideEventSource.ARROW_LEFT || slideEvent.source === NgbSlideEventSource.ARROW_RIGHT)) {
+  //     this.togglePaused();
+  //   }
+  //   if (this.pauseOnIndicator && !slideEvent.paused && slideEvent.source === NgbSlideEventSource.INDICATOR) {
+  //     this.togglePaused();
+  //   }
+  // }
+  
 }
