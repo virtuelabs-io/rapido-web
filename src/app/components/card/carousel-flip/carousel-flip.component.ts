@@ -18,6 +18,8 @@ export class CarouselFlipComponent implements OnInit {
   @Input() carouselCard = []
   @Input() carouselConfig = {}
   @Input() carouselTitle = ""
+  @Input() flipBackImage = []
+  @Input() flipImage = []
   carouselData: any
   config: any
   isLoggedIn:Boolean
@@ -115,5 +117,4 @@ export class CarouselFlipComponent implements OnInit {
     this.RouteService.changeRoute('')
     this.router.navigateByUrl('/login')
    }
-
 }

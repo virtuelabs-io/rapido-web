@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HomeComponent } from 'src/app/components/home/home.component';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterTestingModule } from '@angular/router/testing';
+import {   CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CarouselFlipComponent } from './carousel-flip.component';
+import { MatSnackBarModule } from '@angular/material';
 
 describe('CarouselFlipComponent', () => {
   let component: CarouselFlipComponent;
@@ -8,7 +12,9 @@ describe('CarouselFlipComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CarouselFlipComponent ]
+      imports: [ HttpClientModule, RouterTestingModule, MatSnackBarModule ],
+      declarations: [ CarouselFlipComponent, HomeComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));
@@ -20,6 +26,7 @@ describe('CarouselFlipComponent', () => {
   });
 
   it('should create', () => {
+    component.isLoggedIn = true
     expect(component).toBeTruthy();
   });
 });
