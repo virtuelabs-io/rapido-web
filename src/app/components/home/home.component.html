@@ -5,12 +5,9 @@
     <app-home-card [cardDetails]=card class="app-home-card" *ngFor="let card of cardDetails"></app-home-card>  
   </div>
 
-
-
-    <div class="card-holder">
-      <app-home-card-flip [cardDetails]=card class="app-home-card" *ngFor="let card of cardDetails"></app-home-card-flip>  
-    </div>
-
+  <div class="card-holder">
+    <app-home-card-flip [cardDetails]=card class="app-home-card" *ngFor="let card of cardDetails"></app-home-card-flip>  
+  </div>
 
   <div class="carousel-holder">
     <app-carousel class="rapido-desktop-component" [carouselConfig]="desktopConfig" [carouselCard]="carousel.RecommendedSet.data" [carouselTitle]="carousel.RecommendedSet.title"></app-carousel>
