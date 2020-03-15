@@ -187,6 +187,7 @@ export class CartComponent implements OnInit {
 // true - save for later , false - move to cart
   saveForLaterFn(id, quantity, bol) {
     if(this.isLoggedIn) {
+      this._loginStateService.loaderEnable()
       let cartItem: CartItem = new CartItem()
       cartItem.product_id = id
       cartItem.quantity = quantity
