@@ -112,7 +112,7 @@ export class CartComponent implements OnInit {
           })
         }
       }
-      this.cartAmount = this.cartAmount.toFixed(2)
+      this.cartAmount =  +Number(this.cartAmount).toFixed(2)
       this.freeDeliveryCheck()
       if(!this.saveforLater.length) {
         this.laterUse = false
@@ -146,7 +146,7 @@ export class CartComponent implements OnInit {
       if(!this.cartItems.length) {
         this.inCart = false
       }
-      this.cartAmount = this.cartAmount.toFixed(2)
+      this.cartAmount =  +Number(this.cartAmount).toFixed(2)
       this.freeDeliveryCheck()
       this.inCartItems = this.cartItems.length
       this._cartStateService.updateCartCount(this.inCartItems)
@@ -263,7 +263,7 @@ export class CartComponent implements OnInit {
       }
       this.cartAmount += (parseFloat(this.cartItems[i].amount) * this.cartItems[i].quantity)
     }
-    this.cartAmount = this.cartAmount.toFixed(2)
+    this.cartAmount =  +Number(this.cartAmount).toFixed(2)
     this.freeDeliveryCheck()
   }
 
