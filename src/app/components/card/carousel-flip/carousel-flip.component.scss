@@ -79,11 +79,29 @@
         }
         @media screen and (max-width: $mobile-device) {
             width: 100%;
+            margin: 0px;
         }
     }
 }
 
-:host ::ng-deep .carousel-control-prev, ::ng-deep .carousel-control-next {
+:host ::ng-deep .carousel-control-prev {
+    margin-bottom: 10%;
+    width: 2% !important;
+    margin-top: 10%;
+    background-color: $carousel-arrow-background;
+    @media screen and (max-width: $medium-device) {
+        width: 4% !important;
+        margin-top: 15%;
+        margin-bottom: 15%;
+    }
+    @media screen and (max-width: $mobile-device) {
+        width: 8% !important;
+        margin-top: 25%;
+        margin-bottom: 25%;
+    }
+}
+
+:host ::ng-deep .carousel-control-next {
     margin-bottom: 10%;
     width: 2% !important;
     margin-top: 10%;

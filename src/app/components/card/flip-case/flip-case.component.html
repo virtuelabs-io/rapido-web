@@ -1,4 +1,5 @@
-<div class="card-flip" *ngFor="let data of [1]">
+<div class="card-flip"
+(click)="routeTo.emit()">
   <div class="circle-container">
     <div class="outer-ring"></div>
       <!-- Used for more of a gyroscope type effect

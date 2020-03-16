@@ -9,6 +9,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Constants } from '../../../../../src/app/utils/constants';
 import { GuestCartService } from '../../../services/guests/guest-cart.service';
 import { GuestCartItem } from '../../../services/guests/guest-cart-item';
+import { Common } from '../../../utils/common';
+
 @Component({
   selector: 'app-carousel-flip',
   templateUrl: './carousel-flip.component.html',
@@ -117,4 +119,8 @@ export class CarouselFlipComponent implements OnInit {
     this.RouteService.changeRoute('')
     this.router.navigateByUrl('/login')
    }
+
+  routeToProduct(id) {
+      this.router.navigate(['/products/details', id])
+  }
 }

@@ -14,8 +14,9 @@ import { NgbSlideEvent } from '@ng-bootstrap/ng-bootstrap/carousel/carousel';
 })
 export class HomeComponent implements OnInit {
   // images = [62, 83, 466, 965, 982, 1043, 738].map((n) => `https://picsum.photos/id/${n}/900/500`);
-
-  images = ['/assets/images/image_car4.jpg','/assets/images/image_car2.jpg','/assets/images/image_car3.jpg']
+  bottomImage = '/assets/images/bottom-fade.png'
+  images = ['/assets/images/image_car5.jpg','/assets/images/image_car4.jpg','/assets/images/image_car2.jpg','/assets/images/image_car3.jpg']
+  //,'/assets/images/image_car4.jpg','/assets/images/image_car2.jpg','/assets/images/image_car3.jpg'
   paused = false;
   unpauseOnArrow = false;
   pauseOnIndicator = false;

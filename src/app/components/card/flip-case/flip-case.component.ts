@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-flip-case',
@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class FlipCaseComponent implements OnInit {
   @Input() flipImage = ""
   @Input() flipBackImage = ""
+  @Output() routeTo = new EventEmitter<void>()
   constructor() { }
 
   ngOnInit() {
