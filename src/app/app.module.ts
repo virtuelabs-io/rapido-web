@@ -71,6 +71,7 @@ import { CookieConsentComponent } from './components/cookie-consent/cookie-conse
 import { FlipCaseComponent } from './components/card/flip-case/flip-case.component';
 import { HomeCardFlipComponent } from './components/card/home-card-flip/home-card-flip.component';
 import { CarouselFlipComponent } from './components/card/carousel-flip/carousel-flip.component';
+import { ImageCarouselComponent } from './components/card/image-carousel/image-carousel.component';
 
 @NgModule({
   declarations: [
@@ -131,7 +132,8 @@ import { CarouselFlipComponent } from './components/card/carousel-flip/carousel-
     CookieConsentComponent,
     FlipCaseComponent,
     HomeCardFlipComponent,
-    CarouselFlipComponent
+    CarouselFlipComponent,
+    ImageCarouselComponent
   ],
   imports: [
     MatProgressBarModule,

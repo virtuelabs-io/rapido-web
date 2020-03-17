@@ -19,6 +19,9 @@
         padding-left: 2%;
         width: 100%;
         font-size: 15px;
+        @media screen and (max-width: $small-device) {
+            padding-top: 2%;
+        }
     }
     @media screen and (max-width: $mobile-device) {
         height: 60px;

@@ -1,23 +1,6 @@
 <app-product-menu></app-product-menu>
 
-
-<!-- <div> -->
-  <ngb-carousel class="image-carousel" #carousel2 interval="5000" [pauseOnHover]="pauseOnHover">
-    <ng-template ngbSlide *ngFor="let img of images; index as i">
-      <a target="_blank" rel="nofollow noopener noreferrer">
-        <div class="image-div">
-          <img class="image2" [src]="img" alt="My image {{i + 1}} description" style="width: 100%;">
-          <div id="bottom_fade">
-            <img class="bottom-image"  [src]="bottomImage" style="width: 100%;">
-          </div>
-        </div>
-      </a>
-    </ng-template>
-  </ngb-carousel>
-  <!-- <div class="lets-fade-it"></div> -->
-<!-- </div> -->
-
-
+<app-image-carousel></app-image-carousel>
 
 <div class="home-div">
   <div class="card-holder">
