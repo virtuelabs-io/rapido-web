@@ -3,7 +3,7 @@ import { PageScrollService } from 'ngx-page-scroll-core';
 import { DOCUMENT } from '@angular/common';
 import { Router, Event, ActivationEnd  } from '@angular/router';
 import { Config } from 'src/app/utils/config'
-
+import { SidenavService } from './components/nav/nav.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,6 +12,7 @@ import { Config } from 'src/app/utils/config'
 export class AppComponent {
   showNavBar: Boolean = true
   constructor(private router: Router,
+    private sidenav: SidenavService,
     private pageScrollService: PageScrollService, 
     @Inject(DOCUMENT) private document: any){ }
 
@@ -31,10 +32,8 @@ export class AppComponent {
   handleNavBarVisibility(event){
     let navBarComponents = Config.COMPONENTS_WITHOUT_NAVBAR
     let componentName = event.snapshot.component.name
-    if(navBarComponents.indexOf(componentName) === -1){
-      this.showNavBar = true
-    }else{
-      this.showNavBar = false
+    if(componentName) {
+      this.sidenav.close();
     }
   }
 
