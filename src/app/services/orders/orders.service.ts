@@ -111,6 +111,14 @@ export class OrdersService extends RapidoHttpService<Order> {
     return this.get([Constants.ORDERS_APIS.api, 'orders', 'checkProductPurchase', String(product_id)].join("/"), this.addAuthHeader(this.initializeHeaders()))
   }
 
+  getFrequentlyBought(){
+    return this.get([Constants.ORDERS_APIS.api, 'orders', 'frequently-bought'].join("/"))
+  }
+
+  getFrequentlyBoughtByMe(){
+    return this.get([Constants.ORDERS_APIS.api, 'orders', 'frequently-bought-by-me'].join("/"), this.addAuthHeader(this.initializeHeaders()))
+  }
+
   getDeliveryOptions(){
     return this.get([Constants.ORDERS_APIS.api, 'orders', 'getDeliveryOptions'].join("/"))
   }
