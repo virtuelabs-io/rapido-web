@@ -213,15 +213,4 @@ export class HomeComponent implements OnInit {
     }
     this.paused = !this.paused;
   }
-
-  // onSlide(slideEvent: NgbSlideEvent) {
-  //   if (this.unpauseOnArrow && slideEvent.paused &&
-  //     (slideEvent.source === NgbSlideEventSource.ARROW_LEFT || slideEvent.source === NgbSlideEventSource.ARROW_RIGHT)) {
-  //     this.togglePaused();
-  //   }
-  //   if (this.pauseOnIndicator && !slideEvent.paused && slideEvent.source === NgbSlideEventSource.INDICATOR) {
-  //     this.togglePaused();
-  //   }
-  // }
-  
 }
