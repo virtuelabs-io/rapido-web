@@ -11,6 +11,7 @@ import { SidenavService } from './components/nav/nav.service';
 })
 export class AppComponent {
   showNavBar: Boolean = true
+  sideNav: any
   constructor(private router: Router,
     private sidenav: SidenavService,
     private pageScrollService: PageScrollService, 

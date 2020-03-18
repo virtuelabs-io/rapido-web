@@ -48,6 +48,7 @@ import { CookieConsentComponent } from './components/cookie-consent/cookie-conse
 import { CarouselFlipComponent } from './components/card/carousel-flip/carousel-flip.component';
 import { HomeCardFlipComponent } from './components/card/home-card-flip/home-card-flip.component';
 import { FlipCaseComponent } from './components/card/flip-case/flip-case.component';
+import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('AppComponent', () => {
   var originalTimeout;
@@ -125,6 +126,7 @@ describe('AppComponent', () => {
         StageDisclaimerComponent,
         CookieConsentComponent
       ],
+      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
   }));
 

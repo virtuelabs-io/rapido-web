@@ -26,8 +26,7 @@ export class HomeCardFlipComponent implements OnInit {
   cardClick(searchedText) {
     let qObject = Common.searchProducts(searchedText)
     if(qObject){
-      this.router.navigate(['/products'], { queryParams: qObject })
+      this.ngZone.run(() =>this.router.navigate(['/products'], { queryParams: qObject })).then()
     }
   }
-
 }

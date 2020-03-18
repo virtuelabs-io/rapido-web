@@ -89,8 +89,7 @@ export class HomeComponent implements OnInit {
         "title": "Sunglasses",
         "image": '/assets/images/sunglass.jpg',
         "desc": "Deals to excite you"
-      },
-      
+      }
     ]
     this.desktopConfig = Constants.DESKTOP_CONFIG
     this.tabletConfig = Constants.TABLET_CONFIG

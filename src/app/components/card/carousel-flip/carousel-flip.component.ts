@@ -9,7 +9,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Constants } from '../../../../../src/app/utils/constants';
 import { GuestCartService } from '../../../services/guests/guest-cart.service';
 import { GuestCartItem } from '../../../services/guests/guest-cart-item';
-import { Common } from '../../../utils/common';
 
 @Component({
   selector: 'app-carousel-flip',

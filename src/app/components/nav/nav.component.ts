@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material';
 import { TopnavComponent } from '../topnav/topnav.component';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';

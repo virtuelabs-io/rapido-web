@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ImageCarouselComponent } from './image-carousel.component';
 
 describe('ImageCarouselComponent', () => {
@@ -8,7 +8,8 @@ describe('ImageCarouselComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ImageCarouselComponent ]
+      declarations: [ ImageCarouselComponent ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));

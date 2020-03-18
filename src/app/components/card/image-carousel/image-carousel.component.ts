@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./image-carousel.component.scss']
 })
 export class ImageCarouselComponent implements OnInit {
-  images = ['/assets/images/image_car5.jpg','/assets/images/image_car4.jpg','/assets/images/image_car2.jpg','/assets/images/image_car3.jpg']
+  images = ['/assets/images/sale.jpg','/assets/images/image_car4.jpg','/assets/images/image_car2.jpg','/assets/images/image_car3.jpg']
+  pauseOnHover: any
   constructor() { }
 
   ngOnInit() {
