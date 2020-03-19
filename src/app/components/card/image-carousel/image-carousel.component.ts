@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Common } from '../../../../../src/app/utils/common';
 
 @Component({
   selector: 'app-image-carousel',
@@ -6,10 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./image-carousel.component.scss']
 })
 export class ImageCarouselComponent implements OnInit {
-  images = ['/assets/images/sale.jpg','/assets/images/image_car4.jpg','/assets/images/image_car2.jpg','/assets/images/image_car3.jpg']
+  images = [Common.getImageURI(null, "/images/home-page/sale.jpg"),Common.getImageURI(null, "/images/home-page/image_car4.jpg"),Common.getImageURI(null, "/images/home-page/image_car2.jpg"),Common.getImageURI(null, "/images/home-page/image_car3.jpg")]
   pauseOnHover: any
   constructor() { }
-
   ngOnInit() {
   }
 }

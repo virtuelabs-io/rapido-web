@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   tabletConfig: any
   mobileConfig: any
   bannerCard: any
-  banner: string
+  banner: any
   scroll: any
   productCategories = []
 
@@ -54,27 +54,27 @@ export class HomeComponent implements OnInit {
         "data": []
       }
     }
-
-    this.banner = "assets/images/sale.jpg"
+    
+    this.banner = Common.getImageURI(null, "/images/home-page/sale.jpg")//"assets/images/sale.jpg"
     this.cardDetails = [
       {
         "title": "Watches",
-        "image": '/assets/images/watches.jpg',
+        "image": Common.getImageURI(null, "/images/home-page/watches.jpg"),
         "desc": "Find the best photography deals"
       },
       {
         "title": "Furnitures",
-        "image": '/assets/images/furnitures.jpg',
+        "image": Common.getImageURI(null, "/images/home-page/furnitures.jpg"),
         "desc": "Best of furnitures in store"
       },
       {
         "title": "Paint",
-        "image": '/assets/images/86-Asian-Paint-full.jpeg',
+        "image": Common.getImageURI(null, "/images/home-page/86-Asian-Paint-full.jpeg"),
         "desc": "Find the best deals here"
       },
       {
         "title": "Bricks",
-        "image": '/assets/images/bricks.jpeg',
+        "image": Common.getImageURI(null, "/images/home-page/bricks.jpeg"),
         "desc": "Deals you might be interested in"
       } 
     ]
@@ -82,12 +82,12 @@ export class HomeComponent implements OnInit {
     this.bannerCard = [
       {
         "title": "Wallets",
-        "image": '/assets/images/wallets.jpg',
+        "image": Common.getImageURI(null, "/images/home-page/wallets.jpg"),
         "desc": "End of sale"
       },
       {
         "title": "Sunglasses",
-        "image": '/assets/images/sunglass.jpg',
+        "image": Common.getImageURI(null, "/images/home-page/sunglass.jpg"),
         "desc": "Deals to excite you"
       }
     ]
@@ -213,4 +213,15 @@ export class HomeComponent implements OnInit {
     }
     this.paused = !this.paused;
   }
+
+  // onSlide(slideEvent: NgbSlideEvent) {
+  //   if (this.unpauseOnArrow && slideEvent.paused &&
+  //     (slideEvent.source === NgbSlideEventSource.ARROW_LEFT || slideEvent.source === NgbSlideEventSource.ARROW_RIGHT)) {
+  //     this.togglePaused();
+  //   }
+  //   if (this.pauseOnIndicator && !slideEvent.paused && slideEvent.source === NgbSlideEventSource.INDICATOR) {
+  //     this.togglePaused();
+  //   }
+  // }
+  
 }
