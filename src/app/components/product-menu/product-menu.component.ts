@@ -46,7 +46,7 @@ export class ProductMenuComponent implements OnInit {
         }
       ]
     }]
-    this.disclaimerReq = (Constants.environment.name == "STAGE" || Constants.environment.name == "DEV") ? true : false
+    this.disclaimerReq =  Constants.environment.name !== "PROD" ? true : false
     this.productCategories = [{
       'title':'Building Material',
       details: 
