@@ -1,10 +1,11 @@
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material';
 import { TopnavComponent } from '../topnav/topnav.component';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
 import { ProfileService } from '../../services/authentication/profile/profile.service';
 import { CartStateService } from '../../shared-services/cart-state/cart-state.service';
 import { Constants } from '../../utils/constants';
+import { SidenavService } from './nav.service';
 
 @Component({
   selector: 'app-nav',
@@ -13,7 +14,7 @@ import { Constants } from '../../utils/constants';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
-  @ViewChild('commandbarSidenav') public sidenav: MatSidenav;
+  @ViewChild('sidenav') public sidenav: MatSidenav;
   isSignedIn: Boolean = false
   disclaimerReq: Boolean
   name: string
@@ -23,7 +24,8 @@ export class NavComponent implements OnInit {
     private commandBarSidenavService: TopnavComponent,
     private _loginStateService: LoginStateService,
     private _profileService: ProfileService,
-    private _cartStateService: CartStateService
+    private _cartStateService: CartStateService,
+    private sidenavService: SidenavService
   ) { }
 
   ngOnInit() {
@@ -38,6 +40,7 @@ export class NavComponent implements OnInit {
     this._cartStateService.cartCountState.subscribe(state => {
       this.cartCount = state;
     })
+    this.sidenavService.setSidenav(this.sidenav);
   }
 
   signOut() {

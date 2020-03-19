@@ -1,6 +1,7 @@
 @import "../../../assets/scss/custom-bootstrap-variables.scss";
 
 .main-div {
+    margin-top: 5%;
     height: 400px;
     .main-pic {
         padding-left: 35%;
@@ -39,5 +40,8 @@
                 font-size: large;
             }
         }
+    }
+    @media screen and (max-width: $mobile-device) {
+        margin-top: 10%;
     }
 }

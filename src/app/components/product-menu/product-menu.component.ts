@@ -10,6 +10,7 @@ import { Constants } from '../../utils/constants';
 })
 export class ProductMenuComponent implements OnInit {
   productCategories = []
+  productObject = []
   disclaimerReq: Boolean
   constructor(
     private router: Router,
@@ -17,7 +18,35 @@ export class ProductMenuComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.disclaimerReq = (Constants.environment.name == "STAGE" || Constants.environment.name == "DEV") ? true : false
+    this.productObject = [{
+      'header': 'Access Panels',
+      data: [
+        {
+        'title': 'Accoustic'
+        },{
+          'title': 'Airtight'
+        }
+      ]
+    },{
+      'header': 'Membranes',
+      data: [
+        {
+        'title': 'Breather'
+        },{
+          'title': 'DPC'
+        },{
+          'title': 'DPM'
+        }
+      ]
+    },{
+      'header': 'Access Panels',
+      data: [
+        {
+        'title': 'Accoustic'
+        }
+      ]
+    }]
+    this.disclaimerReq =  Constants.environment.name !== "PROD" ? true : false
     this.productCategories = [{
       'title':'Building Material',
       details: 
@@ -119,53 +148,26 @@ export class ProductMenuComponent implements OnInit {
           }
           
         ]
-      
     },
     {
       'title':'Insulation',
-      details: 
-        [
-          {
-            'header': 'Access Panels',
-            data: [
-              {
-              'title': 'Accoustic'
-              },{
-                'title': 'Airtight'
-              }
-            ]
-          },
-          {
-            'header': 'Membranes',
-            data: [
-              {
-              'title': 'Breather'
-              },{
-                'title': 'DPC'
-              },{
-                'title': 'DPM'
-              }
-            ]
-          },{
-            'header': 'Access Panels',
-            data: [
-              {
-              'title': 'Accoustic'
-              }
-            ]
-          }
-          
-        ]
+      details: this.productObject
+        
     },{
-      'title':'Ceilings'
+      'title':'Ceilings',
+      details: this.productObject
     },{
-      'title':'Roofing'
+      'title':'Roofing',
+      details: this.productObject
     },{
-      'title':'Commercials'
+      'title':'Commercials',
+      details: this.productObject
     },{
-      'title':'Paints'
+      'title':'Paints',
+      details: this.productObject
     },{
-      'title':'Interiors'
+      'title':'Interiors',
+      details: this.productObject
     }]
   }
 

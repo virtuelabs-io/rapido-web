@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
@@ -71,6 +71,7 @@ import { CookieConsentComponent } from './components/cookie-consent/cookie-conse
 import { FlipCaseComponent } from './components/card/flip-case/flip-case.component';
 import { HomeCardFlipComponent } from './components/card/home-card-flip/home-card-flip.component';
 import { CarouselFlipComponent } from './components/card/carousel-flip/carousel-flip.component';
+import { ImageCarouselComponent } from './components/card/image-carousel/image-carousel.component';
 
 @NgModule({
   declarations: [
@@ -131,7 +132,8 @@ import { CarouselFlipComponent } from './components/card/carousel-flip/carousel-
     CookieConsentComponent,
     FlipCaseComponent,
     HomeCardFlipComponent,
-    CarouselFlipComponent
+    CarouselFlipComponent,
+    ImageCarouselComponent
   ],
   imports: [
     MatProgressBarModule,
@@ -183,7 +185,7 @@ import { CarouselFlipComponent } from './components/card/carousel-flip/carousel-
   entryComponents: [ FilterControlsDialog, ConfirmationDialogComponent ],
   providers: [ ],
   bootstrap: [ AppComponent ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA ]
 })
 export class AppModule { 
   constructor(

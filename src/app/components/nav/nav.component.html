@@ -1,9 +1,11 @@
-<app-topnav (toggleSidenav)="navigationSidenav.toggle()">
+<app-topnav (toggleSidenav)="sidenav.toggle()">
 </app-topnav>
 
-<mat-sidenav-container [ngClass]="{'disclaimer-stage': disclaimerReq }"
+<mat-sidenav-container
+[ngClass]="{'disclaimer-stage': disclaimerReq }"
 autosize>
-  <mat-sidenav fullscreen #navigationSidenav mode="over" role="navigation">
+  <mat-sidenav fullscreen 
+  #sidenav mode="over" role="navigation">
     <mat-toolbar class="toolbar-row">
       <mat-toolbar-row>
         <h2 *ngIf="userLoggedIn" class="toolbar-title"> Hi {{name}} ! </h2>
@@ -11,10 +13,10 @@ autosize>
     </mat-toolbar>
 
     <mat-nav-list>
-      <a mat-list-item *ngIf="userLoggedIn" (click)="navigationSidenav.close()" [routerLink]="'/profile'"> My Profile </a>
-      <a mat-list-item (click)="navigationSidenav.close()" [routerLink]="'/categories'"> Categories </a>
+      <a mat-list-item *ngIf="userLoggedIn" (click)="sidenav.close()" [routerLink]="'/profile'"> My Profile </a>
+      <a mat-list-item (click)="sidenav.close()" [routerLink]="'/categories'"> Categories </a>
       <a mat-list-item *ngIf="userLoggedIn" (click)="signOut()" [routerLink]="'/'"> Log Out</a>
-      <a mat-list-item *ngIf="!userLoggedIn" (click)="navigationSidenav.close()" [routerLink]="'/login'"> Log In</a>
+      <a mat-list-item *ngIf="!userLoggedIn" (click)="sidenav.close()" [routerLink]="'/login'"> Log In</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
