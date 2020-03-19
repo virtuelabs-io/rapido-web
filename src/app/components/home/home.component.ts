@@ -36,6 +36,8 @@ export class HomeComponent implements OnInit {
   }
 
    ngOnInit() {
+    console.log(Common.getIdBasedQueryString(["1","3","5"]))
+
     this.carousel = {
       RecommendedList:  {
         "title": "Recommended Products",

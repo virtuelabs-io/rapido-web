@@ -5,9 +5,13 @@ import { Router } from '@angular/router';
 import { RouteService } from '../../shared-services/route/route.service';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
 import { ConfirmationDialogComponent } from '../../components/confirmation-dialog/confirmation-dialog.component';
-import {  MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { RatingsService } from '../../services/ratings/ratings.service';
-import {FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { CartItem } from '../../services/cart/cart-item';
+import { CartService } from '../../services/cart/cart.service';
+import { CartStateService } from '../../shared-services/cart-state/cart-state.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @NgModule({
 	imports: [
@@ -27,6 +31,7 @@ export class OrdersComponent implements OnInit {
   public _orderService: OrdersService
   imageUrl: string = Constants.environment.staticAssets
   orders = {}
+  newItemsToCart = []
   products = {}
   currentOrders = []
   dialogRef: any
@@ -40,6 +45,9 @@ export class OrdersComponent implements OnInit {
   public _ratingsService: RatingsService
 
   constructor(
+    private cartService: CartService,
+    private _cartStateService: CartStateService,
+    private _snackBar: MatSnackBar,
     orderService: OrdersService,
     private router: Router,
     private RouteService : RouteService,
@@ -49,6 +57,7 @@ export class OrdersComponent implements OnInit {
     public dialog: MatDialog
   ) {
     this._orderService = orderService
+    this.cartService = cartService
     this._ratingsService = ratingsService
   }
 
@@ -160,5 +169,47 @@ export class OrdersComponent implements OnInit {
       this._loginStateService.loaderDisable()
       this.ngZone.run(() =>this.router.navigate(['review/create/product', productId] )).then()
     }
+  }
+
+  repeatOrder(selectedOrder) {
+    var cart = [];
+    console.log(selectedOrder)
+    for(let order in this.orders[selectedOrder]['items']) {
+      this.newItemsToCart.push({
+        "id": this.orders[selectedOrder]['items'][order].product_id,
+        "quantity": this.orders[selectedOrder]['items'][order].quantity
+      })
+    }
+    this.postCartItems().then(_ => this.fetchCartCount())
+  }
+
+  updateCartItem(product_id: number, quant: number, in_cart: boolean): CartItem {
+    let cartItem: CartItem = new CartItem()
+    cartItem.product_id = product_id
+    cartItem.quantity = quant
+    cartItem.in_cart = in_cart
+    return cartItem
+  }
+
+   postCartItems() {
+    return new Promise( (resolve, reject) => {
+      this._loginStateService.loaderEnable()
+    let items = [];
+      for(var i = 0; i < this.newItemsToCart.length; i++) {
+        items.push(this.updateCartItem(this.newItemsToCart[i].id, this.newItemsToCart[i].quantity, true))
+      }
+      this.cartService.postCartItemList(items)
+        .subscribe(data => {
+          resolve()
+      })
+    })
+  }
+
+  async fetchCartCount() {
+    this._cartStateService.fetchAndUpdateCartCount(this.isLoggedIn)
+      this._loginStateService.loaderDisable()
+      this._snackBar.open(Constants.ITEM_MOVED_TO_CART,  undefined , {
+				duration: 4000,
+			})
   }
 }
