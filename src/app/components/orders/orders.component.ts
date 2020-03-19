@@ -199,7 +199,7 @@ export class OrdersComponent implements OnInit {
         items.push(this.updateCartItem(this.newItemsToCart[i].id, this.newItemsToCart[i].quantity, true))
       }
       this.cartService.postCartItemList(items)
-        .subscribe(data => {
+        .subscribe(_ => {
           resolve()
       })
     })
