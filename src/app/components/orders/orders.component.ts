@@ -12,6 +12,7 @@ import { CartItem } from '../../services/cart/cart-item';
 import { CartService } from '../../services/cart/cart.service';
 import { CartStateService } from '../../shared-services/cart-state/cart-state.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { element } from '@angular/core/src/render3';
 
 @NgModule({
 	imports: [
@@ -174,12 +175,12 @@ export class OrdersComponent implements OnInit {
   }
 
   repeatOrder(selectedOrder) {
-    for(let order in this.orders[selectedOrder]['items']) {
+    this.orders[selectedOrder]['items'].forEach( (element) => {
       this.newItemsToCart.push({
-        "id": this.orders[selectedOrder]['items'][order].product_id,
-        "quantity": this.orders[selectedOrder]['items'][order].quantity
+        "id": element.product_id,
+        "quantity": element.quantity
       })
-    }
+    })
     // promise call to post the cart items and then to fetch the cart count..
     this.postCartItems().then(_ => this.fetchCartCount())
   }
@@ -197,10 +198,10 @@ export class OrdersComponent implements OnInit {
    postCartItems() {
     return new Promise( (resolve, reject) => {
       this._loginStateService.loaderEnable()
-    let items = [];
-      for(var i = 0; i < this.newItemsToCart.length; i++) {
-        items.push(this.updateCartItem(this.newItemsToCart[i].id, this.newItemsToCart[i].quantity, true))
-      }
+      let items = [];
+      this.newItemsToCart.forEach( (element) => {
+        items.push(this.updateCartItem(element.id, element.quantity, true))
+      })
       this.cartService.postCartItemList(items)
         .subscribe( data => {
           this.postCartItemRes = data
