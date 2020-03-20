@@ -5,9 +5,14 @@ import { Router } from '@angular/router';
 import { RouteService } from '../../shared-services/route/route.service';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
 import { ConfirmationDialogComponent } from '../../components/confirmation-dialog/confirmation-dialog.component';
-import {  MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { RatingsService } from '../../services/ratings/ratings.service';
-import {FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { CartItem } from '../../services/cart/cart-item';
+import { CartService } from '../../services/cart/cart.service';
+import { CartStateService } from '../../shared-services/cart-state/cart-state.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { element } from '@angular/core/src/render3';
 
 @NgModule({
 	imports: [
@@ -27,19 +32,25 @@ export class OrdersComponent implements OnInit {
   public _orderService: OrdersService
   imageUrl: string = Constants.environment.staticAssets
   orders = {}
+  newItemsToCart = []
   products = {}
   currentOrders = []
   dialogRef: any
   isLoggedIn: Boolean
   fetchOrdersRes: any
   cancelOrderRes: any
+  postCartItemRes: any
   cancelledStatus = Constants.ORDER_STATUS[4]
   incomplete = Constants.ORDER_STATUS[1]
   delivered = Constants.ORDER_STATUS[3]
   paid = Constants.ORDER_STATUS[2]
   public _ratingsService: RatingsService
+  cartService: CartService;
 
   constructor(
+    cartService: CartService,
+    private _cartStateService: CartStateService,
+    private _snackBar: MatSnackBar,
     orderService: OrdersService,
     private router: Router,
     private RouteService : RouteService,
@@ -49,6 +60,7 @@ export class OrdersComponent implements OnInit {
     public dialog: MatDialog
   ) {
     this._orderService = orderService
+    this.cartService = cartService
     this._ratingsService = ratingsService
   }
 
@@ -160,5 +172,50 @@ export class OrdersComponent implements OnInit {
       this._loginStateService.loaderDisable()
       this.ngZone.run(() =>this.router.navigate(['review/create/product', productId] )).then()
     }
+  }
+
+  repeatOrder(selectedOrder) {
+    this.orders[selectedOrder]['items'].forEach( (element) => {
+      this.newItemsToCart.push({
+        "id": element.product_id,
+        "quantity": element.quantity
+      })
+    })
+    // promise call to post the cart items and then to fetch the cart count..
+    this.postCartItems().then(_ => this.fetchCartCount())
+  }
+
+  // method to add new items to the object..
+  updateCartItem(product_id: number, quant: number, in_cart: boolean): CartItem {
+    let cartItem: CartItem = new CartItem()
+    cartItem.product_id = product_id
+    cartItem.quantity = quant
+    cartItem.in_cart = in_cart
+    return cartItem
+  }
+
+  // method to post items to the cart..
+   postCartItems() {
+    return new Promise( (resolve, reject) => {
+      this._loginStateService.loaderEnable()
+      let items = [];
+      this.newItemsToCart.forEach( (element) => {
+        items.push(this.updateCartItem(element.id, element.quantity, true))
+      })
+      this.cartService.postCartItemList(items)
+        .subscribe( data => {
+          this.postCartItemRes = data
+          resolve()
+      })
+    })
+  }
+
+  // method to fetch the cart count on successful post the items to the cart..
+  async fetchCartCount() {
+    this._cartStateService.fetchAndUpdateCartCount(this.isLoggedIn)
+      this._loginStateService.loaderDisable()
+      this._snackBar.open(Constants.ITEM_MOVED_TO_CART,  undefined , {
+				duration: 4000,
+			})
   }
 }

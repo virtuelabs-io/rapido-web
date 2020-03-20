@@ -48,5 +48,4 @@ export class CartMockService extends CartService{
     deleteCartItem() {
         return of(CartMockData.deleteCartItem)
     }
-    
 }
