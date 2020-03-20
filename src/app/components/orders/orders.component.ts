@@ -174,8 +174,6 @@ export class OrdersComponent implements OnInit {
   }
 
   repeatOrder(selectedOrder) {
-    var cart = [];
-    console.log(selectedOrder)
     for(let order in this.orders[selectedOrder]['items']) {
       this.newItemsToCart.push({
         "id": this.orders[selectedOrder]['items'][order].product_id,
