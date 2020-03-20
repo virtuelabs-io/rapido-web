@@ -38,14 +38,16 @@ export class OrdersComponent implements OnInit {
   isLoggedIn: Boolean
   fetchOrdersRes: any
   cancelOrderRes: any
+  postCartItemRes: any
   cancelledStatus = Constants.ORDER_STATUS[4]
   incomplete = Constants.ORDER_STATUS[1]
   delivered = Constants.ORDER_STATUS[3]
   paid = Constants.ORDER_STATUS[2]
   public _ratingsService: RatingsService
+  cartService: CartService;
 
   constructor(
-    private cartService: CartService,
+     cartService: CartService,
     private _cartStateService: CartStateService,
     private _snackBar: MatSnackBar,
     orderService: OrdersService,
@@ -199,7 +201,8 @@ export class OrdersComponent implements OnInit {
         items.push(this.updateCartItem(this.newItemsToCart[i].id, this.newItemsToCart[i].quantity, true))
       }
       this.cartService.postCartItemList(items)
-        .subscribe(_ => {
+        .subscribe( data => {
+          this.postCartItemRes = data
           resolve()
       })
     })

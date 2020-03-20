@@ -14,7 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GuestCartMockData } from 'src/app/services/guests/guest-cart.mock.data';
 import { GuestCartMockService } from 'src/app/services/guests/guest-cart.mock.service';
 import { GuestCartService } from 'src/app/services/guests/guest-cart.service';
-import {Location} from "@angular/common";
+import { Location } from "@angular/common";
 
 describe('CartComponent', () => {
   let cartMockService: CartService = new CartMockService()
