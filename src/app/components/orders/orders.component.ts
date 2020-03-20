@@ -47,7 +47,7 @@ export class OrdersComponent implements OnInit {
   cartService: CartService;
 
   constructor(
-     cartService: CartService,
+    cartService: CartService,
     private _cartStateService: CartStateService,
     private _snackBar: MatSnackBar,
     orderService: OrdersService,
@@ -182,9 +182,11 @@ export class OrdersComponent implements OnInit {
         "quantity": this.orders[selectedOrder]['items'][order].quantity
       })
     }
+    // promise call to post the cart items and then to fetch the cart count..
     this.postCartItems().then(_ => this.fetchCartCount())
   }
 
+  // method to add new items to the object..
   updateCartItem(product_id: number, quant: number, in_cart: boolean): CartItem {
     let cartItem: CartItem = new CartItem()
     cartItem.product_id = product_id
@@ -193,6 +195,7 @@ export class OrdersComponent implements OnInit {
     return cartItem
   }
 
+  // method to post items to the cart..
    postCartItems() {
     return new Promise( (resolve, reject) => {
       this._loginStateService.loaderEnable()
@@ -208,6 +211,7 @@ export class OrdersComponent implements OnInit {
     })
   }
 
+  // method to fetch the cart count on successful post the items to the cart..
   async fetchCartCount() {
     this._cartStateService.fetchAndUpdateCartCount(this.isLoggedIn)
       this._loginStateService.loaderDisable()

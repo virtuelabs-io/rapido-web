@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { OrdersMockData } from 'src/app/services/orders/orders.mock.data';
 import { OrdersMockService } from '../../services/orders/orders.mock.service';
 import { OrdersService } from 'src/app/services/orders/orders.service';
-import {Location} from "@angular/common";
+import { Location } from "@angular/common";
 import { OrderDetailsComponent } from '../order-details/order-details.component';
 import { MatDialogModule, MatSnackBarModule } from '@angular/material';
 import { ConfirmationDialogComponent } from '../../components/confirmation-dialog/confirmation-dialog.component';
