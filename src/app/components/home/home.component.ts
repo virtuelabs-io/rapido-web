@@ -28,9 +28,10 @@ export class HomeComponent implements OnInit {
   scroll: any
   productCategories = []
   isLoggedIn: Boolean
+  freqBoughtSet: any
 
   private _productsService: ProductsService
-  private _orderService: OrdersService
+  public _orderService: OrdersService
   constructor(
     productsService: ProductsService,
     private router: Router,
@@ -174,7 +175,6 @@ export class HomeComponent implements OnInit {
   }
 
   async frequentlyBoughtByMeSet(value) {
-    console.log(value)
     var frequentlyBoughtByMeSet = []
     value.forEach( (element) => {
       frequentlyBoughtByMeSet.push(element.product_id)
@@ -208,13 +208,13 @@ export class HomeComponent implements OnInit {
     return new Promise( (resolve) => {
       this._orderService.getFrequentlyBought()
       .subscribe(data => {
+        this.freqBoughtSet = data
         resolve(data)
       })
     })
   }
 
   async frequentlyBoughtSet(value) {
-    console.log(value)
     var frequentlyBoughtSet = []
     value.forEach( (element) => {
       frequentlyBoughtSet.push(element.product_id)

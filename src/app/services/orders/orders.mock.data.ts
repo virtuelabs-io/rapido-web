@@ -1,3 +1,9 @@
+import { Order } from './order';
+
+let frequentlyBoughtData = new Order()
+frequentlyBoughtData.product_id = 75
+frequentlyBoughtData.frequency = 1
+
 let orders = {
     orderItemsObject: {
         13: {
@@ -81,11 +87,14 @@ let orderDetail = {
         }
     }
 }
+
 export class OrdersMockData {
 
   public static orders = orders
 
   public static orderDetail = orderDetail
+
+  public static frequentlyBoughtSet = frequentlyBoughtData
 
   public static deleteOrder = {
         affectedRows: 1,

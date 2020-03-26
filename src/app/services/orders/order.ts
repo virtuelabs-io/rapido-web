@@ -3,6 +3,8 @@ export class Order {
   private _delivery_address_id: number
   private _delivery_cost_id: number
   private _charge_id: string
+  public product_id: number
+  public frequency: number
 
   constructor(){
     this._delivery_cost_id = 1
@@ -45,7 +47,9 @@ export class Order {
       "order_id": this._order_id,
       "delivery_address_id": this._delivery_address_id,
       "delivery_cost_id": this._delivery_cost_id,
-      "charge_id": this._charge_id
+      "charge_id": this._charge_id,
+      "product_id": this.product_id,
+      "frequency": this.frequency
     }
   }
 }
