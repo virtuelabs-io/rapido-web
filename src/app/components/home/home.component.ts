@@ -4,6 +4,9 @@ import { Common } from '../../../../src/app/utils/common';
 import { Constants } from '../../../app/utils/constants'
 import { Router } from '@angular/router';
 import { SearchItemService } from '../../shared-services/search-item/search-item.services';
+import { OrdersService } from '../../services/orders/orders.service';
+import { LoginStateService } from '../../shared-services/login-state/login-state.service';
+
 
 @Component({
   selector: 'app-home',
@@ -24,27 +27,34 @@ export class HomeComponent implements OnInit {
   banner: any
   scroll: any
   productCategories = []
+  isLoggedIn: Boolean
 
   private _productsService: ProductsService
+  private _orderService: OrdersService
   constructor(
     productsService: ProductsService,
     private router: Router,
     private _searchItemService: SearchItemService,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    orderService: OrdersService,
+    private _loginStateService: LoginStateService
   ) { 
     this._productsService = productsService
+    this._orderService = orderService
   }
 
    ngOnInit() {
-    console.log(Common.getIdBasedQueryString(["1","3","5"]))
-
     this.carousel = {
       RecommendedList:  {
         "title": "Recommended Products",
         "data": []
       },
-      RecommendedSet:  {
-        "title": "Recommended for You",
+      FrequentlyBought:  {
+        "title": "Frequently Bought",
+        "data": []
+      },
+      FrequentlyBoughtByMe:  {
+        "title": "",
         "data": []
       },
       BrowsingHistory:  {
@@ -97,7 +107,17 @@ export class HomeComponent implements OnInit {
     this.tabletConfig = Constants.TABLET_CONFIG
     this.mobileConfig = Constants.MOBILE_CONFIG
      this.recommendedProductList()
-     this.recommendedSet()
+     this.getFrequentlyBought().then(data => this.frequentlyBoughtSet(data))
+     this.logInSession().then(data => {
+       if(data) {
+        this.getFrequentlyBoughtByMe().then(data => {
+          if(data === []){
+           this.carousel.FrequentlyBoughtByMe.title = "Frequently Bought by Me"
+           this.frequentlyBoughtByMeSet(data)
+         }
+       })
+       }
+     })
      this.browsedHistory()
      this.newAddedProductSet()
      if(document.getElementById("idSearchInput")){
@@ -137,15 +157,79 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  recommendedSet() {
+  logInSession() {
+    return new Promise( (resolve) => {
+      this._loginStateService.isLoggedInState.subscribe(state => this.isLoggedIn = state)
+      resolve(this.isLoggedIn)
+    })
+  }
+
+  async getFrequentlyBoughtByMe(){
+    return new Promise( (resolve) => {
+      this._orderService.getFrequentlyBoughtByMe()
+      .subscribe(data => {
+        resolve(data)
+      })
+    })
+  }
+
+  async frequentlyBoughtByMeSet(value) {
+    console.log(value)
+    var frequentlyBoughtByMeSet = []
+    value.forEach( (element) => {
+      frequentlyBoughtByMeSet.push(element.product_id)
+    });
+
     let query = {
-      q: `watches`,
-      size: 10
+      q: Common.getIdBasedQueryString(frequentlyBoughtByMeSet),
+      size: frequentlyBoughtByMeSet.length,
+      qdotparser: 'structured'
     }
+
      this._productsService.get(query).
     subscribe(data => {
       if (data) {
-        this.carousel.RecommendedSet.data = data.hits.hit.map((v,i)=>{
+        this.carousel.FrequentlyBoughtByMe.data = data.hits.hit.map((v,i)=>{
+          v.fields.id = v.id
+          v.fields.image = Common.getImageURI(null, v.fields.images[0])
+          return v.fields
+          })
+        if (data.error) {
+          throw Error('error')
+        }
+        if (data.hits.found === 0) {
+          return;
+        }
+      }
+    })
+  }
+
+  getFrequentlyBought(){
+    return new Promise( (resolve) => {
+      this._orderService.getFrequentlyBought()
+      .subscribe(data => {
+        resolve(data)
+      })
+    })
+  }
+
+  async frequentlyBoughtSet(value) {
+    console.log(value)
+    var frequentlyBoughtSet = []
+    value.forEach( (element) => {
+      frequentlyBoughtSet.push(element.product_id)
+    });
+
+    let query = {
+      q: Common.getIdBasedQueryString(frequentlyBoughtSet),
+      size: frequentlyBoughtSet.length,
+      qdotparser: 'structured'
+    }
+
+     this._productsService.get(query).
+    subscribe(data => {
+      if (data) {
+        this.carousel.FrequentlyBought.data = data.hits.hit.map((v,i)=>{
           v.fields.id = v.id
           v.fields.image = Common.getImageURI(null, v.fields.images[0])
           return v.fields
