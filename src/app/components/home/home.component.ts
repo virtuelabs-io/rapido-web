@@ -46,24 +46,24 @@ export class HomeComponent implements OnInit {
 
    ngOnInit() {
     this.carousel = {
-      RecommendedList:  {
-        "title": "Recommended Products",
+      RecommendedList: {
+        "title": Constants.RECOMMENDEDLIST_TITLE,
         "data": []
       },
-      FrequentlyBought:  {
-        "title": "Frequently Bought Products",
+      FrequentlyBought: {
+        "title": Constants.FREQUENTLY_BOUGHT_TITLE,
         "data": []
       },
-      FrequentlyBoughtByMe:  {
+      FrequentlyBoughtByMe: {
         "title": "",
         "data": []
       },
-      BrowsingHistory:  {
-        "title": "Previously Browsed Products",
+      BrowsingHistory: {
+        "title": Constants.BROWSING_HISTORY_TITLE,
         "data": []
       },
-      newAddedProductSet:  {
-        "title": "Newly Added Product",
+      newAddedProductSet: {
+        "title": Constants.NEWLY_ADDED_PRODUCTS_TITLE,
         "data": []
       }
     }
@@ -116,7 +116,7 @@ export class HomeComponent implements OnInit {
        if(data) {
         this.getFrequentlyBoughtByMe().then(data => {
           if(data === []){
-           this.carousel.FrequentlyBoughtByMe.title = "Frequently Bought by Me"
+           this.carousel.FrequentlyBoughtByMe.title = Constants.FREQUENTLY_BOUGHT_BY_ME_TITLE
            this.frequentlyBoughtByMeSet(data)
          }
        })

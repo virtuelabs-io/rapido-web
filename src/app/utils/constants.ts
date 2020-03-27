@@ -157,4 +157,11 @@ export class Constants {
   public static UNAUTHORIZED_REVIEW_CREATE = "You can only add a review only when you purchase the product and its delivered to you"
 
   public static DELIVERY_DATE_INTERVAL = "Your order will be delivered in 3 to 5 business days."
+
+  // Home component
+  public static RECOMMENDEDLIST_TITLE = "Recommended Products"
+  public static FREQUENTLY_BOUGHT_TITLE = "Frequently Bought Products"
+  public static BROWSING_HISTORY_TITLE = "Previously Browsed Products"
+  public static NEWLY_ADDED_PRODUCTS_TITLE = "Newly Added Product"
+  public static FREQUENTLY_BOUGHT_BY_ME_TITLE = "Frequently Bought by Me"
 }
