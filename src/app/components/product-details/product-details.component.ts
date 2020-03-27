@@ -217,6 +217,11 @@ export class ProductDetailsComponent implements OnInit {
 			this._snackBar.open(Constants.ORDER_QUANTITY_ERROR,  undefined , {
 				duration: 4000,
 			 })
+		}else if(Number(quant) > 100){
+			this.quantity = 100
+			this._snackBar.open(Constants.EXCEEDED_ORDER_QUANTITY_ERROR,  undefined , {
+				duration: 4000,
+			 })
 		}else{
 			this.quantity = quant
 		}

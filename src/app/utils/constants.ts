@@ -38,7 +38,8 @@ export class Constants {
   public static NO_PASSWORD = "Please enter password";
   public static INVALID_MOBILE_NUMBER = "Not a valid number";
   public static PASSWORD_CHANGED_SUCCESS_MESSAGE = "Password Changed successfully ";
-
+  public static NO_COUNTRY_CODE = "Please enter country code";
+  
   public static SUCCESSFUL_REGISTRATION = "User successfully registered!";
 
   public static ERROR_RESEND_CONFIRMATIONN_CODE = "Error while resending confirmation code";
@@ -139,6 +140,7 @@ export class Constants {
   public static ITWM_SAVE_LATER = "Item has been saved for later";
   public static SESSION_LOST = "Login Session doesn't exist";
   public static ORDER_QUANTITY_ERROR = "Order quantity can't be less than one";
+  public static EXCEEDED_ORDER_QUANTITY_ERROR = "Order quantity can't be more than 100";
   public static MIN_ORDER_PRICE_FOR_FREE_DELIVERY = 300;
   public static FREE_DELIVERY_MESSAGE = "Your order is eligible for FREE Delivery."
   public static SELECT_FREE_DELIVERY_AT_CHECKOUT = "Select this option at checkout."
