@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit {
         "data": []
       },
       FrequentlyBought:  {
-        "title": "Frequently Bought",
+        "title": "Frequently Bought Products",
         "data": []
       },
       FrequentlyBoughtByMe:  {
@@ -107,8 +107,11 @@ export class HomeComponent implements OnInit {
     this.desktopConfig = Constants.DESKTOP_CONFIG
     this.tabletConfig = Constants.TABLET_CONFIG
     this.mobileConfig = Constants.MOBILE_CONFIG
-     this.recommendedProductList()
+    // recommended prod
+    this.recommendedProductList()
+     //frequently bought
      this.getFrequentlyBought().then(data => this.frequentlyBoughtSet(data))
+     //frequently bought by me
      this.logInSession().then(data => {
        if(data) {
         this.getFrequentlyBoughtByMe().then(data => {
@@ -119,7 +122,9 @@ export class HomeComponent implements OnInit {
        })
        }
      })
+     // previosuly browsed
      this.browsedHistory()
+     // newly added products
      this.newAddedProductSet()
      if(document.getElementById("idSearchInput")){
       let ele  = document.getElementById("idSearchInput")
@@ -165,10 +170,11 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  async getFrequentlyBoughtByMe(){
+  async getFrequentlyBoughtByMe() {
     return new Promise( (resolve) => {
       this._orderService.getFrequentlyBoughtByMe()
       .subscribe(data => {
+        this.freqBoughtSet = data
         resolve(data)
       })
     })

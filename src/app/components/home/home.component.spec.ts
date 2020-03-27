@@ -6,6 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { OrdersService } from 'src/app/services/orders/orders.service';
 import { OrdersMockData } from 'src/app/services/orders/orders.mock.data';
 import { OrdersMockService } from '../../services/orders/orders.mock.service';
+import { Order } from 'src/app/services/orders/order';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -35,5 +36,10 @@ describe('HomeComponent', () => {
   it('frequently bought products',(async () => {
     await component.getFrequentlyBought()
     expect(component.freqBoughtSet).toEqual(OrdersMockData.frequentlyBoughtSet);
-  })); 
+  }));
+  
+  it('frequently bought products',(async () => {
+    await component.getFrequentlyBoughtByMe()
+    expect(component.freqBoughtSet).toEqual(OrdersMockData.frequentlyBoughtByMeSet);
+  }));
 });
