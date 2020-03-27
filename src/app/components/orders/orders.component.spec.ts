@@ -8,18 +8,21 @@ import { FormsModule } from '@angular/forms';
 import { OrdersMockData } from 'src/app/services/orders/orders.mock.data';
 import { OrdersMockService } from '../../services/orders/orders.mock.service';
 import { OrdersService } from 'src/app/services/orders/orders.service';
-import {Location} from "@angular/common";
+import { Location } from "@angular/common";
 import { OrderDetailsComponent } from '../order-details/order-details.component';
-import { MatDialogModule} from '@angular/material';
+import { MatDialogModule, MatSnackBarModule } from '@angular/material';
 import { ConfirmationDialogComponent } from '../../components/confirmation-dialog/confirmation-dialog.component';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { EditReviewComponent } from '../edit-review/edit-review.component';
 import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import {FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CreateReviewComponent } from '../create-review/create-review.component';
+import { CartService } from 'src/app/services/cart/cart.service';
+import { CartMockService } from 'src/app/services/cart/cart.mock.service';
 
 describe('OrdersComponent', () => {
+  let cartMockService: CartService = new CartMockService()
   let ordersMockService: OrdersService = new OrdersMockService()
   let component: OrdersComponent;
   let fixture: ComponentFixture<OrdersComponent>;
@@ -35,7 +38,7 @@ describe('OrdersComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [  ReactiveFormsModule, BrowserAnimationsModule, MatDialogModule, FormsModule, RouterTestingModule.withRoutes(routes), HttpClientModule ],
+      imports: [  MatSnackBarModule, ReactiveFormsModule, BrowserAnimationsModule, MatDialogModule, FormsModule, RouterTestingModule.withRoutes(routes), HttpClientModule ],
       schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
       declarations: [ OrdersComponent, LogInComponent, OrderDetailsComponent, ConfirmationDialogComponent, EditReviewComponent, CreateReviewComponent ],
     }).overrideModule(BrowserDynamicTestingModule, {
@@ -53,6 +56,7 @@ describe('OrdersComponent', () => {
     });
     component = fixture.componentInstance;
     component._orderService = ordersMockService
+    component.cartService = cartMockService
     fixture.detectChanges();
   });
 
@@ -107,5 +111,15 @@ describe('OrdersComponent', () => {
     component.handleReviewNavigation(data, productId)
     tick()
     expect(location.path()).toEqual('/review/create/product/51')
+  }));
+
+  it('repeat order functionality',(async () => {
+    component.isLoggedIn = true
+    component.newItemsToCart = [{
+      "id": 1,
+      "quantity": 3
+    }]
+    await component.postCartItems()
+    expect(component.postCartItemRes).toEqual(OrdersMockData.postCartItemList)
   }));
 });

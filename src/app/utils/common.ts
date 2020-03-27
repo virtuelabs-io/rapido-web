@@ -91,5 +91,14 @@ export class Common {
       // updatedQuery.q = updatedQuery.searchedText || updatedQuery.q
     return updatedQuery
   }
-  
+
+  public static getIdBasedQueryString = (_productIds: string[]) => {
+    let _queryItem = "(term+field=_id+{p})"
+    let _queryString: string = "(or+";
+    _productIds.forEach((productId) => {
+      _queryString = _queryString + _queryItem.replace("{p}", productId)
+    })
+    _queryString = _queryString + ")"
+    return _queryString
+  }
 }

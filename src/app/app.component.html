@@ -1,5 +1,5 @@
 <div id='nav-top'>
-  <app-nav></app-nav>
+  <app-nav [sideNav]="showNavBar"></app-nav>
   <app-icons></app-icons>
   <div class="rapido-body">
       <router-outlet (activate)="onActivate()"></router-outlet>

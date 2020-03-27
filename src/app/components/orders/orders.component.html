@@ -58,9 +58,8 @@
       <div class="item-action">
         <button mat-button (click)="orderDetails(order)" class="action-but">Order Details</button>
         <button mat-button *ngIf="(orders[order].category == paid || orders[order].category == incomplete)" (click)="cancelOrder(order)" class="action-but">Cancel Order</button>
+        <button mat-button (click)="repeatOrder(order)" class="action-but">Repeat Order</button>
       </div>
     </div>
   </div>
-  </div>
-
 </div>

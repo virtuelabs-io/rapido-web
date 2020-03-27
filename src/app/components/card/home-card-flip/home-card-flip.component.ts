@@ -4,11 +4,11 @@ import { SearchItemService } from '../../../shared-services/search-item/search-i
 import { Common } from '../../../utils/common';
 
 @Component({
-  selector: 'app-home-card',
-  templateUrl: './home-card.component.html',
-  styleUrls: ['./home-card.component.scss']
+  selector: 'app-home-card-flip',
+  templateUrl: './home-card-flip.component.html',
+  styleUrls: ['./home-card-flip.component.scss']
 })
-export class HomeCardComponent implements OnInit {
+export class HomeCardFlipComponent implements OnInit {
   @Input()  cardDetails = {
     title: "",
     image: "",

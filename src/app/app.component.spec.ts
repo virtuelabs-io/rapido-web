@@ -45,6 +45,10 @@ import { RatingBarComponent } from './components/rating-bar/rating-bar.component
 import { ProductMenuComponent } from './components/product-menu/product-menu.component';
 import { StageDisclaimerComponent } from './components/stage-disclaimer/stage-disclaimer.component';
 import { CookieConsentComponent } from './components/cookie-consent/cookie-consent.component';
+import { CarouselFlipComponent } from './components/card/carousel-flip/carousel-flip.component';
+import { HomeCardFlipComponent } from './components/card/home-card-flip/home-card-flip.component';
+import { FlipCaseComponent } from './components/card/flip-case/flip-case.component';
+import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('AppComponent', () => {
   var originalTimeout;
@@ -110,7 +114,10 @@ describe('AppComponent', () => {
         CreditsComponent,
         CareerPageComponent,
         HomeCardComponent,
+        HomeCardFlipComponent,
         CarouselComponent,
+        CarouselFlipComponent,
+        FlipCaseComponent,
         CarouselScrollComponent,
         HomeComponent,
         ProductReviewsComponent,
@@ -119,6 +126,7 @@ describe('AppComponent', () => {
         StageDisclaimerComponent,
         CookieConsentComponent
       ],
+      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
   }));
 

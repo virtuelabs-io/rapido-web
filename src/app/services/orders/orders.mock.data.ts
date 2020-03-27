@@ -1,5 +1,3 @@
-import { Order } from './order';
-
 let orders = {
     orderItemsObject: {
         13: {
@@ -90,7 +88,18 @@ export class OrdersMockData {
   public static orderDetail = orderDetail
 
   public static deleteOrder = {
-    affectedRows: 1,
+        affectedRows: 1,
+        changedRows: 0,
+        fieldCount: 0,
+        insertId: 0,
+        message: "",
+        protocol41: true,
+        serverStatus: 2,
+        warningCount: 0
+    }
+
+    public static postCartItemList = {
+        affectedRows: 1,
         changedRows: 0,
         fieldCount: 0,
         insertId: 0,

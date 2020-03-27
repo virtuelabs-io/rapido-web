@@ -33,6 +33,16 @@
             cursor: pointer;
             .card-content {
                 height: 100%;
+                .card-flip-holder {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    width: 100%;
+                    height: 250px;
+                    padding: 4%;
+                    align-content: center;
+                    justify-content: center;
+                }
                 .card-image {
                     background-size:     cover;
                     background-repeat:   no-repeat;

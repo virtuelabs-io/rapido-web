@@ -606,6 +606,24 @@ export class AuthmockComponent implements OnInit {
     })
   }
 
+  getFrequentlyBought(){
+    console.log("getFrequentlyBought fired")
+    this._orderService.getFrequentlyBought()
+    .subscribe(data => {
+      console.log(data)
+      this.order_result = "Sucessfully fetched getFrequentlyBought";
+    })
+  }
+
+  getFrequentlyBoughtByMe(){
+    console.log("getFrequentlyBoughtByMe fired")
+    this._orderService.getFrequentlyBoughtByMe()
+    .subscribe(data => {
+      console.log(data)
+      this.order_result = "Sucessfully fetched getFrequentlyBoughtByMe";
+    })
+  }
+
   getOrder(){
     this.order.order_id = 70
     console.log("Fetching order for:", this.order.order_id)

@@ -1,6 +1,5 @@
 import { CartItem } from './cart-item';
 import { CartItemDetails } from './cart-item-details';
-import { CartService } from './cart.service';
 
 let cartItem = new CartItem()
 cartItem.in_cart = true
