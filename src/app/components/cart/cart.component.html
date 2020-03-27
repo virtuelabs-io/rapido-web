@@ -1,16 +1,5 @@
 <div class="main-div">
-  <div class="cart-div">
-    <div class="title-icon-text">
-      <svg>
-        <use xlink:href="#shopping-cart-title" />
-      </svg>
-      <div class="title-div">
-        <h4>
-          Shopping Cart
-        </h4>
-      </div>
-    </div>
-    <div *ngIf="!inCart" class="no-cart-item">
+  <div *ngIf="!inCart" class="no-cart-item">
       <svg>
         <use xlink:href="#no-items-in-cart" />
       </svg>
@@ -21,6 +10,18 @@
         </button>
       </div>
     </div>
+  <div *ngIf="inCart"  class="cart-div">
+    <div class="title-icon-text">
+      <svg>
+        <use xlink:href="#shopping-cart-title" />
+      </svg>
+      <div class="title-div">
+        <h4>
+          Shopping Cart
+        </h4>
+      </div>
+    </div>
+    
     <div *ngIf="inCart" class="cart-columns">
       <div class="cart-col-quan">
         <span>Quantity</span>
@@ -43,7 +44,7 @@
             </div>
           </div>
           <div class="item-quantity">
-            <input type="number" maxlength="3" min="1" (keypress)="keyPress($event)" (change)="quantityChange(item.id, item.quantity)" [(ngModel)]="item.quantity" autocomplete="off" name="quantityBox" class="item-quntity-input" aria-label="Quantity">
+            <input type="number" maxlength="3" max="99" min="1" (keypress)="keyPress($event)" (change)="quantityChange(item.id, item.quantity)" [(ngModel)]="item.quantity" autocomplete="off" name="quantityBox" class="item-quntity-input" aria-label="Quantity">
           </div>
           <div class="item-price">
             <p>

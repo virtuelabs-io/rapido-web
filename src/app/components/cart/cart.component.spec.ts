@@ -169,13 +169,13 @@ describe('CartComponent', () => {
     component.isLoggedIn = true
     await component.getCartItems()
     component.quantityChange(1,2)
-    expect(component.cartAmount).toEqual('32998.00')
+    expect(component.cartAmount).toEqual(32998.00)
   }));
 
   it('negative quntity check for the cart items when not logged in', (async () => {
     component.isLoggedIn = false
     await component.getCartItems()
     component.quantityChange(1,2)
-    expect(component.cartAmount).toEqual('32998.00')
+    expect(component.cartAmount).toEqual(32998.00)
   }));
 });
