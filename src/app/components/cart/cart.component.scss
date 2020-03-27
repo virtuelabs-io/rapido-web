@@ -5,6 +5,22 @@
     flex-direction: row;
     flex-wrap: wrap;
     margin-top: 2%;
+    .no-cart-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        img {
+            height: 200px;
+        }
+        .shopping-button {
+            margin-top: 2%;
+        }
+        @media screen and (max-width: $mobile-device) {
+            padding-left: 0%;
+            text-align: center;
+        }
+    }
     .cart-div {
         width: 65%;
         .title-icon-text {
@@ -23,22 +39,6 @@
             }
             @media screen and (max-width: $mobile-device) {
                 margin-top: 4%;
-            }
-        }
-        
-        .no-cart-item {
-            height: 300px;
-            padding-left: 50%;
-            img {
-                height: 200px;
-            }
-            .shopping-button {
-                height: 100px;
-                margin-left: 20%;
-                margin-top: 5%;
-            }
-            @media screen and (max-width: $mobile-device) {
-                padding-left: 15%;
             }
         }
         
