@@ -1,2 +1,12 @@
 @import "../assets/scss/custom-bootstrap-variables.scss";
 
+.main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.rapido-body {
+    flex: 1;
+}
+
