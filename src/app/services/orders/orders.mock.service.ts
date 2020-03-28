@@ -37,4 +37,12 @@ export class OrdersMockService extends OrdersService{
         resolve(OrdersMockData.postCartItemList)
       })
     }
+
+    getFrequentlyBought() {
+      return of(OrdersMockData.frequentlyBoughtSet)
+    }
+
+    getFrequentlyBoughtByMe() {
+      return of(OrdersMockData.frequentlyBoughtByMeSet)
+    }
 }
