@@ -1,4 +1,4 @@
-import { Component, OnInit, NgModule, EventEmitter, Output, NgZone  } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, NgZone  } from '@angular/core';
 import { SessionService } from '../../services/authentication/session/session.service';
 import { ProfileService } from '../../services/authentication/profile/profile.service';
 import { CartService } from '../../services/cart/cart.service';
@@ -13,10 +13,7 @@ import { ProductsService } from '../../services/products/products.service';
 import { v4 as uuid } from 'uuid';
 import { Common } from './../../utils/common'
 import { GuestCartService } from '../../services/guests/guest-cart.service';
-import { ProductMenuComponent } from '../product-menu/product-menu.component';
 
-@NgModule({
-})
 @Component({
   selector: 'app-topnav',
   templateUrl: './topnav.component.html',
@@ -25,9 +22,9 @@ import { ProductMenuComponent } from '../product-menu/product-menu.component';
 export class TopnavComponent implements OnInit {
   @Output() toggleSidenav = new EventEmitter<void>();
   isSignedIn: Boolean = false
-  name: String
+  userName: string
   searchedText: string = ''
-  bannerName: String = Constants.RAPIDO_BUILD
+  bannerName: string = Constants.RAPIDO_BUILD
   durationInSeconds = 5
   cartCount:Number = 0
   private _productsService: ProductsService
@@ -65,7 +62,7 @@ export class TopnavComponent implements OnInit {
     this._loginStateService.isLoggedInState.subscribe(state => {
       this.isSignedIn = state
       if (state) {
-        this.name =  this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.name
+        this.userName =  this._profileService.cognitoUser.getSignInUserSession().getIdToken().payload.name
       }
       this.getCartCount()
     })
@@ -96,14 +93,15 @@ export class TopnavComponent implements OnInit {
   }
 
   onSearch(event){
-    let qObject = Common.searchProducts(this.searchedText)
-    if(qObject){
-      this.router.navigate(['/products'], { queryParams: qObject })
+    if(this.searchedText){
+      let qObject = Common.searchProducts(this.searchedText)
+        this.router.navigate(['/products'], { queryParams: qObject })
     }
-    if(event.target[0] && event.target[0].value){
+    
+    /* if(event.target[0] && event.target[0].value){
       // event.target[0].value = null  // Don't delete this line
       event.target[0].blur();
-    }
+    } */
   }
 
   openSnackBar(message) {

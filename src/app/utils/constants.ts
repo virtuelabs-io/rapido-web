@@ -1,7 +1,7 @@
 import { environment } from '../../environments/environment';
 
 export class Constants {
-  public static RAPIDO_BUILD = 'Rapidobuild';
+  public static RAPIDO_BUILD: string = 'Rapidobuild';
   public static CUSTOM = "custom:";
   public static POOL_DATA = {
     UserPoolId : environment.userPoolId,

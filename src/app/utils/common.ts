@@ -34,18 +34,10 @@ export class Common {
     }
   }
   
-  public static searchProducts = (searchText: any) => {
-    if(searchText){
-      let qObject = {
-        q: searchText
-      }
-      return qObject;
-    } else {
-      console.log('Search text is empty')
-      return null;
-    }
+  public static searchProducts = (searchText: string = ''): Query => {
+    return {q: searchText}
   }
-
+ 
   public static decodeUrlParams = (_query: Query) => {
     let updatedQuery = JSON.parse(JSON.stringify(_query))
     let fieldsQuery = {
