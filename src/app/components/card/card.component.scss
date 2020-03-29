@@ -1,28 +1,28 @@
 @import "../../../assets/scss/custom-bootstrap-variables.scss";
 .main-div {
-	border: none !important;
-	width: 17rem;
-	outline: none;
-	cursor: pointer;
-	text-decoration: none !important;
-	app-images:hover{
-		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-		transform: scale(1.01);
-	}
-	div {
-		h6 {
-			overflow: hidden;
-			display: -webkit-box;
+  border: none !important;
+  width: 17rem;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none !important;
+  app-images:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transform: scale(1.01);
+  }
+  div {
+    h6 {
+      overflow: hidden;
+      display: -webkit-box;
       /*! autoprefixer: off */
-			-webkit-box-orient: vertical;
-			-webkit-line-clamp: 2;
-			a {
-				color: $black;
-				font-weight: bold;
-			}
-		}
-	}
-	@media screen and (max-width: $medium-device) {
-		width: 14rem;
-	}
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      a {
+        color: $black;
+        font-weight: bold;
+      }
+    }
+  }
+  @media screen and (max-width: $medium-device) {
+    width: 14rem;
+  }
 }

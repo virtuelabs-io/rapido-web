@@ -1,232 +1,232 @@
 @import "../../../assets/scss/custom-bootstrap-variables.scss";
 
 .main-div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 2%;
+  .no-cart-item {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin-top: 2%;
-    .no-cart-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        img {
-            height: 200px;
-        }
-        .shopping-button {
-            margin-top: 2%;
-        }
-        @media screen and (max-width: $mobile-device) {
-            padding-left: 0%;
-            text-align: center;
-        }
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    img {
+      height: 200px;
     }
-    .cart-div {
-        width: 65%;
-        .title-icon-text {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            padding-left: 2%;
-            margin-top: 2%;
-            svg {
-                height: 30px;
-                width: 30px;
-            }
-            .title-div {
-                padding-left: 1%;
-                width: 100%;
-            }
-            @media screen and (max-width: $mobile-device) {
-                margin-top: 4%;
-            }
-        }
-        
-        .cart-columns {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            margin-left: 2%;
-            margin-right: 2%;
-            border-bottom: 1px solid $cart-columns-border-bottom;
-            .cart-col-price {
-                width: 35%;
-                text-align: right;
-            }
-            .later-col-price {
-                width: 80%;
-                text-align: right;
-            }
-            .cart-col-quan {
-                width: 75%;
-                text-align: right;
-                @media screen and (max-width: $mobile-device) {
-                    width: 85%;
-                }
-                @media screen and (max-width: $small-device) {
-                    width: 85%;
-                }
-            }
-        }
-        .cart-items-main {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            padding-left: 2%;
-            padding-right: 2%;
-            .cart-items {
-                width: 100%;
-                .cart-items-list {
-                    display: flex;
-                    flex-direction: row;
-                    flex-wrap: wrap;
-                    margin-top: 2%;
-                    border-bottom: 1px solid $cart-columns-border-bottom;
-                    a {
-                        cursor: pointer;
-                        color: $cart-item-actions;
-                    }
-                    .item-thumbnail {
-                        width: 20%;
-                        padding: 2%;
-
-                        .image {
-                            width: 90%;
-                            cursor: pointer;
-                        }
-                    }
-                    .item-desc {
-                        width: 35%;
-                        cursor: pointer;
-                    }
-                    .item-price {
-                        text-align: right;
-                        padding-left: 2%;
-                        width: 25%;
-                        color: $cart-item-price;
-                    }
-                    .item-quantity {
-                        text-align: center;
-                        width: 20%;
-                        .item-quntity-input {
-                            width: 60%;
-                            border: 1px solid $cart-item-quntity-input;
-                            border-radius: 30px;
-                            padding: 8px 5px 8px 20px;
-                            width: 70px;
-                        }
-                    }
-                }
-                @media screen and (max-width: $mobile-device) {
-                    padding-left: 2%;
-                    padding-right: 2%;
-                }
-            }
-            @media screen and (max-width: $mobile-device) {
-                width: 100%;
-            }
-        }
-        @media screen and (max-width: $mobile-device) {
-            width: 100%
-        }
-        @media screen and (max-width: $small-device) {
-            width: 100%;
-            padding-left: 2%;
-            padding-right: 2%;
-        }
-    }
-
-    .terms-conditions {
-        margin-top: 2%;
-        margin-left: 2%;
-        margin-right: 2%;
-        span {
-            font-size: 12px;
-        }
-    }
-
-    .no-save-for-later-text {
-        margin-top: 2%;
-        margin-left: 2%;
-    }
-    
-    .cart-amount {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        width: 20%;
-        height: 300px;
-        margin-top: 1%;
-        margin-left: 10%;
-        margin-right: 1%;
-        border-radius: 6px;
-        border-width: 1px;
-        box-sizing: border-box;
-        border-color: $cart-amount-border-color;
-        box-shadow: 0 2px 1px 0 rgba(0,0,0,.16);
-        border-style: solid;
-        .card-info {
-            display: flex;
-            flex-wrap: wrap;
-            margin-top: 2%;
-            margin-left: 2%;
-            margin-right: 2%;
-            .green-text {
-                font-size: 14px;
-                color: $cart-free-delivery-text;
-            }
-        }
-        .delivery-msg {
-            display: flex;
-            flex-wrap: wrap;
-            margin-top: 2%;
-            margin-left: 2%;
-            margin-right: 2%;
-            .green-text {
-                font-size: 16px;
-                color: $cart-free-delivery-text;
-                text-align: center;
-                width: 100%;
-            }
-        }
-        .card-amount-inner {
-            width: 100%;
-            height: 40%;
-            margin-top: 10%;
-            background-color: $cart-card-amount-inner!important;
-            .card-amount-title {
-                margin-left: 5%;
-                margin-top: 5%;
-                margin-right: 5%;
-                text-align: center;
-                .span-class {
-                    color: $cart-card-price-color;
-                }
-            }
-            .card-amount-checkout {
-                margin-left: 5%;
-                margin-right: 5%;
-                .checkout-button {
-                    margin-bottom: 1%;
-                    margin-top: 1%;
-                    width: 100%;
-                    background-color: $cart-checkout-button;
-                }
-            }
-            @media screen and (max-width: $mobile-device) {
-                height: 90px;
-                margin-top: 5%;
-            }
-        }
-        @media screen and (max-width: $small-device) {
-            height: 40%;
-            width: 100%;
-            margin-left: 2%;
-            margin-right: 2%;
-        }
+    .shopping-button {
+      margin-top: 2%;
     }
     @media screen and (max-width: $mobile-device) {
-        width: 100%;
-        margin-top: 12%;
+      padding-left: 0%;
+      text-align: center;
     }
+  }
+  .cart-div {
+    width: 65%;
+    .title-icon-text {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      padding-left: 2%;
+      margin-top: 2%;
+      svg {
+        height: 30px;
+        width: 30px;
+      }
+      .title-div {
+        padding-left: 1%;
+        width: 100%;
+      }
+      @media screen and (max-width: $mobile-device) {
+        margin-top: 4%;
+      }
+    }
+
+    .cart-columns {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      margin-left: 2%;
+      margin-right: 2%;
+      border-bottom: 1px solid $cart-columns-border-bottom;
+      .cart-col-price {
+        width: 35%;
+        text-align: right;
+      }
+      .later-col-price {
+        width: 80%;
+        text-align: right;
+      }
+      .cart-col-quan {
+        width: 75%;
+        text-align: right;
+        @media screen and (max-width: $mobile-device) {
+          width: 85%;
+        }
+        @media screen and (max-width: $small-device) {
+          width: 85%;
+        }
+      }
+    }
+    .cart-items-main {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding-left: 2%;
+      padding-right: 2%;
+      .cart-items {
+        width: 100%;
+        .cart-items-list {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          margin-top: 2%;
+          border-bottom: 1px solid $cart-columns-border-bottom;
+          a {
+            cursor: pointer;
+            color: $cart-item-actions;
+          }
+          .item-thumbnail {
+            width: 20%;
+            padding: 2%;
+
+            .image {
+              width: 90%;
+              cursor: pointer;
+            }
+          }
+          .item-desc {
+            width: 35%;
+            cursor: pointer;
+          }
+          .item-price {
+            text-align: right;
+            padding-left: 2%;
+            width: 25%;
+            color: $cart-item-price;
+          }
+          .item-quantity {
+            text-align: center;
+            width: 20%;
+            .item-quntity-input {
+              width: 60%;
+              border: 1px solid $cart-item-quntity-input;
+              border-radius: 30px;
+              padding: 8px 5px 8px 20px;
+              width: 70px;
+            }
+          }
+        }
+        @media screen and (max-width: $mobile-device) {
+          padding-left: 2%;
+          padding-right: 2%;
+        }
+      }
+      @media screen and (max-width: $mobile-device) {
+        width: 100%;
+      }
+    }
+    @media screen and (max-width: $mobile-device) {
+      width: 100%;
+    }
+    @media screen and (max-width: $small-device) {
+      width: 100%;
+      padding-left: 2%;
+      padding-right: 2%;
+    }
+  }
+
+  .terms-conditions {
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    span {
+      font-size: 12px;
+    }
+  }
+
+  .no-save-for-later-text {
+    margin-top: 2%;
+    margin-left: 2%;
+  }
+
+  .cart-amount {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 20%;
+    height: 300px;
+    margin-top: 1%;
+    margin-left: 10%;
+    margin-right: 1%;
+    border-radius: 6px;
+    border-width: 1px;
+    box-sizing: border-box;
+    border-color: $cart-amount-border-color;
+    box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.16);
+    border-style: solid;
+    .card-info {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 2%;
+      margin-left: 2%;
+      margin-right: 2%;
+      .green-text {
+        font-size: 14px;
+        color: $cart-free-delivery-text;
+      }
+    }
+    .delivery-msg {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 2%;
+      margin-left: 2%;
+      margin-right: 2%;
+      .green-text {
+        font-size: 16px;
+        color: $cart-free-delivery-text;
+        text-align: center;
+        width: 100%;
+      }
+    }
+    .card-amount-inner {
+      width: 100%;
+      height: 40%;
+      margin-top: 10%;
+      background-color: $cart-card-amount-inner !important;
+      .card-amount-title {
+        margin-left: 5%;
+        margin-top: 5%;
+        margin-right: 5%;
+        text-align: center;
+        .span-class {
+          color: $cart-card-price-color;
+        }
+      }
+      .card-amount-checkout {
+        margin-left: 5%;
+        margin-right: 5%;
+        .checkout-button {
+          margin-bottom: 1%;
+          margin-top: 1%;
+          width: 100%;
+          background-color: $cart-checkout-button;
+        }
+      }
+      @media screen and (max-width: $mobile-device) {
+        height: 90px;
+        margin-top: 5%;
+      }
+    }
+    @media screen and (max-width: $small-device) {
+      height: 40%;
+      width: 100%;
+      margin-left: 2%;
+      margin-right: 2%;
+    }
+  }
+  @media screen and (max-width: $mobile-device) {
+    width: 100%;
+    margin-top: 12%;
+  }
 }

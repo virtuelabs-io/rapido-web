@@ -1,16 +1,16 @@
 <div class="main-div">
   <div *ngIf="!inCart" class="no-cart-item">
-      <svg>
-        <use xlink:href="#no-items-in-cart" />
-      </svg>
-      <div class="shopping-button">
-        <button mat-flat-button color="primary" routerLink="/">
-          <span role="status" aria-hidden="true"></span>
-          Continue Shopping 
-        </button>
-      </div>
+    <svg>
+      <use xlink:href="#no-items-in-cart" />
+    </svg>
+    <div class="shopping-button">
+      <button mat-flat-button color="primary" routerLink="/">
+        <span role="status" aria-hidden="true"></span>
+        Continue Shopping
+      </button>
     </div>
-  <div *ngIf="inCart"  class="cart-div">
+  </div>
+  <div *ngIf="inCart" class="cart-div">
     <div class="title-icon-text">
       <svg>
         <use xlink:href="#shopping-cart-title" />
@@ -21,30 +21,49 @@
         </h4>
       </div>
     </div>
-    
+
     <div *ngIf="inCart" class="cart-columns">
       <div class="cart-col-quan">
         <span>Quantity</span>
       </div>
       <div class="cart-col-price">
-        <span>Price({{currency}})</span>
+        <span>Price({{ currency }})</span>
       </div>
     </div>
     <div *ngIf="inCart" class="cart-items-main">
       <div class="cart-items">
         <div class="cart-items-list" *ngFor="let item of cartItems">
-          <div class="item-thumbnail" [routerLink]="['/products/details', item.id]">
-            <img class="image" src="{{ item.icon }}">
+          <div
+            class="item-thumbnail"
+            [routerLink]="['/products/details', item.id]"
+          >
+            <img class="image" src="{{ item.icon }}" />
           </div>
           <div class="item-desc">
-            <p class="text-clamp" [routerLink]="['/products/details', item.id]"><strong>{{ item.title }}</strong></p>
+            <p class="text-clamp" [routerLink]="['/products/details', item.id]">
+              <strong>{{ item.title }}</strong>
+            </p>
             <div>
               <a (click)="deleteCartItem(item.id)">Delete</a> |
-              <a (click)="saveForLaterFn(item.id, item.quantity, false)">Save for Later</a>
+              <a (click)="saveForLaterFn(item.id, item.quantity, false)"
+                >Save for Later</a
+              >
             </div>
           </div>
           <div class="item-quantity">
-            <input type="number" maxlength="3" max="99" min="1" (keypress)="keyPress($event)" (change)="quantityChange(item.id, item.quantity)" [(ngModel)]="item.quantity" autocomplete="off" name="quantityBox" class="item-quntity-input" aria-label="Quantity">
+            <input
+              type="number"
+              maxlength="3"
+              max="99"
+              min="1"
+              (keypress)="keyPress($event)"
+              (change)="quantityChange(item.id, item.quantity)"
+              [(ngModel)]="item.quantity"
+              autocomplete="off"
+              name="quantityBox"
+              class="item-quntity-input"
+              aria-label="Quantity"
+            />
           </div>
           <div class="item-price">
             <p>
@@ -52,36 +71,39 @@
             </p>
           </div>
         </div>
-      </div>    
+      </div>
     </div>
   </div>
   <div *ngIf="inCart" class="cart-amount">
     <div class="card-info" *ngIf="freeDelivery">
       <span class="green-text">
-        {{freeDeliveryMessage}}
+        {{ freeDeliveryMessage }}
       </span>
       <span>
-          {{freeDeliveryAtCheckout}}
+        {{ freeDeliveryAtCheckout }}
       </span>
     </div>
     <div class="delivery-msg" *ngIf="!freeDelivery">
       <span class="green-text">
-        Shop for {{currency}}{{freeDeliveryMinOrder}} and get a free delivery
+        Shop for {{ currency }}{{ freeDeliveryMinOrder }} and get a free
+        delivery
       </span>
     </div>
     <div class="card-amount-inner">
       <div class="card-amount-title">
         <span>
-          <strong>Total ({{inCartItems}} items): </strong>
-          {{currency}}
+          <strong>Total ({{ inCartItems }} items): </strong>
+          {{ currency }}
         </span>
-        <span class="span-class">  
-          <strong>{{cartAmount}}</strong>
+        <span class="span-class">
+          <strong>{{ cartAmount }}</strong>
         </span>
       </div>
-        <div class="card-amount-checkout">
-            <button mat-button (click)="postCartItems()" class="checkout-button">Proceed to Buy</button>
-        </div>
+      <div class="card-amount-checkout">
+        <button mat-button (click)="postCartItems()" class="checkout-button">
+          Proceed to Buy
+        </button>
+      </div>
     </div>
   </div>
   <div *ngIf="!laterUse && inCart" class="no-save-for-later-text">
@@ -100,22 +122,29 @@
         </h4>
       </div>
     </div>
-    <div  class="cart-columns">
+    <div class="cart-columns">
       <div class="later-col-price">
-        <span>Price({{currency}})</span>
+        <span>Price({{ currency }})</span>
       </div>
     </div>
     <div class="cart-items-main">
       <div class="cart-items">
         <div class="cart-items-list" *ngFor="let item of saveforLater">
-          <div class="item-thumbnail" [routerLink]="['/products/details', item.id]">
-            <img class="image" src="{{ item.icon }}">
+          <div
+            class="item-thumbnail"
+            [routerLink]="['/products/details', item.id]"
+          >
+            <img class="image" src="{{ item.icon }}" />
           </div>
           <div class="item-desc">
-            <p class="text-clamp" [routerLink]="['/products/details', item.id]"><strong>{{ item.title }}</strong></p>
+            <p class="text-clamp" [routerLink]="['/products/details', item.id]">
+              <strong>{{ item.title }}</strong>
+            </p>
             <div>
               <a (click)="deleteCartItem(item.id)">Delete</a> |
-              <a (click)="saveForLaterFn(item.id, item.quantity, true)">Move to Cart</a>
+              <a (click)="saveForLaterFn(item.id, item.quantity, true)"
+                >Move to Cart</a
+              >
             </div>
           </div>
           <div class="item-price">
@@ -124,12 +153,12 @@
             </p>
           </div>
         </div>
-      </div>    
+      </div>
     </div>
   </div>
   <div class="terms-conditions">
     <span>
-      {{CartDisclaimer}}
+      {{ CartDisclaimer }}
     </span>
   </div>
 </div>

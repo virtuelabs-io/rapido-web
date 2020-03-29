@@ -1,18 +1,18 @@
 pool:
-  vmImage: 'Ubuntu 16.04'
+  vmImage: "Ubuntu 16.04"
 
 trigger:
   branches:
     include:
-    - master
-    - feature/*
-    - bug/*
+      - master
+      - feature/*
+      - bug/*
   tags:
     include:
-    - v*
+      - v*
 
 variables:
-  imageName: 'rapido-web'
+  imageName: "rapido-web"
   major: 0
   minor: 0
   patch: 2
@@ -20,116 +20,116 @@ variables:
 pr:
   branches:
     include:
-    - master
+      - master
 
 steps:
-- task: UsePythonVersion@0
-  inputs:
-    versionSpec: 3.6
-    architecture: 'x64'
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: 3.6
+      architecture: "x64"
 
-- script: |
-    pip install awscli
-  displayName: 'Environment Preperation'
+  - script: |
+      pip install awscli
+    displayName: "Environment Preperation"
 
-- script: |
-    rm -rf ./src/environments/environment.ts
-    aws s3 cp s3://$DEV_RAPIDO_BUILD_SECRETS_BUCKET/environment.staging.ts ./src/environments/environment.staging.ts
-    aws s3 cp s3://$DEV_RAPIDO_BUILD_SECRETS_BUCKET/environment.prod.ts ./src/environments/environment.prod.ts
-    aws s3 cp s3://$DEV_RAPIDO_BUILD_SECRETS_BUCKET/environment.prod.ts ./src/environments/environment.ts
-    export COMMIT_ID=$(git rev-parse --short HEAD)
-    echo $COMMIT_ID
-    sed -i -e "s/GIT_COMMIT/$COMMIT_ID/g" ./src/environments/environment*ts
-    cat ./src/environments/environment.*.ts
-  env:
-    AWS_ACCESS_KEY_ID: $(DEV_AWS_ACCESS_KEY_ID)
-    AWS_SECRET_ACCESS_KEY: $(DEV_AWS_SECRET_ACCESS_KEY)
-    DEV_RAPIDO_BUILD_SECRETS_BUCKET: $(DEV_RAPIDO_BUILD_SECRETS_BUCKET)
-  displayName: 'Fetch secrets from AWS and format env files'
+  - script: |
+      rm -rf ./src/environments/environment.ts
+      aws s3 cp s3://$DEV_RAPIDO_BUILD_SECRETS_BUCKET/environment.staging.ts ./src/environments/environment.staging.ts
+      aws s3 cp s3://$DEV_RAPIDO_BUILD_SECRETS_BUCKET/environment.prod.ts ./src/environments/environment.prod.ts
+      aws s3 cp s3://$DEV_RAPIDO_BUILD_SECRETS_BUCKET/environment.prod.ts ./src/environments/environment.ts
+      export COMMIT_ID=$(git rev-parse --short HEAD)
+      echo $COMMIT_ID
+      sed -i -e "s/GIT_COMMIT/$COMMIT_ID/g" ./src/environments/environment*ts
+      cat ./src/environments/environment.*.ts
+    env:
+      AWS_ACCESS_KEY_ID: $(DEV_AWS_ACCESS_KEY_ID)
+      AWS_SECRET_ACCESS_KEY: $(DEV_AWS_SECRET_ACCESS_KEY)
+      DEV_RAPIDO_BUILD_SECRETS_BUCKET: $(DEV_RAPIDO_BUILD_SECRETS_BUCKET)
+    displayName: "Fetch secrets from AWS and format env files"
 
-- task: NodeTool@0
-  inputs:
-    versionSpec: '8.x'
-  displayName: 'Configuring the node tool'
+  - task: NodeTool@0
+    inputs:
+      versionSpec: "8.x"
+    displayName: "Configuring the node tool"
 
-- task: Npm@1
-  displayName: 'Install all node modules'
-  inputs:
-    command: install
+  - task: Npm@1
+    displayName: "Install all node modules"
+    inputs:
+      command: install
 
-- script: |
-    npm run testheadless
-  displayName: 'Running tests'
+  - script: |
+      npm run testheadless
+    displayName: "Running tests"
 
-- script: |
-    npm run prodTestheadless
-  displayName: 'Running prod tests'
-  condition: startsWith(variables['build.sourceBranch'], 'refs/tags/v')
+  - script: |
+      npm run prodTestheadless
+    displayName: "Running prod tests"
+    condition: startsWith(variables['build.sourceBranch'], 'refs/tags/v')
 
-- task: PublishTestResults@2
-  inputs:
-    testResultsFiles: '**/TESTS-*.xml'
-    testRunTitle: 'Rapidobuild test results'
-  condition: succeededOrFailed()
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFiles: "**/TESTS-*.xml"
+      testRunTitle: "Rapidobuild test results"
+    condition: succeededOrFailed()
 
-- task: PublishCodeCoverageResults@1
-  displayName: 'Publishing code coverage'
-  inputs:
-    codeCoverageTool: Cobertura
-    summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/rapido-web/index.html'
-    reportDirectory: '$(System.DefaultWorkingDirectory)/coverage/rapido-web'
+  - task: PublishCodeCoverageResults@1
+    displayName: "Publishing code coverage"
+    inputs:
+      codeCoverageTool: Cobertura
+      summaryFileLocation: "$(System.DefaultWorkingDirectory)/coverage/rapido-web/index.html"
+      reportDirectory: "$(System.DefaultWorkingDirectory)/coverage/rapido-web"
 
-- script: |
-    npm run devbuild
-  displayName: 'Dev build'
+  - script: |
+      npm run devbuild
+    displayName: "Dev build"
 
-- script: |
-    npm run prodbuild
-  displayName: 'Prod build'
-  condition: startsWith(variables['build.sourceBranch'], 'refs/tags/v')
+  - script: |
+      npm run prodbuild
+    displayName: "Prod build"
+    condition: startsWith(variables['build.sourceBranch'], 'refs/tags/v')
 
-- script: |
-    docker build -t $DOCKER_REPO/$(imageName):v$(major).$(minor).$(patch) .
-  condition: eq(variables['Build.SourceBranch'], 'refs/heads/disabled')
-  env:
-    DOCKER_REPO: $(DOCKER_REPO)
-  displayName: 'Disabled: Build docker image and tag it'
+  - script: |
+      docker build -t $DOCKER_REPO/$(imageName):v$(major).$(minor).$(patch) .
+    condition: eq(variables['Build.SourceBranch'], 'refs/heads/disabled')
+    env:
+      DOCKER_REPO: $(DOCKER_REPO)
+    displayName: "Disabled: Build docker image and tag it"
 
-- script: |
-    eval $(aws ecr get-login --no-include-email --region eu-west-2)
-    docker push $DOCKER_REPO/$(imageName):v$(major).$(minor).$(patch)
-    docker tag $DOCKER_REPO/$(imageName):v$(major).$(minor).$(patch) $DOCKER_REPO/$(imageName):latest
-    docker push $DOCKER_REPO/$(imageName):latest
-  condition: eq(variables['Build.SourceBranch'], 'refs/heads/disabled')
-  env:
-    AWS_ACCESS_KEY_ID: $(DEV_AWS_ACCESS_KEY_ID)
-    AWS_SECRET_ACCESS_KEY: $(DEV_AWS_SECRET_ACCESS_KEY)
-    DOCKER_REPO: $(DOCKER_REPO)
-  displayName: 'Disabled: Publish docker image to ECR'
+  - script: |
+      eval $(aws ecr get-login --no-include-email --region eu-west-2)
+      docker push $DOCKER_REPO/$(imageName):v$(major).$(minor).$(patch)
+      docker tag $DOCKER_REPO/$(imageName):v$(major).$(minor).$(patch) $DOCKER_REPO/$(imageName):latest
+      docker push $DOCKER_REPO/$(imageName):latest
+    condition: eq(variables['Build.SourceBranch'], 'refs/heads/disabled')
+    env:
+      AWS_ACCESS_KEY_ID: $(DEV_AWS_ACCESS_KEY_ID)
+      AWS_SECRET_ACCESS_KEY: $(DEV_AWS_SECRET_ACCESS_KEY)
+      DOCKER_REPO: $(DOCKER_REPO)
+    displayName: "Disabled: Publish docker image to ECR"
 
-- script: |
-    aws s3 sync ${PWD}/dist/rapido-web/. s3://$DEV_RAPIDO_BUILD_S3_BUCKET
-  condition: eq(variables['Build.Reason'], 'PullRequest')
-  env:
-    AWS_ACCESS_KEY_ID: $(DEV_AWS_ACCESS_KEY_ID)
-    AWS_SECRET_ACCESS_KEY: $(DEV_AWS_SECRET_ACCESS_KEY)
-    DEV_RAPIDO_BUILD_S3_BUCKET: $(DEV_RAPIDO_BUILD_S3_BUCKET)
-  displayName: 'Deploying to DEV'
+  - script: |
+      aws s3 sync ${PWD}/dist/rapido-web/. s3://$DEV_RAPIDO_BUILD_S3_BUCKET
+    condition: eq(variables['Build.Reason'], 'PullRequest')
+    env:
+      AWS_ACCESS_KEY_ID: $(DEV_AWS_ACCESS_KEY_ID)
+      AWS_SECRET_ACCESS_KEY: $(DEV_AWS_SECRET_ACCESS_KEY)
+      DEV_RAPIDO_BUILD_S3_BUCKET: $(DEV_RAPIDO_BUILD_S3_BUCKET)
+    displayName: "Deploying to DEV"
 
-- script: |
-    aws s3 sync ${PWD}/dist/rapido-web/. s3://$DEV_RAPIDO_BUILD_S3_BUCKET
-  condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
-  env:
-    AWS_ACCESS_KEY_ID: $(DEV_AWS_ACCESS_KEY_ID)
-    AWS_SECRET_ACCESS_KEY: $(DEV_AWS_SECRET_ACCESS_KEY)
-    DEV_RAPIDO_BUILD_S3_BUCKET: $(DEV_RAPIDO_BUILD_S3_BUCKET)
-  displayName: 'Deploying to STAGING'
+  - script: |
+      aws s3 sync ${PWD}/dist/rapido-web/. s3://$DEV_RAPIDO_BUILD_S3_BUCKET
+    condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+    env:
+      AWS_ACCESS_KEY_ID: $(DEV_AWS_ACCESS_KEY_ID)
+      AWS_SECRET_ACCESS_KEY: $(DEV_AWS_SECRET_ACCESS_KEY)
+      DEV_RAPIDO_BUILD_S3_BUCKET: $(DEV_RAPIDO_BUILD_S3_BUCKET)
+    displayName: "Deploying to STAGING"
 
-- script: |
-    aws s3 sync ${PWD}/dist/rapido-web/. s3://$PROD_RAPIDO_BUILD_S3_BUCKET
-  condition: startsWith(variables['build.sourceBranch'], 'refs/tags/v')
-  env:
-    AWS_ACCESS_KEY_ID: $(PROD_AWS_ACCESS_KEY_ID)
-    AWS_SECRET_ACCESS_KEY: $(PROD_AWS_SECRET_ACCESS_KEY)
-    PROD_RAPIDO_BUILD_S3_BUCKET: $(PROD_RAPIDO_BUILD_S3_BUCKET)
-  displayName: 'Deploying to PROD'
+  - script: |
+      aws s3 sync ${PWD}/dist/rapido-web/. s3://$PROD_RAPIDO_BUILD_S3_BUCKET
+    condition: startsWith(variables['build.sourceBranch'], 'refs/tags/v')
+    env:
+      AWS_ACCESS_KEY_ID: $(PROD_AWS_ACCESS_KEY_ID)
+      AWS_SECRET_ACCESS_KEY: $(PROD_AWS_SECRET_ACCESS_KEY)
+      PROD_RAPIDO_BUILD_S3_BUCKET: $(PROD_RAPIDO_BUILD_S3_BUCKET)
+    displayName: "Deploying to PROD"

@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { BusyLoaderComponent } from './busy-loader.component';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { BusyLoaderComponent } from "./busy-loader.component";
 
-describe('BusyLoaderComponent', () => {
+describe("BusyLoaderComponent", () => {
   let component: BusyLoaderComponent;
   let fixture: ComponentFixture<BusyLoaderComponent>;
   let ele: HTMLElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BusyLoaderComponent ]
-    })
-    .compileComponents();
+      declarations: [BusyLoaderComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,12 +18,12 @@ describe('BusyLoaderComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 
-  it('Should show busy indicator', () => {
-    component.loading = true// replace this with mock service
+  it("Should show busy indicator", () => {
+    component.loading = true; // replace this with mock service
     expect(component.loading).toBeTruthy();
   });
 });

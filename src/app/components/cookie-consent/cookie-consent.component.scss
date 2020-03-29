@@ -1,31 +1,31 @@
 @import "../../../assets/scss/custom-bootstrap-variables.scss";
 
 .cookie {
-    width: 100%;
-    z-index: 1;
-    background: black;
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    //height: 50px;
-    color: white;
-    padding-top: 10px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    .cookie-text {
-        padding-left: 2%;
-        width: 70%;
-    }
-    .cookie-action {
-        width: 30%;
-        text-align: center;
-    }
-    @media screen and (max-width: $mobile-device) {
-        height: 100px;
-    }
-    @media screen and (max-width: $small-device) {
-        height: 90px;
-    }
+  width: 100%;
+  z-index: 1;
+  background: black;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  //height: 50px;
+  color: white;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  .cookie-text {
+    padding-left: 2%;
+    width: 70%;
+  }
+  .cookie-action {
+    width: 30%;
+    text-align: center;
+  }
+  @media screen and (max-width: $mobile-device) {
+    height: 100px;
+  }
+  @media screen and (max-width: $small-device) {
+    height: 90px;
+  }
 }

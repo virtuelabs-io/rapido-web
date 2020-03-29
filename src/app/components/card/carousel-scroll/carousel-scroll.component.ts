@@ -1,24 +1,23 @@
-import { Component,Input, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from "@angular/core";
 
 @Component({
-  selector: 'app-carousel-scroll',
-  templateUrl: './carousel-scroll.component.html',
-  styleUrls: ['./carousel-scroll.component.scss']
+  selector: "app-carousel-scroll",
+  templateUrl: "./carousel-scroll.component.html",
+  styleUrls: ["./carousel-scroll.component.scss"],
 })
-
 export class CarouselScrollComponent implements OnInit {
-  @Input() carouselCard = []
-  @Input() carouselTitle = ""
-  @Input() CarouselConfig = {}
-  carouselData: any
-  constructor() { }
+  @Input() carouselCard = [];
+  @Input() carouselTitle = "";
+  @Input() CarouselConfig = {};
+  carouselData: any;
+  constructor() {}
 
   ngOnInit() {
-    this.carouselData = this.carouselCard
+    this.carouselData = this.carouselCard;
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    this.carouselData = this.carouselCard
+    this.carouselData = this.carouselCard;
   }
 
   handleMrpRate(price, offer) {

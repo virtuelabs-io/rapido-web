@@ -6,20 +6,30 @@
     <h3>My Reviews</h3>
   </div>
   <div class="review-placeholder" *ngIf="noReviews">
-    <app-product-reviews (fetchCustomerReviews)=fetchData() [filteredReview]=filteredReview [action]=true [feedback]=false [writer]=false></app-product-reviews>
-    <div class='m-auto'>
-        <mat-paginator 
-          [length]="length"
-          [pageSize]="pageSize"
-          [pageSizeOptions]="pageSizeOptions"
-          (page)="onPaginateChange($event)">
-        </mat-paginator>
-      </div>
+    <app-product-reviews
+      (fetchCustomerReviews)="fetchData()"
+      [filteredReview]="filteredReview"
+      [action]="true"
+      [feedback]="false"
+      [writer]="false"
+    ></app-product-reviews>
+    <div class="m-auto">
+      <mat-paginator
+        [length]="length"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="onPaginateChange($event)"
+      >
+      </mat-paginator>
+    </div>
   </div>
   <div class="no-review-div" *ngIf="!noReviews">
-      <svg class="icon">
-        <use xlink:href="#feedback" />
-      </svg>
-      <span>No reviews found. Please review your products so that we get to know your feedback</span>
-    </div>
+    <svg class="icon">
+      <use xlink:href="#feedback" />
+    </svg>
+    <span
+      >No reviews found. Please review your products so that we get to know your
+      feedback</span
+    >
+  </div>
 </div>

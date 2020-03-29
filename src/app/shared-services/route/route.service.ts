@@ -1,18 +1,17 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class RouteService {
-
   private route = new BehaviorSubject<any>("");
   previousRoute = this.route.asObservable();
 
   constructor() {}
 
   changeRoute(value: string) {
-    this.route.next(value)
+    this.route.next(value);
   }
 
   getRoute() {

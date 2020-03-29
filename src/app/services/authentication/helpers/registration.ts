@@ -1,10 +1,9 @@
-import * as uuid from 'uuid';
-import { Schema } from '../base/schema.base';
-import { ICognitoUserAttributeData } from 'amazon-cognito-identity-js';
-import { Constants } from '../../../utils/constants';
+import * as uuid from "uuid";
+import { Schema } from "../base/schema.base";
+import { ICognitoUserAttributeData } from "amazon-cognito-identity-js";
+import { Constants } from "../../../utils/constants";
 
 export class Registration extends Schema {
-
   constructor(
     private _phone_number?: string,
     private _email?: string,
@@ -16,118 +15,166 @@ export class Registration extends Schema {
     private _commViaSMS?: string,
     private _personalisation?: string,
     private _rapidoId?: string
-  ){ super() }
+  ) {
+    super();
+  }
 
-  set phone_number(phone_number){
+  set phone_number(phone_number) {
     this._phone_number = phone_number;
   }
 
-  get phone_number(){
+  get phone_number() {
     return this._phone_number;
   }
 
-  set email(email){
+  set email(email) {
     this._email = email;
   }
 
-  get email(){
+  get email() {
     return this._email;
   }
 
-  set name(name){
+  set name(name) {
     this._name = name;
   }
 
-  get name(){
+  get name() {
     return this._name;
   }
 
-  set password(password){
+  set password(password) {
     this._password = password;
   }
 
-  get password(){
+  get password() {
     return this._password;
   }
 
-  set acceptedTAndC(acceptedTAndC){
+  set acceptedTAndC(acceptedTAndC) {
     this._acceptedTAndC = acceptedTAndC;
   }
 
-  get acceptedTAndC(){
+  get acceptedTAndC() {
     return this._acceptedTAndC;
   }
 
-  set sendMePromotions(sendMePromotions){
+  set sendMePromotions(sendMePromotions) {
     this._sendMePromotions = sendMePromotions;
   }
 
-  get sendMePromotions(){
+  get sendMePromotions() {
     return this._sendMePromotions;
   }
 
-  set commViaEmail(commViaEmail){
+  set commViaEmail(commViaEmail) {
     this._commViaEmail = commViaEmail;
   }
 
-  get commViaEmail(){
+  get commViaEmail() {
     return this._commViaEmail;
   }
 
-  set commViaSMS(commViaSMS){
-    this._commViaSMS= commViaSMS;
+  set commViaSMS(commViaSMS) {
+    this._commViaSMS = commViaSMS;
   }
 
-  get commViaSMS(){
+  get commViaSMS() {
     return this._commViaSMS;
   }
 
-  set personalisation(personalisation){
+  set personalisation(personalisation) {
     this._personalisation = personalisation;
   }
 
-  get personalisation(){
+  get personalisation() {
     return this._personalisation;
   }
 
-  set rapidoId(rapidoId){
+  set rapidoId(rapidoId) {
     this._rapidoId = rapidoId;
   }
 
-  get rapidoId(){
+  get rapidoId() {
     return this._rapidoId;
   }
 
-  createAttributeList(){
+  createAttributeList() {
     this.rapidoId = uuid.v4();
-    super.pushItemToAttributeList(super.createCognitoUserAttribute(Constants.PHONE_NUMBER, this._phone_number));
-    super.pushItemToAttributeList(super.createCognitoUserAttribute(Constants.EMAIL, this._email));
-    super.pushItemToAttributeList(super.createCognitoUserAttribute(Constants.NAME, this._name));
-    super.pushItemToAttributeList(super.createCognitoUserAttribute(Constants.CUSTOM_RAPIDO_ID, this._rapidoId));
-    super.pushItemToAttributeList(super.createCognitoUserAttribute(Constants.CUSTOM_ACCEPTED_T_AND_C, this._acceptedTAndC));
-    super.pushItemToAttributeList(super.createCognitoUserAttribute(Constants.CUSTOM_SEND_ME_PROMOTIONS, this._sendMePromotions));
-    super.pushItemToAttributeList(super.createCognitoUserAttribute(Constants.CUSTOM_COMM_VIA_EMAIL, this._commViaEmail));
-    super.pushItemToAttributeList(super.createCognitoUserAttribute(Constants.CUSTOM_COMM_VIA_SMS, this._commViaSMS));
-    super.pushItemToAttributeList(super.createCognitoUserAttribute(Constants.CUSTOM_PERSONALISATION, this._personalisation));
+    super.pushItemToAttributeList(
+      super.createCognitoUserAttribute(
+        Constants.PHONE_NUMBER,
+        this._phone_number
+      )
+    );
+    super.pushItemToAttributeList(
+      super.createCognitoUserAttribute(Constants.EMAIL, this._email)
+    );
+    super.pushItemToAttributeList(
+      super.createCognitoUserAttribute(Constants.NAME, this._name)
+    );
+    super.pushItemToAttributeList(
+      super.createCognitoUserAttribute(
+        Constants.CUSTOM_RAPIDO_ID,
+        this._rapidoId
+      )
+    );
+    super.pushItemToAttributeList(
+      super.createCognitoUserAttribute(
+        Constants.CUSTOM_ACCEPTED_T_AND_C,
+        this._acceptedTAndC
+      )
+    );
+    super.pushItemToAttributeList(
+      super.createCognitoUserAttribute(
+        Constants.CUSTOM_SEND_ME_PROMOTIONS,
+        this._sendMePromotions
+      )
+    );
+    super.pushItemToAttributeList(
+      super.createCognitoUserAttribute(
+        Constants.CUSTOM_COMM_VIA_EMAIL,
+        this._commViaEmail
+      )
+    );
+    super.pushItemToAttributeList(
+      super.createCognitoUserAttribute(
+        Constants.CUSTOM_COMM_VIA_SMS,
+        this._commViaSMS
+      )
+    );
+    super.pushItemToAttributeList(
+      super.createCognitoUserAttribute(
+        Constants.CUSTOM_PERSONALISATION,
+        this._personalisation
+      )
+    );
   }
 
-  createUpdateAttributeList(){
-    let eligibleFields = [ 'email', 'name', 'sendMePromotions', 'commViaEmail', 'commViaSMS', 'personalisation']
-    let updateAttributeList: ICognitoUserAttributeData[] = []
-    let keyName: string
-    eligibleFields.forEach(field => {
-      if(this[field] !== undefined){
-        if(field !== 'email' && field !== 'name'){
-          keyName = Constants.CUSTOM + field
+  createUpdateAttributeList() {
+    let eligibleFields = [
+      "email",
+      "name",
+      "sendMePromotions",
+      "commViaEmail",
+      "commViaSMS",
+      "personalisation",
+    ];
+    let updateAttributeList: ICognitoUserAttributeData[] = [];
+    let keyName: string;
+    eligibleFields.forEach((field) => {
+      if (this[field] !== undefined) {
+        if (field !== "email" && field !== "name") {
+          keyName = Constants.CUSTOM + field;
         } else {
-          keyName = field
+          keyName = field;
         }
         updateAttributeList.push({
           Name: keyName,
-          Value: this[field]
-        })
+          Value: this[field],
+        });
       }
-    })
-    return updateAttributeList
+    });
+    return updateAttributeList;
   }
 }

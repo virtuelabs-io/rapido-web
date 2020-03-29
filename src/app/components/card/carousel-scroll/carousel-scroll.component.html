@@ -1,26 +1,35 @@
 <div class="carousel-title">
   {{ carouselTitle }}
 </div>
-<div class="container"> 
-  <div class="cards" *ngFor="let card of carouselData" [routerLink]="['/products/details', card.id]">
+<div class="container">
+  <div
+    class="cards"
+    *ngFor="let card of carouselData"
+    [routerLink]="['/products/details', card.id]"
+  >
     <div class="card-content">
-      <img *ngIf="CarouselConfig.image" class="card-image" src="{{ card.image }}">
+      <img
+        *ngIf="CarouselConfig.image"
+        class="card-image"
+        src="{{ card.image }}"
+      />
       <div *ngIf="CarouselConfig.desc" class="text-clamp text-margin">
-          {{ card.name }}
+        {{ card.name }}
       </div>
       <div *ngIf="CarouselConfig.desc" class="text-margin">
         <div *ngIf="CarouselConfig.price" class="">
-        <span class="card-price">{{ card.currency }}</span>
+          <span class="card-price">{{ card.currency }}</span>
           <span class="card-price">{{ card.price }}</span>
           <span *ngIf="+card.offer" aria-hidden="true" class="small p-2 red">
             <span>{{ card.currency }}</span>
             <!-- Discounted Price -->
-            <s> {{handleMrpRate(card.price, card.offer)}} </s>
-          </span> 
+            <s> {{ handleMrpRate(card.price, card.offer) }} </s>
+          </span>
           <span *ngIf="+card.offer" class="small p-2">
             <!-- actualPrice saved -->
-            <span>  {{ card.offer * 100}}% <b>Off</b> </span>
+            <span> {{ card.offer * 100 }}% <b>Off</b> </span>
           </span>
+        </div>
       </div>
     </div>
   </div>

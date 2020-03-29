@@ -12,23 +12,27 @@
       <div class="address-add-icon">
         <a class="">
           <svg aria-hidden="true" aria-haspopup="menu">
-              <use xlink:href="#add"/>
+            <use xlink:href="#add" />
           </svg>
         </a>
       </div>
       <div class="text-div">
-          <p>Add Address</p>
+        <p>Add Address</p>
       </div>
     </a>
     <div class="rapido-add-address-item" *ngFor="let address of address">
       <div class="address-text">
         <strong> {{ address.full_name }} </strong>
-        <br/><p>{{ address.addr_1 }}
-        <br/> {{ address.addr_2 }}
-        <br/> {{ address.city }} 
-        <br/> {{ address.county }}, {{ address.postcode }}
-        <br/> {{ address.country }}
+        <br />
+        <p>
+          {{ address.addr_1 }} <br />
+          {{ address.addr_2 }} <br />
+          {{ address.city }} <br />
+          {{ address.county }}, {{ address.postcode }} <br />
+          {{ address.country }}
+        </p>
       </div>
+
       <div class="card-actions">
         <a (click)="addressEdit(address.id)">Edit</a> |
         <a (click)="addressDelete(address.id)">Delete</a>

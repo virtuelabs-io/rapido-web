@@ -1,32 +1,42 @@
 <div class="review-holder" *ngFor="let review of filteredReview">
   <div class="product-id" *ngIf="!writer">
-    Product : &nbsp;  
-    <div [routerLink]="['/products/details', review.product_id]">{{review.product_id}}</div>
+    Product : &nbsp;
+    <div [routerLink]="['/products/details', review.product_id]">
+      {{ review.product_id }}
+    </div>
   </div>
   <div class="icon-name" *ngIf="writer">
-    <a  class="rapido-icon mat-button rapido-icon-hider">
+    <a class="rapido-icon mat-button rapido-icon-hider">
       <i class="fa fa-user fa-2x pt-1"></i>
     </a>
     <span>Anonymous</span>
   </div>
   <div class="customer-rating">
-    <app-rating styleClass='size-sm' [readonly]=true [currentRate]="review.rating"></app-rating>
-    <span class="review-title">{{review.title}}</span>
+    <app-rating
+      styleClass="size-sm"
+      [readonly]="true"
+      [currentRate]="review.rating"
+    ></app-rating>
+    <span class="review-title">{{ review.title }}</span>
   </div>
   <div class="review-date">
-    <span>{{review.updated_on}}</span>
+    <span>{{ review.updated_on }}</span>
   </div>
   <div class="verified-purchase">
     <span>Verified Purchase</span>
   </div>
   <div class="review-desc">
-    <span>{{review.summary}}</span>
+    <span>{{ review.summary }}</span>
   </div>
   <div class="helpful-count">
-    <span>{{review.helpful}} people found this helpful</span>
+    <span>{{ review.helpful }} people found this helpful</span>
   </div>
   <div class="review-feedback" *ngIf="feedback">
-    <button mat-flat-button color="primary" (click)="helpfulRatingIncrement(review.id)">
+    <button
+      mat-flat-button
+      color="primary"
+      (click)="helpfulRatingIncrement(review.id)"
+    >
       <span role="status" aria-hidden="true"></span>
       Helpful
     </button>

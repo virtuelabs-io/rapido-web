@@ -1,163 +1,166 @@
 @import "../../../assets/scss/custom-bootstrap-variables.scss";
 
 .main-div {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  .title-div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-top: 5%;
+    margin-left: 15%;
+    svg {
+      height: 30px;
+      width: 30px;
+      margin-right: 1%;
+    }
+    @media screen and (max-width: $mobile-device) {
+      margin-left: 5%;
+    }
+  }
+  .order-empty-card {
+    text-align: center;
+  }
+  .order-card {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    .title-div {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        margin-top: 5%;
-        margin-left: 15%;
-        svg {
-            height: 30px;
-            width: 30px;
-            margin-right: 1%;
-          }
-        @media screen and (max-width: $mobile-device) {
-             margin-left: 5%;    
-         }
-    }
-    .order-empty-card{
-        text-align: center;
-    }
-    .order-card {
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 2%;
+    border-width: 2px;
+    box-sizing: border-box;
+    border-color: $order-card-border-color;
+    box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.16);
+    border-style: solid;
+    .order-card-header {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.14),
+        rgba(0, 0, 0, 0.03) 3px,
+        transparent
+      );
+      height: 20%;
+      border-bottom: 1px solid;
+      border-color: $order-card-header-border-color !important;
+      background-color: $order-card-header-background;
+      color: $order-card-header-text;
+      .date-div {
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
-        margin-left: 15%;
-        margin-right: 15%;
-        margin-bottom: 2%;
-        border-width: 2px;
-        box-sizing: border-box;
-        border-color: $order-card-border-color;
-        box-shadow: 0 2px 1px 0 rgba(0,0,0,.16);
-        border-style: solid;
-        .order-card-header {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            background: linear-gradient(to bottom,rgba(0,0,0,.14),rgba(0,0,0,.03) 3px,transparent);
-            height: 20%;
-            border-bottom: 1px solid;
-            border-color: $order-card-header-border-color !important;
-            background-color: $order-card-header-background;
-            color: $order-card-header-text;
-            .date-div {
-                display: flex;
-                flex-direction: column;
-                flex-wrap: nowrap;
-                margin-top: 1%;
-                margin-left: 1%;
-                width: 25%;
-                font-size: 13px;
-                .label {
-                    text-transform: uppercase;
-                    @media screen and (max-width: $mobile-device) {
-                        width: 40%;
-                        margin-right: 2%;
-                        
-                    }
-                }
-                @media screen and (max-width: $mobile-device) {
-                    display: flex;
-                    flex-direction: row;
-                    flex-wrap: nowrap;
-                    width: 100%;
-                    
-                }
-            }
-            @media screen and (max-width: $mobile-device) {
-                display: flex;
-                flex-direction: column;
-                flex-wrap: nowrap;
-                height: 30%;
-            }
-        }
-        .order-card-items {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            margin: 1%;
-            .item {
-                display: flex;
-                flex-direction: column;
-                flex-wrap: nowrap;
-                width: 75%;
-                .item-status {
-                    .status-label-success {
-                        font-weight: 700!important;
-                        font-size: 20px!important;
-                        color: $order-item-status-sucess;
-                    }
-                    .status-label-cancelled {
-                        font-weight: 700!important;
-                        font-size: 20px!important;
-                        color: $order-item-status-cancelled;
-                    }
-                }
-                .item-detail {
-                    display: flex;
-                    flex-direction: row;
-                    flex-wrap: nowrap;
-                    border-bottom: 1px solid $order-item-detail-border-bottom;
-                    margin-bottom: 2%;
-                    .item-image {
-                        width: 25%;
-                        padding: 2%;
-                        cursor: pointer;
-                        img {
-                            width: 60%;
-                        }
-                    }
-                    .item-desc-price {
-                        display: flex;
-                        flex-direction: column;
-                        flex-wrap: nowrap;
-                        width: 75%;
-                        a {
-                            color: $order-item-text;
-                            cursor: pointer !important;
-                        }
-                        a:hover { 
-                            color: $order-item-text-hover;
-                        }
-                        .price-tag {
-                            color: $order-price-tag;
-                        }
-                        .add-review {
-                            margin-top: 1%;
-                            width: 20%;
-                            color: $order-add-review;
-                            cursor: pointer !important;
-                        }
-                    }
-                }
-                @media screen and (max-width: $mobile-device) {
-                    width: 100%;
-                }
-            }
-            .item-action {
-                display: flex;
-                flex-direction: column;
-                flex-wrap: nowrap;
-                width: 20%;
-                margin-left: 5%;
-                .action-but {
-                    background-color: $order-item-action-background;
-                    margin-top: 2%;
-                }
-                @media screen and (max-width: $small-device) {
-                    width: 100%;
-                    margin-top: 0%;
-                    margin-left: 0%;
-                }
-            }
+        margin-top: 1%;
+        margin-left: 1%;
+        width: 25%;
+        font-size: 13px;
+        .label {
+          text-transform: uppercase;
+          @media screen and (max-width: $mobile-device) {
+            width: 40%;
+            margin-right: 2%;
+          }
         }
         @media screen and (max-width: $mobile-device) {
-            margin-left: 5%;
-            margin-right: 5%; 
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          width: 100%;
         }
+      }
+      @media screen and (max-width: $mobile-device) {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: 30%;
+      }
     }
+    .order-card-items {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin: 1%;
+      .item {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        width: 75%;
+        .item-status {
+          .status-label-success {
+            font-weight: 700 !important;
+            font-size: 20px !important;
+            color: $order-item-status-sucess;
+          }
+          .status-label-cancelled {
+            font-weight: 700 !important;
+            font-size: 20px !important;
+            color: $order-item-status-cancelled;
+          }
+        }
+        .item-detail {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          border-bottom: 1px solid $order-item-detail-border-bottom;
+          margin-bottom: 2%;
+          .item-image {
+            width: 25%;
+            padding: 2%;
+            cursor: pointer;
+            img {
+              width: 60%;
+            }
+          }
+          .item-desc-price {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            width: 75%;
+            a {
+              color: $order-item-text;
+              cursor: pointer !important;
+            }
+            a:hover {
+              color: $order-item-text-hover;
+            }
+            .price-tag {
+              color: $order-price-tag;
+            }
+            .add-review {
+              margin-top: 1%;
+              width: 20%;
+              color: $order-add-review;
+              cursor: pointer !important;
+            }
+          }
+        }
+        @media screen and (max-width: $mobile-device) {
+          width: 100%;
+        }
+      }
+      .item-action {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        width: 20%;
+        margin-left: 5%;
+        .action-but {
+          background-color: $order-item-action-background;
+          margin-top: 2%;
+        }
+        @media screen and (max-width: $small-device) {
+          width: 100%;
+          margin-top: 0%;
+          margin-left: 0%;
+        }
+      }
+    }
+    @media screen and (max-width: $mobile-device) {
+      margin-left: 5%;
+      margin-right: 5%;
+    }
+  }
 }

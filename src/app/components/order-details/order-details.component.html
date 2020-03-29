@@ -15,29 +15,48 @@
         <p>Thank you for shopping with us !</p>
       </div>
       <div class="order-id-date">
-          <p>Ordered On: {{ orders[order].date }}  <span> |  Order#: {{ order }}</span></p>
+        <p>
+          Ordered On: {{ orders[order].date }}
+          <span> | Order#: {{ order }}</span>
+        </p>
       </div>
       <div class="cart-columns">
-          <div class="cart-col-quan">
-              <span>Quantity</span>
-            </div>
+        <div class="cart-col-quan">
+          <span>Quantity</span>
+        </div>
         <div class="cart-col-price">
           <span>Price(£)</span>
         </div>
       </div>
       <div class="order-items-main">
         <div class="order-items">
-          <div class="order-items-list" *ngFor="let item of orders[order].items">
+          <div
+            class="order-items-list"
+            *ngFor="let item of orders[order].items"
+          >
             <div class="order-item-status">
-              <span class="status-label-success" *ngIf="orders[order].category != cancelledStatus">{{ orders[order].category }}</span>
-              <span class="status-label-cancelled" *ngIf="orders[order].category == cancelledStatus">{{ orders[order].category }}</span>
+              <span
+                class="status-label-success"
+                *ngIf="orders[order].category != cancelledStatus"
+                >{{ orders[order].category }}</span
+              >
+              <span
+                class="status-label-cancelled"
+                *ngIf="orders[order].category == cancelledStatus"
+                >{{ orders[order].category }}</span
+              >
             </div>
             <div class="item">
               <div class="item-thumbnail">
-                <img class="image" src="{{ imageUrl + products[item.product_id].images[0] }}">
+                <img
+                  class="image"
+                  src="{{ imageUrl + products[item.product_id].images[0] }}"
+                />
               </div>
               <div class="item-desc">
-                <p class="text-clamp"><strong>{{ products[item.product_id].name }}</strong></p>
+                <p class="text-clamp">
+                  <strong>{{ products[item.product_id].name }}</strong>
+                </p>
               </div>
               <div class="item-quantity">
                 <span>{{ item.quantity }}</span>
@@ -46,20 +65,32 @@
                 <p>
                   <strong>{{ item.unit_price.toFixed(2) }}</strong>
                 </p>
-              </div>    
+              </div>
             </div>
           </div>
           <div class="order-charges">
-            <span> Subtotal : {{ orders[order].currency }}<span> {{ orders[order].order_price }}</span></span>
+            <span>
+              Subtotal : {{ orders[order].currency
+              }}<span> {{ orders[order].order_price }}</span></span
+            >
           </div>
           <div class="order-charges">
-            <span>+ VAT : {{ orders[order].currency }}<span> {{ orders[order].vat  }}</span></span>
+            <span
+              >+ VAT : {{ orders[order].currency
+              }}<span> {{ orders[order].vat }}</span></span
+            >
           </div>
           <div class="order-charges">
-            <span>+ Delivery Charges : {{ orders[order].currency }}<span> {{ orders[order].delivery_cost  }}</span></span>
+            <span
+              >+ Delivery Charges : {{ orders[order].currency
+              }}<span> {{ orders[order].delivery_cost }}</span></span
+            >
           </div>
           <div class="order-total">
-            <p>Order Total : {{ orders[order].currency }}<span> {{ orders[order].order_price_total }}</span></p>
+            <p>
+              Order Total : {{ orders[order].currency
+              }}<span> {{ orders[order].order_price_total }}</span>
+            </p>
           </div>
         </div>
       </div>
@@ -69,27 +100,34 @@
         <div class="add-title-div">
           <h5 class="title-div">Delivery Address</h5>
         </div>
-          <div class="address-text">
-              <strong> {{ orders[order]['address'].full_name }} </strong>
-              <br/><p>{{ orders[order]['address'].addr_1 }}
-              <br/> {{ orders[order]['address'].addr_2 }}
-              <br/> {{ orders[order]['address'].city }} 
-              <br/> {{ orders[order]['address'].county }}, {{ orders[order]['address'].postcode }}
-              <br/> {{ orders[order]['address'].country }}
-            </div>
+        <div class="address-text">
+          <strong> {{ orders[order]["address"].full_name }} </strong>
+          <br />
+          <p>
+            {{ orders[order]["address"].addr_1 }} <br />
+            {{ orders[order]["address"].addr_2 }} <br />
+            {{ orders[order]["address"].city }} <br />
+            {{ orders[order]["address"].county }},
+            {{ orders[order]["address"].postcode }} <br />
+            {{ orders[order]["address"].country }}
+          </p>
+        </div>
       </div>
       <div class="order-address" *ngIf="showCompanyDetails">
         <div class="add-title-div">
           <h5 class="title-div">Company Details</h5>
         </div>
-          <div class="address-text">
-              <strong> {{ companyDetails.name }} </strong>
-              <br/><p>{{ companyDetails.add1 }}
-              <br/> {{ companyDetails.add2 }}
-              <br/> {{ companyDetails.town_city }} 
-              <br/> {{ companyDetails.county }}, {{ companyDetails.postCode }}
-              <br/> {{ companyDetails.country }}
-            </div>
+        <div class="address-text">
+          <strong> {{ companyDetails.name }} </strong>
+          <br />
+          <p>
+            {{ companyDetails.add1 }} <br />
+            {{ companyDetails.add2 }} <br />
+            {{ companyDetails.town_city }} <br />
+            {{ companyDetails.county }}, {{ companyDetails.postCode }} <br />
+            {{ companyDetails.country }}
+          </p>
+        </div>
       </div>
     </div>
   </div>

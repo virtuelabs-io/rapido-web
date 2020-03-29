@@ -1,27 +1,39 @@
-<a class="card p-2 main-div" target="_blank" [routerLink]="['/products/details', itemList.id]">
-  <app-images [imgSrc]=itemDetails.images [imgTitle]=itemDetails.name></app-images>
+<a
+  class="card p-2 main-div"
+  target="_blank"
+  [routerLink]="['/products/details', itemList.id]"
+>
+  <app-images
+    [imgSrc]="itemDetails.images"
+    [imgTitle]="itemDetails.name"
+  ></app-images>
   <div class="card-body">
-     <h6>
-        <a>
-        <span>{{itemDetails.name}}</span>
-        </a>
-     </h6>
-     <app-rating [readonly]=true [currentRate]=itemDetails.rating></app-rating>
-     <div>
-        <span aria-hidden="true" class="text-danger">
+    <h6>
+      <a>
+        <span>{{ itemDetails.name }}</span>
+      </a>
+    </h6>
+    <app-rating
+      [readonly]="true"
+      [currentRate]="itemDetails.rating"
+    ></app-rating>
+    <div>
+      <span aria-hidden="true" class="text-danger">
         <span class="a-price-symbol">£</span>
         <!-- Actual Price -->
         <span class="a-price-whole">{{ itemDetails.price }}</span>
-        </span>
-        <span aria-hidden="true" *ngIf="+itemDetails.offer" class="small p-2">
+      </span>
+      <span aria-hidden="true" *ngIf="+itemDetails.offer" class="small p-2">
         <span class="a-price-symbol">£</span>
         <!-- Discounted Price -->
         <s class="a-price-whole">{{ mrpPrice }}</s>
-        </span> 
-        <span class="small p-2">
-         <!-- actualPrice saved -->
-         <span *ngIf="+itemDetails.offer">  {{ itemDetails.offer * 100}}% <b>Off</b> </span>
+      </span>
+      <span class="small p-2">
+        <!-- actualPrice saved -->
+        <span *ngIf="+itemDetails.offer">
+          {{ itemDetails.offer * 100 }}% <b>Off</b>
         </span>
-     </div>
+      </span>
+    </div>
   </div>
 </a>

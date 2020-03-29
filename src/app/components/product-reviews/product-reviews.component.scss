@@ -1,71 +1,71 @@
 @import "../../../assets/scss/custom-bootstrap-variables.scss";
 
 .review-holder {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  margin-bottom: 1%;
+  padding-bottom: 1%;
+  border-bottom: 1px solid $product-reviews-border-bottom;
+  .product-id {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: nowrap;
-    margin-bottom: 1%;
-    padding-bottom: 1%;
-    border-bottom: 1px solid $product-reviews-border-bottom;
-    .product-id {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        padding-left: 2%;
-        margin-top: 2%;
-        div {
-            cursor: pointer;
-            color: $product-reviews-product-id;
-        }
+    padding-left: 2%;
+    margin-top: 2%;
+    div {
+      cursor: pointer;
+      color: $product-reviews-product-id;
     }
-    .icon-name {
-        span {
-            color: $product-reviews-icon-name-color;
-        }
+  }
+  .icon-name {
+    span {
+      color: $product-reviews-icon-name-color;
     }
-    .customer-rating {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        padding-left: 2%;
-        .review-title {
-            margin-top: 1%;
-            margin-left: 1%;
-        }
+  }
+  .customer-rating {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding-left: 2%;
+    .review-title {
+      margin-top: 1%;
+      margin-left: 1%;
     }
-    .review-date {
-        padding-left: 2.6%;
-        font-size: medium;
+  }
+  .review-date {
+    padding-left: 2.6%;
+    font-size: medium;
+  }
+  .verified-purchase {
+    padding-left: 2.6%;
+    span {
+      color: $product-reviews-verified-purchase;
     }
-    .verified-purchase {
-        padding-left: 2.6%;
-        span {
-            color: $product-reviews-verified-purchase;
-        }
+  }
+  .review-desc {
+    margin-top: 1%;
+    padding-left: 2.6%;
+  }
+  .helpful-count {
+    margin-top: 2%;
+    padding-left: 2.6%;
+    span {
+      color: $product-reviews-helpful-count;
     }
-    .review-desc {
-        margin-top: 1%;
-        padding-left: 2.6%;
+  }
+  .review-feedback {
+    margin-top: 1%;
+    padding-left: 2.6%;
+    a {
+      margin-left: 2%;
+      cursor: pointer;
+      color: $product-reviews-review-feedback-color;
     }
-    .helpful-count {
-        margin-top: 2%;
-        padding-left: 2.6%;
-        span {
-            color: $product-reviews-helpful-count;
-        }
+  }
+  .review-action {
+    button {
+      margin-right: 2%;
     }
-    .review-feedback {
-        margin-top: 1%;
-        padding-left: 2.6%;
-        a {
-            margin-left: 2%;
-            cursor: pointer;
-            color: $product-reviews-review-feedback-color;
-        }
-    }
-    .review-action {
-        button {
-            margin-right: 2%;
-        }
-    }
+  }
 }

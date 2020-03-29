@@ -1,21 +1,20 @@
-<div *ngIf=itemDetails>
-  
-<div class="main-div pl-2 pr-2 pt-3">
+<div *ngIf="itemDetails">
+  <div class="main-div pl-2 pr-2 pt-3">
     <!-- Product gallery section starts -->
     <div class="product-gallery-container col-md-5">
-        <img [src]=imagePreviewURI class="reg-size ml-5"/>
-        <div class="thumbnail-row">
-          <img
-            *ngFor="let imageObj of imageDetails; let i = index"  
-            class="p-2 m-2 thumbnail"
-            [ngClass]="{
-              'thumbnail-active':imageObj.active,
-              'thumbnail-inactive':!imageObj.active
-            }"
-            [src]=imageObj.uri 
-            (click)="showPicture(imageObj.uri, i)"
-            />
-        </div>
+      <img [src]="imagePreviewURI" class="reg-size ml-5" />
+      <div class="thumbnail-row">
+        <img
+          *ngFor="let imageObj of imageDetails; let i = index"
+          class="p-2 m-2 thumbnail"
+          [ngClass]="{
+            'thumbnail-active': imageObj.active,
+            'thumbnail-inactive': !imageObj.active
+          }"
+          [src]="imageObj.uri"
+          (click)="showPicture(imageObj.uri, i)"
+        />
+      </div>
     </div>
     <!-- Product gallery section ends -->
 
@@ -23,70 +22,72 @@
     <div class="details-div col-md-5">
       <div class="card-body">
         <h3 class="">
-          <a class="" >
-            <span class="">{{itemDetails.name}}</span>
+          <a class="">
+            <span class="">{{ itemDetails.name }}</span>
           </a>
         </h3>
-         <app-rating 
-         styleClass='size-bg'
-         [readonly]=true
-         [currentRate]='itemDetails.rating'>
-         </app-rating>
-         
-         <hr/>
+        <app-rating
+          styleClass="size-bg"
+          [readonly]="true"
+          [currentRate]="itemDetails.rating"
+        >
+        </app-rating>
 
-         <div class="d-flex">
-            <div class="price-section h5">
-              <span aria-hidden="true" class="text-danger ">
-                  Price:
-                  <span class="a-price-symbol">{{itemDetails.currency}}</span>
-                  <span class="a-price-whole">{{Number(itemDetails.price).toFixed(2)}}</span>
-                </span>
-                <span *ngIf="+itemDetails.offer" aria-hidden="true" class="small ">
-                    M.R.P.:
-                  <span class="a-price-symbol">{{itemDetails.currency}}</span>
-                  <s class="a-price-whole">{{Number(mrpPrice).toFixed(2)}}</s>
-                </span>
-              <span *ngIf="+itemDetails.offer" class="small ">
-                You Save:
-                  <span>{{ itemDetails.offer * 100}}%</span>
-              </span>
-            </div>
-              <div class="pr-3">
-                  <i class="fa fa-3x fa-facebook"></i>
-              </div>
-              <div class="pr-3">
-                  <i class="fa fa-3x fa-instagram"></i>
-              </div>
-              <div class="pr-3">
-                  <i class="fa fa-3x fa-twitter"></i>
-              </div>
-              <div class="pr-3">
-                  <i class="fa fa-3x fa-youtube"></i>
-              </div>
-               
-         </div>
-        
-         
-         <hr/>
+        <hr />
 
-         <div class="product-points">
-            <ul class="">
-                <li *ngFor="let point of itemDetails.points">
-                  <span class="">{{point}}</span>
-                </li> 
-              </ul>
-         </div>
+        <div class="d-flex">
+          <div class="price-section h5">
+            <span aria-hidden="true" class="text-danger">
+              Price:
+              <span class="a-price-symbol">{{ itemDetails.currency }}</span>
+              <span class="a-price-whole">{{
+                Number(itemDetails.price).toFixed(2)
+              }}</span>
+            </span>
+            <span *ngIf="+itemDetails.offer" aria-hidden="true" class="small">
+              M.R.P.:
+              <span class="a-price-symbol">{{ itemDetails.currency }}</span>
+              <s class="a-price-whole">{{ Number(mrpPrice).toFixed(2) }}</s>
+            </span>
+            <span *ngIf="+itemDetails.offer" class="small">
+              You Save:
+              <span>{{ itemDetails.offer * 100 }}%</span>
+            </span>
+          </div>
+          <div class="pr-3">
+            <i class="fa fa-3x fa-facebook"></i>
+          </div>
+          <div class="pr-3">
+            <i class="fa fa-3x fa-instagram"></i>
+          </div>
+          <div class="pr-3">
+            <i class="fa fa-3x fa-twitter"></i>
+          </div>
+          <div class="pr-3">
+            <i class="fa fa-3x fa-youtube"></i>
+          </div>
+        </div>
 
-    </div>
+        <hr />
+
+        <div class="product-points">
+          <ul class="">
+            <li *ngFor="let point of itemDetails.points">
+              <span class="">{{ point }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
     <!-- Details section ends -->
 
     <!-- Add to cart section starts -->
-    <div class="order-div col-md-2"> 
+    <div class="order-div col-md-2">
       <div class="">
-      <div class="thumbnail-inactive p-2">
-        <h4 class="text-danger">{{itemDetails.currency}} {{totalPrice}}</h4>
+        <div class="thumbnail-inactive p-2">
+          <h4 class="text-danger">
+            {{ itemDetails.currency }} {{ totalPrice }}
+          </h4>
           <!-- <div class="d-flex ">
             <label class="mr-2">Quantity: </label>
             <select 
@@ -98,83 +99,90 @@
             </select>
           </div> -->
           <div class="item-quantity d-flex">
-              <label class="mr-2">Quantity: </label>
-              <input 
-                (change)="onChangeQuantity($event.target.value)"
-                [(ngModel)]="quantity" 
-                type="number" 
-                min="1"
-                max="100"
-                required 
-                name="quantityBox" 
-                class="item-quntity-input pl-3">
+            <label class="mr-2">Quantity: </label>
+            <input
+              (change)="onChangeQuantity($event.target.value)"
+              [(ngModel)]="quantity"
+              type="number"
+              min="1"
+              max="100"
+              required
+              name="quantityBox"
+              class="item-quntity-input pl-3"
+            />
           </div>
           <div class="m-1">
-            <button 
+            <button
               type="button"
               (click)="addItemsToCart()"
-              class="btn btn-outline-dark btn-block bg-primary">
+              class="btn btn-outline-dark btn-block bg-primary"
+            >
               Add to cart
             </button>
           </div>
           <div class="m-1">
-            <button 
+            <button
               type="button"
               routerLink="/cart"
-              class="btn btn-outline-dark btn-block bg-primary">
+              class="btn btn-outline-dark btn-block bg-primary"
+            >
               Go to Cart
             </button>
           </div>
-          </div>
+        </div>
       </div>
     </div>
     <!-- Add to cart section ends -->
-</div>
+  </div>
 
-<div class="hr-divider"></div>
+  <div class="hr-divider"></div>
 
-<!-- Product descriptions Starts -->
+  <!-- Product descriptions Starts -->
   <div>
     <div class="m-3 p-1 description">
-        <h3>Product descriptions</h3>
-        <div>
-          <p>{{itemDetails.description}}</p>
-        </div>
+      <h3>Product descriptions</h3>
+      <div>
+        <p>{{ itemDetails.description }}</p>
+      </div>
     </div>
   </div>
-<!-- Product descriptions ends -->
+  <!-- Product descriptions ends -->
 
-
-<!-- Product specifications starts -->
-<div>
-  <div class="m-3 p-1 ">
+  <!-- Product specifications starts -->
+  <div>
+    <div class="m-3 p-1">
       <h3>Product specifications</h3>
-      <app-table [tableData]=itemDetails.details></app-table>
+      <app-table [tableData]="itemDetails.details"></app-table>
+    </div>
   </div>
-</div>
-<!-- Product specifications ends -->
-
+  <!-- Product specifications ends -->
 </div>
 
-<div class="no-results" *ngIf=!itemDetails>
+<div class="no-results" *ngIf="!itemDetails">
   <div class="no-result-icon">
     <svg>
       <use xlink:href="#404-error" />
     </svg>
   </div>
   <div class="no-result-text">
-      We are sorry. Page not found
+    We are sorry. Page not found
   </div>
 </div>
 
 <!-- Product ratings starts -->
-<div class="product-ratings" *ngIf="(isLoggedIn && canReviewProduct) || reviewCount">
-  <div [ngClass]="reviewCount == 1?'left-section':'small-section'">
+<div
+  class="product-ratings"
+  *ngIf="(isLoggedIn && canReviewProduct) || reviewCount"
+>
+  <div [ngClass]="reviewCount == 1 ? 'left-section' : 'small-section'">
     <div class="rating-bars" *ngIf="reviewCount">
       <div class="title">
-        <span>{{reviewCount}} customer reviews</span>
+        <span>{{ reviewCount }} customer reviews</span>
       </div>
-      <app-rating-bar [rate]=rateSummary [reviewCount]=reviewCount></app-rating-bar>
+      <app-rating-bar
+        [rate]="rateSummary"
+        [reviewCount]="reviewCount"
+      ></app-rating-bar>
     </div>
     <div class="give-rating" *ngIf="canReviewProduct && isLoggedIn">
       <div class="title">
@@ -184,26 +192,40 @@
         <span>Share your thoughts with other customers</span>
       </div>
       <div class="action">
-        <button mat-flat-button color="primary" (click)="handleCreateReview(itemId)">
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="handleCreateReview(itemId)"
+        >
           <span role="status" aria-hidden="true"></span>
-          Write a product review 
+          Write a product review
         </button>
       </div>
     </div>
   </div>
   <div class="right-section" *ngIf="reviewCount">
-    <app-product-reviews 
-    (fetchCustomerReviews)=fetchRatingsAfterDeactivate(itemId) [filteredReview]=filteredReview [productId]=itemId [action]=false [feedback]=true [writer]=true></app-product-reviews>
-    <div class='m-auto'>
-      <mat-paginator 
+    <app-product-reviews
+      (fetchCustomerReviews)="fetchRatingsAfterDeactivate(itemId)"
+      [filteredReview]="filteredReview"
+      [productId]="itemId"
+      [action]="false"
+      [feedback]="true"
+      [writer]="true"
+    ></app-product-reviews>
+    <div class="m-auto">
+      <mat-paginator
         [length]="length"
         [pageSize]="pageSize"
         [pageSizeOptions]="pageSizeOptions"
-        (page)="onPaginateChange($event)">
+        (page)="onPaginateChange($event)"
+      >
       </mat-paginator>
     </div>
   </div>
-  <div class="no-review-found" *ngIf="canReviewProduct && !reviewCount && isLoggedIn">
+  <div
+    class="no-review-found"
+    *ngIf="canReviewProduct && !reviewCount && isLoggedIn"
+  >
     <div>No reviews found..Your review will help us inprove the product</div>
   </div>
 </div>

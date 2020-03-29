@@ -1,54 +1,54 @@
 @import "../../../assets/scss/custom-bootstrap-variables.scss";
 
 .main {
-    background-color: $footer-background;
-    a {
-        color: $footer-font-color;
-        text-decoration: none;
-        background-color: transparent;
-    }
-    a:hover { 
-        color: $primary;
-    }
-    h5 {
-        color: $footer-heading-color;
-    }
-    
-    .nav-footer-line {
-        border-top: 1px solid #3a4553;
-        margin-top: 40px;
-    }
-    
-    .footer-rapido-icon {
-        color: $footer-icon-color;
-        margin-top: 1%;
-    }
-    
-    .footer-countries {
-        color: $footer-countries-color;
-        font-size: small;
-    }
-    
-    .nav-line {
-        border-top: 1px solid #3a4553;
-    }
+  background-color: $footer-background;
+  a {
+    color: $footer-font-color;
+    text-decoration: none;
+    background-color: transparent;
+  }
+  a:hover {
+    color: $primary;
+  }
+  h5 {
+    color: $footer-heading-color;
+  }
+
+  .nav-footer-line {
+    border-top: 1px solid #3a4553;
+    margin-top: 40px;
+  }
+
+  .footer-rapido-icon {
+    color: $footer-icon-color;
+    margin-top: 1%;
+  }
+
+  .footer-countries {
+    color: $footer-countries-color;
+    font-size: small;
+  }
+
+  .nav-line {
+    border-top: 1px solid #3a4553;
+  }
 }
 
 a:hover {
-    color: $footer-font-color-hover;
-    cursor:pointer;
+  color: $footer-font-color-hover;
+  cursor: pointer;
 }
 
 .nav-line {
-    border-top: 1px solid $footer-nav-line;
+  border-top: 1px solid $footer-nav-line;
 }
 
 .commit-color {
   color: $green !important;
 }
 
-.img-banner{
-    height: 10%;
-    width: 10%;
-    cursor: pointer;
+.img-banner {
+  height: 10%;
+  width: 10%;
+  cursor: pointer;
 }

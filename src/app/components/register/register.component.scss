@@ -1,7 +1,7 @@
 @import "../../../assets/scss/custom-bootstrap-variables.scss";
 .main-div {
   display: flex;
-  flex-direction : row;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: left;
   margin-top: 5%;
@@ -20,7 +20,6 @@
     }
     .margin-top {
       margin-top: 2%;
-      
     }
     .form-container2 {
       display: flex;
@@ -33,11 +32,15 @@
         padding-left: 15px;
         letter-spacing: 40px;
         border: 0;
-        background-image: linear-gradient(to left, black 70%, rgba(255, 255, 255, 0) 0%);   
-        background-position: bottom;   
-        background-size: 50px 1px;   
-        background-repeat: repeat-x;   
-        background-position-x: 35px;   
+        background-image: linear-gradient(
+          to left,
+          black 70%,
+          rgba(255, 255, 255, 0) 0%
+        );
+        background-position: bottom;
+        background-size: 50px 1px;
+        background-repeat: repeat-x;
+        background-position-x: 35px;
         width: 300px !important;
       }
       .partitioned:focus {
@@ -45,7 +48,7 @@
       }
       .flex-button {
         display: flex;
-        .width8{
+        .width8 {
           width: 110px;
         }
       }

@@ -1,243 +1,240 @@
 @import "../../../assets/scss/custom-bootstrap-variables.scss";
 
 .payment-div {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  margin-top: 3%;
+  .order-address-div {
     display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    margin-top: 3%;
-    .order-address-div {
+    flex-direction: row;
+    flex-wrap: wrap;
+    .order-div {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      width: 65%;
+      .icon-title {
         display: flex;
         flex-direction: row;
-        flex-wrap: wrap;
-        .order-div  {
-            display: flex;
-            flex-direction: column;
-            flex-wrap: nowrap;
-            width: 65%;
-            .icon-title {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: nowrap;
-                padding-left: 2%;
-                svg {
-                    height: 30px;
-                    width: 30px;
-                    @media screen and (max-width: $mobile-device) {
-                        margin-top: 2%;
-                    }
-                }
-                .title-div {
-                    width: 100%;
-                    h4 {
-                        margin-left: 2%;
-                        @media screen and (max-width: $mobile-device) {
-                            margin-top: 3%;
-                        }
-                    }
-                }
-            }
-            .thanks-div {
-                padding-left: 2%;
-                color: $order-details-thanks-mgs;
-            }
-            .order-id-date {
-                padding-left: 2%;
-                p {
-                    font-weight: 700;
-                }
-            }
-            .cart-columns {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: nowrap;
-                margin-left: 5%;
-                margin-right: 5%;
-                border-bottom: 1px solid  $order-details-columns-border-bottom;
-                .cart-col-price {
-                    width: 35%;
-                    text-align: right;
-                }
-                .cart-col-quan {
-                    width: 75%;
-                    text-align: right;
-                    @media screen and (max-width: $mobile-device) {
-                        width: 95%;
-                    }
-                }
-            }
-            .order-items-main {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: nowrap;
-                .order-items {
-                    width: 100%;
-                    margin-right: 5%;
-                    margin-left: 5%;
-                    .order-items-list {
-                        display: flex;
-                        flex-direction: column;
-                        flex-wrap: wrap;
-                        margin-top: 1%;
-                        padding-bottom: 1%;
-                        min-height: 150px;
-                        border-bottom: 1px solid $order-details-columns-border-bottom;
-                        .order-item-status {
-                            .status-label-success {
-                                font-weight: 700!important;
-                                font-size: 20px!important;
-                                color: $order-details-item-status-sucess;
-                            }
-                            .status-label-cancelled {
-                                font-weight: 700!important;
-                                font-size: 20px!important;
-                                color: $order-details-item-status-cancelled;
-                            }
-                        }
-                        .item {
-                            display: flex;
-                            flex-direction: row;
-                            flex-wrap: nowrap;
-                            margin-bottom: 1%;
-                            .item-thumbnail {
-                                width: 20%;
-                                padding: 2%;
-                                padding-top: 0%;
-                                .image {
-                                    width: 80%;
-                                }
-                            }
-                            .item-desc {
-                                width: 35%;
-                            }
-                            .item-price {
-                                padding-left: 2%;
-                                width: 25%;
-                                color: $order-details-price-color;
-                                text-align: right;
-                            }
-                            .item-quantity {
-                                width: 20%;
-                                text-align: center;
-                                padding-left: 2%;
-                                padding-right: 2%;
-                                @media screen and (max-width: $small-device) {
-                                    padding-left: 10%;
-                                }
-                            }
-                        }
-                        
-                    }
-                    .order-charges {
-                        width: 100%;
-                        text-align: right;
-                        span {
-                            span {
-                                color: $order-details-price-color;
-                                font-weight: 800;
-                            }
-                        }
-                    }
-                    .order-total {
-                        width: 100%;
-                        margin-top: 2%;
-                        text-align: right;
-                        border-top: 1px solid $order-details-total-border-bottom;
-                        p {
-                            span {
-                                color: $order-details-price-color;
-                                font-weight: 800;
-                            }
-                        }
-                    }
-                }
-                @media screen and (max-width: $mobile-device) {
-                    width: 100%;
-                }
-            }
-            @media screen and (max-width: $mobile-device) {
-                margin-top: 5%;
-                width: 100%;
-            }
-            @media screen and (max-width: $small-device) {
-                margin-top: 5%;
-                width: 100%;
-            }
-        }
-        .address-company-details {
-            width: 25%;
-            .order-address {
-                display: flex;
-                flex-direction: column;
-                flex-wrap: wrap;
-                height: 300px;
-                margin-bottom: 3%;
-                margin-left: 5%;
-                margin-right: 1%;
-                border-radius: 6px;
-                border-width: 1px;
-                box-sizing: border-box;
-                border-color: $order-details-address-border-color;
-                box-shadow: 0 2px 1px 0 rgba(0,0,0,.16);
-                border-style: solid;
-                .add-title-div {
-                    background-color: $order-details-address-title-background;
-                    height: 20%;
-                    .title-div {
-                        margin-top: 5%;
-                        margin-bottom: 2%;
-                        text-align: center;
-                        color: $order-details-address-title-color;
-                        @media screen and (max-width: $small-device) {
-                            margin-top: 1.5%;
-                            margin-bottom: 1%;
-                            font-size: 14px;
-                        }
-                    }
-                    @media screen and (max-width: $small-device) {
-                        height: 40px;   
-                    }
-                    @media screen and (max-width: $medium-device) {
-                        width: 100%;   
-                    }
-                }
-                .address-text {
-                    margin-top: 2%;
-                    margin-left: 2%;
-                    display: flex;
-                    flex-direction: column;
-                    flex-wrap: wrap;
-                    justify-content: left;
-        
-                }
-                @media screen and (max-width: $small-device) {
-                    margin-left: 0%;
-                    margin-right: 0%;
-                }
-                @media screen and (max-width: $medium-device) {
-                    height: 350px;   
-                }
-            }
-            @media screen and (max-width: $small-device) {
-                width: 100%;
-                margin-left: 2%;
-                margin-right: 2%;
-            }
-        }
-        
-    }
-    .pay-div {
-        border-top: 3px solid $order-details-pay-div-border-top;
-        h4 {
+        flex-wrap: nowrap;
+        padding-left: 2%;
+        svg {
+          height: 30px;
+          width: 30px;
+          @media screen and (max-width: $mobile-device) {
             margin-top: 2%;
+          }
         }
-        .payment-det {
+        .title-div {
+          width: 100%;
+          h4 {
+            margin-left: 2%;
+            @media screen and (max-width: $mobile-device) {
+              margin-top: 3%;
+            }
+          }
+        }
+      }
+      .thanks-div {
+        padding-left: 2%;
+        color: $order-details-thanks-mgs;
+      }
+      .order-id-date {
+        padding-left: 2%;
+        p {
+          font-weight: 700;
+        }
+      }
+      .cart-columns {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        margin-left: 5%;
+        margin-right: 5%;
+        border-bottom: 1px solid $order-details-columns-border-bottom;
+        .cart-col-price {
+          width: 35%;
+          text-align: right;
+        }
+        .cart-col-quan {
+          width: 75%;
+          text-align: right;
+          @media screen and (max-width: $mobile-device) {
+            width: 95%;
+          }
+        }
+      }
+      .order-items-main {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        .order-items {
+          width: 100%;
+          margin-right: 5%;
+          margin-left: 5%;
+          .order-items-list {
             display: flex;
             flex-direction: column;
-            flex-wrap: nowrap;
-            width: 50%;
+            flex-wrap: wrap;
+            margin-top: 1%;
+            padding-bottom: 1%;
+            min-height: 150px;
+            border-bottom: 1px solid $order-details-columns-border-bottom;
+            .order-item-status {
+              .status-label-success {
+                font-weight: 700 !important;
+                font-size: 20px !important;
+                color: $order-details-item-status-sucess;
+              }
+              .status-label-cancelled {
+                font-weight: 700 !important;
+                font-size: 20px !important;
+                color: $order-details-item-status-cancelled;
+              }
+            }
+            .item {
+              display: flex;
+              flex-direction: row;
+              flex-wrap: nowrap;
+              margin-bottom: 1%;
+              .item-thumbnail {
+                width: 20%;
+                padding: 2%;
+                padding-top: 0%;
+                .image {
+                  width: 80%;
+                }
+              }
+              .item-desc {
+                width: 35%;
+              }
+              .item-price {
+                padding-left: 2%;
+                width: 25%;
+                color: $order-details-price-color;
+                text-align: right;
+              }
+              .item-quantity {
+                width: 20%;
+                text-align: center;
+                padding-left: 2%;
+                padding-right: 2%;
+                @media screen and (max-width: $small-device) {
+                  padding-left: 10%;
+                }
+              }
+            }
+          }
+          .order-charges {
+            width: 100%;
+            text-align: right;
+            span {
+              span {
+                color: $order-details-price-color;
+                font-weight: 800;
+              }
+            }
+          }
+          .order-total {
+            width: 100%;
+            margin-top: 2%;
+            text-align: right;
+            border-top: 1px solid $order-details-total-border-bottom;
+            p {
+              span {
+                color: $order-details-price-color;
+                font-weight: 800;
+              }
+            }
+          }
         }
+        @media screen and (max-width: $mobile-device) {
+          width: 100%;
+        }
+      }
+      @media screen and (max-width: $mobile-device) {
+        margin-top: 5%;
+        width: 100%;
+      }
+      @media screen and (max-width: $small-device) {
+        margin-top: 5%;
+        width: 100%;
+      }
     }
-    @media screen and (max-width: $medium-device) {
-        margin-top: 5%;   
+    .address-company-details {
+      width: 25%;
+      .order-address {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        height: 300px;
+        margin-bottom: 3%;
+        margin-left: 5%;
+        margin-right: 1%;
+        border-radius: 6px;
+        border-width: 1px;
+        box-sizing: border-box;
+        border-color: $order-details-address-border-color;
+        box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.16);
+        border-style: solid;
+        .add-title-div {
+          background-color: $order-details-address-title-background;
+          height: 20%;
+          .title-div {
+            margin-top: 5%;
+            margin-bottom: 2%;
+            text-align: center;
+            color: $order-details-address-title-color;
+            @media screen and (max-width: $small-device) {
+              margin-top: 1.5%;
+              margin-bottom: 1%;
+              font-size: 14px;
+            }
+          }
+          @media screen and (max-width: $small-device) {
+            height: 40px;
+          }
+          @media screen and (max-width: $medium-device) {
+            width: 100%;
+          }
+        }
+        .address-text {
+          margin-top: 2%;
+          margin-left: 2%;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          justify-content: left;
+        }
+        @media screen and (max-width: $small-device) {
+          margin-left: 0%;
+          margin-right: 0%;
+        }
+        @media screen and (max-width: $medium-device) {
+          height: 350px;
+        }
+      }
+      @media screen and (max-width: $small-device) {
+        width: 100%;
+        margin-left: 2%;
+        margin-right: 2%;
+      }
     }
+  }
+  .pay-div {
+    border-top: 3px solid $order-details-pay-div-border-top;
+    h4 {
+      margin-top: 2%;
+    }
+    .payment-det {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      width: 50%;
+    }
+  }
+  @media screen and (max-width: $medium-device) {
+    margin-top: 5%;
+  }
 }

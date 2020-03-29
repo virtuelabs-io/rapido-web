@@ -1,21 +1,19 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ProductDetailsComponent } from 'src/app/components/product-details/product-details.component';
-import { RatingBarComponent } from './rating-bar.component';
-import {MatProgressBarModule} from '@angular/material';
-import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { ProductDetailsComponent } from "src/app/components/product-details/product-details.component";
+import { RatingBarComponent } from "./rating-bar.component";
+import { MatProgressBarModule } from "@angular/material";
+import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 
-describe('RatingBarComponent', () => {
+describe("RatingBarComponent", () => {
   let component: RatingBarComponent;
   let fixture: ComponentFixture<RatingBarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [MatProgressBarModule],
-      declarations: [ RatingBarComponent, ProductDetailsComponent ],
-      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
-
-    })
-    .compileComponents();
+      declarations: [RatingBarComponent, ProductDetailsComponent],
+      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -24,7 +22,7 @@ describe('RatingBarComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

@@ -2,7 +2,7 @@
   <div class="title-div">
     <svg>
       <use xlink:href="#diagram" />
-    </svg>    
+    </svg>
     <h4>Your Orders</h4>
   </div>
   <div *ngIf="!currentOrders.length" class="order-empty-card">
@@ -12,53 +12,93 @@
     <div class="shopping-button">
       <button mat-flat-button color="primary" routerLink="/">
         <span role="status" aria-hidden="true"></span>
-        Continue Shopping 
+        Continue Shopping
       </button>
     </div>
   </div>
   <div *ngIf="currentOrders">
     <div class="order-card" *ngFor="let order of currentOrders">
-    <div class="order-card-header">
-      <div class="date-div">
-        <span class="label">Order placed: </span>
-        <span>{{ orders[order].date }}</span>
-      </div>
-      <div class="date-div">
+      <div class="order-card-header">
+        <div class="date-div">
+          <span class="label">Order placed: </span>
+          <span>{{ orders[order].date }}</span>
+        </div>
+        <div class="date-div">
           <span class="label">Total: </span>
-          <span>{{ orders[order].currency }}{{ orders[order].price.toFixed(2) }}</span>
-      </div>
-      <div class="date-div">
+          <span
+            >{{ orders[order].currency
+            }}{{ orders[order].price.toFixed(2) }}</span
+          >
+        </div>
+        <div class="date-div">
           <span class="label">Ship To: </span>
           <span>{{ orders[order].shipTo }}</span>
-      </div>
-      <div class="date-div">
+        </div>
+        <div class="date-div">
           <span class="label">Order#: </span>
           <span>{{ order }}</span>
-      </div>
-    </div>
-    <div class="order-card-items">
-      <div class="item">
-        <div class="item-status">
-          <span [ngClass]="orders[order].category == cancelledStatus ? 'status-label-cancelled' : 'status-label-success'">{{ orders[order].category }}</span>
-        </div>
-        <div class="item-detail" *ngFor="let item of orders[order].items">
-          <div class="item-image" [routerLink]="['/products/details', item.product_id]">
-              <img class="image" src="{{ imageUrl + products[item.product_id].images[0] }}">
-          </div>
-          <div class="item-desc-price">
-            <a class="text-clamp" [routerLink]="['/products/details', item.product_id]">{{ products[item.product_id].name }}</a>
-            <span>
-              <span>{{ products[item.product_id].currency }} </span>
-              <span class="price-tag">{{ item.unit_price.toFixed(2) }}</span>
-            </span>
-            <a *ngIf="(orders[order].category == delivered)" class="add-review" (click)="handleReview(item.product_id)">Write a review</a>
-          </div>
         </div>
       </div>
-      <div class="item-action">
-        <button mat-button (click)="orderDetails(order)" class="action-but">Order Details</button>
-        <button mat-button *ngIf="(orders[order].category == paid || orders[order].category == incomplete)" (click)="cancelOrder(order)" class="action-but">Cancel Order</button>
-        <button mat-button (click)="repeatOrder(order)" class="action-but">Repeat Order</button>
+      <div class="order-card-items">
+        <div class="item">
+          <div class="item-status">
+            <span
+              [ngClass]="
+                orders[order].category == cancelledStatus
+                  ? 'status-label-cancelled'
+                  : 'status-label-success'
+              "
+              >{{ orders[order].category }}</span
+            >
+          </div>
+          <div class="item-detail" *ngFor="let item of orders[order].items">
+            <div
+              class="item-image"
+              [routerLink]="['/products/details', item.product_id]"
+            >
+              <img
+                class="image"
+                src="{{ imageUrl + products[item.product_id].images[0] }}"
+              />
+            </div>
+            <div class="item-desc-price">
+              <a
+                class="text-clamp"
+                [routerLink]="['/products/details', item.product_id]"
+                >{{ products[item.product_id].name }}</a
+              >
+              <span>
+                <span>{{ products[item.product_id].currency }} </span>
+                <span class="price-tag">{{ item.unit_price.toFixed(2) }}</span>
+              </span>
+              <a
+                *ngIf="orders[order].category == delivered"
+                class="add-review"
+                (click)="handleReview(item.product_id)"
+                >Write a review</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="item-action">
+          <button mat-button (click)="orderDetails(order)" class="action-but">
+            Order Details
+          </button>
+          <button
+            mat-button
+            *ngIf="
+              orders[order].category == paid ||
+              orders[order].category == incomplete
+            "
+            (click)="cancelOrder(order)"
+            class="action-but"
+          >
+            Cancel Order
+          </button>
+          <button mat-button (click)="repeatOrder(order)" class="action-but">
+            Repeat Order
+          </button>
+        </div>
       </div>
     </div>
   </div>

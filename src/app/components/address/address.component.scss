@@ -1,99 +1,98 @@
 @import "../../../assets/scss/custom-bootstrap-variables.scss";
 .main-div {
-    .title-div {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        margin-top: 2%;
-        padding-left: 2%;
-        @media screen and (max-width: $mobile-device) {
-            margin-top: 10%;
-        }
-        svg {
-            height: 30px;
-            width: 30px;
-            margin-right: 1%;
-        }
+  .title-div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-top: 2%;
+    padding-left: 2%;
+    @media screen and (max-width: $mobile-device) {
+      margin-top: 10%;
     }
-    .rapido-add-address {
+    svg {
+      height: 30px;
+      width: 30px;
+      margin-right: 1%;
+    }
+  }
+  .rapido-add-address {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    padding: 2%;
+    .rapido-add-address-icon {
+      margin-right: 1%;
+      margin-top: 1%;
+      border-style: dashed;
+      height: 266px;
+      width: 320px;
+      border-width: 2px;
+      border-radius: 6px;
+      box-sizing: border-box;
+      border-color: $address-add-new-border-color;
+      text-align: center;
+      display: table-cell;
+      vertical-align: middle;
+      cursor: pointer;
+      .address-add-icon {
+        a {
+          svg {
+            margin-top: 30%;
+            width: 30px;
+            height: 30px;
+          }
+        }
+      }
+      .text-div {
+        margin-top: 10px;
+        color: $address-text;
+      }
+      .spinner-div {
+        margin-left: 40%;
+      }
+    }
+    .rapido-add-address-item {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: left;
+      margin-right: 1%;
+      margin-top: 1%;
+      height: 266px;
+      width: 320px;
+      border-radius: 6px;
+      border-width: 1px;
+      box-sizing: border-box;
+      border-color: $address-item-border-color;
+      box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.16);
+      border-style: solid;
+      .address-text {
+        margin-top: 2%;
+        margin-left: 2%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: left;
+      }
+      .card-actions {
         display: flex;
         flex-direction: row;
-        justify-content: center;
         flex-wrap: wrap;
-        width:100%;
-        height: 100%;
-        padding: 2%;
-        .rapido-add-address-icon {
-            margin-right: 1%;
-            margin-top: 1%;
-            border-style: dashed;
-            height: 266px;
-            width: 320px;
-            border-width: 2px;
-            border-radius: 6px;
-            box-sizing: border-box;
-            border-color: $address-add-new-border-color;
-            text-align: center;
-            display: table-cell;
-            vertical-align: middle;
-            cursor: pointer;
-            .address-add-icon {
-                a {
-                    svg {
-                        margin-top: 30%;
-                        width: 30px;
-                        height: 30px;
-                    }
-                }
-            }
-            .text-div {
-                margin-top: 10px;
-                color: $address-text;
-            }
-            .spinner-div {
-                margin-left: 40%;
-            }
+        justify-content: left;
+        a {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: left;
+          margin-left: 10px;
+          margin-right: 10px;
+          cursor: pointer;
+          color: $address-action;
         }
-        .rapido-add-address-item {
-            display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
-            justify-content: left;
-            margin-right: 1%;
-            margin-top: 1%;
-            height: 266px;
-            width: 320px;
-            border-radius: 6px;
-            border-width: 1px;
-            box-sizing: border-box;
-            border-color: $address-item-border-color;
-            box-shadow: 0 2px 1px 0 rgba(0,0,0,.16);
-            border-style: solid;
-            .address-text {
-                margin-top: 2%;
-                margin-left: 2%;
-                display: flex;
-                flex-direction: column;
-                flex-wrap: wrap;
-                justify-content: left;
-    
-            }
-            .card-actions {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: left;
-                a {
-                    display: flex;
-                    flex-direction: row;
-                    flex-wrap: wrap;
-                    justify-content: left;
-                    margin-left: 10px;
-                    margin-right: 10px;
-                    cursor: pointer;
-                    color: $address-action;
-                }
-            }
-        }
-    }   
+      }
+    }
+  }
 }

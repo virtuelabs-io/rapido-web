@@ -1,46 +1,47 @@
-import { Injectable } from '@angular/core';
-import { RapidoHttpService } from '../commons/rapido-http.service';
-import { HttpClient } from '@angular/common/http';
-import { of } from 'rxjs';
-import { RatingsMockData } from './ratings.mock.data';
-import { RatingsService } from './ratings.service';
-import { ProfileService } from '../authentication/profile/profile.service';
+import { Injectable } from "@angular/core";
+import { RapidoHttpService } from "../commons/rapido-http.service";
+import { HttpClient } from "@angular/common/http";
+import { of } from "rxjs";
+import { RatingsMockData } from "./ratings.mock.data";
+import { RatingsService } from "./ratings.service";
+import { ProfileService } from "../authentication/profile/profile.service";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
+export class RatingsMockService extends RatingsService {
+  constructor(
+    protected _http?: HttpClient,
+    protected _profileService?: ProfileService
+  ) {
+    super(_http, _profileService);
+  }
 
-export class RatingsMockService extends RatingsService{
+  getProductRatingsSummary() {
+    return of(RatingsMockData.productRatingsSummary);
+  }
 
-    constructor(protected _http?: HttpClient, protected _profileService?: ProfileService) {
-        super(_http, _profileService)
-    }
+  getProductRatings() {
+    return of(RatingsMockData.ratingDetails);
+  }
 
-    getProductRatingsSummary() {
-        return of(RatingsMockData.productRatingsSummary)
-    }
+  helpfulRatingIncrement() {
+    return of(RatingsMockData.helpfulRatingIncrement);
+  }
 
-    getProductRatings() {
-        return of(RatingsMockData.ratingDetails)
-    }
-    
-    helpfulRatingIncrement() {
-        return of(RatingsMockData.helpfulRatingIncrement)
-    }
+  deactivateRating() {
+    return of(RatingsMockData.deactivateRating);
+  }
 
-    deactivateRating() {
-        return of(RatingsMockData.deactivateRating)
-    }
-    
-    getAllCustomerRatings(){
-        return of(RatingsMockData.ratingDetails)
-    }
+  getAllCustomerRatings() {
+    return of(RatingsMockData.ratingDetails);
+  }
 
-    createRating(){
-        return of(RatingsMockData.createRating)
-    }
+  createRating() {
+    return of(RatingsMockData.createRating);
+  }
 
-    updateRating(){
-        return of(RatingsMockData.updateRating)
-    }
+  updateRating() {
+    return of(RatingsMockData.updateRating);
+  }
 }

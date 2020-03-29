@@ -1,8 +1,12 @@
 export class Response {
-  constructor(private _code: number,private _message: string, private _data?: any){}
+  constructor(
+    private _code: number,
+    private _message: string,
+    private _data?: any
+  ) {}
 
   set code(code) {
-    this._code = code
+    this._code = code;
   }
 
   get code() {
@@ -10,7 +14,7 @@ export class Response {
   }
 
   set message(message) {
-    this._message = message
+    this._message = message;
   }
 
   get message() {
@@ -18,7 +22,7 @@ export class Response {
   }
 
   set data(data) {
-    this._code = data
+    this._code = data;
   }
 
   get data() {

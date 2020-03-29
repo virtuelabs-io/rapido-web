@@ -1,7 +1,6 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@import '~@angular/material/theming';
+@import "~@angular/material/theming";
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -19,7 +18,11 @@ $rapido-web-accent: mat-palette($mat-pink, A200, A100, A400);
 $rapido-web-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$rapido-web-theme: mat-light-theme($rapido-web-primary, $rapido-web-accent, $rapido-web-warn);
+$rapido-web-theme: mat-light-theme(
+  $rapido-web-primary,
+  $rapido-web-accent,
+  $rapido-web-warn
+);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -30,50 +33,57 @@ $rapido-web-theme: mat-light-theme($rapido-web-primary, $rapido-web-accent, $rap
 @import "./assets/scss/custom-bootstrap-variables.scss";
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 .alert-danger-background {
-    background-color: #262626 !important;
+  background-color: #262626 !important;
 }
 
 .alert-danger-text {
-    color: #fba0a0 !important;
+  color: #fba0a0 !important;
 }
 
 .alert-success-text {
-    color: #b3ead2 !important;
+  color: #b3ead2 !important;
 }
 
 .alert-warning-text {
-    color: #fdeda6 !important;
+  color: #fdeda6 !important;
 }
 
-.mat-checkbox-layout { white-space: normal !important; }
+.mat-checkbox-layout {
+  white-space: normal !important;
+}
 .text-align {
-    text-align: center;
+  text-align: center;
 }
 
-.mat-horizontal-stepper-header{
-    pointer-events: none !important;
+.mat-horizontal-stepper-header {
+  pointer-events: none !important;
 }
-.bg-primary{
-    background: $primary;
+.bg-primary {
+  background: $primary;
 }
 *:focus {
-    outline: none !important;
+  outline: none !important;
 }
 
-
 .text-clamp {
-    overflow: hidden;
-    display: -webkit-box !important;
-    /*! autoprefixer: off */
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    word-wrap:break-word;
- }
+  overflow: hidden;
+  display: -webkit-box !important;
+  /*! autoprefixer: off */
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  word-wrap: break-word;
+}
 
 .size-2 {
-    height: 1.6rem;
-    width: 1.6rem;
- }
+  height: 1.6rem;
+  width: 1.6rem;
+}

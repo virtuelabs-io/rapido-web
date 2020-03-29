@@ -1,102 +1,130 @@
 <div>
   <section>
-     <div class="filtersL">
-         <!-- Current selections starts -->
-         <mat-accordion multi="true" displayMode="flat" *ngIf='searchedText'>
-               <div class="h6 pt-4">Current selections</div>
-               <mat-expansion-panel expanded="true">
-                     <mat-nav-list>
-                        <div class="d-flex flex-wrap" >
-                           <app-pill-badge 
-                              *ngIf='searchedText'
-                              [selType] = 'searchedText'>
-                           </app-pill-badge>
-                           <app-pill-badge 
-                              *ngIf='releatedSearch'
-                              [selValue] = 'releatedSearch'
-                              selType = 'Releated'
-                              (removeSelection) = removeReleatedSearch(fieldsQuery)>
-                           </app-pill-badge>
-                           <app-pill-badge 
-                              *ngIf='fieldsQuery.price.q'
-                              selType = 'Price'
-                              [selValue] = 'fieldsQuery.price.text'
-                              (removeSelection) = removePrice()>
-                           </app-pill-badge>
-                           <app-pill-badge 
-                              *ngIf='fieldsQuery.rating.q'
-                              selType = 'Rating'
-                              [selValue] = 'fieldsQuery.rating.text'
-                              (removeSelection) = removeRating(fieldsQuery)>
-                           </app-pill-badge>
-                        </div>
-                     </mat-nav-list>
-               </mat-expansion-panel>
-         </mat-accordion> 
-         <!-- Current selections ends -->
+    <div class="filtersL">
+      <!-- Current selections starts -->
+      <mat-accordion multi="true" displayMode="flat" *ngIf="searchedText">
+        <div class="h6 pt-4">Current selections</div>
+        <mat-expansion-panel expanded="true">
+          <mat-nav-list>
+            <div class="d-flex flex-wrap">
+              <app-pill-badge *ngIf="searchedText" [selType]="searchedText">
+              </app-pill-badge>
+              <app-pill-badge
+                *ngIf="releatedSearch"
+                [selValue]="releatedSearch"
+                selType="Releated"
+                (removeSelection)="removeReleatedSearch(fieldsQuery)"
+              >
+              </app-pill-badge>
+              <app-pill-badge
+                *ngIf="fieldsQuery.price.q"
+                selType="Price"
+                [selValue]="fieldsQuery.price.text"
+                (removeSelection)="removePrice()"
+              >
+              </app-pill-badge>
+              <app-pill-badge
+                *ngIf="fieldsQuery.rating.q"
+                selType="Rating"
+                [selValue]="fieldsQuery.rating.text"
+                (removeSelection)="removeRating(fieldsQuery)"
+              >
+              </app-pill-badge>
+            </div>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <!-- Current selections ends -->
 
-         <!-- Products Hierarchy starts -->
-         <mat-accordion multi="true" displayMode="flat" *ngIf='category'>
-               <div class="h6 pt-4">Products Hierarchy</div>
-               <mat-expansion-panel expanded="false">
-                     <mat-expansion-panel-header >
-                           <mat-panel-title>
-                              {{category}}
-                           </mat-panel-title>
-                        </mat-expansion-panel-header>
+      <!-- Products Hierarchy starts -->
+      <mat-accordion multi="true" displayMode="flat" *ngIf="category">
+        <div class="h6 pt-4">Products Hierarchy</div>
+        <mat-expansion-panel expanded="false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{ category }}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
 
-                     <mat-nav-list>
-                           <mat-list-item *ngFor="let item of this.subcategories" (click)="onPressItem(searchedText, item)" >
-                                 {{item}}
-                                 </mat-list-item>
-                     </mat-nav-list>
-               </mat-expansion-panel>
-         </mat-accordion> 
-         <!-- Products Hierarchy ends -->
+          <mat-nav-list>
+            <mat-list-item
+              *ngFor="let item of this.subcategories"
+              (click)="onPressItem(searchedText, item)"
+            >
+              {{ item }}
+            </mat-list-item>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <!-- Products Hierarchy ends -->
 
-      <mat-accordion multi="true" displayMode="flat" *ngFor="let item of filterData">
-           <div class="h6 pt-4">{{item.headerText}}</div>
-           <mat-expansion-panel [expanded]="item.expanded" *ngFor="let panelList of item.panel" >
-              <mat-expansion-panel-header >
-                 <mat-panel-title>
-                    {{panelList.panelTitle}}
-                 </mat-panel-title>
-                 <div *ngIf="panelList.panelType==='sort' && sortByType.value" class="bg-gradient-primary rounded-pill pl-1 pr-1 mr-4">
-                    <b class="text-capitalize">{{sortByType.value}} </b>
-                    <i class="fa" 
-                        [ngClass]="{
-                           'fa-sort-amount-asc':sortByType.asc,
-                           'fa-sort-amount-desc':sortByType.desc
-                        }">
-                     </i>
-                 </div>
-              </mat-expansion-panel-header>
-              <mat-nav-list [ngSwitch]="panelList.panelType">
-                 <div *ngSwitchCase="'link'">
-                    <mat-list-item (click)="onPressItem(searchedText, panelData)" *ngFor="let panelData of panelList.panelData">
-                    <a matLine>{{panelData}}</a>
-                    </mat-list-item>
-                 </div>
-                 <div *ngSwitchCase="'sort'">
-                    <mat-list-item (click)="onPressSort(iterator.key)" *ngFor="let iterator of panelList.panelData">
-                    <a matLine>{{iterator.desc}}</a>
-                    </mat-list-item>
-                 </div>
-                 <div *ngSwitchCase="'rating'">
-                    <mat-list-item (click)="onPressRating(val)" *ngFor='let val of panelList.panelData'>
-                    <!-- Based on rating value filters are applied -->
-                    <a matLine >
-                       <app-rating [readonly]=true [currentRate]='val'></app-rating>
-                       <span class='pl-2' >{{val}} +</span>
-                    </a>
-                    </mat-list-item>
-                 </div>
-                 <div *ngSwitchCase="'priceslider'">
-                    <range-slider [rangeData]='panelList.panelData'></range-slider>
-                 </div>
-              </mat-nav-list>
-           </mat-expansion-panel>
-        </mat-accordion>
-     </div>
+      <mat-accordion
+        multi="true"
+        displayMode="flat"
+        *ngFor="let item of filterData"
+      >
+        <div class="h6 pt-4">{{ item.headerText }}</div>
+        <mat-expansion-panel
+          [expanded]="item.expanded"
+          *ngFor="let panelList of item.panel"
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{ panelList.panelTitle }}
+            </mat-panel-title>
+            <div
+              *ngIf="panelList.panelType === 'sort' && sortByType.value"
+              class="bg-gradient-primary rounded-pill pl-1 pr-1 mr-4"
+            >
+              <b class="text-capitalize">{{ sortByType.value }} </b>
+              <i
+                class="fa"
+                [ngClass]="{
+                  'fa-sort-amount-asc': sortByType.asc,
+                  'fa-sort-amount-desc': sortByType.desc
+                }"
+              >
+              </i>
+            </div>
+          </mat-expansion-panel-header>
+          <mat-nav-list [ngSwitch]="panelList.panelType">
+            <div *ngSwitchCase="'link'">
+              <mat-list-item
+                (click)="onPressItem(searchedText, panelData)"
+                *ngFor="let panelData of panelList.panelData"
+              >
+                <a matLine>{{ panelData }}</a>
+              </mat-list-item>
+            </div>
+            <div *ngSwitchCase="'sort'">
+              <mat-list-item
+                (click)="onPressSort(iterator.key)"
+                *ngFor="let iterator of panelList.panelData"
+              >
+                <a matLine>{{ iterator.desc }}</a>
+              </mat-list-item>
+            </div>
+            <div *ngSwitchCase="'rating'">
+              <mat-list-item
+                (click)="onPressRating(val)"
+                *ngFor="let val of panelList.panelData"
+              >
+                <!-- Based on rating value filters are applied -->
+                <a matLine>
+                  <app-rating
+                    [readonly]="true"
+                    [currentRate]="val"
+                  ></app-rating>
+                  <span class="pl-2">{{ val }} +</span>
+                </a>
+              </mat-list-item>
+            </div>
+            <div *ngSwitchCase="'priceslider'">
+              <range-slider [rangeData]="panelList.panelData"></range-slider>
+            </div>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
   </section>
 </div>

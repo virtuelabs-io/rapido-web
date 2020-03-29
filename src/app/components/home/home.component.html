@@ -4,42 +4,119 @@
 
 <div class="home-div">
   <div class="card-holder">
-    <app-home-card [cardDetails]=card class="app-home-card" *ngFor="let card of cardDetails"></app-home-card>  
+    <app-home-card
+      [cardDetails]="card"
+      class="app-home-card"
+      *ngFor="let card of cardDetails"
+    ></app-home-card>
   </div>
 
   <div class="card-holder">
     <div class="banner-card" (click)="handleSale()">
-      <img  src="{{banner}}">
+      <img src="{{ banner }}" />
     </div>
-    <app-home-card [cardDetails]=card class="app-home-card" *ngFor="let card of bannerCard"></app-home-card>  
+    <app-home-card
+      [cardDetails]="card"
+      class="app-home-card"
+      *ngFor="let card of bannerCard"
+    ></app-home-card>
   </div>
 
   <div class="card-holder">
-    <app-home-card-flip [cardDetails]=card class="app-home-card" *ngFor="let card of cardDetails"></app-home-card-flip>  
+    <app-home-card-flip
+      [cardDetails]="card"
+      class="app-home-card"
+      *ngFor="let card of cardDetails"
+    ></app-home-card-flip>
   </div>
 
   <div class="carousel-holder">
-    <app-carousel class="rapido-desktop-component" [carouselConfig]="desktopConfig" [carouselCard]="carousel.FrequentlyBought.data" [carouselTitle]="carousel.FrequentlyBought.title"></app-carousel>
-    <app-carousel class="rapido-tablet-component"  [carouselConfig]="tabletConfig"  [carouselCard]="carousel.FrequentlyBought.data" [carouselTitle]="carousel.FrequentlyBought.title"></app-carousel>
-    <app-carousel class="rapido-mobile-component"  [carouselConfig]="mobileConfig"  [carouselCard]="carousel.FrequentlyBought.data" [carouselTitle]="carousel.FrequentlyBought.title"></app-carousel>
+    <app-carousel
+      class="rapido-desktop-component"
+      [carouselConfig]="desktopConfig"
+      [carouselCard]="carousel.FrequentlyBought.data"
+      [carouselTitle]="carousel.FrequentlyBought.title"
+    ></app-carousel>
+    <app-carousel
+      class="rapido-tablet-component"
+      [carouselConfig]="tabletConfig"
+      [carouselCard]="carousel.FrequentlyBought.data"
+      [carouselTitle]="carousel.FrequentlyBought.title"
+    ></app-carousel>
+    <app-carousel
+      class="rapido-mobile-component"
+      [carouselConfig]="mobileConfig"
+      [carouselCard]="carousel.FrequentlyBought.data"
+      [carouselTitle]="carousel.FrequentlyBought.title"
+    ></app-carousel>
   </div>
 
   <div class="carousel-holder">
-    <app-carousel-flip class="rapido-desktop-component" [carouselConfig]="desktopConfig" [carouselCard]="carousel.newAddedProductSet.data" [carouselTitle]="carousel.newAddedProductSet.title"></app-carousel-flip>
-    <app-carousel-flip class="rapido-tablet-component"  [carouselConfig]="tabletConfig"  [carouselCard]="carousel.newAddedProductSet.data" [carouselTitle]="carousel.newAddedProductSet.title"></app-carousel-flip>
-    <app-carousel-flip class="rapido-mobile-component"  [carouselConfig]="mobileConfig"  [carouselCard]="carousel.newAddedProductSet.data" [carouselTitle]="carousel.newAddedProductSet.title"></app-carousel-flip>
+    <app-carousel-flip
+      class="rapido-desktop-component"
+      [carouselConfig]="desktopConfig"
+      [carouselCard]="carousel.newAddedProductSet.data"
+      [carouselTitle]="carousel.newAddedProductSet.title"
+    ></app-carousel-flip>
+    <app-carousel-flip
+      class="rapido-tablet-component"
+      [carouselConfig]="tabletConfig"
+      [carouselCard]="carousel.newAddedProductSet.data"
+      [carouselTitle]="carousel.newAddedProductSet.title"
+    ></app-carousel-flip>
+    <app-carousel-flip
+      class="rapido-mobile-component"
+      [carouselConfig]="mobileConfig"
+      [carouselCard]="carousel.newAddedProductSet.data"
+      [carouselTitle]="carousel.newAddedProductSet.title"
+    ></app-carousel-flip>
   </div>
 
   <div class="carousel-holder">
-    <app-carousel class="rapido-desktop-component" [carouselConfig]="desktopConfig" [carouselCard]="carousel.RecommendedList.data" [carouselTitle]="carousel.RecommendedList.title"></app-carousel>
-    <app-carousel class="rapido-tablet-component"  [carouselConfig]="tabletConfig"  [carouselCard]="carousel.RecommendedList.data" [carouselTitle]="carousel.RecommendedList.title"></app-carousel>
-    <app-carousel class="rapido-mobile-component"  [carouselConfig]="mobileConfig"  [carouselCard]="carousel.RecommendedList.data" [carouselTitle]="carousel.RecommendedList.title"></app-carousel>
+    <app-carousel
+      class="rapido-desktop-component"
+      [carouselConfig]="desktopConfig"
+      [carouselCard]="carousel.RecommendedList.data"
+      [carouselTitle]="carousel.RecommendedList.title"
+    ></app-carousel>
+    <app-carousel
+      class="rapido-tablet-component"
+      [carouselConfig]="tabletConfig"
+      [carouselCard]="carousel.RecommendedList.data"
+      [carouselTitle]="carousel.RecommendedList.title"
+    ></app-carousel>
+    <app-carousel
+      class="rapido-mobile-component"
+      [carouselConfig]="mobileConfig"
+      [carouselCard]="carousel.RecommendedList.data"
+      [carouselTitle]="carousel.RecommendedList.title"
+    ></app-carousel>
   </div>
-  <app-carousel-scroll class="carousel-scroll" [CarouselConfig]="desktopConfig" [carouselCard]="carousel.BrowsingHistory.data" [carouselTitle]="carousel.BrowsingHistory.title"></app-carousel-scroll>
+  <app-carousel-scroll
+    class="carousel-scroll"
+    [CarouselConfig]="desktopConfig"
+    [carouselCard]="carousel.BrowsingHistory.data"
+    [carouselTitle]="carousel.BrowsingHistory.title"
+  ></app-carousel-scroll>
 
   <div class="carousel-holder">
-    <app-carousel class="rapido-desktop-component" [carouselConfig]="desktopConfig" [carouselCard]="carousel.FrequentlyBoughtByMe.data" [carouselTitle]="carousel.FrequentlyBoughtByMe.title"></app-carousel>
-    <app-carousel class="rapido-tablet-component"  [carouselConfig]="tabletConfig"  [carouselCard]="carousel.FrequentlyBoughtByMe.data" [carouselTitle]="carousel.FrequentlyBoughtByMe.title"></app-carousel>
-    <app-carousel class="rapido-mobile-component"  [carouselConfig]="mobileConfig"  [carouselCard]="carousel.FrequentlyBoughtByMe.data" [carouselTitle]="carousel.FrequentlyBoughtByMe.title"></app-carousel>
+    <app-carousel
+      class="rapido-desktop-component"
+      [carouselConfig]="desktopConfig"
+      [carouselCard]="carousel.FrequentlyBoughtByMe.data"
+      [carouselTitle]="carousel.FrequentlyBoughtByMe.title"
+    ></app-carousel>
+    <app-carousel
+      class="rapido-tablet-component"
+      [carouselConfig]="tabletConfig"
+      [carouselCard]="carousel.FrequentlyBoughtByMe.data"
+      [carouselTitle]="carousel.FrequentlyBoughtByMe.title"
+    ></app-carousel>
+    <app-carousel
+      class="rapido-mobile-component"
+      [carouselConfig]="mobileConfig"
+      [carouselCard]="carousel.FrequentlyBoughtByMe.data"
+      [carouselTitle]="carousel.FrequentlyBoughtByMe.title"
+    ></app-carousel>
   </div>
 </div>

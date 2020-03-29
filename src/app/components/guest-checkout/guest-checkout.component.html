@@ -1,76 +1,136 @@
 <div class="main-div">
-  <mat-horizontal-stepper [linear]="true" #stepper [selectedIndex]="stepperIndex">
+  <mat-horizontal-stepper
+    [linear]="true"
+    #stepper
+    [selectedIndex]="stepperIndex"
+  >
     <!-- Delivery address step-->
     <mat-step [stepControl]="addressFormGroup">
       <ng-template matStepLabel>Select Delivery Address</ng-template>
-        <div class="address-div">
-          <div class="add-address-main">
-            <form class="form-details" [formGroup]="addressFormGroup" novalidate>
-              <mat-form-field>
-                <input matInput placeholder="Name"  formControlName="name">
-                <mat-error *ngIf="hasError('name', 'required')">Name is required</mat-error>
-              </mat-form-field>
-              <mat-form-field>
-                <span matPrefix>{{countryCode}} &nbsp;</span>
-                <input matInput placeholder="Moble Number"  formControlName="mobileNumber">
-                <mat-error *ngIf="hasError('mobileNumber', 'required')">Mobile Number is required</mat-error>
-                <mat-error *ngIf="hasError('mobileNumber', 'pattern') || hasError('mobileNumber', 'min') || hasError('mobileNumber', 'max') ">Invalid entry</mat-error>
-              </mat-form-field>
-              <mat-form-field>
-                <input matInput placeholder="Enter your email"  formControlName="email">
-                <mat-error *ngIf="hasError('email', 'required')">email ID is required</mat-error>
-                <mat-error *ngIf="hasError('email', 'email')">Incorrect email ID</mat-error>
-              </mat-form-field>
-              <mat-form-field>
-                <input matInput placeholder="Address Line 1"  formControlName="add1">
-                <mat-error *ngIf="hasError('add1', 'required')">Address1 is required</mat-error>
-              </mat-form-field>
-              <mat-form-field>
-                <input matInput placeholder="Address Line 2"  formControlName="add2">
-                <mat-error *ngIf="hasError('add2', 'required')">Address2 is required</mat-error>
-              </mat-form-field>
-              <mat-form-field>
-                <input matInput placeholder="Town / City"  formControlName="town_city">
-                <mat-error *ngIf="hasError('town_city', 'required')">Town/City is required</mat-error>
-              </mat-form-field>
-              <mat-form-field>
-                <input matInput placeholder="County"  formControlName="county">
-                <mat-error *ngIf="hasError('county', 'required')">County is required</mat-error>
-              </mat-form-field>
-              <mat-form-field>
-                <input matInput placeholder="Postcode" formControlName="postCode">
-                <mat-error *ngIf="hasError('postCode', 'required')">Post Code is required</mat-error>
-              </mat-form-field>
-              <mat-form-field>
-                <input matInput placeholder="Country"  formControlName="country">
-                <mat-error *ngIf="hasError('country', 'required')">Country is required</mat-error>
-              </mat-form-field>
-              <mat-card-actions>
-                <button class="spacing" mat-flat-button color="primary" type="submit" [disabled]="!addressFormGroup.valid" (click)="createGuestOrder(addressFormGroup.value)">
-                    Deliver to this Address
-                </button>
-              </mat-card-actions>
-            </form>
-          </div>
-          <div class="delivery-pricing">
-
-          </div>
-        </div>    
+      <div class="address-div">
+        <div class="add-address-main">
+          <form class="form-details" [formGroup]="addressFormGroup" novalidate>
+            <mat-form-field>
+              <input matInput placeholder="Name" formControlName="name" />
+              <mat-error *ngIf="hasError('name', 'required')"
+                >Name is required</mat-error
+              >
+            </mat-form-field>
+            <mat-form-field>
+              <span matPrefix>{{ countryCode }} &nbsp;</span>
+              <input
+                matInput
+                placeholder="Moble Number"
+                formControlName="mobileNumber"
+              />
+              <mat-error *ngIf="hasError('mobileNumber', 'required')"
+                >Mobile Number is required</mat-error
+              >
+              <mat-error
+                *ngIf="
+                  hasError('mobileNumber', 'pattern') ||
+                  hasError('mobileNumber', 'min') ||
+                  hasError('mobileNumber', 'max')
+                "
+                >Invalid entry</mat-error
+              >
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="Enter your email"
+                formControlName="email"
+              />
+              <mat-error *ngIf="hasError('email', 'required')"
+                >email ID is required</mat-error
+              >
+              <mat-error *ngIf="hasError('email', 'email')"
+                >Incorrect email ID</mat-error
+              >
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="Address Line 1"
+                formControlName="add1"
+              />
+              <mat-error *ngIf="hasError('add1', 'required')"
+                >Address1 is required</mat-error
+              >
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="Address Line 2"
+                formControlName="add2"
+              />
+              <mat-error *ngIf="hasError('add2', 'required')"
+                >Address2 is required</mat-error
+              >
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="Town / City"
+                formControlName="town_city"
+              />
+              <mat-error *ngIf="hasError('town_city', 'required')"
+                >Town/City is required</mat-error
+              >
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="County" formControlName="county" />
+              <mat-error *ngIf="hasError('county', 'required')"
+                >County is required</mat-error
+              >
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="Postcode"
+                formControlName="postCode"
+              />
+              <mat-error *ngIf="hasError('postCode', 'required')"
+                >Post Code is required</mat-error
+              >
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Country" formControlName="country" />
+              <mat-error *ngIf="hasError('country', 'required')"
+                >Country is required</mat-error
+              >
+            </mat-form-field>
+            <mat-card-actions>
+              <button
+                class="spacing"
+                mat-flat-button
+                color="primary"
+                type="submit"
+                [disabled]="!addressFormGroup.valid"
+                (click)="createGuestOrder(addressFormGroup.value)"
+              >
+                Deliver to this Address
+              </button>
+            </mat-card-actions>
+          </form>
+        </div>
+        <div class="delivery-pricing"></div>
+      </div>
     </mat-step>
 
-  <!-- payment step -->
+    <!-- payment step -->
     <mat-step [stepControl]="addressFormGroup">
       <ng-template matStepLabel>Make a payment</ng-template>
       <form>
         <div class="payment-div">
-          <div class="order-address-div"  *ngFor="let order of orderItems">
+          <div class="order-address-div" *ngFor="let order of orderItems">
             <div class="order-div">
               <div class="title-div">
                 <svg>
                   <use xlink:href="#box" />
                 </svg>
                 <h4>
-                    Order Items
+                  Order Items
                 </h4>
               </div>
               <div class="cart-columns">
@@ -83,12 +143,22 @@
               </div>
               <div class="order-items-main">
                 <div class="order-items">
-                  <div class="order-items-list" *ngFor="let item of orders[order].items">
+                  <div
+                    class="order-items-list"
+                    *ngFor="let item of orders[order].items"
+                  >
                     <div class="item-thumbnail">
-                      <img class="image" src="{{ imageUrl + products[item.product_id].images[0] }}">
+                      <img
+                        class="image"
+                        src="{{
+                          imageUrl + products[item.product_id].images[0]
+                        }}"
+                      />
                     </div>
                     <div class="item-desc">
-                      <p><strong>{{ products[item.product_id].name }}</strong></p>
+                      <p>
+                        <strong>{{ products[item.product_id].name }}</strong>
+                      </p>
                     </div>
                     <div class="item-quantity">
                       <span>{{ item.quantity }}</span>
@@ -102,53 +172,77 @@
                 </div>
               </div>
               <div class="order-charges">
-                <span> Subtotal : {{ currency }}<span>{{ itemTotal }}</span></span>
+                <span>
+                  Subtotal : {{ currency }}<span>{{ itemTotal }}</span></span
+                >
               </div>
               <div class="order-charges">
-                <span>+ VAT : {{ currency }}<span> {{ vatTotal }}</span></span>
+                <span
+                  >+ VAT : {{ currency }}<span> {{ vatTotal }}</span></span
+                >
               </div>
               <div class="order-charges">
-                <span>+ Delivery Charges : {{ currency }}<span> {{ deliveryCharges }}</span></span>
+                <span
+                  >+ Delivery Charges : {{ currency
+                  }}<span> {{ deliveryCharges }}</span></span
+                >
               </div>
               <div class="order-total">
-                <p>Order Total : {{ currency }}<span> {{ orderTotal }}</span></p>
+                <p>
+                  Order Total : {{ currency }}<span> {{ orderTotal }}</span>
+                </p>
               </div>
             </div>
-            
+
             <div class="order-address">
               <div class="add-title-div">
                 <h5 class="title-div">Delivery Address</h5>
               </div>
-                <div class="address-text">
-                  <strong> {{ orders[order]['address'].full_name }} </strong>
-                  <br/><p>{{ orders[order]['address'].addr_1 }}
-                  <br/> {{ orders[order]['address'].addr_2 }}
-                  <br/> {{ orders[order]['address'].city }} 
-                  <br/> {{ orders[order]['address'].county }}, {{ orders[order]['address'].postcode }}
-                  <br/> {{ orders[order]['address'].country }}
-                </div>
-                <p class="delivery-time">{{deliveryDateInterval}}</p>
+              <div class="address-text">
+                <strong> {{ orders[order]["address"].full_name }} </strong>
+                <br />
+                <p>
+                  {{ orders[order]["address"].addr_1 }} <br />
+                  {{ orders[order]["address"].addr_2 }} <br />
+                  {{ orders[order]["address"].city }} <br />
+                  {{ orders[order]["address"].county }},
+                  {{ orders[order]["address"].postcode }} <br />
+                  {{ orders[order]["address"].country }}
+                </p>
+              </div>
+
+              <p class="delivery-time">{{ deliveryDateInterval }}</p>
             </div>
           </div>
 
           <div class="pay-div">
             <div class="icon-title">
               <svg>
-                <use xlink:href="#give-money"/>
+                <use xlink:href="#give-money" />
               </svg>
               <h4>Payment</h4>
             </div>
             <div class="payment-det">
               <mat-form-field class="">
-                <input matInput [(ngModel)]="registeredEmail" name="email" placeholder="Invoice sent to">
+                <input
+                  matInput
+                  [(ngModel)]="registeredEmail"
+                  name="email"
+                  placeholder="Invoice sent to"
+                />
               </mat-form-field>
-              <div id="card-element" class="field"></div><br>
-                <div class="buy-cart-button">
-                  <button class="btn btn-primary buy-button" (click)="buy()">Pay {{ currency }}{{ orderTotal }}</button>
-                <button class="btn btn-primary buy-button" routerLink="/cart">Edit Order</button>
-                </div>
+              <div id="card-element" class="field"></div>
+              <br />
+              <div class="buy-cart-button">
+                <button class="btn btn-primary buy-button" (click)="buy()">
+                  Pay {{ currency }}{{ orderTotal }}
+                </button>
+                <button class="btn btn-primary buy-button" routerLink="/cart">
+                  Edit Order
+                </button>
               </div>
             </div>
+          </div>
         </div>
       </form>
     </mat-step>
@@ -157,21 +251,24 @@
       <ng-template matStepLabel>Order Details</ng-template>
       <form>
         <div class="payment-div">
-          <div class="order-address-div"  *ngFor="let order of orderItems">
+          <div class="order-address-div" *ngFor="let order of orderItems">
             <div class="order-div">
               <div class="title-div">
                 <svg>
                   <use xlink:href="#box" />
                 </svg>
                 <h4>
-                    Order Summary
+                  Order Summary
                 </h4>
               </div>
               <div class="thanks-div">
                 <p>Thank you for shopping with us !</p>
               </div>
               <div class="order-id-date">
-                  <p>Ordered On: {{ orderedDate }}  <span> |  Order#: {{ order }}</span></p>
+                <p>
+                  Ordered On: {{ orderedDate }}
+                  <span> | Order#: {{ order }}</span>
+                </p>
               </div>
               <div class="cart-columns">
                 <div class="cart-col-quan">
@@ -183,17 +280,35 @@
               </div>
               <div class="ordered-items-main">
                 <div class="order-items">
-                  <div class="order-items-list" *ngFor="let item of orders[order].items">
+                  <div
+                    class="order-items-list"
+                    *ngFor="let item of orders[order].items"
+                  >
                     <div class="order-item-status">
-                      <span class="status-label-success" *ngIf="orders[order].category != cancelledStatus">{{ orders[order].category }}</span>
-                      <span class="status-label-cancelled" *ngIf="orders[order].category == cancelledStatus">{{ orders[order].category }}</span>
+                      <span
+                        class="status-label-success"
+                        *ngIf="orders[order].category != cancelledStatus"
+                        >{{ orders[order].category }}</span
+                      >
+                      <span
+                        class="status-label-cancelled"
+                        *ngIf="orders[order].category == cancelledStatus"
+                        >{{ orders[order].category }}</span
+                      >
                     </div>
                     <div class="product-prop">
                       <div class="item-thumbnail">
-                        <img class="image" src="{{ imageUrl + products[item.product_id].images[0] }}">
+                        <img
+                          class="image"
+                          src="{{
+                            imageUrl + products[item.product_id].images[0]
+                          }}"
+                        />
                       </div>
                       <div class="item-desc">
-                        <p><strong>{{ products[item.product_id].name }}</strong></p>
+                        <p>
+                          <strong>{{ products[item.product_id].name }}</strong>
+                        </p>
                       </div>
                       <div class="item-quantity">
                         <span>{{ item.quantity }}</span>
@@ -208,35 +323,48 @@
                 </div>
               </div>
               <div class="order-charges">
-                <span> Subtotal : {{ currency }}<span>{{ itemTotal }}</span></span>
+                <span>
+                  Subtotal : {{ currency }}<span>{{ itemTotal }}</span></span
+                >
               </div>
               <div class="order-charges">
-                <span>+ VAT : {{ currency }}<span> {{ vatTotal }}</span></span>
+                <span
+                  >+ VAT : {{ currency }}<span> {{ vatTotal }}</span></span
+                >
               </div>
               <div class="order-charges">
-                <span>+ Delivery Charges : {{ currency }}<span> {{ deliveryCharges }}</span></span>
+                <span
+                  >+ Delivery Charges : {{ currency
+                  }}<span> {{ deliveryCharges }}</span></span
+                >
               </div>
               <div class="order-total">
-                <p>Order Total : {{ currency }}<span> {{ orderTotal }}</span></p>
+                <p>
+                  Order Total : {{ currency }}<span> {{ orderTotal }}</span>
+                </p>
               </div>
             </div>
-            
+
             <div class="order-address" style="height: 300px;">
               <div class="add-title-div">
                 <h5 class="title-div">Delivery Address</h5>
               </div>
-                <div class="address-text">
-                  <strong> {{ orders[order]['address'].full_name }} </strong>
-                  <br/><p>{{ orders[order]['address'].addr_1 }}
-                  <br/> {{ orders[order]['address'].addr_2 }}
-                  <br/> {{ orders[order]['address'].city }} 
-                  <br/> {{ orders[order]['address'].county }}, {{ orders[order]['address'].postcode }}
-                  <br/> {{ orders[order]['address'].country }}
-                </div>
+              <div class="address-text">
+                <strong> {{ orders[order]["address"].full_name }} </strong>
+                <br />
+                <p>
+                  {{ orders[order]["address"].addr_1 }} <br />
+                  {{ orders[order]["address"].addr_2 }} <br />
+                  {{ orders[order]["address"].city }} <br />
+                  {{ orders[order]["address"].county }},
+                  {{ orders[order]["address"].postcode }} <br />
+                  {{ orders[order]["address"].country }}
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </form>
-    </mat-step>  
+    </mat-step>
   </mat-horizontal-stepper>
 </div>

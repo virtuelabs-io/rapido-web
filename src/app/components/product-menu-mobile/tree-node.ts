@@ -1,4 +1,4 @@
 export interface TreeNode {
-    name: string;
-    children?: TreeNode[];
-  }
+  name: string;
+  children?: TreeNode[];
+}

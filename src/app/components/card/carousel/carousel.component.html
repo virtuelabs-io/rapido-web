@@ -1,17 +1,28 @@
 <div class="carousel-title">
   {{ carouselTitle }}
 </div>
-<ngb-carousel interval='0'>
+<ngb-carousel interval="0">
   <ng-template ngbSlide class="carousel" *ngFor="let template of carouselData">
     <div class="card-holder">
       <div class="card" *ngFor="let card of template">
         <div class="card-content">
-          <img *ngIf="carouselConfig.image" class="card-image" src="{{ card.image }}" [routerLink]="['/products/details', card.id]">
-          <div *ngIf="carouselConfig.desc" class="card-text text-clamp" [routerLink]="['/products/details', card.id]">
+          <img
+            *ngIf="carouselConfig.image"
+            class="card-image"
+            src="{{ card.image }}"
+            [routerLink]="['/products/details', card.id]"
+          />
+          <div
+            *ngIf="carouselConfig.desc"
+            class="card-text text-clamp"
+            [routerLink]="['/products/details', card.id]"
+          >
             {{ card.name }}
           </div>
-          <div *ngIf="carouselConfig.price" [routerLink]="['/products/details', card.id]">
-
+          <div
+            *ngIf="carouselConfig.price"
+            [routerLink]="['/products/details', card.id]"
+          >
             <span class="card-price">{{ card.currency }}</span>
             <span class="card-price">{{ card.price }}</span>
 
@@ -21,16 +32,20 @@
               <s class="a-price-whole">{{ card.mrpPrice }}</s>
             </span>
 
-              <span *ngIf="+card.offer" class="small p-2">
-                <!-- actualPrice saved -->
-                <span>  {{ card.offer * 100}}% <b>Off</b> </span>
-              </span>
+            <span *ngIf="+card.offer" class="small p-2">
+              <!-- actualPrice saved -->
+              <span> {{ card.offer * 100 }}% <b>Off</b> </span>
+            </span>
           </div>
           <div>
-            <button mat-flat-button color="primary" (click)="handleCart(card.id)">
+            <button
+              mat-flat-button
+              color="primary"
+              (click)="handleCart(card.id)"
+            >
               <span role="status" aria-hidden="true"></span>
               Add to Cart
-          </button>
+            </button>
           </div>
         </div>
       </div>

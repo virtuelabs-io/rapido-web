@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CookieConsentComponent } from './cookie-consent.component';
+import { CookieConsentComponent } from "./cookie-consent.component";
 
-describe('CookieConsentComponent', () => {
+describe("CookieConsentComponent", () => {
   let component: CookieConsentComponent;
   let fixture: ComponentFixture<CookieConsentComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CookieConsentComponent ]
-    })
-    .compileComponents();
+      declarations: [CookieConsentComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('CookieConsentComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

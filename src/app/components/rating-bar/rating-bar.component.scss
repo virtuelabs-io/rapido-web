@@ -1,23 +1,23 @@
 @import "../../../assets/scss/custom-bootstrap-variables.scss";
 
 .rating-bar-indicator {
-    .rating-bar-holder {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        .rate-group {
-            width: 20%;
-            text-align: center;
-        }
-        .indicator {
-            width: 60%;
-            .rate-bar {
-                margin-bottom: 2%;
-            }
-        }
-        .rate-percentage {
-            text-align: center;
-            width: 20%;
-        }
+  .rating-bar-holder {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    .rate-group {
+      width: 20%;
+      text-align: center;
     }
+    .indicator {
+      width: 60%;
+      .rate-bar {
+        margin-bottom: 2%;
+      }
+    }
+    .rate-percentage {
+      text-align: center;
+      width: 20%;
+    }
+  }
 }

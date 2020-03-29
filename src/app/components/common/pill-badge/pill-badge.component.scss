@@ -1,16 +1,16 @@
 @import "../../../../assets/scss/custom-bootstrap-variables.scss";
 
-.main-div{
-    .selText{
-        height: 28.4px;
-        line-height: 20px;
-        text-transform: capitalize;
-    }
-    .closeDingBat{
-        cursor: pointer;
-        border-radius: 50%;
-        height: 20px;
-        background: $white;
-        border: none;
-    }
+.main-div {
+  .selText {
+    height: 28.4px;
+    line-height: 20px;
+    text-transform: capitalize;
+  }
+  .closeDingBat {
+    cursor: pointer;
+    border-radius: 50%;
+    height: 20px;
+    background: $white;
+    border: none;
+  }
 }

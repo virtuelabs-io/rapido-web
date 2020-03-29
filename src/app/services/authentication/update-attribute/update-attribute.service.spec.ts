@@ -1,11 +1,11 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from "@angular/core/testing";
 
-import { UpdateAttributeService } from './update-attribute.service';
+import { UpdateAttributeService } from "./update-attribute.service";
 
-describe('UpdateAttributesService', () => {
+describe("UpdateAttributesService", () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
-  it('should be created', () => {
+  it("should be created", () => {
     const service: UpdateAttributeService = TestBed.get(UpdateAttributeService);
     expect(service).toBeTruthy();
   });

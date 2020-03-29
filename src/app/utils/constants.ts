@@ -1,22 +1,22 @@
-import { environment } from '../../environments/environment';
+import { environment } from "../../environments/environment";
 
 export class Constants {
-  public static RAPIDO_BUILD: string = 'Rapidobuild';
+  public static RAPIDO_BUILD: string = "Rapidobuild";
   public static CUSTOM = "custom:";
   public static POOL_DATA = {
-    UserPoolId : environment.userPoolId,
-    ClientId : environment.clientId
-  }
+    UserPoolId: environment.userPoolId,
+    ClientId: environment.clientId,
+  };
   public static environment = {
     name: environment.name,
     production: environment.production,
     productSearchEndPoint: environment.productSearchEndPoint,
     version: environment.version,
     staticAssets: environment.staticAssets,
-    stripePublicKey: environment.payment.publicKey
-  }
+    stripePublicKey: environment.payment.publicKey,
+  };
 
-  public static PROD_REDIRECT = "https://rapidobuild.com"
+  public static PROD_REDIRECT = "https://rapidobuild.com";
 
   public static RAPIDO_SESSION_ID = "rapido_session_id";
   public static RAPIDO_COOKIES_PERMISSION = "rapido_cookies_permission";
@@ -37,17 +37,23 @@ export class Constants {
   public static NO_MOBILE_NUMBER = "Please enter mobile number";
   public static NO_PASSWORD = "Please enter password";
   public static INVALID_MOBILE_NUMBER = "Not a valid number";
-  public static PASSWORD_CHANGED_SUCCESS_MESSAGE = "Password Changed successfully ";
+  public static PASSWORD_CHANGED_SUCCESS_MESSAGE =
+    "Password Changed successfully ";
   public static NO_COUNTRY_CODE = "Please enter country code";
-  
+
   public static SUCCESSFUL_REGISTRATION = "User successfully registered!";
 
-  public static ERROR_RESEND_CONFIRMATIONN_CODE = "Error while resending confirmation code";
-  public static SUCCESS_RESEND_CONFIRMATION_CODE = "Successfully resent confirmation code!";
+  public static ERROR_RESEND_CONFIRMATIONN_CODE =
+    "Error while resending confirmation code";
+  public static SUCCESS_RESEND_CONFIRMATION_CODE =
+    "Successfully resent confirmation code!";
 
-  public static ERROR_CONFIRMING_REGISTRATION = "Error while confirming registration";
-  public static SUCCESS_CONFIRMING_REGISTRATION = "Successfully confirmed registration!";
-  public static PASSWORD_MISMATCH_ERROR = "Password and confirm password mismatched";
+  public static ERROR_CONFIRMING_REGISTRATION =
+    "Error while confirming registration";
+  public static SUCCESS_CONFIRMING_REGISTRATION =
+    "Successfully confirmed registration!";
+  public static PASSWORD_MISMATCH_ERROR =
+    "Password and confirm password mismatched";
   // Top Nav Bar
   public static ERROR_SIGN_IN = "Error signning you in";
   public static SUCCESS_SIGN_IN = "Logged in successfully!";
@@ -56,7 +62,8 @@ export class Constants {
   public static SESSION_RETRIEVED = "Session retrieved!";
   public static SESSION_NOT_FOUND = "Session not found";
 
-  public static SUCCESSFULLY_UPDATED_ATTRIBUTES = "Sussfully updated attributes!";
+  public static SUCCESSFULLY_UPDATED_ATTRIBUTES =
+    "Sussfully updated attributes!";
 
   public static PASSWORD_CHANGE_SUCCESS = "Password sucessfully changed!";
   public static FORGOT_PASSWORD_SUCCESS = "Password successfully reset!";
@@ -74,36 +81,38 @@ export class Constants {
     term: "(term field=_id $)",
     openBracketOr: "(or",
     closeBracket: ")",
-    cartReturnFields: ["price", "name", "images", "currency", "offer"].join(","),
+    cartReturnFields: ["price", "name", "images", "currency", "offer"].join(
+      ","
+    ),
     orderReturnFields: ["name", "images", "currency"].join(","),
-    structuredParser: "structured"
-  }
+    structuredParser: "structured",
+  };
 
-  public static CUSTOMER_APIS = environment.customer
-  public static PAYMENT_APIS = environment.payment
-  public static CART_APIS = environment.cart
-  public static ORDERS_APIS = environment.orders
-  public static RATINGS_APIS = environment.ratings
-  public static GUESTS_APIS = environment.guests
+  public static CUSTOMER_APIS = environment.customer;
+  public static PAYMENT_APIS = environment.payment;
+  public static CART_APIS = environment.cart;
+  public static ORDERS_APIS = environment.orders;
+  public static RATINGS_APIS = environment.ratings;
+  public static GUESTS_APIS = environment.guests;
 
   public static ADDRESS_TYPES = [
     {
       key: "Delivery",
-      value: 1
-    }
-  ]
+      value: 1,
+    },
+  ];
 
   public static ORDER_STATUS = {
     "1": "Incomplete",
     "2": "Paid",
     "3": "Delivered",
     "4": "Cancelled",
-    "5": "Returned"
-  }
+    "5": "Returned",
+  };
 
   public static COUNTRY_CODES = {
-    "1": "United Kingdom"
-  }
+    "1": "United Kingdom",
+  };
 
   public static MOBILE_CONFIG = {
     image: true,
@@ -112,8 +121,8 @@ export class Constants {
     scroll: true,
     title: true,
     offer: true,
-    desc: true
-  }
+    desc: true,
+  };
 
   public static TABLET_CONFIG = {
     image: true,
@@ -122,8 +131,8 @@ export class Constants {
     scroll: true,
     title: true,
     offer: true,
-    desc: true
-  }
+    desc: true,
+  };
 
   public static DESKTOP_CONFIG = {
     image: true,
@@ -132,36 +141,42 @@ export class Constants {
     scroll: true,
     title: true,
     offer: true,
-    desc: true
-  }
+    desc: true,
+  };
 
   public static ITEM_MOVED_TO_CART = "Item has been moved to cart";
   public static ITWM_DELETE_CART = "Item has been deleted !";
   public static ITWM_SAVE_LATER = "Item has been saved for later";
   public static SESSION_LOST = "Login Session doesn't exist";
   public static ORDER_QUANTITY_ERROR = "Order quantity can't be less than one";
-  public static EXCEEDED_ORDER_QUANTITY_ERROR = "Order quantity can't be more than 100";
+  public static EXCEEDED_ORDER_QUANTITY_ERROR =
+    "Order quantity can't be more than 100";
   public static MIN_ORDER_PRICE_FOR_FREE_DELIVERY = 300;
-  public static FREE_DELIVERY_MESSAGE = "Your order is eligible for FREE Delivery."
-  public static SELECT_FREE_DELIVERY_AT_CHECKOUT = "Select this option at checkout."
-  public static CART_DISCLAIMER = "The price and availability of items at Rapidobuild.com are subject to change.The shopping cart is a temporary place to store a list of your items and reflects each item's most recent price. Do you have a promotional code? We'll ask you to enter your claim code when it's time to pay."
+  public static FREE_DELIVERY_MESSAGE =
+    "Your order is eligible for FREE Delivery.";
+  public static SELECT_FREE_DELIVERY_AT_CHECKOUT =
+    "Select this option at checkout.";
+  public static CART_DISCLAIMER =
+    "The price and availability of items at Rapidobuild.com are subject to change.The shopping cart is a temporary place to store a list of your items and reflects each item's most recent price. Do you have a promotional code? We'll ask you to enter your claim code when it's time to pay.";
 
-  public static COMPANY_DETAILS_ADDED = "Company Details has been added"
-  public static COMPANY_DETAILS_UPDATED = "Company Details has been updated"
+  public static COMPANY_DETAILS_ADDED = "Company Details has been added";
+  public static COMPANY_DETAILS_UPDATED = "Company Details has been updated";
 
-  public static REVIEW_ADDED_SUCCESSFULLY = "Review added successfully"
-  public static REVIEW_DELETED_SUCCESSFULLY = "Review deleted successfully"
-  public static REVIEW_UPDATED_SUCCESSFULLY = "Review updated successfully"
-  public static REVIEW_DEACTIVATED_SUCCESSFULLY = "Review deactivated"
-  public static REVIEW_HELPFUL_INCREMENT = "You found the review helpful"
-  public static UNAUTHORIZED_REVIEW_CREATE = "You can only add a review only when you purchase the product and its delivered to you"
+  public static REVIEW_ADDED_SUCCESSFULLY = "Review added successfully";
+  public static REVIEW_DELETED_SUCCESSFULLY = "Review deleted successfully";
+  public static REVIEW_UPDATED_SUCCESSFULLY = "Review updated successfully";
+  public static REVIEW_DEACTIVATED_SUCCESSFULLY = "Review deactivated";
+  public static REVIEW_HELPFUL_INCREMENT = "You found the review helpful";
+  public static UNAUTHORIZED_REVIEW_CREATE =
+    "You can only add a review only when you purchase the product and its delivered to you";
 
-  public static DELIVERY_DATE_INTERVAL = "Your order will be delivered in 3 to 5 business days."
+  public static DELIVERY_DATE_INTERVAL =
+    "Your order will be delivered in 3 to 5 business days.";
 
   // Home component
-  public static RECOMMENDEDLIST_TITLE = "Recommended Products"
-  public static FREQUENTLY_BOUGHT_TITLE = "Frequently Bought Products"
-  public static BROWSING_HISTORY_TITLE = "Previously Browsed Products"
-  public static NEWLY_ADDED_PRODUCTS_TITLE = "Newly Added Product"
-  public static FREQUENTLY_BOUGHT_BY_ME_TITLE = "Frequently Bought by Me"
+  public static RECOMMENDEDLIST_TITLE = "Recommended Products";
+  public static FREQUENTLY_BOUGHT_TITLE = "Frequently Bought Products";
+  public static BROWSING_HISTORY_TITLE = "Previously Browsed Products";
+  public static NEWLY_ADDED_PRODUCTS_TITLE = "Newly Added Product";
+  public static FREQUENTLY_BOUGHT_BY_ME_TITLE = "Frequently Bought by Me";
 }

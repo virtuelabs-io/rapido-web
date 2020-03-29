@@ -9,9 +9,9 @@
       </h3>
     </div>
     <p>
-      Rapidobuild helps you to build without a real headache of the building materials..
-      Sothe saying goes on "you build and we deliver" 
-      We know how you value time and to help you save time is our sole motto..!
+      Rapidobuild helps you to build without a real headache of the building
+      materials.. Sothe saying goes on "you build and we deliver" We know how
+      you value time and to help you save time is our sole motto..!
     </p>
     <!--<div class="search-postcode-div">
        <input matInput maxlength="10" placeholder="postcode">
@@ -21,40 +21,61 @@
   <div class="add-address-main">
     <form class="form-details" [formGroup]="addressFormGroup" novalidate>
       <mat-form-field>
-        <input matInput placeholder="Name"  formControlName="name">
-        <mat-error *ngIf="hasError('name', 'required')">Name is required</mat-error>
+        <input matInput placeholder="Name" formControlName="name" />
+        <mat-error *ngIf="hasError('name', 'required')"
+          >Name is required</mat-error
+        >
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Address Line 1"  formControlName="add1">
-        <mat-error *ngIf="hasError('add1', 'required')">Address1 is required</mat-error>
+        <input matInput placeholder="Address Line 1" formControlName="add1" />
+        <mat-error *ngIf="hasError('add1', 'required')"
+          >Address1 is required</mat-error
+        >
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Address Line 2"  formControlName="add2">
-        <mat-error *ngIf="hasError('add2', 'required')">Address2 is required</mat-error>
+        <input matInput placeholder="Address Line 2" formControlName="add2" />
+        <mat-error *ngIf="hasError('add2', 'required')"
+          >Address2 is required</mat-error
+        >
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Town / City"  formControlName="town_city">
-        <mat-error *ngIf="hasError('town_city', 'required')">Town/City is required</mat-error>
+        <input matInput placeholder="Town / City" formControlName="town_city" />
+        <mat-error *ngIf="hasError('town_city', 'required')"
+          >Town/City is required</mat-error
+        >
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="County"  formControlName="county">
-        <mat-error *ngIf="hasError('county', 'required')">County is required</mat-error>
+        <input matInput placeholder="County" formControlName="county" />
+        <mat-error *ngIf="hasError('county', 'required')"
+          >County is required</mat-error
+        >
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Postcode"  formControlName="postCode">
-        <mat-error *ngIf="hasError('postCode', 'required')">Post Code is required</mat-error>
+        <input matInput placeholder="Postcode" formControlName="postCode" />
+        <mat-error *ngIf="hasError('postCode', 'required')"
+          >Post Code is required</mat-error
+        >
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Country"  formControlName="country">
-        <mat-error *ngIf="hasError('country', 'required')">Country is required</mat-error>
+        <input matInput placeholder="Country" formControlName="country" />
+        <mat-error *ngIf="hasError('country', 'required')"
+          >Country is required</mat-error
+        >
       </mat-form-field>
       <mat-card-actions>
-        <button class="spacing" mat-flat-button color="primary" type="submit" [disabled]="!addressFormGroup.valid" (click)="saveAddress()">
-            Save Address
+        <button
+          class="spacing"
+          mat-flat-button
+          color="primary"
+          type="submit"
+          [disabled]="!addressFormGroup.valid"
+          (click)="saveAddress()"
+        >
+          Save Address
         </button>
         <button mat-flat-button color="primary" (click)="cancelAddAddress()">
           Cancel
-      </button>
+        </button>
       </mat-card-actions>
     </form>
   </div>

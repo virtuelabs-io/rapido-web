@@ -1,11 +1,11 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from "@angular/core/testing";
 
-import { RouteService } from './route.service';
+import { RouteService } from "./route.service";
 
-describe('RouteService', () => {
+describe("RouteService", () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
-  it('should be created', () => {
+  it("should be created", () => {
     const service: RouteService = TestBed.get(RouteService);
     expect(service).toBeTruthy();
   });

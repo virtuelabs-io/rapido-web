@@ -1,5 +1,9 @@
 <div class="main-div">
-  <mat-horizontal-stepper [linear]="isLinear" #stepper [selectedIndex]="stepperIndex">
+  <mat-horizontal-stepper
+    [linear]="isLinear"
+    #stepper
+    [selectedIndex]="stepperIndex"
+  >
     <!-- Delivery address step-->
     <mat-step [stepControl]="registerFormGroup">
       <ng-template matStepLabel>Select Delivery Address</ng-template>
@@ -18,7 +22,7 @@
               <div class="address-add-icon">
                 <a class="">
                   <svg aria-hidden="true" aria-haspopup="menu">
-                    <use xlink:href="#add"/>
+                    <use xlink:href="#add" />
                   </svg>
                 </a>
               </div>
@@ -26,39 +30,51 @@
                 <p>Add Address</p>
               </div>
             </a>
-            <div class="rapido-add-address-item" *ngFor="let address of address">
+            <div
+              class="rapido-add-address-item"
+              *ngFor="let address of address"
+            >
               <div class="address-text">
                 <strong> {{ address.full_name }} </strong>
-                <br/><p>{{ address.addr_1 }}
-                <br/> {{ address.addr_2 }}
-                <br/> {{ address.city }} 
-                <br/> {{ address.county }}, {{ address.postcode }}
-                <br/> {{ address.country }}
+                <br />
+                <p>
+                  {{ address.addr_1 }} <br />
+                  {{ address.addr_2 }} <br />
+                  {{ address.city }} <br />
+                  {{ address.county }}, {{ address.postcode }} <br />
+                  {{ address.country }}
+                </p>
               </div>
+
               <div class="card-actions">
-                <button mat-flat-button color="primary" class="delivery-add-button" (click)="createOrder(address.id)">
+                <button
+                  mat-flat-button
+                  color="primary"
+                  class="delivery-add-button"
+                  (click)="createOrder(address.id)"
+                >
                   Deliver to this Address
                 </button>
               </div>
             </div>
           </div>
         </div>
-      </form>          
+      </form>
     </mat-step>
 
-  <!-- payment step -->
+    <!-- payment step -->
     <mat-step [stepControl]="registerFormGroup">
       <ng-template matStepLabel>Make a payment</ng-template>
       <form>
         <div class="payment-div">
-          <div class="order-address-div"  *ngFor="let order of orderItems">
+          <div class="order-address-div" *ngFor="let order of orderItems">
             <div class="order-div">
               <div class="title-div">
                 <svg>
                   <use xlink:href="#box" />
                 </svg>
                 <h4>
-                    Order Items
+                  Order Items
                 </h4>
               </div>
               <div class="cart-columns">
@@ -71,12 +87,22 @@
               </div>
               <div class="order-items-main">
                 <div class="order-items">
-                  <div class="order-items-list" *ngFor="let item of orders[order].items">
+                  <div
+                    class="order-items-list"
+                    *ngFor="let item of orders[order].items"
+                  >
                     <div class="item-thumbnail">
-                      <img class="image" src="{{ imageUrl + products[item.product_id].images[0] }}">
+                      <img
+                        class="image"
+                        src="{{
+                          imageUrl + products[item.product_id].images[0]
+                        }}"
+                      />
                     </div>
                     <div class="item-desc">
-                      <p class="text-clamp"><strong>{{ products[item.product_id].name }}</strong></p>
+                      <p class="text-clamp">
+                        <strong>{{ products[item.product_id].name }}</strong>
+                      </p>
                     </div>
                     <div class="item-quantity">
                       <span>{{ item.quantity }}</span>
@@ -90,32 +116,46 @@
                 </div>
               </div>
               <div class="order-charges">
-                <span> Subtotal : {{ currency }}<span>{{ itemTotal }}</span></span>
+                <span>
+                  Subtotal : {{ currency }}<span>{{ itemTotal }}</span></span
+                >
               </div>
               <div class="order-charges">
-                <span>+ VAT : {{ currency }}<span> {{ vatTotal }}</span></span>
+                <span
+                  >+ VAT : {{ currency }}<span> {{ vatTotal }}</span></span
+                >
               </div>
               <div class="order-charges">
-                <span>+ Delivery Charges : {{ currency }}<span> {{ deliveryCharges }}</span></span>
+                <span
+                  >+ Delivery Charges : {{ currency
+                  }}<span> {{ deliveryCharges }}</span></span
+                >
               </div>
               <div class="order-total">
-                <p>Order Total : {{ currency }}<span> {{ orderTotal }}</span></p>
+                <p>
+                  Order Total : {{ currency }}<span> {{ orderTotal }}</span>
+                </p>
               </div>
             </div>
-            
+
             <div class="order-address">
               <div class="add-title-div">
                 <h5 class="title-div">Delivery Address</h5>
               </div>
-                <div class="address-text">
-                  <strong> {{ orders[order]['address'].full_name }} </strong>
-                  <br/><p>{{ orders[order]['address'].addr_1 }}
-                  <br/> {{ orders[order]['address'].addr_2 }}
-                  <br/> {{ orders[order]['address'].city }} 
-                  <br/> {{ orders[order]['address'].county }}, {{ orders[order]['address'].postcode }}
-                  <br/> {{ orders[order]['address'].country }}
-                </div>
-                  <div class="delivery-time">{{deliveryDateInterval}}</div>
+              <div class="address-text">
+                <strong> {{ orders[order]["address"].full_name }} </strong>
+                <br />
+                <p>
+                  {{ orders[order]["address"].addr_1 }} <br />
+                  {{ orders[order]["address"].addr_2 }} <br />
+                  {{ orders[order]["address"].city }} <br />
+                  {{ orders[order]["address"].county }},
+                  {{ orders[order]["address"].postcode }} <br />
+                  {{ orders[order]["address"].country }}
+                </p>
+              </div>
+
+              <div class="delivery-time">{{ deliveryDateInterval }}</div>
             </div>
           </div>
 
@@ -123,45 +163,57 @@
             <div class="pay-div">
               <div class="icon-title">
                 <svg>
-                  <use xlink:href="#give-money"/>
+                  <use xlink:href="#give-money" />
                 </svg>
                 <h4>Payment</h4>
               </div>
               <div class="pay">
                 <div class="payment-det">
                   <mat-form-field class="">
-                    <input matInput [(ngModel)]="registeredEmail" name="email" placeholder="Invoice sent to">
+                    <input
+                      matInput
+                      [(ngModel)]="registeredEmail"
+                      name="email"
+                      placeholder="Invoice sent to"
+                    />
                   </mat-form-field>
-                  <div id="card-element" class="field"></div><br>
-                    <div class="buy-cart-button">
-                      <button class="btn btn-primary buy-button" (click)="buy()">Pay {{ currency }}{{ orderTotal }}</button>
-                    <button class="btn btn-primary buy-button" routerLink="/cart">Edit Order</button>
+                  <div id="card-element" class="field"></div>
+                  <br />
+                  <div class="buy-cart-button">
+                    <button class="btn btn-primary buy-button" (click)="buy()">
+                      Pay {{ currency }}{{ orderTotal }}
+                    </button>
+                    <button
+                      class="btn btn-primary buy-button"
+                      routerLink="/cart"
+                    >
+                      Edit Order
+                    </button>
+                  </div>
+                </div>
+                <div class="payment-option">
+                  <div class="payment-cards">
+                    <div class="payment-cards-text">
+                      We accept payments in all cards
+                    </div>
+                    <div class="payment-cards-icons">
+                      <svg>
+                        <use xlink:href="#mastercard" />
+                      </svg>
+                      <svg>
+                        <use xlink:href="#maestro" />
+                      </svg>
+                      <svg>
+                        <use xlink:href="#visa" />
+                      </svg>
+                      <svg>
+                        <use xlink:href="#amex" />
+                      </svg>
                     </div>
                   </div>
-                  <div class="payment-option">
-                    <div class="payment-cards">
-                      <div class="payment-cards-text">
-                        We accept payments in all cards
-                      </div>
-                      <div class="payment-cards-icons">
-                        <svg>
-                          <use xlink:href="#mastercard"/>
-                        </svg>
-                        <svg>
-                          <use xlink:href="#maestro"/>
-                        </svg>
-                        <svg>
-                          <use xlink:href="#visa"/>
-                        </svg>
-                        <svg>
-                          <use xlink:href="#amex"/>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
+                </div>
               </div>
-              
-              </div>
+            </div>
           </div>
         </div>
       </form>

@@ -1,61 +1,60 @@
 @import "../../../assets/scss/custom-bootstrap-variables.scss";
 
 div {
-    div{
-        section{
-            display: none;
-            button{
-                background: $product-details-button-background;
-                color: $product-details-button-color;
-            }
-        }
-        @media screen and (max-width: $small-device) {
-            section{
-                display: flex;
-                padding-top: 20px;
-            }
-           }
-       
+  div {
+    section {
+      display: none;
+      button {
+        background: $product-details-button-background;
+        color: $product-details-button-color;
+      }
     }
+    @media screen and (max-width: $small-device) {
+      section {
+        display: flex;
+        padding-top: 20px;
+      }
+    }
+  }
+  div {
     div {
-        div{
-            @media screen and (max-width: $small-device) {
-                app-leftsection{
-                    display: none;
-                }
-               }
+      @media screen and (max-width: $small-device) {
+        app-leftsection {
+          display: none;
         }
+      }
     }
-    .itemListCls{
-        @media screen and (max-width: $small-device) {
-            justify-content: center;
-        }
-    } 
+  }
+  .itemListCls {
+    @media screen and (max-width: $small-device) {
+      justify-content: center;
+    }
+  }
 }
 
-.no-results{
-    display: block;
-    padding: 10px 25px; 
-    text-align: center;
-    font-size: 28px;
-    margin-top: 5%;
-    .no-result-text {
-        span {
-            font-size: 15px;
-        }
+.no-results {
+  display: block;
+  padding: 10px 25px;
+  text-align: center;
+  font-size: 28px;
+  margin-top: 5%;
+  .no-result-text {
+    span {
+      font-size: 15px;
     }
-    .no-result-icon {
-        margin-top: 1%;
-    }
+  }
+  .no-result-icon {
+    margin-top: 1%;
+  }
 }
 
-.btnLeft{
-    display: flex;
-    justify-content: flex-end;
-    align-items:center; 
+.btnLeft {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 :host ::ng-deep .mat-paginator-container {
-    justify-content: center;
-    background-color: $product-details-paginator;
+  justify-content: center;
+  background-color: $product-details-paginator;
 }

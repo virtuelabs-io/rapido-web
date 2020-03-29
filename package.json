@@ -63,6 +63,7 @@
     "karma-junit-reporter": "^1.2.0",
     "karma-phantomjs-launcher": "^1.0.4",
     "phantomjs-prebuilt": "^2.1.16",
+    "prettier": "2.0.2",
     "protractor": "~5.4.0",
     "puppeteer": "^1.13.0",
     "ts-node": "~7.0.0",

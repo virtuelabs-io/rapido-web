@@ -1,59 +1,112 @@
 <div class="main-div">
-  <mat-vertical-stepper [linear]="true" #stepper class="nav-bar-spacing" [selectedIndex]="stepperIndex">
+  <mat-vertical-stepper
+    [linear]="true"
+    #stepper
+    class="nav-bar-spacing"
+    [selectedIndex]="stepperIndex"
+  >
     <mat-step [stepControl]="otpReqFormGroup">
-      <ng-template matStepLabel><h4 class="mat-checkbox-layout">Mobile Number Confirmation</h4></ng-template>
-        <form
-          class="form-container" 
-          autocomplete="off"
-          novalidate
-          (ngSubmit)="resendConfirmationCode()">
-          <mat-form-field>
-              <span matPrefix>{{countryCode}} &nbsp;</span>
-              <input matInput  disabled placeholder="Mobile number" [(ngModel)]="mobileNumber" name="mobile-number">
-            </mat-form-field>   
-          <mat-card-actions class="button-spacing">
-            <button mat-flat-button  class='loginButton' color="primary" type="submit" [disabled]="!mobileNumber">
-                Request OTP
-                <span *ngIf="progressSpinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-            </button>
-          </mat-card-actions>         
-        </form>
-        <div *ngIf='otpFail' class="alert-danger-background margin-top" role="alert">
-          <h4 class="alert-danger-text text-align">Error!</h4>
-          <p class="alert-danger-text text-align">{{otpFail}}</p>
-        </div>
+      <ng-template matStepLabel
+        ><h4 class="mat-checkbox-layout">
+          Mobile Number Confirmation
+        </h4></ng-template
+      >
+      <form
+        class="form-container"
+        autocomplete="off"
+        novalidate
+        (ngSubmit)="resendConfirmationCode()"
+      >
+        <mat-form-field>
+          <span matPrefix>{{ countryCode }} &nbsp;</span>
+          <input
+            matInput
+            disabled
+            placeholder="Mobile number"
+            [(ngModel)]="mobileNumber"
+            name="mobile-number"
+          />
+        </mat-form-field>
+        <mat-card-actions class="button-spacing">
+          <button
+            mat-flat-button
+            class="loginButton"
+            color="primary"
+            type="submit"
+            [disabled]="!mobileNumber"
+          >
+            Request OTP
+            <span
+              *ngIf="progressSpinner"
+              class="spinner-border spinner-border-sm"
+              role="status"
+              aria-hidden="true"
+            ></span>
+          </button>
+        </mat-card-actions>
+      </form>
+      <div
+        *ngIf="otpFail"
+        class="alert-danger-background margin-top"
+        role="alert"
+      >
+        <h4 class="alert-danger-text text-align">Error!</h4>
+        <p class="alert-danger-text text-align">{{ otpFail }}</p>
+      </div>
     </mat-step>
 
     <mat-step [stepControl]="otpReqFormGroup">
-      <div *ngIf='otpSuccess' class="alert-danger-background margin-top" role="alert">
+      <div
+        *ngIf="otpSuccess"
+        class="alert-danger-background margin-top"
+        role="alert"
+      >
         <h4 class="alert-success-text text-align">Success!</h4>
-        <p class="alert-success-text text-align">An OTP has been sent to the registered mobile number</p>
+        <p class="alert-success-text text-align">
+          An OTP has been sent to the registered mobile number
+        </p>
       </div>
       <ng-template matStepLabel><h4>OTP Validation</h4></ng-template>
-          <form
-            class="form-container"
-            autocomplete="off"
-            novalidate>
-            <div>Enter OTP</div>
-              <input class="partitioned" maxlength="6" placeholder="" [(ngModel)]="confirmationCode" name="otp-code">   
-            <mat-card-actions class="button-spacing">
-              <button mat-flat-button  color="primary" type="submit" (click)="confirmRegistration()">
-                  Confirm OTP
-                  <span *ngIf="progressSpinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-              </button>
-            </mat-card-actions>         
-          </form>  
-      </mat-step>
+      <form class="form-container" autocomplete="off" novalidate>
+        <div>Enter OTP</div>
+        <input
+          class="partitioned"
+          maxlength="6"
+          placeholder=""
+          [(ngModel)]="confirmationCode"
+          name="otp-code"
+        />
+        <mat-card-actions class="button-spacing">
+          <button
+            mat-flat-button
+            color="primary"
+            type="submit"
+            (click)="confirmRegistration()"
+          >
+            Confirm OTP
+            <span
+              *ngIf="progressSpinner"
+              class="spinner-border spinner-border-sm"
+              role="status"
+              aria-hidden="true"
+            ></span>
+          </button>
+        </mat-card-actions>
+      </form>
+    </mat-step>
 
-      <mat-step>
-        <ng-template matStepLabel><h4>Done</h4></ng-template>
-        <div *ngIf="otpConfirmed" class="alert-danger-background" role="alert">
-          <h4 class="alert-success-text text-align">Success!</h4>
-          <p class="alert-success-text text-align">Successfully confirmed registration!</p>
-        </div>
-        <div>
-        </div>
-        <button mat-flat-button routerLink="/login"  color="primary" type="submit">Log In</button>
-      </mat-step>
-  </mat-vertical-stepper>  
+    <mat-step>
+      <ng-template matStepLabel><h4>Done</h4></ng-template>
+      <div *ngIf="otpConfirmed" class="alert-danger-background" role="alert">
+        <h4 class="alert-success-text text-align">Success!</h4>
+        <p class="alert-success-text text-align">
+          Successfully confirmed registration!
+        </p>
+      </div>
+      <div></div>
+      <button mat-flat-button routerLink="/login" color="primary" type="submit">
+        Log In
+      </button>
+    </mat-step>
+  </mat-vertical-stepper>
 </div>

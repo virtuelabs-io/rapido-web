@@ -1,44 +1,43 @@
 @import "../../../assets/scss/custom-bootstrap-variables.scss";
 
-  .mat-sidenav-container {
-    height: 100%;
-  }
+.mat-sidenav-container {
+  height: 100%;
+}
 
-  .disclaimer-stage {
+.disclaimer-stage {
   //  margin-top: 1.55%;
-    @media screen and (max-width: $mobile-device) {
-      margin-top: 10%;
-    }
-  }
-
-  .toolbar-row {
+  @media screen and (max-width: $mobile-device) {
     margin-top: 10%;
   }
-  
-  $sidenav-width: 320px; 
-  
-  .mat-sidenav {
-    width: $sidenav-width;
-  }
-  
-  .toolbar-title {
-    margin: 0 16px 0 16px;
-  }
-  
-  .mat-subheader {
-    font-size: 18px;
-    font-weight: 900;
-  }
-  
-  .app-nav-list-icon {
-    margin: 0 12px 0 12px;
-  }
-
-  :host ::ng-deep .mat-drawer-content {
-    position: relative;
-    z-index: 1;
-    display: block;
-    height: 100%;
-    overflow: hidden;
 }
-  
+
+.toolbar-row {
+  margin-top: 10%;
+}
+
+$sidenav-width: 320px;
+
+.mat-sidenav {
+  width: $sidenav-width;
+}
+
+.toolbar-title {
+  margin: 0 16px 0 16px;
+}
+
+.mat-subheader {
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.app-nav-list-icon {
+  margin: 0 12px 0 12px;
+}
+
+:host ::ng-deep .mat-drawer-content {
+  position: relative;
+  z-index: 1;
+  display: block;
+  height: 100%;
+  overflow: hidden;
+}

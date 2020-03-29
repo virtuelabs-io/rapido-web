@@ -1,39 +1,43 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input } from "@angular/core";
 
 @Component({
-  selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
+  selector: "app-card",
+  templateUrl: "./card.component.html",
+  styleUrls: ["./card.component.scss"],
 })
 export class CardComponent implements OnInit {
-
   itemDetails: any = {
-    'price':'',
-    'offer':'',
-    'name':'',
-    'images':'',
-    'rating':''
-  }
-  mrpPrice: any
-  discountedPrice: any
-  images: any
-  name: any
-  price: any
-  offer: any
-  rating: any
-  Math: any
-  @Input() itemList ={
-    id:'',
-    fields:{}
-  }
-  constructor() { }
+    price: "",
+    offer: "",
+    name: "",
+    images: "",
+    rating: "",
+  };
+  mrpPrice: any;
+  discountedPrice: any;
+  images: any;
+  name: any;
+  price: any;
+  offer: any;
+  rating: any;
+  Math: any;
+  @Input() itemList = {
+    id: "",
+    fields: {},
+  };
+  constructor() {}
 
   ngOnInit() {
-    if(this.itemList){
-      this.itemDetails = this.itemList.fields
-      this.mrpPrice = (this.itemDetails.price * (1 + parseFloat(this.itemDetails.offer))).toFixed(2)
-      this.discountedPrice = (this.mrpPrice - this.itemDetails.price).toFixed(2)
-      this.itemDetails.price = Number(this.itemDetails.price).toFixed(2)
+    if (this.itemList) {
+      this.itemDetails = this.itemList.fields;
+      this.mrpPrice = (
+        this.itemDetails.price *
+        (1 + parseFloat(this.itemDetails.offer))
+      ).toFixed(2);
+      this.discountedPrice = (this.mrpPrice - this.itemDetails.price).toFixed(
+        2
+      );
+      this.itemDetails.price = Number(this.itemDetails.price).toFixed(2);
     }
   }
 }

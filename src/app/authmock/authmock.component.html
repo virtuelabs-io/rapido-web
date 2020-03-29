@@ -1,309 +1,799 @@
 <div class="container authmock-body">
   <div class="col-md-12">
-    <h2>Guest Checkout</h2><hr>
-    <button class="btn btn-primary" type="submit" (click)="getGuestCartItems()">getGuestCartItems</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="getCountOfGuestCartItems()">getCountOfGuestCartItems</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="postGuestCartItem()">postGuestCartItem</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="postGuestCartItemList()">postGuestCartItemList</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="deleteGuestCartItem()">deleteGuestCartItem</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="deleteGuestCartItems()">deleteGuestCartItems</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="postGuestAddressDetails()">postGuestAddressDetails</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="createGuestOrder()">createGuestOrder</button><br><br>
+    <h2>Guest Checkout</h2>
+    <hr />
+    <button class="btn btn-primary" type="submit" (click)="getGuestCartItems()">
+      getGuestCartItems</button
+    ><br /><br />
+    <button
+      class="btn btn-primary"
+      type="submit"
+      (click)="getCountOfGuestCartItems()"
+    >
+      getCountOfGuestCartItems</button
+    ><br /><br />
+    <button class="btn btn-primary" type="submit" (click)="postGuestCartItem()">
+      postGuestCartItem</button
+    ><br /><br />
+    <button
+      class="btn btn-primary"
+      type="submit"
+      (click)="postGuestCartItemList()"
+    >
+      postGuestCartItemList</button
+    ><br /><br />
+    <button
+      class="btn btn-primary"
+      type="submit"
+      (click)="deleteGuestCartItem()"
+    >
+      deleteGuestCartItem</button
+    ><br /><br />
+    <button
+      class="btn btn-primary"
+      type="submit"
+      (click)="deleteGuestCartItems()"
+    >
+      deleteGuestCartItems</button
+    ><br /><br />
+    <button
+      class="btn btn-primary"
+      type="submit"
+      (click)="postGuestAddressDetails()"
+    >
+      postGuestAddressDetails</button
+    ><br /><br />
+    <button class="btn btn-primary" type="submit" (click)="createGuestOrder()">
+      createGuestOrder</button
+    ><br /><br />
     <h5>{{ guest_result }}</h5>
   </div>
   <div class="col-md-12">
-    <h2>Ratings</h2><hr>
-    <button class="btn btn-primary" type="submit" (click)="createRating()">createRating</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="updateRating()">updateRating</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="getCustomerRating()">getCustomerRating</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="getAllCustomerRatings()">getAllCustomerRatings</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="deleteCustomerRating()">deleteCustomerRating</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="helpfulRatingIncrement()">helpfulRatingIncrement</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="deactivateRating()">deactivateRating</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="getProductRatings()">getProductRatings</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="getProductRatingsSummary()">getProductRatingsSummary</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="checkProductReview()">checkProductReview</button><br><br>
+    <h2>Ratings</h2>
+    <hr />
+    <button class="btn btn-primary" type="submit" (click)="createRating()">
+      createRating</button
+    ><br /><br />
+    <button class="btn btn-primary" type="submit" (click)="updateRating()">
+      updateRating</button
+    ><br /><br />
+    <button class="btn btn-primary" type="submit" (click)="getCustomerRating()">
+      getCustomerRating</button
+    ><br /><br />
+    <button
+      class="btn btn-primary"
+      type="submit"
+      (click)="getAllCustomerRatings()"
+    >
+      getAllCustomerRatings</button
+    ><br /><br />
+    <button
+      class="btn btn-primary"
+      type="submit"
+      (click)="deleteCustomerRating()"
+    >
+      deleteCustomerRating</button
+    ><br /><br />
+    <button
+      class="btn btn-primary"
+      type="submit"
+      (click)="helpfulRatingIncrement()"
+    >
+      helpfulRatingIncrement</button
+    ><br /><br />
+    <button class="btn btn-primary" type="submit" (click)="deactivateRating()">
+      deactivateRating</button
+    ><br /><br />
+    <button class="btn btn-primary" type="submit" (click)="getProductRatings()">
+      getProductRatings</button
+    ><br /><br />
+    <button
+      class="btn btn-primary"
+      type="submit"
+      (click)="getProductRatingsSummary()"
+    >
+      getProductRatingsSummary</button
+    ><br /><br />
+    <button
+      class="btn btn-primary"
+      type="submit"
+      (click)="checkProductReview()"
+    >
+      checkProductReview</button
+    ><br /><br />
     <h5>{{ rating_result }}</h5>
   </div>
   <div class="col-md-12">
-    <h2>Orders</h2><hr>
-    <button class="btn btn-primary" type="submit" (click)="createOrder()">createOrder</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="confirmOrder()">confirmOrder</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="getOrder()">getOrder</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="getOrders()">getOrders</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="cancelOrder()">cancelOrder</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="checkProductPurchase()">checkProductPurchase</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="getDeliveryOptions()">getDeliveryOptions</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="getFrequentlyBought()">getFrequentlyBought</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="getFrequentlyBoughtByMe()">getFrequentlyBoughtByMe</button><br><br>
+    <h2>Orders</h2>
+    <hr />
+    <button class="btn btn-primary" type="submit" (click)="createOrder()">
+      createOrder</button
+    ><br /><br />
+    <button class="btn btn-primary" type="submit" (click)="confirmOrder()">
+      confirmOrder</button
+    ><br /><br />
+    <button class="btn btn-primary" type="submit" (click)="getOrder()">
+      getOrder</button
+    ><br /><br />
+    <button class="btn btn-primary" type="submit" (click)="getOrders()">
+      getOrders</button
+    ><br /><br />
+    <button class="btn btn-primary" type="submit" (click)="cancelOrder()">
+      cancelOrder</button
+    ><br /><br />
+    <button
+      class="btn btn-primary"
+      type="submit"
+      (click)="checkProductPurchase()"
+    >
+      checkProductPurchase</button
+    ><br /><br />
+    <button
+      class="btn btn-primary"
+      type="submit"
+      (click)="getDeliveryOptions()"
+    >
+      getDeliveryOptions</button
+    ><br /><br />
+    <button
+      class="btn btn-primary"
+      type="submit"
+      (click)="getFrequentlyBought()"
+    >
+      getFrequentlyBought</button
+    ><br /><br />
+    <button
+      class="btn btn-primary"
+      type="submit"
+      (click)="getFrequentlyBoughtByMe()"
+    >
+      getFrequentlyBoughtByMe</button
+    ><br /><br />
     <h5>{{ order_result }}</h5>
   </div>
   <div class="col-md-12">
-    <h2>Cart Items</h2><hr>
-    <button class="btn btn-primary" type="submit" (click)="getCartItems()">getCartItems</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="getInCartItems()">getInCartItems</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="getCountOfInCartItems()">getCountOfInCartItems</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="getSavedForLaterCartItems()">getSavedForLaterCartItems</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="postCartItems()">postCartItems</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="postCartItem()">postCartItem</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="deleteInCartItems()">deleteInCartItems</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="deleteCartItem()">deleteCartItem</button><br><br>
+    <h2>Cart Items</h2>
+    <hr />
+    <button class="btn btn-primary" type="submit" (click)="getCartItems()">
+      getCartItems</button
+    ><br /><br />
+    <button class="btn btn-primary" type="submit" (click)="getInCartItems()">
+      getInCartItems</button
+    ><br /><br />
+    <button
+      class="btn btn-primary"
+      type="submit"
+      (click)="getCountOfInCartItems()"
+    >
+      getCountOfInCartItems</button
+    ><br /><br />
+    <button
+      class="btn btn-primary"
+      type="submit"
+      (click)="getSavedForLaterCartItems()"
+    >
+      getSavedForLaterCartItems</button
+    ><br /><br />
+    <button class="btn btn-primary" type="submit" (click)="postCartItems()">
+      postCartItems</button
+    ><br /><br />
+    <button class="btn btn-primary" type="submit" (click)="postCartItem()">
+      postCartItem</button
+    ><br /><br />
+    <button class="btn btn-primary" type="submit" (click)="deleteInCartItems()">
+      deleteInCartItems</button
+    ><br /><br />
+    <button class="btn btn-primary" type="submit" (click)="deleteCartItem()">
+      deleteCartItem</button
+    ><br /><br />
     <h5>{{ cart_item_result }}</h5>
   </div>
   <div class="col-md-12">
-    <h2>Company Details</h2><hr>
-    <button class="btn btn-primary" type="submit" (click)="getCompanyDetails()">Get Company details</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="postCompanyDetails()">Post Company details</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="putCompanyDetails()">Put Company details</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="deleteCompanyDetails()">Delete Company details</button><br><br>
+    <h2>Company Details</h2>
+    <hr />
+    <button class="btn btn-primary" type="submit" (click)="getCompanyDetails()">
+      Get Company details</button
+    ><br /><br />
+    <button
+      class="btn btn-primary"
+      type="submit"
+      (click)="postCompanyDetails()"
+    >
+      Post Company details</button
+    ><br /><br />
+    <button class="btn btn-primary" type="submit" (click)="putCompanyDetails()">
+      Put Company details</button
+    ><br /><br />
+    <button
+      class="btn btn-primary"
+      type="submit"
+      (click)="deleteCompanyDetails()"
+    >
+      Delete Company details</button
+    ><br /><br />
     <h5>{{ company_details_result }}</h5>
   </div>
   <div class="col-md-12">
-    <h2>Mock Address Details</h2><hr>
-    <button class="btn btn-primary" type="submit" (click)="getAddressDetailsListMock()">Get Mock Address details List</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="getAddressDetailsMock()">Get Mock Address details</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="postAddressDetailsMock()">Post Mock Address details</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="putAddressDetailsMock()">Put Mock Address details</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="deleteAddressDetailsMock()">Delete Mock Address details</button><br><br>
+    <h2>Mock Address Details</h2>
+    <hr />
+    <button
+      class="btn btn-primary"
+      type="submit"
+      (click)="getAddressDetailsListMock()"
+    >
+      Get Mock Address details List</button
+    ><br /><br />
+    <button
+      class="btn btn-primary"
+      type="submit"
+      (click)="getAddressDetailsMock()"
+    >
+      Get Mock Address details</button
+    ><br /><br />
+    <button
+      class="btn btn-primary"
+      type="submit"
+      (click)="postAddressDetailsMock()"
+    >
+      Post Mock Address details</button
+    ><br /><br />
+    <button
+      class="btn btn-primary"
+      type="submit"
+      (click)="putAddressDetailsMock()"
+    >
+      Put Mock Address details</button
+    ><br /><br />
+    <button
+      class="btn btn-primary"
+      type="submit"
+      (click)="deleteAddressDetailsMock()"
+    >
+      Delete Mock Address details</button
+    ><br /><br />
     <h5>{{ mock_address_details_result }}</h5>
   </div>
   <div class="col-md-12">
-    <h2>Address Details</h2><hr>
-    <button class="btn btn-primary" type="submit" (click)="getAddressDetailsList()">Get Address details List</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="getAddressDetails()">Get Address details</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="postAddressDetails()">Post Address details</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="putAddressDetails()">Put Address details</button><br><br>
-    <button class="btn btn-primary" type="submit" (click)="deleteAddressDetails()">Delete Address details</button><br><br>
+    <h2>Address Details</h2>
+    <hr />
+    <button
+      class="btn btn-primary"
+      type="submit"
+      (click)="getAddressDetailsList()"
+    >
+      Get Address details List</button
+    ><br /><br />
+    <button class="btn btn-primary" type="submit" (click)="getAddressDetails()">
+      Get Address details</button
+    ><br /><br />
+    <button
+      class="btn btn-primary"
+      type="submit"
+      (click)="postAddressDetails()"
+    >
+      Post Address details</button
+    ><br /><br />
+    <button class="btn btn-primary" type="submit" (click)="putAddressDetails()">
+      Put Address details</button
+    ><br /><br />
+    <button
+      class="btn btn-primary"
+      type="submit"
+      (click)="deleteAddressDetails()"
+    >
+      Delete Address details</button
+    ><br /><br />
     <h5>{{ address_details_result }}</h5>
   </div>
   <div class="col-md-12">
-    <h2>Product Hierachy</h2><hr>
-    <button class="btn btn-primary" type="submit" (click)="getProductHierarchy()">Submit</button><br><br>
+    <h2>Product Hierachy</h2>
+    <hr />
+    <button
+      class="btn btn-primary"
+      type="submit"
+      (click)="getProductHierarchy()"
+    >
+      Submit</button
+    ><br /><br />
     <h5 *ngIf="_fetchedProductHierarchy">Fetched Hierarchy</h5>
   </div>
   <div class="col-md-12">
-    <h2>Product Query</h2><hr>
+    <h2>Product Query</h2>
+    <hr />
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-default">q</span>
       </div>
-      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_query.q">
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default"
+        [(ngModel)]="_query.q"
+      />
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">size</span>
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >size</span
+        >
       </div>
-      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_query.size">
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default"
+        [(ngModel)]="_query.size"
+      />
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">cursor</span>
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >cursor</span
+        >
       </div>
-      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_query.cursor">
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default"
+        [(ngModel)]="_query.cursor"
+      />
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">start</span>
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >start</span
+        >
       </div>
-      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_query.start">
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default"
+        [(ngModel)]="_query.start"
+      />
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">sort</span>
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >sort</span
+        >
       </div>
-      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_query.sort">
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default"
+        [(ngModel)]="_query.sort"
+      />
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">return</span>
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >return</span
+        >
       </div>
-      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_query.return">
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default"
+        [(ngModel)]="_query.return"
+      />
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">q.parser</span>
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >q.parser</span
+        >
       </div>
-      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_query.qdotparser">
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default"
+        [(ngModel)]="_query.qdotparser"
+      />
     </div>
-    <button class="btn btn-primary" type="submit" (click)="queryProducts()">Submit</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="queryProducts()">
+      Submit</button
+    ><br /><br />
     <h5 *ngIf="_productsFetched">Products fetched</h5>
   </div>
   <div class="col-md-12">
-    <h2>Sign Up / Register</h2><hr>
+    <h2>Sign Up / Register</h2>
+    <hr />
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">phoneNumber</span>
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >phoneNumber</span
+        >
       </div>
-      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.phone_number">
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default"
+        [(ngModel)]="_registration.phone_number"
+      />
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">email</span>
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >email</span
+        >
       </div>
-      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.email">
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default"
+        [(ngModel)]="_registration.email"
+      />
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">password</span>
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >password</span
+        >
       </div>
-      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.password">
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default"
+        [(ngModel)]="_registration.password"
+      />
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">name</span>
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >name</span
+        >
       </div>
-      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.name">
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default"
+        [(ngModel)]="_registration.name"
+      />
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">acceptedTAndC</span>
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >acceptedTAndC</span
+        >
       </div>
-      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.acceptedTAndC">
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default"
+        [(ngModel)]="_registration.acceptedTAndC"
+      />
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">sendMePromotions</span>
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >sendMePromotions</span
+        >
       </div>
-      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.sendMePromotions">
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default"
+        [(ngModel)]="_registration.sendMePromotions"
+      />
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">commViaEmail</span>
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >commViaEmail</span
+        >
       </div>
-      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.commViaEmail">
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default"
+        [(ngModel)]="_registration.commViaEmail"
+      />
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">commViaSMS</span>
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >commViaSMS</span
+        >
       </div>
-      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.commViaSMS">
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default"
+        [(ngModel)]="_registration.commViaSMS"
+      />
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">personalisation</span>
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >personalisation</span
+        >
       </div>
-      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.personalisation">
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default"
+        [(ngModel)]="_registration.personalisation"
+      />
     </div>
-    <button class="btn btn-primary" type="submit" (click)="registerUser()">Submit</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="registerUser()">
+      Submit</button
+    ><br /><br />
     <h5 *ngIf="_userRegisteredResponse">User registered</h5>
   </div>
   <div class="col-md-12">
-    <h2>Resend confirmation code</h2><hr>
+    <h2>Resend confirmation code</h2>
+    <hr />
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >Username</span
+        >
       </div>
-      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.phone_number">
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default"
+        [(ngModel)]="_registration.phone_number"
+      />
     </div>
-    <button class="btn btn-primary" type="submit" (click)="resendConfirmationCode()">Submit</button><br><br>
+    <button
+      class="btn btn-primary"
+      type="submit"
+      (click)="resendConfirmationCode()"
+    >
+      Submit</button
+    ><br /><br />
     <h5 *ngIf="_resentConfirmationCodeResponse">Confirmation code resent</h5>
   </div>
   <div class="col-md-12">
-    <h2>Confirm Registration</h2><hr>
+    <h2>Confirm Registration</h2>
+    <hr />
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >Username</span
+        >
       </div>
-      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.phone_number">
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default"
+        [(ngModel)]="_registration.phone_number"
+      />
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">Confirmation Code</span>
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >Confirmation Code</span
+        >
       </div>
-      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_confirmationCode">
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default"
+        [(ngModel)]="_confirmationCode"
+      />
     </div>
-    <button class="btn btn-primary" type="submit" (click)="confirmRegistration()">Submit</button><br><br>
+    <button
+      class="btn btn-primary"
+      type="submit"
+      (click)="confirmRegistration()"
+    >
+      Submit</button
+    ><br /><br />
     <h5 *ngIf="_confirmRegistrationResponse">Registration confirmed</h5>
   </div>
   <div class="col-md-12">
-    <h2>Log In</h2><hr>
+    <h2>Log In</h2>
+    <hr />
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >Username</span
+        >
       </div>
-      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.phone_number">
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default"
+        [(ngModel)]="_registration.phone_number"
+      />
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">password</span>
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >password</span
+        >
       </div>
-      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.password">
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default"
+        [(ngModel)]="_registration.password"
+      />
     </div>
-    <button class="btn btn-primary" type="submit" (click)="login()">Submit</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="login()">
+      Submit</button
+    ><br /><br />
     <h5 *ngIf="_signInResponse">User signed in</h5>
   </div>
   <div class="col-md-12">
-    <h2>Update Attributes</h2><hr>
+    <h2>Update Attributes</h2>
+    <hr />
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">email</span>
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >email</span
+        >
       </div>
-      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.email">
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default"
+        [(ngModel)]="_registration.email"
+      />
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">name</span>
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >name</span
+        >
       </div>
-      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.name">
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default"
+        [(ngModel)]="_registration.name"
+      />
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">sendMePromotions</span>
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >sendMePromotions</span
+        >
       </div>
-      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.sendMePromotions">
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default"
+        [(ngModel)]="_registration.sendMePromotions"
+      />
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">commViaEmail</span>
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >commViaEmail</span
+        >
       </div>
-      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.commViaEmail">
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default"
+        [(ngModel)]="_registration.commViaEmail"
+      />
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">commViaSMS</span>
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >commViaSMS</span
+        >
       </div>
-      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.commViaSMS">
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default"
+        [(ngModel)]="_registration.commViaSMS"
+      />
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">personalisation</span>
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >personalisation</span
+        >
       </div>
-      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.personalisation">
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default"
+        [(ngModel)]="_registration.personalisation"
+      />
     </div>
-    <button class="btn btn-primary" type="submit" (click)="updateAttribute()">Submit</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="updateAttribute()">
+      Submit</button
+    ><br /><br />
     <h5 *ngIf="_updatedAttribute">User attributes updated</h5>
   </div>
   <div class="col-md-12">
-    <h2>Change password</h2><hr>
+    <h2>Change password</h2>
+    <hr />
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">Old Password</span>
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >Old Password</span
+        >
       </div>
-      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.password">
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default"
+        [(ngModel)]="_registration.password"
+      />
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">New Password</span>
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >New Password</span
+        >
       </div>
-      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_newPassword">
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default"
+        [(ngModel)]="_newPassword"
+      />
     </div>
-    <button class="btn btn-primary" type="submit" (click)="changePassword()">Submit</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="changePassword()">
+      Submit</button
+    ><br /><br />
     <h5 *ngIf="_changedPassword">Password Changed</h5>
   </div>
   <div class="col-md-12">
-    <h2>Forgot Password</h2><hr>
+    <h2>Forgot Password</h2>
+    <hr />
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >Username</span
+        >
       </div>
-      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="_registration.phone_number">
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default"
+        [(ngModel)]="_registration.phone_number"
+      />
     </div>
-    <button class="btn btn-primary" type="submit" (click)="forgotPassword()">Submit</button><br><br>
+    <button class="btn btn-primary" type="submit" (click)="forgotPassword()">
+      Submit</button
+    ><br /><br />
     <h5 *ngIf="_forgottenPassword">Password Changed</h5>
   </div>
   <div class="col-md-12">
-    <h2>Delete User</h2><hr>
-    <button class="btn btn-primary" type="submit" (click)="deleteUser()">Submit</button><br><br>
+    <h2>Delete User</h2>
+    <hr />
+    <button class="btn btn-primary" type="submit" (click)="deleteUser()">
+      Submit</button
+    ><br /><br />
     <h5 *ngIf="_deletedUser">Deleted User</h5>
   </div>
-<div>
+  <div></div>
+</div>

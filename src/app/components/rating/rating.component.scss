@@ -1,17 +1,17 @@
 @import "../../../assets/scss/custom-bootstrap-variables.scss";
 
-div{
-    ngb-rating{
-        color: $rating-ngb-rating-color;
-        outline: none;
+div {
+  ngb-rating {
+    color: $rating-ngb-rating-color;
+    outline: none;
+  }
+  .size-sm {
+    font-size: 150%;
+    @media screen and (max-width: $medium-device) {
+      font-size: 100%;
     }
-    .size-sm{
-        font-size: 150%;
-        @media screen and (max-width: $medium-device) {
-            font-size: 100%;
-        }
-    }
-    .size-bg{
-        font-size: 225%;
-    }
+  }
+  .size-bg {
+    font-size: 225%;
+  }
 }

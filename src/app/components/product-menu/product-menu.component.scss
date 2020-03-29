@@ -1,71 +1,71 @@
 @import "../../../assets/scss/custom-bootstrap-variables.scss";
 
-.horizontal{
-	background: $secondary-toolbar-background;
-	display: flex;
-	list-style: none;
-	justify-content: space-around;
-	position: relative;
-	cursor: pointer;
+.horizontal {
+  background: $secondary-toolbar-background;
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+  position: relative;
+  cursor: pointer;
 }
 .disclaimer-stage {
-	margin-top: 25px;
+  margin-top: 25px;
 }
 .toolbar-data {
-    color: $secondary-toolbar-font !important;
-    @media screen and (max-width: $small-device) {
-        display: none !important;
-    }
+  color: $secondary-toolbar-font !important;
+  @media screen and (max-width: $small-device) {
+    display: none !important;
+  }
 }
 
 .mega-menu-col-header {
-    text-transform: uppercase !important;
-    padding: 5px 0px;
-    font-size: 18px;
-    font-weight: bold;
+  text-transform: uppercase !important;
+  padding: 5px 0px;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .column ul li a:hover {
-	color: $primary;
-	cursor: pointer;
+  color: $primary;
+  cursor: pointer;
 }
 
-.horizontal li a{
-	color: $mega-menu-font;
-	text-decoration: none;
-	display: block;
-	padding: 10px 15px;
+.horizontal li a {
+  color: $mega-menu-font;
+  text-decoration: none;
+  display: block;
+  padding: 10px 15px;
 }
-.column{
-	padding: 0 15px 15px;
-	color: $mega-menu-column-header;
+.column {
+  padding: 0 15px 15px;
+  color: $mega-menu-column-header;
 }
-.column ul{
-	list-style: none;
-	padding: 0;
+.column ul {
+  list-style: none;
+  padding: 0;
 }
-.column ul li a{
-	padding: 2px 0;
+.column ul li a {
+  padding: 2px 0;
 }
-.dropdown{
-	position: absolute;
-	width: 100%;
-	top: 100%;
-	left: 0;
-	display: flex;
-	justify-content: space-between;
-	background: $mega-menu-background;
-    visibility: hidden;
-	z-index: 1;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+.dropdown {
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  background: $mega-menu-background;
+  visibility: hidden;
+  z-index: 1;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.horizontal li:hover .dropdown{
-    visibility: visible;
+.horizontal li:hover .dropdown {
+  visibility: visible;
 }
 
 .horizontal li:hover .toolbar-data {
-    background-color: $secondary-toolbar-background-hover;
-    color: $secondary-toolbar-font-hover !important;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+  background-color: $secondary-toolbar-background-hover;
+  color: $secondary-toolbar-font-hover !important;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
