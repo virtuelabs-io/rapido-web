@@ -12,7 +12,7 @@
     "livetest": "ng test --browsers=Chrome",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "pretty": "prettier --write \"src/**/*.ts\" --no-semi --single-quote --trailing-comma none --arrow-parens avoid",
+    "pretty": "prettier --write \"src/**/*.ts\" --single-quote --trailing-comma none --arrow-parens avoid",
     "pretty-check": "prettier --check \"src/**/*.ts\""
   },
   "private": true,
