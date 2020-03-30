@@ -13,7 +13,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "pretty": "prettier --write \"src/**/*.ts\" --no-semi",
-    "pretty-check": " prettier --check \"src/**/*.ts\""
+    "pretty-check": " prettier --check \"src/**/*.ts\"",
+    "precommit": "run-s pretty"
   },
   "private": true,
   "dependencies": {
