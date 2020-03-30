@@ -35,13 +35,13 @@ export class CustomerReviewsComponent implements OnInit {
 
   async userLogInCheck() {
     await this.loginSessinExists()
-      .then((_) => this.fetchCustomerReviews())
-      .catch((err) => this.handleError(err))
+      .then(_ => this.fetchCustomerReviews())
+      .catch(err => this.handleError(err))
   }
 
   async loginSessinExists() {
     await this._loginStateService.isLoggedInState.subscribe(
-      (state) => (this.isLoggedIn = state)
+      state => (this.isLoggedIn = state)
     )
   }
 
@@ -52,7 +52,7 @@ export class CustomerReviewsComponent implements OnInit {
 
   async fetchCustomerReviews() {
     if (this.isLoggedIn) {
-      await this._ratingsService.getAllCustomerRatings().subscribe((data) => {
+      await this._ratingsService.getAllCustomerRatings().subscribe(data => {
         if (data.length) {
           this.reviews = data
           this.length = data.length

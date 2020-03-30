@@ -69,13 +69,13 @@ export class OrdersComponent implements OnInit {
 
   async userLogInCheck() {
     await this.loginSessinExists()
-      .then((_) => this.getOrders())
-      .catch((err) => this.handleError(err))
+      .then(_ => this.getOrders())
+      .catch(err => this.handleError(err))
   }
 
   async loginSessinExists() {
     await this._loginStateService.isLoggedInState.subscribe(
-      (state) => (this.isLoggedIn = state)
+      state => (this.isLoggedIn = state)
     )
   }
 
@@ -86,12 +86,12 @@ export class OrdersComponent implements OnInit {
 
   uniqueOrders(arr, comp) {
     const unique = arr
-      .map((e) => e[comp])
+      .map(e => e[comp])
       // store the keys of the unique objects
       .map((e, i, final) => final.indexOf(e) === i && i)
       // eliminate the dead keys & store unique objects
-      .filter((e) => arr[e])
-      .map((e) => arr[e])
+      .filter(e => arr[e])
+      .map(e => arr[e])
     return unique
   }
 
@@ -146,7 +146,7 @@ export class OrdersComponent implements OnInit {
       width: '350px',
       data: 'Are you sure you want to cancel this order'
     })
-    this.dialogRef.afterClosed().subscribe((result) => {
+    this.dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.yesModalAction(id)
       }
@@ -155,7 +155,7 @@ export class OrdersComponent implements OnInit {
 
   yesModalAction(id) {
     this._loginStateService.loaderEnable()
-    this._orderService.cancelOrder(id).subscribe((data) => {
+    this._orderService.cancelOrder(id).subscribe(data => {
       this.cancelOrderRes = data
       this.getOrders()
     })
@@ -169,7 +169,7 @@ export class OrdersComponent implements OnInit {
 
   handleReview(productId) {
     this._loginStateService.loaderEnable()
-    this._ratingsService.checkProductReview(productId).subscribe((data) => {
+    this._ratingsService.checkProductReview(productId).subscribe(data => {
       this.handleReviewNavigation(data, productId)
     })
   }
@@ -189,14 +189,14 @@ export class OrdersComponent implements OnInit {
   }
 
   repeatOrder(selectedOrder) {
-    this.orders[selectedOrder]['items'].forEach((element) => {
+    this.orders[selectedOrder]['items'].forEach(element => {
       this.newItemsToCart.push({
         id: element.product_id,
         quantity: element.quantity
       })
     })
     // promise call to post the cart items and then to fetch the cart count..
-    this.postCartItems().then((_) => this.fetchCartCount())
+    this.postCartItems().then(_ => this.fetchCartCount())
   }
 
   // method to add new items to the object..
@@ -217,10 +217,10 @@ export class OrdersComponent implements OnInit {
     return new Promise((resolve, reject) => {
       this._loginStateService.loaderEnable()
       let items = []
-      this.newItemsToCart.forEach((element) => {
+      this.newItemsToCart.forEach(element => {
         items.push(this.updateCartItem(element.id, element.quantity, true))
       })
-      this.cartService.postCartItemList(items).subscribe((data) => {
+      this.cartService.postCartItemList(items).subscribe(data => {
         this.postCartItemRes = data
         resolve()
       })

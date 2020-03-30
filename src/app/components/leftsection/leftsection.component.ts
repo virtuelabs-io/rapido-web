@@ -66,13 +66,13 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
       this.searchedText = localSearchedText
     }
     this._searchItemServiceResponsePoductListState = this._searchItemService.responsePoductListState.subscribe(
-      (respData) => {
+      respData => {
         this.updateProductControls(respData)
       }
     )
 
     this._searchItemServicecurrentState = this._searchItemService.currentState.subscribe(
-      (query) => {
+      query => {
         if (query.searchedText) {
           this.searchedText = query.searchedText
           this.releatedSearch = query.releatedSearch
@@ -103,12 +103,12 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
         this.tags = hits.hit[0].fields.tags
         this.category = hits.hit[0].fields.category
         this.currency = hits.hit[0].fields.currency
-        this._productsHierarchyService.get().subscribe((data) => {
+        this._productsHierarchyService.get().subscribe(data => {
           this.categories = data
           this.subcategories = this.categories[this.category]
         })
 
-        this.fnPriceFilterHandler = (obj) => this.priceFilterData(obj)
+        this.fnPriceFilterHandler = obj => this.priceFilterData(obj)
         this.filterData = [
           {
             headerText: 'Filter by',

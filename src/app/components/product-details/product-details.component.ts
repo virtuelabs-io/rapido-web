@@ -95,14 +95,14 @@ export class ProductDetailsComponent implements OnInit {
     //this.paginator.pageIndex = 0
     this.Number = Number
     // get current product id
-    this.route.params.subscribe((params) => {
+    this.route.params.subscribe(params => {
       this.itemId = params.id
     })
     this.checkUserLogIn()
     //this.checkProductPurchase()
     // get product details
     if (this.itemId) {
-      this._searchItemService.responsePoductListState.subscribe((respData) => {
+      this._searchItemService.responsePoductListState.subscribe(respData => {
         let { hits } = respData
         if (hits.hit.length == 1 && hits.hit[0].id) {
           this.updateProductDetails(hits)
@@ -112,7 +112,7 @@ export class ProductDetailsComponent implements OnInit {
             size: 10,
             qdotparser: 'structured'
           }
-          this._productsService.get(query).subscribe((data) => {
+          this._productsService.get(query).subscribe(data => {
             if (data) {
               if (data.error || data.hits.found === 0) {
                 this.itemDetails = null
@@ -131,19 +131,19 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   async checkUserLogIn() {
-    await this.loginSessinExists().then((_) => this.checkProductPurchase())
+    await this.loginSessinExists().then(_ => this.checkProductPurchase())
   }
 
   checkProductPurchase() {
     if (this.isLoggedIn) {
-      this._orderService.checkProductPurchase(this.itemId).subscribe((data) => {
+      this._orderService.checkProductPurchase(this.itemId).subscribe(data => {
         if (data[0].length == 0) this.canReviewProduct = false
       })
     }
   }
 
   async fetchProductRatings(id) {
-    await this._ratingsService.getProductRatings(id).subscribe((data) => {
+    await this._ratingsService.getProductRatings(id).subscribe(data => {
       this.reviews = data
       this.length = this.reviews.length
       this.filteredReview = this.reviews.slice(0, this.pageSize)
@@ -151,20 +151,18 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   async getProductRatingsSummary(id) {
-    await this._ratingsService
-      .getProductRatingsSummary(id)
-      .subscribe((data) => {
-        this.rate = data
-        if (this.rate.length) {
-          this.rate.map((v, i) => {
-            this.reviewCount += v.count
-            this.rateSummary[v.rating - 1].count = v.count
-          })
-          this.rateSummary.reverse()
-        } else {
-          this.reviewCount = 0
-        }
-      })
+    await this._ratingsService.getProductRatingsSummary(id).subscribe(data => {
+      this.rate = data
+      if (this.rate.length) {
+        this.rate.map((v, i) => {
+          this.reviewCount += v.count
+          this.rateSummary[v.rating - 1].count = v.count
+        })
+        this.rateSummary.reverse()
+      } else {
+        this.reviewCount = 0
+      }
+    })
   }
 
   fetchRatingsAfterDeactivate(id) {
@@ -173,7 +171,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   updateProductDetails(hits) {
-    let product = hits.hit.filter((val) => {
+    let product = hits.hit.filter(val => {
       return val.id == this.itemId
     })
     this.itemDetails = product[0].fields
@@ -227,12 +225,12 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   async addItemsToCart() {
-    await this.loginSessinExists().then((_) => this.postCartItem())
+    await this.loginSessinExists().then(_ => this.postCartItem())
   }
 
   async loginSessinExists() {
     await this._loginStateService.isLoggedInState.subscribe(
-      (state) => (this.isLoggedIn = state)
+      state => (this.isLoggedIn = state)
     )
   }
 
@@ -243,7 +241,7 @@ export class ProductDetailsComponent implements OnInit {
       cartItem.product_id = parseInt(this.itemId)
       cartItem.quantity = this.quantity
       cartItem.in_cart = true
-      await this._cartService.postCartItem(cartItem).subscribe((_) => {
+      await this._cartService.postCartItem(cartItem).subscribe(_ => {
         this._cartStateService.fetchAndUpdateCartCount(this.isLoggedIn)
         this._loginStateService.loaderDisable()
         this._snackBar.open(Constants.ITEM_MOVED_TO_CART, undefined, {
@@ -255,7 +253,7 @@ export class ProductDetailsComponent implements OnInit {
       let guestCartItem: GuestCartItem = new GuestCartItem()
       guestCartItem.product_id = parseInt(this.itemId)
       guestCartItem.quantity = this.quantity
-      this._guestCartService.postGuestCartItem(guestCartItem).subscribe((_) => {
+      this._guestCartService.postGuestCartItem(guestCartItem).subscribe(_ => {
         this._cartStateService.fetchAndUpdateCartCount(this.isLoggedIn)
         this._loginStateService.loaderDisable()
         this._snackBar.open(Constants.ITEM_MOVED_TO_CART, undefined, {
@@ -296,7 +294,7 @@ export class ProductDetailsComponent implements OnInit {
 
   handleCreateReview(id) {
     this._loginStateService.loaderEnable()
-    this._ratingsService.checkProductReview(id).subscribe((data) => {
+    this._ratingsService.checkProductReview(id).subscribe(data => {
       this.handleReviewNavigation(data, id)
     })
   }

@@ -44,13 +44,13 @@ export class ProductResultsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.route.queryParams.subscribe((params) => {
+    this.route.queryParams.subscribe(params => {
       this.loginStateService.loaderEnable()
       if (params && params.q) {
         let qObject = Common.decodeUrlParams(params)
         this.paginator.pageIndex = Math.ceil(qObject.start / qObject.size)
         this._searchItemService.changeState(qObject)
-        this._productsService.get(qObject).subscribe((data) => {
+        this._productsService.get(qObject).subscribe(data => {
           if (data) {
             if (
               data.error ||
@@ -74,7 +74,7 @@ export class ProductResultsComponent implements OnInit, OnDestroy {
       }
     })
     this._searchItemServicecurrentState = this._searchItemService.currentState.subscribe(
-      (query) => {
+      query => {
         if (query.searchedText) {
           this.searchedText = query.searchedText
           this.prevQuery = query
@@ -97,7 +97,7 @@ export class ProductResultsComponent implements OnInit, OnDestroy {
   }
 
   setPageSizeOptions(setPageSizeOptionsInput: string) {
-    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map((str) => +str)
+    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str)
   }
 
   openDialog(): void {

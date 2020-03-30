@@ -25,11 +25,11 @@ export class CartStateService {
     if (state) {
       await this._cartService
         .getCountOfInCartItems()
-        .then((count) => this.updateCartCount(Number(count)))
+        .then(count => this.updateCartCount(Number(count)))
     } else {
       await this._guestCartService
         .getCountOfGuestCartItems()
-        .then((count) => this.updateCartCount(Number(count)))
+        .then(count => this.updateCartCount(Number(count)))
     }
   }
 }

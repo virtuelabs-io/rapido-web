@@ -56,13 +56,13 @@ export class CompanyDetailsComponent implements OnInit {
 
   async userLogInCheck() {
     await this.loginSessinExists()
-      .then((_) => this.getCompanyDetails())
-      .catch((err) => this.handleError(err))
+      .then(_ => this.getCompanyDetails())
+      .catch(err => this.handleError(err))
   }
 
   async loginSessinExists() {
     await this._loginStateService.isLoggedInState.subscribe(
-      (state) => (this.isLoggedIn = state)
+      state => (this.isLoggedIn = state)
     )
   }
 
@@ -74,31 +74,29 @@ export class CompanyDetailsComponent implements OnInit {
   async getCompanyDetails() {
     if (this.isLoggedIn) {
       this._loginStateService.loaderEnable()
-      await this._companyDetailsService
-        .getCompanyDetails()
-        .subscribe((data) => {
-          if (data != null) {
-            this.editButtonShow = true
-            this.addressFormGroup.controls['name'].setValue(data.company_name)
-            this.addressFormGroup.controls['add1'].setValue(data.addr_1)
-            this.addressFormGroup.controls['add2'].setValue(data.addr_2)
-            this.addressFormGroup.controls['town_city'].setValue(data.city)
-            this.addressFormGroup.controls['postCode'].setValue(data.postcode)
-            this.addressFormGroup.controls['country'].setValue(data.country)
-            this.addressFormGroup.controls['county'].setValue(data.county)
-            this._customerId = data.customer_id
-          } else {
-            this.editButtonShow = false
-            this.addressFormGroup.controls['name'].setValue('')
-            this.addressFormGroup.controls['add1'].setValue('')
-            this.addressFormGroup.controls['add2'].setValue('')
-            this.addressFormGroup.controls['town_city'].setValue('')
-            this.addressFormGroup.controls['postCode'].setValue('')
-            this.addressFormGroup.controls['country'].setValue('')
-            this.addressFormGroup.controls['county'].setValue('')
-          }
-          this._loginStateService.loaderDisable()
-        })
+      await this._companyDetailsService.getCompanyDetails().subscribe(data => {
+        if (data != null) {
+          this.editButtonShow = true
+          this.addressFormGroup.controls['name'].setValue(data.company_name)
+          this.addressFormGroup.controls['add1'].setValue(data.addr_1)
+          this.addressFormGroup.controls['add2'].setValue(data.addr_2)
+          this.addressFormGroup.controls['town_city'].setValue(data.city)
+          this.addressFormGroup.controls['postCode'].setValue(data.postcode)
+          this.addressFormGroup.controls['country'].setValue(data.country)
+          this.addressFormGroup.controls['county'].setValue(data.county)
+          this._customerId = data.customer_id
+        } else {
+          this.editButtonShow = false
+          this.addressFormGroup.controls['name'].setValue('')
+          this.addressFormGroup.controls['add1'].setValue('')
+          this.addressFormGroup.controls['add2'].setValue('')
+          this.addressFormGroup.controls['town_city'].setValue('')
+          this.addressFormGroup.controls['postCode'].setValue('')
+          this.addressFormGroup.controls['country'].setValue('')
+          this.addressFormGroup.controls['county'].setValue('')
+        }
+        this._loginStateService.loaderDisable()
+      })
     } else {
       await Promise.reject("Login Session doesn't exist!")
     }
@@ -109,7 +107,7 @@ export class CompanyDetailsComponent implements OnInit {
       width: '350px',
       data: 'Do you confirm to save the changes?'
     })
-    this.dialogRef.afterClosed().subscribe((result) => {
+    this.dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.modalSave()
       }
@@ -130,7 +128,7 @@ export class CompanyDetailsComponent implements OnInit {
     )
     this._companyDetailsService
       .putCompanyDetails(this.companyDetails)
-      .subscribe((data) => {
+      .subscribe(data => {
         this.putRes = data
         this.getCompanyDetails()
         this._snackBar.open(this._snackBarMsg, '', {
@@ -154,7 +152,7 @@ export class CompanyDetailsComponent implements OnInit {
     )
     this._companyDetailsService
       .postCompanyDetails(this.companyDetails)
-      .subscribe((data) => {
+      .subscribe(data => {
         this.postRes = data
         this._loginStateService.loaderDisable()
         this._snackBar.open(this._snackBarMsg, '', {
@@ -171,7 +169,7 @@ export class CompanyDetailsComponent implements OnInit {
 
   deleteCompanyDetails() {
     this._loginStateService.loaderEnable()
-    this._companyDetailsService.deleteCompanyDetails().subscribe((data) => {
+    this._companyDetailsService.deleteCompanyDetails().subscribe(data => {
       this.deleteRes = data
       this.getCompanyDetails()
     })

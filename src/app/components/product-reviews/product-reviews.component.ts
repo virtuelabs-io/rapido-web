@@ -53,12 +53,12 @@ export class ProductReviewsComponent implements OnInit {
   }
 
   async userLogInCheck() {
-    await this.loginSessinExists().then((_) => this.formatReviews())
+    await this.loginSessinExists().then(_ => this.formatReviews())
   }
 
   async loginSessinExists() {
     await this._loginStateService.isLoggedInState.subscribe(
-      (state) => (this.isLoggedIn = state)
+      state => (this.isLoggedIn = state)
     )
   }
 
@@ -84,20 +84,18 @@ export class ProductReviewsComponent implements OnInit {
   async helpfulRatingIncrement(id) {
     this._loginStateService.loaderEnable()
     if (this.isLoggedIn) {
-      await this._ratingsService
-        .helpfulRatingIncrement(id)
-        .subscribe((data) => {
-          this._snackBar.open(Constants.REVIEW_HELPFUL_INCREMENT, undefined, {
-            duration: 4000
-          })
-          this.resHelpfulCount = data
-          this.filteredReview.map((v, i) => {
-            if (v.id == id) {
-              this.filteredReview[i].helpful += 1
-            }
-          })
-          this._loginStateService.loaderDisable()
+      await this._ratingsService.helpfulRatingIncrement(id).subscribe(data => {
+        this._snackBar.open(Constants.REVIEW_HELPFUL_INCREMENT, undefined, {
+          duration: 4000
         })
+        this.resHelpfulCount = data
+        this.filteredReview.map((v, i) => {
+          if (v.id == id) {
+            this.filteredReview[i].helpful += 1
+          }
+        })
+        this._loginStateService.loaderDisable()
+      })
     } else {
       this._loginStateService.loaderDisable()
       await this.handleError('e')
@@ -108,7 +106,7 @@ export class ProductReviewsComponent implements OnInit {
   async deactivateRating(id) {
     this._loginStateService.loaderEnable()
     if (this.isLoggedIn) {
-      await this._ratingsService.deactivateRating(id).subscribe((data) => {
+      await this._ratingsService.deactivateRating(id).subscribe(data => {
         this.resAbuse = data
         this._loginStateService.loaderDisable()
         this._snackBar.open(
@@ -136,7 +134,7 @@ export class ProductReviewsComponent implements OnInit {
   async deleteReview(id) {
     this._loginStateService.loaderEnable()
     if (this.isLoggedIn) {
-      await this._ratingsService.deleteCustomerRating(id).subscribe((_) => {
+      await this._ratingsService.deleteCustomerRating(id).subscribe(_ => {
         this._snackBar.open(Constants.REVIEW_DELETED_SUCCESSFULLY, undefined, {
           duration: 4000
         })

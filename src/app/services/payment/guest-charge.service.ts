@@ -29,15 +29,15 @@ export class GuestChargeService extends RapidoHttpService<GuestCharge> {
       'SID:',
       guestCharge.session_id
     ].join(' ')
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       let orderItemsObject
       this.post(
         [Constants.PAYMENT_APIS.api, 'charge-guest'].join('/'),
         guestCharge
-      ).subscribe((data) => {
+      ).subscribe(data => {
         if (data[0].length > 0) {
           orderItemsObject = this.formatOrderItems(data[0])
-          this.getProductDetails(data[0]).subscribe((productDetails) => {
+          this.getProductDetails(data[0]).subscribe(productDetails => {
             resolve(
               this.prepareCartItemDetailsList(productDetails, orderItemsObject)
             )
@@ -86,7 +86,7 @@ export class GuestChargeService extends RapidoHttpService<GuestCharge> {
 
   prepareCartItemDetailsList(productDetails: any, orderItemsObject: any) {
     let products = {}
-    productDetails['hits']['hit'].forEach((product) => {
+    productDetails['hits']['hit'].forEach(product => {
       products[product.id] = product['fields']
     })
     return {

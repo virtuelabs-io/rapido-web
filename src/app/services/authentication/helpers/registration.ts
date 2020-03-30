@@ -162,7 +162,7 @@ export class Registration extends Schema {
     ]
     let updateAttributeList: ICognitoUserAttributeData[] = []
     let keyName: string
-    eligibleFields.forEach((field) => {
+    eligibleFields.forEach(field => {
       if (this[field] !== undefined) {
         if (field !== 'email' && field !== 'name') {
           keyName = Constants.CUSTOM + field

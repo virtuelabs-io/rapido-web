@@ -23,16 +23,16 @@ export class OrdersService extends RapidoHttpService<Order> {
   }
 
   createOrder(order: Order) {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       let orderItemsObject
       this.post(
         [Constants.ORDERS_APIS.api, 'orders'].join('/'),
         order,
         this.addAuthHeader(this.initializeHeaders())
-      ).subscribe((data) => {
+      ).subscribe(data => {
         if (data[0].length > 0) {
           orderItemsObject = this.formatOrderItems(data[0])
-          this.getProductDetails(data[0]).subscribe((productDetails) => {
+          this.getProductDetails(data[0]).subscribe(productDetails => {
             resolve(
               this.prepareCartItemDetailsList(productDetails, orderItemsObject)
             )
@@ -45,16 +45,16 @@ export class OrdersService extends RapidoHttpService<Order> {
   }
 
   confirmOrder(order: Order) {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       let orderItemsObject
       this.put(
         [Constants.ORDERS_APIS.api, 'orders', String(order.order_id)].join('/'),
         order,
         this.addAuthHeader(this.initializeHeaders())
-      ).subscribe((data) => {
+      ).subscribe(data => {
         if (data[0].length > 0) {
           orderItemsObject = this.formatOrderItems(data[0])
-          this.getProductDetails(data[0]).subscribe((productDetails) => {
+          this.getProductDetails(data[0]).subscribe(productDetails => {
             resolve(
               this.prepareCartItemDetailsList(productDetails, orderItemsObject)
             )
@@ -67,15 +67,15 @@ export class OrdersService extends RapidoHttpService<Order> {
   }
 
   getOrder(order_id: number) {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       let orderItemsObject
       this.get(
         [Constants.ORDERS_APIS.api, 'orders', String(order_id)].join('/'),
         this.addAuthHeader(this.initializeHeaders())
-      ).subscribe((data) => {
+      ).subscribe(data => {
         if (data[0].length > 0) {
           orderItemsObject = this.formatOrderItems(data[0])
-          this.getProductDetails(data[0]).subscribe((productDetails) => {
+          this.getProductDetails(data[0]).subscribe(productDetails => {
             resolve(
               this.prepareCartItemDetailsList(productDetails, orderItemsObject)
             )
@@ -88,15 +88,15 @@ export class OrdersService extends RapidoHttpService<Order> {
   }
 
   getOrders() {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       let orderItemsObject
       this.get(
         [Constants.ORDERS_APIS.api, 'orders'].join('/'),
         this.addAuthHeader(this.initializeHeaders())
-      ).subscribe((data) => {
+      ).subscribe(data => {
         if (data[0].length > 0) {
           orderItemsObject = this.formatOrderItems(data[0])
-          this.getProductDetails(data[0]).subscribe((productDetails) => {
+          this.getProductDetails(data[0]).subscribe(productDetails => {
             resolve(
               this.prepareCartItemDetailsList(productDetails, orderItemsObject)
             )
@@ -185,7 +185,7 @@ export class OrdersService extends RapidoHttpService<Order> {
 
   prepareCartItemDetailsList(productDetails: any, orderItemsObject: any) {
     let products = {}
-    productDetails['hits']['hit'].forEach((product) => {
+    productDetails['hits']['hit'].forEach(product => {
       products[product.id] = product['fields']
     })
     return {

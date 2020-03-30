@@ -59,13 +59,13 @@ export class LogInComponent implements OnInit {
 
   async userLogInCheck() {
     await this.loginSessinExists()
-      .then((_) => this.moveToPreviousRoute())
-      .catch((err) => this.handleError(err))
+      .then(_ => this.moveToPreviousRoute())
+      .catch(err => this.handleError(err))
   }
 
   async loginSessinExists() {
     await this.loginStateService.isLoggedInState.subscribe(
-      (state) => (this.isLoggedIn = state)
+      state => (this.isLoggedIn = state)
     )
   }
 
@@ -93,8 +93,8 @@ export class LogInComponent implements OnInit {
   async handleUserlogin() {
     // this.loginStateService.loaderEnable()
     await this.fetchGuestCart()
-      .then((_) => this.login())
-      .then((_) => this.postGuestCart())
+      .then(_ => this.login())
+      .then(_ => this.postGuestCart())
   }
 
   async postGuestCart() {
@@ -109,7 +109,7 @@ export class LogInComponent implements OnInit {
       )
     }
     if (items.length && this._signInResponse) {
-      await this._cartService.postCartItemList(items).subscribe((_) => {
+      await this._cartService.postCartItemList(items).subscribe(_ => {
         this.handleRouteAfterLogIn()
       })
     } else if (this._signInResponse) {
@@ -144,13 +144,13 @@ export class LogInComponent implements OnInit {
       }
       await this._signInService
         .login()
-        .then((value) => {
+        .then(value => {
           this._signInResponse = true
           this.loginStateService.changeState(true)
           this.cartStateService.fetchAndUpdateCartCount(true)
           this.loginStateService.loaderDisable()
         })
-        .catch((error) => {
+        .catch(error => {
           this.loginStateService.loaderDisable()
           this._signInResponse = false
           this.alertBox = true

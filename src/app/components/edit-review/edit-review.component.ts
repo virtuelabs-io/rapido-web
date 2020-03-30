@@ -63,13 +63,13 @@ export class EditReviewComponent implements OnInit {
 
   async userLogInCheck() {
     await this.loginSessinExists()
-      .then((_) => this.getReviewDetails())
-      .catch((err) => this.handleError(err))
+      .then(_ => this.getReviewDetails())
+      .catch(err => this.handleError(err))
   }
 
   async loginSessinExists() {
     await this._loginStateService.isLoggedInState.subscribe(
-      (state) => (this.isLoggedIn = state)
+      state => (this.isLoggedIn = state)
     )
   }
 
@@ -79,7 +79,7 @@ export class EditReviewComponent implements OnInit {
   }
 
   async getReviewDetails() {
-    this._ratingsService.getCustomerRating(this._reviewId).subscribe((data) => {
+    this._ratingsService.getCustomerRating(this._reviewId).subscribe(data => {
       this.rate = data.rating
       this.registerFormGroup.controls['summary'].setValue(data.summary)
       this.registerFormGroup.controls['title'].setValue(data.title)
@@ -94,7 +94,7 @@ export class EditReviewComponent implements OnInit {
       qdotparser: 'structured'
     }
     if (this.isLoggedIn) {
-      await this._productsService.get(query).subscribe((data) => {
+      await this._productsService.get(query).subscribe(data => {
         if (data) {
           this.imageDetails = Common.getImageURI(
             data.hits.hit[0].fields.images,
@@ -117,7 +117,7 @@ export class EditReviewComponent implements OnInit {
     this.rating.title = form.title
     this.rating.rating = this.rate
     this.rating.summary = form.summary
-    this._ratingsService.updateRating(this.rating).subscribe((data) => {
+    this._ratingsService.updateRating(this.rating).subscribe(data => {
       this.updateRes = data
       this._snackBar.open(Constants.REVIEW_UPDATED_SUCCESSFULLY, '', {
         duration: 5000

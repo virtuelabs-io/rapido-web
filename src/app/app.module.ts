@@ -212,7 +212,7 @@ export class AppModule {
   constructor(private RouteService: RouteService) {}
 
   ngOnInit() {
-    this.RouteService.previousRoute.subscribe((state) => {
+    this.RouteService.previousRoute.subscribe(state => {
       this.RouteService.changeRoute(state)
     })
   }

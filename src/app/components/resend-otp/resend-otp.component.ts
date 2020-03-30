@@ -37,7 +37,7 @@ export class ResendOtpComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._resendOtpService.currentNumber.subscribe((state) => {
+    this._resendOtpService.currentNumber.subscribe(state => {
       this.mobileNumber = state
     })
     // Instantiating form group and setting default values for reg form
@@ -54,12 +54,12 @@ export class ResendOtpComponent implements OnInit {
     ].join('') // setting payload
     this._confirmRegistrationService
       .confirmRegistration(this.confirmationCode)
-      .then((_) => {
+      .then(_ => {
         this.stepperIndex = 2
         this.progressSpinner = false
         this.otpConfirmed = true
       })
-      .catch((error) => {
+      .catch(error => {
         this.stepperIndex = 1
         this.wrongCodeMsg = error._data.message || error.message
         this.progressSpinner = false
@@ -75,13 +75,13 @@ export class ResendOtpComponent implements OnInit {
     ].join('')
     const promise = this._resendConfirmationCodeService.resendConfirmationCode()
     promise
-      .then((_) => {
+      .then(_ => {
         this.stepperIndex = 1
         this.otpSuccess = true
         this.progressSpinner = false
         this._resentConfirmationCodeResponse = true
       })
-      .catch((error) => {
+      .catch(error => {
         this.stepperIndex = 0
         this.otpFail = error.data.message
         this.progressSpinner = false

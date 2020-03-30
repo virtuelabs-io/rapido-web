@@ -38,7 +38,7 @@ export class ProductsService {
       Constants.environment.productSearchEndPoint + this.buildQuery(_query)
     return this._http.get<any>(url).pipe(
       retry(Constants.RETRY_TIMES),
-      catchError((err) => {
+      catchError(err => {
         console.log('Error in processing request...', err)
         return throwError(err)
       })

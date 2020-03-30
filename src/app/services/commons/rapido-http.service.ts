@@ -28,8 +28,8 @@ export class RapidoHttpService<T> {
       })
       .pipe(
         retry(Constants.RETRY_TIMES),
-        tap((_) => this.loginStateService.loaderDisable()),
-        catchError((err) => {
+        tap(_ => this.loginStateService.loaderDisable()),
+        catchError(err => {
           this.loginStateService.loaderDisable()
           return throwError(err)
         })
@@ -45,8 +45,8 @@ export class RapidoHttpService<T> {
       })
       .pipe(
         retry(Constants.RETRY_TIMES),
-        tap((_) => this.loginStateService.loaderDisable()),
-        catchError((err) => {
+        tap(_ => this.loginStateService.loaderDisable()),
+        catchError(err => {
           this.loginStateService.loaderDisable()
           return throwError(err)
         })
@@ -61,8 +61,8 @@ export class RapidoHttpService<T> {
         headers: _headers
       })
       .pipe(
-        tap((_) => this.loginStateService.loaderDisable()),
-        catchError((err) => {
+        tap(_ => this.loginStateService.loaderDisable()),
+        catchError(err => {
           this.loginStateService.loaderDisable()
           return throwError(err)
         })
@@ -81,8 +81,8 @@ export class RapidoHttpService<T> {
         headers: _headers
       })
       .pipe(
-        tap((_) => this.loginStateService.loaderDisable()),
-        catchError((err) => {
+        tap(_ => this.loginStateService.loaderDisable()),
+        catchError(err => {
           this.loginStateService.loaderDisable()
           return throwError(err)
         })
@@ -97,8 +97,8 @@ export class RapidoHttpService<T> {
         headers: _headers
       })
       .pipe(
-        tap((_) => this.loginStateService.loaderDisable()),
-        catchError((err) => {
+        tap(_ => this.loginStateService.loaderDisable()),
+        catchError(err => {
           this.loginStateService.loaderDisable()
           return throwError(err)
         })
@@ -113,8 +113,8 @@ export class RapidoHttpService<T> {
         headers: _headers
       })
       .pipe(
-        tap((_) => this.loginStateService.loaderDisable()),
-        catchError((err) => {
+        tap(_ => this.loginStateService.loaderDisable()),
+        catchError(err => {
           this.loginStateService.loaderDisable()
           return throwError(err)
         })

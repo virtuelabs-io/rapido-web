@@ -32,8 +32,8 @@ export class AddressComponent implements OnInit {
 
   async userLogInCheck() {
     await this.loginSessinExists()
-      .then((_) => this.getAddressList())
-      .catch((err) => this.handleError(err))
+      .then(_ => this.getAddressList())
+      .catch(err => this.handleError(err))
   }
 
   async handleError(err) {
@@ -43,7 +43,7 @@ export class AddressComponent implements OnInit {
 
   async loginSessinExists() {
     await this._loginStateService.isLoggedInState.subscribe(
-      (state) => (this.isLoggedIn = state)
+      state => (this.isLoggedIn = state)
     )
   }
 
@@ -56,7 +56,7 @@ export class AddressComponent implements OnInit {
     if (this.isLoggedIn) {
       await this._addressDetailsService
         .getAddressDetailsList()
-        .subscribe((data) => {
+        .subscribe(data => {
           if (data['length'] > 0) {
             this.address_details_id = data[0]['id']
             this.address = data
@@ -72,7 +72,7 @@ export class AddressComponent implements OnInit {
 
   addressDelete(id) {
     this._loginStateService.loaderEnable()
-    this._addressDetailsService.deleteAddressDetails(id).subscribe((data) => {
+    this._addressDetailsService.deleteAddressDetails(id).subscribe(data => {
       this.delRes = data
       this.address_details_id = null
       this.getAddressList()

@@ -216,12 +216,12 @@ export class AuthmockComponent implements OnInit {
 
     const promise = this._signUpService.signUp()
     promise
-      .then((value) => {
+      .then(value => {
         this._userRegisteredResponse = true
         console.log(value) // response from successfull resolve
         console.log(this._profileService.cognitoUser) // updated user profile
       })
-      .catch((error) => {
+      .catch(error => {
         this._userRegisteredResponse = false
         console.log(error) // response from a graceful reject
       })
@@ -231,11 +231,11 @@ export class AuthmockComponent implements OnInit {
     this._resendConfirmationCodeService.username = this._registration.phone_number
     const promise = this._resendConfirmationCodeService.resendConfirmationCode()
     promise
-      .then((value) => {
+      .then(value => {
         this._resentConfirmationCodeResponse = true
         console.log(value) // response from successfull resolve
       })
-      .catch((error) => {
+      .catch(error => {
         this._resentConfirmationCodeResponse = false
         console.log(error) // response from a graceful reject
       })
@@ -247,11 +247,11 @@ export class AuthmockComponent implements OnInit {
       this._confirmationCode
     )
     promise
-      .then((value) => {
+      .then(value => {
         this._confirmRegistrationResponse = true
         console.log(value) // response from successfull resolve
       })
-      .catch((error) => {
+      .catch(error => {
         this._confirmRegistrationResponse = false
         console.log(error) // response from a graceful reject
       })
@@ -265,11 +265,11 @@ export class AuthmockComponent implements OnInit {
 
     const promise = this._signInService.login()
     promise
-      .then((value) => {
+      .then(value => {
         this._signInResponse = true
         console.log(value) // response from successfull resolve
       })
-      .catch((error) => {
+      .catch(error => {
         this._signInResponse = false
         console.log(error) // response from a graceful reject
       })
@@ -279,11 +279,11 @@ export class AuthmockComponent implements OnInit {
     this._updateAttributeService.attributeList = this._registration.createUpdateAttributeList()
     const promise = this._updateAttributeService.updateAttributes()
     promise
-      .then((value) => {
+      .then(value => {
         this._updatedAttribute = true
         console.log(value) // response from successfull resolve
       })
-      .catch((error) => {
+      .catch(error => {
         this._updatedAttribute = false
         console.log(error) // response from a graceful reject
       })
@@ -294,12 +294,12 @@ export class AuthmockComponent implements OnInit {
     this._changePasswordService.newPassword = this._newPassword
     const promise = this._changePasswordService.changePassowrd()
     promise
-      .then((value) => {
+      .then(value => {
         this._changedPassword = true
         this._registration.password = this._newPassword
         console.log(value) // response from successfull resolve
       })
-      .catch((error) => {
+      .catch(error => {
         this._changedPassword = false
         console.log(error) // response from a graceful reject
       })
@@ -309,12 +309,12 @@ export class AuthmockComponent implements OnInit {
     this._forgotPasswordService.username = this._registration.phone_number
     const promise = this._forgotPasswordService.forgotPassword()
     promise
-      .then((value) => {
+      .then(value => {
         this._forgottenPassword = true
         this._registration.password = this._newPassword
         console.log(value) // response from successfull resolve
       })
-      .catch((error) => {
+      .catch(error => {
         this._forgottenPassword = false
         console.log(error) // response from a graceful reject
       })
@@ -323,32 +323,32 @@ export class AuthmockComponent implements OnInit {
   deleteUser() {
     const promise = this._deleteUserService.deleteUser()
     promise
-      .then((value) => {
+      .then(value => {
         this._deletedUser = true
         console.log(value) // response from successfull resolve
       })
-      .catch((error) => {
+      .catch(error => {
         this._deletedUser = false
         console.log(error) // response from a graceful reject
       })
   }
 
   queryProducts() {
-    this._productsService.get(this._query).subscribe((data) => {
+    this._productsService.get(this._query).subscribe(data => {
       console.log(data)
       this._productsFetched = true
     })
   }
 
   getProductHierarchy() {
-    this._productHierarchyService.get().subscribe((data) => {
+    this._productHierarchyService.get().subscribe(data => {
       console.log(data)
       this._fetchedProductHierarchy = true
     })
   }
 
   getCompanyDetails() {
-    this._companyDetailsService.getCompanyDetails().subscribe((data) => {
+    this._companyDetailsService.getCompanyDetails().subscribe(data => {
       console.log(data)
       this.company_details_result =
         'Sucessfully fetched customer company details and logged!'
@@ -358,7 +358,7 @@ export class AuthmockComponent implements OnInit {
   postCompanyDetails() {
     this._companyDetailsService
       .postCompanyDetails(this.companyDetails)
-      .subscribe((data) => {
+      .subscribe(data => {
         console.log(data)
         this.company_details_result =
           'Sucessfully posted customer company details and logged!'
@@ -369,7 +369,7 @@ export class AuthmockComponent implements OnInit {
     this.companyDetails.company_name = 'Updated Company Pvt Ltd'
     this._companyDetailsService
       .putCompanyDetails(this.companyDetails)
-      .subscribe((data) => {
+      .subscribe(data => {
         console.log(data)
         this.company_details_result =
           'Sucessfully updated customer company details and logged!'
@@ -377,7 +377,7 @@ export class AuthmockComponent implements OnInit {
   }
 
   deleteCompanyDetails() {
-    this._companyDetailsService.deleteCompanyDetails().subscribe((data) => {
+    this._companyDetailsService.deleteCompanyDetails().subscribe(data => {
       console.log(data)
       this.company_details_result =
         'Sucessfully deleted customer company details and logged!'
@@ -387,7 +387,7 @@ export class AuthmockComponent implements OnInit {
   getAddressDetails() {
     this._addressDetailsService
       .getAddressDetails(this.address_details_id)
-      .subscribe((data) => {
+      .subscribe(data => {
         console.log(data)
         this.address_details_result =
           'Sucessfully fetched address details and logged!'
@@ -395,7 +395,7 @@ export class AuthmockComponent implements OnInit {
   }
 
   getAddressDetailsList() {
-    this._addressDetailsService.getAddressDetailsList().subscribe((data) => {
+    this._addressDetailsService.getAddressDetailsList().subscribe(data => {
       console.log(data)
       if (data['length'] > 0) {
         this.address_details_id = data[0]['id']
@@ -412,7 +412,7 @@ export class AuthmockComponent implements OnInit {
   postAddressDetails() {
     this._addressDetailsService
       .postAddressDetails(this.addressDetails)
-      .subscribe((data) => {
+      .subscribe(data => {
         console.log(data)
         if (data['insertId']) {
           this.address_details_id = data['insertId']
@@ -431,7 +431,7 @@ export class AuthmockComponent implements OnInit {
     this.addressDetails.id = this.address_details_id
     this._addressDetailsService
       .putAddressDetails(this.addressDetails)
-      .subscribe((data) => {
+      .subscribe(data => {
         console.log(data)
         this.address_details_result =
           'Sucessfully updated customer address details and logged!'
@@ -441,7 +441,7 @@ export class AuthmockComponent implements OnInit {
   deleteAddressDetails() {
     this._addressDetailsService
       .deleteAddressDetails(this.address_details_id)
-      .subscribe((data) => {
+      .subscribe(data => {
         console.log(data)
         this.address_details_id = null
         this.address_details_result =
@@ -450,7 +450,7 @@ export class AuthmockComponent implements OnInit {
   }
 
   getAddressDetailsMock() {
-    this._addressDetailsMockService.getAddressDetails(1).subscribe((data) => {
+    this._addressDetailsMockService.getAddressDetails(1).subscribe(data => {
       console.log(data)
       this.mock_address_details_result =
         'Sucessfully fetched mock address details and logged!'
@@ -458,22 +458,20 @@ export class AuthmockComponent implements OnInit {
   }
 
   getAddressDetailsListMock() {
-    this._addressDetailsMockService
-      .getAddressDetailsList()
-      .subscribe((data) => {
-        console.log(data)
-        if (data['length'] > 0) {
-          console.log('Sucessfully updated the address test id to: 1')
-        }
-        this.mock_address_details_result =
-          'Sucessfully fetched mock address details List and logged!'
-      })
+    this._addressDetailsMockService.getAddressDetailsList().subscribe(data => {
+      console.log(data)
+      if (data['length'] > 0) {
+        console.log('Sucessfully updated the address test id to: 1')
+      }
+      this.mock_address_details_result =
+        'Sucessfully fetched mock address details List and logged!'
+    })
   }
 
   postAddressDetailsMock() {
     this._addressDetailsMockService
       .postAddressDetails(this.addressDetails)
-      .subscribe((data) => {
+      .subscribe(data => {
         console.log(data)
         if (data['insertId']) {
           console.log('Sucessfully updated the address test id to: 1')
@@ -487,7 +485,7 @@ export class AuthmockComponent implements OnInit {
     this.addressDetails.id = 1
     this._addressDetailsMockService
       .putAddressDetails(this.addressDetails)
-      .subscribe((data) => {
+      .subscribe(data => {
         console.log(data)
         this.mock_address_details_result =
           'Sucessfully updated mock customer address details and logged!'
@@ -495,13 +493,11 @@ export class AuthmockComponent implements OnInit {
   }
 
   deleteAddressDetailsMock() {
-    this._addressDetailsMockService
-      .deleteAddressDetails(1)
-      .subscribe((data) => {
-        console.log(data)
-        this.mock_address_details_result =
-          'Sucessfully deleted mock customer address details and logged!'
-      })
+    this._addressDetailsMockService.deleteAddressDetails(1).subscribe(data => {
+      console.log(data)
+      this.mock_address_details_result =
+        'Sucessfully deleted mock customer address details and logged!'
+    })
   }
 
   makeCartItem(): CartItem {
@@ -556,7 +552,7 @@ export class AuthmockComponent implements OnInit {
   }
 
   postCartItem() {
-    this._cartService.postCartItem(this.makeCartItem()).subscribe((data) => {
+    this._cartService.postCartItem(this.makeCartItem()).subscribe(data => {
       console.log(data)
       this.cart_item_result = 'Sucessfully posted cart item and logged!'
     })
@@ -572,7 +568,7 @@ export class AuthmockComponent implements OnInit {
         items.push(this.updateCartItem(data[ele].cartItem.product_id))
       }
       console.log('Data after change', items)
-      this._cartService.postCartItemList(items).subscribe((data2) => {
+      this._cartService.postCartItemList(items).subscribe(data2 => {
         console.log('Cart confirmed data', data2)
         this.cart_item_result = 'Sucessfully posted cart items and logged!'
       })
@@ -580,14 +576,14 @@ export class AuthmockComponent implements OnInit {
   }
 
   deleteInCartItems() {
-    this._cartService.deleteInCartItems().subscribe((data) => {
+    this._cartService.deleteInCartItems().subscribe(data => {
       console.log(data)
       this.cart_item_result = 'Sucessfully deleted in cart items and logged!'
     })
   }
 
   deleteCartItem() {
-    this._cartService.deleteCartItem(this._cart_item_id).subscribe((data) => {
+    this._cartService.deleteCartItem(this._cart_item_id).subscribe(data => {
       console.log(data)
       this.cart_item_result = 'Sucessfully deleted item and logged!'
     })
@@ -613,7 +609,7 @@ export class AuthmockComponent implements OnInit {
 
   cancelOrder() {
     console.log('Canceling order for:', this.order.order_id)
-    this._orderService.cancelOrder(this.order.order_id).subscribe((data) => {
+    this._orderService.cancelOrder(this.order.order_id).subscribe(data => {
       console.log(data)
       this.order_result = 'Sucessfully cancled order and logged!'
     })
@@ -621,7 +617,7 @@ export class AuthmockComponent implements OnInit {
 
   checkProductPurchase() {
     console.log('checkProductPurchase order for: 9')
-    this._orderService.checkProductPurchase(9).subscribe((data) => {
+    this._orderService.checkProductPurchase(9).subscribe(data => {
       console.log(data)
       this.order_result = 'Sucessfully checkProductPurchase'
     })
@@ -629,7 +625,7 @@ export class AuthmockComponent implements OnInit {
 
   getDeliveryOptions() {
     console.log('getDeliveryOptions fired')
-    this._orderService.getDeliveryOptions().subscribe((data) => {
+    this._orderService.getDeliveryOptions().subscribe(data => {
       console.log(data)
       this.order_result = 'Sucessfully getched getDeliveryOptions'
     })
@@ -637,7 +633,7 @@ export class AuthmockComponent implements OnInit {
 
   getFrequentlyBought() {
     console.log('getFrequentlyBought fired')
-    this._orderService.getFrequentlyBought().subscribe((data) => {
+    this._orderService.getFrequentlyBought().subscribe(data => {
       console.log(data)
       this.order_result = 'Sucessfully fetched getFrequentlyBought'
     })
@@ -645,7 +641,7 @@ export class AuthmockComponent implements OnInit {
 
   getFrequentlyBoughtByMe() {
     console.log('getFrequentlyBoughtByMe fired')
-    this._orderService.getFrequentlyBoughtByMe().subscribe((data) => {
+    this._orderService.getFrequentlyBoughtByMe().subscribe(data => {
       console.log(data)
       this.order_result = 'Sucessfully fetched getFrequentlyBoughtByMe'
     })
@@ -672,7 +668,7 @@ export class AuthmockComponent implements OnInit {
     this.rating.title = 'Value for money to the best of it'
     this.rating.rating = 5
     this.rating.summary = 'A very good product. One of the best in the market'
-    this._ratingsService.createRating(this.rating).subscribe((data) => {
+    this._ratingsService.createRating(this.rating).subscribe(data => {
       console.log(data)
       if (data) {
         console.log('Sucessfully created a rating')
@@ -686,7 +682,7 @@ export class AuthmockComponent implements OnInit {
     this.rating.title = 'Value for money updated'
     this.rating.rating = 4
     this.rating.summary = 'A very good product updated'
-    this._ratingsService.updateRating(this.rating).subscribe((data) => {
+    this._ratingsService.updateRating(this.rating).subscribe(data => {
       console.log(data)
       if (data) {
         console.log('Sucessfully updated a rating')
@@ -696,7 +692,7 @@ export class AuthmockComponent implements OnInit {
   }
 
   getCustomerRating() {
-    this._ratingsService.getCustomerRating(3).subscribe((data) => {
+    this._ratingsService.getCustomerRating(3).subscribe(data => {
       console.log(data)
       if (data) {
         console.log('Sucessfully fetched a rating')
@@ -706,7 +702,7 @@ export class AuthmockComponent implements OnInit {
   }
 
   getAllCustomerRatings() {
-    this._ratingsService.getAllCustomerRatings().subscribe((data) => {
+    this._ratingsService.getAllCustomerRatings().subscribe(data => {
       console.log(data)
       if (data) {
         console.log('Sucessfully fetched all rating')
@@ -716,7 +712,7 @@ export class AuthmockComponent implements OnInit {
   }
 
   deleteCustomerRating() {
-    this._ratingsService.deleteCustomerRating(3).subscribe((data) => {
+    this._ratingsService.deleteCustomerRating(3).subscribe(data => {
       console.log(data)
       if (data) {
         console.log('Sucessfully deleted rating')
@@ -726,7 +722,7 @@ export class AuthmockComponent implements OnInit {
   }
 
   helpfulRatingIncrement() {
-    this._ratingsService.helpfulRatingIncrement(3).subscribe((data) => {
+    this._ratingsService.helpfulRatingIncrement(3).subscribe(data => {
       console.log(data)
       if (data) {
         console.log('Sucessfully helpfulRatingIncrement')
@@ -736,7 +732,7 @@ export class AuthmockComponent implements OnInit {
   }
 
   deactivateRating() {
-    this._ratingsService.deactivateRating(3).subscribe((data) => {
+    this._ratingsService.deactivateRating(3).subscribe(data => {
       console.log(data)
       if (data) {
         console.log('Sucessfully deactivateRating')
@@ -746,7 +742,7 @@ export class AuthmockComponent implements OnInit {
   }
 
   getProductRatings() {
-    this._ratingsService.getProductRatings(33).subscribe((data) => {
+    this._ratingsService.getProductRatings(33).subscribe(data => {
       console.log(data)
       if (data) {
         console.log('Sucessfully getProductRatings')
@@ -756,7 +752,7 @@ export class AuthmockComponent implements OnInit {
   }
 
   getProductRatingsSummary() {
-    this._ratingsService.getProductRatingsSummary(33).subscribe((data) => {
+    this._ratingsService.getProductRatingsSummary(33).subscribe(data => {
       console.log(data)
       if (data) {
         console.log('Sucessfully getProductRatingsSummary')
@@ -766,7 +762,7 @@ export class AuthmockComponent implements OnInit {
   }
 
   checkProductReview() {
-    this._ratingsService.checkProductReview(33).subscribe((data) => {
+    this._ratingsService.checkProductReview(33).subscribe(data => {
       console.log(data)
       if (data) {
         console.log('Sucessfully checkProductReview')
@@ -816,7 +812,7 @@ export class AuthmockComponent implements OnInit {
   postGuestCartItem() {
     this._guestCartService
       .postGuestCartItem(this.makeGuestCartItem())
-      .subscribe((data) => {
+      .subscribe(data => {
         console.log(data)
         this.guest_result = 'Sucessfully posted guest cart item and logged!'
       })
@@ -833,7 +829,7 @@ export class AuthmockComponent implements OnInit {
         items.push(this.updateGuestCartItem(data[ele].guestCartItem.product_id))
       }
       console.log('Data after change', items)
-      this._guestCartService.postGuestCartItemList(items).subscribe((data2) => {
+      this._guestCartService.postGuestCartItemList(items).subscribe(data2 => {
         console.log('Cart confirmed data', data2)
         this.guest_result = 'Sucessfully posted guest cart items and logged!'
       })
@@ -843,14 +839,14 @@ export class AuthmockComponent implements OnInit {
   deleteGuestCartItem() {
     this._guestCartService
       .deleteGuestCartItem(this.guestCartItem)
-      .subscribe((data) => {
+      .subscribe(data => {
         console.log(data)
         this.guest_result = 'Sucessfully deleted guest item and logged!'
       })
   }
 
   deleteGuestCartItems() {
-    this._guestCartService.deleteGuestCartItems().subscribe((data) => {
+    this._guestCartService.deleteGuestCartItems().subscribe(data => {
       console.log(data)
       this.guest_result = 'Sucessfully deleted guest cart items and logged!'
     })
@@ -859,7 +855,7 @@ export class AuthmockComponent implements OnInit {
   postGuestAddressDetails() {
     this._guestAddressService
       .postGuestAddressDetails(this.guestAddressDetails)
-      .subscribe((data) => {
+      .subscribe(data => {
         console.log(data)
         if (data['insertId']) {
           this.address_details_id = data['insertId']

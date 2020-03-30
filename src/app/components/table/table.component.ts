@@ -18,7 +18,7 @@ export class TableComponent implements OnInit {
 
   // when table data is array of string with colon
   prepareTableData(tData) {
-    let updateData = tData.map((val) => {
+    let updateData = tData.map(val => {
       let obj = val.split(':')
       return {
         prop: obj[0],

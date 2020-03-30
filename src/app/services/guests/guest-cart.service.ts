@@ -24,7 +24,7 @@ export class GuestCartService extends RapidoHttpService<GuestCartItem> {
   }
 
   getGuestCartItems() {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       let cartItemsObject
       this.getList(
         [
@@ -33,10 +33,10 @@ export class GuestCartService extends RapidoHttpService<GuestCartItem> {
           'cart',
           'items'
         ].join('/')
-      ).subscribe((data) => {
+      ).subscribe(data => {
         if (data.length > 0) {
           cartItemsObject = this.formatCartItems(data)
-          this.getProductDetails(data).subscribe((productDetails) => {
+          this.getProductDetails(data).subscribe(productDetails => {
             resolve(
               this.prepareCartItemDetailsList(productDetails, cartItemsObject)
             )
@@ -51,7 +51,7 @@ export class GuestCartService extends RapidoHttpService<GuestCartItem> {
   }
 
   getCountOfGuestCartItems() {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       this.getList(
         [
           Constants.GUESTS_APIS.api,
@@ -59,7 +59,7 @@ export class GuestCartService extends RapidoHttpService<GuestCartItem> {
           'cart',
           'items'
         ].join('/')
-      ).subscribe((data) => {
+      ).subscribe(data => {
         resolve(data.length)
       })
     })

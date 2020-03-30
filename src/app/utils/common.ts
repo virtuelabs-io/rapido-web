@@ -10,7 +10,7 @@ export class Common {
     if (imagePath) {
       return Constants.environment.staticAssets + imagePath
     }
-    return images.map((val) => {
+    return images.map(val => {
       return !val.includes(Constants.environment.staticAssets)
         ? Constants.environment.staticAssets + val
         : val
@@ -85,7 +85,7 @@ export class Common {
 
   public static setUrlParams = (_query: Query) => {
     let updatedQuery = JSON.parse(JSON.stringify(_query))
-    Object.keys(updatedQuery).forEach((key) => {
+    Object.keys(updatedQuery).forEach(key => {
       if (
         updatedQuery[key] == null ||
         updatedQuery[key] == '' ||
@@ -103,7 +103,7 @@ export class Common {
   public static getIdBasedQueryString = (_productIds: string[]) => {
     let _queryItem = '(term+field=_id+{p})'
     let _queryString: string = '(or+'
-    _productIds.forEach((productId) => {
+    _productIds.forEach(productId => {
       _queryString = _queryString + _queryItem.replace('{p}', productId)
     })
     _queryString = _queryString + ')'

@@ -40,7 +40,7 @@ export class EditAddressComponent implements OnInit {
       county: new FormControl('', [Validators.required])
     })
     this.id = parseInt(this.actRoute.snapshot.paramMap.get('id'))
-    this._addressDetailsService.getAddressDetails(this.id).subscribe((data) => {
+    this._addressDetailsService.getAddressDetails(this.id).subscribe(data => {
       this.customer_id = data.customer_id
       this.addressFormGroup.controls['name'].setValue(data.full_name)
       this.addressFormGroup.controls['add1'].setValue(data.addr_1)
@@ -72,7 +72,7 @@ export class EditAddressComponent implements OnInit {
     )
     this._addressDetailsService
       .putAddressDetails(this.addressDetails)
-      .subscribe((_) => {
+      .subscribe(_ => {
         this._loginStateService.loaderDisable()
         this.ngZone.run(() => this.router.navigate(['profile/address'])).then()
       })

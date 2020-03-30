@@ -62,10 +62,10 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     const promise = this._sessionService.retrieveSessionIfExists()
     promise
-      .then((_) => {
+      .then(_ => {
         this.logInStatus = true
       })
-      .catch((error) => {
+      .catch(error => {
         this.logInStatus = false
       })
 

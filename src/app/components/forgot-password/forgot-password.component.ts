@@ -49,11 +49,11 @@ export class ForgotPasswordComponent implements OnInit {
     ].join('')
     const promise = this._forgotPasswordService.forgotPassword()
     promise
-      .then((_) => {
+      .then(_ => {
         this.success = true
         this.successResponse = Constants.PASSWORD_CHANGED_SUCCESS_MESSAGE // value.message
       })
-      .catch((error) => {
+      .catch(error => {
         this.error = true
         this.errorResponse = error._message
       })

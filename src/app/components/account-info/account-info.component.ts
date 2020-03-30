@@ -72,13 +72,13 @@ export class AccountInfoComponent implements OnInit {
 
   async userLogInCheck() {
     await this.loginSessinExists()
-      .then((_) => this.fetchUserProfile())
-      .catch((err) => this.handleError(err))
+      .then(_ => this.fetchUserProfile())
+      .catch(err => this.handleError(err))
   }
 
   async loginSessinExists() {
     await this._loginStateService.isLoggedInState.subscribe(
-      (state) => (this.isLoggedIn = state)
+      state => (this.isLoggedIn = state)
     )
   }
 
@@ -146,7 +146,7 @@ export class AccountInfoComponent implements OnInit {
     this._updateAttributeService.attributeList = registrationUpdate.createUpdateAttributeList()
     const promise = this._updateAttributeService.updateAttributes()
     promise
-      .then((_) => {
+      .then(_ => {
         this.fetchUserProfile() // to set value returned from the service
         this.updateButton = false
         this.updatedAttribute = true
@@ -154,7 +154,7 @@ export class AccountInfoComponent implements OnInit {
         this.updateMode = false
         this.failedToUpdate = false
       })
-      .catch((_) => {
+      .catch(_ => {
         this.updateButton = false
         this.updatedAttribute = false
         this.failedToUpdate = true
@@ -167,7 +167,7 @@ export class AccountInfoComponent implements OnInit {
       data:
         "Are you sure you want to delete the account. Once deleted, your account can't be recovered"
     })
-    this.dialogRef.afterClosed().subscribe((result) => {
+    this.dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.yesModalAction()
       }
@@ -178,7 +178,7 @@ export class AccountInfoComponent implements OnInit {
     this.deleteButton = true
     const promise = this._deleteUserService.deleteUser()
     promise
-      .then((value) => {
+      .then(value => {
         this._modalReference.close()
         this.failedToDelete = false
         this.deleteButton = false
@@ -186,7 +186,7 @@ export class AccountInfoComponent implements OnInit {
         this.deleteUserMsg = 'Deleted user successfully'
         this.loginStateService.changeState(false)
       })
-      .catch((error) => {
+      .catch(error => {
         this.deleteButton = false
         this.deletedUser = false
         this.failedToDelete = true

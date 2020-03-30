@@ -11,7 +11,7 @@ export class BusyLoaderComponent implements OnInit {
   constructor(private _loginStateService: LoginStateService) {}
 
   ngOnInit() {
-    this._loginStateService.loaderState.subscribe((state) => {
+    this._loginStateService.loaderState.subscribe(state => {
       this.loading = state
     })
   }

@@ -64,12 +64,12 @@ export class CartComponent implements OnInit {
   }
 
   async userLogInCheck() {
-    await this.loginSessinExists().then((_) => this.getCartItems())
+    await this.loginSessinExists().then(_ => this.getCartItems())
   }
 
   async loginSessinExists() {
     await this._loginStateService.isLoggedInState.subscribe(
-      (state) => (this.isLoggedIn = state)
+      state => (this.isLoggedIn = state)
     )
   }
 
@@ -160,7 +160,7 @@ export class CartComponent implements OnInit {
     this._loginStateService.loaderEnable()
     if (this.isLoggedIn) {
       this._snackBarMsg = Constants.ITWM_DELETE_CART
-      await this._cartService.deleteCartItem(id).subscribe((data) => {
+      await this._cartService.deleteCartItem(id).subscribe(data => {
         this.deleteRes = data
         this._snackBar.open(this._snackBarMsg, '', {
           duration: 5000
@@ -173,7 +173,7 @@ export class CartComponent implements OnInit {
       this.guestCartItem.quantity = 1
       await this._guestCartService
         .deleteGuestCartItem(this.guestCartItem)
-        .subscribe((data) => {
+        .subscribe(data => {
           this.deleteRes = data
           this._snackBar.open(this._snackBarMsg, '', {
             duration: 5000
@@ -196,7 +196,7 @@ export class CartComponent implements OnInit {
       } else {
         this._snackBarMsg = Constants.ITWM_SAVE_LATER
       }
-      this._cartService.postCartItem(cartItem).subscribe((data) => {
+      this._cartService.postCartItem(cartItem).subscribe(data => {
         this.saveForLaterRes = data
         this._snackBar.open(this._snackBarMsg, '', {
           duration: 5000
@@ -233,7 +233,7 @@ export class CartComponent implements OnInit {
           )
         )
       }
-      this._cartService.postCartItemList(items).subscribe((data) => {
+      this._cartService.postCartItemList(items).subscribe(data => {
         this.postCartItemsRes = data
         this._loginStateService.loaderDisable()
         this.ngZone.run(() => this.router.navigate(['cart/checkout'])).then()
@@ -248,7 +248,7 @@ export class CartComponent implements OnInit {
           )
         )
       }
-      this._guestCartService.postGuestCartItemList(items).subscribe((data) => {
+      this._guestCartService.postGuestCartItemList(items).subscribe(data => {
         this.postCartItemsRes = data
         this._loginStateService.loaderDisable()
         this.RouteService.changeRoute('cart/guest-checkout')

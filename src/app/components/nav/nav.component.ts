@@ -30,7 +30,7 @@ export class NavComponent implements OnInit {
 
   ngOnInit() {
     this.disclaimerReq = Constants.environment.name !== 'PROD' ? true : false
-    this._loginStateService.isLoggedInState.subscribe((state) => {
+    this._loginStateService.isLoggedInState.subscribe(state => {
       this.isSignedIn = state
       this.userLoggedIn = state
       if (state) {
@@ -39,7 +39,7 @@ export class NavComponent implements OnInit {
           .getIdToken().payload.name
       }
     })
-    this._cartStateService.cartCountState.subscribe((state) => {
+    this._cartStateService.cartCountState.subscribe(state => {
       this.cartCount = state
     })
     this.sidenavService.setSidenav(this.sidenav)

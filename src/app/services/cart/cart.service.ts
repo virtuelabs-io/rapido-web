@@ -24,15 +24,15 @@ export class CartService extends RapidoHttpService<CartItem> {
   }
 
   getCartItems() {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       let cartItemsObject
       this.getList(
         [Constants.CART_APIS.api, 'items'].join('/'),
         this.addAuthHeader(this.initializeHeaders())
-      ).subscribe((data) => {
+      ).subscribe(data => {
         if (data.length > 0) {
           cartItemsObject = this.formatCartItems(data)
-          this.getProductDetails(data).subscribe((productDetails) => {
+          this.getProductDetails(data).subscribe(productDetails => {
             resolve(
               this.prepareCartItemDetailsList(productDetails, cartItemsObject)
             )
@@ -47,15 +47,15 @@ export class CartService extends RapidoHttpService<CartItem> {
   }
 
   getInCartItems() {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       let cartItemsObject
       this.getList(
         [Constants.CART_APIS.api, 'in-cart-items'].join('/'),
         this.addAuthHeader(this.initializeHeaders())
-      ).subscribe((data) => {
+      ).subscribe(data => {
         if (data.length > 0) {
           cartItemsObject = this.formatCartItems(data)
-          this.getProductDetails(data).subscribe((productDetails) => {
+          this.getProductDetails(data).subscribe(productDetails => {
             resolve(
               this.prepareCartItemDetailsList(productDetails, cartItemsObject)
             )
@@ -70,26 +70,26 @@ export class CartService extends RapidoHttpService<CartItem> {
   }
 
   getCountOfInCartItems() {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       this.getList(
         [Constants.CART_APIS.api, 'in-cart-items'].join('/'),
         this.addAuthHeader(this.initializeHeaders())
-      ).subscribe((data) => {
+      ).subscribe(data => {
         resolve(data.length)
       })
     })
   }
 
   getSavedForLaterCartItems() {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       let cartItemsObject
       this.getList(
         [Constants.CART_APIS.api, 'saved-for-later-items'].join('/'),
         this.addAuthHeader(this.initializeHeaders())
-      ).subscribe((data) => {
+      ).subscribe(data => {
         if (data.length > 0) {
           cartItemsObject = this.formatCartItems(data)
-          this.getProductDetails(data).subscribe((productDetails) => {
+          this.getProductDetails(data).subscribe(productDetails => {
             resolve(
               this.prepareCartItemDetailsList(productDetails, cartItemsObject)
             )

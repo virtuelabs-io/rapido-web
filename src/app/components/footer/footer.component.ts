@@ -35,19 +35,19 @@ export class FooterComponent implements OnInit {
 
   async userLogInCheck() {
     await this.loginSessinExists()
-      .then(async (_) => {
+      .then(async _ => {
         if (this.isLoggedIn) {
           this.ngZone.run(() => this.router.navigate(['profile'])).then()
         } else {
           await Promise.reject("Login Session doesn't exist!")
         }
       })
-      .catch((err) => this.handleError(err))
+      .catch(err => this.handleError(err))
   }
 
   async loginSessinExists() {
     await this._loginStateService.isLoggedInState.subscribe(
-      (state) => (this.isLoggedIn = state)
+      state => (this.isLoggedIn = state)
     )
   }
 

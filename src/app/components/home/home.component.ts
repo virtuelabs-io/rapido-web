@@ -112,11 +112,11 @@ export class HomeComponent implements OnInit {
     // recommended prod
     this.recommendedProductList()
     //frequently bought
-    this.getFrequentlyBought().then((data) => this.frequentlyBoughtSet(data))
+    this.getFrequentlyBought().then(data => this.frequentlyBoughtSet(data))
     //frequently bought by me
-    this.logInSession().then((data) => {
+    this.logInSession().then(data => {
       if (data) {
-        this.getFrequentlyBoughtByMe().then((data) => {
+        this.getFrequentlyBoughtByMe().then(data => {
           if (data === []) {
             this.carousel.FrequentlyBoughtByMe.title =
               Constants.FREQUENTLY_BOUGHT_BY_ME_TITLE
@@ -140,7 +140,7 @@ export class HomeComponent implements OnInit {
       q: `fashion`,
       size: 10
     }
-    this._productsService.get(query).subscribe((data) => {
+    this._productsService.get(query).subscribe(data => {
       if (data) {
         this.carousel.RecommendedList.data = data.hits.hit.map((v, i) => {
           v.fields.id = v.id
@@ -166,17 +166,17 @@ export class HomeComponent implements OnInit {
   }
 
   logInSession() {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       this._loginStateService.isLoggedInState.subscribe(
-        (state) => (this.isLoggedIn = state)
+        state => (this.isLoggedIn = state)
       )
       resolve(this.isLoggedIn)
     })
   }
 
   async getFrequentlyBoughtByMe() {
-    return new Promise((resolve) => {
-      this._orderService.getFrequentlyBoughtByMe().subscribe((data) => {
+    return new Promise(resolve => {
+      this._orderService.getFrequentlyBoughtByMe().subscribe(data => {
         this.freqBoughtSet = data
         resolve(data)
       })
@@ -185,7 +185,7 @@ export class HomeComponent implements OnInit {
 
   async frequentlyBoughtByMeSet(value) {
     var frequentlyBoughtByMeSet = []
-    value.forEach((element) => {
+    value.forEach(element => {
       frequentlyBoughtByMeSet.push(element.product_id)
     })
 
@@ -195,7 +195,7 @@ export class HomeComponent implements OnInit {
       qdotparser: 'structured'
     }
 
-    this._productsService.get(query).subscribe((data) => {
+    this._productsService.get(query).subscribe(data => {
       if (data) {
         this.carousel.FrequentlyBoughtByMe.data = data.hits.hit.map((v, i) => {
           v.fields.id = v.id
@@ -213,8 +213,8 @@ export class HomeComponent implements OnInit {
   }
 
   getFrequentlyBought() {
-    return new Promise((resolve) => {
-      this._orderService.getFrequentlyBought().subscribe((data) => {
+    return new Promise(resolve => {
+      this._orderService.getFrequentlyBought().subscribe(data => {
         this.freqBoughtSet = data
         resolve(data)
       })
@@ -223,7 +223,7 @@ export class HomeComponent implements OnInit {
 
   async frequentlyBoughtSet(value) {
     var frequentlyBoughtSet = []
-    value.forEach((element) => {
+    value.forEach(element => {
       frequentlyBoughtSet.push(element.product_id)
     })
 
@@ -233,7 +233,7 @@ export class HomeComponent implements OnInit {
       qdotparser: 'structured'
     }
 
-    this._productsService.get(query).subscribe((data) => {
+    this._productsService.get(query).subscribe(data => {
       if (data) {
         this.carousel.FrequentlyBought.data = data.hits.hit.map((v, i) => {
           v.fields.id = v.id
@@ -255,7 +255,7 @@ export class HomeComponent implements OnInit {
       q: `furnitures`,
       size: 10
     }
-    this._productsService.get(query).subscribe((data) => {
+    this._productsService.get(query).subscribe(data => {
       if (data) {
         this.carousel.BrowsingHistory.data = data.hits.hit.map((v, i) => {
           v.fields.id = v.id
@@ -277,7 +277,7 @@ export class HomeComponent implements OnInit {
       q: `watches`,
       size: 10
     }
-    this._productsService.get(query).subscribe((data) => {
+    this._productsService.get(query).subscribe(data => {
       if (data) {
         this.carousel.newAddedProductSet.data = data.hits.hit.map((v, i) => {
           v.fields.id = v.id

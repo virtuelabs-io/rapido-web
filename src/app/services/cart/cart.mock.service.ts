@@ -23,19 +23,19 @@ export class CartMockService extends CartService {
   }
 
   getCartItems() {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       resolve(CartMockData.getCartItems)
     })
   }
 
   getCountOfInCartItems() {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       resolve(CartMockData.cartCount)
     })
   }
 
   getSavedForLaterCartItems() {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       resolve(CartMockData.getSavedForLater)
     })
   }

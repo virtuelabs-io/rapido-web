@@ -27,13 +27,13 @@ export class GuestCartMockService extends GuestCartService {
   }
 
   getGuestCartItems() {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       resolve(GuestCartMockData.getCartItems)
     })
   }
 
   getCountOfGuestCartItems() {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       resolve(GuestCartMockData.cartCount)
     })
   }

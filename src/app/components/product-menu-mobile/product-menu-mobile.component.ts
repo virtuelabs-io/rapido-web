@@ -126,15 +126,15 @@ export class ProductMenuMobileComponent implements OnInit {
   }
 
   treeControl = new FlatTreeControl<FlatNode>(
-    (node) => node.level,
-    (node) => node.expandable
+    node => node.level,
+    node => node.expandable
   )
 
   treeFlattener = new MatTreeFlattener(
     this._transformer,
-    (node) => node.level,
-    (node) => node.expandable,
-    (node) => node.children
+    node => node.level,
+    node => node.expandable,
+    node => node.children
   )
 
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener)

@@ -55,16 +55,16 @@ export class TopnavComponent implements OnInit {
       localStorage.setItem(Constants.RAPIDO_SESSION_ID, uuid())
     }
     promise
-      .then((_) => {
+      .then(_ => {
         this._loginStateService.changeState(true)
         this.getCartCount()
       })
-      .catch((error) => {
+      .catch(error => {
         //  this.openSnackBar(error.message);
         this.isSignedIn = false
         this.getCartCount()
       })
-    this._loginStateService.isLoggedInState.subscribe((state) => {
+    this._loginStateService.isLoggedInState.subscribe(state => {
       this.isSignedIn = state
       if (state) {
         this.userName = this._profileService.cognitoUser
@@ -73,7 +73,7 @@ export class TopnavComponent implements OnInit {
       }
       this.getCartCount()
     })
-    this._cartStateService.cartCountState.subscribe((state) => {
+    this._cartStateService.cartCountState.subscribe(state => {
       this.cartCount = state
     })
     // this.getCartCount()

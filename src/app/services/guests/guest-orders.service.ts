@@ -23,7 +23,7 @@ export class GuestOrdersService extends RapidoHttpService<GuestOrder> {
   }
 
   createGuestOrder(guestOrder: GuestOrder) {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       let orderItemsObject
       this.post(
         [
@@ -32,10 +32,10 @@ export class GuestOrdersService extends RapidoHttpService<GuestOrder> {
           'orders'
         ].join('/'),
         guestOrder
-      ).subscribe((data) => {
+      ).subscribe(data => {
         if (data[0].length > 0) {
           orderItemsObject = this.formatOrderItems(data[0])
-          this.getProductDetails(data[0]).subscribe((productDetails) => {
+          this.getProductDetails(data[0]).subscribe(productDetails => {
             resolve(
               this.prepareCartItemDetailsList(productDetails, orderItemsObject)
             )
@@ -84,7 +84,7 @@ export class GuestOrdersService extends RapidoHttpService<GuestOrder> {
 
   prepareCartItemDetailsList(productDetails: any, orderItemsObject: any) {
     let products = {}
-    productDetails['hits']['hit'].forEach((product) => {
+    productDetails['hits']['hit'].forEach(product => {
       products[product.id] = product['fields']
     })
     return {

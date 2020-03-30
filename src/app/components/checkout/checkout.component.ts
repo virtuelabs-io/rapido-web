@@ -84,7 +84,7 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit() {
     this._loginStateService.loaderEnable()
-    this._loginStateService.isLoggedInState.subscribe((state) => {
+    this._loginStateService.isLoggedInState.subscribe(state => {
       if (state) {
         this.getAddressList()
         this.registeredEmail = this._profileService.cognitoUser
@@ -104,17 +104,17 @@ export class CheckoutComponent implements OnInit {
   }
 
   async userLogInCheck() {
-    await this.loginSessinExists().then((_) => this.getAddressList())
+    await this.loginSessinExists().then(_ => this.getAddressList())
   }
 
   async loginSessinExists() {
     await this._loginStateService.isLoggedInState.subscribe(
-      (state) => (this.isLoggedIn = state)
+      state => (this.isLoggedIn = state)
     )
   }
 
   ngAfterViewInit() {
-    this.stripeService.elements(this.elementsOptions).subscribe((elements) => {
+    this.stripeService.elements(this.elementsOptions).subscribe(elements => {
       this.elements = elements
       // Only mount the element the first time
       if (!this.card) {
@@ -150,7 +150,7 @@ export class CheckoutComponent implements OnInit {
   getAddressList() {
     this._loginStateService.loaderEnable()
     if (this.isLoggedIn) {
-      this._addressDetailsService.getAddressDetailsList().subscribe((data) => {
+      this._addressDetailsService.getAddressDetailsList().subscribe(data => {
         this.showSpinner = false
         if (data['length'] > 0) {
           this.address_details_id = data[0]['id']
@@ -230,7 +230,7 @@ export class CheckoutComponent implements OnInit {
     this._charge.receiptEmail = this.registeredEmail
     this._charge.order_id = this._orderId
     const name = this._charge.name
-    this.stripeService.createToken(this.card, { name }).subscribe((result) => {
+    this.stripeService.createToken(this.card, { name }).subscribe(result => {
       if (result.token) {
         this._charge.token = result.token.id
         this.charge(this._charge)
@@ -245,7 +245,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   charge(charge: Charge) {
-    const promise = this.chargeService.chargeCustomer(charge).then((data) => {
+    const promise = this.chargeService.chargeCustomer(charge).then(data => {
       this.chargeResult = JSON.stringify(data)
       this.RouteService.changeRoute('orderCreated')
       this._loginStateService.loaderDisable()

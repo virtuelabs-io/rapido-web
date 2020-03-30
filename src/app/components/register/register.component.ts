@@ -108,12 +108,12 @@ export class RegisterComponent implements OnInit {
     // call Sign Up Service api
     this._signUpService
       .signUp()
-      .then((_) => {
+      .then(_ => {
         this.progressSpinner = false
         this.stepperIndex = 1
         this.otpSuccess = true
       })
-      .catch((error) => {
+      .catch(error => {
         this.progressSpinner = false
         this.stepperIndex = 0
         this.otpSuccess = false
@@ -158,12 +158,12 @@ export class RegisterComponent implements OnInit {
     this._confirmRegistrationService.username = this._registration.phone_number // setting payload
     this._confirmRegistrationService
       .confirmRegistration(this.confirmationCode)
-      .then((_) => {
+      .then(_ => {
         this.stepperIndex = 2
         this.progressSpinner = false
         this.registrationConfirmed = true
       })
-      .catch((error) => {
+      .catch(error => {
         this.stepperIndex = 1
         this.wrongCodeMsg = error._data.message || error.message
         this.progressSpinner = false
@@ -177,11 +177,11 @@ export class RegisterComponent implements OnInit {
     this._resendConfirmationCodeService.username = this._registration.phone_number
     const promise = this._resendConfirmationCodeService.resendConfirmationCode()
     promise
-      .then((_) => {
+      .then(_ => {
         this.progressSpinner = false
         this._resentConfirmationCodeResponse = true
       })
-      .catch((error) => {
+      .catch(error => {
         this.progressSpinner = false
         this._resentConfirmationCodeResponse = false
         this.wrongCodeMsg = error._data.message || error.message

@@ -58,13 +58,13 @@ export class OrderDetailsComponent implements OnInit {
 
   async userLogInCheck() {
     await this.loginSessinExists()
-      .then((_) => this.getOrder())
-      .catch((err) => this.handleError(err))
+      .then(_ => this.getOrder())
+      .catch(err => this.handleError(err))
   }
 
   async loginSessinExists() {
     await this._loginStateService.isLoggedInState.subscribe(
-      (state) => (this.isLoggedIn = state)
+      state => (this.isLoggedIn = state)
     )
   }
 
@@ -149,24 +149,22 @@ export class OrderDetailsComponent implements OnInit {
 
   async getCompanyDetails() {
     if (this.isLoggedIn) {
-      await this._companyDetailsService
-        .getCompanyDetails()
-        .subscribe((data) => {
-          if (data != null) {
-            this.companyDetails = {
-              name: data.company_name,
-              add1: data.addr_1,
-              add2: data.addr_2,
-              town_city: data.city,
-              postCode: data.postcode,
-              country: data.country,
-              county: data.county
-            }
-            this.showCompanyDetails = true
-          } else {
-            this.showCompanyDetails = false
+      await this._companyDetailsService.getCompanyDetails().subscribe(data => {
+        if (data != null) {
+          this.companyDetails = {
+            name: data.company_name,
+            add1: data.addr_1,
+            add2: data.addr_2,
+            town_city: data.city,
+            postCode: data.postcode,
+            country: data.country,
+            county: data.county
           }
-        })
+          this.showCompanyDetails = true
+        } else {
+          this.showCompanyDetails = false
+        }
+      })
     } else {
       await Promise.reject("Login Session doesn't exist!")
     }

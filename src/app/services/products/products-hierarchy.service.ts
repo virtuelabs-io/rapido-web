@@ -14,7 +14,7 @@ export class ProductsHierarchyService {
     let url = Constants.environment.staticAssets + Constants.PRODUCT_HIERARCHY
     return this._http.get<any>(url).pipe(
       retry(Constants.RETRY_TIMES),
-      catchError((err) => {
+      catchError(err => {
         return throwError(err)
       })
     )

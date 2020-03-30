@@ -99,7 +99,7 @@ export class GuestCheckoutComponent implements OnInit {
       email: new FormControl('', [Validators.required, , Validators.email])
     })
 
-    this._loginStateService.isLoggedInState.subscribe((state) => {
+    this._loginStateService.isLoggedInState.subscribe(state => {
       if (state) {
         this.registeredEmail = this._profileService.cognitoUser
           .getSignInUserSession()
@@ -115,7 +115,7 @@ export class GuestCheckoutComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.stripeService.elements(this.elementsOptions).subscribe((elements) => {
+    this.stripeService.elements(this.elementsOptions).subscribe(elements => {
       this.elements = elements
       // Only mount the element the first time
       if (!this.card) {
@@ -225,7 +225,7 @@ export class GuestCheckoutComponent implements OnInit {
     )
     await this._guestAddressService
       .postGuestAddressDetails(guestAddressDetails)
-      .subscribe((data) => {
+      .subscribe(data => {
         this.order()
         if (data['insertId']) {
           this.address_details_id = data['insertId']
@@ -246,7 +246,7 @@ export class GuestCheckoutComponent implements OnInit {
     this._charge.receiptEmail = this.registeredEmail
     this._charge.order_id = this._orderId
     const name = this._charge.name
-    this.stripeService.createToken(this.card, { name }).subscribe((result) => {
+    this.stripeService.createToken(this.card, { name }).subscribe(result => {
       if (result.token) {
         this._charge.token = result.token.id
         this.charge(this._charge)
@@ -263,7 +263,7 @@ export class GuestCheckoutComponent implements OnInit {
   charge(charge: GuestCharge) {
     const promise = this.guestChargeService
       .chargeCustomer(charge)
-      .then((data) => {
+      .then(data => {
         this.chargeResult = JSON.stringify(data)
         this._loginStateService.loaderDisable()
         this._cartStateService.fetchAndUpdateCartCount(false)

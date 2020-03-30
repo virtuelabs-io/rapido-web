@@ -21,13 +21,13 @@ export class OrdersMockService extends OrdersService {
   }
 
   getOrders() {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       resolve(OrdersMockData.orders)
     })
   }
 
   getOrder() {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       resolve(OrdersMockData.orderDetail)
     })
   }
@@ -37,7 +37,7 @@ export class OrdersMockService extends OrdersService {
   }
 
   postCartItemList() {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       resolve(OrdersMockData.postCartItemList)
     })
   }

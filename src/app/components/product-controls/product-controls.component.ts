@@ -21,6 +21,6 @@ export class ProductControlsComponent implements OnInit {
   pageEvent: PageEvent
 
   setPageSizeOptions(setPageSizeOptionsInput: string) {
-    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map((str) => +str)
+    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str)
   }
 }

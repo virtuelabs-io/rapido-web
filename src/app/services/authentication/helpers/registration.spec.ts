@@ -59,7 +59,7 @@ describe('Registration', () => {
 
     let updateAttributeList = _registration.createUpdateAttributeList()
     expect(updateAttributeList.length).toBe(6)
-    updateAttributeList.forEach((value) => {
+    updateAttributeList.forEach(value => {
       expect([
         'email',
         'name',

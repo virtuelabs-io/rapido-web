@@ -66,7 +66,7 @@ export class CarouselFlipComponent implements OnInit {
     let formatedData = []
     let tmpItems = []
     if (data) {
-      data.forEach((item) => {
+      data.forEach(item => {
         item.mrpPrice = (item.price * (1 + parseFloat(item.offer))).toFixed(2)
         item.discountedPrice = (item.mrpPrice - item.price).toFixed(2)
         item.price = Number(item.price).toFixed(2)
@@ -87,12 +87,12 @@ export class CarouselFlipComponent implements OnInit {
   }
 
   async handleCart(id) {
-    await this.loginSessinExists().then((_) => this.postCartItem(id))
+    await this.loginSessinExists().then(_ => this.postCartItem(id))
   }
 
   async loginSessinExists() {
     await this._loginStateService.isLoggedInState.subscribe(
-      (state) => (this.isLoggedIn = state)
+      state => (this.isLoggedIn = state)
     )
   }
 
@@ -103,7 +103,7 @@ export class CarouselFlipComponent implements OnInit {
       cartItem.product_id = parseInt(id)
       cartItem.quantity = 1
       cartItem.in_cart = true
-      await this._cartService.postCartItem(cartItem).subscribe((_) => {
+      await this._cartService.postCartItem(cartItem).subscribe(_ => {
         this._cartStateService.fetchAndUpdateCartCount(this.isLoggedIn)
         this._loginStateService.loaderDisable()
         this._snackBar.open(Constants.ITEM_MOVED_TO_CART, undefined, {
@@ -114,7 +114,7 @@ export class CarouselFlipComponent implements OnInit {
       let guestCartItem: GuestCartItem = new GuestCartItem()
       guestCartItem.product_id = parseInt(id)
       guestCartItem.quantity = 1
-      this._guestCartService.postGuestCartItem(guestCartItem).subscribe((_) => {
+      this._guestCartService.postGuestCartItem(guestCartItem).subscribe(_ => {
         this._cartStateService.fetchAndUpdateCartCount(this.isLoggedIn)
         this._loginStateService.loaderDisable()
         this._snackBar.open(Constants.ITEM_MOVED_TO_CART, undefined, {

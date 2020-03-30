@@ -69,13 +69,13 @@ export class CreateReviewComponent implements OnInit {
 
   async userLogInCheck() {
     await this.loginSessinExists()
-      .then((_) => this.getProductDetails())
-      .catch((err) => this.handleError(err))
+      .then(_ => this.getProductDetails())
+      .catch(err => this.handleError(err))
   }
 
   async loginSessinExists() {
     await this._loginStateService.isLoggedInState.subscribe(
-      (state) => (this.isLoggedIn = state)
+      state => (this.isLoggedIn = state)
     )
   }
 
@@ -96,7 +96,7 @@ export class CreateReviewComponent implements OnInit {
     }
     if (this.isLoggedIn) {
       await this.checkProductPurchase()
-      await this._productsService.get(query).subscribe((data) => {
+      await this._productsService.get(query).subscribe(data => {
         if (data) {
           this.imageDetails = Common.getImageURI(
             data.hits.hit[0].fields.images,
@@ -116,7 +116,7 @@ export class CreateReviewComponent implements OnInit {
   async checkProductPurchase() {
     await this._orderService
       .checkProductPurchase(this._productId)
-      .subscribe((data) => {
+      .subscribe(data => {
         if (data[0].length == 0) {
           this.disableSubmitReview = true
           this._snackBar.open(Constants.UNAUTHORIZED_REVIEW_CREATE, undefined, {
@@ -132,7 +132,7 @@ export class CreateReviewComponent implements OnInit {
     this.rating.title = form.title
     this.rating.rating = this.rate
     this.rating.summary = form.summary
-    this._ratingsService.createRating(this.rating).subscribe((data) => {
+    this._ratingsService.createRating(this.rating).subscribe(data => {
       this.submitRes = data
       this._loginStateService.loaderDisable()
       this._snackBar.open(Constants.REVIEW_ADDED_SUCCESSFULLY, undefined, {
