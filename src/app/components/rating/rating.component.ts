@@ -5,7 +5,7 @@ import {
   Output,
   SimpleChanges,
   EventEmitter,
-} from "@angular/core";
+} from "@angular/core"
 
 @Component({
   selector: "app-rating",
@@ -13,9 +13,9 @@ import {
   styleUrls: ["./rating.component.scss"],
 })
 export class RatingComponent implements OnInit {
-  @Input() currentRate: string;
-  @Input() styleClass: string;
-  @Input() readonly: Boolean;
+  @Input() currentRate: string
+  @Input() styleClass: string
+  @Input() readonly: Boolean
 
   constructor() {}
 

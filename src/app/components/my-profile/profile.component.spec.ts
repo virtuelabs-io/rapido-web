@@ -1,18 +1,18 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-import { RouterTestingModule } from "@angular/router/testing";
-import { ProfileComponent } from "./profile.component";
-import { MatExpansionModule } from "@angular/material";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { Router, Routes } from "@angular/router";
-import { Location } from "@angular/common";
-import { OrdersComponent } from "../orders/orders.component";
+import { async, ComponentFixture, TestBed } from "@angular/core/testing"
+import { RouterTestingModule } from "@angular/router/testing"
+import { ProfileComponent } from "./profile.component"
+import { MatExpansionModule } from "@angular/material"
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations"
+import { Router, Routes } from "@angular/router"
+import { Location } from "@angular/common"
+import { OrdersComponent } from "../orders/orders.component"
 
 describe("MyProfileComponent", () => {
-  let component: ProfileComponent;
-  let fixture: ComponentFixture<ProfileComponent>;
-  let router: Router;
-  let location: Location;
-  const routes: Routes = [{ path: "orders", component: OrdersComponent }];
+  let component: ProfileComponent
+  let fixture: ComponentFixture<ProfileComponent>
+  let router: Router
+  let location: Location
+  const routes: Routes = [{ path: "orders", component: OrdersComponent }]
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -22,20 +22,20 @@ describe("MyProfileComponent", () => {
         BrowserAnimationsModule,
       ],
       declarations: [ProfileComponent, OrdersComponent],
-    }).compileComponents();
-  }));
+    }).compileComponents()
+  }))
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProfileComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(ProfileComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it("should create", () => {
-    component.logInStatus = true;
+    component.logInStatus = true
 
-    expect(component).toBeTruthy();
-  });
+    expect(component).toBeTruthy()
+  })
 
   /*it('should navigate to Orders page ', () => {
     
@@ -47,4 +47,4 @@ describe("MyProfileComponent", () => {
       expect(location.path()).toEqual('/orders');
     });
   }); */
-});
+})

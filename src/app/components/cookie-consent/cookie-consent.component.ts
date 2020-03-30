@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import { Constants } from "../../utils/constants";
+import { Component, OnInit } from "@angular/core"
+import { Constants } from "../../utils/constants"
 
 @Component({
   selector: "app-cookie-consent",
@@ -7,19 +7,19 @@ import { Constants } from "../../utils/constants";
   styleUrls: ["./cookie-consent.component.scss"],
 })
 export class CookieConsentComponent implements OnInit {
-  isConsentGranted: Boolean = false;
+  isConsentGranted: Boolean = false
   constructor() {}
 
   ngOnInit() {
     if (!localStorage.getItem(Constants.RAPIDO_COOKIES_PERMISSION)) {
-      this.isConsentGranted = false;
+      this.isConsentGranted = false
     } else {
-      this.isConsentGranted = true;
+      this.isConsentGranted = true
     }
   }
 
   handleCookieAcceptance() {
-    localStorage.setItem(Constants.RAPIDO_COOKIES_PERMISSION, "true");
-    this.isConsentGranted = true;
+    localStorage.setItem(Constants.RAPIDO_COOKIES_PERMISSION, "true")
+    this.isConsentGranted = true
   }
 }

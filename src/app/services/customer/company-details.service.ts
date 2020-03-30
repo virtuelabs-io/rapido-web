@@ -1,9 +1,9 @@
-import { Injectable } from "@angular/core";
-import { RapidoHttpService } from "../commons/rapido-http.service";
-import { CompanyDetails } from "./company-details";
-import { HttpClient } from "@angular/common/http";
-import { ProfileService } from "../authentication/profile/profile.service";
-import { Constants } from "../../utils/constants";
+import { Injectable } from "@angular/core"
+import { RapidoHttpService } from "../commons/rapido-http.service"
+import { CompanyDetails } from "./company-details"
+import { HttpClient } from "@angular/common/http"
+import { ProfileService } from "../authentication/profile/profile.service"
+import { Constants } from "../../utils/constants"
 
 @Injectable({
   providedIn: "root",
@@ -13,14 +13,14 @@ export class CompanyDetailsService extends RapidoHttpService<CompanyDetails> {
     protected _http?: HttpClient,
     protected _profileService?: ProfileService
   ) {
-    super(_http, _profileService);
+    super(_http, _profileService)
   }
 
   getCompanyDetails() {
     return this.get(
       Constants.CUSTOMER_APIS.company.api,
       this.addAuthHeader(this.initializeHeaders())
-    );
+    )
   }
 
   postCompanyDetails(companyDetails: CompanyDetails) {
@@ -28,7 +28,7 @@ export class CompanyDetailsService extends RapidoHttpService<CompanyDetails> {
       Constants.CUSTOMER_APIS.company.api,
       companyDetails,
       this.addAuthHeader(this.initializeHeaders())
-    );
+    )
   }
 
   putCompanyDetails(companyDetails: CompanyDetails) {
@@ -36,13 +36,13 @@ export class CompanyDetailsService extends RapidoHttpService<CompanyDetails> {
       Constants.CUSTOMER_APIS.company.api,
       companyDetails,
       this.addAuthHeader(this.initializeHeaders())
-    );
+    )
   }
 
   deleteCompanyDetails() {
     return this.delete(
       Constants.CUSTOMER_APIS.company.api,
       this.addAuthHeader(this.initializeHeaders())
-    );
+    )
   }
 }

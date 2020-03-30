@@ -1,18 +1,18 @@
-import { CognitoUserAttribute } from "amazon-cognito-identity-js";
+import { CognitoUserAttribute } from "amazon-cognito-identity-js"
 
 export class Schema {
-  _attributeList;
+  _attributeList
 
   constructor() {
-    this._attributeList = [];
+    this._attributeList = []
   }
 
   get attributeList() {
-    return this._attributeList;
+    return this._attributeList
   }
 
   pushItemToAttributeList(cognitoUserAttribute: CognitoUserAttribute): void {
-    this._attributeList.push(cognitoUserAttribute);
+    this._attributeList.push(cognitoUserAttribute)
   }
   createCognitoUserAttribute(
     name: string,
@@ -21,6 +21,6 @@ export class Schema {
     return new CognitoUserAttribute({
       Name: name,
       Value: value,
-    });
+    })
   }
 }

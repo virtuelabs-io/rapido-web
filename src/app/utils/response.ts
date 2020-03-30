@@ -6,26 +6,26 @@ export class Response {
   ) {}
 
   set code(code) {
-    this._code = code;
+    this._code = code
   }
 
   get code() {
-    return this._code;
+    return this._code
   }
 
   set message(message) {
-    this._message = message;
+    this._message = message
   }
 
   get message() {
-    return this._message;
+    return this._message
   }
 
   set data(data) {
-    this._code = data;
+    this._code = data
   }
 
   get data() {
-    return this._data;
+    return this._data
   }
 }

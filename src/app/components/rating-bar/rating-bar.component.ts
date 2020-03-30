@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChanges } from "@angular/core";
+import { Component, OnInit, Input, SimpleChanges } from "@angular/core"
 
 @Component({
   selector: "app-rating-bar",
@@ -6,25 +6,25 @@ import { Component, OnInit, Input, SimpleChanges } from "@angular/core";
   styleUrls: ["./rating-bar.component.scss"],
 })
 export class RatingBarComponent implements OnInit {
-  @Input() rate = [];
-  @Input() reviewCount = 0;
+  @Input() rate = []
+  @Input() reviewCount = 0
   constructor() {}
 
   ngOnInit() {
     if (this.rate) {
-      this.calculate();
+      this.calculate()
     }
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if (this.rate) {
-      this.calculate();
+      this.calculate()
     }
   }
 
   calculate() {
     this.rate.map((v, i) => {
-      this.rate[i].percent = (v.count / this.reviewCount) * 100;
-    });
+      this.rate[i].percent = (v.count / this.reviewCount) * 100
+    })
   }
 }

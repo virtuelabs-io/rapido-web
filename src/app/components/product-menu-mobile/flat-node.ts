@@ -1,5 +1,5 @@
 export interface FlatNode {
-  expandable: boolean;
-  name: string;
-  level: number;
+  expandable: boolean
+  name: string
+  level: number
 }

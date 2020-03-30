@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output } from "@angular/core";
+import { Component, Input, EventEmitter, Output } from "@angular/core"
 
 @Component({
   selector: "app-pill-badge",
@@ -6,7 +6,7 @@ import { Component, Input, EventEmitter, Output } from "@angular/core";
   styleUrls: ["./pill-badge.component.scss"],
 })
 export class PillBadgeComponent {
-  @Input() selType: string;
-  @Input() selValue: string;
-  @Output() removeSelection: EventEmitter<any> = new EventEmitter<any>();
+  @Input() selType: string
+  @Input() selValue: string
+  @Output() removeSelection: EventEmitter<any> = new EventEmitter<any>()
 }

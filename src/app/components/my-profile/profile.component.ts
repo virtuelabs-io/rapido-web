@@ -1,6 +1,6 @@
-import { Component, OnInit } from "@angular/core";
-import { SessionService } from "../../services/authentication/session/session.service";
-import { RouteService } from "../../shared-services/route/route.service";
+import { Component, OnInit } from "@angular/core"
+import { SessionService } from "../../services/authentication/session/session.service"
+import { RouteService } from "../../shared-services/route/route.service"
 
 @Component({
   selector: "app-profile",
@@ -8,9 +8,9 @@ import { RouteService } from "../../shared-services/route/route.service";
   styleUrls: ["./profile.component.scss"],
 })
 export class ProfileComponent implements OnInit {
-  logInStatus: boolean = false;
-  _previousRoute: any;
-  showQuestionnaire: boolean = true;
+  logInStatus: boolean = false
+  _previousRoute: any
+  showQuestionnaire: boolean = true
   profileItems = [
     {
       icon: "#shopping-bag",
@@ -53,29 +53,29 @@ export class ProfileComponent implements OnInit {
       description: "To Be Added",
       id: "6",
     },
-  ];
+  ]
   constructor(
     private _sessionService: SessionService,
     private RouteService: RouteService
   ) {}
 
   ngOnInit() {
-    const promise = this._sessionService.retrieveSessionIfExists();
+    const promise = this._sessionService.retrieveSessionIfExists()
     promise
       .then((_) => {
-        this.logInStatus = true;
+        this.logInStatus = true
       })
       .catch((error) => {
-        this.logInStatus = false;
-      });
+        this.logInStatus = false
+      })
 
-    this._previousRoute = this.RouteService.getRoute();
+    this._previousRoute = this.RouteService.getRoute()
     if (this._previousRoute.value == "noQuestionnaire") {
-      this.showQuestionnaire = false;
+      this.showQuestionnaire = false
     } else if (this._previousRoute.value == "questionnaire") {
-      this.showQuestionnaire = true;
+      this.showQuestionnaire = true
     } else {
-      this.showQuestionnaire = false;
+      this.showQuestionnaire = false
     }
   }
 }

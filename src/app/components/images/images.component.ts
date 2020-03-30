@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { Common } from "../../../../src/app/utils/common";
+import { Component, OnInit, Input } from "@angular/core"
+import { Common } from "../../../../src/app/utils/common"
 
 @Component({
   selector: "app-images",
@@ -7,13 +7,13 @@ import { Common } from "../../../../src/app/utils/common";
   styleUrls: ["./images.component.scss"],
 })
 export class ImagesComponent implements OnInit {
-  @Input() imgSrc;
-  @Input() imgTitle;
+  @Input() imgSrc
+  @Input() imgTitle
   constructor() {}
 
   ngOnInit() {
     if (this.imgSrc) {
-      this.imgSrc = Common.getImageURI(null, this.imgSrc[0]);
+      this.imgSrc = Common.getImageURI(null, this.imgSrc[0])
     }
   }
 }

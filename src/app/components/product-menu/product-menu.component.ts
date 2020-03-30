@@ -1,7 +1,7 @@
-import { Component, OnInit, NgZone } from "@angular/core";
-import { Router } from "@angular/router";
-import { Common } from "../../../../src/app/utils/common";
-import { Constants } from "../../utils/constants";
+import { Component, OnInit, NgZone } from "@angular/core"
+import { Router } from "@angular/router"
+import { Common } from "../../../../src/app/utils/common"
+import { Constants } from "../../utils/constants"
 
 @Component({
   selector: "app-product-menu",
@@ -9,9 +9,9 @@ import { Constants } from "../../utils/constants";
   styleUrls: ["./product-menu.component.scss"],
 })
 export class ProductMenuComponent implements OnInit {
-  productCategories = [];
-  productObject = [];
-  disclaimerReq: Boolean;
+  productCategories = []
+  productObject = []
+  disclaimerReq: Boolean
   constructor(private router: Router, private ngZone: NgZone) {}
 
   ngOnInit() {
@@ -49,8 +49,8 @@ export class ProductMenuComponent implements OnInit {
           },
         ],
       },
-    ];
-    this.disclaimerReq = Constants.environment.name !== "PROD" ? true : false;
+    ]
+    this.disclaimerReq = Constants.environment.name !== "PROD" ? true : false
     this.productCategories = [
       {
         title: "Building Material",
@@ -209,17 +209,17 @@ export class ProductMenuComponent implements OnInit {
         title: "Interiors",
         details: this.productObject,
       },
-    ];
+    ]
   }
 
   handleNavigation(searchedText) {
-    let qObject = Common.searchProducts(searchedText);
+    let qObject = Common.searchProducts(searchedText)
     if (qObject) {
       this.ngZone
         .run(() =>
           this.router.navigate(["/products"], { queryParams: qObject })
         )
-        .then();
+        .then()
     }
   }
 }

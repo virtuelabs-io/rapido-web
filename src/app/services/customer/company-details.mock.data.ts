@@ -1,4 +1,4 @@
-import { CompanyDetails } from "./company-details";
+import { CompanyDetails } from "./company-details"
 
 export class CompanyDetailsMockData {
   public static postCompanyDetails = {
@@ -10,7 +10,7 @@ export class CompanyDetailsMockData {
     message: "",
     protocol41: true,
     changedRows: 0,
-  };
+  }
 
   public static putComapnyDetails = {
     fieldCount: 0,
@@ -21,7 +21,7 @@ export class CompanyDetailsMockData {
     message: "(Rows matched: 1  Changed: 1  Warnings: 0",
     protocol41: true,
     changedRows: 1,
-  };
+  }
 
   public static company: CompanyDetails = new CompanyDetails(
     "company name",
@@ -32,7 +32,7 @@ export class CompanyDetailsMockData {
     "postcode",
     "addr_2",
     "1"
-  );
+  )
 
   public static deleteCompany = {
     fieldCount: 0,
@@ -43,5 +43,5 @@ export class CompanyDetailsMockData {
     message: "",
     protocol41: true,
     changedRows: 0,
-  };
+  }
 }
