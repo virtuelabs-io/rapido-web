@@ -11,7 +11,7 @@ describe('AuthmockComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [AuthmockComponent],
-      imports: [FormsModule, HttpClientModule],
+      imports: [FormsModule, HttpClientModule]
     }).compileComponents()
   }))
 

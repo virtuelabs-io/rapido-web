@@ -10,7 +10,7 @@ import { LoginStateService } from '../../shared-services/login-state/login-state
 @Component({
   selector: 'app-add-address',
   templateUrl: './add-address.component.html',
-  styleUrls: ['./add-address.component.scss'],
+  styleUrls: ['./add-address.component.scss']
 })
 export class AddAddressComponent implements OnInit {
   _previousRoute: any = ''
@@ -40,7 +40,7 @@ export class AddAddressComponent implements OnInit {
       town_city: new FormControl('', [Validators.required]),
       postCode: new FormControl('', [Validators.required]),
       county: new FormControl('', [Validators.required]),
-      country: new FormControl('', [Validators.required]),
+      country: new FormControl('', [Validators.required])
     })
   }
   addAddress(formData) {

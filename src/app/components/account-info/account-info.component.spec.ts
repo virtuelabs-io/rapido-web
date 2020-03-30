@@ -13,7 +13,7 @@ import {
   MatInputModule,
   MatCheckboxModule,
   MatIconModule,
-  MatExpansionModule,
+  MatExpansionModule
 } from '@angular/material'
 import { Router, Routes } from '@angular/router'
 import { LogInComponent } from '../log-in/log-in.component'
@@ -39,20 +39,20 @@ describe('AccountInfoComponent', () => {
         HttpClientModule,
         MatCheckboxModule,
         MatInputModule,
-        BrowserAnimationsModule,
+        BrowserAnimationsModule
       ],
       declarations: [
         AccountInfoComponent,
         LogInComponent,
-        ConfirmationDialogComponent,
+        ConfirmationDialogComponent
       ],
       providers: [
         { provide: MatDialogRef, useValue: {} },
-        { provide: MAT_DIALOG_DATA, useValue: [] },
-      ],
+        { provide: MAT_DIALOG_DATA, useValue: [] }
+      ]
     })
       .overrideModule(BrowserDynamicTestingModule, {
-        set: { entryComponents: [ConfirmationDialogComponent] },
+        set: { entryComponents: [ConfirmationDialogComponent] }
       })
       .compileComponents()
   }))

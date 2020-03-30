@@ -9,7 +9,7 @@ import { CompanyDetailsService } from './company-details.service'
 import { CompanyDetails } from './company-details'
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class CompanyDetailsMockService extends CompanyDetailsService {
   constructor(

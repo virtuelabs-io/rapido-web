@@ -4,7 +4,7 @@ import { MatTableDataSource, MatSort } from '@angular/material'
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss'],
+  styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit {
   @Input() tableData
@@ -22,7 +22,7 @@ export class TableComponent implements OnInit {
       let obj = val.split(':')
       return {
         prop: obj[0],
-        val: obj[1],
+        val: obj[1]
       }
     })
     this.dataSource = new MatTableDataSource(updateData)

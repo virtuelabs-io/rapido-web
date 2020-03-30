@@ -1,7 +1,7 @@
 import { TestBed, inject, fakeAsync, tick } from '@angular/core/testing'
 import {
   HttpClientTestingModule,
-  HttpTestingController,
+  HttpTestingController
 } from '@angular/common/http/testing'
 
 import { Constants } from '../../utils/constants'
@@ -12,7 +12,7 @@ describe('ProductsHierarchyService', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [ProductsHierarchyService],
+      providers: [ProductsHierarchyService]
     })
   )
 
@@ -30,9 +30,9 @@ describe('ProductsHierarchyService', () => {
         const responseObject = {
           body: {
             item1: ['subitem1', 'subitem2'],
-            item2: ['subitem1', 'subitem2'],
+            item2: ['subitem1', 'subitem2']
           },
-          status: 200,
+          status: 200
         }
         let response = null
 
@@ -44,7 +44,7 @@ describe('ProductsHierarchyService', () => {
         )
 
         const requestWrapper = backend.expectOne({
-          url: Constants.environment.staticAssets + Constants.PRODUCT_HIERARCHY,
+          url: Constants.environment.staticAssets + Constants.PRODUCT_HIERARCHY
         })
         requestWrapper.flush(responseObject)
 

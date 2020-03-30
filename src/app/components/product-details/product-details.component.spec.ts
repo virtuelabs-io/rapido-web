@@ -3,7 +3,7 @@ import {
   ComponentFixture,
   TestBed,
   fakeAsync,
-  tick,
+  tick
 } from '@angular/core/testing'
 import { ProductDetailsComponent } from './product-details.component'
 import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
@@ -28,7 +28,7 @@ describe('ProductDetailsComponent', () => {
 
   const routes: Routes = [
     { path: 'review/edit/review/:id', component: EditReviewComponent },
-    { path: 'review/create/product/:id', component: CreateReviewComponent },
+    { path: 'review/create/product/:id', component: CreateReviewComponent }
   ]
 
   beforeEach(async(() => {
@@ -37,14 +37,14 @@ describe('ProductDetailsComponent', () => {
         HttpClientTestingModule,
         MatTableModule,
         MatSnackBarModule,
-        RouterTestingModule.withRoutes(routes),
+        RouterTestingModule.withRoutes(routes)
       ],
       declarations: [
         ProductDetailsComponent,
         EditReviewComponent,
-        CreateReviewComponent,
+        CreateReviewComponent
       ],
-      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
+      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents()
   }))
 
@@ -85,8 +85,8 @@ describe('ProductDetailsComponent', () => {
     component.isLoggedIn = true
     let data = [
       {
-        id: 8,
-      },
+        id: 8
+      }
     ]
     let id = 51
     component.handleReviewNavigation(data, id)

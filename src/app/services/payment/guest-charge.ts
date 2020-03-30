@@ -63,7 +63,7 @@ export class GuestCharge {
       name: this._name,
       receiptEmail: this._receiptEmail,
       order_id: this._order_id,
-      session_id: this._session_id,
+      session_id: this._session_id
     }
   }
 }

@@ -3,7 +3,7 @@ import {
   ComponentFixture,
   TestBed,
   fakeAsync,
-  tick,
+  tick
 } from '@angular/core/testing'
 import { RouterTestingModule } from '@angular/router/testing'
 import { ProductMenuMobileComponent } from './product-menu-mobile.component'
@@ -22,7 +22,7 @@ describe('ProductMenuMobileComponent', () => {
   let location: Location
 
   const routes: Routes = [
-    { path: 'products', component: ProductResultsComponent },
+    { path: 'products', component: ProductResultsComponent }
   ]
 
   beforeEach(async(() => {
@@ -31,14 +31,14 @@ describe('ProductMenuMobileComponent', () => {
         MatTreeModule,
         MatIconModule,
         RouterTestingModule.withRoutes(routes),
-        HttpClientModule,
+        HttpClientModule
       ],
       declarations: [
         ProductMenuMobileComponent,
         ProductResultsComponent,
-        LeftSectionComponent,
+        LeftSectionComponent
       ],
-      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
+      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents()
   }))
 

@@ -9,7 +9,7 @@ export class CompanyDetailsMockData {
     warningCount: 0,
     message: '',
     protocol41: true,
-    changedRows: 0,
+    changedRows: 0
   }
 
   public static putComapnyDetails = {
@@ -20,7 +20,7 @@ export class CompanyDetailsMockData {
     warningCount: 0,
     message: '(Rows matched: 1  Changed: 1  Warnings: 0',
     protocol41: true,
-    changedRows: 1,
+    changedRows: 1
   }
 
   public static company: CompanyDetails = new CompanyDetails(
@@ -42,6 +42,6 @@ export class CompanyDetailsMockData {
     warningCount: 0,
     message: '',
     protocol41: true,
-    changedRows: 0,
+    changedRows: 0
   }
 }

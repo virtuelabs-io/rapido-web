@@ -7,7 +7,7 @@ describe('GuestChargeService', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [ProfileService],
+      providers: [ProfileService]
     })
   )
 

@@ -3,7 +3,7 @@ import {
   MatStepperModule,
   MatSnackBarModule,
   MatFormFieldModule,
-  MatInputModule,
+  MatInputModule
 } from '@angular/material'
 import { CheckoutComponent } from './checkout.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
@@ -20,14 +20,14 @@ describe('CheckoutComponent', () => {
   let router: Router
 
   const routes: Routes = [
-    { path: 'login', component: LogInComponent },
+    { path: 'login', component: LogInComponent }
     // { path: 'cart/checkout', component: CheckoutComponent}
   ]
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       providers: [
-        StripeService,
+        StripeService
         //   { provide: APP_CONFIG, useValue: ElementsOptions }
       ],
       imports: [
@@ -40,9 +40,9 @@ describe('CheckoutComponent', () => {
         MatInputModule,
         MatFormFieldModule,
         FormsModule,
-        ReactiveFormsModule,
+        ReactiveFormsModule
       ],
-      declarations: [CheckoutComponent, LogInComponent],
+      declarations: [CheckoutComponent, LogInComponent]
     }).compileComponents()
   }))
 

@@ -6,7 +6,7 @@ import { Constants } from '../../utils/constants'
 import { Query } from './query.interface'
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ProductsService {
   constructor(private _http: HttpClient) {}

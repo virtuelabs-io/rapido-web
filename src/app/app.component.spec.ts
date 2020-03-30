@@ -36,7 +36,7 @@ import {
   MatCardModule,
   MatTableModule,
   MatTreeModule,
-  MatProgressBarModule,
+  MatProgressBarModule
 } from '@angular/material'
 import { LeftSectionComponent } from './components/leftsection/leftsection.component'
 import { CardComponent } from './components/card/card.component'
@@ -105,7 +105,7 @@ describe('AppComponent', () => {
         MatTableModule,
         MatProgressBarModule,
         NgbModule.forRoot(),
-        MatTreeModule,
+        MatTreeModule
       ],
       declarations: [
         AppComponent,
@@ -140,9 +140,9 @@ describe('AppComponent', () => {
         RatingBarComponent,
         ProductMenuComponent,
         StageDisclaimerComponent,
-        CookieConsentComponent,
+        CookieConsentComponent
       ],
-      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
+      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents()
   }))
 

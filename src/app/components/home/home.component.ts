@@ -10,7 +10,7 @@ import { LoginStateService } from '../../shared-services/login-state/login-state
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
   paused = false
@@ -47,24 +47,24 @@ export class HomeComponent implements OnInit {
     this.carousel = {
       RecommendedList: {
         title: Constants.RECOMMENDEDLIST_TITLE,
-        data: [],
+        data: []
       },
       FrequentlyBought: {
         title: Constants.FREQUENTLY_BOUGHT_TITLE,
-        data: [],
+        data: []
       },
       FrequentlyBoughtByMe: {
         title: '',
-        data: [],
+        data: []
       },
       BrowsingHistory: {
         title: Constants.BROWSING_HISTORY_TITLE,
-        data: [],
+        data: []
       },
       newAddedProductSet: {
         title: Constants.NEWLY_ADDED_PRODUCTS_TITLE,
-        data: [],
-      },
+        data: []
+      }
     }
 
     this.banner = Common.getImageURI(null, '/images/home-page/sale.jpg') //"assets/images/sale.jpg"
@@ -72,12 +72,12 @@ export class HomeComponent implements OnInit {
       {
         title: 'Watches',
         image: Common.getImageURI(null, '/images/home-page/watches.jpg'),
-        desc: 'Find the best photography deals',
+        desc: 'Find the best photography deals'
       },
       {
         title: 'Furnitures',
         image: Common.getImageURI(null, '/images/home-page/furnitures.jpg'),
-        desc: 'Best of furnitures in store',
+        desc: 'Best of furnitures in store'
       },
       {
         title: 'Paint',
@@ -85,26 +85,26 @@ export class HomeComponent implements OnInit {
           null,
           '/images/home-page/86-Asian-Paint-full.jpeg'
         ),
-        desc: 'Find the best deals here',
+        desc: 'Find the best deals here'
       },
       {
         title: 'Bricks',
         image: Common.getImageURI(null, '/images/home-page/bricks.jpeg'),
-        desc: 'Deals you might be interested in',
-      },
+        desc: 'Deals you might be interested in'
+      }
     ]
 
     this.bannerCard = [
       {
         title: 'Wallets',
         image: Common.getImageURI(null, '/images/home-page/wallets.jpg'),
-        desc: 'End of sale',
+        desc: 'End of sale'
       },
       {
         title: 'Sunglasses',
         image: Common.getImageURI(null, '/images/home-page/sunglass.jpg'),
-        desc: 'Deals to excite you',
-      },
+        desc: 'Deals to excite you'
+      }
     ]
     this.desktopConfig = Constants.DESKTOP_CONFIG
     this.tabletConfig = Constants.TABLET_CONFIG
@@ -138,7 +138,7 @@ export class HomeComponent implements OnInit {
   recommendedProductList() {
     let query = {
       q: `fashion`,
-      size: 10,
+      size: 10
     }
     this._productsService.get(query).subscribe((data) => {
       if (data) {
@@ -192,7 +192,7 @@ export class HomeComponent implements OnInit {
     let query = {
       q: Common.getIdBasedQueryString(frequentlyBoughtByMeSet),
       size: frequentlyBoughtByMeSet.length,
-      qdotparser: 'structured',
+      qdotparser: 'structured'
     }
 
     this._productsService.get(query).subscribe((data) => {
@@ -230,7 +230,7 @@ export class HomeComponent implements OnInit {
     let query = {
       q: Common.getIdBasedQueryString(frequentlyBoughtSet),
       size: frequentlyBoughtSet.length,
-      qdotparser: 'structured',
+      qdotparser: 'structured'
     }
 
     this._productsService.get(query).subscribe((data) => {
@@ -253,7 +253,7 @@ export class HomeComponent implements OnInit {
   browsedHistory() {
     let query = {
       q: `furnitures`,
-      size: 10,
+      size: 10
     }
     this._productsService.get(query).subscribe((data) => {
       if (data) {
@@ -275,7 +275,7 @@ export class HomeComponent implements OnInit {
   newAddedProductSet() {
     let query = {
       q: `watches`,
-      size: 10,
+      size: 10
     }
     this._productsService.get(query).subscribe((data) => {
       if (data) {

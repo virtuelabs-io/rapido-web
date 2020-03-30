@@ -7,7 +7,7 @@ describe('AddressDetailsService', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [ProfileService],
+      providers: [ProfileService]
     })
   )
 

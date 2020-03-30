@@ -3,7 +3,7 @@ import {
   ComponentFixture,
   TestBed,
   fakeAsync,
-  tick,
+  tick
 } from '@angular/core/testing'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { CreateReviewComponent } from './create-review.component'
@@ -29,7 +29,7 @@ describe('CreateReviewComponent', () => {
 
   const routes: Routes = [
     { path: 'login', component: LogInComponent },
-    { path: 'profile/my-reviews', component: CustomerReviewsComponent },
+    { path: 'profile/my-reviews', component: CustomerReviewsComponent }
   ]
 
   beforeEach(async(() => {
@@ -40,14 +40,14 @@ describe('CreateReviewComponent', () => {
         HttpClientTestingModule,
         RouterTestingModule.withRoutes(routes),
         FormsModule,
-        ReactiveFormsModule,
+        ReactiveFormsModule
       ],
       declarations: [
         CreateReviewComponent,
         CustomerReviewsComponent,
-        LogInComponent,
+        LogInComponent
       ],
-      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
+      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents()
   }))
 

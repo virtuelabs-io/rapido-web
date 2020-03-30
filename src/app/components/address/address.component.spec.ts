@@ -3,7 +3,7 @@ import {
   ComponentFixture,
   TestBed,
   fakeAsync,
-  tick,
+  tick
 } from '@angular/core/testing'
 import { RouterTestingModule } from '@angular/router/testing'
 import { AddressComponent } from './address.component'
@@ -11,7 +11,7 @@ import { HttpClientModule } from '@angular/common/http'
 import {
   MatProgressSpinnerModule,
   MatCardModule,
-  MatFormFieldModule,
+  MatFormFieldModule
 } from '@angular/material'
 import { LogInComponent } from '../log-in/log-in.component'
 import { Router, Routes } from '@angular/router'
@@ -35,8 +35,8 @@ describe('AddressComponent', () => {
     { path: 'profile/address', component: AddressComponent },
     {
       path: 'profile/address/editAddress/:id',
-      component: EditAddressComponent,
-    },
+      component: EditAddressComponent
+    }
   ]
 
   beforeEach(async(() => {
@@ -49,9 +49,9 @@ describe('AddressComponent', () => {
         RouterTestingModule.withRoutes(routes),
         MatProgressSpinnerModule,
         RouterTestingModule,
-        HttpClientModule,
+        HttpClientModule
       ],
-      declarations: [AddressComponent, LogInComponent, EditAddressComponent],
+      declarations: [AddressComponent, LogInComponent, EditAddressComponent]
     }).compileComponents()
   }))
 

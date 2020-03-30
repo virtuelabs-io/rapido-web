@@ -8,7 +8,7 @@ describe('PressReleaseComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [PressReleaseComponent],
+      declarations: [PressReleaseComponent]
     }).compileComponents()
   }))
 

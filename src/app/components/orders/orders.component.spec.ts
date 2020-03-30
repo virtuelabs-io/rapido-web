@@ -3,7 +3,7 @@ import {
   ComponentFixture,
   TestBed,
   fakeAsync,
-  tick,
+  tick
 } from '@angular/core/testing'
 import { HttpClientModule } from '@angular/common/http'
 import { OrdersComponent } from './orders.component'
@@ -39,7 +39,7 @@ describe('OrdersComponent', () => {
     { path: 'login', component: LogInComponent },
     { path: 'orders/:id/details', component: OrderDetailsComponent },
     { path: 'review/edit/review/:id', component: EditReviewComponent },
-    { path: 'review/create/product/:id', component: CreateReviewComponent },
+    { path: 'review/create/product/:id', component: CreateReviewComponent }
   ]
 
   beforeEach(async(() => {
@@ -51,7 +51,7 @@ describe('OrdersComponent', () => {
         MatDialogModule,
         FormsModule,
         RouterTestingModule.withRoutes(routes),
-        HttpClientModule,
+        HttpClientModule
       ],
       schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
       declarations: [
@@ -60,11 +60,11 @@ describe('OrdersComponent', () => {
         OrderDetailsComponent,
         ConfirmationDialogComponent,
         EditReviewComponent,
-        CreateReviewComponent,
-      ],
+        CreateReviewComponent
+      ]
     })
       .overrideModule(BrowserDynamicTestingModule, {
-        set: { entryComponents: [ConfirmationDialogComponent] },
+        set: { entryComponents: [ConfirmationDialogComponent] }
       })
       .compileComponents()
   }))
@@ -121,8 +121,8 @@ describe('OrdersComponent', () => {
     component.isLoggedIn = true
     let data = [
       {
-        id: 8,
-      },
+        id: 8
+      }
     ]
     let productId = 51
     component.handleReviewNavigation(data, productId)
@@ -144,8 +144,8 @@ describe('OrdersComponent', () => {
     component.newItemsToCart = [
       {
         id: 1,
-        quantity: 3,
-      },
+        quantity: 3
+      }
     ]
     await component.postCartItems()
     expect(component.postCartItemRes).toEqual(OrdersMockData.postCartItemList)

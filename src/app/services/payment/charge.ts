@@ -54,7 +54,7 @@ export class Charge {
       description: this._description,
       name: this._name,
       receiptEmail: this._receiptEmail,
-      order_id: this._order_id,
+      order_id: this._order_id
     }
   }
 }

@@ -11,12 +11,12 @@ import { Constants } from '../../utils/constants'
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 
 @NgModule({
-  imports: [FormBuilder, Validators, FormGroup],
+  imports: [FormBuilder, Validators, FormGroup]
 })
 @Component({
   selector: 'app-edit-review',
   templateUrl: './edit-review.component.html',
-  styleUrls: ['./edit-review.component.scss'],
+  styleUrls: ['./edit-review.component.scss']
 })
 export class EditReviewComponent implements OnInit {
   _productId: number = 0
@@ -52,7 +52,7 @@ export class EditReviewComponent implements OnInit {
     this.userLogInCheck()
     this.registerFormGroup = new FormGroup({
       summary: new FormControl('', [Validators.required]),
-      title: new FormControl('', [Validators.required]),
+      title: new FormControl('', [Validators.required])
     })
   }
 
@@ -91,7 +91,7 @@ export class EditReviewComponent implements OnInit {
     let query = {
       q: `(term field=_id ${product_id})`,
       size: 10,
-      qdotparser: 'structured',
+      qdotparser: 'structured'
     }
     if (this.isLoggedIn) {
       await this._productsService.get(query).subscribe((data) => {
@@ -120,7 +120,7 @@ export class EditReviewComponent implements OnInit {
     this._ratingsService.updateRating(this.rating).subscribe((data) => {
       this.updateRes = data
       this._snackBar.open(Constants.REVIEW_UPDATED_SUCCESSFULLY, '', {
-        duration: 5000,
+        duration: 5000
       })
       this.ngZone.run(() => this.router.navigate(['profile/my-reviews'])).then()
     })

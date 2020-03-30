@@ -6,7 +6,7 @@ import { ProfileService } from '../authentication/profile/profile.service'
 import { Constants } from '../../utils/constants'
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class GuestAddressService extends RapidoHttpService<
   GuestAddressDetails
@@ -23,7 +23,7 @@ export class GuestAddressService extends RapidoHttpService<
       [
         Constants.GUESTS_APIS.api,
         localStorage.getItem(Constants.RAPIDO_SESSION_ID),
-        'address',
+        'address'
       ].join('/'),
       guestAddressDetails
     )

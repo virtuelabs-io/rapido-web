@@ -19,7 +19,7 @@ describe('ProfileService', () => {
     )
     service.initializeProfileUsingUserData({
       Username: '+440000000000',
-      Pool: virtueCognitoService.cognitoUserPool,
+      Pool: virtueCognitoService.cognitoUserPool
     })
     expect(service.cognitoUser).toEqual(jasmine.any(CognitoUser))
   })

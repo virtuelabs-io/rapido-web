@@ -5,7 +5,7 @@ import { Common } from 'src/app/utils/common'
 @Component({
   selector: 'range-slider',
   templateUrl: './range-slider.component.html',
-  styleUrls: ['./range-slider.component.scss'],
+  styleUrls: ['./range-slider.component.scss']
 })
 export class RangeSliderComponent {
   @Input() rangeData: any
@@ -49,7 +49,7 @@ export class RangeSliderComponent {
     }
     this.rangeData.fnPriceFilterHandler({
       min: this.selectedMinVal,
-      max: this.selectedMaxVal,
+      max: this.selectedMaxVal
     })
   }
 }

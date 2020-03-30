@@ -49,7 +49,7 @@ export class Order {
       delivery_cost_id: this._delivery_cost_id,
       charge_id: this._charge_id,
       product_id: this.product_id,
-      frequency: this.frequency,
+      frequency: this.frequency
     }
   }
 }

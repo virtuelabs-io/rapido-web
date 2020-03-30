@@ -4,7 +4,7 @@ import {
   MatStepperModule,
   MatSnackBarModule,
   MatFormFieldModule,
-  MatInputModule,
+  MatInputModule
 } from '@angular/material'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http'
@@ -16,7 +16,7 @@ import {
   StripeService,
   Elements,
   Element as StripeElement,
-  ElementsOptions,
+  ElementsOptions
 } from 'ngx-stripe'
 import { GuestCheckoutComponent } from './guest-checkout.component'
 import { OrderDetailsComponent } from '../order-details/order-details.component'
@@ -27,12 +27,12 @@ describe('GuestCheckoutComponent', () => {
   let router: Router
 
   const routes: Routes = [
-    { path: 'orders/:id/details', component: OrderDetailsComponent },
+    { path: 'orders/:id/details', component: OrderDetailsComponent }
     // { path: 'cart/checkout', component: CheckoutComponent}
   ]
 
   let elementsOptions: ElementsOptions = {
-    locale: 'en',
+    locale: 'en'
   }
   let elements: Elements
 
@@ -51,9 +51,9 @@ describe('GuestCheckoutComponent', () => {
         MatInputModule,
         MatFormFieldModule,
         FormsModule,
-        ReactiveFormsModule,
+        ReactiveFormsModule
       ],
-      declarations: [GuestCheckoutComponent, OrderDetailsComponent],
+      declarations: [GuestCheckoutComponent, OrderDetailsComponent]
     }).compileComponents()
   }))
 

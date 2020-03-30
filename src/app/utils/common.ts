@@ -3,7 +3,7 @@ import { Constants } from './constants'
 import { Query } from './../../../src/app/services/products/query.interface'
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class Common {
   public static getImageURI = (images: Array<string>, imagePath: string) => {
@@ -36,14 +36,14 @@ export class Common {
     let fieldsQuery = {
       price: {
         q: updatedQuery.price,
-        text: updatedQuery.price,
+        text: updatedQuery.price
       },
       rating: {
         q: updatedQuery.rating,
         text: updatedQuery.rating
           ? updatedQuery.rating + '+'
-          : updatedQuery.rating,
-      },
+          : updatedQuery.rating
+      }
     }
     if (updatedQuery.rating && updatedQuery.price) {
       updatedQuery.q = `(and '${
@@ -77,7 +77,7 @@ export class Common {
       start: null,
       sort: null,
       parser: 'structured',
-      fieldsQuery: JSON.stringify(fieldsQuery),
+      fieldsQuery: JSON.stringify(fieldsQuery)
     }
 
     return { ...defaultQuery, ...updatedQuery }

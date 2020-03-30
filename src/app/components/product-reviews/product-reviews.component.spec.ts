@@ -3,7 +3,7 @@ import {
   ComponentFixture,
   TestBed,
   fakeAsync,
-  tick,
+  tick
 } from '@angular/core/testing'
 import { ProductDetailsComponent } from 'src/app/components/product-details/product-details.component'
 import { ProductReviewsComponent } from './product-reviews.component'
@@ -30,7 +30,7 @@ describe('ProductReviewsComponent', () => {
 
   const routes: Routes = [
     { path: 'login', component: LogInComponent },
-    { path: 'review/edit/review/:id', component: EditReviewComponent },
+    { path: 'review/edit/review/:id', component: EditReviewComponent }
   ]
 
   beforeEach(async(() => {
@@ -41,15 +41,15 @@ describe('ProductReviewsComponent', () => {
         BrowserAnimationsModule,
         MatSnackBarModule,
         HttpClientModule,
-        RouterTestingModule.withRoutes(routes),
+        RouterTestingModule.withRoutes(routes)
       ],
       declarations: [
         ProductReviewsComponent,
         ProductDetailsComponent,
         LogInComponent,
-        EditReviewComponent,
+        EditReviewComponent
       ],
-      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
+      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents()
   }))
 

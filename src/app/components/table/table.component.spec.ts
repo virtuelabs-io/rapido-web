@@ -17,9 +17,9 @@ describe('TableComponent', () => {
         ReactiveFormsModule,
         HttpClientTestingModule,
         MatTableModule,
-        RouterTestingModule,
+        RouterTestingModule
       ],
-      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
+      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents()
   }))
 

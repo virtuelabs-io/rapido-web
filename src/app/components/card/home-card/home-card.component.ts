@@ -6,13 +6,13 @@ import { Common } from '../../../utils/common'
 @Component({
   selector: 'app-home-card',
   templateUrl: './home-card.component.html',
-  styleUrls: ['./home-card.component.scss'],
+  styleUrls: ['./home-card.component.scss']
 })
 export class HomeCardComponent implements OnInit {
   @Input() cardDetails = {
     title: '',
     image: '',
-    desc: '',
+    desc: ''
   }
   constructor(
     private router: Router,

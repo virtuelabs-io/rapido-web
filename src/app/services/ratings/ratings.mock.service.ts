@@ -7,7 +7,7 @@ import { RatingsService } from './ratings.service'
 import { ProfileService } from '../authentication/profile/profile.service'
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class RatingsMockService extends RatingsService {
   constructor(

@@ -6,7 +6,7 @@ import { Response } from '../../../utils/response'
 import { Constants } from '../../../utils/constants'
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ResendConfirmationCodeService extends AuthenticationService {
   constructor(

@@ -3,7 +3,7 @@ import { Component, Input, OnInit, SimpleChanges } from '@angular/core'
 @Component({
   selector: 'app-carousel-scroll',
   templateUrl: './carousel-scroll.component.html',
-  styleUrls: ['./carousel-scroll.component.scss'],
+  styleUrls: ['./carousel-scroll.component.scss']
 })
 export class CarouselScrollComponent implements OnInit {
   @Input() carouselCard = []

@@ -8,7 +8,7 @@ describe('CreditsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [],
-      declarations: [CreditsComponent],
+      declarations: [CreditsComponent]
     }).compileComponents()
   }))
 

@@ -8,7 +8,7 @@ import { Query } from '../products/query.interface'
 import { ProductsService } from '../products/products.service'
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ChargeService extends RapidoHttpService<Charge> {
   private _productService: ProductsService
@@ -62,7 +62,7 @@ export class ChargeService extends RapidoHttpService<Charge> {
       return: Constants.SEARCH_QUERY.orderReturnFields,
       start: null,
       sort: null,
-      qdotparser: Constants.SEARCH_QUERY.structuredParser,
+      qdotparser: Constants.SEARCH_QUERY.structuredParser
     }
     return this._productService.get(_query)
   }
@@ -86,7 +86,7 @@ export class ChargeService extends RapidoHttpService<Charge> {
     })
     return {
       orderItemsObject,
-      products,
+      products
     }
   }
 }

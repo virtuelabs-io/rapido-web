@@ -17,7 +17,7 @@ import { GuestCartService } from '../../services/guests/guest-cart.service'
 @Component({
   selector: 'app-topnav',
   templateUrl: './topnav.component.html',
-  styleUrls: ['./topnav.component.scss'],
+  styleUrls: ['./topnav.component.scss']
 })
 export class TopnavComponent implements OnInit {
   @Output() toggleSidenav = new EventEmitter<void>()
@@ -114,7 +114,7 @@ export class TopnavComponent implements OnInit {
   openSnackBar(message) {
     message &&
       this._snackBar.open(message, undefined, {
-        duration: 4000,
+        duration: 4000
       })
   }
 

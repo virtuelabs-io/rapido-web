@@ -8,7 +8,7 @@ import { CartService } from './cart.service'
 import { ProductsService } from '../products/products.service'
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class CartMockService extends CartService {
   public _productService: ProductsService

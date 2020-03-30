@@ -12,12 +12,12 @@ import { OrdersService } from '../../services/orders/orders.service'
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 
 @NgModule({
-  imports: [FormBuilder, Validators, FormGroup],
+  imports: [FormBuilder, Validators, FormGroup]
 })
 @Component({
   selector: 'app-create-review',
   templateUrl: './create-review.component.html',
-  styleUrls: ['./create-review.component.scss'],
+  styleUrls: ['./create-review.component.scss']
 })
 export class CreateReviewComponent implements OnInit {
   _productId: number = 0
@@ -58,7 +58,7 @@ export class CreateReviewComponent implements OnInit {
     this.userLogInCheck()
     this.registerFormGroup = new FormGroup({
       summary: new FormControl('', [Validators.required]),
-      title: new FormControl('', [Validators.required]),
+      title: new FormControl('', [Validators.required])
     })
   }
 
@@ -92,7 +92,7 @@ export class CreateReviewComponent implements OnInit {
     let query = {
       q: `(term field=_id ${this._productId})`,
       size: 10,
-      qdotparser: 'structured',
+      qdotparser: 'structured'
     }
     if (this.isLoggedIn) {
       await this.checkProductPurchase()
@@ -120,7 +120,7 @@ export class CreateReviewComponent implements OnInit {
         if (data[0].length == 0) {
           this.disableSubmitReview = true
           this._snackBar.open(Constants.UNAUTHORIZED_REVIEW_CREATE, undefined, {
-            duration: 4000,
+            duration: 4000
           })
         }
       })
@@ -136,7 +136,7 @@ export class CreateReviewComponent implements OnInit {
       this.submitRes = data
       this._loginStateService.loaderDisable()
       this._snackBar.open(Constants.REVIEW_ADDED_SUCCESSFULLY, undefined, {
-        duration: 4000,
+        duration: 4000
       })
       this.ngZone.run(() => this.router.navigate(['profile/my-reviews'])).then()
     })

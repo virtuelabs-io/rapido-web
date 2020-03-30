@@ -3,7 +3,7 @@ import {
   MatIconModule,
   MatMenuModule,
   MatToolbarModule,
-  MatSnackBarModule,
+  MatSnackBarModule
 } from '@angular/material'
 import { TopnavComponent } from './topnav.component'
 import { RouterModule } from '@angular/router'
@@ -30,9 +30,9 @@ describe('TopnavComponent', () => {
         MatToolbarModule,
         FormsModule,
         MatSnackBarModule,
-        RouterModule.forRoot([]),
+        RouterModule.forRoot([])
       ],
-      declarations: [TopnavComponent],
+      declarations: [TopnavComponent]
     }).compileComponents()
   }))
 

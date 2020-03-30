@@ -6,7 +6,7 @@ import { Response } from '../../../utils/response'
 import { Constants } from '../../../utils/constants'
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ForgotPasswordService extends AuthenticationService {
   constructor(
@@ -38,7 +38,7 @@ export class ForgotPasswordService extends AuthenticationService {
             newPassword,
             this
           )
-        },
+        }
       })
     })
   }

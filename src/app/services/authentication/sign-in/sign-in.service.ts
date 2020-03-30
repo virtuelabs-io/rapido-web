@@ -8,7 +8,7 @@ import { Constants } from 'src/app/utils/constants'
 import { AuthenticationDetails } from 'amazon-cognito-identity-js'
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class SignInService extends AuthenticationService {
   private _signInData: SignInInterface
@@ -37,7 +37,7 @@ export class SignInService extends AuthenticationService {
           },
           onFailure: function (err) {
             reject(new Response(1, Constants.ERROR_SIGN_IN, err))
-          },
+          }
         }
       )
     })

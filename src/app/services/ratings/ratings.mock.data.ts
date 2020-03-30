@@ -21,7 +21,7 @@ export class RatingsMockData {
     warningCount: 0,
     message: '(Rows matched: 1  Changed: 1  Warnings: 0',
     protocol41: true,
-    changedRows: 1,
+    changedRows: 1
   }
 
   public static deactivateRating = {
@@ -32,7 +32,7 @@ export class RatingsMockData {
     message: '(Rows matched: 1  Changed: 1  Warnings: 0',
     protocol41: true,
     serverStatus: 2,
-    warningCount: 0,
+    warningCount: 0
   }
 
   public static createRating = {
@@ -43,7 +43,7 @@ export class RatingsMockData {
     message: '',
     protocol41: true,
     serverStatus: 2,
-    warningCount: 0,
+    warningCount: 0
   }
 
   public static updateRating = {
@@ -54,6 +54,6 @@ export class RatingsMockData {
     message: '',
     protocol41: true,
     serverStatus: 2,
-    warningCount: 0,
+    warningCount: 0
   }
 }

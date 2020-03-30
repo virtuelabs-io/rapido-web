@@ -11,12 +11,12 @@ let itemDetails = {
     '/images/products/31/31-shirt1.jpg',
     '/images/products/31/31-shirt1.jpg',
     '/images/products/31/31-shirt1.jpg',
-    '/images/products/31/31-shirt1.jpg',
+    '/images/products/31/31-shirt1.jpg'
   ],
   name:
     "MUFALI Men's Cotton Blend Regular Fit Scoop Neck Full Sleeve Casual Wear T-Shirt",
   offer: '0.2',
-  price: '16499.0',
+  price: '16499.0'
 }
 let cartItemDetails = new CartItemDetails(cartItem, itemDetails)
 export class CartMockData {
@@ -36,7 +36,7 @@ export class CartMockData {
     message: '',
     protocol41: true,
     serverStatus: 2,
-    warningCount: 0,
+    warningCount: 0
   }
 
   public static postCartItem = {
@@ -47,7 +47,7 @@ export class CartMockData {
     message: '',
     protocol41: true,
     serverStatus: 2,
-    warningCount: 0,
+    warningCount: 0
   }
 
   public static deleteCartItem = {
@@ -58,6 +58,6 @@ export class CartMockData {
     message: '',
     protocol41: true,
     serverStatus: 2,
-    warningCount: 0,
+    warningCount: 0
   }
 }

@@ -60,14 +60,14 @@ export const routes: Routes = [
   { path: 'review/create/product/:id', component: CreateReviewComponent },
   { path: 'review/edit/review/:id', component: EditReviewComponent },
   { path: 'cart/guest-checkout', component: GuestCheckoutComponent },
-  { path: 'categories', component: ProductMenuMobileComponent },
+  { path: 'categories', component: ProductMenuMobileComponent }
 ]
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })
   ],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}
 export const RoutingComponents = [
@@ -98,5 +98,5 @@ export const RoutingComponents = [
   CreateReviewComponent,
   EditReviewComponent,
   GuestCheckoutComponent,
-  ProductMenuMobileComponent,
+  ProductMenuMobileComponent
 ]

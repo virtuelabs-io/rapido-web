@@ -9,7 +9,7 @@ describe('RangeSliderComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [RangeSliderComponent],
-      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
+      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents()
   }))
 

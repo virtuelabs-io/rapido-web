@@ -158,7 +158,7 @@ export class Registration extends Schema {
       'sendMePromotions',
       'commViaEmail',
       'commViaSMS',
-      'personalisation',
+      'personalisation'
     ]
     let updateAttributeList: ICognitoUserAttributeData[] = []
     let keyName: string
@@ -171,7 +171,7 @@ export class Registration extends Schema {
         }
         updateAttributeList.push({
           Name: keyName,
-          Value: this[field],
+          Value: this[field]
         })
       }
     })

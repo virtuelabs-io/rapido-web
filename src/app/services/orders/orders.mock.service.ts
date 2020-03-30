@@ -7,7 +7,7 @@ import { ProductsService } from '../products/products.service'
 import { of } from 'rxjs'
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class OrdersMockService extends OrdersService {
   public _productService: ProductsService

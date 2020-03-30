@@ -11,7 +11,7 @@ import { Common } from '../../utils/common'
 @Component({
   selector: 'app-productresults',
   templateUrl: './product-results.component.html',
-  styleUrls: ['./product-results.component.scss'],
+  styleUrls: ['./product-results.component.scss']
 })
 export class ProductResultsComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator) paginator: MatPaginator
@@ -103,7 +103,7 @@ export class ProductResultsComponent implements OnInit, OnDestroy {
   openDialog(): void {
     const dialogRef = this.dialog.open(FilterControlsDialog, {
       height: '80%',
-      width: '80%',
+      width: '80%'
     })
 
     // dialogRef.afterClosed().subscribe(result => {
@@ -118,7 +118,7 @@ export class ProductResultsComponent implements OnInit, OnDestroy {
       <i class="fa fa-times hidden-lg hidden-md" (click)="closeDialog()"></i>
       <app-leftsection [closeDialog]="dialogRef"></app-leftsection>
     </mat-dialog-content>
-  `,
+  `
 })
 export class FilterControlsDialog {
   // dialogRef: any

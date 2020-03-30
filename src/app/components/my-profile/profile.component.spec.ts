@@ -19,9 +19,9 @@ describe('MyProfileComponent', () => {
       imports: [
         RouterTestingModule.withRoutes(routes),
         MatExpansionModule,
-        BrowserAnimationsModule,
+        BrowserAnimationsModule
       ],
-      declarations: [ProfileComponent, OrdersComponent],
+      declarations: [ProfileComponent, OrdersComponent]
     }).compileComponents()
   }))
 

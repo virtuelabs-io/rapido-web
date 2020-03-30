@@ -7,7 +7,7 @@ import { SidenavService } from './components/nav/nav.service'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   showNavBar: Boolean = true
@@ -22,7 +22,7 @@ export class AppComponent {
   ngOnInit() {
     this.pageScrollService.scroll({
       document: this.document,
-      scrollTarget: '.nav-top',
+      scrollTarget: '.nav-top'
     })
 
     this.router.events.subscribe((event: Event) => {

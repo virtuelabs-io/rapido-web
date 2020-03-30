@@ -15,7 +15,7 @@ import { MatDialog } from '@angular/material'
   selector: 'app-account-info',
   templateUrl: './account-info.component.html',
   styleUrls: ['./account-info.component.scss'],
-  providers: [NgbModalConfig, NgbModal],
+  providers: [NgbModalConfig, NgbModal]
 })
 export class AccountInfoComponent implements OnInit {
   _profileService: ProfileService
@@ -45,7 +45,7 @@ export class AccountInfoComponent implements OnInit {
     sendMePromotionsB: false,
     commViaEmailB: false,
     commViaSMSB: false,
-    personalisationB: false,
+    personalisationB: false
   }
   private _updateAttributeService: UpdateAttributeService
   constructor(
@@ -165,7 +165,7 @@ export class AccountInfoComponent implements OnInit {
     this.dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: '350px',
       data:
-        "Are you sure you want to delete the account. Once deleted, your account can't be recovered",
+        "Are you sure you want to delete the account. Once deleted, your account can't be recovered"
     })
     this.dialogRef.afterClosed().subscribe((result) => {
       if (result) {

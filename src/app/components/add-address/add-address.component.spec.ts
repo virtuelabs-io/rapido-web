@@ -8,7 +8,7 @@ import {
   MatProgressSpinnerModule,
   MatFormFieldModule,
   MatCardModule,
-  MatInputModule,
+  MatInputModule
 } from '@angular/material'
 import { AddressDetailsMockData } from 'src/app/services/customer/address-details.mock.data'
 import { AddressDetailsService } from '../../services/customer/address-details.service'
@@ -30,9 +30,9 @@ describe('AddAddressComponent', () => {
         RouterTestingModule,
         HttpClientModule,
         MatInputModule,
-        BrowserAnimationsModule,
+        BrowserAnimationsModule
       ],
-      declarations: [AddAddressComponent],
+      declarations: [AddAddressComponent]
     }).compileComponents()
   }))
 
@@ -89,7 +89,7 @@ describe('AddAddressComponent', () => {
       county: 'county',
       country: 'country',
       postCode: 'postcode',
-      add2: 'add2',
+      add2: 'add2'
     }
     component.addAddress(formData)
     expect(component.addRes).toEqual(AddressDetailsMockData.postAddress)

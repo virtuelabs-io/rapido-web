@@ -34,7 +34,7 @@ import { GuestCartItem } from '../services/guests/guest-cart-item'
 @Component({
   selector: 'app-authmock',
   templateUrl: './authmock.component.html',
-  styleUrls: ['./authmock.component.scss'],
+  styleUrls: ['./authmock.component.scss']
 })
 export class AuthmockComponent implements OnInit {
   _profileService: ProfileService
@@ -124,7 +124,7 @@ export class AuthmockComponent implements OnInit {
     return: null,
     start: null, // always use either cursor or start, but bot both
     sort: null,
-    qdotparser: null,
+    qdotparser: null
   }
 
   _userRegisteredResponse: Boolean = false
@@ -211,7 +211,7 @@ export class AuthmockComponent implements OnInit {
     this._signUpService.signUpData = {
       phone_number: this._registration.phone_number,
       password: this._registration.password,
-      attributeList: this._registration.attributeList,
+      attributeList: this._registration.attributeList
     }
 
     const promise = this._signUpService.signUp()
@@ -260,7 +260,7 @@ export class AuthmockComponent implements OnInit {
   login() {
     this._signInService.signInData = {
       Username: this._registration.phone_number,
-      Password: this._registration.password,
+      Password: this._registration.password
     }
 
     const promise = this._signInService.login()

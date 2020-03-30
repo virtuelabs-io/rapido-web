@@ -3,7 +3,7 @@ import {
   Input,
   OnInit,
   SimpleChanges,
-  Directive,
+  Directive
 } from '@angular/core'
 import { CartItem } from '../../../services/cart/cart-item'
 import { CartService } from '../../../services/cart/cart.service'
@@ -19,7 +19,7 @@ import { GuestCartItem } from '../../../services/guests/guest-cart-item'
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
-  styleUrls: ['./carousel.component.scss'],
+  styleUrls: ['./carousel.component.scss']
 })
 export class CarouselComponent implements OnInit {
   @Input() carouselCard = []
@@ -105,7 +105,7 @@ export class CarouselComponent implements OnInit {
         this._cartStateService.fetchAndUpdateCartCount(this.isLoggedIn)
         this._loginStateService.loaderDisable()
         this._snackBar.open(Constants.ITEM_MOVED_TO_CART, undefined, {
-          duration: 4000,
+          duration: 4000
         })
       })
     } else {
@@ -117,7 +117,7 @@ export class CarouselComponent implements OnInit {
         this._loginStateService.loaderDisable()
         this._snackBar.open(Constants.ITEM_MOVED_TO_CART, undefined, {
           duration: 4000,
-          horizontalPosition: 'center',
+          horizontalPosition: 'center'
         })
       })
     }

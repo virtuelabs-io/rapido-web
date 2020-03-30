@@ -5,7 +5,7 @@ import { catchError, retry } from 'rxjs/operators'
 import { Constants } from '../../utils/constants'
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ProductsHierarchyService {
   constructor(private _http: HttpClient) {}

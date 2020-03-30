@@ -12,7 +12,7 @@ describe('LeftSectionComponent', () => {
     TestBed.configureTestingModule({
       declarations: [LeftSectionComponent],
       schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
-      imports: [HttpClientTestingModule, RouterTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule]
     }).compileComponents()
   }))
 

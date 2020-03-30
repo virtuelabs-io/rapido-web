@@ -5,7 +5,7 @@ export class Constants {
   public static CUSTOM = 'custom:'
   public static POOL_DATA = {
     UserPoolId: environment.userPoolId,
-    ClientId: environment.clientId,
+    ClientId: environment.clientId
   }
   public static environment = {
     name: environment.name,
@@ -13,7 +13,7 @@ export class Constants {
     productSearchEndPoint: environment.productSearchEndPoint,
     version: environment.version,
     staticAssets: environment.staticAssets,
-    stripePublicKey: environment.payment.publicKey,
+    stripePublicKey: environment.payment.publicKey
   }
 
   public static PROD_REDIRECT = 'https://rapidobuild.com'
@@ -85,7 +85,7 @@ export class Constants {
       ','
     ),
     orderReturnFields: ['name', 'images', 'currency'].join(','),
-    structuredParser: 'structured',
+    structuredParser: 'structured'
   }
 
   public static CUSTOMER_APIS = environment.customer
@@ -98,8 +98,8 @@ export class Constants {
   public static ADDRESS_TYPES = [
     {
       key: 'Delivery',
-      value: 1,
-    },
+      value: 1
+    }
   ]
 
   public static ORDER_STATUS = {
@@ -107,11 +107,11 @@ export class Constants {
     '2': 'Paid',
     '3': 'Delivered',
     '4': 'Cancelled',
-    '5': 'Returned',
+    '5': 'Returned'
   }
 
   public static COUNTRY_CODES = {
-    '1': 'United Kingdom',
+    '1': 'United Kingdom'
   }
 
   public static MOBILE_CONFIG = {
@@ -121,7 +121,7 @@ export class Constants {
     scroll: true,
     title: true,
     offer: true,
-    desc: true,
+    desc: true
   }
 
   public static TABLET_CONFIG = {
@@ -131,7 +131,7 @@ export class Constants {
     scroll: true,
     title: true,
     offer: true,
-    desc: true,
+    desc: true
   }
 
   public static DESKTOP_CONFIG = {
@@ -141,7 +141,7 @@ export class Constants {
     scroll: true,
     title: true,
     offer: true,
-    desc: true,
+    desc: true
   }
 
   public static ITEM_MOVED_TO_CART = 'Item has been moved to cart'

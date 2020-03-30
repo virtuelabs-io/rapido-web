@@ -15,7 +15,7 @@ import { GuestCartItem } from 'src/app/services/guests/guest-cart-item'
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss'],
+  styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
   freeDeliveryMinOrder: Number = Constants.MIN_ORDER_PRICE_FOR_FREE_DELIVERY
@@ -99,7 +99,7 @@ export class CartComponent implements OnInit {
               icon: this._imageUrl + data[i].itemDetails.images[0],
               title: data[i].itemDetails.name,
               amount: parseFloat(data[i].itemDetails.price).toFixed(2),
-              quantity: data[i].cartItem.quantity,
+              quantity: data[i].cartItem.quantity
             })
           } else {
             this.laterUse = true
@@ -108,7 +108,7 @@ export class CartComponent implements OnInit {
               icon: this._imageUrl + data[i].itemDetails.images[0],
               title: data[i].itemDetails.name,
               amount: parseFloat(data[i].itemDetails.price).toFixed(2),
-              quantity: data[i].cartItem.quantity,
+              quantity: data[i].cartItem.quantity
             })
           }
         }
@@ -140,7 +140,7 @@ export class CartComponent implements OnInit {
             icon: this._imageUrl + data[i].itemDetails.images[0],
             title: data[i].itemDetails.name,
             amount: parseFloat(data[i].itemDetails.price).toFixed(2),
-            quantity: data[i].guestCartItem.quantity,
+            quantity: data[i].guestCartItem.quantity
           })
         }
         if (!this.cartItems.length) {
@@ -163,7 +163,7 @@ export class CartComponent implements OnInit {
       await this._cartService.deleteCartItem(id).subscribe((data) => {
         this.deleteRes = data
         this._snackBar.open(this._snackBarMsg, '', {
-          duration: 5000,
+          duration: 5000
         })
         this.getCartItems()
       })
@@ -176,7 +176,7 @@ export class CartComponent implements OnInit {
         .subscribe((data) => {
           this.deleteRes = data
           this._snackBar.open(this._snackBarMsg, '', {
-            duration: 5000,
+            duration: 5000
           })
           this.getCartItems()
         })
@@ -199,7 +199,7 @@ export class CartComponent implements OnInit {
       this._cartService.postCartItem(cartItem).subscribe((data) => {
         this.saveForLaterRes = data
         this._snackBar.open(this._snackBarMsg, '', {
-          duration: 5000,
+          duration: 5000
         })
         this.getCartItems()
       })
@@ -264,7 +264,7 @@ export class CartComponent implements OnInit {
         if (!quantity) {
           this.cartItems[i].quantity = 1
           this._snackBar.open('Minimun one quantity selected', '', {
-            duration: 5000,
+            duration: 5000
           })
         } else {
           this.cartItems[i].quantity = quantity

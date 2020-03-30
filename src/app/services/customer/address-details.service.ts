@@ -6,7 +6,7 @@ import { ProfileService } from '../authentication/profile/profile.service'
 import { Constants } from '../../utils/constants'
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class AddressDetailsService extends RapidoHttpService<AddressDetails> {
   constructor(

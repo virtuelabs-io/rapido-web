@@ -6,12 +6,12 @@ import { ConfirmRegistrationService } from '../../services/authentication/confir
 import { Constants } from '../../utils/constants'
 
 @NgModule({
-  imports: [FormBuilder, Validators, FormGroup],
+  imports: [FormBuilder, Validators, FormGroup]
 })
 @Component({
   selector: 'app-resend-otp',
   templateUrl: './resend-otp.component.html',
-  styleUrls: ['./resend-otp.component.scss'],
+  styleUrls: ['./resend-otp.component.scss']
 })
 export class ResendOtpComponent implements OnInit {
   otpConfirmed: Boolean = false
@@ -42,7 +42,7 @@ export class ResendOtpComponent implements OnInit {
     })
     // Instantiating form group and setting default values for reg form
     this.otpReqFormGroup = new FormGroup({
-      mobileNumber: new FormControl(this.mobileNumber),
+      mobileNumber: new FormControl(this.mobileNumber)
     })
   }
 
@@ -50,7 +50,7 @@ export class ResendOtpComponent implements OnInit {
     this.progressSpinner = true
     this._confirmRegistrationService.username = [
       this.countryCode,
-      this.mobileNumber,
+      this.mobileNumber
     ].join('') // setting payload
     this._confirmRegistrationService
       .confirmRegistration(this.confirmationCode)
@@ -71,7 +71,7 @@ export class ResendOtpComponent implements OnInit {
     this.progressSpinner = true
     this._resendConfirmationCodeService.username = [
       this.countryCode,
-      this.mobileNumber,
+      this.mobileNumber
     ].join('')
     const promise = this._resendConfirmationCodeService.resendConfirmationCode()
     promise

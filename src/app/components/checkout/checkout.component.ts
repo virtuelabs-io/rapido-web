@@ -5,7 +5,7 @@ import {
   StripeService,
   Elements,
   Element as StripeElement,
-  ElementsOptions,
+  ElementsOptions
 } from 'ngx-stripe'
 import { Charge } from '../../services/payment/charge'
 import { Constants } from '../../utils/constants'
@@ -19,12 +19,12 @@ import { ProfileService } from '../../services/authentication/profile/profile.se
 import { MatSnackBar } from '@angular/material'
 
 @NgModule({
-  imports: [FormBuilder, Validators, FormGroup],
+  imports: [FormBuilder, Validators, FormGroup]
 })
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.scss'],
+  styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent implements OnInit {
   deliveryDateInterval = Constants.DELIVERY_DATE_INTERVAL
@@ -52,7 +52,7 @@ export class CheckoutComponent implements OnInit {
   payment: FormGroup
   // optional parameters
   elementsOptions: ElementsOptions = {
-    locale: 'en',
+    locale: 'en'
   }
   elements: Elements
   card: StripeElement
@@ -99,7 +99,7 @@ export class CheckoutComponent implements OnInit {
       }
     })
     this.payment = this.fb.group({
-      name: ['', [Validators.required]],
+      name: ['', [Validators.required]]
     })
   }
 
@@ -126,14 +126,14 @@ export class CheckoutComponent implements OnInit {
               fontSmoothing: 'antialiased',
               fontSize: '16px',
               '::placeholder': {
-                color: '#aab7c4',
-              },
+                color: '#aab7c4'
+              }
             },
             invalid: {
               color: '#fa755a',
-              iconColor: '#fa755a',
-            },
-          },
+              iconColor: '#fa755a'
+            }
+          }
         })
         this.card.mount('#card-element')
       }
@@ -238,7 +238,7 @@ export class CheckoutComponent implements OnInit {
         // error log
         this._loginStateService.loaderDisable()
         this._snackBar.open(result.error.message, '', {
-          duration: 5000,
+          duration: 5000
         })
       }
     })

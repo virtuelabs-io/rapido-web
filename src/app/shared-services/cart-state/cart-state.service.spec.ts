@@ -5,7 +5,7 @@ import { CartStateService } from './cart-state.service'
 describe('CartStateService', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule]
     })
   )
 

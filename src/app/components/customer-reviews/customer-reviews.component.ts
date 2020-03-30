@@ -7,7 +7,7 @@ import { RatingsService } from '../../services/ratings/ratings.service'
 @Component({
   selector: 'app-customer-reviews',
   templateUrl: './customer-reviews.component.html',
-  styleUrls: ['./customer-reviews.component.scss'],
+  styleUrls: ['./customer-reviews.component.scss']
 })
 export class CustomerReviewsComponent implements OnInit {
   reviews: any

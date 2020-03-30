@@ -9,7 +9,7 @@ import {
   MatInputModule,
   MatCardModule,
   MatFormFieldModule,
-  MatProgressSpinnerModule,
+  MatProgressSpinnerModule
 } from '@angular/material'
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'
 import { RouterTestingModule } from '@angular/router/testing'
@@ -31,7 +31,7 @@ describe('CompanyDetailsComponent', () => {
   let location: Location
   const routes: Routes = [
     { path: 'login', component: LogInComponent },
-    { path: 'profile/companyDetails', component: CompanyDetailsComponent },
+    { path: 'profile/companyDetails', component: CompanyDetailsComponent }
   ]
 
   beforeEach(async(() => {
@@ -47,20 +47,20 @@ describe('CompanyDetailsComponent', () => {
         MatFormFieldModule,
         ReactiveFormsModule,
         MatProgressSpinnerModule,
-        FormsModule,
+        FormsModule
       ],
       declarations: [
         ConfirmationDialogComponent,
         CompanyDetailsComponent,
-        LogInComponent,
+        LogInComponent
       ],
       providers: [
         { provide: MatDialogRef, useValue: {} },
-        { provide: MAT_DIALOG_DATA, useValue: [] },
-      ],
+        { provide: MAT_DIALOG_DATA, useValue: [] }
+      ]
     })
       .overrideModule(BrowserDynamicTestingModule, {
-        set: { entryComponents: [ConfirmationDialogComponent] },
+        set: { entryComponents: [ConfirmationDialogComponent] }
       })
       .compileComponents()
   }))

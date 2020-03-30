@@ -9,7 +9,7 @@ import { ProductsService } from '../products/products.service'
 import { GuestCartItemDetails } from './guest-cart-item-details'
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class GuestCartService extends RapidoHttpService<GuestCartItem> {
   public _productService: ProductsService
@@ -31,7 +31,7 @@ export class GuestCartService extends RapidoHttpService<GuestCartItem> {
           Constants.GUESTS_APIS.api,
           localStorage.getItem(Constants.RAPIDO_SESSION_ID),
           'cart',
-          'items',
+          'items'
         ].join('/')
       ).subscribe((data) => {
         if (data.length > 0) {
@@ -43,7 +43,7 @@ export class GuestCartService extends RapidoHttpService<GuestCartItem> {
           })
         } else {
           resolve({
-            error: 'No data found found for all items in cart(if they exist)',
+            error: 'No data found found for all items in cart(if they exist)'
           })
         }
       })
@@ -57,7 +57,7 @@ export class GuestCartService extends RapidoHttpService<GuestCartItem> {
           Constants.GUESTS_APIS.api,
           localStorage.getItem(Constants.RAPIDO_SESSION_ID),
           'cart',
-          'items',
+          'items'
         ].join('/')
       ).subscribe((data) => {
         resolve(data.length)
@@ -71,7 +71,7 @@ export class GuestCartService extends RapidoHttpService<GuestCartItem> {
         Constants.GUESTS_APIS.api,
         localStorage.getItem(Constants.RAPIDO_SESSION_ID),
         'cart',
-        'item',
+        'item'
       ].join('/'),
       guestCartItem
     )
@@ -83,7 +83,7 @@ export class GuestCartService extends RapidoHttpService<GuestCartItem> {
         Constants.GUESTS_APIS.api,
         localStorage.getItem(Constants.RAPIDO_SESSION_ID),
         'cart',
-        'items',
+        'items'
       ].join('/'),
       guestCartItems
     )
@@ -95,7 +95,7 @@ export class GuestCartService extends RapidoHttpService<GuestCartItem> {
         Constants.GUESTS_APIS.api,
         localStorage.getItem(Constants.RAPIDO_SESSION_ID),
         'cart',
-        'item',
+        'item'
       ].join('/'),
       guestCartItem
     )
@@ -107,7 +107,7 @@ export class GuestCartService extends RapidoHttpService<GuestCartItem> {
         Constants.GUESTS_APIS.api,
         localStorage.getItem(Constants.RAPIDO_SESSION_ID),
         'cart',
-        'items',
+        'items'
       ].join('/')
     )
   }
@@ -130,7 +130,7 @@ export class GuestCartService extends RapidoHttpService<GuestCartItem> {
       return: Constants.SEARCH_QUERY.cartReturnFields,
       start: null,
       sort: null,
-      qdotparser: Constants.SEARCH_QUERY.structuredParser,
+      qdotparser: Constants.SEARCH_QUERY.structuredParser
     }
     return this._productService.get(_query)
   }

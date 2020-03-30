@@ -10,7 +10,7 @@ import {
   StripeService,
   Elements,
   Element as StripeElement,
-  ElementsOptions,
+  ElementsOptions
 } from 'ngx-stripe'
 import { GuestChargeService } from '../../services/payment/guest-charge.service'
 import { GuestCharge } from '../../services/payment/guest-charge'
@@ -21,12 +21,12 @@ import { ProfileService } from '../../services/authentication/profile/profile.se
 import { CartStateService } from '../../shared-services/cart-state/cart-state.service'
 
 @NgModule({
-  imports: [FormBuilder, Validators, FormGroup],
+  imports: [FormBuilder, Validators, FormGroup]
 })
 @Component({
   selector: 'app-guest-checkout',
   templateUrl: './guest-checkout.component.html',
-  styleUrls: ['./guest-checkout.component.scss'],
+  styleUrls: ['./guest-checkout.component.scss']
 })
 export class GuestCheckoutComponent implements OnInit {
   deliveryDateInterval = Constants.DELIVERY_DATE_INTERVAL
@@ -52,7 +52,7 @@ export class GuestCheckoutComponent implements OnInit {
   payment: FormGroup
   // optional parameters
   elementsOptions: ElementsOptions = {
-    locale: 'en',
+    locale: 'en'
   }
   elements: Elements
   card: StripeElement
@@ -94,9 +94,9 @@ export class GuestCheckoutComponent implements OnInit {
         ,
         Validators.pattern('^[0-9]+$'),
         Validators.min(1000000000),
-        Validators.max(9999999999),
+        Validators.max(9999999999)
       ]),
-      email: new FormControl('', [Validators.required, , Validators.email]),
+      email: new FormControl('', [Validators.required, , Validators.email])
     })
 
     this._loginStateService.isLoggedInState.subscribe((state) => {
@@ -127,14 +127,14 @@ export class GuestCheckoutComponent implements OnInit {
               fontSmoothing: 'antialiased',
               fontSize: '16px',
               '::placeholder': {
-                color: '#aab7c4',
-              },
+                color: '#aab7c4'
+              }
             },
             invalid: {
               color: '#fa755a',
-              iconColor: '#fa755a',
-            },
-          },
+              iconColor: '#fa755a'
+            }
+          }
         })
         this.card.mount('#card-element')
       }
@@ -254,7 +254,7 @@ export class GuestCheckoutComponent implements OnInit {
         // error log
         this._loginStateService.loaderDisable()
         this._snackBar.open(result.error.message, '', {
-          duration: 5000,
+          duration: 5000
         })
       }
     })

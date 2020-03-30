@@ -3,7 +3,7 @@ import {
   ComponentFixture,
   TestBed,
   fakeAsync,
-  tick,
+  tick
 } from '@angular/core/testing'
 import { HomeCardComponent } from './home-card.component'
 import { HttpClientModule } from '@angular/common/http'
@@ -20,14 +20,14 @@ describe('HomeCardComponent', () => {
   let location: Location
 
   const routes: Routes = [
-    { path: 'products', component: ProductResultsComponent },
+    { path: 'products', component: ProductResultsComponent }
   ]
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule, RouterTestingModule.withRoutes(routes)],
       declarations: [HomeCardComponent, ProductResultsComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents()
   }))
 

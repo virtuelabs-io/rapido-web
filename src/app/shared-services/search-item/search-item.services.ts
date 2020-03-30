@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs'
 import { Query } from '../../services/products/query.interface'
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class SearchItemService {
   _query: Query = {
@@ -18,13 +18,13 @@ export class SearchItemService {
     sort: null,
     parser: 'structured',
     rating: null,
-    price: null,
+    price: null
   }
 
   _responseData = {
     status: {
       rid: '',
-      'time-ms': 0,
+      'time-ms': 0
     },
     hits: {
       found: 0,
@@ -36,11 +36,11 @@ export class SearchItemService {
             points: [],
             details: [],
             images: [],
-            rating: '0',
-          },
-        },
-      ],
-    },
+            rating: '0'
+          }
+        }
+      ]
+    }
   }
   private searchItemText = new BehaviorSubject<Query>(this._query)
   currentState = this.searchItemText.asObservable()

@@ -3,7 +3,7 @@ import {
   ComponentFixture,
   TestBed,
   fakeAsync,
-  tick,
+  tick
 } from '@angular/core/testing'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { EditAddressComponent } from './edit-address.component'
@@ -11,7 +11,7 @@ import { RouterTestingModule } from '@angular/router/testing'
 import {
   MatProgressSpinnerModule,
   MatFormFieldModule,
-  MatInputModule,
+  MatInputModule
 } from '@angular/material'
 import { MatCardModule } from '@angular/material/card'
 import { HttpClientModule } from '@angular/common/http'
@@ -31,8 +31,8 @@ describe('EditAddressComponent', () => {
     { path: 'profile/address', component: AddressComponent },
     {
       path: 'profile/address/editAddress/:id',
-      component: EditAddressComponent,
-    },
+      component: EditAddressComponent
+    }
   ]
 
   beforeEach(async(() => {
@@ -47,9 +47,9 @@ describe('EditAddressComponent', () => {
         RouterTestingModule,
         MatFormFieldModule,
         MatInputModule,
-        RouterTestingModule.withRoutes(routes),
+        RouterTestingModule.withRoutes(routes)
       ],
-      declarations: [AddressComponent, EditAddressComponent],
+      declarations: [AddressComponent, EditAddressComponent]
     }).compileComponents()
   }))
 

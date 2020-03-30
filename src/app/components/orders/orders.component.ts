@@ -11,7 +11,7 @@ import {
   FormBuilder,
   FormGroup,
   Validators,
-  ReactiveFormsModule,
+  ReactiveFormsModule
 } from '@angular/forms'
 import { CartItem } from '../../services/cart/cart-item'
 import { CartService } from '../../services/cart/cart.service'
@@ -20,12 +20,12 @@ import { MatSnackBar } from '@angular/material/snack-bar'
 import { element } from '@angular/core/src/render3'
 
 @NgModule({
-  imports: [FormBuilder, Validators, FormGroup, ReactiveFormsModule],
+  imports: [FormBuilder, Validators, FormGroup, ReactiveFormsModule]
 })
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
-  styleUrls: ['./orders.component.scss'],
+  styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent implements OnInit {
   public _orderService: OrdersService
@@ -144,7 +144,7 @@ export class OrdersComponent implements OnInit {
   cancelOrder(id) {
     this.dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: '350px',
-      data: 'Are you sure you want to cancel this order',
+      data: 'Are you sure you want to cancel this order'
     })
     this.dialogRef.afterClosed().subscribe((result) => {
       if (result) {
@@ -192,7 +192,7 @@ export class OrdersComponent implements OnInit {
     this.orders[selectedOrder]['items'].forEach((element) => {
       this.newItemsToCart.push({
         id: element.product_id,
-        quantity: element.quantity,
+        quantity: element.quantity
       })
     })
     // promise call to post the cart items and then to fetch the cart count..
@@ -232,7 +232,7 @@ export class OrdersComponent implements OnInit {
     this._cartStateService.fetchAndUpdateCartCount(this.isLoggedIn)
     this._loginStateService.loaderDisable()
     this._snackBar.open(Constants.ITEM_MOVED_TO_CART, undefined, {
-      duration: 4000,
+      duration: 4000
     })
   }
 }

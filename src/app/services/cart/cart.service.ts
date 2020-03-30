@@ -9,7 +9,7 @@ import { ProductsService } from '../products/products.service'
 import { CartItemDetails } from './cart-item-details'
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class CartService extends RapidoHttpService<CartItem> {
   public _productService: ProductsService
@@ -39,7 +39,7 @@ export class CartService extends RapidoHttpService<CartItem> {
           })
         } else {
           resolve({
-            error: 'No data found found for all items in cart(if they exist)',
+            error: 'No data found found for all items in cart(if they exist)'
           })
         }
       })
@@ -62,7 +62,7 @@ export class CartService extends RapidoHttpService<CartItem> {
           })
         } else {
           resolve({
-            error: 'No data found found for the items in cart(if they exist)',
+            error: 'No data found found for the items in cart(if they exist)'
           })
         }
       })
@@ -97,7 +97,7 @@ export class CartService extends RapidoHttpService<CartItem> {
         } else {
           resolve({
             error:
-              'No data found found for the items saved for later (if they exist)',
+              'No data found found for the items saved for later (if they exist)'
           })
         }
       })
@@ -152,7 +152,7 @@ export class CartService extends RapidoHttpService<CartItem> {
       return: Constants.SEARCH_QUERY.cartReturnFields,
       start: null,
       sort: null,
-      qdotparser: Constants.SEARCH_QUERY.structuredParser,
+      qdotparser: Constants.SEARCH_QUERY.structuredParser
     }
     return this._productService.get(_query)
   }

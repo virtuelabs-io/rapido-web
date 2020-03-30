@@ -7,12 +7,12 @@ import { ResendConfirmationCodeService } from '../../services/authentication/res
 import { Constants } from '../../utils/constants'
 
 @NgModule({
-  imports: [FormBuilder, Validators, FormGroup],
+  imports: [FormBuilder, Validators, FormGroup]
 })
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss'],
+  styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
   // response data/flag to show/handle in UI
@@ -52,29 +52,29 @@ export class RegisterComponent implements OnInit {
         Validators.required,
         Validators.pattern('^[0-9]+$'),
         Validators.min(1000000000),
-        Validators.max(9999999999),
+        Validators.max(9999999999)
       ]), // Validators.pattern('^[0-9]+$'),Validators.min(1000000000), Validators.max(9999999999)
       name: new FormControl('', [
         Validators.required,
         Validators.maxLength(60),
         Validators.minLength(3),
-        Validators.pattern('[a-zA-Z][a-zA-Z ]+'),
+        Validators.pattern('[a-zA-Z][a-zA-Z ]+')
       ]),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
         Validators.required,
         Validators.pattern(
           '^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$'
-        ),
+        )
       ]),
       confirmPassword: new FormControl('', [
         Validators.compose([
           Validators.required,
-          this.validateAreEqual.bind(this),
-        ]),
+          this.validateAreEqual.bind(this)
+        ])
       ]),
       termsAndConditions: new FormControl(false, Validators.pattern('true')),
-      communications: new FormControl(false),
+      communications: new FormControl(false)
     })
   }
 
@@ -103,7 +103,7 @@ export class RegisterComponent implements OnInit {
     this._signUpService.signUpData = {
       phone_number: this._registration.phone_number,
       password: this._registration.password,
-      attributeList: this._registration.attributeList,
+      attributeList: this._registration.attributeList
     }
     // call Sign Up Service api
     this._signUpService
@@ -147,7 +147,7 @@ export class RegisterComponent implements OnInit {
     return confirmValue === pwdValue
       ? null
       : {
-          NotEqual: true,
+          NotEqual: true
         }
   }
 

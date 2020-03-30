@@ -7,7 +7,7 @@ import { CognitoUserPool } from 'amazon-cognito-identity-js'
 describe('VirtueCognitoService', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
-      providers: [VirtueCognitoService],
+      providers: [VirtueCognitoService]
     })
   )
 

@@ -14,7 +14,7 @@ describe('CarouselFlipComponent', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule, RouterTestingModule, MatSnackBarModule],
       declarations: [CarouselFlipComponent, HomeComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
     }).compileComponents()
   }))
 

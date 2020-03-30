@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser'
 import {
   NgModule,
   CUSTOM_ELEMENTS_SCHEMA,
-  NO_ERRORS_SCHEMA,
+  NO_ERRORS_SCHEMA
 } from '@angular/core'
 import { FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http'
@@ -34,7 +34,7 @@ import {
   MatCardModule,
   MatFormFieldModule,
   MatTableModule,
-  MatTreeModule,
+  MatTreeModule
 } from '@angular/material'
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component'
 import { ProductResultsComponent } from './components/product-results/product-results.component'
@@ -154,7 +154,7 @@ import { ImageCarouselComponent } from './components/card/image-carousel/image-c
     FlipCaseComponent,
     HomeCardFlipComponent,
     CarouselFlipComponent,
-    ImageCarouselComponent,
+    ImageCarouselComponent
   ],
   imports: [
     MatProgressBarModule,
@@ -201,12 +201,12 @@ import { ImageCarouselComponent } from './components/card/image-carousel/image-c
     NgxPageScrollCoreModule,
     NgbModule.forRoot(),
     AngularFontAwesomeModule,
-    MatTreeModule,
+    MatTreeModule
   ],
   entryComponents: [FilterControlsDialog, ConfirmationDialogComponent],
   providers: [],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })
 export class AppModule {
   constructor(private RouteService: RouteService) {}

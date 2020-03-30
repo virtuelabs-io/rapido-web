@@ -6,7 +6,7 @@ import { ProfileService } from '../authentication/profile/profile.service'
 import { Constants } from '../../utils/constants'
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class RatingsService extends RapidoHttpService<Rating> {
   constructor(
@@ -81,7 +81,7 @@ export class RatingsService extends RapidoHttpService<Rating> {
         Constants.RATINGS_APIS.api,
         'product',
         'summary',
-        String(product_id),
+        String(product_id)
       ].join('/')
     )
   }

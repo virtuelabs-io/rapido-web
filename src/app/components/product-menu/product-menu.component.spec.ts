@@ -3,7 +3,7 @@ import {
   ComponentFixture,
   TestBed,
   fakeAsync,
-  tick,
+  tick
 } from '@angular/core/testing'
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core'
 import { ProductMenuComponent } from './product-menu.component'
@@ -22,7 +22,7 @@ describe('ProductMenuComponent', () => {
   let location: Location
 
   const routes: Routes = [
-    { path: 'products', component: ProductResultsComponent },
+    { path: 'products', component: ProductResultsComponent }
   ]
 
   beforeEach(async(() => {
@@ -32,9 +32,9 @@ describe('ProductMenuComponent', () => {
         ProductMenuComponent,
         HomeComponent,
         LeftSectionComponent,
-        ProductResultsComponent,
+        ProductResultsComponent
       ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
     }).compileComponents()
   }))
 

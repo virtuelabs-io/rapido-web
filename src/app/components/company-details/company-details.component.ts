@@ -13,7 +13,7 @@ import { ConfirmationDialogComponent } from '../../components/confirmation-dialo
 @Component({
   selector: 'app-company-details',
   templateUrl: './company-details.component.html',
-  styleUrls: ['./company-details.component.scss'],
+  styleUrls: ['./company-details.component.scss']
 })
 export class CompanyDetailsComponent implements OnInit {
   _customerId: string = ''
@@ -49,7 +49,7 @@ export class CompanyDetailsComponent implements OnInit {
       town_city: new FormControl('', [Validators.required]),
       postCode: new FormControl('', [Validators.required]),
       county: new FormControl('', [Validators.required]),
-      country: new FormControl('', [Validators.required]),
+      country: new FormControl('', [Validators.required])
     })
     this.userLogInCheck()
   }
@@ -107,7 +107,7 @@ export class CompanyDetailsComponent implements OnInit {
   putCompanyDetails() {
     this.dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: '350px',
-      data: 'Do you confirm to save the changes?',
+      data: 'Do you confirm to save the changes?'
     })
     this.dialogRef.afterClosed().subscribe((result) => {
       if (result) {
@@ -134,7 +134,7 @@ export class CompanyDetailsComponent implements OnInit {
         this.putRes = data
         this.getCompanyDetails()
         this._snackBar.open(this._snackBarMsg, '', {
-          duration: 5000,
+          duration: 5000
         })
         this._loginStateService.loaderDisable()
       })
@@ -158,7 +158,7 @@ export class CompanyDetailsComponent implements OnInit {
         this.postRes = data
         this._loginStateService.loaderDisable()
         this._snackBar.open(this._snackBarMsg, '', {
-          duration: 5000,
+          duration: 5000
         })
       })
   }

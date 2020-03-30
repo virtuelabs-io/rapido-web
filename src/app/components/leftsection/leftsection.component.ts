@@ -10,7 +10,7 @@ import { LoginStateService } from 'src/app/shared-services/login-state/login-sta
 @Component({
   selector: 'app-leftsection',
   templateUrl: './leftsection.component.html',
-  styleUrls: ['./leftsection.component.scss'],
+  styleUrls: ['./leftsection.component.scss']
 })
 export class LeftSectionComponent implements OnInit, OnDestroy {
   @Input() closeDialog: any
@@ -33,7 +33,7 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
   sortByType = {
     value: '',
     asc: false,
-    desc: false,
+    desc: false
   }
 
   constructor(
@@ -50,12 +50,12 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
     this.fieldsQuery = {
       price: {
         q: null,
-        text: null,
+        text: null
       },
       rating: {
         q: null,
-        text: null,
-      },
+        text: null
+      }
     }
     let localFieldsQuery = localStorage.getItem('fieldsQuery')
     let localSearchedText = localStorage.getItem('searchedText')
@@ -88,7 +88,7 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
             this.sortByType = {
               value: '',
               asc: false,
-              desc: false,
+              desc: false
             }
           }
         }
@@ -117,7 +117,7 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
               {
                 panelTitle: 'Rating',
                 panelType: 'rating',
-                panelData: ['4', '3', '2', '1'],
+                panelData: ['4', '3', '2', '1']
               },
               {
                 panelTitle: `Price(${this.currency})`,
@@ -125,10 +125,10 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
                 panelData: {
                   fnPriceFilterHandler: this.fnPriceFilterHandler,
                   maxValue: 500000, //dynamic
-                  minValue: 0, //dynamic
-                },
-              },
-            ],
+                  minValue: 0 //dynamic
+                }
+              }
+            ]
           },
           {
             headerText: '',
@@ -140,23 +140,23 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
                 panelData: [
                   {
                     desc: 'Price: Low to High',
-                    key: 'price asc',
+                    key: 'price asc'
                   },
                   {
                     desc: 'Price: High to Low',
-                    key: 'price desc',
+                    key: 'price desc'
                   },
                   {
                     desc: 'Rating: Low to High',
-                    key: 'rating asc',
+                    key: 'rating asc'
                   },
                   {
                     desc: 'Rating: High to Low',
-                    key: 'rating desc',
-                  },
-                ],
-              },
-            ],
+                    key: 'rating desc'
+                  }
+                ]
+              }
+            ]
           },
           {
             headerText: 'Related searches',
@@ -165,10 +165,10 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
               {
                 panelTitle: this.searchedText || '',
                 panelType: 'link',
-                panelData: this.tags,
-              },
-            ],
-          },
+                panelData: this.tags
+              }
+            ]
+          }
         ]
       }
     } catch (e) {
@@ -195,7 +195,7 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
       size: 15,
       start: 0,
       price: `[${range.min}, ${range.max}]`,
-      rating: this.fieldsQuery.rating.q || '',
+      rating: this.fieldsQuery.rating.q || ''
     })
   }
 
@@ -218,7 +218,7 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
       qdotparser: 'structured',
       parser: null,
       rating: val,
-      price: this.fieldsQuery.price.q || '',
+      price: this.fieldsQuery.price.q || ''
     })
   }
 
@@ -237,7 +237,7 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
     this.sortByType.value = data
     this.updateFilterConditions({
       sort: data,
-      start: 0,
+      start: 0
     })
   }
 
@@ -258,7 +258,7 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
           : null,
       releatedSearch: this.releatedSearch,
       rating: this.fieldsQuery.rating.q,
-      price: this.fieldsQuery.price.q,
+      price: this.fieldsQuery.price.q
     })
   }
 
@@ -294,7 +294,7 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
         if (priceRange) {
           this.priceFilterData({
             min: priceRange[0],
-            max: priceRange[1],
+            max: priceRange[1]
           })
         }
       }

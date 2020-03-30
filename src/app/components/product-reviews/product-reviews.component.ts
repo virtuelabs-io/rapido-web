@@ -5,7 +5,7 @@ import {
   SimpleChanges,
   Output,
   NgZone,
-  EventEmitter,
+  EventEmitter
 } from '@angular/core'
 import { RatingsService } from '../../services/ratings/ratings.service'
 import { LoginStateService } from '../../shared-services/login-state/login-state.service'
@@ -17,7 +17,7 @@ import { Constants } from '../../../../src/app/utils/constants'
 @Component({
   selector: 'app-product-reviews',
   templateUrl: './product-reviews.component.html',
-  styleUrls: ['./product-reviews.component.scss'],
+  styleUrls: ['./product-reviews.component.scss']
 })
 export class ProductReviewsComponent implements OnInit {
   @Input() filteredReview = []
@@ -88,7 +88,7 @@ export class ProductReviewsComponent implements OnInit {
         .helpfulRatingIncrement(id)
         .subscribe((data) => {
           this._snackBar.open(Constants.REVIEW_HELPFUL_INCREMENT, undefined, {
-            duration: 4000,
+            duration: 4000
           })
           this.resHelpfulCount = data
           this.filteredReview.map((v, i) => {
@@ -115,7 +115,7 @@ export class ProductReviewsComponent implements OnInit {
           Constants.REVIEW_DEACTIVATED_SUCCESSFULLY,
           undefined,
           {
-            duration: 4000,
+            duration: 4000
           }
         )
         this.fetchCustomerReviews.emit()
@@ -138,7 +138,7 @@ export class ProductReviewsComponent implements OnInit {
     if (this.isLoggedIn) {
       await this._ratingsService.deleteCustomerRating(id).subscribe((_) => {
         this._snackBar.open(Constants.REVIEW_DELETED_SUCCESSFULLY, undefined, {
-          duration: 4000,
+          duration: 4000
         })
         this.fetchCustomerReviews.emit()
       })

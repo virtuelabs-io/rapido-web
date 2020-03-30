@@ -3,7 +3,7 @@ import {
   MatStepperModule,
   MatFormFieldModule,
   MatCardModule,
-  MatInputModule,
+  MatInputModule
 } from '@angular/material'
 import { ResendOtpComponent } from './resend-otp.component'
 import { FormsModule } from '@angular/forms'
@@ -25,9 +25,9 @@ describe('ResendOtpComponent', () => {
         MatCardModule,
         MatInputModule,
         BrowserAnimationsModule,
-        RouterTestingModule,
+        RouterTestingModule
       ],
-      declarations: [ResendOtpComponent],
+      declarations: [ResendOtpComponent]
     }).compileComponents()
   }))
 

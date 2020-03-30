@@ -22,9 +22,9 @@ describe('OrderDetailsComponent', () => {
       imports: [
         FormsModule,
         RouterTestingModule.withRoutes(routes),
-        HttpClientModule,
+        HttpClientModule
       ],
-      declarations: [OrderDetailsComponent, LogInComponent],
+      declarations: [OrderDetailsComponent, LogInComponent]
     }).compileComponents()
   }))
 

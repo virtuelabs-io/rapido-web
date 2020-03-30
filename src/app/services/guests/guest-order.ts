@@ -35,7 +35,7 @@ export class GuestOrder {
     return {
       order_id: this._order_id,
       delivery_cost_id: this._delivery_cost_id,
-      charge_id: this._charge_id,
+      charge_id: this._charge_id
     }
   }
 }

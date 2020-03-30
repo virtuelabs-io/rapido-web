@@ -11,7 +11,7 @@ import { CartStateService } from '../../shared-services/cart-state/cart-state.se
 @Component({
   selector: 'app-order-details',
   templateUrl: './order-details.component.html',
-  styleUrls: ['./order-details.component.scss'],
+  styleUrls: ['./order-details.component.scss']
 })
 export class OrderDetailsComponent implements OnInit {
   newOrder: boolean = false
@@ -160,7 +160,7 @@ export class OrderDetailsComponent implements OnInit {
               town_city: data.city,
               postCode: data.postcode,
               country: data.country,
-              county: data.county,
+              county: data.county
             }
             this.showCompanyDetails = true
           } else {

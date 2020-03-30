@@ -63,7 +63,7 @@ export class Rating {
       title: this._title,
       rating: this._rating,
       summary: this._summary,
-      helpful: this._helpful,
+      helpful: this._helpful
     }
   }
 }

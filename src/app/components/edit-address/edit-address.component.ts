@@ -8,7 +8,7 @@ import { LoginStateService } from '../../shared-services/login-state/login-state
 @Component({
   selector: 'app-edit-address',
   templateUrl: './edit-address.component.html',
-  styleUrls: ['./edit-address.component.scss'],
+  styleUrls: ['./edit-address.component.scss']
 })
 export class EditAddressComponent implements OnInit {
   id: number = 0
@@ -37,7 +37,7 @@ export class EditAddressComponent implements OnInit {
       postCode: new FormControl('', [Validators.required]),
       country: new FormControl('', [Validators.required]),
       address_type_id: new FormControl(1, [Validators.required]),
-      county: new FormControl('', [Validators.required]),
+      county: new FormControl('', [Validators.required])
     })
     this.id = parseInt(this.actRoute.snapshot.paramMap.get('id'))
     this._addressDetailsService.getAddressDetails(this.id).subscribe((data) => {

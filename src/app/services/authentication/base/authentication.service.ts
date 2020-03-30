@@ -4,7 +4,7 @@ import { ProfileService } from '../profile/profile.service'
 import { VirtueCognitoService } from '../virtue-cognito/virtue-cognito.service'
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class AuthenticationService {
   protected _cognitoUserPool: CognitoUserPool
@@ -36,7 +36,7 @@ export class AuthenticationService {
       }
       this._userProfile.initializeProfileUsingUserData({
         Username: this._username,
-        Pool: this._cognitoUserPool,
+        Pool: this._cognitoUserPool
       })
     }
   }
@@ -49,7 +49,7 @@ export class AuthenticationService {
     }
     this._userProfile.initializeProfileUsingUserData({
       Username: this._username,
-      Pool: this._cognitoUserPool,
+      Pool: this._cognitoUserPool
     })
   }
 }

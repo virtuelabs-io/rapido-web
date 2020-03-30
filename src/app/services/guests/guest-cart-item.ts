@@ -27,7 +27,7 @@ export class GuestCartItem {
     return {
       product_id: this._product_id,
       quantity: this._quantity,
-      in_cart: this._in_cart,
+      in_cart: this._in_cart
     }
   }
 }

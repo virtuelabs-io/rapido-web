@@ -4,7 +4,7 @@ import { Common } from '../../../../src/app/utils/common'
 @Component({
   selector: 'app-images',
   templateUrl: './images.component.html',
-  styleUrls: ['./images.component.scss'],
+  styleUrls: ['./images.component.scss']
 })
 export class ImagesComponent implements OnInit {
   @Input() imgSrc

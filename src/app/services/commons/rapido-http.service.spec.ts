@@ -1,7 +1,7 @@
 import { TestBed, inject, fakeAsync, tick } from '@angular/core/testing'
 import {
   HttpClientTestingModule,
-  HttpTestingController,
+  HttpTestingController
 } from '@angular/common/http/testing'
 
 import { HttpClient, HttpHeaders } from '@angular/common/http'
@@ -27,7 +27,7 @@ describe('RapidoHttpService', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [ProfileService],
+      providers: [ProfileService]
     })
   )
 
@@ -50,7 +50,7 @@ describe('RapidoHttpService', () => {
         const service = new UserService(httpClient, profileService)
         const responseObject = {
           body: user,
-          status: 200,
+          status: 200
         }
         let response = null
         // End Setup
@@ -87,7 +87,7 @@ describe('RapidoHttpService', () => {
         const service = new UserService(httpClient, profileService)
         const responseObject = {
           body: [user, user],
-          status: 200,
+          status: 200
         }
         let response = null
         // End Setup
@@ -124,7 +124,7 @@ describe('RapidoHttpService', () => {
         const service = new UserService(httpClient, profileService)
         const responseObject = {
           body: user,
-          status: 201,
+          status: 201
         }
         let response = null
         // End Setup
@@ -161,7 +161,7 @@ describe('RapidoHttpService', () => {
         const service = new UserService(httpClient, profileService)
         const responseObject = {
           body: [user, user],
-          status: 201,
+          status: 201
         }
         let response = null
         // End Setup
@@ -199,7 +199,7 @@ describe('RapidoHttpService', () => {
         const service = new UserService(httpClient, profileService)
         const responseObject = {
           body: user,
-          status: 202,
+          status: 202
         }
         let response = null
         // End Setup
@@ -235,7 +235,7 @@ describe('RapidoHttpService', () => {
         const service = new UserService(httpClient, profileService)
         const responseObject = {
           body: null,
-          status: 204,
+          status: 204
         }
         let response = null
         // End Setup
@@ -273,7 +273,7 @@ describe('RapidoHttpService', () => {
         const service = new UserService(httpClient, profileService)
         const responseObject = {
           body: user,
-          status: 200,
+          status: 200
         }
         let response = null
         const httpHeaders: HttpHeaders = service.initializeHeaders()
@@ -311,7 +311,7 @@ describe('RapidoHttpService', () => {
         const service = new UserService(httpClient, profileService)
         const responseObject = {
           body: [user, user],
-          status: 200,
+          status: 200
         }
         let response = null
         const httpHeaders: HttpHeaders = service.initializeHeaders()
@@ -349,7 +349,7 @@ describe('RapidoHttpService', () => {
         const service = new UserService(httpClient, profileService)
         const responseObject = {
           body: user,
-          status: 201,
+          status: 201
         }
         let response = null
         const httpHeaders: HttpHeaders = service.initializeHeaders()
@@ -387,7 +387,7 @@ describe('RapidoHttpService', () => {
         const service = new UserService(httpClient, profileService)
         const responseObject = {
           body: [user, user],
-          status: 201,
+          status: 201
         }
         let response = null
         const httpHeaders: HttpHeaders = service.initializeHeaders()
@@ -426,7 +426,7 @@ describe('RapidoHttpService', () => {
         const service = new UserService(httpClient, profileService)
         const responseObject = {
           body: user,
-          status: 202,
+          status: 202
         }
         let response = null
         const httpHeaders: HttpHeaders = service.initializeHeaders()
@@ -463,7 +463,7 @@ describe('RapidoHttpService', () => {
         const service = new UserService(httpClient, profileService)
         const responseObject = {
           body: null,
-          status: 204,
+          status: 204
         }
         let response = null
         const httpHeaders: HttpHeaders = service.initializeHeaders()

@@ -9,7 +9,7 @@ describe('FlipCaseComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [FlipCaseComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
     }).compileComponents()
   }))
 

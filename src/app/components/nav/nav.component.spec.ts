@@ -13,7 +13,7 @@ import {
   MatSidenavModule,
   MatToolbarModule,
   MatListModule,
-  MatTreeModule,
+  MatTreeModule
 } from '@angular/material'
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core'
 
@@ -34,10 +34,10 @@ describe('NavComponent', () => {
         BrowserAnimationsModule,
         FormsModule,
         RouterModule.forRoot([]),
-        MatTreeModule,
+        MatTreeModule
       ],
       declarations: [NavComponent, TopnavComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
     }).compileComponents()
   }))
 

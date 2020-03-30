@@ -19,7 +19,7 @@ import { GuestCartItem } from '../../services/guests/guest-cart-item'
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.scss'],
+  styleUrls: ['./product-details.component.scss']
 })
 export class ProductDetailsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator
@@ -73,24 +73,24 @@ export class ProductDetailsComponent implements OnInit {
     this.rateSummary = [
       {
         count: 0,
-        rating: 1,
+        rating: 1
       },
       {
         count: 0,
-        rating: 2,
+        rating: 2
       },
       {
         count: 0,
-        rating: 3,
+        rating: 3
       },
       {
         count: 0,
-        rating: 4,
+        rating: 4
       },
       {
         count: 0,
-        rating: 5,
-      },
+        rating: 5
+      }
     ]
     //this.paginator.pageIndex = 0
     this.Number = Number
@@ -110,7 +110,7 @@ export class ProductDetailsComponent implements OnInit {
           let query = {
             q: `(term field=_id ${this.itemId})`,
             size: 10,
-            qdotparser: 'structured',
+            qdotparser: 'structured'
           }
           this._productsService.get(query).subscribe((data) => {
             if (data) {
@@ -199,7 +199,7 @@ export class ProductDetailsComponent implements OnInit {
       }
       return {
         active: thumbnailSel,
-        uri: val.uri || val,
+        uri: val.uri || val
       }
     })
   }
@@ -213,12 +213,12 @@ export class ProductDetailsComponent implements OnInit {
     if (Number(quant) < 1) {
       this.quantity = 1
       this._snackBar.open(Constants.ORDER_QUANTITY_ERROR, undefined, {
-        duration: 4000,
+        duration: 4000
       })
     } else if (Number(quant) > 100) {
       this.quantity = 100
       this._snackBar.open(Constants.EXCEEDED_ORDER_QUANTITY_ERROR, undefined, {
-        duration: 4000,
+        duration: 4000
       })
     } else {
       this.quantity = quant
@@ -248,7 +248,7 @@ export class ProductDetailsComponent implements OnInit {
         this._loginStateService.loaderDisable()
         this._snackBar.open(Constants.ITEM_MOVED_TO_CART, undefined, {
           duration: 4000,
-          horizontalPosition: 'center',
+          horizontalPosition: 'center'
         })
       })
     } else {
@@ -260,7 +260,7 @@ export class ProductDetailsComponent implements OnInit {
         this._loginStateService.loaderDisable()
         this._snackBar.open(Constants.ITEM_MOVED_TO_CART, undefined, {
           duration: 4000,
-          horizontalPosition: 'center',
+          horizontalPosition: 'center'
         })
       })
     }
@@ -272,7 +272,7 @@ export class ProductDetailsComponent implements OnInit {
         `${Constants.SESSION_LOST} please login to add items to cart`,
         undefined,
         {
-          duration: 4000,
+          duration: 4000
         }
       )
       this.RouteService.changeRoute('products/details/' + this.itemId)

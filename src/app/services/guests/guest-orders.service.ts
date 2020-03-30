@@ -8,7 +8,7 @@ import { ProductsService } from '../products/products.service'
 import { GuestOrder } from './guest-order'
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class GuestOrdersService extends RapidoHttpService<GuestOrder> {
   public _productService: ProductsService
@@ -29,7 +29,7 @@ export class GuestOrdersService extends RapidoHttpService<GuestOrder> {
         [
           Constants.GUESTS_APIS.api,
           localStorage.getItem(Constants.RAPIDO_SESSION_ID),
-          'orders',
+          'orders'
         ].join('/'),
         guestOrder
       ).subscribe((data) => {
@@ -65,7 +65,7 @@ export class GuestOrdersService extends RapidoHttpService<GuestOrder> {
       return: Constants.SEARCH_QUERY.orderReturnFields,
       start: null,
       sort: null,
-      qdotparser: Constants.SEARCH_QUERY.structuredParser,
+      qdotparser: Constants.SEARCH_QUERY.structuredParser
     }
     return this._productService.get(_query)
   }
@@ -89,7 +89,7 @@ export class GuestOrdersService extends RapidoHttpService<GuestOrder> {
     })
     return {
       orderItemsObject,
-      products,
+      products
     }
   }
 }

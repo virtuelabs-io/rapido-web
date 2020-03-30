@@ -103,7 +103,7 @@ export class AddressDetails {
       postcode: this._postcode,
       addr_2: this._addr_2,
       customer_id: this._customer_id,
-      id: this._id,
+      id: this._id
     }
   }
 }

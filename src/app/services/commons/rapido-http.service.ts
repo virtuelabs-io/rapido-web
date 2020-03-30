@@ -7,7 +7,7 @@ import { ProfileService } from '../authentication/profile/profile.service'
 import { LoginStateService } from 'src/app/shared-services/login-state/login-state.service'
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class RapidoHttpService<T> {
   protected loginStateService: LoginStateService
@@ -24,7 +24,7 @@ export class RapidoHttpService<T> {
 
     return this._http
       .get<T[]>(_url, {
-        headers: _headers,
+        headers: _headers
       })
       .pipe(
         retry(Constants.RETRY_TIMES),
@@ -41,7 +41,7 @@ export class RapidoHttpService<T> {
 
     return this._http
       .get<T>(_url, {
-        headers: _headers,
+        headers: _headers
       })
       .pipe(
         retry(Constants.RETRY_TIMES),
@@ -58,7 +58,7 @@ export class RapidoHttpService<T> {
 
     return this._http
       .post<any>(_url, _item, {
-        headers: _headers,
+        headers: _headers
       })
       .pipe(
         tap((_) => this.loginStateService.loaderDisable()),
@@ -78,7 +78,7 @@ export class RapidoHttpService<T> {
 
     return this._http
       .post<any>(_url, _item, {
-        headers: _headers,
+        headers: _headers
       })
       .pipe(
         tap((_) => this.loginStateService.loaderDisable()),
@@ -94,7 +94,7 @@ export class RapidoHttpService<T> {
 
     return this._http
       .delete<{}>(_url, {
-        headers: _headers,
+        headers: _headers
       })
       .pipe(
         tap((_) => this.loginStateService.loaderDisable()),
@@ -110,7 +110,7 @@ export class RapidoHttpService<T> {
 
     return this._http
       .put<any>(_url, _item, {
-        headers: _headers,
+        headers: _headers
       })
       .pipe(
         tap((_) => this.loginStateService.loaderDisable()),

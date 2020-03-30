@@ -7,7 +7,7 @@ describe('CompanyDetailsService', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [ProfileService],
+      providers: [ProfileService]
     })
   )
 

@@ -8,7 +8,7 @@ import { AddressDetailsMockData } from './address-details.mock.data'
 import { AddressDetailsService } from './address-details.service'
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class AddressDetailsMockService extends AddressDetailsService {
   constructor(

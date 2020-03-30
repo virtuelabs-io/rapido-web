@@ -3,7 +3,7 @@ import { MatSidenav } from '@angular/material'
 import { BehaviorSubject } from 'rxjs'
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class SidenavService {
   private sidenav: MatSidenav

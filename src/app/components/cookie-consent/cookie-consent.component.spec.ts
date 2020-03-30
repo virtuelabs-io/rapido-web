@@ -8,7 +8,7 @@ describe('CookieConsentComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CookieConsentComponent],
+      declarations: [CookieConsentComponent]
     }).compileComponents()
   }))
 

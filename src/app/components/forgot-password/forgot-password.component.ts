@@ -5,12 +5,12 @@ import { ForgotPasswordService } from '../../services/authentication/forgot-pass
 import { Constants } from '../../utils/constants'
 
 @NgModule({
-  imports: [FormBuilder, Validators, FormGroup],
+  imports: [FormBuilder, Validators, FormGroup]
 })
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
-  styleUrls: ['./forgot-password.component.scss'],
+  styleUrls: ['./forgot-password.component.scss']
 })
 export class ForgotPasswordComponent implements OnInit {
   private _forgotPasswordService: ForgotPasswordService
@@ -35,8 +35,8 @@ export class ForgotPasswordComponent implements OnInit {
         Validators.required,
         Validators.pattern('^[0-9]+$'),
         Validators.min(1000000000),
-        Validators.max(9999999999),
-      ]),
+        Validators.max(9999999999)
+      ])
     })
   }
 
@@ -45,7 +45,7 @@ export class ForgotPasswordComponent implements OnInit {
     this.success = false
     this._forgotPasswordService.username = [
       this.countryCode,
-      this.registerFormGroup.value.mobileNumber,
+      this.registerFormGroup.value.mobileNumber
     ].join('')
     const promise = this._forgotPasswordService.forgotPassword()
     promise

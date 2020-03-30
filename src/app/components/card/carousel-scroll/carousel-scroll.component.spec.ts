@@ -11,7 +11,7 @@ describe('CarouselScrollComponent', () => {
     TestBed.configureTestingModule({
       imports: [],
       declarations: [CarouselScrollComponent, HomeComponent],
-      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
+      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents()
   }))
 

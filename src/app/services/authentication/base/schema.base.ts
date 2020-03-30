@@ -20,7 +20,7 @@ export class Schema {
   ): CognitoUserAttribute {
     return new CognitoUserAttribute({
       Name: name,
-      Value: value,
+      Value: value
     })
   }
 }

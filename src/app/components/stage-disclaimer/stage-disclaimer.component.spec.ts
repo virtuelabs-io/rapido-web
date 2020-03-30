@@ -8,7 +8,7 @@ describe('StageDisclaimerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [StageDisclaimerComponent],
+      declarations: [StageDisclaimerComponent]
     }).compileComponents()
   }))
 

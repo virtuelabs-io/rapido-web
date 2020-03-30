@@ -4,7 +4,7 @@ import { Constants } from '../../utils/constants'
 @Component({
   selector: 'app-press-release',
   templateUrl: './press-release.component.html',
-  styleUrls: ['./press-release.component.scss'],
+  styleUrls: ['./press-release.component.scss']
 })
 export class PressReleaseComponent implements OnInit {
   imageUrl: string =

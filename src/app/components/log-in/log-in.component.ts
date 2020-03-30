@@ -15,7 +15,7 @@ import { CartItem } from '../../services/cart/cart-item'
 @Component({
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',
-  styleUrls: ['./log-in.component.scss'],
+  styleUrls: ['./log-in.component.scss']
 })
 export class LogInComponent implements OnInit {
   alertBox: boolean = false
@@ -140,7 +140,7 @@ export class LogInComponent implements OnInit {
     if (this.mobileNumber && this.password && this.mobileNumber.length === 10) {
       this._signInService.signInData = {
         Username: [this.countryCode, this.mobileNumber].join(''),
-        Password: this.password,
+        Password: this.password
       }
       await this._signInService
         .login()

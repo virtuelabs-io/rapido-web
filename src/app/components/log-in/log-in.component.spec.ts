@@ -3,7 +3,7 @@ import {
   ComponentFixture,
   TestBed,
   fakeAsync,
-  tick,
+  tick
 } from '@angular/core/testing'
 import { LogInComponent } from './log-in.component'
 import { RouterTestingModule } from '@angular/router/testing'
@@ -18,7 +18,7 @@ import {
   MatIconModule,
   MatCheckboxModule,
   MatCardModule,
-  MatInputModule,
+  MatInputModule
 } from '@angular/material'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { TermsConditionsComponent } from '../terms-conditions/terms-conditions.component'
@@ -42,7 +42,7 @@ describe('LogInComponent', () => {
     { path: 'forgotpassword', component: ForgotPasswordComponent },
     { path: 'cart/guest-checkout', component: GuestCheckoutComponent },
     { path: '', component: HomeComponent },
-    { path: 'orders', component: OrdersComponent },
+    { path: 'orders', component: OrdersComponent }
   ]
 
   beforeEach(async(() => {
@@ -58,7 +58,7 @@ describe('LogInComponent', () => {
         MatInputModule,
         FormsModule,
         RouterTestingModule.withRoutes(routes),
-        HttpClientTestingModule,
+        HttpClientTestingModule
       ],
       declarations: [
         OrdersComponent,
@@ -68,9 +68,9 @@ describe('LogInComponent', () => {
         TermsConditionsComponent,
         PrivacyPolicyComponent,
         ForgotPasswordComponent,
-        GuestCheckoutComponent,
+        GuestCheckoutComponent
       ],
-      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
+      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents()
   }))
 

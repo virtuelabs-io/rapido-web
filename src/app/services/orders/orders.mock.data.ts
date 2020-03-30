@@ -32,9 +32,9 @@ let orders = {
         quantity: 1,
         total_price: 222.99,
         unit_price: 222.99,
-        vat: 44.6,
-      },
-    },
+        vat: 44.6
+      }
+    }
   },
   products: {
     1: {
@@ -43,11 +43,11 @@ let orders = {
         '/images/products/1/image1.jpg',
         '/images/products/1/image1.jpg',
         '/images/products/1/image1.jpg',
-        '/images/products/1/image1.jpg',
+        '/images/products/1/image1.jpg'
       ],
-      name: 'Samsung Galaxy Watch Active 40mm Silver',
-    },
-  },
+      name: 'Samsung Galaxy Watch Active 40mm Silver'
+    }
+  }
 }
 
 let orderDetail = {
@@ -74,9 +74,9 @@ let orderDetail = {
         quantity: 1,
         total_price: 1499,
         unit_price: 1499,
-        vat: 299.8,
-      },
-    },
+        vat: 299.8
+      }
+    }
   },
   products: {
     35: {
@@ -85,11 +85,11 @@ let orderDetail = {
         '/images/products/1/image1.jpg',
         '/images/products/1/image1.jpg',
         '/images/products/1/image1.jpg',
-        '/images/products/1/image1.jpg',
+        '/images/products/1/image1.jpg'
       ],
-      name: 'Samsung Galaxy Watch Active 40mm Silver',
-    },
-  },
+      name: 'Samsung Galaxy Watch Active 40mm Silver'
+    }
+  }
 }
 
 export class OrdersMockData {
@@ -109,7 +109,7 @@ export class OrdersMockData {
     message: '',
     protocol41: true,
     serverStatus: 2,
-    warningCount: 0,
+    warningCount: 0
   }
 
   public static postCartItemList = {
@@ -120,6 +120,6 @@ export class OrdersMockData {
     message: '',
     protocol41: true,
     serverStatus: 2,
-    warningCount: 0,
+    warningCount: 0
   }
 }

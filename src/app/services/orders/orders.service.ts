@@ -8,7 +8,7 @@ import { Query } from '../products/query.interface'
 import { ProductsService } from '../products/products.service'
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class OrdersService extends RapidoHttpService<Order> {
   public _productService: ProductsService
@@ -121,7 +121,7 @@ export class OrdersService extends RapidoHttpService<Order> {
         Constants.ORDERS_APIS.api,
         'orders',
         'checkProductPurchase',
-        String(product_id),
+        String(product_id)
       ].join('/'),
       this.addAuthHeader(this.initializeHeaders())
     )
@@ -166,7 +166,7 @@ export class OrdersService extends RapidoHttpService<Order> {
       return: Constants.SEARCH_QUERY.orderReturnFields,
       start: null,
       sort: null,
-      qdotparser: Constants.SEARCH_QUERY.structuredParser,
+      qdotparser: Constants.SEARCH_QUERY.structuredParser
     }
     return this._productService.get(_query)
   }
@@ -190,7 +190,7 @@ export class OrdersService extends RapidoHttpService<Order> {
     })
     return {
       orderItemsObject,
-      products,
+      products
     }
   }
 }

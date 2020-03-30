@@ -8,7 +8,7 @@ import { LoginStateService } from '../../shared-services/login-state/login-state
 @Component({
   selector: 'app-address',
   templateUrl: './address.component.html',
-  styleUrls: ['./address.component.scss'],
+  styleUrls: ['./address.component.scss']
 })
 export class AddressComponent implements OnInit {
   address_details_id: number

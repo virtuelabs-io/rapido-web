@@ -20,10 +20,10 @@ describe('CustomerReviewsComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule.withRoutes(routes),
-        HttpClientTestingModule,
+        HttpClientTestingModule
       ],
       declarations: [CustomerReviewsComponent, LogInComponent],
-      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
+      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents()
   }))
 

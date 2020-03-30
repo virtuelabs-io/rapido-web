@@ -4,7 +4,7 @@ import { CartService } from '../../../app/services/cart/cart.service'
 import { GuestCartService } from '../../services/guests/guest-cart.service'
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class CartStateService {
   private cartCount = new BehaviorSubject<Number>(0)

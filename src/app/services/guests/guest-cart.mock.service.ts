@@ -12,7 +12,7 @@ import { GuestCartMockData } from './guest-cart.mock.data'
 import { GuestCartService } from './guest-cart.service'
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class GuestCartMockService extends GuestCartService {
   public _productService: ProductsService
@@ -56,7 +56,7 @@ export class GuestCartMockService extends GuestCartService {
         Constants.GUESTS_APIS.api,
         localStorage.getItem(Constants.RAPIDO_SESSION_ID),
         'cart',
-        'items',
+        'items'
       ].join('/')
     )
   }

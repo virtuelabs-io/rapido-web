@@ -7,7 +7,7 @@ import { Response } from '../../../utils/response'
 import { Constants } from 'src/app/utils/constants'
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class SignUpService extends AuthenticationService {
   private _signUpData: SignUpInterface

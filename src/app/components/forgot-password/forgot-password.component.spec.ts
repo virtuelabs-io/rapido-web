@@ -9,7 +9,7 @@ import {
   MatFormFieldModule,
   MatCardModule,
   MatInputModule,
-  MatStepperModule,
+  MatStepperModule
 } from '@angular/material'
 
 describe('ForgotPasswordComponent', () => {
@@ -29,9 +29,9 @@ describe('ForgotPasswordComponent', () => {
         RouterTestingModule,
         HttpClientModule,
         MatInputModule,
-        BrowserAnimationsModule,
+        BrowserAnimationsModule
       ],
-      providers: [{ provide: FormBuilder, useValue: formBuilder }],
+      providers: [{ provide: FormBuilder, useValue: formBuilder }]
     }).compileComponents()
   }))
 
@@ -43,8 +43,8 @@ describe('ForgotPasswordComponent', () => {
         Validators.required,
         Validators.pattern('^[0-9]+$'),
         Validators.min(1000000000),
-        Validators.max(9999999999),
-      ]),
+        Validators.max(9999999999)
+      ])
     })
     fixture.detectChanges()
   })

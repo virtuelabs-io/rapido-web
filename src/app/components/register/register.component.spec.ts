@@ -6,7 +6,7 @@ import {
   MatIconModule,
   MatCheckboxModule,
   MatCardModule,
-  MatInputModule,
+  MatInputModule
 } from '@angular/material'
 import { RegisterComponent } from './register.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
@@ -35,9 +35,9 @@ describe('RegisterComponent', () => {
         MatIconModule,
         MatCheckboxModule,
         MatCardModule,
-        MatInputModule,
+        MatInputModule
       ],
-      declarations: [RegisterComponent],
+      declarations: [RegisterComponent]
     }).compileComponents()
   }))
 

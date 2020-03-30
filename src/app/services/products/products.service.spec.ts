@@ -1,7 +1,7 @@
 import { TestBed, inject, fakeAsync, tick } from '@angular/core/testing'
 import {
   HttpClientTestingModule,
-  HttpTestingController,
+  HttpTestingController
 } from '@angular/common/http/testing'
 import { Constants } from '../../utils/constants'
 import { ProductsService } from './products.service'
@@ -11,7 +11,7 @@ describe('ProductsService', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [ProductsService],
+      providers: [ProductsService]
     })
   )
 
@@ -30,11 +30,11 @@ describe('ProductsService', () => {
           size: 1,
           cursor: null, // always use either cursor or start, but bot both
           start: null, // always use either cursor or start, but bot both
-          sort: null, // optional
+          sort: null // optional
         }
         const responseObject = {
           success: true,
-          status: 200,
+          status: 200
         }
         let response = null
         // End Setup
@@ -47,7 +47,7 @@ describe('ProductsService', () => {
         )
 
         const requestWrapper = backend.expectOne({
-          url: Constants.environment.productSearchEndPoint + 'q=watch&size=1',
+          url: Constants.environment.productSearchEndPoint + 'q=watch&size=1'
         })
         requestWrapper.flush(responseObject)
 
@@ -69,11 +69,11 @@ describe('ProductsService', () => {
           size: 1,
           cursor: 'initial', // always use either cursor or start, but bot both
           start: 1, // always use either cursor or start, but bot both
-          sort: '_score desc', //optional
+          sort: '_score desc' //optional
         }
         const responseObject = {
           success: true,
-          status: 200,
+          status: 200
         }
         let response = null
         // End Setup
@@ -88,7 +88,7 @@ describe('ProductsService', () => {
         const requestWrapper = backend.expectOne({
           url:
             Constants.environment.productSearchEndPoint +
-            'q=watch&size=1&cursor=initial&start=1&sort=_score desc',
+            'q=watch&size=1&cursor=initial&start=1&sort=_score desc'
         })
         requestWrapper.flush(responseObject)
 

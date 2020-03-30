@@ -103,7 +103,7 @@ export class GuestAddressDetails {
       postcode: this._postcode,
       email: this._email,
       phone_no: this._phone_no,
-      addr_2: this._addr_2,
+      addr_2: this._addr_2
     }
   }
 }

@@ -3,7 +3,7 @@ import { CognitoUserPool } from 'amazon-cognito-identity-js'
 import { Constants } from '../../../utils/constants'
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class VirtueCognitoService {
   private _cognitoUserPool: CognitoUserPool

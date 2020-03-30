@@ -11,7 +11,7 @@ import { SidenavService } from './nav.service'
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   providers: [TopnavComponent],
-  styleUrls: ['./nav.component.scss'],
+  styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
   @ViewChild('sidenav') public sidenav: MatSidenav

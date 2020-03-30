@@ -66,7 +66,7 @@ describe('Registration', () => {
         'custom:sendMePromotions',
         'custom:commViaEmail',
         'custom:commViaSMS',
-        'custom:personalisation',
+        'custom:personalisation'
       ]).toContain(value.Name)
     })
   })

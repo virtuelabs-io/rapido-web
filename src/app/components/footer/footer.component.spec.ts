@@ -25,7 +25,7 @@ describe('FooterComponent', () => {
     { path: 'credits', component: CreditsComponent },
     { path: 'terms', component: TermsConditionsComponent },
     { path: 'privacy-policy', component: PrivacyPolicyComponent },
-    { path: 'profile', component: ProfileComponent },
+    { path: 'profile', component: ProfileComponent }
   ]
 
   beforeEach(async(() => {
@@ -39,8 +39,8 @@ describe('FooterComponent', () => {
         CreditsComponent,
         TermsConditionsComponent,
         PrivacyPolicyComponent,
-        ProfileComponent,
-      ],
+        ProfileComponent
+      ]
     }).compileComponents()
   }))
 

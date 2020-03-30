@@ -3,13 +3,13 @@ import {
   ComponentFixture,
   TestBed,
   fakeAsync,
-  tick,
+  tick
 } from '@angular/core/testing'
 import {
   MatStepperModule,
   MatSnackBarModule,
   MatFormFieldModule,
-  MatInputModule,
+  MatInputModule
 } from '@angular/material'
 import { CartComponent } from './cart.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
@@ -37,7 +37,7 @@ describe('CartComponent', () => {
 
   const routes: Routes = [
     { path: 'login', component: LogInComponent },
-    { path: 'cart/checkout', component: CheckoutComponent },
+    { path: 'cart/checkout', component: CheckoutComponent }
   ]
 
   beforeEach(async(() => {
@@ -51,9 +51,9 @@ describe('CartComponent', () => {
         MatInputModule,
         MatFormFieldModule,
         FormsModule,
-        ReactiveFormsModule,
+        ReactiveFormsModule
       ],
-      declarations: [CartComponent, LogInComponent, CheckoutComponent],
+      declarations: [CartComponent, LogInComponent, CheckoutComponent]
     }).compileComponents()
   }))
 
@@ -135,8 +135,8 @@ describe('CartComponent', () => {
       {
         in_cart: true,
         product_id: 31,
-        quantity: 1,
-      },
+        quantity: 1
+      }
     ]
     await component.postCartItems()
     expect(component.postCartItemsRes).toEqual(CartMockData.postCartItemList)
@@ -148,8 +148,8 @@ describe('CartComponent', () => {
       {
         in_cart: true,
         product_id: 31,
-        quantity: 1,
-      },
+        quantity: 1
+      }
     ]
     await component.postCartItems()
     expect(component.postCartItemsRes).toEqual(CartMockData.postCartItemList)

@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from '@angular/core'
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss'],
+  styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
   itemDetails: any = {
@@ -11,7 +11,7 @@ export class CardComponent implements OnInit {
     offer: '',
     name: '',
     images: '',
-    rating: '',
+    rating: ''
   }
   mrpPrice: any
   discountedPrice: any
@@ -23,7 +23,7 @@ export class CardComponent implements OnInit {
   Math: any
   @Input() itemList = {
     id: '',
-    fields: {},
+    fields: {}
   }
   constructor() {}
 

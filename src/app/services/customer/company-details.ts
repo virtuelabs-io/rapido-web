@@ -83,7 +83,7 @@ export class CompanyDetails {
       country: this._country,
       postcode: this._postcode,
       addr_2: this._addr_2,
-      customer_id: this._customer_id,
+      customer_id: this._customer_id
     }
   }
 }

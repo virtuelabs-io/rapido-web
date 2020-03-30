@@ -28,7 +28,7 @@ export class GuestCartItemDetails {
   toJSON() {
     return {
       guestCartItem: this._guestCartItem,
-      itemDetails: this._itemDetails,
+      itemDetails: this._itemDetails
     }
   }
 }
