@@ -1,12 +1,12 @@
-import { Component, OnInit, NgZone } from "@angular/core"
-import { Router } from "@angular/router"
-import { Common } from "../../../../src/app/utils/common"
-import { Constants } from "../../utils/constants"
+import { Component, OnInit, NgZone } from '@angular/core'
+import { Router } from '@angular/router'
+import { Common } from '../../../../src/app/utils/common'
+import { Constants } from '../../utils/constants'
 
 @Component({
-  selector: "app-product-menu",
-  templateUrl: "./product-menu.component.html",
-  styleUrls: ["./product-menu.component.scss"],
+  selector: 'app-product-menu',
+  templateUrl: './product-menu.component.html',
+  styleUrls: ['./product-menu.component.scss'],
 })
 export class ProductMenuComponent implements OnInit {
   productCategories = []
@@ -17,196 +17,196 @@ export class ProductMenuComponent implements OnInit {
   ngOnInit() {
     this.productObject = [
       {
-        header: "Access Panels",
+        header: 'Access Panels',
         data: [
           {
-            title: "Accoustic",
+            title: 'Accoustic',
           },
           {
-            title: "Airtight",
+            title: 'Airtight',
           },
         ],
       },
       {
-        header: "Membranes",
+        header: 'Membranes',
         data: [
           {
-            title: "Breather",
+            title: 'Breather',
           },
           {
-            title: "DPC",
+            title: 'DPC',
           },
           {
-            title: "DPM",
+            title: 'DPM',
           },
         ],
       },
       {
-        header: "Access Panels",
+        header: 'Access Panels',
         data: [
           {
-            title: "Accoustic",
+            title: 'Accoustic',
           },
         ],
       },
     ]
-    this.disclaimerReq = Constants.environment.name !== "PROD" ? true : false
+    this.disclaimerReq = Constants.environment.name !== 'PROD' ? true : false
     this.productCategories = [
       {
-        title: "Building Material",
+        title: 'Building Material',
         details: [
           {
-            header: "Access Panels",
+            header: 'Access Panels',
             data: [
               {
-                title: "Watches",
+                title: 'Watches',
               },
               {
-                title: "Airtight",
+                title: 'Airtight',
               },
               {
-                title: "Budget",
+                title: 'Budget',
               },
               {
-                title: "Ceramic Tile",
+                title: 'Ceramic Tile',
               },
               {
-                title: "Circular",
+                title: 'Circular',
               },
               {
-                title: "Fire Rated",
+                title: 'Fire Rated',
               },
               {
-                title: "Plastic",
+                title: 'Plastic',
               },
               {
-                title: "Plasterboard Door",
+                title: 'Plasterboard Door',
               },
               {
-                title: "Accoustic",
+                title: 'Accoustic',
               },
               {
-                title: "Airtight",
+                title: 'Airtight',
               },
               {
-                title: "Budget",
+                title: 'Budget',
               },
               {
-                title: "Ceramic Tile",
+                title: 'Ceramic Tile',
               },
             ],
           },
           {
-            header: "Membranes",
+            header: 'Membranes',
             data: [
               {
-                title: "Breather",
+                title: 'Breather',
               },
               {
-                title: "DPC",
+                title: 'DPC',
               },
               {
-                title: "DPM",
+                title: 'DPM',
               },
               {
-                title: "Gas",
+                title: 'Gas',
               },
               {
-                title: "Geotextile",
+                title: 'Geotextile',
               },
               {
-                title: "Polythelene",
+                title: 'Polythelene',
               },
               {
-                title: "Tanking",
+                title: 'Tanking',
               },
               {
-                title: "Gas",
+                title: 'Gas',
               },
             ],
           },
           {
-            header: "Access Panels",
+            header: 'Access Panels',
             data: [
               {
-                title: "Accoustic",
+                title: 'Accoustic',
               },
               {
-                title: "Airtight",
+                title: 'Airtight',
               },
               {
-                title: "Budget",
+                title: 'Budget',
               },
               {
-                title: "Ceramic Tile",
+                title: 'Ceramic Tile',
               },
               {
-                title: "Circular",
+                title: 'Circular',
               },
               {
-                title: "Fire Rated",
+                title: 'Fire Rated',
               },
               {
-                title: "Plastic",
+                title: 'Plastic',
               },
               {
-                title: "Plasterboard Door",
+                title: 'Plasterboard Door',
               },
             ],
           },
           {
-            header: "Membranes",
+            header: 'Membranes',
             data: [
               {
-                title: "Breather",
+                title: 'Breather',
               },
               {
-                title: "DPC",
+                title: 'DPC',
               },
               {
-                title: "DPM",
+                title: 'DPM',
               },
               {
-                title: "Gas",
+                title: 'Gas',
               },
               {
-                title: "Geotextile",
+                title: 'Geotextile',
               },
               {
-                title: "Polythelene",
+                title: 'Polythelene',
               },
               {
-                title: "Tanking",
+                title: 'Tanking',
               },
               {
-                title: "Gas",
+                title: 'Gas',
               },
             ],
           },
         ],
       },
       {
-        title: "Insulation",
+        title: 'Insulation',
         details: this.productObject,
       },
       {
-        title: "Ceilings",
+        title: 'Ceilings',
         details: this.productObject,
       },
       {
-        title: "Roofing",
+        title: 'Roofing',
         details: this.productObject,
       },
       {
-        title: "Commercials",
+        title: 'Commercials',
         details: this.productObject,
       },
       {
-        title: "Paints",
+        title: 'Paints',
         details: this.productObject,
       },
       {
-        title: "Interiors",
+        title: 'Interiors',
         details: this.productObject,
       },
     ]
@@ -217,7 +217,7 @@ export class ProductMenuComponent implements OnInit {
     if (qObject) {
       this.ngZone
         .run(() =>
-          this.router.navigate(["/products"], { queryParams: qObject })
+          this.router.navigate(['/products'], { queryParams: qObject })
         )
         .then()
     }

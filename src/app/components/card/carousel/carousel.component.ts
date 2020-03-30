@@ -4,27 +4,27 @@ import {
   OnInit,
   SimpleChanges,
   Directive,
-} from "@angular/core"
-import { CartItem } from "../../../services/cart/cart-item"
-import { CartService } from "../../../services/cart/cart.service"
-import { CartStateService } from "../../../shared-services/cart-state/cart-state.service"
-import { LoginStateService } from "../../../shared-services/login-state/login-state.service"
-import { Router } from "@angular/router"
-import { RouteService } from "../../../shared-services/route/route.service"
-import { MatSnackBar } from "@angular/material/snack-bar"
-import { Constants } from "../../../../../src/app/utils/constants"
-import { GuestCartService } from "../../../services/guests/guest-cart.service"
-import { GuestCartItem } from "../../../services/guests/guest-cart-item"
+} from '@angular/core'
+import { CartItem } from '../../../services/cart/cart-item'
+import { CartService } from '../../../services/cart/cart.service'
+import { CartStateService } from '../../../shared-services/cart-state/cart-state.service'
+import { LoginStateService } from '../../../shared-services/login-state/login-state.service'
+import { Router } from '@angular/router'
+import { RouteService } from '../../../shared-services/route/route.service'
+import { MatSnackBar } from '@angular/material/snack-bar'
+import { Constants } from '../../../../../src/app/utils/constants'
+import { GuestCartService } from '../../../services/guests/guest-cart.service'
+import { GuestCartItem } from '../../../services/guests/guest-cart-item'
 
 @Component({
-  selector: "app-carousel",
-  templateUrl: "./carousel.component.html",
-  styleUrls: ["./carousel.component.scss"],
+  selector: 'app-carousel',
+  templateUrl: './carousel.component.html',
+  styleUrls: ['./carousel.component.scss'],
 })
 export class CarouselComponent implements OnInit {
   @Input() carouselCard = []
   @Input() carouselConfig = {}
-  @Input() carouselTitle = ""
+  @Input() carouselTitle = ''
   carouselData: any
   config: any
   isLoggedIn: Boolean
@@ -117,14 +117,14 @@ export class CarouselComponent implements OnInit {
         this._loginStateService.loaderDisable()
         this._snackBar.open(Constants.ITEM_MOVED_TO_CART, undefined, {
           duration: 4000,
-          horizontalPosition: "center",
+          horizontalPosition: 'center',
         })
       })
     }
   }
 
   async handleError(err) {
-    this.RouteService.changeRoute("")
-    this.router.navigateByUrl("/login")
+    this.RouteService.changeRoute('')
+    this.router.navigateByUrl('/login')
   }
 }

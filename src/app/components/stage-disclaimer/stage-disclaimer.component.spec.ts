@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing"
+import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { StageDisclaimerComponent } from "./stage-disclaimer.component"
+import { StageDisclaimerComponent } from './stage-disclaimer.component'
 
-describe("StageDisclaimerComponent", () => {
+describe('StageDisclaimerComponent', () => {
   let component: StageDisclaimerComponent
   let fixture: ComponentFixture<StageDisclaimerComponent>
 
@@ -18,7 +18,7 @@ describe("StageDisclaimerComponent", () => {
     fixture.detectChanges()
   })
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy()
   })
 })

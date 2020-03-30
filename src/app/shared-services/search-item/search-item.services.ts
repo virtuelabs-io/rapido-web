@@ -1,30 +1,30 @@
-import { Injectable } from "@angular/core"
-import { BehaviorSubject } from "rxjs"
-import { Query } from "../../services/products/query.interface"
+import { Injectable } from '@angular/core'
+import { BehaviorSubject } from 'rxjs'
+import { Query } from '../../services/products/query.interface'
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class SearchItemService {
   _query: Query = {
-    q: "",
-    searchedText: "",
-    releatedSearch: "",
-    fieldsQuery: "",
+    q: '',
+    searchedText: '',
+    releatedSearch: '',
+    fieldsQuery: '',
     size: 15,
     cursor: null,
     return: null,
     start: null,
     sort: null,
-    parser: "structured",
+    parser: 'structured',
     rating: null,
     price: null,
   }
 
   _responseData = {
     status: {
-      rid: "",
-      "time-ms": 0,
+      rid: '',
+      'time-ms': 0,
     },
     hits: {
       found: 0,
@@ -36,7 +36,7 @@ export class SearchItemService {
             points: [],
             details: [],
             images: [],
-            rating: "0",
+            rating: '0',
           },
         },
       ],

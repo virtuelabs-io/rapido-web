@@ -1,25 +1,25 @@
-import { TestBed } from "@angular/core/testing"
+import { TestBed } from '@angular/core/testing'
 
-import { AuthenticationService } from "./authentication.service"
-import { ProfileService } from "../profile/profile.service"
-import { VirtueCognitoService } from "../virtue-cognito/virtue-cognito.service"
-import { CognitoUser } from "amazon-cognito-identity-js"
+import { AuthenticationService } from './authentication.service'
+import { ProfileService } from '../profile/profile.service'
+import { VirtueCognitoService } from '../virtue-cognito/virtue-cognito.service'
+import { CognitoUser } from 'amazon-cognito-identity-js'
 
-describe("AuthenticationService", () => {
+describe('AuthenticationService', () => {
   beforeEach(() => TestBed.configureTestingModule({}))
 
-  it("should be created", () => {
+  it('should be created', () => {
     const service: AuthenticationService = TestBed.get(AuthenticationService)
     expect(service).toBeTruthy()
   })
 
-  it("Setter and getter for Username", () => {
+  it('Setter and getter for Username', () => {
     const service: AuthenticationService = TestBed.get(AuthenticationService)
-    service.username = "+440000000000"
-    expect(service.username).toEqual("+440000000000")
+    service.username = '+440000000000'
+    expect(service.username).toEqual('+440000000000')
   })
 
-  it("prepareProfile test: Positive", () => {
+  it('prepareProfile test: Positive', () => {
     class TestAuthenticationService extends AuthenticationService {
       constructor(
         profileService: ProfileService,
@@ -37,13 +37,13 @@ describe("AuthenticationService", () => {
       new ProfileService(),
       new VirtueCognitoService()
     )
-    service.username = "+440000000000"
+    service.username = '+440000000000'
     let cognitoUser = service.testPrepareProfile()
     expect(cognitoUser).toBeDefined()
     expect(cognitoUser).toEqual(jasmine.any(CognitoUser))
   })
 
-  it("prepareProfile test: Negative", () => {
+  it('prepareProfile test: Negative', () => {
     class TestAuthenticationService extends AuthenticationService {
       constructor(
         profileService: ProfileService,
@@ -64,11 +64,11 @@ describe("AuthenticationService", () => {
     expect(function () {
       service.testPrepareProfile()
     }).toThrowError(
-      "Username is not set for the authentication service. Please try to use <service>.username = <username>"
+      'Username is not set for the authentication service. Please try to use <service>.username = <username>'
     )
   })
 
-  it("initializeNewProfile test: Positive", () => {
+  it('initializeNewProfile test: Positive', () => {
     class TestAuthenticationService extends AuthenticationService {
       constructor(
         profileService: ProfileService,
@@ -86,13 +86,13 @@ describe("AuthenticationService", () => {
       new ProfileService(),
       new VirtueCognitoService()
     )
-    service.username = "+440000000000"
+    service.username = '+440000000000'
     let cognitoUser = service.testInitializeNewProfile()
     expect(cognitoUser).toBeDefined()
     expect(cognitoUser).toEqual(jasmine.any(CognitoUser))
   })
 
-  it("initializeNewProfile test: Negative", () => {
+  it('initializeNewProfile test: Negative', () => {
     class TestAuthenticationService extends AuthenticationService {
       constructor(
         profileService: ProfileService,
@@ -113,7 +113,7 @@ describe("AuthenticationService", () => {
     expect(function () {
       service.testInitializeNewProfile()
     }).toThrowError(
-      "Username is not set for the authentication service. Please try to use <service>.username = <username>"
+      'Username is not set for the authentication service. Please try to use <service>.username = <username>'
     )
   })
 })

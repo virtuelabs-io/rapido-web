@@ -1,47 +1,47 @@
-import { Component, OnInit } from "@angular/core"
-import { Registration } from "../services/authentication/helpers/registration"
-import { ProfileService } from "../services/authentication/profile/profile.service"
-import { SignUpService } from "../services/authentication/sign-up/sign-up.service"
-import { ResendConfirmationCodeService } from "../services/authentication/resend-confirmation-code/resend-confirmation-code.service"
-import { ConfirmRegistrationService } from "../services/authentication/confirm-registration/confirm-registration.service"
-import { SignInService } from "../services/authentication/sign-in/sign-in.service"
-import { UpdateAttributeService } from "../services/authentication/update-attribute/update-attribute.service"
-import { ChangePasswordService } from "../services/authentication/change-password/change-password.service"
-import { ForgotPasswordService } from "../services/authentication/forgot-password/forgot-password.service"
-import { DeleteUserService } from "../services/authentication/delete-user/delete-user.service"
-import { ProductsService } from "../services/products/products.service"
-import { Query } from "../services/products/query.interface"
-import { ProductsHierarchyService } from "../services/products/products-hierarchy.service"
-import { CompanyDetails } from "../services/customer/company-details"
-import { CompanyDetailsService } from "../services/customer/company-details.service"
-import { AddressDetails } from "../services/customer/address-details"
-import { AddressDetailsService } from "../services/customer/address-details.service"
-import { CartService } from "../services/cart/cart.service"
-import { CartItem } from "../services/cart/cart-item"
-import { CartItemDetails } from "../services/cart/cart-item-details"
-import { OrdersService } from "../services/orders/orders.service"
-import { Order } from "../services/orders/order"
-import { AddressDetailsMockService } from "../services/customer/address-details.mock.service"
-import { Rating } from "../services/ratings/rating"
-import { RatingsService } from "../services/ratings/ratings.service"
-import { GuestAddressDetails } from "../services/guests/guest-address-details"
-import { GuestAddressService } from "../services/guests/guest-address.service"
-import { GuestCartService } from "../services/guests/guest-cart.service"
-import { GuestOrdersService } from "../services/guests/guest-orders.service"
-import { GuestOrder } from "../services/guests/guest-order"
-import { GuestCartItem } from "../services/guests/guest-cart-item"
+import { Component, OnInit } from '@angular/core'
+import { Registration } from '../services/authentication/helpers/registration'
+import { ProfileService } from '../services/authentication/profile/profile.service'
+import { SignUpService } from '../services/authentication/sign-up/sign-up.service'
+import { ResendConfirmationCodeService } from '../services/authentication/resend-confirmation-code/resend-confirmation-code.service'
+import { ConfirmRegistrationService } from '../services/authentication/confirm-registration/confirm-registration.service'
+import { SignInService } from '../services/authentication/sign-in/sign-in.service'
+import { UpdateAttributeService } from '../services/authentication/update-attribute/update-attribute.service'
+import { ChangePasswordService } from '../services/authentication/change-password/change-password.service'
+import { ForgotPasswordService } from '../services/authentication/forgot-password/forgot-password.service'
+import { DeleteUserService } from '../services/authentication/delete-user/delete-user.service'
+import { ProductsService } from '../services/products/products.service'
+import { Query } from '../services/products/query.interface'
+import { ProductsHierarchyService } from '../services/products/products-hierarchy.service'
+import { CompanyDetails } from '../services/customer/company-details'
+import { CompanyDetailsService } from '../services/customer/company-details.service'
+import { AddressDetails } from '../services/customer/address-details'
+import { AddressDetailsService } from '../services/customer/address-details.service'
+import { CartService } from '../services/cart/cart.service'
+import { CartItem } from '../services/cart/cart-item'
+import { CartItemDetails } from '../services/cart/cart-item-details'
+import { OrdersService } from '../services/orders/orders.service'
+import { Order } from '../services/orders/order'
+import { AddressDetailsMockService } from '../services/customer/address-details.mock.service'
+import { Rating } from '../services/ratings/rating'
+import { RatingsService } from '../services/ratings/ratings.service'
+import { GuestAddressDetails } from '../services/guests/guest-address-details'
+import { GuestAddressService } from '../services/guests/guest-address.service'
+import { GuestCartService } from '../services/guests/guest-cart.service'
+import { GuestOrdersService } from '../services/guests/guest-orders.service'
+import { GuestOrder } from '../services/guests/guest-order'
+import { GuestCartItem } from '../services/guests/guest-cart-item'
 
 @Component({
-  selector: "app-authmock",
-  templateUrl: "./authmock.component.html",
-  styleUrls: ["./authmock.component.scss"],
+  selector: 'app-authmock',
+  templateUrl: './authmock.component.html',
+  styleUrls: ['./authmock.component.scss'],
 })
 export class AuthmockComponent implements OnInit {
   _profileService: ProfileService
 
   _confirmationCode: string
 
-  _newPassword: string = "Rocky2011"
+  _newPassword: string = 'Rocky2011'
 
   _verificationCode: string
 
@@ -62,37 +62,37 @@ export class AuthmockComponent implements OnInit {
   guest_result: string
 
   companyDetails: CompanyDetails = new CompanyDetails(
-    "Sample pvt ltd",
-    "addr_1",
-    "city",
-    "county",
-    "country",
-    "postcode",
-    "addr_2"
+    'Sample pvt ltd',
+    'addr_1',
+    'city',
+    'county',
+    'country',
+    'postcode',
+    'addr_2'
   )
 
   addressDetails: AddressDetails = new AddressDetails(
-    "Full name",
+    'Full name',
     1, // check Constants.ADDRESS_TYPES for different types of addresses. Only those should be used
-    "addr_1",
-    "city",
-    "county",
-    "country",
-    "postcode",
-    "addr_2"
+    'addr_1',
+    'city',
+    'county',
+    'country',
+    'postcode',
+    'addr_2'
   )
 
   guestAddressDetails: GuestAddressDetails = new GuestAddressDetails(
-    "Full name",
+    'Full name',
     1, // check Constants.ADDRESS_TYPES for different types of addresses. Only those should be used
-    "addr_1",
-    "city",
-    "county",
-    "country",
-    "postcode",
-    "simple@example.com",
-    "+445346432431",
-    "addr_2"
+    'addr_1',
+    'city',
+    'county',
+    'country',
+    'postcode',
+    'simple@example.com',
+    '+445346432431',
+    'addr_2'
   )
 
   guestOrder: GuestOrder = new GuestOrder()
@@ -102,15 +102,15 @@ export class AuthmockComponent implements OnInit {
   guestCartItem: GuestCartItem = new GuestCartItem()
 
   _registration: Registration = new Registration(
-    "+447783307487",
-    "reddy.horcrux@gmail.com",
-    "Sangram Reddy",
-    "Sangram1992",
-    "true",
-    "true",
-    "true",
-    "true",
-    "true"
+    '+447783307487',
+    'reddy.horcrux@gmail.com',
+    'Sangram Reddy',
+    'Sangram1992',
+    'true',
+    'true',
+    'true',
+    'true',
+    'true'
   )
 
   rating: Rating = new Rating()
@@ -118,7 +118,7 @@ export class AuthmockComponent implements OnInit {
   order: Order = new Order()
 
   _query: Query = {
-    q: "watches",
+    q: 'watches',
     size: 1,
     cursor: null, // always use either cursor or start, but bot both
     return: null,
@@ -351,7 +351,7 @@ export class AuthmockComponent implements OnInit {
     this._companyDetailsService.getCompanyDetails().subscribe((data) => {
       console.log(data)
       this.company_details_result =
-        "Sucessfully fetched customer company details and logged!"
+        'Sucessfully fetched customer company details and logged!'
     })
   }
 
@@ -361,18 +361,18 @@ export class AuthmockComponent implements OnInit {
       .subscribe((data) => {
         console.log(data)
         this.company_details_result =
-          "Sucessfully posted customer company details and logged!"
+          'Sucessfully posted customer company details and logged!'
       })
   }
 
   putCompanyDetails() {
-    this.companyDetails.company_name = "Updated Company Pvt Ltd"
+    this.companyDetails.company_name = 'Updated Company Pvt Ltd'
     this._companyDetailsService
       .putCompanyDetails(this.companyDetails)
       .subscribe((data) => {
         console.log(data)
         this.company_details_result =
-          "Sucessfully updated customer company details and logged!"
+          'Sucessfully updated customer company details and logged!'
       })
   }
 
@@ -380,7 +380,7 @@ export class AuthmockComponent implements OnInit {
     this._companyDetailsService.deleteCompanyDetails().subscribe((data) => {
       console.log(data)
       this.company_details_result =
-        "Sucessfully deleted customer company details and logged!"
+        'Sucessfully deleted customer company details and logged!'
     })
   }
 
@@ -390,22 +390,22 @@ export class AuthmockComponent implements OnInit {
       .subscribe((data) => {
         console.log(data)
         this.address_details_result =
-          "Sucessfully fetched address details and logged!"
+          'Sucessfully fetched address details and logged!'
       })
   }
 
   getAddressDetailsList() {
     this._addressDetailsService.getAddressDetailsList().subscribe((data) => {
       console.log(data)
-      if (data["length"] > 0) {
-        this.address_details_id = data[0]["id"]
+      if (data['length'] > 0) {
+        this.address_details_id = data[0]['id']
         console.log(
-          "Sucessfully updated the address test id to: " +
+          'Sucessfully updated the address test id to: ' +
             String(this.address_details_id)
         )
       }
       this.address_details_result =
-        "Sucessfully fetched address details List and logged!"
+        'Sucessfully fetched address details List and logged!'
     })
   }
 
@@ -414,27 +414,27 @@ export class AuthmockComponent implements OnInit {
       .postAddressDetails(this.addressDetails)
       .subscribe((data) => {
         console.log(data)
-        if (data["insertId"]) {
-          this.address_details_id = data["insertId"]
+        if (data['insertId']) {
+          this.address_details_id = data['insertId']
           console.log(
-            "Sucessfully updated the address test id to: " +
+            'Sucessfully updated the address test id to: ' +
               String(this.address_details_id)
           )
         }
         this.address_details_result =
-          "Sucessfully posted address company details and logged!"
+          'Sucessfully posted address company details and logged!'
       })
   }
 
   putAddressDetails() {
-    this.addressDetails.full_name = "Updated full name"
+    this.addressDetails.full_name = 'Updated full name'
     this.addressDetails.id = this.address_details_id
     this._addressDetailsService
       .putAddressDetails(this.addressDetails)
       .subscribe((data) => {
         console.log(data)
         this.address_details_result =
-          "Sucessfully updated customer address details and logged!"
+          'Sucessfully updated customer address details and logged!'
       })
   }
 
@@ -445,7 +445,7 @@ export class AuthmockComponent implements OnInit {
         console.log(data)
         this.address_details_id = null
         this.address_details_result =
-          "Sucessfully deleted customer address details and logged!"
+          'Sucessfully deleted customer address details and logged!'
       })
   }
 
@@ -453,7 +453,7 @@ export class AuthmockComponent implements OnInit {
     this._addressDetailsMockService.getAddressDetails(1).subscribe((data) => {
       console.log(data)
       this.mock_address_details_result =
-        "Sucessfully fetched mock address details and logged!"
+        'Sucessfully fetched mock address details and logged!'
     })
   }
 
@@ -462,11 +462,11 @@ export class AuthmockComponent implements OnInit {
       .getAddressDetailsList()
       .subscribe((data) => {
         console.log(data)
-        if (data["length"] > 0) {
-          console.log("Sucessfully updated the address test id to: 1")
+        if (data['length'] > 0) {
+          console.log('Sucessfully updated the address test id to: 1')
         }
         this.mock_address_details_result =
-          "Sucessfully fetched mock address details List and logged!"
+          'Sucessfully fetched mock address details List and logged!'
       })
   }
 
@@ -475,11 +475,11 @@ export class AuthmockComponent implements OnInit {
       .postAddressDetails(this.addressDetails)
       .subscribe((data) => {
         console.log(data)
-        if (data["insertId"]) {
-          console.log("Sucessfully updated the address test id to: 1")
+        if (data['insertId']) {
+          console.log('Sucessfully updated the address test id to: 1')
         }
         this.mock_address_details_result =
-          "Sucessfully posted mock address company details and logged!"
+          'Sucessfully posted mock address company details and logged!'
       })
   }
 
@@ -490,7 +490,7 @@ export class AuthmockComponent implements OnInit {
       .subscribe((data) => {
         console.log(data)
         this.mock_address_details_result =
-          "Sucessfully updated mock customer address details and logged!"
+          'Sucessfully updated mock customer address details and logged!'
       })
   }
 
@@ -500,7 +500,7 @@ export class AuthmockComponent implements OnInit {
       .subscribe((data) => {
         console.log(data)
         this.mock_address_details_result =
-          "Sucessfully deleted mock customer address details and logged!"
+          'Sucessfully deleted mock customer address details and logged!'
       })
   }
 
@@ -512,7 +512,7 @@ export class AuthmockComponent implements OnInit {
     cartItem.product_id = this._cart_item_id
     cartItem.quantity = Math.floor(Math.random() * 10) + 1
     cartItem.in_cart = true
-    console.log("Created product with id:", cartItem.product_id)
+    console.log('Created product with id:', cartItem.product_id)
     return cartItem
   }
 
@@ -521,21 +521,21 @@ export class AuthmockComponent implements OnInit {
     cartItem.product_id = product_id
     cartItem.quantity = Math.floor(Math.random() * 10) + 1
     cartItem.in_cart = true
-    console.log("Updated product with id:", cartItem.product_id)
+    console.log('Updated product with id:', cartItem.product_id)
     return cartItem
   }
 
   getCartItems() {
     this._cartService.getCartItems().then((data: any) => {
       console.log(data)
-      this.cart_item_result = "Sucessfully fetched cart items and logged!"
+      this.cart_item_result = 'Sucessfully fetched cart items and logged!'
     })
   }
 
   getInCartItems() {
     this._cartService.getInCartItems().then((data: any) => {
       console.log(data)
-      this.cart_item_result = "Sucessfully fetched InCartItems and logged!"
+      this.cart_item_result = 'Sucessfully fetched InCartItems and logged!'
     })
   }
 
@@ -543,7 +543,7 @@ export class AuthmockComponent implements OnInit {
     this._cartService.getCountOfInCartItems().then((data: any) => {
       console.log(data)
       this.cart_item_result =
-        "Sucessfully fetched getCountOfInCartItems and logged!"
+        'Sucessfully fetched getCountOfInCartItems and logged!'
     })
   }
 
@@ -551,30 +551,30 @@ export class AuthmockComponent implements OnInit {
     this._cartService.getSavedForLaterCartItems().then((data: any) => {
       console.log(data)
       this.cart_item_result =
-        "Sucessfully fetched SavedForLaterCartItems and logged!"
+        'Sucessfully fetched SavedForLaterCartItems and logged!'
     })
   }
 
   postCartItem() {
     this._cartService.postCartItem(this.makeCartItem()).subscribe((data) => {
       console.log(data)
-      this.cart_item_result = "Sucessfully posted cart item and logged!"
+      this.cart_item_result = 'Sucessfully posted cart item and logged!'
     })
   }
 
   postCartItems() {
     this._cartService.getInCartItems().then((data: any) => {
-      console.log("Data before change", data)
+      console.log('Data before change', data)
       console.log(data)
       let items = []
       let ele: any
       for (ele in data) {
         items.push(this.updateCartItem(data[ele].cartItem.product_id))
       }
-      console.log("Data after change", items)
+      console.log('Data after change', items)
       this._cartService.postCartItemList(items).subscribe((data2) => {
-        console.log("Cart confirmed data", data2)
-        this.cart_item_result = "Sucessfully posted cart items and logged!"
+        console.log('Cart confirmed data', data2)
+        this.cart_item_result = 'Sucessfully posted cart items and logged!'
       })
     })
   }
@@ -582,14 +582,14 @@ export class AuthmockComponent implements OnInit {
   deleteInCartItems() {
     this._cartService.deleteInCartItems().subscribe((data) => {
       console.log(data)
-      this.cart_item_result = "Sucessfully deleted in cart items and logged!"
+      this.cart_item_result = 'Sucessfully deleted in cart items and logged!'
     })
   }
 
   deleteCartItem() {
     this._cartService.deleteCartItem(this._cart_item_id).subscribe((data) => {
       console.log(data)
-      this.cart_item_result = "Sucessfully deleted item and logged!"
+      this.cart_item_result = 'Sucessfully deleted item and logged!'
     })
   }
 
@@ -597,101 +597,101 @@ export class AuthmockComponent implements OnInit {
     this.order.delivery_address_id = 2
     this._orderService.createOrder(this.order).then((data: any) => {
       console.log(data)
-      this.order.order_id = parseInt(Object.keys(data["orderItemsObject"])[0])
-      this.order_result = "Sucessfully created order and logged!"
+      this.order.order_id = parseInt(Object.keys(data['orderItemsObject'])[0])
+      this.order_result = 'Sucessfully created order and logged!'
     })
   }
 
   confirmOrder() {
-    this.order.charge_id = "ch_authmock"
-    console.log("Confirming order for:", this.order)
+    this.order.charge_id = 'ch_authmock'
+    console.log('Confirming order for:', this.order)
     this._orderService.confirmOrder(this.order).then((data: any) => {
       console.log(data)
-      this.order_result = "Sucessfully confirmed order and logged!"
+      this.order_result = 'Sucessfully confirmed order and logged!'
     })
   }
 
   cancelOrder() {
-    console.log("Canceling order for:", this.order.order_id)
+    console.log('Canceling order for:', this.order.order_id)
     this._orderService.cancelOrder(this.order.order_id).subscribe((data) => {
       console.log(data)
-      this.order_result = "Sucessfully cancled order and logged!"
+      this.order_result = 'Sucessfully cancled order and logged!'
     })
   }
 
   checkProductPurchase() {
-    console.log("checkProductPurchase order for: 9")
+    console.log('checkProductPurchase order for: 9')
     this._orderService.checkProductPurchase(9).subscribe((data) => {
       console.log(data)
-      this.order_result = "Sucessfully checkProductPurchase"
+      this.order_result = 'Sucessfully checkProductPurchase'
     })
   }
 
   getDeliveryOptions() {
-    console.log("getDeliveryOptions fired")
+    console.log('getDeliveryOptions fired')
     this._orderService.getDeliveryOptions().subscribe((data) => {
       console.log(data)
-      this.order_result = "Sucessfully getched getDeliveryOptions"
+      this.order_result = 'Sucessfully getched getDeliveryOptions'
     })
   }
 
   getFrequentlyBought() {
-    console.log("getFrequentlyBought fired")
+    console.log('getFrequentlyBought fired')
     this._orderService.getFrequentlyBought().subscribe((data) => {
       console.log(data)
-      this.order_result = "Sucessfully fetched getFrequentlyBought"
+      this.order_result = 'Sucessfully fetched getFrequentlyBought'
     })
   }
 
   getFrequentlyBoughtByMe() {
-    console.log("getFrequentlyBoughtByMe fired")
+    console.log('getFrequentlyBoughtByMe fired')
     this._orderService.getFrequentlyBoughtByMe().subscribe((data) => {
       console.log(data)
-      this.order_result = "Sucessfully fetched getFrequentlyBoughtByMe"
+      this.order_result = 'Sucessfully fetched getFrequentlyBoughtByMe'
     })
   }
 
   getOrder() {
     this.order.order_id = 70
-    console.log("Fetching order for:", this.order.order_id)
+    console.log('Fetching order for:', this.order.order_id)
     this._orderService.getOrder(this.order.order_id).then((data: any) => {
       console.log(data)
-      this.order_result = "Sucessfully fetched order and logged!"
+      this.order_result = 'Sucessfully fetched order and logged!'
     })
   }
 
   getOrders() {
     this._orderService.getOrders().then((data: any) => {
       console.log(data)
-      this.order_result = "Sucessfully fetched orders and logged!"
+      this.order_result = 'Sucessfully fetched orders and logged!'
     })
   }
 
   createRating() {
     this.rating.product_id = 90
-    this.rating.title = "Value for money to the best of it"
+    this.rating.title = 'Value for money to the best of it'
     this.rating.rating = 5
-    this.rating.summary = "A very good product. One of the best in the market"
+    this.rating.summary = 'A very good product. One of the best in the market'
     this._ratingsService.createRating(this.rating).subscribe((data) => {
       console.log(data)
       if (data) {
-        console.log("Sucessfully created a rating")
+        console.log('Sucessfully created a rating')
       }
-      this.rating_result = "Sucessfully created a rating"
+      this.rating_result = 'Sucessfully created a rating'
     })
   }
 
   updateRating() {
     this.rating.id = 3
-    this.rating.title = "Value for money updated"
+    this.rating.title = 'Value for money updated'
     this.rating.rating = 4
-    this.rating.summary = "A very good product updated"
+    this.rating.summary = 'A very good product updated'
     this._ratingsService.updateRating(this.rating).subscribe((data) => {
       console.log(data)
       if (data) {
-        console.log("Sucessfully updated a rating")
+        console.log('Sucessfully updated a rating')
       }
-      this.rating_result = "Sucessfully updated a rating"
+      this.rating_result = 'Sucessfully updated a rating'
     })
   }
 
@@ -699,9 +699,9 @@ export class AuthmockComponent implements OnInit {
     this._ratingsService.getCustomerRating(3).subscribe((data) => {
       console.log(data)
       if (data) {
-        console.log("Sucessfully fetched a rating")
+        console.log('Sucessfully fetched a rating')
       }
-      this.rating_result = "Sucessfully fetched a rating"
+      this.rating_result = 'Sucessfully fetched a rating'
     })
   }
 
@@ -709,9 +709,9 @@ export class AuthmockComponent implements OnInit {
     this._ratingsService.getAllCustomerRatings().subscribe((data) => {
       console.log(data)
       if (data) {
-        console.log("Sucessfully fetched all rating")
+        console.log('Sucessfully fetched all rating')
       }
-      this.rating_result = "Sucessfully fetched all rating"
+      this.rating_result = 'Sucessfully fetched all rating'
     })
   }
 
@@ -719,9 +719,9 @@ export class AuthmockComponent implements OnInit {
     this._ratingsService.deleteCustomerRating(3).subscribe((data) => {
       console.log(data)
       if (data) {
-        console.log("Sucessfully deleted rating")
+        console.log('Sucessfully deleted rating')
       }
-      this.rating_result = "Sucessfully deleted rating"
+      this.rating_result = 'Sucessfully deleted rating'
     })
   }
 
@@ -729,9 +729,9 @@ export class AuthmockComponent implements OnInit {
     this._ratingsService.helpfulRatingIncrement(3).subscribe((data) => {
       console.log(data)
       if (data) {
-        console.log("Sucessfully helpfulRatingIncrement")
+        console.log('Sucessfully helpfulRatingIncrement')
       }
-      this.rating_result = "Sucessfully helpfulRatingIncrement"
+      this.rating_result = 'Sucessfully helpfulRatingIncrement'
     })
   }
 
@@ -739,9 +739,9 @@ export class AuthmockComponent implements OnInit {
     this._ratingsService.deactivateRating(3).subscribe((data) => {
       console.log(data)
       if (data) {
-        console.log("Sucessfully deactivateRating")
+        console.log('Sucessfully deactivateRating')
       }
-      this.rating_result = "Sucessfully deactivateRating"
+      this.rating_result = 'Sucessfully deactivateRating'
     })
   }
 
@@ -749,9 +749,9 @@ export class AuthmockComponent implements OnInit {
     this._ratingsService.getProductRatings(33).subscribe((data) => {
       console.log(data)
       if (data) {
-        console.log("Sucessfully getProductRatings")
+        console.log('Sucessfully getProductRatings')
       }
-      this.rating_result = "Sucessfully getProductRatings"
+      this.rating_result = 'Sucessfully getProductRatings'
     })
   }
 
@@ -759,9 +759,9 @@ export class AuthmockComponent implements OnInit {
     this._ratingsService.getProductRatingsSummary(33).subscribe((data) => {
       console.log(data)
       if (data) {
-        console.log("Sucessfully getProductRatingsSummary")
+        console.log('Sucessfully getProductRatingsSummary')
       }
-      this.rating_result = "Sucessfully getProductRatingsSummary"
+      this.rating_result = 'Sucessfully getProductRatingsSummary'
     })
   }
 
@@ -769,9 +769,9 @@ export class AuthmockComponent implements OnInit {
     this._ratingsService.checkProductReview(33).subscribe((data) => {
       console.log(data)
       if (data) {
-        console.log("Sucessfully checkProductReview")
+        console.log('Sucessfully checkProductReview')
       }
-      this.rating_result = "Sucessfully checkProductReview"
+      this.rating_result = 'Sucessfully checkProductReview'
     })
   }
 
@@ -785,7 +785,7 @@ export class AuthmockComponent implements OnInit {
     guestCartItem.product_id = this.guestCartProductId
     guestCartItem.quantity = Math.floor(Math.random() * 10) + 1
     this.guestCartItem.product_id = this.guestCartProductId
-    console.log("Created guest product with id:", guestCartItem.product_id)
+    console.log('Created guest product with id:', guestCartItem.product_id)
     return guestCartItem
   }
 
@@ -793,7 +793,7 @@ export class AuthmockComponent implements OnInit {
     let guestCartItem: GuestCartItem = new GuestCartItem()
     guestCartItem.product_id = product_id
     guestCartItem.quantity = Math.floor(Math.random() * 10) + 1
-    console.log("Updated guest product with id:", guestCartItem.product_id)
+    console.log('Updated guest product with id:', guestCartItem.product_id)
     this.guestCartItem.product_id = guestCartItem.product_id
     return guestCartItem
   }
@@ -801,7 +801,7 @@ export class AuthmockComponent implements OnInit {
   getGuestCartItems() {
     this._guestCartService.getGuestCartItems().then((data: any) => {
       console.log(data)
-      this.guest_result = "Sucessfully fetched guest cart items and logged!"
+      this.guest_result = 'Sucessfully fetched guest cart items and logged!'
     })
   }
 
@@ -809,7 +809,7 @@ export class AuthmockComponent implements OnInit {
     this._guestCartService.getCountOfGuestCartItems().then((data: any) => {
       console.log(data)
       this.guest_result =
-        "Sucessfully fetched getCountOfGuestCartItems and logged!"
+        'Sucessfully fetched getCountOfGuestCartItems and logged!'
     })
   }
 
@@ -818,13 +818,13 @@ export class AuthmockComponent implements OnInit {
       .postGuestCartItem(this.makeGuestCartItem())
       .subscribe((data) => {
         console.log(data)
-        this.guest_result = "Sucessfully posted guest cart item and logged!"
+        this.guest_result = 'Sucessfully posted guest cart item and logged!'
       })
   }
 
   postGuestCartItemList() {
     this._guestCartService.getGuestCartItems().then((data: any) => {
-      console.log("Data before change", data)
+      console.log('Data before change', data)
       console.log(data)
       let items = []
       let ele: any
@@ -832,10 +832,10 @@ export class AuthmockComponent implements OnInit {
         console.log(ele, data[ele])
         items.push(this.updateGuestCartItem(data[ele].guestCartItem.product_id))
       }
-      console.log("Data after change", items)
+      console.log('Data after change', items)
       this._guestCartService.postGuestCartItemList(items).subscribe((data2) => {
-        console.log("Cart confirmed data", data2)
-        this.guest_result = "Sucessfully posted guest cart items and logged!"
+        console.log('Cart confirmed data', data2)
+        this.guest_result = 'Sucessfully posted guest cart items and logged!'
       })
     })
   }
@@ -845,14 +845,14 @@ export class AuthmockComponent implements OnInit {
       .deleteGuestCartItem(this.guestCartItem)
       .subscribe((data) => {
         console.log(data)
-        this.guest_result = "Sucessfully deleted guest item and logged!"
+        this.guest_result = 'Sucessfully deleted guest item and logged!'
       })
   }
 
   deleteGuestCartItems() {
     this._guestCartService.deleteGuestCartItems().subscribe((data) => {
       console.log(data)
-      this.guest_result = "Sucessfully deleted guest cart items and logged!"
+      this.guest_result = 'Sucessfully deleted guest cart items and logged!'
     })
   }
 
@@ -861,15 +861,15 @@ export class AuthmockComponent implements OnInit {
       .postGuestAddressDetails(this.guestAddressDetails)
       .subscribe((data) => {
         console.log(data)
-        if (data["insertId"]) {
-          this.address_details_id = data["insertId"]
+        if (data['insertId']) {
+          this.address_details_id = data['insertId']
           console.log(
-            "Sucessfully updated the address test id to: " +
+            'Sucessfully updated the address test id to: ' +
               String(this.address_details_id)
           )
         }
         this.guest_result =
-          "Sucessfully posted guest address details and logged!"
+          'Sucessfully posted guest address details and logged!'
       })
   }
 
@@ -879,7 +879,7 @@ export class AuthmockComponent implements OnInit {
       .createGuestOrder(this.guestOrder)
       .then((data: any) => {
         console.log(data)
-        this.guest_result = "Sucessfully created guest order and logged!"
+        this.guest_result = 'Sucessfully created guest order and logged!'
       })
   }
 }

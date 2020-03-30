@@ -1,17 +1,17 @@
-import { Component, OnInit, OnDestroy, ViewChild } from "@angular/core"
-import { SearchItemService } from "../../shared-services/search-item/search-item.services"
-import { LoginStateService } from "../../shared-services/login-state/login-state.service"
-import { ProductsService } from "../../services/products/products.service"
-import { MatDialog, MatDialogRef } from "@angular/material/dialog"
-import { PageEvent, MatPaginator } from "@angular/material/paginator"
-import { ActivatedRoute, Router } from "@angular/router"
-import { Query } from "../../services/products/query.interface"
-import { Common } from "../../utils/common"
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core'
+import { SearchItemService } from '../../shared-services/search-item/search-item.services'
+import { LoginStateService } from '../../shared-services/login-state/login-state.service'
+import { ProductsService } from '../../services/products/products.service'
+import { MatDialog, MatDialogRef } from '@angular/material/dialog'
+import { PageEvent, MatPaginator } from '@angular/material/paginator'
+import { ActivatedRoute, Router } from '@angular/router'
+import { Query } from '../../services/products/query.interface'
+import { Common } from '../../utils/common'
 
 @Component({
-  selector: "app-productresults",
-  templateUrl: "./product-results.component.html",
-  styleUrls: ["./product-results.component.scss"],
+  selector: 'app-productresults',
+  templateUrl: './product-results.component.html',
+  styleUrls: ['./product-results.component.scss'],
 })
 export class ProductResultsComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator) paginator: MatPaginator
@@ -24,7 +24,7 @@ export class ProductResultsComponent implements OnInit, OnDestroy {
   pageEvent: PageEvent
 
   private _productsService: ProductsService
-  searchedText: string = ""
+  searchedText: string = ''
   responseData: Object
   noResultsFound: boolean = false
   public productList: Array<{ id: number; fields: Object }>
@@ -84,8 +84,8 @@ export class ProductResultsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    localStorage.removeItem("fieldsQuery")
-    localStorage.removeItem("searchedText")
+    localStorage.removeItem('fieldsQuery')
+    localStorage.removeItem('searchedText')
     this._searchItemServicecurrentState.unsubscribe()
   }
 
@@ -93,17 +93,17 @@ export class ProductResultsComponent implements OnInit, OnDestroy {
     let pageNum = evt.pageIndex * evt.pageSize
     let qObject = { ...this.prevQuery, ...{ start: pageNum } }
     let urlParams = Common.setUrlParams(qObject)
-    this.router.navigate(["/products"], { queryParams: urlParams })
+    this.router.navigate(['/products'], { queryParams: urlParams })
   }
 
   setPageSizeOptions(setPageSizeOptionsInput: string) {
-    this.pageSizeOptions = setPageSizeOptionsInput.split(",").map((str) => +str)
+    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map((str) => +str)
   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(FilterControlsDialog, {
-      height: "80%",
-      width: "80%",
+      height: '80%',
+      width: '80%',
     })
 
     // dialogRef.afterClosed().subscribe(result => {
@@ -112,7 +112,7 @@ export class ProductResultsComponent implements OnInit, OnDestroy {
 }
 
 @Component({
-  selector: "dialog-overview-example-dialog",
+  selector: 'dialog-overview-example-dialog',
   template: `
     <mat-dialog-content>
       <i class="fa fa-times hidden-lg hidden-md" (click)="closeDialog()"></i>

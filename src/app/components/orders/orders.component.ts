@@ -1,31 +1,31 @@
-import { Component, OnInit, NgZone, NgModule } from "@angular/core"
-import { OrdersService } from "../../services/orders/orders.service"
-import { Constants } from "../../utils/constants"
-import { Router } from "@angular/router"
-import { RouteService } from "../../shared-services/route/route.service"
-import { LoginStateService } from "../../shared-services/login-state/login-state.service"
-import { ConfirmationDialogComponent } from "../../components/confirmation-dialog/confirmation-dialog.component"
-import { MatDialog } from "@angular/material"
-import { RatingsService } from "../../services/ratings/ratings.service"
+import { Component, OnInit, NgZone, NgModule } from '@angular/core'
+import { OrdersService } from '../../services/orders/orders.service'
+import { Constants } from '../../utils/constants'
+import { Router } from '@angular/router'
+import { RouteService } from '../../shared-services/route/route.service'
+import { LoginStateService } from '../../shared-services/login-state/login-state.service'
+import { ConfirmationDialogComponent } from '../../components/confirmation-dialog/confirmation-dialog.component'
+import { MatDialog } from '@angular/material'
+import { RatingsService } from '../../services/ratings/ratings.service'
 import {
   FormBuilder,
   FormGroup,
   Validators,
   ReactiveFormsModule,
-} from "@angular/forms"
-import { CartItem } from "../../services/cart/cart-item"
-import { CartService } from "../../services/cart/cart.service"
-import { CartStateService } from "../../shared-services/cart-state/cart-state.service"
-import { MatSnackBar } from "@angular/material/snack-bar"
-import { element } from "@angular/core/src/render3"
+} from '@angular/forms'
+import { CartItem } from '../../services/cart/cart-item'
+import { CartService } from '../../services/cart/cart.service'
+import { CartStateService } from '../../shared-services/cart-state/cart-state.service'
+import { MatSnackBar } from '@angular/material/snack-bar'
+import { element } from '@angular/core/src/render3'
 
 @NgModule({
   imports: [FormBuilder, Validators, FormGroup, ReactiveFormsModule],
 })
 @Component({
-  selector: "app-orders",
-  templateUrl: "./orders.component.html",
-  styleUrls: ["./orders.component.scss"],
+  selector: 'app-orders',
+  templateUrl: './orders.component.html',
+  styleUrls: ['./orders.component.scss'],
 })
 export class OrdersComponent implements OnInit {
   public _orderService: OrdersService
@@ -80,8 +80,8 @@ export class OrdersComponent implements OnInit {
   }
 
   async handleError(err) {
-    this.RouteService.changeRoute("orders")
-    this.router.navigateByUrl("/login")
+    this.RouteService.changeRoute('orders')
+    this.router.navigateByUrl('/login')
   }
 
   uniqueOrders(arr, comp) {
@@ -102,33 +102,33 @@ export class OrdersComponent implements OnInit {
       this._loginStateService.loaderEnable()
       await this._orderService.getOrders().then((data: any) => {
         this.fetchOrdersRes = data
-        if (data["products"]) {
-          this.products = data["products"]
+        if (data['products']) {
+          this.products = data['products']
         }
-        if (data["orderItemsObject"]) {
-          for (let order in data["orderItemsObject"]) {
+        if (data['orderItemsObject']) {
+          for (let order in data['orderItemsObject']) {
             if (this.orders[order] == undefined) {
               this.orders[order] = {}
-              this.orders[order]["items"] = []
+              this.orders[order]['items'] = []
             }
-            for (let product in data["orderItemsObject"][order]) {
+            for (let product in data['orderItemsObject'][order]) {
               this.orders[order].currency =
-                data["products"][product]["currency"]
+                data['products'][product]['currency']
               this.orders[order].price =
-                data["orderItemsObject"][order][product]["order_price_total"]
+                data['orderItemsObject'][order][product]['order_price_total']
               this.orders[order].product_id =
-                data["orderItemsObject"][order][product]["product_id"]
-              this.orders[order].date = data["orderItemsObject"][order][
+                data['orderItemsObject'][order][product]['product_id']
+              this.orders[order].date = data['orderItemsObject'][order][
                 product
-              ]["created_on"].split("T")[0]
+              ]['created_on'].split('T')[0]
               this.orders[order].shipTo =
-                data["orderItemsObject"][order][product]["full_name"]
+                data['orderItemsObject'][order][product]['full_name']
               this.orders[order].category =
                 Constants.ORDER_STATUS[
-                  data["orderItemsObject"][order][product]["order_status_id"]
+                  data['orderItemsObject'][order][product]['order_status_id']
                 ]
-              this.orders[order]["items"].push(
-                data["orderItemsObject"][order][product]
+              this.orders[order]['items'].push(
+                data['orderItemsObject'][order][product]
               )
             }
           }
@@ -143,8 +143,8 @@ export class OrdersComponent implements OnInit {
 
   cancelOrder(id) {
     this.dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-      width: "350px",
-      data: "Are you sure you want to cancel this order",
+      width: '350px',
+      data: 'Are you sure you want to cancel this order',
     })
     this.dialogRef.afterClosed().subscribe((result) => {
       if (result) {
@@ -163,7 +163,7 @@ export class OrdersComponent implements OnInit {
 
   orderDetails(id) {
     this.ngZone
-      .run(() => this.router.navigate(["orders", id, "details"]))
+      .run(() => this.router.navigate(['orders', id, 'details']))
       .then()
   }
 
@@ -178,18 +178,18 @@ export class OrdersComponent implements OnInit {
     if (data.length) {
       this._loginStateService.loaderDisable()
       this.ngZone
-        .run(() => this.router.navigate(["review/edit/review", data[0].id]))
+        .run(() => this.router.navigate(['review/edit/review', data[0].id]))
         .then()
     } else {
       this._loginStateService.loaderDisable()
       this.ngZone
-        .run(() => this.router.navigate(["review/create/product", productId]))
+        .run(() => this.router.navigate(['review/create/product', productId]))
         .then()
     }
   }
 
   repeatOrder(selectedOrder) {
-    this.orders[selectedOrder]["items"].forEach((element) => {
+    this.orders[selectedOrder]['items'].forEach((element) => {
       this.newItemsToCart.push({
         id: element.product_id,
         quantity: element.quantity,

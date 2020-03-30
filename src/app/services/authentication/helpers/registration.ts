@@ -1,7 +1,7 @@
-import * as uuid from "uuid"
-import { Schema } from "../base/schema.base"
-import { ICognitoUserAttributeData } from "amazon-cognito-identity-js"
-import { Constants } from "../../../utils/constants"
+import * as uuid from 'uuid'
+import { Schema } from '../base/schema.base'
+import { ICognitoUserAttributeData } from 'amazon-cognito-identity-js'
+import { Constants } from '../../../utils/constants'
 
 export class Registration extends Schema {
   constructor(
@@ -153,18 +153,18 @@ export class Registration extends Schema {
 
   createUpdateAttributeList() {
     let eligibleFields = [
-      "email",
-      "name",
-      "sendMePromotions",
-      "commViaEmail",
-      "commViaSMS",
-      "personalisation",
+      'email',
+      'name',
+      'sendMePromotions',
+      'commViaEmail',
+      'commViaSMS',
+      'personalisation',
     ]
     let updateAttributeList: ICognitoUserAttributeData[] = []
     let keyName: string
     eligibleFields.forEach((field) => {
       if (this[field] !== undefined) {
-        if (field !== "email" && field !== "name") {
+        if (field !== 'email' && field !== 'name') {
           keyName = Constants.CUSTOM + field
         } else {
           keyName = field

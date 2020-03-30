@@ -1,14 +1,14 @@
-import { Injectable } from "@angular/core"
-import { RapidoHttpService } from "../commons/rapido-http.service"
-import { AddressDetails } from "./address-details"
-import { HttpClient } from "@angular/common/http"
-import { ProfileService } from "../authentication/profile/profile.service"
-import { of } from "rxjs"
-import { AddressDetailsMockData } from "./address-details.mock.data"
-import { AddressDetailsService } from "./address-details.service"
+import { Injectable } from '@angular/core'
+import { RapidoHttpService } from '../commons/rapido-http.service'
+import { AddressDetails } from './address-details'
+import { HttpClient } from '@angular/common/http'
+import { ProfileService } from '../authentication/profile/profile.service'
+import { of } from 'rxjs'
+import { AddressDetailsMockData } from './address-details.mock.data'
+import { AddressDetailsService } from './address-details.service'
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class AddressDetailsMockService extends AddressDetailsService {
   constructor(

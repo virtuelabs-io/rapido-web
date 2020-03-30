@@ -1,13 +1,13 @@
-import { Injectable } from "@angular/core"
-import { HttpClient, HttpHeaders } from "@angular/common/http"
-import { Observable, throwError } from "rxjs"
-import { catchError, retry, tap } from "rxjs/operators"
-import { Constants } from "src/app/utils/constants"
-import { ProfileService } from "../authentication/profile/profile.service"
-import { LoginStateService } from "src/app/shared-services/login-state/login-state.service"
+import { Injectable } from '@angular/core'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { Observable, throwError } from 'rxjs'
+import { catchError, retry, tap } from 'rxjs/operators'
+import { Constants } from 'src/app/utils/constants'
+import { ProfileService } from '../authentication/profile/profile.service'
+import { LoginStateService } from 'src/app/shared-services/login-state/login-state.service'
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class RapidoHttpService<T> {
   protected loginStateService: LoginStateService
@@ -122,20 +122,20 @@ export class RapidoHttpService<T> {
   }
 
   initializeHeaders(): HttpHeaders {
-    return new HttpHeaders().append("Content-Type", "application/json")
+    return new HttpHeaders().append('Content-Type', 'application/json')
   }
 
   addAuthHeader(_headers: HttpHeaders): HttpHeaders {
     if (this._profileService.cognitoUser) {
       return _headers.append(
-        "Authorization",
+        'Authorization',
         this._profileService.cognitoUser
           .getSignInUserSession()
           .getIdToken()
           .getJwtToken()
       )
     } else {
-      return _headers.append("Authorization", "")
+      return _headers.append('Authorization', '')
     }
   }
 }

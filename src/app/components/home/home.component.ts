@@ -1,16 +1,16 @@
-import { Component, OnInit, NgZone } from "@angular/core"
-import { ProductsService } from "../../services/products/products.service"
-import { Common } from "../../../../src/app/utils/common"
-import { Constants } from "../../../app/utils/constants"
-import { Router } from "@angular/router"
-import { SearchItemService } from "../../shared-services/search-item/search-item.services"
-import { OrdersService } from "../../services/orders/orders.service"
-import { LoginStateService } from "../../shared-services/login-state/login-state.service"
+import { Component, OnInit, NgZone } from '@angular/core'
+import { ProductsService } from '../../services/products/products.service'
+import { Common } from '../../../../src/app/utils/common'
+import { Constants } from '../../../app/utils/constants'
+import { Router } from '@angular/router'
+import { SearchItemService } from '../../shared-services/search-item/search-item.services'
+import { OrdersService } from '../../services/orders/orders.service'
+import { LoginStateService } from '../../shared-services/login-state/login-state.service'
 
 @Component({
-  selector: "app-home",
-  templateUrl: "./home.component.html",
-  styleUrls: ["./home.component.scss"],
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
   paused = false
@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
         data: [],
       },
       FrequentlyBoughtByMe: {
-        title: "",
+        title: '',
         data: [],
       },
       BrowsingHistory: {
@@ -67,43 +67,43 @@ export class HomeComponent implements OnInit {
       },
     }
 
-    this.banner = Common.getImageURI(null, "/images/home-page/sale.jpg") //"assets/images/sale.jpg"
+    this.banner = Common.getImageURI(null, '/images/home-page/sale.jpg') //"assets/images/sale.jpg"
     this.cardDetails = [
       {
-        title: "Watches",
-        image: Common.getImageURI(null, "/images/home-page/watches.jpg"),
-        desc: "Find the best photography deals",
+        title: 'Watches',
+        image: Common.getImageURI(null, '/images/home-page/watches.jpg'),
+        desc: 'Find the best photography deals',
       },
       {
-        title: "Furnitures",
-        image: Common.getImageURI(null, "/images/home-page/furnitures.jpg"),
-        desc: "Best of furnitures in store",
+        title: 'Furnitures',
+        image: Common.getImageURI(null, '/images/home-page/furnitures.jpg'),
+        desc: 'Best of furnitures in store',
       },
       {
-        title: "Paint",
+        title: 'Paint',
         image: Common.getImageURI(
           null,
-          "/images/home-page/86-Asian-Paint-full.jpeg"
+          '/images/home-page/86-Asian-Paint-full.jpeg'
         ),
-        desc: "Find the best deals here",
+        desc: 'Find the best deals here',
       },
       {
-        title: "Bricks",
-        image: Common.getImageURI(null, "/images/home-page/bricks.jpeg"),
-        desc: "Deals you might be interested in",
+        title: 'Bricks',
+        image: Common.getImageURI(null, '/images/home-page/bricks.jpeg'),
+        desc: 'Deals you might be interested in',
       },
     ]
 
     this.bannerCard = [
       {
-        title: "Wallets",
-        image: Common.getImageURI(null, "/images/home-page/wallets.jpg"),
-        desc: "End of sale",
+        title: 'Wallets',
+        image: Common.getImageURI(null, '/images/home-page/wallets.jpg'),
+        desc: 'End of sale',
       },
       {
-        title: "Sunglasses",
-        image: Common.getImageURI(null, "/images/home-page/sunglass.jpg"),
-        desc: "Deals to excite you",
+        title: 'Sunglasses',
+        image: Common.getImageURI(null, '/images/home-page/sunglass.jpg'),
+        desc: 'Deals to excite you',
       },
     ]
     this.desktopConfig = Constants.DESKTOP_CONFIG
@@ -129,9 +129,9 @@ export class HomeComponent implements OnInit {
     this.browsedHistory()
     // newly added products
     this.newAddedProductSet()
-    if (document.getElementById("idSearchInput")) {
-      let ele = document.getElementById("idSearchInput")
-      ele["value"] = null
+    if (document.getElementById('idSearchInput')) {
+      let ele = document.getElementById('idSearchInput')
+      ele['value'] = null
     }
   }
 
@@ -148,7 +148,7 @@ export class HomeComponent implements OnInit {
           return v.fields
         })
         if (data.error) {
-          throw Error("error")
+          throw Error('error')
         }
         if (data.hits.found === 0) {
           return
@@ -158,10 +158,10 @@ export class HomeComponent implements OnInit {
   }
 
   handleSale() {
-    let searchedText = "sale" // should be dynamic...
+    let searchedText = 'sale' // should be dynamic...
     let qObject = Common.searchProducts(searchedText)
     if (qObject) {
-      this.router.navigate(["/products"], { queryParams: qObject })
+      this.router.navigate(['/products'], { queryParams: qObject })
     }
   }
 
@@ -192,7 +192,7 @@ export class HomeComponent implements OnInit {
     let query = {
       q: Common.getIdBasedQueryString(frequentlyBoughtByMeSet),
       size: frequentlyBoughtByMeSet.length,
-      qdotparser: "structured",
+      qdotparser: 'structured',
     }
 
     this._productsService.get(query).subscribe((data) => {
@@ -203,7 +203,7 @@ export class HomeComponent implements OnInit {
           return v.fields
         })
         if (data.error) {
-          throw Error("error")
+          throw Error('error')
         }
         if (data.hits.found === 0) {
           return
@@ -230,7 +230,7 @@ export class HomeComponent implements OnInit {
     let query = {
       q: Common.getIdBasedQueryString(frequentlyBoughtSet),
       size: frequentlyBoughtSet.length,
-      qdotparser: "structured",
+      qdotparser: 'structured',
     }
 
     this._productsService.get(query).subscribe((data) => {
@@ -241,7 +241,7 @@ export class HomeComponent implements OnInit {
           return v.fields
         })
         if (data.error) {
-          throw Error("error")
+          throw Error('error')
         }
         if (data.hits.found === 0) {
           return
@@ -263,7 +263,7 @@ export class HomeComponent implements OnInit {
           return v.fields
         })
         if (data.error) {
-          throw Error("error")
+          throw Error('error')
         }
         if (data.hits.found === 0) {
           return
@@ -286,7 +286,7 @@ export class HomeComponent implements OnInit {
           return v.fields
         })
         if (data.error) {
-          throw Error("error")
+          throw Error('error')
         }
         if (data.hits.found === 0) {
           return

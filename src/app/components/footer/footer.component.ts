@@ -1,13 +1,13 @@
-import { Component, OnInit, NgZone } from "@angular/core"
-import { Constants } from "../../utils/constants"
-import { Router } from "@angular/router"
-import { RouteService } from "../../shared-services/route/route.service"
-import { LoginStateService } from "../../shared-services/login-state/login-state.service"
+import { Component, OnInit, NgZone } from '@angular/core'
+import { Constants } from '../../utils/constants'
+import { Router } from '@angular/router'
+import { RouteService } from '../../shared-services/route/route.service'
+import { LoginStateService } from '../../shared-services/login-state/login-state.service'
 
 @Component({
-  selector: "app-footer",
-  templateUrl: "./footer.component.html",
-  styleUrls: ["./footer.component.scss"],
+  selector: 'app-footer',
+  templateUrl: './footer.component.html',
+  styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent implements OnInit {
   isSignedIn: Boolean = false
@@ -25,8 +25,8 @@ export class FooterComponent implements OnInit {
   ngOnInit() {}
 
   handleHelpNaviagte() {
-    this.RouteService.changeRoute("questionnaire")
-    this.ngZone.run(() => this.router.navigate(["profile"])).then()
+    this.RouteService.changeRoute('questionnaire')
+    this.ngZone.run(() => this.router.navigate(['profile'])).then()
   }
 
   handleProfileNavigate() {
@@ -37,7 +37,7 @@ export class FooterComponent implements OnInit {
     await this.loginSessinExists()
       .then(async (_) => {
         if (this.isLoggedIn) {
-          this.ngZone.run(() => this.router.navigate(["profile"])).then()
+          this.ngZone.run(() => this.router.navigate(['profile'])).then()
         } else {
           await Promise.reject("Login Session doesn't exist!")
         }
@@ -52,7 +52,7 @@ export class FooterComponent implements OnInit {
   }
 
   async handleError(err) {
-    this.RouteService.changeRoute("profile")
-    this.router.navigateByUrl("/login")
+    this.RouteService.changeRoute('profile')
+    this.router.navigateByUrl('/login')
   }
 }

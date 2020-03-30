@@ -1,10 +1,10 @@
-import { Injectable } from "@angular/core"
-import { CognitoUserPool } from "amazon-cognito-identity-js"
-import { ProfileService } from "../profile/profile.service"
-import { VirtueCognitoService } from "../virtue-cognito/virtue-cognito.service"
+import { Injectable } from '@angular/core'
+import { CognitoUserPool } from 'amazon-cognito-identity-js'
+import { ProfileService } from '../profile/profile.service'
+import { VirtueCognitoService } from '../virtue-cognito/virtue-cognito.service'
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class AuthenticationService {
   protected _cognitoUserPool: CognitoUserPool
@@ -31,7 +31,7 @@ export class AuthenticationService {
     if (this._userProfile.cognitoUser === undefined) {
       if (this._username === undefined) {
         throw new Error(
-          "Username is not set for the authentication service. Please try to use <service>.username = <username>"
+          'Username is not set for the authentication service. Please try to use <service>.username = <username>'
         )
       }
       this._userProfile.initializeProfileUsingUserData({
@@ -44,7 +44,7 @@ export class AuthenticationService {
   protected initializeNewProfile() {
     if (this._username === undefined) {
       throw new Error(
-        "Username is not set for the authentication service. Please try to use <service>.username = <username>"
+        'Username is not set for the authentication service. Please try to use <service>.username = <username>'
       )
     }
     this._userProfile.initializeProfileUsingUserData({

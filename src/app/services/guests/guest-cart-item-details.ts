@@ -1,4 +1,4 @@
-import { GuestCartItem } from "./guest-cart-item"
+import { GuestCartItem } from './guest-cart-item'
 
 export class GuestCartItemDetails {
   private _guestCartItem: any

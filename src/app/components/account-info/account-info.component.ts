@@ -1,20 +1,20 @@
-import { Component, OnInit } from "@angular/core"
-import { ProfileService } from "../../services/authentication/profile/profile.service"
-import { UpdateAttributeService } from "../../services/authentication/update-attribute/update-attribute.service"
-import { Registration } from "../../services/authentication/helpers/registration"
-import { DeleteUserService } from "../../services/authentication/delete-user/delete-user.service"
-import { LoginStateService } from "../../shared-services/login-state/login-state.service"
-import { NgbModalConfig, NgbModal } from "@ng-bootstrap/ng-bootstrap"
-import { RouteService } from "../../shared-services/route/route.service"
-import { SessionService } from "../../services/authentication/session/session.service"
-import { Router } from "@angular/router"
-import { ConfirmationDialogComponent } from "../../components/confirmation-dialog/confirmation-dialog.component"
-import { MatDialog } from "@angular/material"
+import { Component, OnInit } from '@angular/core'
+import { ProfileService } from '../../services/authentication/profile/profile.service'
+import { UpdateAttributeService } from '../../services/authentication/update-attribute/update-attribute.service'
+import { Registration } from '../../services/authentication/helpers/registration'
+import { DeleteUserService } from '../../services/authentication/delete-user/delete-user.service'
+import { LoginStateService } from '../../shared-services/login-state/login-state.service'
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap'
+import { RouteService } from '../../shared-services/route/route.service'
+import { SessionService } from '../../services/authentication/session/session.service'
+import { Router } from '@angular/router'
+import { ConfirmationDialogComponent } from '../../components/confirmation-dialog/confirmation-dialog.component'
+import { MatDialog } from '@angular/material'
 
 @Component({
-  selector: "app-account-info",
-  templateUrl: "./account-info.component.html",
-  styleUrls: ["./account-info.component.scss"],
+  selector: 'app-account-info',
+  templateUrl: './account-info.component.html',
+  styleUrls: ['./account-info.component.scss'],
   providers: [NgbModalConfig, NgbModal],
 })
 export class AccountInfoComponent implements OnInit {
@@ -26,7 +26,7 @@ export class AccountInfoComponent implements OnInit {
   failedToDelete: Boolean = false
   deleteButton: Boolean = false
   updateButton: Boolean = false
-  deleteUserMsg: string = ""
+  deleteUserMsg: string = ''
   updatedAttribute: Boolean = false
   failedToUpdate: Boolean = false
   isLoggedIn: Boolean
@@ -35,13 +35,13 @@ export class AccountInfoComponent implements OnInit {
   private _deleteUserService: DeleteUserService
 
   attribute = {
-    phone_number: "",
-    name: "",
-    email: "",
-    sendMePromotions: "",
-    commViaEmail: "",
-    commViaSMS: "",
-    personalisation: "",
+    phone_number: '',
+    name: '',
+    email: '',
+    sendMePromotions: '',
+    commViaEmail: '',
+    commViaSMS: '',
+    personalisation: '',
     sendMePromotionsB: false,
     commViaEmailB: false,
     commViaSMSB: false,
@@ -83,8 +83,8 @@ export class AccountInfoComponent implements OnInit {
   }
 
   async handleError(err) {
-    this.RouteService.changeRoute("profile/account")
-    this.router.navigateByUrl("/login")
+    this.RouteService.changeRoute('profile/account')
+    this.router.navigateByUrl('/login')
   }
 
   async fetchUserProfile() {
@@ -97,23 +97,23 @@ export class AccountInfoComponent implements OnInit {
         if (result != null) {
           for (var i = 0; i < result.length; i++) {
             if (
-              localAttributes[result[i]["Name"].replace("custom:", "")] != null
+              localAttributes[result[i]['Name'].replace('custom:', '')] != null
             ) {
               localAttributes[
-                result[i]["Name"].replace("custom:", "")
+                result[i]['Name'].replace('custom:', '')
               ] = result[i].getValue()
             }
           }
-          if (localAttributes.sendMePromotions == "true") {
+          if (localAttributes.sendMePromotions == 'true') {
             localAttributes.sendMePromotionsB = true
           }
-          if (localAttributes.commViaEmail == "true") {
+          if (localAttributes.commViaEmail == 'true') {
             localAttributes.commViaEmailB = true
           }
-          if (localAttributes.commViaSMS == "true") {
+          if (localAttributes.commViaSMS == 'true') {
             localAttributes.commViaSMSB = true
           }
-          if (localAttributes.personalisation == "true") {
+          if (localAttributes.personalisation == 'true') {
             localAttributes.personalisationB = true
           }
         }
@@ -135,13 +135,13 @@ export class AccountInfoComponent implements OnInit {
       this.attribute.phone_number,
       this.attribute.email,
       this.attribute.name,
-      "",
-      "",
+      '',
+      '',
       this.attribute.sendMePromotionsB.toString(),
       this.attribute.commViaEmailB.toString(),
       this.attribute.commViaSMSB.toString(),
       this.attribute.personalisationB.toString(),
-      ""
+      ''
     )
     this._updateAttributeService.attributeList = registrationUpdate.createUpdateAttributeList()
     const promise = this._updateAttributeService.updateAttributes()
@@ -163,7 +163,7 @@ export class AccountInfoComponent implements OnInit {
 
   delete() {
     this.dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-      width: "350px",
+      width: '350px',
       data:
         "Are you sure you want to delete the account. Once deleted, your account can't be recovered",
     })
@@ -183,7 +183,7 @@ export class AccountInfoComponent implements OnInit {
         this.failedToDelete = false
         this.deleteButton = false
         this.deletedUser = true
-        this.deleteUserMsg = "Deleted user successfully"
+        this.deleteUserMsg = 'Deleted user successfully'
         this.loginStateService.changeState(false)
       })
       .catch((error) => {

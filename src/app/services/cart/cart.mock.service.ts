@@ -1,14 +1,14 @@
-import { Injectable } from "@angular/core"
-import { RapidoHttpService } from "../commons/rapido-http.service"
-import { HttpClient } from "@angular/common/http"
-import { ProfileService } from "../authentication/profile/profile.service"
-import { of } from "rxjs"
-import { CartMockData } from "./cart.mock.data"
-import { CartService } from "./cart.service"
-import { ProductsService } from "../products/products.service"
+import { Injectable } from '@angular/core'
+import { RapidoHttpService } from '../commons/rapido-http.service'
+import { HttpClient } from '@angular/common/http'
+import { ProfileService } from '../authentication/profile/profile.service'
+import { of } from 'rxjs'
+import { CartMockData } from './cart.mock.data'
+import { CartService } from './cart.service'
+import { ProductsService } from '../products/products.service'
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class CartMockService extends CartService {
   public _productService: ProductsService

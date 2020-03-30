@@ -1,22 +1,22 @@
-import { GuestCartItem } from "./guest-cart-item"
-import { GuestCartItemDetails } from "./guest-cart-item-details"
-import { GuestCartService } from "./guest-cart.service"
+import { GuestCartItem } from './guest-cart-item'
+import { GuestCartItemDetails } from './guest-cart-item-details'
+import { GuestCartService } from './guest-cart.service'
 
 let cartItem = new GuestCartItem()
 cartItem.product_id = 1
 cartItem.quantity = 2
 let itemDetails = {
-  currency: "£",
+  currency: '£',
   images: [
-    "/images/products/31/31-shirt1.jpg",
-    "/images/products/31/31-shirt1.jpg",
-    "/images/products/31/31-shirt1.jpg",
-    "/images/products/31/31-shirt1.jpg",
+    '/images/products/31/31-shirt1.jpg',
+    '/images/products/31/31-shirt1.jpg',
+    '/images/products/31/31-shirt1.jpg',
+    '/images/products/31/31-shirt1.jpg',
   ],
   name:
     "MUFALI Men's Cotton Blend Regular Fit Scoop Neck Full Sleeve Casual Wear T-Shirt",
-  offer: "0.2",
-  price: "16499.0",
+  offer: '0.2',
+  price: '16499.0',
 }
 let cartItemDetails = new GuestCartItemDetails(cartItem, itemDetails)
 export class GuestCartMockData {
@@ -31,7 +31,7 @@ export class GuestCartMockData {
     changedRows: 0,
     fieldCount: 0,
     insertId: 0,
-    message: "",
+    message: '',
     protocol41: true,
     serverStatus: 2,
     warningCount: 0,
@@ -42,7 +42,7 @@ export class GuestCartMockData {
     changedRows: 0,
     fieldCount: 0,
     insertId: 0,
-    message: "",
+    message: '',
     protocol41: true,
     serverStatus: 2,
     warningCount: 0,
@@ -53,7 +53,7 @@ export class GuestCartMockData {
     changedRows: 0,
     fieldCount: 0,
     insertId: 0,
-    message: "",
+    message: '',
     protocol41: true,
     serverStatus: 2,
     warningCount: 0,

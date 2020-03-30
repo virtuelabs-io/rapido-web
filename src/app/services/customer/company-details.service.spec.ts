@@ -1,9 +1,9 @@
-import { TestBed } from "@angular/core/testing"
-import { HttpClientTestingModule } from "@angular/common/http/testing"
-import { CompanyDetailsService } from "./company-details.service"
-import { ProfileService } from "../authentication/profile/profile.service"
+import { TestBed } from '@angular/core/testing'
+import { HttpClientTestingModule } from '@angular/common/http/testing'
+import { CompanyDetailsService } from './company-details.service'
+import { ProfileService } from '../authentication/profile/profile.service'
 
-describe("CompanyDetailsService", () => {
+describe('CompanyDetailsService', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
@@ -11,7 +11,7 @@ describe("CompanyDetailsService", () => {
     })
   )
 
-  it("should be created", () => {
+  it('should be created', () => {
     const service: CompanyDetailsService = TestBed.get(CompanyDetailsService)
     expect(service).toBeTruthy()
   })

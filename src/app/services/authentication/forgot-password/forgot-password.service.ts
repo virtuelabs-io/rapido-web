@@ -1,12 +1,12 @@
-import { Injectable } from "@angular/core"
-import { ProfileService } from "../profile/profile.service"
-import { VirtueCognitoService } from "../virtue-cognito/virtue-cognito.service"
-import { AuthenticationService } from "../base/authentication.service"
-import { Response } from "../../../utils/response"
-import { Constants } from "../../../utils/constants"
+import { Injectable } from '@angular/core'
+import { ProfileService } from '../profile/profile.service'
+import { VirtueCognitoService } from '../virtue-cognito/virtue-cognito.service'
+import { AuthenticationService } from '../base/authentication.service'
+import { Response } from '../../../utils/response'
+import { Constants } from '../../../utils/constants'
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class ForgotPasswordService extends AuthenticationService {
   constructor(
@@ -30,9 +30,9 @@ export class ForgotPasswordService extends AuthenticationService {
         inputVerificationCode() {
           let verificationCode: string = prompt(
             Constants.INPUT_VERIFICATION_CODE,
-            ""
+            ''
           )
-          let newPassword: string = prompt(Constants.ENTER_NEW_PASSWORD, "")
+          let newPassword: string = prompt(Constants.ENTER_NEW_PASSWORD, '')
           feed._userProfile.cognitoUser.confirmPassword(
             verificationCode,
             newPassword,

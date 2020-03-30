@@ -1,16 +1,16 @@
-import { Component, OnInit, Input, OnDestroy } from "@angular/core"
-import { SearchItemService } from "../../shared-services/search-item/search-item.services"
-import { ProductsHierarchyService } from "../../services/products/products-hierarchy.service"
-import { ProductsService } from "../../services/products/products.service"
-import { Router } from "@angular/router"
-import { Query } from "src/app/services/products/query.interface"
-import { Common } from "src/app/utils/common"
-import { LoginStateService } from "src/app/shared-services/login-state/login-state.service"
+import { Component, OnInit, Input, OnDestroy } from '@angular/core'
+import { SearchItemService } from '../../shared-services/search-item/search-item.services'
+import { ProductsHierarchyService } from '../../services/products/products-hierarchy.service'
+import { ProductsService } from '../../services/products/products.service'
+import { Router } from '@angular/router'
+import { Query } from 'src/app/services/products/query.interface'
+import { Common } from 'src/app/utils/common'
+import { LoginStateService } from 'src/app/shared-services/login-state/login-state.service'
 
 @Component({
-  selector: "app-leftsection",
-  templateUrl: "./leftsection.component.html",
-  styleUrls: ["./leftsection.component.scss"],
+  selector: 'app-leftsection',
+  templateUrl: './leftsection.component.html',
+  styleUrls: ['./leftsection.component.scss'],
 })
 export class LeftSectionComponent implements OnInit, OnDestroy {
   @Input() closeDialog: any
@@ -21,17 +21,17 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
   private _productsService: ProductsService
   fnPriceFilterHandler: Function
   tags = []
-  category: string = ""
+  category: string = ''
   categories: any
   subcategories: any
   fieldsQuery: any
-  searchedText: string = ""
+  searchedText: string = ''
   _searchItemServicecurrentState: any
   _searchItemServiceResponsePoductListState: any
   releatedSearch: any
   currency: any
   sortByType = {
-    value: "",
+    value: '',
     asc: false,
     desc: false,
   }
@@ -57,9 +57,9 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
         text: null,
       },
     }
-    let localFieldsQuery = localStorage.getItem("fieldsQuery")
-    let localSearchedText = localStorage.getItem("searchedText")
-    if (localFieldsQuery && localFieldsQuery !== "[object Object]") {
+    let localFieldsQuery = localStorage.getItem('fieldsQuery')
+    let localSearchedText = localStorage.getItem('searchedText')
+    if (localFieldsQuery && localFieldsQuery !== '[object Object]') {
       this.fieldsQuery = JSON.parse(localFieldsQuery)
     }
     if (localSearchedText) {
@@ -76,7 +76,7 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
         if (query.searchedText) {
           this.searchedText = query.searchedText
           this.releatedSearch = query.releatedSearch
-          if (query.fieldsQuery && typeof query.fieldsQuery === "string") {
+          if (query.fieldsQuery && typeof query.fieldsQuery === 'string') {
             this.fieldsQuery = JSON.parse(query.fieldsQuery)
           } else {
             this.fieldsQuery = query.fieldsQuery
@@ -86,7 +86,7 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
             this.onPressSort(query.sort)
           } else {
             this.sortByType = {
-              value: "",
+              value: '',
               asc: false,
               desc: false,
             }
@@ -111,17 +111,17 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
         this.fnPriceFilterHandler = (obj) => this.priceFilterData(obj)
         this.filterData = [
           {
-            headerText: "Filter by",
-            expanded: "true",
+            headerText: 'Filter by',
+            expanded: 'true',
             panel: [
               {
-                panelTitle: "Rating",
-                panelType: "rating",
-                panelData: ["4", "3", "2", "1"],
+                panelTitle: 'Rating',
+                panelType: 'rating',
+                panelData: ['4', '3', '2', '1'],
               },
               {
                 panelTitle: `Price(${this.currency})`,
-                panelType: "priceslider",
+                panelType: 'priceslider',
                 panelData: {
                   fnPriceFilterHandler: this.fnPriceFilterHandler,
                   maxValue: 500000, //dynamic
@@ -131,40 +131,40 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
             ],
           },
           {
-            headerText: "",
-            expanded: "false",
+            headerText: '',
+            expanded: 'false',
             panel: [
               {
-                panelTitle: "Sort by",
-                panelType: "sort",
+                panelTitle: 'Sort by',
+                panelType: 'sort',
                 panelData: [
                   {
-                    desc: "Price: Low to High",
-                    key: "price asc",
+                    desc: 'Price: Low to High',
+                    key: 'price asc',
                   },
                   {
-                    desc: "Price: High to Low",
-                    key: "price desc",
+                    desc: 'Price: High to Low',
+                    key: 'price desc',
                   },
                   {
-                    desc: "Rating: Low to High",
-                    key: "rating asc",
+                    desc: 'Rating: Low to High',
+                    key: 'rating asc',
                   },
                   {
-                    desc: "Rating: High to Low",
-                    key: "rating desc",
+                    desc: 'Rating: High to Low',
+                    key: 'rating desc',
                   },
                 ],
               },
             ],
           },
           {
-            headerText: "Related searches",
-            expanded: "false",
+            headerText: 'Related searches',
+            expanded: 'false',
             panel: [
               {
-                panelTitle: this.searchedText || "",
-                panelType: "link",
+                panelTitle: this.searchedText || '',
+                panelType: 'link',
                 panelData: this.tags,
               },
             ],
@@ -172,7 +172,7 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
         ]
       }
     } catch (e) {
-      console.log("something went wrong")
+      console.log('something went wrong')
     }
   }
 
@@ -190,12 +190,12 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
     this.updateFilterConditions({
       q: query,
       searchedText: this.searchedText,
-      qdotparser: "structured",
+      qdotparser: 'structured',
       parser: null,
       size: 15,
       start: 0,
       price: `[${range.min}, ${range.max}]`,
-      rating: this.fieldsQuery.rating.q || "",
+      rating: this.fieldsQuery.rating.q || '',
     })
   }
 
@@ -215,10 +215,10 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
     this.updateFilterConditions({
       q: query,
       searchedText: this.searchedText,
-      qdotparser: "structured",
+      qdotparser: 'structured',
       parser: null,
       rating: val,
-      price: this.fieldsQuery.price.q || "",
+      price: this.fieldsQuery.price.q || '',
     })
   }
 
@@ -226,9 +226,9 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
     this.sortByType.desc = false
     this.sortByType.asc = false
     try {
-      if (data.split(" ")[1] === "asc") {
+      if (data.split(' ')[1] === 'asc') {
         this.sortByType.asc = true
-      } else if (data.split(" ")[1] === "desc") {
+      } else if (data.split(' ')[1] === 'desc') {
         this.sortByType.desc = true
       }
     } catch (error) {
@@ -254,7 +254,7 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
       return: null,
       qdotparser:
         this.fieldsQuery.rating.q || this.fieldsQuery.price.q
-          ? "structured"
+          ? 'structured'
           : null,
       releatedSearch: this.releatedSearch,
       rating: this.fieldsQuery.rating.q,
@@ -268,10 +268,10 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
       let qObject = { ...this.prevQuery, ...queryObj }
       this._searchItemService.changeState(qObject)
       let urlParams = Common.setUrlParams(qObject)
-      this.router.navigate(["/products"], { queryParams: urlParams })
+      this.router.navigate(['/products'], { queryParams: urlParams })
       if (this.closeDialog) {
-        localStorage.setItem("fieldsQuery", JSON.stringify(this.fieldsQuery))
-        localStorage.setItem("searchedText", this.searchedText)
+        localStorage.setItem('fieldsQuery', JSON.stringify(this.fieldsQuery))
+        localStorage.setItem('searchedText', this.searchedText)
         this.closeDialog.close()
       }
     }
@@ -288,7 +288,7 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
         this.onPressItem(qSearch, null)
       } else {
         let priceRange = this.fieldsQuery.price.q
-        if (typeof this.fieldsQuery.price.q === "string") {
+        if (typeof this.fieldsQuery.price.q === 'string') {
           priceRange = JSON.parse(this.fieldsQuery.price.q)
         }
         if (priceRange) {

@@ -1,9 +1,9 @@
-import { Injectable } from "@angular/core"
-import { Constants } from "./constants"
-import { Query } from "./../../../src/app/services/products/query.interface"
+import { Injectable } from '@angular/core'
+import { Constants } from './constants'
+import { Query } from './../../../src/app/services/products/query.interface'
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class Common {
   public static getImageURI = (images: Array<string>, imagePath: string) => {
@@ -27,7 +27,7 @@ export class Common {
     }
   }
 
-  public static searchProducts = (searchText: string = ""): Query => {
+  public static searchProducts = (searchText: string = ''): Query => {
     return { q: searchText }
   }
 
@@ -41,7 +41,7 @@ export class Common {
       rating: {
         q: updatedQuery.rating,
         text: updatedQuery.rating
-          ? updatedQuery.rating + "+"
+          ? updatedQuery.rating + '+'
           : updatedQuery.rating,
       },
     }
@@ -68,15 +68,15 @@ export class Common {
     }
 
     let defaultQuery = {
-      q: "",
+      q: '',
       searchedText: updatedQuery.searchedText || updatedQuery.q,
-      releatedSearch: "",
+      releatedSearch: '',
       size: 15,
       cursor: null,
       return: null,
       start: null,
       sort: null,
-      parser: "structured",
+      parser: 'structured',
       fieldsQuery: JSON.stringify(fieldsQuery),
     }
 
@@ -88,10 +88,10 @@ export class Common {
     Object.keys(updatedQuery).forEach((key) => {
       if (
         updatedQuery[key] == null ||
-        updatedQuery[key] == "" ||
-        key == "parser" ||
-        key == "size" ||
-        key == "fieldsQuery"
+        updatedQuery[key] == '' ||
+        key == 'parser' ||
+        key == 'size' ||
+        key == 'fieldsQuery'
       ) {
         delete updatedQuery[key]
       }
@@ -101,12 +101,12 @@ export class Common {
   }
 
   public static getIdBasedQueryString = (_productIds: string[]) => {
-    let _queryItem = "(term+field=_id+{p})"
-    let _queryString: string = "(or+"
+    let _queryItem = '(term+field=_id+{p})'
+    let _queryString: string = '(or+'
     _productIds.forEach((productId) => {
-      _queryString = _queryString + _queryItem.replace("{p}", productId)
+      _queryString = _queryString + _queryItem.replace('{p}', productId)
     })
-    _queryString = _queryString + ")"
+    _queryString = _queryString + ')'
     return _queryString
   }
 }

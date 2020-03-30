@@ -1,12 +1,12 @@
-import { Injectable } from "@angular/core"
-import { RapidoHttpService } from "../commons/rapido-http.service"
-import { CompanyDetails } from "./company-details"
-import { HttpClient } from "@angular/common/http"
-import { ProfileService } from "../authentication/profile/profile.service"
-import { Constants } from "../../utils/constants"
+import { Injectable } from '@angular/core'
+import { RapidoHttpService } from '../commons/rapido-http.service'
+import { CompanyDetails } from './company-details'
+import { HttpClient } from '@angular/common/http'
+import { ProfileService } from '../authentication/profile/profile.service'
+import { Constants } from '../../utils/constants'
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class CompanyDetailsService extends RapidoHttpService<CompanyDetails> {
   constructor(

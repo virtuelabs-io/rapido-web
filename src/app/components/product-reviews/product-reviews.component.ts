@@ -6,18 +6,18 @@ import {
   Output,
   NgZone,
   EventEmitter,
-} from "@angular/core"
-import { RatingsService } from "../../services/ratings/ratings.service"
-import { LoginStateService } from "../../shared-services/login-state/login-state.service"
-import { RouteService } from "../../shared-services/route/route.service"
-import { Router } from "@angular/router"
-import { MatSnackBar } from "@angular/material/snack-bar"
-import { Constants } from "../../../../src/app/utils/constants"
+} from '@angular/core'
+import { RatingsService } from '../../services/ratings/ratings.service'
+import { LoginStateService } from '../../shared-services/login-state/login-state.service'
+import { RouteService } from '../../shared-services/route/route.service'
+import { Router } from '@angular/router'
+import { MatSnackBar } from '@angular/material/snack-bar'
+import { Constants } from '../../../../src/app/utils/constants'
 
 @Component({
-  selector: "app-product-reviews",
-  templateUrl: "./product-reviews.component.html",
-  styleUrls: ["./product-reviews.component.scss"],
+  selector: 'app-product-reviews',
+  templateUrl: './product-reviews.component.html',
+  styleUrls: ['./product-reviews.component.scss'],
 })
 export class ProductReviewsComponent implements OnInit {
   @Input() filteredReview = []
@@ -63,18 +63,18 @@ export class ProductReviewsComponent implements OnInit {
   }
 
   async handleError(err) {
-    this.RouteService.changeRoute("products/details/" + this.productId)
-    this.router.navigateByUrl("/login")
+    this.RouteService.changeRoute('products/details/' + this.productId)
+    this.router.navigateByUrl('/login')
   }
 
   async formatReviews() {
     this._loginStateService.loaderEnable()
     if (this.filteredReview) {
       this.filteredReview.map((v, i) => {
-        if (v.updated_on == "" || v.updated_on == null) {
-          this.filteredReview[i].updated_on = v.created_on.split("T")[0]
+        if (v.updated_on == '' || v.updated_on == null) {
+          this.filteredReview[i].updated_on = v.created_on.split('T')[0]
         } else {
-          this.filteredReview[i].updated_on = v.updated_on.split("T")[0]
+          this.filteredReview[i].updated_on = v.updated_on.split('T')[0]
         }
       })
       this._loginStateService.loaderDisable()
@@ -100,7 +100,7 @@ export class ProductReviewsComponent implements OnInit {
         })
     } else {
       this._loginStateService.loaderDisable()
-      await this.handleError("e")
+      await this.handleError('e')
       await Promise.reject("Login Session doesn't exist!")
     }
   }
@@ -122,14 +122,14 @@ export class ProductReviewsComponent implements OnInit {
       })
     } else {
       this._loginStateService.loaderDisable()
-      await this.handleError("e")
+      await this.handleError('e')
       await Promise.reject("Login Session doesn't exist!")
     }
   }
 
   editReview(id) {
     this.ngZone
-      .run(() => this.router.navigate(["review/edit/review", id]))
+      .run(() => this.router.navigate(['review/edit/review', id]))
       .then()
   }
 
@@ -144,7 +144,7 @@ export class ProductReviewsComponent implements OnInit {
       })
     } else {
       this._loginStateService.loaderDisable()
-      await this.handleError("e")
+      await this.handleError('e')
       await Promise.reject("Login Session doesn't exist!")
     }
   }

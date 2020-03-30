@@ -1,24 +1,24 @@
-import { Component, OnInit, NgZone } from "@angular/core"
-import { FormGroup, Validators, FormControl } from "@angular/forms"
-import { CompanyDetails } from "../../services/customer/company-details"
-import { CompanyDetailsService } from "../../services/customer/company-details.service"
-import { Router } from "@angular/router"
-import { MatSnackBar, MatDialog } from "@angular/material"
-import { Constants } from "../../utils/constants"
-import { RouteService } from "../../shared-services/route/route.service"
-import { SessionService } from "../../services/authentication/session/session.service"
-import { LoginStateService } from "../../shared-services/login-state/login-state.service"
-import { ConfirmationDialogComponent } from "../../components/confirmation-dialog/confirmation-dialog.component"
+import { Component, OnInit, NgZone } from '@angular/core'
+import { FormGroup, Validators, FormControl } from '@angular/forms'
+import { CompanyDetails } from '../../services/customer/company-details'
+import { CompanyDetailsService } from '../../services/customer/company-details.service'
+import { Router } from '@angular/router'
+import { MatSnackBar, MatDialog } from '@angular/material'
+import { Constants } from '../../utils/constants'
+import { RouteService } from '../../shared-services/route/route.service'
+import { SessionService } from '../../services/authentication/session/session.service'
+import { LoginStateService } from '../../shared-services/login-state/login-state.service'
+import { ConfirmationDialogComponent } from '../../components/confirmation-dialog/confirmation-dialog.component'
 
 @Component({
-  selector: "app-company-details",
-  templateUrl: "./company-details.component.html",
-  styleUrls: ["./company-details.component.scss"],
+  selector: 'app-company-details',
+  templateUrl: './company-details.component.html',
+  styleUrls: ['./company-details.component.scss'],
 })
 export class CompanyDetailsComponent implements OnInit {
-  _customerId: string = ""
+  _customerId: string = ''
   editButtonShow: boolean = false
-  _snackBarMsg: string = ""
+  _snackBarMsg: string = ''
   _modalReference = null
   isLoggedIn: Boolean
   deleteRes: any
@@ -43,13 +43,13 @@ export class CompanyDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.addressFormGroup = new FormGroup({
-      name: new FormControl("", [Validators.required]),
-      add1: new FormControl("", [Validators.required]),
-      add2: new FormControl("", [Validators.required]),
-      town_city: new FormControl("", [Validators.required]),
-      postCode: new FormControl("", [Validators.required]),
-      county: new FormControl("", [Validators.required]),
-      country: new FormControl("", [Validators.required]),
+      name: new FormControl('', [Validators.required]),
+      add1: new FormControl('', [Validators.required]),
+      add2: new FormControl('', [Validators.required]),
+      town_city: new FormControl('', [Validators.required]),
+      postCode: new FormControl('', [Validators.required]),
+      county: new FormControl('', [Validators.required]),
+      country: new FormControl('', [Validators.required]),
     })
     this.userLogInCheck()
   }
@@ -67,8 +67,8 @@ export class CompanyDetailsComponent implements OnInit {
   }
 
   async handleError(err) {
-    this.RouteService.changeRoute("profile/companyDetails")
-    this.router.navigateByUrl("/login")
+    this.RouteService.changeRoute('profile/companyDetails')
+    this.router.navigateByUrl('/login')
   }
 
   async getCompanyDetails() {
@@ -79,23 +79,23 @@ export class CompanyDetailsComponent implements OnInit {
         .subscribe((data) => {
           if (data != null) {
             this.editButtonShow = true
-            this.addressFormGroup.controls["name"].setValue(data.company_name)
-            this.addressFormGroup.controls["add1"].setValue(data.addr_1)
-            this.addressFormGroup.controls["add2"].setValue(data.addr_2)
-            this.addressFormGroup.controls["town_city"].setValue(data.city)
-            this.addressFormGroup.controls["postCode"].setValue(data.postcode)
-            this.addressFormGroup.controls["country"].setValue(data.country)
-            this.addressFormGroup.controls["county"].setValue(data.county)
+            this.addressFormGroup.controls['name'].setValue(data.company_name)
+            this.addressFormGroup.controls['add1'].setValue(data.addr_1)
+            this.addressFormGroup.controls['add2'].setValue(data.addr_2)
+            this.addressFormGroup.controls['town_city'].setValue(data.city)
+            this.addressFormGroup.controls['postCode'].setValue(data.postcode)
+            this.addressFormGroup.controls['country'].setValue(data.country)
+            this.addressFormGroup.controls['county'].setValue(data.county)
             this._customerId = data.customer_id
           } else {
             this.editButtonShow = false
-            this.addressFormGroup.controls["name"].setValue("")
-            this.addressFormGroup.controls["add1"].setValue("")
-            this.addressFormGroup.controls["add2"].setValue("")
-            this.addressFormGroup.controls["town_city"].setValue("")
-            this.addressFormGroup.controls["postCode"].setValue("")
-            this.addressFormGroup.controls["country"].setValue("")
-            this.addressFormGroup.controls["county"].setValue("")
+            this.addressFormGroup.controls['name'].setValue('')
+            this.addressFormGroup.controls['add1'].setValue('')
+            this.addressFormGroup.controls['add2'].setValue('')
+            this.addressFormGroup.controls['town_city'].setValue('')
+            this.addressFormGroup.controls['postCode'].setValue('')
+            this.addressFormGroup.controls['country'].setValue('')
+            this.addressFormGroup.controls['county'].setValue('')
           }
           this._loginStateService.loaderDisable()
         })
@@ -106,8 +106,8 @@ export class CompanyDetailsComponent implements OnInit {
 
   putCompanyDetails() {
     this.dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-      width: "350px",
-      data: "Do you confirm to save the changes?",
+      width: '350px',
+      data: 'Do you confirm to save the changes?',
     })
     this.dialogRef.afterClosed().subscribe((result) => {
       if (result) {
@@ -133,7 +133,7 @@ export class CompanyDetailsComponent implements OnInit {
       .subscribe((data) => {
         this.putRes = data
         this.getCompanyDetails()
-        this._snackBar.open(this._snackBarMsg, "", {
+        this._snackBar.open(this._snackBarMsg, '', {
           duration: 5000,
         })
         this._loginStateService.loaderDisable()
@@ -157,7 +157,7 @@ export class CompanyDetailsComponent implements OnInit {
       .subscribe((data) => {
         this.postRes = data
         this._loginStateService.loaderDisable()
-        this._snackBar.open(this._snackBarMsg, "", {
+        this._snackBar.open(this._snackBarMsg, '', {
           duration: 5000,
         })
       })
@@ -165,7 +165,7 @@ export class CompanyDetailsComponent implements OnInit {
 
   cancelAddAddress() {
     this.ngZone
-      .run(() => this.router.navigate(["profile/companyDetails"]))
+      .run(() => this.router.navigate(['profile/companyDetails']))
       .then()
   }
 

@@ -1,4 +1,4 @@
-import { CognitoUserAttribute } from "amazon-cognito-identity-js"
+import { CognitoUserAttribute } from 'amazon-cognito-identity-js'
 
 export interface SignUpInterface {
   phone_number: string

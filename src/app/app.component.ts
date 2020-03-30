@@ -1,13 +1,13 @@
-import { Component, Inject } from "@angular/core"
-import { PageScrollService } from "ngx-page-scroll-core"
-import { DOCUMENT } from "@angular/common"
-import { Router, Event, ActivationEnd } from "@angular/router"
-import { Config } from "src/app/utils/config"
-import { SidenavService } from "./components/nav/nav.service"
+import { Component, Inject } from '@angular/core'
+import { PageScrollService } from 'ngx-page-scroll-core'
+import { DOCUMENT } from '@angular/common'
+import { Router, Event, ActivationEnd } from '@angular/router'
+import { Config } from 'src/app/utils/config'
+import { SidenavService } from './components/nav/nav.service'
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"],
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   showNavBar: Boolean = true
@@ -22,7 +22,7 @@ export class AppComponent {
   ngOnInit() {
     this.pageScrollService.scroll({
       document: this.document,
-      scrollTarget: ".nav-top",
+      scrollTarget: '.nav-top',
     })
 
     this.router.events.subscribe((event: Event) => {

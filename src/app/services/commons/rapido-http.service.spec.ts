@@ -1,12 +1,12 @@
-import { TestBed, inject, fakeAsync, tick } from "@angular/core/testing"
+import { TestBed, inject, fakeAsync, tick } from '@angular/core/testing'
 import {
   HttpClientTestingModule,
   HttpTestingController,
-} from "@angular/common/http/testing"
+} from '@angular/common/http/testing'
 
-import { HttpClient, HttpHeaders } from "@angular/common/http"
-import { RapidoHttpService } from "./rapido-http.service"
-import { ProfileService } from "../authentication/profile/profile.service"
+import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { RapidoHttpService } from './rapido-http.service'
+import { ProfileService } from '../authentication/profile/profile.service'
 
 class User {
   constructor(private _name: string) {}
@@ -23,7 +23,7 @@ class UserService extends RapidoHttpService<User> {
   }
 }
 
-describe("RapidoHttpService", () => {
+describe('RapidoHttpService', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
@@ -31,12 +31,12 @@ describe("RapidoHttpService", () => {
     })
   )
 
-  it("should be created", () => {
+  it('should be created', () => {
     const service: RapidoHttpService<string> = TestBed.get(RapidoHttpService)
     expect(service).toBeTruthy()
   })
 
-  it("GET entity", fakeAsync(
+  it('GET entity', fakeAsync(
     inject(
       [HttpTestingController, ProfileService, HttpClient],
       (
@@ -45,8 +45,8 @@ describe("RapidoHttpService", () => {
         httpClient: HttpClient
       ) => {
         // Set up
-        const url = "https://rapidobuild.com/api/user/"
-        const user = new User("rocky")
+        const url = 'https://rapidobuild.com/api/user/'
+        const user = new User('rocky')
         const service = new UserService(httpClient, profileService)
         const responseObject = {
           body: user,
@@ -67,13 +67,13 @@ describe("RapidoHttpService", () => {
 
         tick()
 
-        expect(requestWrapper.request.method).toEqual("GET")
-        expect(response.body.name).toEqual("rocky")
+        expect(requestWrapper.request.method).toEqual('GET')
+        expect(response.body.name).toEqual('rocky')
         expect(response.status).toBe(200)
       }
     )
   ))
-  it("GET entity list", fakeAsync(
+  it('GET entity list', fakeAsync(
     inject(
       [HttpTestingController, ProfileService, HttpClient],
       (
@@ -82,8 +82,8 @@ describe("RapidoHttpService", () => {
         httpClient: HttpClient
       ) => {
         // Set up
-        const url = "https://rapidobuild.com/api/user/list"
-        const user = new User("rocky")
+        const url = 'https://rapidobuild.com/api/user/list'
+        const user = new User('rocky')
         const service = new UserService(httpClient, profileService)
         const responseObject = {
           body: [user, user],
@@ -104,13 +104,13 @@ describe("RapidoHttpService", () => {
 
         tick()
 
-        expect(requestWrapper.request.method).toEqual("GET")
+        expect(requestWrapper.request.method).toEqual('GET')
         expect(response.body.length).toEqual(2)
         expect(response.status).toBe(200)
       }
     )
   ))
-  it("POST entity", fakeAsync(
+  it('POST entity', fakeAsync(
     inject(
       [HttpTestingController, ProfileService, HttpClient],
       (
@@ -119,8 +119,8 @@ describe("RapidoHttpService", () => {
         httpClient: HttpClient
       ) => {
         // Set up
-        const url = "https://rapidobuild.com/api/user/"
-        const user = new User("rocky")
+        const url = 'https://rapidobuild.com/api/user/'
+        const user = new User('rocky')
         const service = new UserService(httpClient, profileService)
         const responseObject = {
           body: user,
@@ -141,13 +141,13 @@ describe("RapidoHttpService", () => {
 
         tick()
 
-        expect(requestWrapper.request.method).toEqual("POST")
-        expect(response.body.name).toEqual("rocky")
+        expect(requestWrapper.request.method).toEqual('POST')
+        expect(response.body.name).toEqual('rocky')
         expect(response.status).toBe(201)
       }
     )
   ))
-  it("POST entity list", fakeAsync(
+  it('POST entity list', fakeAsync(
     inject(
       [HttpTestingController, ProfileService, HttpClient],
       (
@@ -156,8 +156,8 @@ describe("RapidoHttpService", () => {
         httpClient: HttpClient
       ) => {
         // Set up
-        const url = "https://rapidobuild.com/api/user/"
-        const user = new User("rocky")
+        const url = 'https://rapidobuild.com/api/user/'
+        const user = new User('rocky')
         const service = new UserService(httpClient, profileService)
         const responseObject = {
           body: [user, user],
@@ -178,14 +178,14 @@ describe("RapidoHttpService", () => {
 
         tick()
 
-        expect(requestWrapper.request.method).toEqual("POST")
-        expect(response.body[0].name).toEqual("rocky")
-        expect(response.body[1].name).toEqual("rocky")
+        expect(requestWrapper.request.method).toEqual('POST')
+        expect(response.body[0].name).toEqual('rocky')
+        expect(response.body[1].name).toEqual('rocky')
         expect(response.status).toBe(201)
       }
     )
   ))
-  it("PUT entity", fakeAsync(
+  it('PUT entity', fakeAsync(
     inject(
       [HttpTestingController, ProfileService, HttpClient],
       (
@@ -194,8 +194,8 @@ describe("RapidoHttpService", () => {
         httpClient: HttpClient
       ) => {
         // Set up
-        const url = "https://rapidobuild.com/api/user/"
-        const user = new User("rocky")
+        const url = 'https://rapidobuild.com/api/user/'
+        const user = new User('rocky')
         const service = new UserService(httpClient, profileService)
         const responseObject = {
           body: user,
@@ -216,13 +216,13 @@ describe("RapidoHttpService", () => {
 
         tick()
 
-        expect(requestWrapper.request.method).toEqual("PUT")
-        expect(response.body.name).toEqual("rocky")
+        expect(requestWrapper.request.method).toEqual('PUT')
+        expect(response.body.name).toEqual('rocky')
         expect(response.status).toBe(202)
       }
     )
   ))
-  it("DELETE entity", fakeAsync(
+  it('DELETE entity', fakeAsync(
     inject(
       [HttpTestingController, ProfileService, HttpClient],
       (
@@ -231,7 +231,7 @@ describe("RapidoHttpService", () => {
         httpClient: HttpClient
       ) => {
         // Set up
-        const url = "https://rapidobuild.com/api/user/rocky"
+        const url = 'https://rapidobuild.com/api/user/rocky'
         const service = new UserService(httpClient, profileService)
         const responseObject = {
           body: null,
@@ -252,13 +252,13 @@ describe("RapidoHttpService", () => {
 
         tick()
 
-        expect(requestWrapper.request.method).toEqual("DELETE")
+        expect(requestWrapper.request.method).toEqual('DELETE')
         expect(response.status).toBe(204)
       }
     )
   ))
 
-  it("GET entity with headers", fakeAsync(
+  it('GET entity with headers', fakeAsync(
     inject(
       [HttpTestingController, ProfileService, HttpClient],
       (
@@ -268,8 +268,8 @@ describe("RapidoHttpService", () => {
       ) => {
         // Set up
 
-        const url = "https://rapidobuild.com/api/user/"
-        const user = new User("rocky")
+        const url = 'https://rapidobuild.com/api/user/'
+        const user = new User('rocky')
         const service = new UserService(httpClient, profileService)
         const responseObject = {
           body: user,
@@ -291,13 +291,13 @@ describe("RapidoHttpService", () => {
 
         tick()
 
-        expect(requestWrapper.request.method).toEqual("GET")
-        expect(response.body.name).toEqual("rocky")
+        expect(requestWrapper.request.method).toEqual('GET')
+        expect(response.body.name).toEqual('rocky')
         expect(response.status).toBe(200)
       }
     )
   ))
-  it("GET entity list with headers", fakeAsync(
+  it('GET entity list with headers', fakeAsync(
     inject(
       [HttpTestingController, ProfileService, HttpClient],
       (
@@ -306,8 +306,8 @@ describe("RapidoHttpService", () => {
         httpClient: HttpClient
       ) => {
         // Set up
-        const url = "https://rapidobuild.com/api/user/list"
-        const user = new User("rocky")
+        const url = 'https://rapidobuild.com/api/user/list'
+        const user = new User('rocky')
         const service = new UserService(httpClient, profileService)
         const responseObject = {
           body: [user, user],
@@ -329,13 +329,13 @@ describe("RapidoHttpService", () => {
 
         tick()
 
-        expect(requestWrapper.request.method).toEqual("GET")
+        expect(requestWrapper.request.method).toEqual('GET')
         expect(response.body.length).toEqual(2)
         expect(response.status).toBe(200)
       }
     )
   ))
-  it("POST entity with headers", fakeAsync(
+  it('POST entity with headers', fakeAsync(
     inject(
       [HttpTestingController, ProfileService, HttpClient],
       (
@@ -344,8 +344,8 @@ describe("RapidoHttpService", () => {
         httpClient: HttpClient
       ) => {
         // Set up
-        const url = "https://rapidobuild.com/api/user/"
-        const user = new User("rocky")
+        const url = 'https://rapidobuild.com/api/user/'
+        const user = new User('rocky')
         const service = new UserService(httpClient, profileService)
         const responseObject = {
           body: user,
@@ -367,13 +367,13 @@ describe("RapidoHttpService", () => {
 
         tick()
 
-        expect(requestWrapper.request.method).toEqual("POST")
-        expect(response.body.name).toEqual("rocky")
+        expect(requestWrapper.request.method).toEqual('POST')
+        expect(response.body.name).toEqual('rocky')
         expect(response.status).toBe(201)
       }
     )
   ))
-  it("POST entity list with header", fakeAsync(
+  it('POST entity list with header', fakeAsync(
     inject(
       [HttpTestingController, ProfileService, HttpClient],
       (
@@ -382,8 +382,8 @@ describe("RapidoHttpService", () => {
         httpClient: HttpClient
       ) => {
         // Set up
-        const url = "https://rapidobuild.com/api/user/"
-        const user = new User("rocky")
+        const url = 'https://rapidobuild.com/api/user/'
+        const user = new User('rocky')
         const service = new UserService(httpClient, profileService)
         const responseObject = {
           body: [user, user],
@@ -405,14 +405,14 @@ describe("RapidoHttpService", () => {
 
         tick()
 
-        expect(requestWrapper.request.method).toEqual("POST")
-        expect(response.body[0].name).toEqual("rocky")
-        expect(response.body[1].name).toEqual("rocky")
+        expect(requestWrapper.request.method).toEqual('POST')
+        expect(response.body[0].name).toEqual('rocky')
+        expect(response.body[1].name).toEqual('rocky')
         expect(response.status).toBe(201)
       }
     )
   ))
-  it("PUT entity with headers", fakeAsync(
+  it('PUT entity with headers', fakeAsync(
     inject(
       [HttpTestingController, ProfileService, HttpClient],
       (
@@ -421,8 +421,8 @@ describe("RapidoHttpService", () => {
         httpClient: HttpClient
       ) => {
         // Set up
-        const url = "https://rapidobuild.com/api/user/"
-        const user = new User("rocky")
+        const url = 'https://rapidobuild.com/api/user/'
+        const user = new User('rocky')
         const service = new UserService(httpClient, profileService)
         const responseObject = {
           body: user,
@@ -444,13 +444,13 @@ describe("RapidoHttpService", () => {
 
         tick()
 
-        expect(requestWrapper.request.method).toEqual("PUT")
-        expect(response.body.name).toEqual("rocky")
+        expect(requestWrapper.request.method).toEqual('PUT')
+        expect(response.body.name).toEqual('rocky')
         expect(response.status).toBe(202)
       }
     )
   ))
-  it("DELETE entity with headers", fakeAsync(
+  it('DELETE entity with headers', fakeAsync(
     inject(
       [HttpTestingController, ProfileService, HttpClient],
       (
@@ -459,7 +459,7 @@ describe("RapidoHttpService", () => {
         httpClient: HttpClient
       ) => {
         // Set up
-        const url = "https://rapidobuild.com/api/user/rocky"
+        const url = 'https://rapidobuild.com/api/user/rocky'
         const service = new UserService(httpClient, profileService)
         const responseObject = {
           body: null,
@@ -481,18 +481,18 @@ describe("RapidoHttpService", () => {
 
         tick()
 
-        expect(requestWrapper.request.method).toEqual("DELETE")
+        expect(requestWrapper.request.method).toEqual('DELETE')
         expect(response.status).toBe(204)
       }
     )
   ))
-  it("Checking httpHeader initialization", fakeAsync(
+  it('Checking httpHeader initialization', fakeAsync(
     inject(
       [ProfileService, HttpClient],
       (profileService: ProfileService, httpClient: HttpClient) => {
         const service = new UserService(httpClient, profileService)
         const httpHeaders: HttpHeaders = service.initializeHeaders()
-        expect(httpHeaders.get("Content-Type")).toEqual("application/json")
+        expect(httpHeaders.get('Content-Type')).toEqual('application/json')
       }
     )
   ))

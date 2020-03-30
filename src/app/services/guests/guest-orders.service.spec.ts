@@ -1,9 +1,9 @@
-import { TestBed } from "@angular/core/testing"
-import { ProfileService } from "../authentication/profile/profile.service"
-import { HttpClientTestingModule } from "@angular/common/http/testing"
-import { GuestOrdersService } from "./guest-orders.service"
+import { TestBed } from '@angular/core/testing'
+import { ProfileService } from '../authentication/profile/profile.service'
+import { HttpClientTestingModule } from '@angular/common/http/testing'
+import { GuestOrdersService } from './guest-orders.service'
 
-describe("GuestOrdersService", () => {
+describe('GuestOrdersService', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
@@ -11,7 +11,7 @@ describe("GuestOrdersService", () => {
     })
   )
 
-  it("should be created", () => {
+  it('should be created', () => {
     const service: GuestOrdersService = TestBed.get(GuestOrdersService)
     expect(service).toBeTruthy()
   })

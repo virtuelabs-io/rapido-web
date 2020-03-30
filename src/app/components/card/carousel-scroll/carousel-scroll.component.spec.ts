@@ -1,9 +1,9 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing"
-import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core"
-import { CarouselScrollComponent } from "./carousel-scroll.component"
-import { HomeComponent } from "src/app/components/home/home.component"
+import { async, ComponentFixture, TestBed } from '@angular/core/testing'
+import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
+import { CarouselScrollComponent } from './carousel-scroll.component'
+import { HomeComponent } from 'src/app/components/home/home.component'
 
-describe("CarouselScrollComponent", () => {
+describe('CarouselScrollComponent', () => {
   let component: CarouselScrollComponent
   let fixture: ComponentFixture<CarouselScrollComponent>
 
@@ -21,7 +21,7 @@ describe("CarouselScrollComponent", () => {
     fixture.detectChanges()
   })
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy()
   })
 })

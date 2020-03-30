@@ -1,11 +1,11 @@
-import { TestBed } from "@angular/core/testing"
+import { TestBed } from '@angular/core/testing'
 
-import { ConfirmRegistrationService } from "./confirm-registration.service"
+import { ConfirmRegistrationService } from './confirm-registration.service'
 
-describe("ConfirmUserService", () => {
+describe('ConfirmUserService', () => {
   beforeEach(() => TestBed.configureTestingModule({}))
 
-  it("should be created", () => {
+  it('should be created', () => {
     const service: ConfirmRegistrationService = TestBed.get(
       ConfirmRegistrationService
     )

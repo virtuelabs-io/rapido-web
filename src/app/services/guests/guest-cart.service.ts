@@ -1,15 +1,15 @@
-import { Injectable } from "@angular/core"
-import { RapidoHttpService } from "../commons/rapido-http.service"
-import { GuestCartItem } from "./guest-cart-item"
-import { HttpClient } from "@angular/common/http"
-import { ProfileService } from "../authentication/profile/profile.service"
-import { Constants } from "../../utils/constants"
-import { Query } from "../products/query.interface"
-import { ProductsService } from "../products/products.service"
-import { GuestCartItemDetails } from "./guest-cart-item-details"
+import { Injectable } from '@angular/core'
+import { RapidoHttpService } from '../commons/rapido-http.service'
+import { GuestCartItem } from './guest-cart-item'
+import { HttpClient } from '@angular/common/http'
+import { ProfileService } from '../authentication/profile/profile.service'
+import { Constants } from '../../utils/constants'
+import { Query } from '../products/query.interface'
+import { ProductsService } from '../products/products.service'
+import { GuestCartItemDetails } from './guest-cart-item-details'
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class GuestCartService extends RapidoHttpService<GuestCartItem> {
   public _productService: ProductsService
@@ -30,9 +30,9 @@ export class GuestCartService extends RapidoHttpService<GuestCartItem> {
         [
           Constants.GUESTS_APIS.api,
           localStorage.getItem(Constants.RAPIDO_SESSION_ID),
-          "cart",
-          "items",
-        ].join("/")
+          'cart',
+          'items',
+        ].join('/')
       ).subscribe((data) => {
         if (data.length > 0) {
           cartItemsObject = this.formatCartItems(data)
@@ -43,7 +43,7 @@ export class GuestCartService extends RapidoHttpService<GuestCartItem> {
           })
         } else {
           resolve({
-            error: "No data found found for all items in cart(if they exist)",
+            error: 'No data found found for all items in cart(if they exist)',
           })
         }
       })
@@ -56,9 +56,9 @@ export class GuestCartService extends RapidoHttpService<GuestCartItem> {
         [
           Constants.GUESTS_APIS.api,
           localStorage.getItem(Constants.RAPIDO_SESSION_ID),
-          "cart",
-          "items",
-        ].join("/")
+          'cart',
+          'items',
+        ].join('/')
       ).subscribe((data) => {
         resolve(data.length)
       })
@@ -70,9 +70,9 @@ export class GuestCartService extends RapidoHttpService<GuestCartItem> {
       [
         Constants.GUESTS_APIS.api,
         localStorage.getItem(Constants.RAPIDO_SESSION_ID),
-        "cart",
-        "item",
-      ].join("/"),
+        'cart',
+        'item',
+      ].join('/'),
       guestCartItem
     )
   }
@@ -82,9 +82,9 @@ export class GuestCartService extends RapidoHttpService<GuestCartItem> {
       [
         Constants.GUESTS_APIS.api,
         localStorage.getItem(Constants.RAPIDO_SESSION_ID),
-        "cart",
-        "items",
-      ].join("/"),
+        'cart',
+        'items',
+      ].join('/'),
       guestCartItems
     )
   }
@@ -94,9 +94,9 @@ export class GuestCartService extends RapidoHttpService<GuestCartItem> {
       [
         Constants.GUESTS_APIS.api,
         localStorage.getItem(Constants.RAPIDO_SESSION_ID),
-        "cart",
-        "item",
-      ].join("/"),
+        'cart',
+        'item',
+      ].join('/'),
       guestCartItem
     )
   }
@@ -106,9 +106,9 @@ export class GuestCartService extends RapidoHttpService<GuestCartItem> {
       [
         Constants.GUESTS_APIS.api,
         localStorage.getItem(Constants.RAPIDO_SESSION_ID),
-        "cart",
-        "items",
-      ].join("/")
+        'cart',
+        'items',
+      ].join('/')
     )
   }
 
@@ -117,14 +117,14 @@ export class GuestCartService extends RapidoHttpService<GuestCartItem> {
     for (let _item in cartItems) {
       _items.push(
         Constants.SEARCH_QUERY.term.replace(
-          "$",
+          '$',
           String(cartItems[_item].product_id)
         )
       )
     }
     _items.push(Constants.SEARCH_QUERY.closeBracket)
     let _query: Query = {
-      q: _items.join(" "),
+      q: _items.join(' '),
       size: cartItems.length,
       cursor: null,
       return: Constants.SEARCH_QUERY.cartReturnFields,
@@ -151,8 +151,8 @@ export class GuestCartService extends RapidoHttpService<GuestCartItem> {
     for (let product in productDetails.hits.hit) {
       cartItemDetailsList.push(
         new GuestCartItemDetails(
-          cartItemsObject[productDetails.hits.hit[product]["id"]],
-          productDetails.hits.hit[product]["fields"]
+          cartItemsObject[productDetails.hits.hit[product]['id']],
+          productDetails.hits.hit[product]['fields']
         )
       )
     }

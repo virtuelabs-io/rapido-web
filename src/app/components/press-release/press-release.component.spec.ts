@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing"
+import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { PressReleaseComponent } from "./press-release.component"
+import { PressReleaseComponent } from './press-release.component'
 
-describe("PressReleaseComponent", () => {
+describe('PressReleaseComponent', () => {
   let component: PressReleaseComponent
   let fixture: ComponentFixture<PressReleaseComponent>
 
@@ -18,7 +18,7 @@ describe("PressReleaseComponent", () => {
     fixture.detectChanges()
   })
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy()
   })
 })

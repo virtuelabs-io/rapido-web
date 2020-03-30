@@ -1,13 +1,13 @@
-import { Component, OnInit, NgZone } from "@angular/core"
-import { LoginStateService } from "../../shared-services/login-state/login-state.service"
-import { RouteService } from "../../shared-services/route/route.service"
-import { Router } from "@angular/router"
-import { RatingsService } from "../../services/ratings/ratings.service"
+import { Component, OnInit, NgZone } from '@angular/core'
+import { LoginStateService } from '../../shared-services/login-state/login-state.service'
+import { RouteService } from '../../shared-services/route/route.service'
+import { Router } from '@angular/router'
+import { RatingsService } from '../../services/ratings/ratings.service'
 
 @Component({
-  selector: "app-customer-reviews",
-  templateUrl: "./customer-reviews.component.html",
-  styleUrls: ["./customer-reviews.component.scss"],
+  selector: 'app-customer-reviews',
+  templateUrl: './customer-reviews.component.html',
+  styleUrls: ['./customer-reviews.component.scss'],
 })
 export class CustomerReviewsComponent implements OnInit {
   reviews: any
@@ -46,8 +46,8 @@ export class CustomerReviewsComponent implements OnInit {
   }
 
   async handleError(err) {
-    this.RouteService.changeRoute("profile/my-reviews")
-    this.router.navigateByUrl("/login")
+    this.RouteService.changeRoute('profile/my-reviews')
+    this.router.navigateByUrl('/login')
   }
 
   async fetchCustomerReviews() {

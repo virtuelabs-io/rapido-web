@@ -1,14 +1,14 @@
-import { TestBed, inject, fakeAsync, tick } from "@angular/core/testing"
+import { TestBed, inject, fakeAsync, tick } from '@angular/core/testing'
 import {
   HttpClientTestingModule,
   HttpTestingController,
-} from "@angular/common/http/testing"
+} from '@angular/common/http/testing'
 
-import { Constants } from "../../utils/constants"
+import { Constants } from '../../utils/constants'
 
-import { ProductsHierarchyService } from "./products-hierarchy.service"
+import { ProductsHierarchyService } from './products-hierarchy.service'
 
-describe("ProductsHierarchyService", () => {
+describe('ProductsHierarchyService', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
@@ -16,21 +16,21 @@ describe("ProductsHierarchyService", () => {
     })
   )
 
-  it("should be created", () => {
+  it('should be created', () => {
     const service: ProductsHierarchyService = TestBed.get(
       ProductsHierarchyService
     )
     expect(service).toBeTruthy()
   })
 
-  it("Request for configuration", fakeAsync(
+  it('Request for configuration', fakeAsync(
     inject(
       [ProductsHierarchyService, HttpTestingController],
       (service: ProductsHierarchyService, backend: HttpTestingController) => {
         const responseObject = {
           body: {
-            item1: ["subitem1", "subitem2"],
-            item2: ["subitem1", "subitem2"],
+            item1: ['subitem1', 'subitem2'],
+            item2: ['subitem1', 'subitem2'],
           },
           status: 200,
         }
@@ -50,7 +50,7 @@ describe("ProductsHierarchyService", () => {
 
         tick()
 
-        expect(requestWrapper.request.method).toEqual("GET")
+        expect(requestWrapper.request.method).toEqual('GET')
         expect(response.status).toBe(200)
       }
     )

@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing"
-import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from "@angular/core"
-import { FlipCaseComponent } from "./flip-case.component"
+import { async, ComponentFixture, TestBed } from '@angular/core/testing'
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core'
+import { FlipCaseComponent } from './flip-case.component'
 
-describe("FlipCaseComponent", () => {
+describe('FlipCaseComponent', () => {
   let component: FlipCaseComponent
   let fixture: ComponentFixture<FlipCaseComponent>
 
@@ -19,7 +19,7 @@ describe("FlipCaseComponent", () => {
     fixture.detectChanges()
   })
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy()
   })
 })

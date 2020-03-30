@@ -1,21 +1,21 @@
-import { Component, OnInit } from "@angular/core"
-import { Router } from "@angular/router"
-import { AddressDetails } from "../../services/customer/address-details"
-import { AddressDetailsService } from "../../services/customer/address-details.service"
-import { FormGroup, Validators, FormControl } from "@angular/forms"
-import { Location } from "@angular/common"
-import { RouteService } from "../../shared-services/route/route.service"
-import { LoginStateService } from "../../shared-services/login-state/login-state.service"
+import { Component, OnInit } from '@angular/core'
+import { Router } from '@angular/router'
+import { AddressDetails } from '../../services/customer/address-details'
+import { AddressDetailsService } from '../../services/customer/address-details.service'
+import { FormGroup, Validators, FormControl } from '@angular/forms'
+import { Location } from '@angular/common'
+import { RouteService } from '../../shared-services/route/route.service'
+import { LoginStateService } from '../../shared-services/login-state/login-state.service'
 
 @Component({
-  selector: "app-add-address",
-  templateUrl: "./add-address.component.html",
-  styleUrls: ["./add-address.component.scss"],
+  selector: 'app-add-address',
+  templateUrl: './add-address.component.html',
+  styleUrls: ['./add-address.component.scss'],
 })
 export class AddAddressComponent implements OnInit {
-  _previousRoute: any = ""
+  _previousRoute: any = ''
   address_details_id: number
-  name: string = ""
+  name: string = ''
   addRes: any
   addressDetails: AddressDetails
   public _addressDetailsService: AddressDetailsService
@@ -34,13 +34,13 @@ export class AddAddressComponent implements OnInit {
   ngOnInit() {
     this._previousRoute = this.RouteService.getRoute()
     this.addressFormGroup = new FormGroup({
-      name: new FormControl("", [Validators.required]),
-      add1: new FormControl("", [Validators.required]),
-      add2: new FormControl("", [Validators.required]),
-      town_city: new FormControl("", [Validators.required]),
-      postCode: new FormControl("", [Validators.required]),
-      county: new FormControl("", [Validators.required]),
-      country: new FormControl("", [Validators.required]),
+      name: new FormControl('', [Validators.required]),
+      add1: new FormControl('', [Validators.required]),
+      add2: new FormControl('', [Validators.required]),
+      town_city: new FormControl('', [Validators.required]),
+      postCode: new FormControl('', [Validators.required]),
+      county: new FormControl('', [Validators.required]),
+      country: new FormControl('', [Validators.required]),
     })
   }
   addAddress(formData) {
@@ -60,8 +60,8 @@ export class AddAddressComponent implements OnInit {
       .postAddressDetails(this.addressDetails)
       .subscribe((data) => {
         this.addRes = data
-        if (data["insertId"]) {
-          this.address_details_id = data["insertId"]
+        if (data['insertId']) {
+          this.address_details_id = data['insertId']
           this.location.back()
           // lets this code be commented. Dont remove this..
 

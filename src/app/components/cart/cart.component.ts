@@ -1,21 +1,21 @@
-import { Component, OnInit, NgZone } from "@angular/core"
-import { CartService } from "../../services/cart/cart.service"
-import { Constants } from "../../utils/constants"
-import { Common } from "../../utils/common"
-import { CartItem } from "../../services/cart/cart-item"
-import { MatSnackBar } from "@angular/material"
-import { Router } from "@angular/router"
-import { CartStateService } from "../../shared-services/cart-state/cart-state.service"
-import { SessionService } from "../../services/authentication/session/session.service"
-import { RouteService } from "../../shared-services/route/route.service"
-import { LoginStateService } from "../../shared-services/login-state/login-state.service"
-import { GuestCartService } from "../../services/guests/guest-cart.service"
-import { GuestCartItem } from "src/app/services/guests/guest-cart-item"
+import { Component, OnInit, NgZone } from '@angular/core'
+import { CartService } from '../../services/cart/cart.service'
+import { Constants } from '../../utils/constants'
+import { Common } from '../../utils/common'
+import { CartItem } from '../../services/cart/cart-item'
+import { MatSnackBar } from '@angular/material'
+import { Router } from '@angular/router'
+import { CartStateService } from '../../shared-services/cart-state/cart-state.service'
+import { SessionService } from '../../services/authentication/session/session.service'
+import { RouteService } from '../../shared-services/route/route.service'
+import { LoginStateService } from '../../shared-services/login-state/login-state.service'
+import { GuestCartService } from '../../services/guests/guest-cart.service'
+import { GuestCartItem } from 'src/app/services/guests/guest-cart-item'
 
 @Component({
-  selector: "app-cart",
-  templateUrl: "./cart.component.html",
-  styleUrls: ["./cart.component.scss"],
+  selector: 'app-cart',
+  templateUrl: './cart.component.html',
+  styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent implements OnInit {
   freeDeliveryMinOrder: Number = Constants.MIN_ORDER_PRICE_FOR_FREE_DELIVERY
@@ -31,7 +31,7 @@ export class CartComponent implements OnInit {
   saveforLater = []
   inCart: Boolean = true
   laterUse: Boolean = false
-  _snackBarMsg: string = ""
+  _snackBarMsg: string = ''
   isLoggedIn: Boolean
   deleteRes: any
   postCartItemsRes: any
@@ -39,7 +39,7 @@ export class CartComponent implements OnInit {
   currency: any
   guestCartItem: GuestCartItem = new GuestCartItem()
   imageUrl: string =
-    Constants.environment.staticAssets + "/images/empty-cart.jpg"
+    Constants.environment.staticAssets + '/images/empty-cart.jpg'
   public _cartService: CartService
   public _guestCartService: GuestCartService
 
@@ -74,8 +74,8 @@ export class CartComponent implements OnInit {
   }
 
   async handleError(err) {
-    this.RouteService.changeRoute("cart")
-    this.ngZone.run(() => this.router.navigate(["login"])).then()
+    this.RouteService.changeRoute('cart')
+    this.ngZone.run(() => this.router.navigate(['login'])).then()
   }
 
   async getCartItems() {
@@ -162,7 +162,7 @@ export class CartComponent implements OnInit {
       this._snackBarMsg = Constants.ITWM_DELETE_CART
       await this._cartService.deleteCartItem(id).subscribe((data) => {
         this.deleteRes = data
-        this._snackBar.open(this._snackBarMsg, "", {
+        this._snackBar.open(this._snackBarMsg, '', {
           duration: 5000,
         })
         this.getCartItems()
@@ -175,7 +175,7 @@ export class CartComponent implements OnInit {
         .deleteGuestCartItem(this.guestCartItem)
         .subscribe((data) => {
           this.deleteRes = data
-          this._snackBar.open(this._snackBarMsg, "", {
+          this._snackBar.open(this._snackBarMsg, '', {
             duration: 5000,
           })
           this.getCartItems()
@@ -198,13 +198,13 @@ export class CartComponent implements OnInit {
       }
       this._cartService.postCartItem(cartItem).subscribe((data) => {
         this.saveForLaterRes = data
-        this._snackBar.open(this._snackBarMsg, "", {
+        this._snackBar.open(this._snackBarMsg, '', {
           duration: 5000,
         })
         this.getCartItems()
       })
     } else {
-      this.handleError("e")
+      this.handleError('e')
     }
   }
 
@@ -236,7 +236,7 @@ export class CartComponent implements OnInit {
       this._cartService.postCartItemList(items).subscribe((data) => {
         this.postCartItemsRes = data
         this._loginStateService.loaderDisable()
-        this.ngZone.run(() => this.router.navigate(["cart/checkout"])).then()
+        this.ngZone.run(() => this.router.navigate(['cart/checkout'])).then()
       })
     } else {
       for (var i = 0; i < this.cartItems.length; i++) {
@@ -251,8 +251,8 @@ export class CartComponent implements OnInit {
       this._guestCartService.postGuestCartItemList(items).subscribe((data) => {
         this.postCartItemsRes = data
         this._loginStateService.loaderDisable()
-        this.RouteService.changeRoute("cart/guest-checkout")
-        this.ngZone.run(() => this.router.navigate(["login"])).then()
+        this.RouteService.changeRoute('cart/guest-checkout')
+        this.ngZone.run(() => this.router.navigate(['login'])).then()
       })
     }
   }
@@ -263,7 +263,7 @@ export class CartComponent implements OnInit {
       if (this.cartItems[i].id === id) {
         if (!quantity) {
           this.cartItems[i].quantity = 1
-          this._snackBar.open("Minimun one quantity selected", "", {
+          this._snackBar.open('Minimun one quantity selected', '', {
             duration: 5000,
           })
         } else {

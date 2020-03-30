@@ -1,17 +1,17 @@
-import { Component, OnInit, Input } from "@angular/core"
+import { Component, OnInit, Input } from '@angular/core'
 
 @Component({
-  selector: "app-card",
-  templateUrl: "./card.component.html",
-  styleUrls: ["./card.component.scss"],
+  selector: 'app-card',
+  templateUrl: './card.component.html',
+  styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit {
   itemDetails: any = {
-    price: "",
-    offer: "",
-    name: "",
-    images: "",
-    rating: "",
+    price: '',
+    offer: '',
+    name: '',
+    images: '',
+    rating: '',
   }
   mrpPrice: any
   discountedPrice: any
@@ -22,7 +22,7 @@ export class CardComponent implements OnInit {
   rating: any
   Math: any
   @Input() itemList = {
-    id: "",
+    id: '',
     fields: {},
   }
   constructor() {}

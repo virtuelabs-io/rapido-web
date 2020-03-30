@@ -4,27 +4,27 @@ import {
   OnInit,
   SimpleChanges,
   Directive,
-} from "@angular/core"
-import { CartItem } from "../../../services/cart/cart-item"
-import { CartService } from "../../../services/cart/cart.service"
-import { CartStateService } from "../../../shared-services/cart-state/cart-state.service"
-import { LoginStateService } from "../../../shared-services/login-state/login-state.service"
-import { Router } from "@angular/router"
-import { RouteService } from "../../../shared-services/route/route.service"
-import { MatSnackBar } from "@angular/material/snack-bar"
-import { Constants } from "../../../../../src/app/utils/constants"
-import { GuestCartService } from "../../../services/guests/guest-cart.service"
-import { GuestCartItem } from "../../../services/guests/guest-cart-item"
+} from '@angular/core'
+import { CartItem } from '../../../services/cart/cart-item'
+import { CartService } from '../../../services/cart/cart.service'
+import { CartStateService } from '../../../shared-services/cart-state/cart-state.service'
+import { LoginStateService } from '../../../shared-services/login-state/login-state.service'
+import { Router } from '@angular/router'
+import { RouteService } from '../../../shared-services/route/route.service'
+import { MatSnackBar } from '@angular/material/snack-bar'
+import { Constants } from '../../../../../src/app/utils/constants'
+import { GuestCartService } from '../../../services/guests/guest-cart.service'
+import { GuestCartItem } from '../../../services/guests/guest-cart-item'
 
 @Component({
-  selector: "app-carousel-flip",
-  templateUrl: "./carousel-flip.component.html",
-  styleUrls: ["./carousel-flip.component.scss"],
+  selector: 'app-carousel-flip',
+  templateUrl: './carousel-flip.component.html',
+  styleUrls: ['./carousel-flip.component.scss'],
 })
 export class CarouselFlipComponent implements OnInit {
   @Input() carouselCard = []
   @Input() carouselConfig = {}
-  @Input() carouselTitle = ""
+  @Input() carouselTitle = ''
   @Input() flipBackImage = []
   @Input() flipImage = []
   carouselData: any
@@ -119,18 +119,18 @@ export class CarouselFlipComponent implements OnInit {
         this._loginStateService.loaderDisable()
         this._snackBar.open(Constants.ITEM_MOVED_TO_CART, undefined, {
           duration: 4000,
-          horizontalPosition: "center",
+          horizontalPosition: 'center',
         })
       })
     }
   }
 
   async handleError(err) {
-    this.RouteService.changeRoute("")
-    this.router.navigateByUrl("/login")
+    this.RouteService.changeRoute('')
+    this.router.navigateByUrl('/login')
   }
 
   routeToProduct(id) {
-    this.router.navigate(["/products/details", id])
+    this.router.navigate(['/products/details', id])
   }
 }

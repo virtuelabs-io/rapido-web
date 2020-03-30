@@ -1,13 +1,13 @@
-import { Injectable } from "@angular/core"
-import { AuthenticationService } from "../base/authentication.service"
-import { ProfileService } from "../profile/profile.service"
-import { VirtueCognitoService } from "../virtue-cognito/virtue-cognito.service"
-import { ICognitoUserAttributeData } from "amazon-cognito-identity-js"
-import { Response } from "../../../utils/response"
-import { Constants } from "../../../utils/constants"
+import { Injectable } from '@angular/core'
+import { AuthenticationService } from '../base/authentication.service'
+import { ProfileService } from '../profile/profile.service'
+import { VirtueCognitoService } from '../virtue-cognito/virtue-cognito.service'
+import { ICognitoUserAttributeData } from 'amazon-cognito-identity-js'
+import { Response } from '../../../utils/response'
+import { Constants } from '../../../utils/constants'
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class UpdateAttributeService extends AuthenticationService {
   private _attributeList: ICognitoUserAttributeData[]

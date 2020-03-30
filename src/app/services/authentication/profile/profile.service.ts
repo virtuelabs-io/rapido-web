@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core"
-import { CognitoUser, ICognitoUserData } from "amazon-cognito-identity-js"
+import { Injectable } from '@angular/core'
+import { CognitoUser, ICognitoUserData } from 'amazon-cognito-identity-js'
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class ProfileService {
   private _cognitoUser: CognitoUser

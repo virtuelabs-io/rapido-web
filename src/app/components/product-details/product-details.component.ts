@@ -1,25 +1,25 @@
-import { Component, OnInit, ViewChild, NgZone } from "@angular/core"
-import { ActivatedRoute, Router } from "@angular/router"
-import { SearchItemService } from "../../shared-services/search-item/search-item.services"
-import { LoginStateService } from "../../shared-services/login-state/login-state.service"
-import { CartStateService } from "../../shared-services/cart-state/cart-state.service"
-import { ProductsService } from "../../services/products/products.service"
-import { CartService } from "../../services/cart/cart.service"
-import { CartItem } from "../../services/cart/cart-item"
-import { Common } from "../../../../src/app/utils/common"
-import { Constants } from "../../../../src/app/utils/constants"
-import { MatSnackBar } from "@angular/material/snack-bar"
-import { RouteService } from "../../shared-services/route/route.service"
-import { MatPaginator } from "@angular/material/paginator"
-import { RatingsService } from "../../services/ratings/ratings.service"
-import { OrdersService } from "../../services/orders/orders.service"
-import { GuestCartService } from "../../services/guests/guest-cart.service"
-import { GuestCartItem } from "../../services/guests/guest-cart-item"
+import { Component, OnInit, ViewChild, NgZone } from '@angular/core'
+import { ActivatedRoute, Router } from '@angular/router'
+import { SearchItemService } from '../../shared-services/search-item/search-item.services'
+import { LoginStateService } from '../../shared-services/login-state/login-state.service'
+import { CartStateService } from '../../shared-services/cart-state/cart-state.service'
+import { ProductsService } from '../../services/products/products.service'
+import { CartService } from '../../services/cart/cart.service'
+import { CartItem } from '../../services/cart/cart-item'
+import { Common } from '../../../../src/app/utils/common'
+import { Constants } from '../../../../src/app/utils/constants'
+import { MatSnackBar } from '@angular/material/snack-bar'
+import { RouteService } from '../../shared-services/route/route.service'
+import { MatPaginator } from '@angular/material/paginator'
+import { RatingsService } from '../../services/ratings/ratings.service'
+import { OrdersService } from '../../services/orders/orders.service'
+import { GuestCartService } from '../../services/guests/guest-cart.service'
+import { GuestCartItem } from '../../services/guests/guest-cart-item'
 
 @Component({
-  selector: "app-product-details",
-  templateUrl: "./product-details.component.html",
-  styleUrls: ["./product-details.component.scss"],
+  selector: 'app-product-details',
+  templateUrl: './product-details.component.html',
+  styleUrls: ['./product-details.component.scss'],
 })
 export class ProductDetailsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator
@@ -110,13 +110,13 @@ export class ProductDetailsComponent implements OnInit {
           let query = {
             q: `(term field=_id ${this.itemId})`,
             size: 10,
-            qdotparser: "structured",
+            qdotparser: 'structured',
           }
           this._productsService.get(query).subscribe((data) => {
             if (data) {
               if (data.error || data.hits.found === 0) {
                 this.itemDetails = null
-                throw Error("error")
+                throw Error('error')
               }
               this.updateProductDetails(data.hits)
             }
@@ -248,7 +248,7 @@ export class ProductDetailsComponent implements OnInit {
         this._loginStateService.loaderDisable()
         this._snackBar.open(Constants.ITEM_MOVED_TO_CART, undefined, {
           duration: 4000,
-          horizontalPosition: "center",
+          horizontalPosition: 'center',
         })
       })
     } else {
@@ -260,7 +260,7 @@ export class ProductDetailsComponent implements OnInit {
         this._loginStateService.loaderDisable()
         this._snackBar.open(Constants.ITEM_MOVED_TO_CART, undefined, {
           duration: 4000,
-          horizontalPosition: "center",
+          horizontalPosition: 'center',
         })
       })
     }
@@ -275,8 +275,8 @@ export class ProductDetailsComponent implements OnInit {
           duration: 4000,
         }
       )
-      this.RouteService.changeRoute("products/details/" + this.itemId)
-      this.router.navigateByUrl("/login")
+      this.RouteService.changeRoute('products/details/' + this.itemId)
+      this.router.navigateByUrl('/login')
     }
   }
 
@@ -305,12 +305,12 @@ export class ProductDetailsComponent implements OnInit {
     if (data.length) {
       this._loginStateService.loaderDisable()
       this.ngZone
-        .run(() => this.router.navigate(["review/edit/review", data[0].id]))
+        .run(() => this.router.navigate(['review/edit/review', data[0].id]))
         .then()
     } else {
       this._loginStateService.loaderDisable()
       this.ngZone
-        .run(() => this.router.navigate(["review/create/product", id]))
+        .run(() => this.router.navigate(['review/create/product', id]))
         .then()
     }
   }

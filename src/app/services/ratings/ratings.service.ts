@@ -1,12 +1,12 @@
-import { Injectable } from "@angular/core"
-import { Rating } from "./rating"
-import { RapidoHttpService } from "../commons/rapido-http.service"
-import { HttpClient } from "@angular/common/http"
-import { ProfileService } from "../authentication/profile/profile.service"
-import { Constants } from "../../utils/constants"
+import { Injectable } from '@angular/core'
+import { Rating } from './rating'
+import { RapidoHttpService } from '../commons/rapido-http.service'
+import { HttpClient } from '@angular/common/http'
+import { ProfileService } from '../authentication/profile/profile.service'
+import { Constants } from '../../utils/constants'
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class RatingsService extends RapidoHttpService<Rating> {
   constructor(
@@ -26,7 +26,7 @@ export class RatingsService extends RapidoHttpService<Rating> {
 
   updateRating(rating: Rating) {
     return this.put(
-      [Constants.RATINGS_APIS.api, String(rating.id)].join("/"),
+      [Constants.RATINGS_APIS.api, String(rating.id)].join('/'),
       rating,
       this.addAuthHeader(this.initializeHeaders())
     )
@@ -34,7 +34,7 @@ export class RatingsService extends RapidoHttpService<Rating> {
 
   getCustomerRating(id: Number) {
     return this.get(
-      [Constants.RATINGS_APIS.api, String(id)].join("/"),
+      [Constants.RATINGS_APIS.api, String(id)].join('/'),
       this.addAuthHeader(this.initializeHeaders())
     )
   }
@@ -48,14 +48,14 @@ export class RatingsService extends RapidoHttpService<Rating> {
 
   deleteCustomerRating(id: Number) {
     return this.delete(
-      [Constants.RATINGS_APIS.api, String(id)].join("/"),
+      [Constants.RATINGS_APIS.api, String(id)].join('/'),
       this.addAuthHeader(this.initializeHeaders())
     )
   }
 
   helpfulRatingIncrement(id: Number) {
     return this.put(
-      [Constants.RATINGS_APIS.api, "helpful", String(id)].join("/"),
+      [Constants.RATINGS_APIS.api, 'helpful', String(id)].join('/'),
       null,
       this.addAuthHeader(this.initializeHeaders())
     )
@@ -63,7 +63,7 @@ export class RatingsService extends RapidoHttpService<Rating> {
 
   deactivateRating(id: Number) {
     return this.put(
-      [Constants.RATINGS_APIS.api, "deactivate", String(id)].join("/"),
+      [Constants.RATINGS_APIS.api, 'deactivate', String(id)].join('/'),
       null,
       this.addAuthHeader(this.initializeHeaders())
     )
@@ -71,7 +71,7 @@ export class RatingsService extends RapidoHttpService<Rating> {
 
   getProductRatings(product_id: Number) {
     return this.getList(
-      [Constants.RATINGS_APIS.api, "product", String(product_id)].join("/")
+      [Constants.RATINGS_APIS.api, 'product', String(product_id)].join('/')
     )
   }
 
@@ -79,17 +79,17 @@ export class RatingsService extends RapidoHttpService<Rating> {
     return this.getList(
       [
         Constants.RATINGS_APIS.api,
-        "product",
-        "summary",
+        'product',
+        'summary',
         String(product_id),
-      ].join("/")
+      ].join('/')
     )
   }
 
   checkProductReview(product_id: Number) {
     return this.getList(
-      [Constants.RATINGS_APIS.api, "product", "check", String(product_id)].join(
-        "/"
+      [Constants.RATINGS_APIS.api, 'product', 'check', String(product_id)].join(
+        '/'
       ),
       this.addAuthHeader(this.initializeHeaders())
     )

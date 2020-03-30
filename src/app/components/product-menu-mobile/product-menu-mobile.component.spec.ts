@@ -4,25 +4,25 @@ import {
   TestBed,
   fakeAsync,
   tick,
-} from "@angular/core/testing"
-import { RouterTestingModule } from "@angular/router/testing"
-import { ProductMenuMobileComponent } from "./product-menu-mobile.component"
-import { MatTreeModule, MatIconModule } from "@angular/material"
-import { Router, Routes } from "@angular/router"
-import { HttpClientModule } from "@angular/common/http"
-import { ProductResultsComponent } from "../product-results/product-results.component"
-import { Location } from "@angular/common"
-import { LeftSectionComponent } from "../leftsection/leftsection.component"
-import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core"
+} from '@angular/core/testing'
+import { RouterTestingModule } from '@angular/router/testing'
+import { ProductMenuMobileComponent } from './product-menu-mobile.component'
+import { MatTreeModule, MatIconModule } from '@angular/material'
+import { Router, Routes } from '@angular/router'
+import { HttpClientModule } from '@angular/common/http'
+import { ProductResultsComponent } from '../product-results/product-results.component'
+import { Location } from '@angular/common'
+import { LeftSectionComponent } from '../leftsection/leftsection.component'
+import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 
-describe("ProductMenuMobileComponent", () => {
+describe('ProductMenuMobileComponent', () => {
   let component: ProductMenuMobileComponent
   let fixture: ComponentFixture<ProductMenuMobileComponent>
   let router: Router
   let location: Location
 
   const routes: Routes = [
-    { path: "products", component: ProductResultsComponent },
+    { path: 'products', component: ProductResultsComponent },
   ]
 
   beforeEach(async(() => {
@@ -53,13 +53,13 @@ describe("ProductMenuMobileComponent", () => {
     fixture.detectChanges()
   })
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy()
   })
 
-  it("route to product card page", fakeAsync(() => {
-    component.handleNavigation("plastic")
+  it('route to product card page', fakeAsync(() => {
+    component.handleNavigation('plastic')
     tick()
-    expect(location.path()).toEqual("/products?q=plastic")
+    expect(location.path()).toEqual('/products?q=plastic')
   }))
 })

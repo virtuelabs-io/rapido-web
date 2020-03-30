@@ -1,28 +1,28 @@
-import { Component, OnInit, NgModule } from "@angular/core"
-import { ResendOtpService } from "../../shared-services/resend-otp/resend-otp.services"
-import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms"
-import { ResendConfirmationCodeService } from "../../services/authentication/resend-confirmation-code/resend-confirmation-code.service"
-import { ConfirmRegistrationService } from "../../services/authentication/confirm-registration/confirm-registration.service"
-import { Constants } from "../../utils/constants"
+import { Component, OnInit, NgModule } from '@angular/core'
+import { ResendOtpService } from '../../shared-services/resend-otp/resend-otp.services'
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
+import { ResendConfirmationCodeService } from '../../services/authentication/resend-confirmation-code/resend-confirmation-code.service'
+import { ConfirmRegistrationService } from '../../services/authentication/confirm-registration/confirm-registration.service'
+import { Constants } from '../../utils/constants'
 
 @NgModule({
   imports: [FormBuilder, Validators, FormGroup],
 })
 @Component({
-  selector: "app-resend-otp",
-  templateUrl: "./resend-otp.component.html",
-  styleUrls: ["./resend-otp.component.scss"],
+  selector: 'app-resend-otp',
+  templateUrl: './resend-otp.component.html',
+  styleUrls: ['./resend-otp.component.scss'],
 })
 export class ResendOtpComponent implements OnInit {
   otpConfirmed: Boolean = false
   countryCode: string = Constants.DEFAULT_PHONE_CODE
   stepperIndex: number = 0
-  confirmationCode: string = ""
-  mobileNumber: string = ""
+  confirmationCode: string = ''
+  mobileNumber: string = ''
   otpSuccess: Boolean = false
-  otpFail: string = ""
+  otpFail: string = ''
   progressSpinner: Boolean = false
-  wrongCodeMsg: string = ""
+  wrongCodeMsg: string = ''
   _resentConfirmationCodeResponse: Boolean = false
   otpReqFormGroup: FormGroup // UI reactive Form Group variable
   private _resendConfirmationCodeService: ResendConfirmationCodeService
@@ -51,7 +51,7 @@ export class ResendOtpComponent implements OnInit {
     this._confirmRegistrationService.username = [
       this.countryCode,
       this.mobileNumber,
-    ].join("") // setting payload
+    ].join('') // setting payload
     this._confirmRegistrationService
       .confirmRegistration(this.confirmationCode)
       .then((_) => {
@@ -72,7 +72,7 @@ export class ResendOtpComponent implements OnInit {
     this._resendConfirmationCodeService.username = [
       this.countryCode,
       this.mobileNumber,
-    ].join("")
+    ].join('')
     const promise = this._resendConfirmationCodeService.resendConfirmationCode()
     promise
       .then((_) => {

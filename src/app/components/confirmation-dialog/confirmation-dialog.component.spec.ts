@@ -1,12 +1,12 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing"
+import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 import {
   MatDialogModule,
   MatDialogRef,
   MAT_DIALOG_DATA,
-} from "@angular/material"
-import { ConfirmationDialogComponent } from "./confirmation-dialog.component"
+} from '@angular/material'
+import { ConfirmationDialogComponent } from './confirmation-dialog.component'
 
-describe("ConfirmationDialogComponent", () => {
+describe('ConfirmationDialogComponent', () => {
   let component: ConfirmationDialogComponent
   let fixture: ComponentFixture<ConfirmationDialogComponent>
 
@@ -28,7 +28,7 @@ describe("ConfirmationDialogComponent", () => {
     fixture.detectChanges()
   })
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy()
   })
 })

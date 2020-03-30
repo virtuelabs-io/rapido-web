@@ -4,23 +4,23 @@ import {
   TestBed,
   fakeAsync,
   tick,
-} from "@angular/core/testing"
-import { HomeCardComponent } from "./home-card.component"
-import { HttpClientModule } from "@angular/common/http"
-import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core"
-import { RouterTestingModule } from "@angular/router/testing"
-import { Router, Routes } from "@angular/router"
-import { ProductResultsComponent } from "../../product-results/product-results.component"
-import { Location } from "@angular/common"
+} from '@angular/core/testing'
+import { HomeCardComponent } from './home-card.component'
+import { HttpClientModule } from '@angular/common/http'
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
+import { RouterTestingModule } from '@angular/router/testing'
+import { Router, Routes } from '@angular/router'
+import { ProductResultsComponent } from '../../product-results/product-results.component'
+import { Location } from '@angular/common'
 
-describe("HomeCardComponent", () => {
+describe('HomeCardComponent', () => {
   let component: HomeCardComponent
   let fixture: ComponentFixture<HomeCardComponent>
   let router: Router
   let location: Location
 
   const routes: Routes = [
-    { path: "products", component: ProductResultsComponent },
+    { path: 'products', component: ProductResultsComponent },
   ]
 
   beforeEach(async(() => {
@@ -42,14 +42,14 @@ describe("HomeCardComponent", () => {
     fixture.detectChanges()
   })
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy()
   })
 
-  it("routing to the selected product based on the query", fakeAsync(() => {
-    let query = "Watches"
+  it('routing to the selected product based on the query', fakeAsync(() => {
+    let query = 'Watches'
     component.cardClick(query)
     tick()
-    expect(location.path()).toEqual("/products?q=Watches")
+    expect(location.path()).toEqual('/products?q=Watches')
   }))
 })

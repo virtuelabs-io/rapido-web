@@ -1,18 +1,18 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing"
-import { RouterTestingModule } from "@angular/router/testing"
-import { ProfileComponent } from "./profile.component"
-import { MatExpansionModule } from "@angular/material"
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations"
-import { Router, Routes } from "@angular/router"
-import { Location } from "@angular/common"
-import { OrdersComponent } from "../orders/orders.component"
+import { async, ComponentFixture, TestBed } from '@angular/core/testing'
+import { RouterTestingModule } from '@angular/router/testing'
+import { ProfileComponent } from './profile.component'
+import { MatExpansionModule } from '@angular/material'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { Router, Routes } from '@angular/router'
+import { Location } from '@angular/common'
+import { OrdersComponent } from '../orders/orders.component'
 
-describe("MyProfileComponent", () => {
+describe('MyProfileComponent', () => {
   let component: ProfileComponent
   let fixture: ComponentFixture<ProfileComponent>
   let router: Router
   let location: Location
-  const routes: Routes = [{ path: "orders", component: OrdersComponent }]
+  const routes: Routes = [{ path: 'orders', component: OrdersComponent }]
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -31,7 +31,7 @@ describe("MyProfileComponent", () => {
     fixture.detectChanges()
   })
 
-  it("should create", () => {
+  it('should create', () => {
     component.logInStatus = true
 
     expect(component).toBeTruthy()

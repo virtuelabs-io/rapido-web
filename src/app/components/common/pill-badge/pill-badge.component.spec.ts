@@ -1,7 +1,7 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing"
-import { PillBadgeComponent } from "./pill-badge.component"
+import { async, ComponentFixture, TestBed } from '@angular/core/testing'
+import { PillBadgeComponent } from './pill-badge.component'
 
-describe("PillBadgeComponent", () => {
+describe('PillBadgeComponent', () => {
   let component: PillBadgeComponent
   let fixture: ComponentFixture<PillBadgeComponent>
 
@@ -17,7 +17,7 @@ describe("PillBadgeComponent", () => {
     fixture.detectChanges()
   })
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy()
   })
 })

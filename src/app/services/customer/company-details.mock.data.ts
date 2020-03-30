@@ -1,4 +1,4 @@
-import { CompanyDetails } from "./company-details"
+import { CompanyDetails } from './company-details'
 
 export class CompanyDetailsMockData {
   public static postCompanyDetails = {
@@ -7,7 +7,7 @@ export class CompanyDetailsMockData {
     insertId: 7,
     serverStatus: 2,
     warningCount: 0,
-    message: "",
+    message: '',
     protocol41: true,
     changedRows: 0,
   }
@@ -18,20 +18,20 @@ export class CompanyDetailsMockData {
     insertId: 0,
     serverStatus: 2,
     warningCount: 0,
-    message: "(Rows matched: 1  Changed: 1  Warnings: 0",
+    message: '(Rows matched: 1  Changed: 1  Warnings: 0',
     protocol41: true,
     changedRows: 1,
   }
 
   public static company: CompanyDetails = new CompanyDetails(
-    "company name",
-    "addr_1",
-    "city",
-    "county",
-    "country",
-    "postcode",
-    "addr_2",
-    "1"
+    'company name',
+    'addr_1',
+    'city',
+    'county',
+    'country',
+    'postcode',
+    'addr_2',
+    '1'
   )
 
   public static deleteCompany = {
@@ -40,7 +40,7 @@ export class CompanyDetailsMockData {
     insertId: 0,
     serverStatus: 2,
     warningCount: 0,
-    message: "",
+    message: '',
     protocol41: true,
     changedRows: 0,
   }

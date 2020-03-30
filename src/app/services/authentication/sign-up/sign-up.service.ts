@@ -1,13 +1,13 @@
-import { Injectable } from "@angular/core"
-import { AuthenticationService } from "../base/authentication.service"
-import { ProfileService } from "../profile/profile.service"
-import { VirtueCognitoService } from "../virtue-cognito/virtue-cognito.service"
-import { SignUpInterface } from "./sign-up.interface"
-import { Response } from "../../../utils/response"
-import { Constants } from "src/app/utils/constants"
+import { Injectable } from '@angular/core'
+import { AuthenticationService } from '../base/authentication.service'
+import { ProfileService } from '../profile/profile.service'
+import { VirtueCognitoService } from '../virtue-cognito/virtue-cognito.service'
+import { SignUpInterface } from './sign-up.interface'
+import { Response } from '../../../utils/response'
+import { Constants } from 'src/app/utils/constants'
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class SignUpService extends AuthenticationService {
   private _signUpData: SignUpInterface

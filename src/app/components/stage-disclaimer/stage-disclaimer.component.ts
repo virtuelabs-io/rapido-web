@@ -1,10 +1,10 @@
-import { Component, OnInit } from "@angular/core"
-import { Constants } from "../../utils/constants"
+import { Component, OnInit } from '@angular/core'
+import { Constants } from '../../utils/constants'
 
 @Component({
-  selector: "app-stage-disclaimer",
-  templateUrl: "./stage-disclaimer.component.html",
-  styleUrls: ["./stage-disclaimer.component.scss"],
+  selector: 'app-stage-disclaimer',
+  templateUrl: './stage-disclaimer.component.html',
+  styleUrls: ['./stage-disclaimer.component.scss'],
 })
 export class StageDisclaimerComponent implements OnInit {
   disclaimerReq: Boolean
@@ -12,6 +12,6 @@ export class StageDisclaimerComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.disclaimerReq = Constants.environment.name !== "PROD" ? true : false
+    this.disclaimerReq = Constants.environment.name !== 'PROD' ? true : false
   }
 }

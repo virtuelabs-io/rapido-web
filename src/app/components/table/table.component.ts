@@ -1,10 +1,10 @@
-import { Component, OnInit, Input } from "@angular/core"
-import { MatTableDataSource, MatSort } from "@angular/material"
+import { Component, OnInit, Input } from '@angular/core'
+import { MatTableDataSource, MatSort } from '@angular/material'
 
 @Component({
-  selector: "app-table",
-  templateUrl: "./table.component.html",
-  styleUrls: ["./table.component.scss"],
+  selector: 'app-table',
+  templateUrl: './table.component.html',
+  styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit {
   @Input() tableData
@@ -19,13 +19,13 @@ export class TableComponent implements OnInit {
   // when table data is array of string with colon
   prepareTableData(tData) {
     let updateData = tData.map((val) => {
-      let obj = val.split(":")
+      let obj = val.split(':')
       return {
         prop: obj[0],
         val: obj[1],
       }
     })
     this.dataSource = new MatTableDataSource(updateData)
-    this.displayedColumns = ["prop", "val"]
+    this.displayedColumns = ['prop', 'val']
   }
 }

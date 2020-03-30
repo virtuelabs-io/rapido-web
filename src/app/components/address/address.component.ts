@@ -1,14 +1,14 @@
-import { Component, OnInit, NgZone } from "@angular/core"
-import { Router, ActivatedRoute } from "@angular/router"
-import { AddressDetailsService } from "../../services/customer/address-details.service"
-import { RouteService } from "../../shared-services/route/route.service"
-import { SessionService } from "../../services/authentication/session/session.service"
-import { LoginStateService } from "../../shared-services/login-state/login-state.service"
+import { Component, OnInit, NgZone } from '@angular/core'
+import { Router, ActivatedRoute } from '@angular/router'
+import { AddressDetailsService } from '../../services/customer/address-details.service'
+import { RouteService } from '../../shared-services/route/route.service'
+import { SessionService } from '../../services/authentication/session/session.service'
+import { LoginStateService } from '../../shared-services/login-state/login-state.service'
 
 @Component({
-  selector: "app-address",
-  templateUrl: "./address.component.html",
-  styleUrls: ["./address.component.scss"],
+  selector: 'app-address',
+  templateUrl: './address.component.html',
+  styleUrls: ['./address.component.scss'],
 })
 export class AddressComponent implements OnInit {
   address_details_id: number
@@ -37,8 +37,8 @@ export class AddressComponent implements OnInit {
   }
 
   async handleError(err) {
-    this.RouteService.changeRoute("profile/address")
-    this.router.navigateByUrl("/login")
+    this.RouteService.changeRoute('profile/address')
+    this.router.navigateByUrl('/login')
   }
 
   async loginSessinExists() {
@@ -57,10 +57,10 @@ export class AddressComponent implements OnInit {
       await this._addressDetailsService
         .getAddressDetailsList()
         .subscribe((data) => {
-          if (data["length"] > 0) {
-            this.address_details_id = data[0]["id"]
+          if (data['length'] > 0) {
+            this.address_details_id = data[0]['id']
             this.address = data
-          } else if (data["length"] === 0) {
+          } else if (data['length'] === 0) {
             this.address = data
           }
           this._loginStateService.loaderDisable()
@@ -80,14 +80,14 @@ export class AddressComponent implements OnInit {
   }
   addressEdit(id) {
     this.ngZone
-      .run(() => this.router.navigate(["profile/address/editAddress", id]))
+      .run(() => this.router.navigate(['profile/address/editAddress', id]))
       .then()
   }
 
   newAddress() {
-    this.RouteService.changeRoute("profile")
+    this.RouteService.changeRoute('profile')
     this.ngZone
-      .run(() => this.router.navigate(["profile/address/newAddress"]))
+      .run(() => this.router.navigate(['profile/address/newAddress']))
       .then()
   }
 }

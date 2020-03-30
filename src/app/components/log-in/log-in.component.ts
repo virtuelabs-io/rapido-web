@@ -1,25 +1,25 @@
-import { Component, OnInit, NgZone } from "@angular/core"
-import { SignInService } from "../../services/authentication/sign-in/sign-in.service"
-import { ProfileService } from "../../services/authentication/profile/profile.service"
-import { Router } from "@angular/router"
-import { ActivatedRoute } from "@angular/router"
-import { Constants } from "../../utils/constants"
-import { LoginStateService } from "../../shared-services/login-state/login-state.service"
-import { CartStateService } from "../../shared-services/cart-state/cart-state.service"
-import { ResendOtpService } from "../../shared-services/resend-otp/resend-otp.services"
-import { RouteService } from "../../shared-services/route/route.service"
-import { CartService } from "../../services/cart/cart.service"
-import { GuestCartService } from "../../services/guests/guest-cart.service"
-import { CartItem } from "../../services/cart/cart-item"
+import { Component, OnInit, NgZone } from '@angular/core'
+import { SignInService } from '../../services/authentication/sign-in/sign-in.service'
+import { ProfileService } from '../../services/authentication/profile/profile.service'
+import { Router } from '@angular/router'
+import { ActivatedRoute } from '@angular/router'
+import { Constants } from '../../utils/constants'
+import { LoginStateService } from '../../shared-services/login-state/login-state.service'
+import { CartStateService } from '../../shared-services/cart-state/cart-state.service'
+import { ResendOtpService } from '../../shared-services/resend-otp/resend-otp.services'
+import { RouteService } from '../../shared-services/route/route.service'
+import { CartService } from '../../services/cart/cart.service'
+import { GuestCartService } from '../../services/guests/guest-cart.service'
+import { CartItem } from '../../services/cart/cart-item'
 
 @Component({
-  selector: "app-log-in",
-  templateUrl: "./log-in.component.html",
-  styleUrls: ["./log-in.component.scss"],
+  selector: 'app-log-in',
+  templateUrl: './log-in.component.html',
+  styleUrls: ['./log-in.component.scss'],
 })
 export class LogInComponent implements OnInit {
   alertBox: boolean = false
-  alertMsg: string = ""
+  alertMsg: string = ''
   _signInResponse: Boolean = false
   cartCount: Number = 0
   _previousRoute: any
@@ -70,13 +70,13 @@ export class LogInComponent implements OnInit {
   }
 
   async handleError(err) {
-    this.RouteService.changeRoute("cart")
-    this.router.navigateByUrl("/login")
+    this.RouteService.changeRoute('cart')
+    this.router.navigateByUrl('/login')
   }
 
   async moveToPreviousRoute() {
     if (this.isLoggedIn) {
-      this.router.navigateByUrl("")
+      this.router.navigateByUrl('')
     } else {
       this.loginStateService.changeState(false)
     }
@@ -87,7 +87,7 @@ export class LogInComponent implements OnInit {
   }
 
   navigateToForgotPassword() {
-    this.ngZone.run(() => this.router.navigate(["forgotpassword"])).then()
+    this.ngZone.run(() => this.router.navigate(['forgotpassword'])).then()
   }
 
   async handleUserlogin() {
@@ -139,7 +139,7 @@ export class LogInComponent implements OnInit {
   async login() {
     if (this.mobileNumber && this.password && this.mobileNumber.length === 10) {
       this._signInService.signInData = {
-        Username: [this.countryCode, this.mobileNumber].join(""),
+        Username: [this.countryCode, this.mobileNumber].join(''),
         Password: this.password,
       }
       await this._signInService
@@ -155,10 +155,10 @@ export class LogInComponent implements OnInit {
           this._signInResponse = false
           this.alertBox = true
           this.alertMsg = error.data.message
-          this.password = ""
-          if (error.data.code === "UserNotConfirmedException") {
+          this.password = ''
+          if (error.data.code === 'UserNotConfirmedException') {
             this.resendOtpService.changeNumber(this.mobileNumber)
-            this.ngZone.run(() => this.router.navigate(["resendotp"])).then()
+            this.ngZone.run(() => this.router.navigate(['resendotp'])).then()
           }
         })
     } else {
@@ -176,29 +176,29 @@ export class LogInComponent implements OnInit {
   handleRouteAfterLogIn() {
     if (
       this._previousRoute.value &&
-      this._previousRoute.value !== "cart/guest-checkout"
+      this._previousRoute.value !== 'cart/guest-checkout'
     ) {
       this.gotoRoute = this._previousRoute.value
-      this.RouteService.changeRoute("")
-      this.ngZone.run(() => this.router.navigate(["/" + this.gotoRoute])).then()
+      this.RouteService.changeRoute('')
+      this.ngZone.run(() => this.router.navigate(['/' + this.gotoRoute])).then()
     } else if (
       this._previousRoute.value &&
-      this._previousRoute.value == "cart/guest-checkout"
+      this._previousRoute.value == 'cart/guest-checkout'
     ) {
-      this.RouteService.changeRoute("")
-      this.ngZone.run(() => this.router.navigate(["/cart"])).then()
+      this.RouteService.changeRoute('')
+      this.ngZone.run(() => this.router.navigate(['/cart'])).then()
     } else {
-      this.ngZone.run(() => this.router.navigate([""])).then()
+      this.ngZone.run(() => this.router.navigate([''])).then()
     }
   }
 
   handleGuest() {
     if (this._previousRoute.value) {
       this.ngZone
-        .run(() => this.router.navigate(["/" + this._previousRoute.value]))
+        .run(() => this.router.navigate(['/' + this._previousRoute.value]))
         .then()
     } else {
-      this.ngZone.run(() => this.router.navigate([""])).then()
+      this.ngZone.run(() => this.router.navigate([''])).then()
     }
   }
 }

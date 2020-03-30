@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing"
-import { CardComponent } from "./card.component"
-import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core"
+import { async, ComponentFixture, TestBed } from '@angular/core/testing'
+import { CardComponent } from './card.component'
+import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 
-describe("CardComponent", () => {
+describe('CardComponent', () => {
   let component: CardComponent
   let fixture: ComponentFixture<CardComponent>
 
@@ -19,7 +19,7 @@ describe("CardComponent", () => {
     fixture.detectChanges()
   })
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy()
   })
 })

@@ -1,9 +1,9 @@
-import { TestBed } from "@angular/core/testing"
-import { ProfileService } from "../authentication/profile/profile.service"
-import { HttpClientTestingModule } from "@angular/common/http/testing"
-import { GuestAddressService } from "./guest-address.service"
+import { TestBed } from '@angular/core/testing'
+import { ProfileService } from '../authentication/profile/profile.service'
+import { HttpClientTestingModule } from '@angular/common/http/testing'
+import { GuestAddressService } from './guest-address.service'
 
-describe("GuestAddressService", () => {
+describe('GuestAddressService', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
@@ -11,7 +11,7 @@ describe("GuestAddressService", () => {
     })
   )
 
-  it("should be created", () => {
+  it('should be created', () => {
     const service: GuestAddressService = TestBed.get(GuestAddressService)
     expect(service).toBeTruthy()
   })

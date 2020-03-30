@@ -1,14 +1,14 @@
-import { Injectable } from "@angular/core"
-import { RapidoHttpService } from "../commons/rapido-http.service"
-import { GuestCharge } from "./guest-charge"
-import { HttpClient } from "@angular/common/http"
-import { ProfileService } from "../authentication/profile/profile.service"
-import { Constants } from "../../utils/constants"
-import { Query } from "../products/query.interface"
-import { ProductsService } from "../products/products.service"
+import { Injectable } from '@angular/core'
+import { RapidoHttpService } from '../commons/rapido-http.service'
+import { GuestCharge } from './guest-charge'
+import { HttpClient } from '@angular/common/http'
+import { ProfileService } from '../authentication/profile/profile.service'
+import { Constants } from '../../utils/constants'
+import { Query } from '../products/query.interface'
+import { ProductsService } from '../products/products.service'
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class GuestChargeService extends RapidoHttpService<GuestCharge> {
   private _productService: ProductsService
@@ -26,13 +26,13 @@ export class GuestChargeService extends RapidoHttpService<GuestCharge> {
     guestCharge.session_id = localStorage.getItem(Constants.RAPIDO_SESSION_ID)
     guestCharge.description = [
       guestCharge.description,
-      "SID:",
+      'SID:',
       guestCharge.session_id,
-    ].join(" ")
+    ].join(' ')
     return new Promise((resolve) => {
       let orderItemsObject
       this.post(
-        [Constants.PAYMENT_APIS.api, "charge-guest"].join("/"),
+        [Constants.PAYMENT_APIS.api, 'charge-guest'].join('/'),
         guestCharge
       ).subscribe((data) => {
         if (data[0].length > 0) {
@@ -43,7 +43,7 @@ export class GuestChargeService extends RapidoHttpService<GuestCharge> {
             )
           })
         } else {
-          resolve({ error: "Error confirming your order! Try again!" })
+          resolve({ error: 'Error confirming your order! Try again!' })
         }
       })
     })
@@ -54,14 +54,14 @@ export class GuestChargeService extends RapidoHttpService<GuestCharge> {
     for (let _item in orderItems) {
       _items.push(
         Constants.SEARCH_QUERY.term.replace(
-          "$",
+          '$',
           String(orderItems[_item].product_id)
         )
       )
     }
     _items.push(Constants.SEARCH_QUERY.closeBracket)
     let _query: Query = {
-      q: _items.join(" "),
+      q: _items.join(' '),
       size: orderItems.length,
       cursor: null,
       return: Constants.SEARCH_QUERY.orderReturnFields,
@@ -86,8 +86,8 @@ export class GuestChargeService extends RapidoHttpService<GuestCharge> {
 
   prepareCartItemDetailsList(productDetails: any, orderItemsObject: any) {
     let products = {}
-    productDetails["hits"]["hit"].forEach((product) => {
-      products[product.id] = product["fields"]
+    productDetails['hits']['hit'].forEach((product) => {
+      products[product.id] = product['fields']
     })
     return {
       orderItemsObject,

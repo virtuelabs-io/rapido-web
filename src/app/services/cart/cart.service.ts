@@ -1,15 +1,15 @@
-import { Injectable } from "@angular/core"
-import { RapidoHttpService } from "../commons/rapido-http.service"
-import { CartItem } from "./cart-item"
-import { HttpClient } from "@angular/common/http"
-import { ProfileService } from "../authentication/profile/profile.service"
-import { Constants } from "../../utils/constants"
-import { Query } from "../products/query.interface"
-import { ProductsService } from "../products/products.service"
-import { CartItemDetails } from "./cart-item-details"
+import { Injectable } from '@angular/core'
+import { RapidoHttpService } from '../commons/rapido-http.service'
+import { CartItem } from './cart-item'
+import { HttpClient } from '@angular/common/http'
+import { ProfileService } from '../authentication/profile/profile.service'
+import { Constants } from '../../utils/constants'
+import { Query } from '../products/query.interface'
+import { ProductsService } from '../products/products.service'
+import { CartItemDetails } from './cart-item-details'
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class CartService extends RapidoHttpService<CartItem> {
   public _productService: ProductsService
@@ -27,7 +27,7 @@ export class CartService extends RapidoHttpService<CartItem> {
     return new Promise((resolve) => {
       let cartItemsObject
       this.getList(
-        [Constants.CART_APIS.api, "items"].join("/"),
+        [Constants.CART_APIS.api, 'items'].join('/'),
         this.addAuthHeader(this.initializeHeaders())
       ).subscribe((data) => {
         if (data.length > 0) {
@@ -39,7 +39,7 @@ export class CartService extends RapidoHttpService<CartItem> {
           })
         } else {
           resolve({
-            error: "No data found found for all items in cart(if they exist)",
+            error: 'No data found found for all items in cart(if they exist)',
           })
         }
       })
@@ -50,7 +50,7 @@ export class CartService extends RapidoHttpService<CartItem> {
     return new Promise((resolve) => {
       let cartItemsObject
       this.getList(
-        [Constants.CART_APIS.api, "in-cart-items"].join("/"),
+        [Constants.CART_APIS.api, 'in-cart-items'].join('/'),
         this.addAuthHeader(this.initializeHeaders())
       ).subscribe((data) => {
         if (data.length > 0) {
@@ -62,7 +62,7 @@ export class CartService extends RapidoHttpService<CartItem> {
           })
         } else {
           resolve({
-            error: "No data found found for the items in cart(if they exist)",
+            error: 'No data found found for the items in cart(if they exist)',
           })
         }
       })
@@ -72,7 +72,7 @@ export class CartService extends RapidoHttpService<CartItem> {
   getCountOfInCartItems() {
     return new Promise((resolve) => {
       this.getList(
-        [Constants.CART_APIS.api, "in-cart-items"].join("/"),
+        [Constants.CART_APIS.api, 'in-cart-items'].join('/'),
         this.addAuthHeader(this.initializeHeaders())
       ).subscribe((data) => {
         resolve(data.length)
@@ -84,7 +84,7 @@ export class CartService extends RapidoHttpService<CartItem> {
     return new Promise((resolve) => {
       let cartItemsObject
       this.getList(
-        [Constants.CART_APIS.api, "saved-for-later-items"].join("/"),
+        [Constants.CART_APIS.api, 'saved-for-later-items'].join('/'),
         this.addAuthHeader(this.initializeHeaders())
       ).subscribe((data) => {
         if (data.length > 0) {
@@ -97,7 +97,7 @@ export class CartService extends RapidoHttpService<CartItem> {
         } else {
           resolve({
             error:
-              "No data found found for the items saved for later (if they exist)",
+              'No data found found for the items saved for later (if they exist)',
           })
         }
       })
@@ -106,7 +106,7 @@ export class CartService extends RapidoHttpService<CartItem> {
 
   postCartItem(cartItem: CartItem) {
     return this.post(
-      [Constants.CART_APIS.api, "item"].join("/"),
+      [Constants.CART_APIS.api, 'item'].join('/'),
       cartItem,
       this.addAuthHeader(this.initializeHeaders())
     )
@@ -114,7 +114,7 @@ export class CartService extends RapidoHttpService<CartItem> {
 
   postCartItemList(cartItems: CartItem[]) {
     return this.postList(
-      [Constants.CART_APIS.api, "items"].join("/"),
+      [Constants.CART_APIS.api, 'items'].join('/'),
       cartItems,
       this.addAuthHeader(this.initializeHeaders())
     )
@@ -122,14 +122,14 @@ export class CartService extends RapidoHttpService<CartItem> {
 
   deleteCartItem(product_id: number) {
     return this.delete(
-      [Constants.CART_APIS.api, "item", String(product_id)].join("/"),
+      [Constants.CART_APIS.api, 'item', String(product_id)].join('/'),
       this.addAuthHeader(this.initializeHeaders())
     )
   }
 
   deleteInCartItems() {
     return this.delete(
-      [Constants.CART_APIS.api, "in-items"].join("/"),
+      [Constants.CART_APIS.api, 'in-items'].join('/'),
       this.addAuthHeader(this.initializeHeaders())
     )
   }
@@ -139,14 +139,14 @@ export class CartService extends RapidoHttpService<CartItem> {
     for (let _item in cartItems) {
       _items.push(
         Constants.SEARCH_QUERY.term.replace(
-          "$",
+          '$',
           String(cartItems[_item].product_id)
         )
       )
     }
     _items.push(Constants.SEARCH_QUERY.closeBracket)
     let _query: Query = {
-      q: _items.join(" "),
+      q: _items.join(' '),
       size: cartItems.length,
       cursor: null,
       return: Constants.SEARCH_QUERY.cartReturnFields,
@@ -173,8 +173,8 @@ export class CartService extends RapidoHttpService<CartItem> {
     for (let product in productDetails.hits.hit) {
       cartItemDetailsList.push(
         new CartItemDetails(
-          cartItemsObject[productDetails.hits.hit[product]["id"]],
-          productDetails.hits.hit[product]["fields"]
+          cartItemsObject[productDetails.hits.hit[product]['id']],
+          productDetails.hits.hit[product]['fields']
         )
       )
     }

@@ -1,11 +1,11 @@
-import { Component, Input } from "@angular/core"
-import { Common } from "src/app/utils/common"
+import { Component, Input } from '@angular/core'
+import { Common } from 'src/app/utils/common'
 // import { Options, LabelType, ChangeContext, PointerType } from 'ng5-slider';
 
 @Component({
-  selector: "range-slider",
-  templateUrl: "./range-slider.component.html",
-  styleUrls: ["./range-slider.component.scss"],
+  selector: 'range-slider',
+  templateUrl: './range-slider.component.html',
+  styleUrls: ['./range-slider.component.scss'],
 })
 export class RangeSliderComponent {
   @Input() rangeData: any

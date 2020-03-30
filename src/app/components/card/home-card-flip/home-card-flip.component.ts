@@ -1,18 +1,18 @@
-import { Component, Input, OnInit, NgZone } from "@angular/core"
-import { Router } from "@angular/router"
-import { SearchItemService } from "../../../shared-services/search-item/search-item.services"
-import { Common } from "../../../utils/common"
+import { Component, Input, OnInit, NgZone } from '@angular/core'
+import { Router } from '@angular/router'
+import { SearchItemService } from '../../../shared-services/search-item/search-item.services'
+import { Common } from '../../../utils/common'
 
 @Component({
-  selector: "app-home-card-flip",
-  templateUrl: "./home-card-flip.component.html",
-  styleUrls: ["./home-card-flip.component.scss"],
+  selector: 'app-home-card-flip',
+  templateUrl: './home-card-flip.component.html',
+  styleUrls: ['./home-card-flip.component.scss'],
 })
 export class HomeCardFlipComponent implements OnInit {
   @Input() cardDetails = {
-    title: "",
-    image: "",
-    desc: "",
+    title: '',
+    image: '',
+    desc: '',
   }
   constructor(
     private router: Router,
@@ -27,7 +27,7 @@ export class HomeCardFlipComponent implements OnInit {
     if (qObject) {
       this.ngZone
         .run(() =>
-          this.router.navigate(["/products"], { queryParams: qObject })
+          this.router.navigate(['/products'], { queryParams: qObject })
         )
         .then()
     }

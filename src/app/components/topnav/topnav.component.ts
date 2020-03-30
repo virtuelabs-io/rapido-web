@@ -1,30 +1,30 @@
-import { Component, OnInit, EventEmitter, Output, NgZone } from "@angular/core"
-import { SessionService } from "../../services/authentication/session/session.service"
-import { ProfileService } from "../../services/authentication/profile/profile.service"
-import { CartService } from "../../services/cart/cart.service"
-import { Constants } from "../../utils/constants"
-import { Router } from "@angular/router"
-import { LoginStateService } from "../../shared-services/login-state/login-state.service"
-import { CartStateService } from "../../shared-services/cart-state/cart-state.service"
-import { SearchItemService } from "../../shared-services/search-item/search-item.services"
-import { MatSnackBar } from "@angular/material/snack-bar"
-import { RouteService } from "../../shared-services/route/route.service"
-import { ProductsService } from "../../services/products/products.service"
-import { v4 as uuid } from "uuid"
-import { Common } from "./../../utils/common"
-import { GuestCartService } from "../../services/guests/guest-cart.service"
+import { Component, OnInit, EventEmitter, Output, NgZone } from '@angular/core'
+import { SessionService } from '../../services/authentication/session/session.service'
+import { ProfileService } from '../../services/authentication/profile/profile.service'
+import { CartService } from '../../services/cart/cart.service'
+import { Constants } from '../../utils/constants'
+import { Router } from '@angular/router'
+import { LoginStateService } from '../../shared-services/login-state/login-state.service'
+import { CartStateService } from '../../shared-services/cart-state/cart-state.service'
+import { SearchItemService } from '../../shared-services/search-item/search-item.services'
+import { MatSnackBar } from '@angular/material/snack-bar'
+import { RouteService } from '../../shared-services/route/route.service'
+import { ProductsService } from '../../services/products/products.service'
+import { v4 as uuid } from 'uuid'
+import { Common } from './../../utils/common'
+import { GuestCartService } from '../../services/guests/guest-cart.service'
 
 @Component({
-  selector: "app-topnav",
-  templateUrl: "./topnav.component.html",
-  styleUrls: ["./topnav.component.scss"],
+  selector: 'app-topnav',
+  templateUrl: './topnav.component.html',
+  styleUrls: ['./topnav.component.scss'],
 })
 export class TopnavComponent implements OnInit {
   @Output() toggleSidenav = new EventEmitter<void>()
   isSignedIn: Boolean = false
   userName: string
 
-  searchedText: string = ""
+  searchedText: string = ''
   bannerName: string = Constants.RAPIDO_BUILD
   durationInSeconds = 5
   cartCount: Number = 0
@@ -88,7 +88,7 @@ export class TopnavComponent implements OnInit {
     this.signOutCall().then(function () {
       that._loginStateService.changeState(false)
       that._cartStateService.fetchAndUpdateCartCount(false)
-      that.ngZone.run(() => that.router.navigate([""])).then()
+      that.ngZone.run(() => that.router.navigate([''])).then()
     })
   }
 
@@ -102,7 +102,7 @@ export class TopnavComponent implements OnInit {
   onSearch(event) {
     if (this.searchedText) {
       let qObject = Common.searchProducts(this.searchedText)
-      this.router.navigate(["/products"], { queryParams: qObject })
+      this.router.navigate(['/products'], { queryParams: qObject })
     }
 
     /* if(event.target[0] && event.target[0].value){
@@ -134,7 +134,7 @@ export class TopnavComponent implements OnInit {
   }
 
   handleProfileNavigation() {
-    this.RouteService.changeRoute("noQuestionnaire")
-    this.ngZone.run(() => this.router.navigate(["profile"])).then()
+    this.RouteService.changeRoute('noQuestionnaire')
+    this.ngZone.run(() => this.router.navigate(['profile'])).then()
   }
 }

@@ -1,4 +1,4 @@
-import { Constants } from "../../utils/constants"
+import { Constants } from '../../utils/constants'
 export class Charge {
   private _token: string
   private _description: string

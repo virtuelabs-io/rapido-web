@@ -1,14 +1,14 @@
-import { Injectable } from "@angular/core"
-import { AuthenticationService } from "../base/authentication.service"
-import { ProfileService } from "../profile/profile.service"
-import { VirtueCognitoService } from "../virtue-cognito/virtue-cognito.service"
-import { SignInInterface } from "./sign-in.interface"
-import { Response } from "../../../utils/response"
-import { Constants } from "src/app/utils/constants"
-import { AuthenticationDetails } from "amazon-cognito-identity-js"
+import { Injectable } from '@angular/core'
+import { AuthenticationService } from '../base/authentication.service'
+import { ProfileService } from '../profile/profile.service'
+import { VirtueCognitoService } from '../virtue-cognito/virtue-cognito.service'
+import { SignInInterface } from './sign-in.interface'
+import { Response } from '../../../utils/response'
+import { Constants } from 'src/app/utils/constants'
+import { AuthenticationDetails } from 'amazon-cognito-identity-js'
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class SignInService extends AuthenticationService {
   private _signInData: SignInInterface

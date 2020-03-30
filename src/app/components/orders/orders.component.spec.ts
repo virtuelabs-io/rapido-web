@@ -4,30 +4,30 @@ import {
   TestBed,
   fakeAsync,
   tick,
-} from "@angular/core/testing"
-import { HttpClientModule } from "@angular/common/http"
-import { OrdersComponent } from "./orders.component"
-import { RouterTestingModule } from "@angular/router/testing"
-import { LogInComponent } from "../log-in/log-in.component"
-import { Router, Routes } from "@angular/router"
-import { FormsModule } from "@angular/forms"
-import { OrdersMockData } from "src/app/services/orders/orders.mock.data"
-import { OrdersMockService } from "../../services/orders/orders.mock.service"
-import { OrdersService } from "src/app/services/orders/orders.service"
-import { Location } from "@angular/common"
-import { OrderDetailsComponent } from "../order-details/order-details.component"
-import { MatDialogModule, MatSnackBarModule } from "@angular/material"
-import { ConfirmationDialogComponent } from "../../components/confirmation-dialog/confirmation-dialog.component"
-import { BrowserDynamicTestingModule } from "@angular/platform-browser-dynamic/testing"
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations"
-import { EditReviewComponent } from "../edit-review/edit-review.component"
-import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core"
-import { ReactiveFormsModule } from "@angular/forms"
-import { CreateReviewComponent } from "../create-review/create-review.component"
-import { CartService } from "src/app/services/cart/cart.service"
-import { CartMockService } from "src/app/services/cart/cart.mock.service"
+} from '@angular/core/testing'
+import { HttpClientModule } from '@angular/common/http'
+import { OrdersComponent } from './orders.component'
+import { RouterTestingModule } from '@angular/router/testing'
+import { LogInComponent } from '../log-in/log-in.component'
+import { Router, Routes } from '@angular/router'
+import { FormsModule } from '@angular/forms'
+import { OrdersMockData } from 'src/app/services/orders/orders.mock.data'
+import { OrdersMockService } from '../../services/orders/orders.mock.service'
+import { OrdersService } from 'src/app/services/orders/orders.service'
+import { Location } from '@angular/common'
+import { OrderDetailsComponent } from '../order-details/order-details.component'
+import { MatDialogModule, MatSnackBarModule } from '@angular/material'
+import { ConfirmationDialogComponent } from '../../components/confirmation-dialog/confirmation-dialog.component'
+import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { EditReviewComponent } from '../edit-review/edit-review.component'
+import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
+import { ReactiveFormsModule } from '@angular/forms'
+import { CreateReviewComponent } from '../create-review/create-review.component'
+import { CartService } from 'src/app/services/cart/cart.service'
+import { CartMockService } from 'src/app/services/cart/cart.mock.service'
 
-describe("OrdersComponent", () => {
+describe('OrdersComponent', () => {
   let cartMockService: CartService = new CartMockService()
   let ordersMockService: OrdersService = new OrdersMockService()
   let component: OrdersComponent
@@ -36,10 +36,10 @@ describe("OrdersComponent", () => {
   let location: Location
 
   const routes: Routes = [
-    { path: "login", component: LogInComponent },
-    { path: "orders/:id/details", component: OrderDetailsComponent },
-    { path: "review/edit/review/:id", component: EditReviewComponent },
-    { path: "review/create/product/:id", component: CreateReviewComponent },
+    { path: 'login', component: LogInComponent },
+    { path: 'orders/:id/details', component: OrderDetailsComponent },
+    { path: 'review/edit/review/:id', component: EditReviewComponent },
+    { path: 'review/create/product/:id', component: CreateReviewComponent },
   ]
 
   beforeEach(async(() => {
@@ -82,31 +82,31 @@ describe("OrdersComponent", () => {
     fixture.detectChanges()
   })
 
-  it("should create", () => {
+  it('should create', () => {
     component.isLoggedIn = true
     expect(component).toBeTruthy()
   })
 
-  it("should fetch order/s if present", async () => {
+  it('should fetch order/s if present', async () => {
     component.isLoggedIn = true
     await component.getOrders()
     expect(component.fetchOrdersRes).toEqual(OrdersMockData.orders)
   })
 
-  it("cancel order", async () => {
+  it('cancel order', async () => {
     let id = 13
     component.isLoggedIn = true
     await component.yesModalAction(id)
     expect(component.cancelOrderRes).toEqual(OrdersMockData.deleteOrder)
   })
 
-  it("route to order details component", fakeAsync(() => {
+  it('route to order details component', fakeAsync(() => {
     component.orderDetails(13)
     tick()
-    expect(location.path()).toEqual("/orders/13/details")
+    expect(location.path()).toEqual('/orders/13/details')
   }))
 
-  it("map the fetched orders to the UI controls", async () => {
+  it('map the fetched orders to the UI controls', async () => {
     component.isLoggedIn = true
     await component.getOrders()
     expect(
@@ -117,7 +117,7 @@ describe("OrdersComponent", () => {
     )
   })
 
-  it("route to Edit Review component from Orders component", fakeAsync(() => {
+  it('route to Edit Review component from Orders component', fakeAsync(() => {
     component.isLoggedIn = true
     let data = [
       {
@@ -127,19 +127,19 @@ describe("OrdersComponent", () => {
     let productId = 51
     component.handleReviewNavigation(data, productId)
     tick()
-    expect(location.path()).toEqual("/review/edit/review/8")
+    expect(location.path()).toEqual('/review/edit/review/8')
   }))
 
-  it("route to Create Review component from Orders component", fakeAsync(() => {
+  it('route to Create Review component from Orders component', fakeAsync(() => {
     component.isLoggedIn = true
     let data = []
     let productId = 51
     component.handleReviewNavigation(data, productId)
     tick()
-    expect(location.path()).toEqual("/review/create/product/51")
+    expect(location.path()).toEqual('/review/create/product/51')
   }))
 
-  it("repeat order functionality", async () => {
+  it('repeat order functionality', async () => {
     component.isLoggedIn = true
     component.newItemsToCart = [
       {

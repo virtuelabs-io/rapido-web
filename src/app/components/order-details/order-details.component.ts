@@ -1,21 +1,21 @@
-import { Component, OnInit } from "@angular/core"
-import { OrdersService } from "../../services/orders/orders.service"
-import { Order } from "../../services/orders/order"
-import { Constants } from "../../utils/constants"
-import { Router, ActivatedRoute } from "@angular/router"
-import { RouteService } from "../../shared-services/route/route.service"
-import { LoginStateService } from "../../shared-services/login-state/login-state.service"
-import { CompanyDetailsService } from "../../services/customer/company-details.service"
-import { CartStateService } from "../../shared-services/cart-state/cart-state.service"
+import { Component, OnInit } from '@angular/core'
+import { OrdersService } from '../../services/orders/orders.service'
+import { Order } from '../../services/orders/order'
+import { Constants } from '../../utils/constants'
+import { Router, ActivatedRoute } from '@angular/router'
+import { RouteService } from '../../shared-services/route/route.service'
+import { LoginStateService } from '../../shared-services/login-state/login-state.service'
+import { CompanyDetailsService } from '../../services/customer/company-details.service'
+import { CartStateService } from '../../shared-services/cart-state/cart-state.service'
 
 @Component({
-  selector: "app-order-details",
-  templateUrl: "./order-details.component.html",
-  styleUrls: ["./order-details.component.scss"],
+  selector: 'app-order-details',
+  templateUrl: './order-details.component.html',
+  styleUrls: ['./order-details.component.scss'],
 })
 export class OrderDetailsComponent implements OnInit {
   newOrder: boolean = false
-  _previousRoute: any = ""
+  _previousRoute: any = ''
   orderedItems = []
   orders = {}
   products = {}
@@ -49,10 +49,10 @@ export class OrderDetailsComponent implements OnInit {
 
   ngOnInit() {
     this._previousRoute = this.RouteService.getRoute()
-    if (this._previousRoute.value == "orderCreated") {
+    if (this._previousRoute.value == 'orderCreated') {
       this.newOrder = true
     }
-    this.id = parseInt(this.actRoute.snapshot.paramMap.get("id"))
+    this.id = parseInt(this.actRoute.snapshot.paramMap.get('id'))
     this.userLogInCheck()
   }
 
@@ -69,8 +69,8 @@ export class OrderDetailsComponent implements OnInit {
   }
 
   async handleError(err) {
-    this.RouteService.changeRoute("orders/" + this.id + "/details")
-    this.router.navigateByUrl("/login")
+    this.RouteService.changeRoute('orders/' + this.id + '/details')
+    this.router.navigateByUrl('/login')
   }
 
   async getOrder() {
@@ -84,58 +84,58 @@ export class OrderDetailsComponent implements OnInit {
         .getOrder(this.order.order_id)
         .then((data: any) => {
           this.fetchOrderRes = data
-          if (data["orderItemsObject"]) {
-            for (let order in data["orderItemsObject"]) {
-              if (data["products"]) {
-                this.products = data["products"]
+          if (data['orderItemsObject']) {
+            for (let order in data['orderItemsObject']) {
+              if (data['products']) {
+                this.products = data['products']
               }
               if (this.orders[order] == undefined) {
                 this.orders[order] = {}
-                this.orders[order]["items"] = []
-                this.orders[order]["address"] = {}
+                this.orders[order]['items'] = []
+                this.orders[order]['address'] = {}
               }
-              for (let product in data["orderItemsObject"][order]) {
+              for (let product in data['orderItemsObject'][order]) {
                 this.orders[order].currency =
-                  data["products"][product]["currency"]
-                this.orders[order].order_price = data["orderItemsObject"][
+                  data['products'][product]['currency']
+                this.orders[order].order_price = data['orderItemsObject'][
                   order
                 ][product].order_price.toFixed(2)
-                this.orders[order].order_price_total = data["orderItemsObject"][
+                this.orders[order].order_price_total = data['orderItemsObject'][
                   order
                 ][product].order_price_total.toFixed(2)
-                this.orders[order].delivery_cost = data["orderItemsObject"][
+                this.orders[order].delivery_cost = data['orderItemsObject'][
                   order
                 ][product].delivery_cost.toFixed(2)
-                this.orders[order].vat = data["orderItemsObject"][order][
+                this.orders[order].vat = data['orderItemsObject'][order][
                   product
                 ].vat.toFixed(2)
-                this.orders[order].date = data["orderItemsObject"][order][
+                this.orders[order].date = data['orderItemsObject'][order][
                   product
-                ]["created_on"].split("T")[0]
+                ]['created_on'].split('T')[0]
                 this.orders[order].shipTo =
-                  data["orderItemsObject"][order][product]["full_name"]
+                  data['orderItemsObject'][order][product]['full_name']
                 this.orders[order].category =
                   Constants.ORDER_STATUS[
-                    data["orderItemsObject"][order][product]["order_status_id"]
+                    data['orderItemsObject'][order][product]['order_status_id']
                   ]
                 this.orders[order].items.push(
-                  data["orderItemsObject"][order][product]
+                  data['orderItemsObject'][order][product]
                 )
 
-                this.orders[order]["address"].full_name =
-                  data["orderItemsObject"][order][product].full_name
-                this.orders[order]["address"].addr_1 =
-                  data["orderItemsObject"][order][product].addr_1
-                this.orders[order]["address"].addr_2 =
-                  data["orderItemsObject"][order][product].addr_2
-                this.orders[order]["address"].city =
-                  data["orderItemsObject"][order][product].city
-                this.orders[order]["address"].county =
-                  data["orderItemsObject"][order][product].county
-                this.orders[order]["address"].postcode =
-                  data["orderItemsObject"][order][product].postcode
-                this.orders[order]["address"].country =
-                  data["orderItemsObject"][order][product].country
+                this.orders[order]['address'].full_name =
+                  data['orderItemsObject'][order][product].full_name
+                this.orders[order]['address'].addr_1 =
+                  data['orderItemsObject'][order][product].addr_1
+                this.orders[order]['address'].addr_2 =
+                  data['orderItemsObject'][order][product].addr_2
+                this.orders[order]['address'].city =
+                  data['orderItemsObject'][order][product].city
+                this.orders[order]['address'].county =
+                  data['orderItemsObject'][order][product].county
+                this.orders[order]['address'].postcode =
+                  data['orderItemsObject'][order][product].postcode
+                this.orders[order]['address'].country =
+                  data['orderItemsObject'][order][product].country
               }
             }
             this.orderedItems = Object.keys(this.orders)

@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing"
-import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from "@angular/core"
-import { ImageCarouselComponent } from "./image-carousel.component"
+import { async, ComponentFixture, TestBed } from '@angular/core/testing'
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core'
+import { ImageCarouselComponent } from './image-carousel.component'
 
-describe("ImageCarouselComponent", () => {
+describe('ImageCarouselComponent', () => {
   let component: ImageCarouselComponent
   let fixture: ComponentFixture<ImageCarouselComponent>
 
@@ -19,7 +19,7 @@ describe("ImageCarouselComponent", () => {
     fixture.detectChanges()
   })
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy()
   })
 })

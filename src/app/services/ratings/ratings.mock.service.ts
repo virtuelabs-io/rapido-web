@@ -1,13 +1,13 @@
-import { Injectable } from "@angular/core"
-import { RapidoHttpService } from "../commons/rapido-http.service"
-import { HttpClient } from "@angular/common/http"
-import { of } from "rxjs"
-import { RatingsMockData } from "./ratings.mock.data"
-import { RatingsService } from "./ratings.service"
-import { ProfileService } from "../authentication/profile/profile.service"
+import { Injectable } from '@angular/core'
+import { RapidoHttpService } from '../commons/rapido-http.service'
+import { HttpClient } from '@angular/common/http'
+import { of } from 'rxjs'
+import { RatingsMockData } from './ratings.mock.data'
+import { RatingsService } from './ratings.service'
+import { ProfileService } from '../authentication/profile/profile.service'
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class RatingsMockService extends RatingsService {
   constructor(

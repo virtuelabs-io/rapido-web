@@ -1,120 +1,120 @@
-import { Component, OnInit, NgZone } from "@angular/core"
-import { FlatTreeControl } from "@angular/cdk/tree"
-import { MatTreeFlatDataSource, MatTreeFlattener } from "@angular/material/tree"
-import { Common } from "../../../../src/app/utils/common"
-import { Router } from "@angular/router"
-import { TreeNode } from "./tree-node"
-import { FlatNode } from "./flat-node"
+import { Component, OnInit, NgZone } from '@angular/core'
+import { FlatTreeControl } from '@angular/cdk/tree'
+import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree'
+import { Common } from '../../../../src/app/utils/common'
+import { Router } from '@angular/router'
+import { TreeNode } from './tree-node'
+import { FlatNode } from './flat-node'
 const TREE_DATA: TreeNode[] = [
   {
-    name: "Building Material",
+    name: 'Building Material',
     children: [
       {
-        name: "Access Panels",
+        name: 'Access Panels',
         children: [
           {
-            name: "Accoustic",
+            name: 'Accoustic',
           },
           {
-            name: "Airtight",
+            name: 'Airtight',
           },
           {
-            name: "Budget",
+            name: 'Budget',
           },
           {
-            name: "Ceramic Tile",
+            name: 'Ceramic Tile',
           },
           {
-            name: "Circular",
+            name: 'Circular',
           },
           {
-            name: "Fire Rated",
+            name: 'Fire Rated',
           },
           {
-            name: "Plastic",
+            name: 'Plastic',
           },
           {
-            name: "Plasterboard Door",
+            name: 'Plasterboard Door',
           },
           {
-            name: "Accoustic",
+            name: 'Accoustic',
           },
           {
-            name: "Airtight",
+            name: 'Airtight',
           },
           {
-            name: "Budget",
+            name: 'Budget',
           },
           {
-            name: "Ceramic Tile",
+            name: 'Ceramic Tile',
           },
         ],
       },
       {
-        name: "Membranes",
+        name: 'Membranes',
         children: [
           {
-            name: "Breather",
+            name: 'Breather',
           },
           {
-            name: "DPC",
+            name: 'DPC',
           },
           {
-            name: "DPM",
+            name: 'DPM',
           },
           {
-            name: "Gas",
+            name: 'Gas',
           },
           {
-            name: "Geotextile",
+            name: 'Geotextile',
           },
           {
-            name: "Polythelene",
+            name: 'Polythelene',
           },
           {
-            name: "Tanking",
+            name: 'Tanking',
           },
           {
-            name: "Gas",
+            name: 'Gas',
           },
         ],
       },
     ],
   },
   {
-    name: "Insulation",
+    name: 'Insulation',
     children: [
       {
-        name: "Green",
-        children: [{ name: "Broccoli" }, { name: "Brussels sprouts" }],
+        name: 'Green',
+        children: [{ name: 'Broccoli' }, { name: 'Brussels sprouts' }],
       },
       {
-        name: "Orange",
-        children: [{ name: "Pumpkins" }, { name: "Carrots" }],
+        name: 'Orange',
+        children: [{ name: 'Pumpkins' }, { name: 'Carrots' }],
       },
     ],
   },
   {
-    name: "Ceilings",
+    name: 'Ceilings',
   },
   {
-    name: "Roofing",
+    name: 'Roofing',
   },
   {
-    name: "Commercials",
+    name: 'Commercials',
   },
   {
-    name: "Paints",
+    name: 'Paints',
   },
   {
-    name: "Interiors",
+    name: 'Interiors',
   },
 ]
 
 @Component({
-  selector: "app-product-menu-mobile",
-  templateUrl: "./product-menu-mobile.component.html",
-  styleUrls: ["./product-menu-mobile.component.scss"],
+  selector: 'app-product-menu-mobile',
+  templateUrl: './product-menu-mobile.component.html',
+  styleUrls: ['./product-menu-mobile.component.scss'],
 })
 export class ProductMenuMobileComponent implements OnInit {
   private _transformer = (node: TreeNode, level: number) => {
@@ -152,7 +152,7 @@ export class ProductMenuMobileComponent implements OnInit {
     if (qObject) {
       this.ngZone
         .run(() =>
-          this.router.navigate(["/products"], { queryParams: qObject })
+          this.router.navigate(['/products'], { queryParams: qObject })
         )
         .then()
     }

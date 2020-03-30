@@ -1,11 +1,11 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing"
-import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core"
-import { ProductResultsComponent } from "./product-results.component"
-import { MatDialogModule } from "@angular/material/dialog"
-import { HttpClientTestingModule } from "@angular/common/http/testing"
-import { RouterTestingModule } from "@angular/router/testing"
+import { async, ComponentFixture, TestBed } from '@angular/core/testing'
+import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
+import { ProductResultsComponent } from './product-results.component'
+import { MatDialogModule } from '@angular/material/dialog'
+import { HttpClientTestingModule } from '@angular/common/http/testing'
+import { RouterTestingModule } from '@angular/router/testing'
 
-describe("ProductResultsComponent", () => {
+describe('ProductResultsComponent', () => {
   let component: ProductResultsComponent
   let fixture: ComponentFixture<ProductResultsComponent>
 
@@ -23,7 +23,7 @@ describe("ProductResultsComponent", () => {
     fixture.detectChanges()
   })
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy()
   })
 })

@@ -1,22 +1,22 @@
-import { Component, OnInit, NgZone, NgModule } from "@angular/core"
-import { Router, ActivatedRoute } from "@angular/router"
-import { Rating } from "../../services/ratings/rating"
-import { RatingsService } from "../../services/ratings/ratings.service"
-import { ProductsService } from "../../services/products/products.service"
-import { Common } from "../../../../src/app/utils/common"
-import { RouteService } from "../../shared-services/route/route.service"
-import { LoginStateService } from "../../shared-services/login-state/login-state.service"
-import { MatSnackBar } from "@angular/material"
-import { Constants } from "../../utils/constants"
-import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms"
+import { Component, OnInit, NgZone, NgModule } from '@angular/core'
+import { Router, ActivatedRoute } from '@angular/router'
+import { Rating } from '../../services/ratings/rating'
+import { RatingsService } from '../../services/ratings/ratings.service'
+import { ProductsService } from '../../services/products/products.service'
+import { Common } from '../../../../src/app/utils/common'
+import { RouteService } from '../../shared-services/route/route.service'
+import { LoginStateService } from '../../shared-services/login-state/login-state.service'
+import { MatSnackBar } from '@angular/material'
+import { Constants } from '../../utils/constants'
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 
 @NgModule({
   imports: [FormBuilder, Validators, FormGroup],
 })
 @Component({
-  selector: "app-edit-review",
-  templateUrl: "./edit-review.component.html",
-  styleUrls: ["./edit-review.component.scss"],
+  selector: 'app-edit-review',
+  templateUrl: './edit-review.component.html',
+  styleUrls: ['./edit-review.component.scss'],
 })
 export class EditReviewComponent implements OnInit {
   _productId: number = 0
@@ -48,11 +48,11 @@ export class EditReviewComponent implements OnInit {
 
   ngOnInit() {
     this._loginStateService.loaderEnable()
-    this._reviewId = parseInt(this.actRoute.snapshot.paramMap.get("id"))
+    this._reviewId = parseInt(this.actRoute.snapshot.paramMap.get('id'))
     this.userLogInCheck()
     this.registerFormGroup = new FormGroup({
-      summary: new FormControl("", [Validators.required]),
-      title: new FormControl("", [Validators.required]),
+      summary: new FormControl('', [Validators.required]),
+      title: new FormControl('', [Validators.required]),
     })
   }
 
@@ -74,15 +74,15 @@ export class EditReviewComponent implements OnInit {
   }
 
   async handleError(err) {
-    this.RouteService.changeRoute("review/create/product/" + this._productId)
-    this.router.navigateByUrl("/login")
+    this.RouteService.changeRoute('review/create/product/' + this._productId)
+    this.router.navigateByUrl('/login')
   }
 
   async getReviewDetails() {
     this._ratingsService.getCustomerRating(this._reviewId).subscribe((data) => {
       this.rate = data.rating
-      this.registerFormGroup.controls["summary"].setValue(data.summary)
-      this.registerFormGroup.controls["title"].setValue(data.title)
+      this.registerFormGroup.controls['summary'].setValue(data.summary)
+      this.registerFormGroup.controls['title'].setValue(data.title)
       this.getProductDetails(data.product_id)
     })
   }
@@ -91,7 +91,7 @@ export class EditReviewComponent implements OnInit {
     let query = {
       q: `(term field=_id ${product_id})`,
       size: 10,
-      qdotparser: "structured",
+      qdotparser: 'structured',
     }
     if (this.isLoggedIn) {
       await this._productsService.get(query).subscribe((data) => {
@@ -119,10 +119,10 @@ export class EditReviewComponent implements OnInit {
     this.rating.summary = form.summary
     this._ratingsService.updateRating(this.rating).subscribe((data) => {
       this.updateRes = data
-      this._snackBar.open(Constants.REVIEW_UPDATED_SUCCESSFULLY, "", {
+      this._snackBar.open(Constants.REVIEW_UPDATED_SUCCESSFULLY, '', {
         duration: 5000,
       })
-      this.ngZone.run(() => this.router.navigate(["profile/my-reviews"])).then()
+      this.ngZone.run(() => this.router.navigate(['profile/my-reviews'])).then()
     })
   }
 }

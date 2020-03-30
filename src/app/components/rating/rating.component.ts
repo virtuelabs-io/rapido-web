@@ -5,12 +5,12 @@ import {
   Output,
   SimpleChanges,
   EventEmitter,
-} from "@angular/core"
+} from '@angular/core'
 
 @Component({
-  selector: "app-rating",
-  templateUrl: "./rating.component.html",
-  styleUrls: ["./rating.component.scss"],
+  selector: 'app-rating',
+  templateUrl: './rating.component.html',
+  styleUrls: ['./rating.component.scss'],
 })
 export class RatingComponent implements OnInit {
   @Input() currentRate: string

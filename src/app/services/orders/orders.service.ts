@@ -1,14 +1,14 @@
-import { Injectable } from "@angular/core"
-import { Order } from "./order"
-import { RapidoHttpService } from "../commons/rapido-http.service"
-import { HttpClient } from "@angular/common/http"
-import { ProfileService } from "../authentication/profile/profile.service"
-import { Constants } from "../../utils/constants"
-import { Query } from "../products/query.interface"
-import { ProductsService } from "../products/products.service"
+import { Injectable } from '@angular/core'
+import { Order } from './order'
+import { RapidoHttpService } from '../commons/rapido-http.service'
+import { HttpClient } from '@angular/common/http'
+import { ProfileService } from '../authentication/profile/profile.service'
+import { Constants } from '../../utils/constants'
+import { Query } from '../products/query.interface'
+import { ProductsService } from '../products/products.service'
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class OrdersService extends RapidoHttpService<Order> {
   public _productService: ProductsService
@@ -26,7 +26,7 @@ export class OrdersService extends RapidoHttpService<Order> {
     return new Promise((resolve) => {
       let orderItemsObject
       this.post(
-        [Constants.ORDERS_APIS.api, "orders"].join("/"),
+        [Constants.ORDERS_APIS.api, 'orders'].join('/'),
         order,
         this.addAuthHeader(this.initializeHeaders())
       ).subscribe((data) => {
@@ -38,7 +38,7 @@ export class OrdersService extends RapidoHttpService<Order> {
             )
           })
         } else {
-          resolve({ error: "Error creating an order! Try again!" })
+          resolve({ error: 'Error creating an order! Try again!' })
         }
       })
     })
@@ -48,7 +48,7 @@ export class OrdersService extends RapidoHttpService<Order> {
     return new Promise((resolve) => {
       let orderItemsObject
       this.put(
-        [Constants.ORDERS_APIS.api, "orders", String(order.order_id)].join("/"),
+        [Constants.ORDERS_APIS.api, 'orders', String(order.order_id)].join('/'),
         order,
         this.addAuthHeader(this.initializeHeaders())
       ).subscribe((data) => {
@@ -60,7 +60,7 @@ export class OrdersService extends RapidoHttpService<Order> {
             )
           })
         } else {
-          resolve({ error: "Error confirming your order! Try again!" })
+          resolve({ error: 'Error confirming your order! Try again!' })
         }
       })
     })
@@ -70,7 +70,7 @@ export class OrdersService extends RapidoHttpService<Order> {
     return new Promise((resolve) => {
       let orderItemsObject
       this.get(
-        [Constants.ORDERS_APIS.api, "orders", String(order_id)].join("/"),
+        [Constants.ORDERS_APIS.api, 'orders', String(order_id)].join('/'),
         this.addAuthHeader(this.initializeHeaders())
       ).subscribe((data) => {
         if (data[0].length > 0) {
@@ -81,7 +81,7 @@ export class OrdersService extends RapidoHttpService<Order> {
             )
           })
         } else {
-          resolve({ error: "Error fetchinng your order! Try again!" })
+          resolve({ error: 'Error fetchinng your order! Try again!' })
         }
       })
     })
@@ -91,7 +91,7 @@ export class OrdersService extends RapidoHttpService<Order> {
     return new Promise((resolve) => {
       let orderItemsObject
       this.get(
-        [Constants.ORDERS_APIS.api, "orders"].join("/"),
+        [Constants.ORDERS_APIS.api, 'orders'].join('/'),
         this.addAuthHeader(this.initializeHeaders())
       ).subscribe((data) => {
         if (data[0].length > 0) {
@@ -102,7 +102,7 @@ export class OrdersService extends RapidoHttpService<Order> {
             )
           })
         } else {
-          resolve({ error: "Error fetchinng your orders! Try again!" })
+          resolve({ error: 'Error fetchinng your orders! Try again!' })
         }
       })
     })
@@ -110,7 +110,7 @@ export class OrdersService extends RapidoHttpService<Order> {
 
   cancelOrder(order_id: number) {
     return this.delete(
-      [Constants.ORDERS_APIS.api, "orders", String(order_id)].join("/"),
+      [Constants.ORDERS_APIS.api, 'orders', String(order_id)].join('/'),
       this.addAuthHeader(this.initializeHeaders())
     )
   }
@@ -119,24 +119,24 @@ export class OrdersService extends RapidoHttpService<Order> {
     return this.get(
       [
         Constants.ORDERS_APIS.api,
-        "orders",
-        "checkProductPurchase",
+        'orders',
+        'checkProductPurchase',
         String(product_id),
-      ].join("/"),
+      ].join('/'),
       this.addAuthHeader(this.initializeHeaders())
     )
   }
 
   getFrequentlyBought() {
     return this.get(
-      [Constants.ORDERS_APIS.api, "orders", "frequently-bought"].join("/")
+      [Constants.ORDERS_APIS.api, 'orders', 'frequently-bought'].join('/')
     )
   }
 
   getFrequentlyBoughtByMe() {
     return this.get(
-      [Constants.ORDERS_APIS.api, "orders", "frequently-bought-by-me"].join(
-        "/"
+      [Constants.ORDERS_APIS.api, 'orders', 'frequently-bought-by-me'].join(
+        '/'
       ),
       this.addAuthHeader(this.initializeHeaders())
     )
@@ -144,7 +144,7 @@ export class OrdersService extends RapidoHttpService<Order> {
 
   getDeliveryOptions() {
     return this.get(
-      [Constants.ORDERS_APIS.api, "orders", "getDeliveryOptions"].join("/")
+      [Constants.ORDERS_APIS.api, 'orders', 'getDeliveryOptions'].join('/')
     )
   }
 
@@ -153,14 +153,14 @@ export class OrdersService extends RapidoHttpService<Order> {
     for (let _item in orderItems) {
       _items.push(
         Constants.SEARCH_QUERY.term.replace(
-          "$",
+          '$',
           String(orderItems[_item].product_id)
         )
       )
     }
     _items.push(Constants.SEARCH_QUERY.closeBracket)
     let _query: Query = {
-      q: _items.join(" "),
+      q: _items.join(' '),
       size: orderItems.length,
       cursor: null,
       return: Constants.SEARCH_QUERY.orderReturnFields,
@@ -185,8 +185,8 @@ export class OrdersService extends RapidoHttpService<Order> {
 
   prepareCartItemDetailsList(productDetails: any, orderItemsObject: any) {
     let products = {}
-    productDetails["hits"]["hit"].forEach((product) => {
-      products[product.id] = product["fields"]
+    productDetails['hits']['hit'].forEach((product) => {
+      products[product.id] = product['fields']
     })
     return {
       orderItemsObject,

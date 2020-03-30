@@ -1,13 +1,13 @@
-import { Injectable } from "@angular/core"
-import { HttpClient } from "@angular/common/http"
-import { ProfileService } from "../authentication/profile/profile.service"
-import { OrdersMockData } from "./orders.mock.data"
-import { OrdersService } from "./orders.service"
-import { ProductsService } from "../products/products.service"
-import { of } from "rxjs"
+import { Injectable } from '@angular/core'
+import { HttpClient } from '@angular/common/http'
+import { ProfileService } from '../authentication/profile/profile.service'
+import { OrdersMockData } from './orders.mock.data'
+import { OrdersService } from './orders.service'
+import { ProductsService } from '../products/products.service'
+import { of } from 'rxjs'
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class OrdersMockService extends OrdersService {
   public _productService: ProductsService

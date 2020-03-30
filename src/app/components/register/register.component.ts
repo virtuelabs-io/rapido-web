@@ -1,18 +1,18 @@
-import { Component, OnInit, NgModule } from "@angular/core"
-import { Registration } from "../../services/authentication/helpers/registration"
-import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms"
-import { SignUpService } from "../../services/authentication/sign-up/sign-up.service"
-import { ConfirmRegistrationService } from "../../services/authentication/confirm-registration/confirm-registration.service"
-import { ResendConfirmationCodeService } from "../../services/authentication/resend-confirmation-code/resend-confirmation-code.service"
-import { Constants } from "../../utils/constants"
+import { Component, OnInit, NgModule } from '@angular/core'
+import { Registration } from '../../services/authentication/helpers/registration'
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
+import { SignUpService } from '../../services/authentication/sign-up/sign-up.service'
+import { ConfirmRegistrationService } from '../../services/authentication/confirm-registration/confirm-registration.service'
+import { ResendConfirmationCodeService } from '../../services/authentication/resend-confirmation-code/resend-confirmation-code.service'
+import { Constants } from '../../utils/constants'
 
 @NgModule({
   imports: [FormBuilder, Validators, FormGroup],
 })
 @Component({
-  selector: "app-register",
-  templateUrl: "./register.component.html",
-  styleUrls: ["./register.component.scss"],
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
   // response data/flag to show/handle in UI
@@ -20,12 +20,12 @@ export class RegisterComponent implements OnInit {
   _resentConfirmationCodeResponse: Boolean = false
   countryCode: string = Constants.DEFAULT_PHONE_CODE
   stepperIndex: number = 0 // Set default active stepper
-  regFailedResponse: string = ""
-  confirmationCode: string = ""
+  regFailedResponse: string = ''
+  confirmationCode: string = ''
   // UI toggle variables
   hidePwd: Boolean = true // to show password
   hideConfirmPwd: Boolean = true // to hide password
-  wrongCodeMsg: string = ""
+  wrongCodeMsg: string = ''
   otpSuccess: Boolean = false
   progressSpinner: Boolean = false //TODO: make it button specific.
   // Service classes
@@ -48,32 +48,32 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     // Instantiating form group and setting default values for reg form
     this.registerFormGroup = new FormGroup({
-      mobileNumber: new FormControl("", [
+      mobileNumber: new FormControl('', [
         Validators.required,
-        Validators.pattern("^[0-9]+$"),
+        Validators.pattern('^[0-9]+$'),
         Validators.min(1000000000),
         Validators.max(9999999999),
       ]), // Validators.pattern('^[0-9]+$'),Validators.min(1000000000), Validators.max(9999999999)
-      name: new FormControl("", [
+      name: new FormControl('', [
         Validators.required,
         Validators.maxLength(60),
         Validators.minLength(3),
-        Validators.pattern("[a-zA-Z][a-zA-Z ]+"),
+        Validators.pattern('[a-zA-Z][a-zA-Z ]+'),
       ]),
-      email: new FormControl("", [Validators.required, Validators.email]),
-      password: new FormControl("", [
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [
         Validators.required,
         Validators.pattern(
-          "^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$"
+          '^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$'
         ),
       ]),
-      confirmPassword: new FormControl("", [
+      confirmPassword: new FormControl('', [
         Validators.compose([
           Validators.required,
           this.validateAreEqual.bind(this),
         ]),
       ]),
-      termsAndConditions: new FormControl(false, Validators.pattern("true")),
+      termsAndConditions: new FormControl(false, Validators.pattern('true')),
       communications: new FormControl(false),
     })
   }
@@ -88,14 +88,14 @@ export class RegisterComponent implements OnInit {
     this.progressSpinner = true
     // mapping input values
     this._registration = new Registration(
-      [this.countryCode, formData.mobileNumber].join(""),
+      [this.countryCode, formData.mobileNumber].join(''),
       formData.email,
       formData.name,
       formData.password,
       formData.termsAndConditions.toString(),
       formData.communications.toString(),
-      "true",
-      "true"
+      'true',
+      'true'
     )
     this._registration._attributeList.length = 0
     this._registration.createAttributeList()
@@ -129,8 +129,8 @@ export class RegisterComponent implements OnInit {
   // show/hide password mismatch error message
   public passwordMismatch = () => {
     return (
-      this.registerFormGroup.controls["password"].value !==
-      this.registerFormGroup.controls["confirmPassword"].value
+      this.registerFormGroup.controls['password'].value !==
+      this.registerFormGroup.controls['confirmPassword'].value
     )
   }
 
@@ -139,11 +139,11 @@ export class RegisterComponent implements OnInit {
     let confirmValue =
       this.registerFormGroup &&
       this.registerFormGroup.controls &&
-      this.registerFormGroup.controls["confirmPassword"].value
+      this.registerFormGroup.controls['confirmPassword'].value
     let pwdValue =
       this.registerFormGroup &&
       this.registerFormGroup.controls &&
-      this.registerFormGroup.controls["password"].value
+      this.registerFormGroup.controls['password'].value
     return confirmValue === pwdValue
       ? null
       : {
