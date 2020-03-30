@@ -13,8 +13,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "pretty": "prettier --write \"src/**/*.ts\" --no-semi",
-    "pretty-check": "prettier --check \"src/**/*.ts\"",
-    "precommit": "run-s pretty"
+    "pretty-check": "prettier --check \"src/**/*.ts\""
   },
   "private": true,
   "dependencies": {
@@ -75,5 +74,10 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
     "typescript": "~3.2.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run pretty"
+    }
   }
 }
