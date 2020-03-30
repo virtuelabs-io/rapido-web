@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Khula");
+@import url('https://fonts.googleapis.com/css?family=Khula');
 
 // Override / set color variables
 $white: #fff;
@@ -47,10 +47,10 @@ $badge-padding-y: 0.4em;
 $badge-font-weight: normal;
 
 // Override fonts
-$font-family-sans-serif: "Lora", sans-serif !important;
-$font-family-serif: Georgia, "Times New Roman", Times, serif;
-$font-family-monospace: Menlo, Monaco, Consolas, "Liberation Mono",
-  "Courier New", monospace;
+$font-family-sans-serif: 'Lora', sans-serif !important;
+$font-family-serif: Georgia, 'Times New Roman', Times, serif;
+$font-family-monospace: Menlo, Monaco, Consolas, 'Liberation Mono',
+  'Courier New', monospace;
 $font-family-base: $font-family-sans-serif;
 
 // Set global options

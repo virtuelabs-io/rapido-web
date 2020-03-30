@@ -1,5 +1,5 @@
 pool:
-  vmImage: "Ubuntu 16.04"
+  vmImage: 'Ubuntu 16.04'
 
 trigger:
   branches:
@@ -12,7 +12,7 @@ trigger:
       - v*
 
 variables:
-  imageName: "rapido-web"
+  imageName: 'rapido-web'
   major: 0
   minor: 0
   patch: 2
@@ -26,11 +26,11 @@ steps:
   - task: UsePythonVersion@0
     inputs:
       versionSpec: 3.6
-      architecture: "x64"
+      architecture: 'x64'
 
   - script: |
       pip install awscli
-    displayName: "Environment Preperation"
+    displayName: 'Environment Preperation'
 
   - script: |
       rm -rf ./src/environments/environment.ts
@@ -45,47 +45,47 @@ steps:
       AWS_ACCESS_KEY_ID: $(DEV_AWS_ACCESS_KEY_ID)
       AWS_SECRET_ACCESS_KEY: $(DEV_AWS_SECRET_ACCESS_KEY)
       DEV_RAPIDO_BUILD_SECRETS_BUCKET: $(DEV_RAPIDO_BUILD_SECRETS_BUCKET)
-    displayName: "Fetch secrets from AWS and format env files"
+    displayName: 'Fetch secrets from AWS and format env files'
 
   - task: NodeTool@0
     inputs:
-      versionSpec: "8.x"
-    displayName: "Configuring the node tool"
+      versionSpec: '8.x'
+    displayName: 'Configuring the node tool'
 
   - task: Npm@1
-    displayName: "Install all node modules"
+    displayName: 'Install all node modules'
     inputs:
       command: install
 
   - script: |
       npm run testheadless
-    displayName: "Running tests"
+    displayName: 'Running tests'
 
   - script: |
       npm run prodTestheadless
-    displayName: "Running prod tests"
+    displayName: 'Running prod tests'
     condition: startsWith(variables['build.sourceBranch'], 'refs/tags/v')
 
   - task: PublishTestResults@2
     inputs:
-      testResultsFiles: "**/TESTS-*.xml"
-      testRunTitle: "Rapidobuild test results"
+      testResultsFiles: '**/TESTS-*.xml'
+      testRunTitle: 'Rapidobuild test results'
     condition: succeededOrFailed()
 
   - task: PublishCodeCoverageResults@1
-    displayName: "Publishing code coverage"
+    displayName: 'Publishing code coverage'
     inputs:
       codeCoverageTool: Cobertura
-      summaryFileLocation: "$(System.DefaultWorkingDirectory)/coverage/rapido-web/index.html"
-      reportDirectory: "$(System.DefaultWorkingDirectory)/coverage/rapido-web"
+      summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/rapido-web/index.html'
+      reportDirectory: '$(System.DefaultWorkingDirectory)/coverage/rapido-web'
 
   - script: |
       npm run devbuild
-    displayName: "Dev build"
+    displayName: 'Dev build'
 
   - script: |
       npm run prodbuild
-    displayName: "Prod build"
+    displayName: 'Prod build'
     condition: startsWith(variables['build.sourceBranch'], 'refs/tags/v')
 
   - script: |
@@ -93,7 +93,7 @@ steps:
     condition: eq(variables['Build.SourceBranch'], 'refs/heads/disabled')
     env:
       DOCKER_REPO: $(DOCKER_REPO)
-    displayName: "Disabled: Build docker image and tag it"
+    displayName: 'Disabled: Build docker image and tag it'
 
   - script: |
       eval $(aws ecr get-login --no-include-email --region eu-west-2)
@@ -105,7 +105,7 @@ steps:
       AWS_ACCESS_KEY_ID: $(DEV_AWS_ACCESS_KEY_ID)
       AWS_SECRET_ACCESS_KEY: $(DEV_AWS_SECRET_ACCESS_KEY)
       DOCKER_REPO: $(DOCKER_REPO)
-    displayName: "Disabled: Publish docker image to ECR"
+    displayName: 'Disabled: Publish docker image to ECR'
 
   - script: |
       aws s3 sync ${PWD}/dist/rapido-web/. s3://$DEV_RAPIDO_BUILD_S3_BUCKET
@@ -114,7 +114,7 @@ steps:
       AWS_ACCESS_KEY_ID: $(DEV_AWS_ACCESS_KEY_ID)
       AWS_SECRET_ACCESS_KEY: $(DEV_AWS_SECRET_ACCESS_KEY)
       DEV_RAPIDO_BUILD_S3_BUCKET: $(DEV_RAPIDO_BUILD_S3_BUCKET)
-    displayName: "Deploying to DEV"
+    displayName: 'Deploying to DEV'
 
   - script: |
       aws s3 sync ${PWD}/dist/rapido-web/. s3://$DEV_RAPIDO_BUILD_S3_BUCKET
@@ -123,7 +123,7 @@ steps:
       AWS_ACCESS_KEY_ID: $(DEV_AWS_ACCESS_KEY_ID)
       AWS_SECRET_ACCESS_KEY: $(DEV_AWS_SECRET_ACCESS_KEY)
       DEV_RAPIDO_BUILD_S3_BUCKET: $(DEV_RAPIDO_BUILD_S3_BUCKET)
-    displayName: "Deploying to STAGING"
+    displayName: 'Deploying to STAGING'
 
   - script: |
       aws s3 sync ${PWD}/dist/rapido-web/. s3://$PROD_RAPIDO_BUILD_S3_BUCKET
@@ -132,4 +132,4 @@ steps:
       AWS_ACCESS_KEY_ID: $(PROD_AWS_ACCESS_KEY_ID)
       AWS_SECRET_ACCESS_KEY: $(PROD_AWS_SECRET_ACCESS_KEY)
       PROD_RAPIDO_BUILD_S3_BUCKET: $(PROD_RAPIDO_BUILD_S3_BUCKET)
-    displayName: "Deploying to PROD"
+    displayName: 'Deploying to PROD'
