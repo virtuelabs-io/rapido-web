@@ -1,10 +1,13 @@
-import { Component, OnInit, NgZone } from '@angular/core'
-import { FlatTreeControl } from '@angular/cdk/tree'
-import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree'
-import { Common } from '../../../../src/app/utils/common'
-import { Router } from '@angular/router'
-import { TreeNode } from './tree-node'
-import { FlatNode } from './flat-node'
+import { Component, OnInit, NgZone } from '@angular/core';
+import { FlatTreeControl } from '@angular/cdk/tree';
+import {
+  MatTreeFlatDataSource,
+  MatTreeFlattener
+} from '@angular/material/tree';
+import { Common } from '../../../../src/app/utils/common';
+import { Router } from '@angular/router';
+import { TreeNode } from './tree-node';
+import { FlatNode } from './flat-node';
 const TREE_DATA: TreeNode[] = [
   {
     name: 'Building Material',
@@ -109,7 +112,7 @@ const TREE_DATA: TreeNode[] = [
   {
     name: 'Interiors'
   }
-]
+];
 
 @Component({
   selector: 'app-product-menu-mobile',
@@ -122,39 +125,39 @@ export class ProductMenuMobileComponent implements OnInit {
       expandable: !!node.children && node.children.length > 0,
       name: node.name,
       level: level
-    }
-  }
+    };
+  };
 
   treeControl = new FlatTreeControl<FlatNode>(
     node => node.level,
     node => node.expandable
-  )
+  );
 
   treeFlattener = new MatTreeFlattener(
     this._transformer,
     node => node.level,
     node => node.expandable,
     node => node.children
-  )
+  );
 
-  dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener)
+  dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
   constructor(private router: Router, private ngZone: NgZone) {
-    this.dataSource.data = TREE_DATA
+    this.dataSource.data = TREE_DATA;
   }
 
-  hasChild = (_: number, node: FlatNode) => node.expandable
+  hasChild = (_: number, node: FlatNode) => node.expandable;
 
   ngOnInit() {}
 
   handleNavigation(searchedText) {
-    let qObject = Common.searchProducts(searchedText)
+    let qObject = Common.searchProducts(searchedText);
     if (qObject) {
       this.ngZone
         .run(() =>
           this.router.navigate(['/products'], { queryParams: qObject })
         )
-        .then()
+        .then();
     }
   }
 }

@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core'
-import { ProfileService } from '../../services/authentication/profile/profile.service'
-import { UpdateAttributeService } from '../../services/authentication/update-attribute/update-attribute.service'
-import { Registration } from '../../services/authentication/helpers/registration'
-import { DeleteUserService } from '../../services/authentication/delete-user/delete-user.service'
-import { LoginStateService } from '../../shared-services/login-state/login-state.service'
-import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap'
-import { RouteService } from '../../shared-services/route/route.service'
-import { SessionService } from '../../services/authentication/session/session.service'
-import { Router } from '@angular/router'
-import { ConfirmationDialogComponent } from '../../components/confirmation-dialog/confirmation-dialog.component'
-import { MatDialog } from '@angular/material'
+import { Component, OnInit } from '@angular/core';
+import { ProfileService } from '../../services/authentication/profile/profile.service';
+import { UpdateAttributeService } from '../../services/authentication/update-attribute/update-attribute.service';
+import { Registration } from '../../services/authentication/helpers/registration';
+import { DeleteUserService } from '../../services/authentication/delete-user/delete-user.service';
+import { LoginStateService } from '../../shared-services/login-state/login-state.service';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { RouteService } from '../../shared-services/route/route.service';
+import { SessionService } from '../../services/authentication/session/session.service';
+import { Router } from '@angular/router';
+import { ConfirmationDialogComponent } from '../../components/confirmation-dialog/confirmation-dialog.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-account-info',
@@ -18,21 +18,21 @@ import { MatDialog } from '@angular/material'
   providers: [NgbModalConfig, NgbModal]
 })
 export class AccountInfoComponent implements OnInit {
-  _profileService: ProfileService
-  panelOpenState = false
-  viewMode: Boolean = true
-  updateMode: Boolean = false
-  deletedUser: Boolean = false
-  failedToDelete: Boolean = false
-  deleteButton: Boolean = false
-  updateButton: Boolean = false
-  deleteUserMsg: string = ''
-  updatedAttribute: Boolean = false
-  failedToUpdate: Boolean = false
-  isLoggedIn: Boolean
-  dialogRef: any
-  _modalReference = null
-  private _deleteUserService: DeleteUserService
+  _profileService: ProfileService;
+  panelOpenState = false;
+  viewMode: Boolean = true;
+  updateMode: Boolean = false;
+  deletedUser: Boolean = false;
+  failedToDelete: Boolean = false;
+  deleteButton: Boolean = false;
+  updateButton: Boolean = false;
+  deleteUserMsg: string = '';
+  updatedAttribute: Boolean = false;
+  failedToUpdate: Boolean = false;
+  isLoggedIn: Boolean;
+  dialogRef: any;
+  _modalReference = null;
+  private _deleteUserService: DeleteUserService;
 
   attribute = {
     phone_number: '',
@@ -46,8 +46,8 @@ export class AccountInfoComponent implements OnInit {
     commViaEmailB: false,
     commViaSMSB: false,
     personalisationB: false
-  }
-  private _updateAttributeService: UpdateAttributeService
+  };
+  private _updateAttributeService: UpdateAttributeService;
   constructor(
     profileService: ProfileService,
     updateAttributeService: UpdateAttributeService,
@@ -61,34 +61,34 @@ export class AccountInfoComponent implements OnInit {
     private _loginStateService: LoginStateService,
     public dialog: MatDialog
   ) {
-    this._profileService = profileService
-    this._updateAttributeService = updateAttributeService
-    this._deleteUserService = deleteUserService
+    this._profileService = profileService;
+    this._updateAttributeService = updateAttributeService;
+    this._deleteUserService = deleteUserService;
   }
 
   ngOnInit() {
-    this.userLogInCheck()
+    this.userLogInCheck();
   }
 
   async userLogInCheck() {
     await this.loginSessinExists()
       .then(_ => this.fetchUserProfile())
-      .catch(err => this.handleError(err))
+      .catch(err => this.handleError(err));
   }
 
   async loginSessinExists() {
     await this._loginStateService.isLoggedInState.subscribe(
       state => (this.isLoggedIn = state)
-    )
+    );
   }
 
   async handleError(err) {
-    this.RouteService.changeRoute('profile/account')
-    this.router.navigateByUrl('/login')
+    this.RouteService.changeRoute('profile/account');
+    this.router.navigateByUrl('/login');
   }
 
   async fetchUserProfile() {
-    let localAttributes = this.attribute
+    let localAttributes = this.attribute;
     if (this.isLoggedIn) {
       await this._profileService.cognitoUser.getUserAttributes(function (
         err,
@@ -101,36 +101,36 @@ export class AccountInfoComponent implements OnInit {
             ) {
               localAttributes[
                 result[i]['Name'].replace('custom:', '')
-              ] = result[i].getValue()
+              ] = result[i].getValue();
             }
           }
           if (localAttributes.sendMePromotions == 'true') {
-            localAttributes.sendMePromotionsB = true
+            localAttributes.sendMePromotionsB = true;
           }
           if (localAttributes.commViaEmail == 'true') {
-            localAttributes.commViaEmailB = true
+            localAttributes.commViaEmailB = true;
           }
           if (localAttributes.commViaSMS == 'true') {
-            localAttributes.commViaSMSB = true
+            localAttributes.commViaSMSB = true;
           }
           if (localAttributes.personalisation == 'true') {
-            localAttributes.personalisationB = true
+            localAttributes.personalisationB = true;
           }
         }
-      })
+      });
     } else {
-      await Promise.reject("Login Session doesn't exist!")
+      await Promise.reject("Login Session doesn't exist!");
     }
   }
 
   edit() {
-    this.viewMode = false
-    this.updateMode = true
-    this.updatedAttribute = false
+    this.viewMode = false;
+    this.updateMode = true;
+    this.updatedAttribute = false;
   }
 
   update() {
-    this.updateButton = true
+    this.updateButton = true;
     let registrationUpdate: Registration = new Registration(
       this.attribute.phone_number,
       this.attribute.email,
@@ -142,23 +142,23 @@ export class AccountInfoComponent implements OnInit {
       this.attribute.commViaSMSB.toString(),
       this.attribute.personalisationB.toString(),
       ''
-    )
-    this._updateAttributeService.attributeList = registrationUpdate.createUpdateAttributeList()
-    const promise = this._updateAttributeService.updateAttributes()
+    );
+    this._updateAttributeService.attributeList = registrationUpdate.createUpdateAttributeList();
+    const promise = this._updateAttributeService.updateAttributes();
     promise
       .then(_ => {
-        this.fetchUserProfile() // to set value returned from the service
-        this.updateButton = false
-        this.updatedAttribute = true
-        this.viewMode = true
-        this.updateMode = false
-        this.failedToUpdate = false
+        this.fetchUserProfile(); // to set value returned from the service
+        this.updateButton = false;
+        this.updatedAttribute = true;
+        this.viewMode = true;
+        this.updateMode = false;
+        this.failedToUpdate = false;
       })
       .catch(_ => {
-        this.updateButton = false
-        this.updatedAttribute = false
-        this.failedToUpdate = true
-      })
+        this.updateButton = false;
+        this.updatedAttribute = false;
+        this.failedToUpdate = true;
+      });
   }
 
   delete() {
@@ -166,30 +166,30 @@ export class AccountInfoComponent implements OnInit {
       width: '350px',
       data:
         "Are you sure you want to delete the account. Once deleted, your account can't be recovered"
-    })
+    });
     this.dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.yesModalAction()
+        this.yesModalAction();
       }
-    })
+    });
   }
 
   yesModalAction() {
-    this.deleteButton = true
-    const promise = this._deleteUserService.deleteUser()
+    this.deleteButton = true;
+    const promise = this._deleteUserService.deleteUser();
     promise
       .then(value => {
-        this._modalReference.close()
-        this.failedToDelete = false
-        this.deleteButton = false
-        this.deletedUser = true
-        this.deleteUserMsg = 'Deleted user successfully'
-        this.loginStateService.changeState(false)
+        this._modalReference.close();
+        this.failedToDelete = false;
+        this.deleteButton = false;
+        this.deletedUser = true;
+        this.deleteUserMsg = 'Deleted user successfully';
+        this.loginStateService.changeState(false);
       })
       .catch(error => {
-        this.deleteButton = false
-        this.deletedUser = false
-        this.failedToDelete = true
-      })
+        this.deleteButton = false;
+        this.deletedUser = false;
+        this.failedToDelete = true;
+      });
   }
 }

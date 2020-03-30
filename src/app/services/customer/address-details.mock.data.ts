@@ -1,4 +1,4 @@
-import { AddressDetails } from './address-details'
+import { AddressDetails } from './address-details';
 
 export class AddressDetailsMockData {
   public static addressList: AddressDetails[] = [
@@ -12,7 +12,7 @@ export class AddressDetailsMockData {
       'postcode',
       'addr_2'
     )
-  ]
+  ];
 
   public static address: AddressDetails = new AddressDetails(
     'Full name',
@@ -23,7 +23,7 @@ export class AddressDetailsMockData {
     'country',
     'postcode',
     'addr_2'
-  )
+  );
 
   public static postAddress = {
     fieldCount: 0,
@@ -34,7 +34,7 @@ export class AddressDetailsMockData {
     message: '',
     protocol41: true,
     changedRows: 0
-  }
+  };
 
   public static putAddress = {
     fieldCount: 0,
@@ -45,7 +45,7 @@ export class AddressDetailsMockData {
     message: '(Rows matched: 1  Changed: 1  Warnings: 0',
     protocol41: true,
     changedRows: 1
-  }
+  };
 
   public static deleteAddress = {
     fieldCount: 0,
@@ -56,5 +56,5 @@ export class AddressDetailsMockData {
     message: '',
     protocol41: true,
     changedRows: 0
-  }
+  };
 }

@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core'
-import { GuestAddressDetails } from './guest-address-details'
-import { RapidoHttpService } from '../commons/rapido-http.service'
-import { HttpClient } from '@angular/common/http'
-import { ProfileService } from '../authentication/profile/profile.service'
-import { Constants } from '../../utils/constants'
+import { Injectable } from '@angular/core';
+import { GuestAddressDetails } from './guest-address-details';
+import { RapidoHttpService } from '../commons/rapido-http.service';
+import { HttpClient } from '@angular/common/http';
+import { ProfileService } from '../authentication/profile/profile.service';
+import { Constants } from '../../utils/constants';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class GuestAddressService extends RapidoHttpService<
     protected _http?: HttpClient,
     protected _profileService?: ProfileService
   ) {
-    super(_http, _profileService)
+    super(_http, _profileService);
   }
 
   postGuestAddressDetails(guestAddressDetails: GuestAddressDetails) {
@@ -26,6 +26,6 @@ export class GuestAddressService extends RapidoHttpService<
         'address'
       ].join('/'),
       guestAddressDetails
-    )
+    );
   }
 }

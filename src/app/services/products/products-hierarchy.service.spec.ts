@@ -1,12 +1,12 @@
-import { TestBed, inject, fakeAsync, tick } from '@angular/core/testing'
+import { TestBed, inject, fakeAsync, tick } from '@angular/core/testing';
 import {
   HttpClientTestingModule,
   HttpTestingController
-} from '@angular/common/http/testing'
+} from '@angular/common/http/testing';
 
-import { Constants } from '../../utils/constants'
+import { Constants } from '../../utils/constants';
 
-import { ProductsHierarchyService } from './products-hierarchy.service'
+import { ProductsHierarchyService } from './products-hierarchy.service';
 
 describe('ProductsHierarchyService', () => {
   beforeEach(() =>
@@ -14,14 +14,14 @@ describe('ProductsHierarchyService', () => {
       imports: [HttpClientTestingModule],
       providers: [ProductsHierarchyService]
     })
-  )
+  );
 
   it('should be created', () => {
     const service: ProductsHierarchyService = TestBed.get(
       ProductsHierarchyService
-    )
-    expect(service).toBeTruthy()
-  })
+    );
+    expect(service).toBeTruthy();
+  });
 
   it('Request for configuration', fakeAsync(
     inject(
@@ -33,26 +33,26 @@ describe('ProductsHierarchyService', () => {
             item2: ['subitem1', 'subitem2']
           },
           status: 200
-        }
-        let response = null
+        };
+        let response = null;
 
         service.get().subscribe(
           (receivedResponse: any) => {
-            response = receivedResponse
+            response = receivedResponse;
           },
           (error: any) => {}
-        )
+        );
 
         const requestWrapper = backend.expectOne({
           url: Constants.environment.staticAssets + Constants.PRODUCT_HIERARCHY
-        })
-        requestWrapper.flush(responseObject)
+        });
+        requestWrapper.flush(responseObject);
 
-        tick()
+        tick();
 
-        expect(requestWrapper.request.method).toEqual('GET')
-        expect(response.status).toBe(200)
+        expect(requestWrapper.request.method).toEqual('GET');
+        expect(response.status).toBe(200);
       }
     )
-  ))
-})
+  ));
+});

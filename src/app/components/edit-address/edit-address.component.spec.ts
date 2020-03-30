@@ -4,28 +4,28 @@ import {
   TestBed,
   fakeAsync,
   tick
-} from '@angular/core/testing'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { EditAddressComponent } from './edit-address.component'
-import { RouterTestingModule } from '@angular/router/testing'
+} from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditAddressComponent } from './edit-address.component';
+import { RouterTestingModule } from '@angular/router/testing';
 import {
   MatProgressSpinnerModule,
   MatFormFieldModule,
   MatInputModule
-} from '@angular/material'
-import { MatCardModule } from '@angular/material/card'
-import { HttpClientModule } from '@angular/common/http'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { AddressDetailsMockService } from '../../services/customer/address-details.mock.service'
-import { AddressDetailsService } from '../../services/customer/address-details.service'
-import { Router, Routes } from '@angular/router'
-import { AddressComponent } from '../address/address.component'
+} from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddressDetailsMockService } from '../../services/customer/address-details.mock.service';
+import { AddressDetailsService } from '../../services/customer/address-details.service';
+import { Router, Routes } from '@angular/router';
+import { AddressComponent } from '../address/address.component';
 
 describe('EditAddressComponent', () => {
-  let addressDetailsMockService: AddressDetailsService = new AddressDetailsMockService()
-  let component: EditAddressComponent
-  let fixture: ComponentFixture<EditAddressComponent>
-  let router: Router
+  let addressDetailsMockService: AddressDetailsService = new AddressDetailsMockService();
+  let component: EditAddressComponent;
+  let fixture: ComponentFixture<EditAddressComponent>;
+  let router: Router;
 
   const routes: Routes = [
     { path: 'profile/address', component: AddressComponent },
@@ -33,7 +33,7 @@ describe('EditAddressComponent', () => {
       path: 'profile/address/editAddress/:id',
       component: EditAddressComponent
     }
-  ]
+  ];
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -50,59 +50,59 @@ describe('EditAddressComponent', () => {
         RouterTestingModule.withRoutes(routes)
       ],
       declarations: [AddressComponent, EditAddressComponent]
-    }).compileComponents()
-  }))
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
-    router = TestBed.get(Router)
-    fixture = TestBed.createComponent(EditAddressComponent)
+    router = TestBed.get(Router);
+    fixture = TestBed.createComponent(EditAddressComponent);
     fixture.ngZone.run(() => {
-      router.initialNavigation()
-    })
-    component = fixture.componentInstance
-    component._addressDetailsService = addressDetailsMockService
-    fixture.detectChanges()
-  })
+      router.initialNavigation();
+    });
+    component = fixture.componentInstance;
+    component._addressDetailsService = addressDetailsMockService;
+    fixture.detectChanges();
+  });
 
   it('should not create', () => {
-    expect(component).toBeTruthy()
-  })
+    expect(component).toBeTruthy();
+  });
 
   it('Mandatory fields during edit Address', async(() => {
-    component.id = 48
-    component.addressFormGroup.controls['name'].setValue('Sam')
-    component.addressFormGroup.controls['add1'].setValue('xyz')
-    component.addressFormGroup.controls['add2'].setValue('abc cdf')
-    component.addressFormGroup.controls['town_city'].setValue('Charles Land')
-    component.addressFormGroup.controls['postCode'].setValue('12345')
-    component.addressFormGroup.controls['county'].setValue('UK County')
-    component.addressFormGroup.controls['country'].setValue('UK')
+    component.id = 48;
+    component.addressFormGroup.controls['name'].setValue('Sam');
+    component.addressFormGroup.controls['add1'].setValue('xyz');
+    component.addressFormGroup.controls['add2'].setValue('abc cdf');
+    component.addressFormGroup.controls['town_city'].setValue('Charles Land');
+    component.addressFormGroup.controls['postCode'].setValue('12345');
+    component.addressFormGroup.controls['county'].setValue('UK County');
+    component.addressFormGroup.controls['country'].setValue('UK');
 
     expect(
       component.addressFormGroup.controls['name'].hasError('required')
-    ).toBeFalsy()
+    ).toBeFalsy();
     expect(
       component.addressFormGroup.controls['add1'].hasError('required')
-    ).toBeFalsy()
+    ).toBeFalsy();
     expect(
       component.addressFormGroup.controls['add2'].hasError('required')
-    ).toBeFalsy()
+    ).toBeFalsy();
     expect(
       component.addressFormGroup.controls['town_city'].hasError('required')
-    ).toBeFalsy()
+    ).toBeFalsy();
     expect(
       component.addressFormGroup.controls['postCode'].hasError('required')
-    ).toBeFalsy()
+    ).toBeFalsy();
     expect(
       component.addressFormGroup.controls['county'].hasError('required')
-    ).toBeFalsy()
+    ).toBeFalsy();
     expect(
       component.addressFormGroup.controls['country'].hasError('required')
-    ).toBeFalsy()
-  }))
+    ).toBeFalsy();
+  }));
 
   it('Save Address sucessfully', async(() => {
-    component.id = 1
-    expect(component.saveAddress()).toBeUndefined()
-  }))
-})
+    component.id = 1;
+    expect(component.saveAddress()).toBeUndefined();
+  }));
+});

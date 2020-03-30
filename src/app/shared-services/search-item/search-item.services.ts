@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core'
-import { BehaviorSubject } from 'rxjs'
-import { Query } from '../../services/products/query.interface'
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { Query } from '../../services/products/query.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class SearchItemService {
     parser: 'structured',
     rating: null,
     price: null
-  }
+  };
 
   _responseData = {
     status: {
@@ -41,21 +41,21 @@ export class SearchItemService {
         }
       ]
     }
-  }
-  private searchItemText = new BehaviorSubject<Query>(this._query)
-  currentState = this.searchItemText.asObservable()
+  };
+  private searchItemText = new BehaviorSubject<Query>(this._query);
+  currentState = this.searchItemText.asObservable();
 
-  private responsePoductList = new BehaviorSubject(this._responseData)
-  responsePoductListState = this.responsePoductList.asObservable()
+  private responsePoductList = new BehaviorSubject(this._responseData);
+  responsePoductListState = this.responsePoductList.asObservable();
 
   constructor() {}
 
   changeState(state: any) {
     if (JSON.stringify(this.searchItemText.value) !== JSON.stringify(state))
-      this.searchItemText.next({ ...this.searchItemText.value, ...state })
+      this.searchItemText.next({ ...this.searchItemText.value, ...state });
   }
 
   changeRespProdListState(respData) {
-    this.responsePoductList.next(respData)
+    this.responsePoductList.next(respData);
   }
 }

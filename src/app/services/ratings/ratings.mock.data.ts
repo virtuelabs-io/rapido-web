@@ -1,17 +1,17 @@
-import { Rating } from './rating'
+import { Rating } from './rating';
 
-let ratings = new Rating()
-ratings.helpful = 8
-ratings.id = 4
-ratings.product_id = 33
-ratings.rating = 3
-ratings.summary = 'A very good product'
-ratings.title = 'Value for money'
+let ratings = new Rating();
+ratings.helpful = 8;
+ratings.id = 4;
+ratings.product_id = 33;
+ratings.rating = 3;
+ratings.summary = 'A very good product';
+ratings.title = 'Value for money';
 
 export class RatingsMockData {
-  public static ratingDetails: Rating[] = [ratings]
+  public static ratingDetails: Rating[] = [ratings];
 
-  public static productRatingsSummary: Rating[] = [ratings]
+  public static productRatingsSummary: Rating[] = [ratings];
 
   public static helpfulRatingIncrement = {
     fieldCount: 0,
@@ -22,7 +22,7 @@ export class RatingsMockData {
     message: '(Rows matched: 1  Changed: 1  Warnings: 0',
     protocol41: true,
     changedRows: 1
-  }
+  };
 
   public static deactivateRating = {
     affectedRows: 1,
@@ -33,7 +33,7 @@ export class RatingsMockData {
     protocol41: true,
     serverStatus: 2,
     warningCount: 0
-  }
+  };
 
   public static createRating = {
     affectedRows: 0,
@@ -44,7 +44,7 @@ export class RatingsMockData {
     protocol41: true,
     serverStatus: 2,
     warningCount: 0
-  }
+  };
 
   public static updateRating = {
     affectedRows: 0,
@@ -55,5 +55,5 @@ export class RatingsMockData {
     protocol41: true,
     serverStatus: 2,
     warningCount: 0
-  }
+  };
 }

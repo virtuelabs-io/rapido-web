@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core'
-import { Constants } from './constants'
-import { Query } from './../../../src/app/services/products/query.interface'
+import { Injectable } from '@angular/core';
+import { Constants } from './constants';
+import { Query } from './../../../src/app/services/products/query.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -8,31 +8,31 @@ import { Query } from './../../../src/app/services/products/query.interface'
 export class Common {
   public static getImageURI = (images: Array<string>, imagePath: string) => {
     if (imagePath) {
-      return Constants.environment.staticAssets + imagePath
+      return Constants.environment.staticAssets + imagePath;
     }
     return images.map(val => {
       return !val.includes(Constants.environment.staticAssets)
         ? Constants.environment.staticAssets + val
-        : val
-    })
-  }
+        : val;
+    });
+  };
 
   public static allowPositiveNum = (event: any) => {
-    const pattern = /[1-9]/
-    const inputChar = String.fromCharCode(event.charCode)
+    const pattern = /[1-9]/;
+    const inputChar = String.fromCharCode(event.charCode);
 
     if (!pattern.test(inputChar)) {
       // invalid character, prevent input
-      event.preventDefault()
+      event.preventDefault();
     }
-  }
+  };
 
   public static searchProducts = (searchText: string = ''): Query => {
-    return { q: searchText }
-  }
+    return { q: searchText };
+  };
 
   public static decodeUrlParams = (_query: Query) => {
-    let updatedQuery = JSON.parse(JSON.stringify(_query))
+    let updatedQuery = JSON.parse(JSON.stringify(_query));
     let fieldsQuery = {
       price: {
         q: updatedQuery.price,
@@ -44,7 +44,7 @@ export class Common {
           ? updatedQuery.rating + '+'
           : updatedQuery.rating
       }
-    }
+    };
     if (updatedQuery.rating && updatedQuery.price) {
       updatedQuery.q = `(and '${
         updatedQuery.releatedSearch
@@ -52,19 +52,19 @@ export class Common {
           : updatedQuery.searchedText
       }' (and (range field=rating [${updatedQuery.rating},${Number(
         5
-      )}]) (range field=price ${updatedQuery.price})))`
+      )}]) (range field=price ${updatedQuery.price})))`;
     } else if (updatedQuery.rating) {
       updatedQuery.q = `(and '${
         updatedQuery.releatedSearch
           ? updatedQuery.releatedSearch
           : updatedQuery.searchedText
-      }' (range field=rating [${updatedQuery.rating},${Number(5)}]))`
+      }' (range field=rating [${updatedQuery.rating},${Number(5)}]))`;
     } else if (updatedQuery.price) {
       updatedQuery.q = `(and '${
         updatedQuery.releatedSearch
           ? updatedQuery.releatedSearch
           : updatedQuery.searchedText
-      }' (range field=price ${updatedQuery.price}))`
+      }' (range field=price ${updatedQuery.price}))`;
     }
 
     let defaultQuery = {
@@ -78,13 +78,13 @@ export class Common {
       sort: null,
       parser: 'structured',
       fieldsQuery: JSON.stringify(fieldsQuery)
-    }
+    };
 
-    return { ...defaultQuery, ...updatedQuery }
-  }
+    return { ...defaultQuery, ...updatedQuery };
+  };
 
   public static setUrlParams = (_query: Query) => {
-    let updatedQuery = JSON.parse(JSON.stringify(_query))
+    let updatedQuery = JSON.parse(JSON.stringify(_query));
     Object.keys(updatedQuery).forEach(key => {
       if (
         updatedQuery[key] == null ||
@@ -93,20 +93,20 @@ export class Common {
         key == 'size' ||
         key == 'fieldsQuery'
       ) {
-        delete updatedQuery[key]
+        delete updatedQuery[key];
       }
-    })
+    });
     // updatedQuery.q = updatedQuery.searchedText || updatedQuery.q
-    return updatedQuery
-  }
+    return updatedQuery;
+  };
 
   public static getIdBasedQueryString = (_productIds: string[]) => {
-    let _queryItem = '(term+field=_id+{p})'
-    let _queryString: string = '(or+'
+    let _queryItem = '(term+field=_id+{p})';
+    let _queryString: string = '(or+';
     _productIds.forEach(productId => {
-      _queryString = _queryString + _queryItem.replace('{p}', productId)
-    })
-    _queryString = _queryString + ')'
-    return _queryString
-  }
+      _queryString = _queryString + _queryItem.replace('{p}', productId);
+    });
+    _queryString = _queryString + ')';
+    return _queryString;
+  };
 }

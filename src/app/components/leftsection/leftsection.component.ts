@@ -1,11 +1,11 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core'
-import { SearchItemService } from '../../shared-services/search-item/search-item.services'
-import { ProductsHierarchyService } from '../../services/products/products-hierarchy.service'
-import { ProductsService } from '../../services/products/products.service'
-import { Router } from '@angular/router'
-import { Query } from 'src/app/services/products/query.interface'
-import { Common } from 'src/app/utils/common'
-import { LoginStateService } from 'src/app/shared-services/login-state/login-state.service'
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { SearchItemService } from '../../shared-services/search-item/search-item.services';
+import { ProductsHierarchyService } from '../../services/products/products-hierarchy.service';
+import { ProductsService } from '../../services/products/products.service';
+import { Router } from '@angular/router';
+import { Query } from 'src/app/services/products/query.interface';
+import { Common } from 'src/app/utils/common';
+import { LoginStateService } from 'src/app/shared-services/login-state/login-state.service';
 
 @Component({
   selector: 'app-leftsection',
@@ -13,28 +13,28 @@ import { LoginStateService } from 'src/app/shared-services/login-state/login-sta
   styleUrls: ['./leftsection.component.scss']
 })
 export class LeftSectionComponent implements OnInit, OnDestroy {
-  @Input() closeDialog: any
-  filterData: any
-  prevQuery: Query
-  selections: Object
-  private _productsHierarchyService: ProductsHierarchyService
-  private _productsService: ProductsService
-  fnPriceFilterHandler: Function
-  tags = []
-  category: string = ''
-  categories: any
-  subcategories: any
-  fieldsQuery: any
-  searchedText: string = ''
-  _searchItemServicecurrentState: any
-  _searchItemServiceResponsePoductListState: any
-  releatedSearch: any
-  currency: any
+  @Input() closeDialog: any;
+  filterData: any;
+  prevQuery: Query;
+  selections: Object;
+  private _productsHierarchyService: ProductsHierarchyService;
+  private _productsService: ProductsService;
+  fnPriceFilterHandler: Function;
+  tags = [];
+  category: string = '';
+  categories: any;
+  subcategories: any;
+  fieldsQuery: any;
+  searchedText: string = '';
+  _searchItemServicecurrentState: any;
+  _searchItemServiceResponsePoductListState: any;
+  releatedSearch: any;
+  currency: any;
   sortByType = {
     value: '',
     asc: false,
     desc: false
-  }
+  };
 
   constructor(
     private _searchItemService: SearchItemService,
@@ -42,8 +42,8 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
     public router: Router,
     productsHierarchyService: ProductsHierarchyService
   ) {
-    this._productsHierarchyService = productsHierarchyService
-    this._productsService = productsService
+    this._productsHierarchyService = productsHierarchyService;
+    this._productsService = productsService;
   }
 
   ngOnInit() {
@@ -56,59 +56,59 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
         q: null,
         text: null
       }
-    }
-    let localFieldsQuery = localStorage.getItem('fieldsQuery')
-    let localSearchedText = localStorage.getItem('searchedText')
+    };
+    let localFieldsQuery = localStorage.getItem('fieldsQuery');
+    let localSearchedText = localStorage.getItem('searchedText');
     if (localFieldsQuery && localFieldsQuery !== '[object Object]') {
-      this.fieldsQuery = JSON.parse(localFieldsQuery)
+      this.fieldsQuery = JSON.parse(localFieldsQuery);
     }
     if (localSearchedText) {
-      this.searchedText = localSearchedText
+      this.searchedText = localSearchedText;
     }
     this._searchItemServiceResponsePoductListState = this._searchItemService.responsePoductListState.subscribe(
       respData => {
-        this.updateProductControls(respData)
+        this.updateProductControls(respData);
       }
-    )
+    );
 
     this._searchItemServicecurrentState = this._searchItemService.currentState.subscribe(
       query => {
         if (query.searchedText) {
-          this.searchedText = query.searchedText
-          this.releatedSearch = query.releatedSearch
+          this.searchedText = query.searchedText;
+          this.releatedSearch = query.releatedSearch;
           if (query.fieldsQuery && typeof query.fieldsQuery === 'string') {
-            this.fieldsQuery = JSON.parse(query.fieldsQuery)
+            this.fieldsQuery = JSON.parse(query.fieldsQuery);
           } else {
-            this.fieldsQuery = query.fieldsQuery
+            this.fieldsQuery = query.fieldsQuery;
           }
-          this.prevQuery = query
+          this.prevQuery = query;
           if (query.sort) {
-            this.onPressSort(query.sort)
+            this.onPressSort(query.sort);
           } else {
             this.sortByType = {
               value: '',
               asc: false,
               desc: false
-            }
+            };
           }
         }
       }
-    )
+    );
   }
 
   updateProductControls(respData) {
     try {
-      let { hits } = respData
+      let { hits } = respData;
       if (hits && hits.hit) {
-        this.tags = hits.hit[0].fields.tags
-        this.category = hits.hit[0].fields.category
-        this.currency = hits.hit[0].fields.currency
+        this.tags = hits.hit[0].fields.tags;
+        this.category = hits.hit[0].fields.category;
+        this.currency = hits.hit[0].fields.currency;
         this._productsHierarchyService.get().subscribe(data => {
-          this.categories = data
-          this.subcategories = this.categories[this.category]
-        })
+          this.categories = data;
+          this.subcategories = this.categories[this.category];
+        });
 
-        this.fnPriceFilterHandler = obj => this.priceFilterData(obj)
+        this.fnPriceFilterHandler = obj => this.priceFilterData(obj);
         this.filterData = [
           {
             headerText: 'Filter by',
@@ -169,24 +169,24 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
               }
             ]
           }
-        ]
+        ];
       }
     } catch (e) {
-      console.log('something went wrong')
+      console.log('something went wrong');
     }
   }
 
   priceFilterData(range) {
     let query = `(and '${
       this.releatedSearch ? this.releatedSearch : this.searchedText
-    }' (range field=price [${range.min}, ${range.max}]))`
+    }' (range field=price [${range.min}, ${range.max}]))`;
     if (this.fieldsQuery.rating.q) {
       query = `(and '${this.searchedText}' (and (range field=rating [${
         this.fieldsQuery.rating.q
-      },${Number(5)}]) (range field=price [${range.min},${range.max}])))`
+      },${Number(5)}]) (range field=price [${range.min},${range.max}])))`;
     }
-    this.fieldsQuery.price.q = `[${range.min},${range.max}]`
-    this.fieldsQuery.price.text = ` $${range.min} - $${range.max}`
+    this.fieldsQuery.price.q = `[${range.min},${range.max}]`;
+    this.fieldsQuery.price.text = ` $${range.min} - $${range.max}`;
     this.updateFilterConditions({
       q: query,
       searchedText: this.searchedText,
@@ -196,22 +196,22 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
       start: 0,
       price: `[${range.min}, ${range.max}]`,
       rating: this.fieldsQuery.rating.q || ''
-    })
+    });
   }
 
   onPressRating(val) {
     let query = `(and '${
       this.releatedSearch ? this.releatedSearch : this.searchedText
-    }' (range field=rating [${val},${Number(5)}]))`
+    }' (range field=rating [${val},${Number(5)}]))`;
     if (this.fieldsQuery.price.q) {
       query = `(and '${
         this.searchedText
       }' (and (range field=rating [${val},${Number(5)}]) (range field=price ${
         this.fieldsQuery.price.q
-      })))`
+      })))`;
     }
-    this.fieldsQuery.rating.q = val
-    this.fieldsQuery.rating.text = ` ${val} +`
+    this.fieldsQuery.rating.q = val;
+    this.fieldsQuery.rating.text = ` ${val} +`;
     this.updateFilterConditions({
       q: query,
       searchedText: this.searchedText,
@@ -219,34 +219,34 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
       parser: null,
       rating: val,
       price: this.fieldsQuery.price.q || ''
-    })
+    });
   }
 
   onPressSort(data) {
-    this.sortByType.desc = false
-    this.sortByType.asc = false
+    this.sortByType.desc = false;
+    this.sortByType.asc = false;
     try {
       if (data.split(' ')[1] === 'asc') {
-        this.sortByType.asc = true
+        this.sortByType.asc = true;
       } else if (data.split(' ')[1] === 'desc') {
-        this.sortByType.desc = true
+        this.sortByType.desc = true;
       }
     } catch (error) {
-      console.error(error, `:\t Error with Query Syntax`)
+      console.error(error, `:\t Error with Query Syntax`);
     }
-    this.sortByType.value = data
+    this.sortByType.value = data;
     this.updateFilterConditions({
       sort: data,
       start: 0
-    })
+    });
   }
 
   onPressItem(data, subCategory) {
     if (subCategory) {
-      data = subCategory
-      this.releatedSearch = subCategory
+      data = subCategory;
+      this.releatedSearch = subCategory;
     } else {
-      data = this.searchedText
+      data = this.searchedText;
     }
     this.updateFilterConditions({
       q: data,
@@ -259,70 +259,70 @@ export class LeftSectionComponent implements OnInit, OnDestroy {
       releatedSearch: this.releatedSearch,
       rating: this.fieldsQuery.rating.q,
       price: this.fieldsQuery.price.q
-    })
+    });
   }
 
   updateFilterConditions(queryObj) {
     if (this.searchedText) {
-      queryObj.fieldsQuery = this.fieldsQuery
-      let qObject = { ...this.prevQuery, ...queryObj }
-      this._searchItemService.changeState(qObject)
-      let urlParams = Common.setUrlParams(qObject)
-      this.router.navigate(['/products'], { queryParams: urlParams })
+      queryObj.fieldsQuery = this.fieldsQuery;
+      let qObject = { ...this.prevQuery, ...queryObj };
+      this._searchItemService.changeState(qObject);
+      let urlParams = Common.setUrlParams(qObject);
+      this.router.navigate(['/products'], { queryParams: urlParams });
       if (this.closeDialog) {
-        localStorage.setItem('fieldsQuery', JSON.stringify(this.fieldsQuery))
-        localStorage.setItem('searchedText', this.searchedText)
-        this.closeDialog.close()
+        localStorage.setItem('fieldsQuery', JSON.stringify(this.fieldsQuery));
+        localStorage.setItem('searchedText', this.searchedText);
+        this.closeDialog.close();
       }
     }
   }
 
   removeRating() {
-    this.fieldsQuery.rating.q = null
+    this.fieldsQuery.rating.q = null;
     if (this.fieldsQuery && this.fieldsQuery.price) {
       if (!this.fieldsQuery.price.q) {
-        let qSearch = this.searchedText
+        let qSearch = this.searchedText;
         if (this.releatedSearch) {
-          qSearch = this.releatedSearch
+          qSearch = this.releatedSearch;
         }
-        this.onPressItem(qSearch, null)
+        this.onPressItem(qSearch, null);
       } else {
-        let priceRange = this.fieldsQuery.price.q
+        let priceRange = this.fieldsQuery.price.q;
         if (typeof this.fieldsQuery.price.q === 'string') {
-          priceRange = JSON.parse(this.fieldsQuery.price.q)
+          priceRange = JSON.parse(this.fieldsQuery.price.q);
         }
         if (priceRange) {
           this.priceFilterData({
             min: priceRange[0],
             max: priceRange[1]
-          })
+          });
         }
       }
     }
   }
 
   removePrice() {
-    this.fieldsQuery.price.q = null
+    this.fieldsQuery.price.q = null;
     if (this.fieldsQuery && this.fieldsQuery.price) {
       if (!this.fieldsQuery.rating.q) {
-        let qSearch = this.searchedText
+        let qSearch = this.searchedText;
         if (this.releatedSearch) {
-          qSearch = this.releatedSearch
+          qSearch = this.releatedSearch;
         }
-        this.onPressItem(qSearch, null)
+        this.onPressItem(qSearch, null);
       } else {
-        this.onPressRating(this.fieldsQuery.rating.q)
+        this.onPressRating(this.fieldsQuery.rating.q);
       }
     }
   }
 
   removeReleatedSearch() {
-    this.releatedSearch = null
-    this.onPressItem(this.searchedText, null)
+    this.releatedSearch = null;
+    this.onPressItem(this.searchedText, null);
   }
 
   ngOnDestroy() {
-    this._searchItemServicecurrentState.unsubscribe()
-    this._searchItemServiceResponsePoductListState.unsubscribe()
+    this._searchItemServicecurrentState.unsubscribe();
+    this._searchItemServiceResponsePoductListState.unsubscribe();
   }
 }

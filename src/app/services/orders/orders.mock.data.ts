@@ -1,12 +1,12 @@
-import { Order } from './order'
+import { Order } from './order';
 
-let frequentlyBoughtData = new Order()
-frequentlyBoughtData.product_id = 75
-frequentlyBoughtData.frequency = 1
+let frequentlyBoughtData = new Order();
+frequentlyBoughtData.product_id = 75;
+frequentlyBoughtData.frequency = 1;
 
-let frequentlyBoughtByMeData = new Order()
-frequentlyBoughtByMeData.product_id = 75
-frequentlyBoughtByMeData.frequency = 1
+let frequentlyBoughtByMeData = new Order();
+frequentlyBoughtByMeData.product_id = 75;
+frequentlyBoughtByMeData.frequency = 1;
 
 let orders = {
   orderItemsObject: {
@@ -48,7 +48,7 @@ let orders = {
       name: 'Samsung Galaxy Watch Active 40mm Silver'
     }
   }
-}
+};
 
 let orderDetail = {
   orderItemsObject: {
@@ -90,16 +90,16 @@ let orderDetail = {
       name: 'Samsung Galaxy Watch Active 40mm Silver'
     }
   }
-}
+};
 
 export class OrdersMockData {
-  public static orders = orders
+  public static orders = orders;
 
-  public static orderDetail = orderDetail
+  public static orderDetail = orderDetail;
 
-  public static frequentlyBoughtSet = frequentlyBoughtData
+  public static frequentlyBoughtSet = frequentlyBoughtData;
 
-  public static frequentlyBoughtByMeSet = frequentlyBoughtByMeData
+  public static frequentlyBoughtByMeSet = frequentlyBoughtByMeData;
 
   public static deleteOrder = {
     affectedRows: 1,
@@ -110,7 +110,7 @@ export class OrdersMockData {
     protocol41: true,
     serverStatus: 2,
     warningCount: 0
-  }
+  };
 
   public static postCartItemList = {
     affectedRows: 1,
@@ -121,5 +121,5 @@ export class OrdersMockData {
     protocol41: true,
     serverStatus: 2,
     warningCount: 0
-  }
+  };
 }

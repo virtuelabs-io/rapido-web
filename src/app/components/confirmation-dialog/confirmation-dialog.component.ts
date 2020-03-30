@@ -1,5 +1,5 @@
-import { Component, OnInit, Inject, NgModule } from '@angular/core'
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material'
+import { Component, OnInit, Inject, NgModule } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @NgModule({
   declarations: [],
@@ -20,6 +20,6 @@ export class ConfirmationDialogComponent implements OnInit {
   ngOnInit() {}
 
   onNoClick(): void {
-    this.dialogRef.close()
+    this.dialogRef.close();
   }
 }
