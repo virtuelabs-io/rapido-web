@@ -77,7 +77,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run pretty"
+      "pre-commit": "npm run pretty && git update-index -g"
     }
   }
 }
