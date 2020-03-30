@@ -12,9 +12,9 @@
     "livetest": "ng test --browsers=Chrome",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "pretty": "prettier --write \"src/**/*.ts\" --no-semi",
-    "pretty-check": " prettier --check \"src/**/*.ts\"",
-    "precommit": "run-s pretty"
+    "pretty:format": "prettier --write \"src/**/*.ts\" --no-semi",
+    "pretty-check": "prettier --check \"src/**/*.ts\"",
+    "precommit": "run-s pretty:format"
   },
   "private": true,
   "dependencies": {

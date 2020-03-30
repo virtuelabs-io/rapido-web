@@ -12,7 +12,7 @@ import { RouteService } from "../../shared-services/route/route.service";
 import { ProductsService } from "../../services/products/products.service";
 import { v4 as uuid } from "uuid";
 import { Common } from "./../../utils/common";
-import { GuestCartService } from "../../services/guests/guest-cart.service";
+import { GuestCartService } from "../../services/guests/guest-cart.service"
 
 @Component({
   selector: "app-topnav",
@@ -120,6 +120,11 @@ export class TopnavComponent implements OnInit {
 
   getCartCount() {
     if (this.isSignedIn) {
+		
+		
+		
+		
+		
       this._cartService.getCountOfInCartItems().then((count: any) => {
         this.cartCount = count;
         this._cartStateService.fetchAndUpdateCartCount(true);
@@ -127,6 +132,11 @@ export class TopnavComponent implements OnInit {
     } else {
       this._guestCartService.getCountOfGuestCartItems().then((count: any) => {
         this.cartCount = count;
+		
+		
+		
+		
+		
         this._cartStateService.fetchAndUpdateCartCount(false);
       });
     }
