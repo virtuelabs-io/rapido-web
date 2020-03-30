@@ -98,7 +98,6 @@ export class LogInComponent implements OnInit {
   }
 
   async postGuestCart() {
-    this.loginStateService.loaderEnable()
     let items = []
     for (var i = 0; i < this.guestCartItems.length; i++) {
       items.push(
@@ -111,12 +110,10 @@ export class LogInComponent implements OnInit {
     }
     if (items.length && this._signInResponse) {
       await this._cartService.postCartItemList(items).subscribe((_) => {
-        this.loginStateService.loaderDisable()
         this.handleRouteAfterLogIn()
       })
     } else if (this._signInResponse) {
       this.handleRouteAfterLogIn()
-      this.loginStateService.loaderDisable()
     }
   }
 
@@ -140,7 +137,6 @@ export class LogInComponent implements OnInit {
   }
 
   async login() {
-    this.loginStateService.loaderEnable()
     if (this.mobileNumber && this.password && this.mobileNumber.length === 10) {
       this._signInService.signInData = {
         Username: [this.countryCode, this.mobileNumber].join(""),
