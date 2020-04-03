@@ -40,7 +40,7 @@
               <span aria-hidden="true" class="text-danger ">
                   Price:
                   <span class="a-price-symbol">{{itemDetails.currency}}</span>
-                  <span class="a-price-whole">{{Number(itemDetails.price).toFixed(2)}}</span>
+                  <span class="a-price-whole">{{itemDetails.price | number:'.2'}}</span>
                 </span>
                 <span *ngIf="+itemDetails.offer" aria-hidden="true" class="small ">
                     M.R.P.:

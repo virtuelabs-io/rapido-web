@@ -9,14 +9,12 @@
      <app-rating [readonly]=true [currentRate]=itemDetails.rating></app-rating>
      <div>
         <span aria-hidden="true" class="text-danger">
-        <span class="a-price-symbol">£</span>
         <!-- Actual Price -->
-        <span class="a-price-whole">{{ itemDetails.price }}</span>
+        <span class="a-price-whole">{{ itemDetails.price | currency:currencySymbol }}</span>
         </span>
         <span aria-hidden="true" *ngIf="+itemDetails.offer" class="small p-2">
-        <span class="a-price-symbol">£</span>
         <!-- Discounted Price -->
-        <s class="a-price-whole">{{ mrpPrice }}</s>
+        <s class="a-price-whole">{{ mrpPrice | currency:currencySymbol }}</s>
         </span> 
         <span class="small p-2">
          <!-- actualPrice saved -->
