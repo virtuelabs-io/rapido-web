@@ -14,7 +14,7 @@ export class ImagesComponent implements OnInit {
 
   ngOnInit() {
     if(this.imgSrc){
-      this.imgSrc = Common.getImageURI(null, this.imgSrc[0])
+      this.imgSrc = Common.getImageURI(this.imgSrc[0])
     }
   }
 }

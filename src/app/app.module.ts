@@ -10,11 +10,6 @@ import { IconComponent } from './common/icons/icons.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { RoutingComponents } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatProgressBarModule, MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, 
-          MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, 
-          MatSnackBarModule, MatExpansionModule, MatSelectModule, MatPaginatorModule, 
-          MatProgressSpinnerModule, MatDialogModule, MatCardModule,
-          MatFormFieldModule, MatTableModule, MatTreeModule  } from '@angular/material';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ProductResultsComponent } from './components/product-results/product-results.component';
 import { FilterControlsDialog } from './components/product-results/product-results.component';
@@ -72,6 +67,7 @@ import { FlipCaseComponent } from './components/card/flip-case/flip-case.compone
 import { HomeCardFlipComponent } from './components/card/home-card-flip/home-card-flip.component';
 import { CarouselFlipComponent } from './components/card/carousel-flip/carousel-flip.component';
 import { ImageCarouselComponent } from './components/card/image-carousel/image-carousel.component';
+import { MaterialModule } from '../app/material/material.module';
 
 @NgModule({
   declarations: [
@@ -136,51 +132,18 @@ import { ImageCarouselComponent } from './components/card/image-carousel/image-c
     ImageCarouselComponent
   ],
   imports: [
-    MatProgressBarModule,
-    MatSidenavModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    BrowserAnimationsModule,
-    MatStepperModule,
     ReactiveFormsModule,
-    MatInputModule,
-    MatCheckboxModule,
-    MatButtonModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatListModule,
-    MatSnackBarModule,
-    MatExpansionModule,
-    MatMenuModule,
-    MatSelectModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatPaginatorModule,
+    BrowserAnimationsModule,
     HttpClientModule,
-    MatProgressSpinnerModule,
-    MatDialogModule,
-    MatTableModule,
     NgxStripeModule.forRoot(Constants.environment.stripePublicKey),
     HttpClientModule,
-    MatMenuModule,
-    MatInputModule,
-    MatCheckboxModule,
-    MatButtonModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatListModule,
-    MatSnackBarModule,
-    MatExpansionModule,
-    MatMenuModule,
-    MatProgressSpinnerModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatTreeModule,
     NgxPageScrollCoreModule,
     NgbModule.forRoot(),
     AngularFontAwesomeModule,
-    MatTreeModule
+    MaterialModule
   ],
   entryComponents: [ FilterControlsDialog, ConfirmationDialogComponent ],
   providers: [ ],

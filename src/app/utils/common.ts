@@ -8,19 +8,22 @@ import { Query } from './../../../src/app/services/products/query.interface';
 
 export class Common {
 
-  public static getImageURI = (images:Array<string>, imagePath:string)=> {
+  public static getImageURI = (imagePath:string)=> {
 
     if(imagePath){
       return  Constants.environment.staticAssets + imagePath
     }
+  }
+  
+  public static getImagesURI = (images:Array<string>)=> {
+
     return (
       images.map((val) => {
         return (
           !val.includes(Constants.environment.staticAssets) ? 
             Constants.environment.staticAssets + val: 
             val
-        )
-      })
+        )})
       );
   }
   

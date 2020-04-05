@@ -182,7 +182,7 @@ export class ProductDetailsComponent implements OnInit {
 			return val.id == this.itemId
 		})
 		this.itemDetails = product[0].fields
-		this.imageDetails = Common.getImageURI(this.itemDetails.images, null)
+		this.imageDetails = Common.getImagesURI(this.itemDetails.images)
 		this.imagePreviewURI = this.imageDetails[0]
 		this.imageDetails = this.setImageValue()
 		this.mrpPrice = (this.itemDetails.price * (1 + parseFloat(this.itemDetails.offer))).toFixed(2)

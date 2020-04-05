@@ -103,7 +103,7 @@ export class CreateReviewComponent implements OnInit {
       await this._productsService.get(query).
       subscribe(data => {
         if (data) {
-          this.imageDetails  = Common.getImageURI(data.hits.hit[0].fields.images, null)
+          this.imageDetails  = Common.getImagesURI(data.hits.hit[0].fields.images)
           this.image = this.imageDetails[0]
           this.title = data.hits.hit[0].fields.name
           this._loginStateService.loaderDisable()

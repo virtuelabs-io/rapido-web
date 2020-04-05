@@ -68,26 +68,26 @@ export class HomeComponent implements OnInit {
       }
     }
     
-    this.banner = Common.getImageURI(null, "/images/home-page/sale.jpg")//"assets/images/sale.jpg"
+    this.banner = Common.getImageURI("/images/home-page/sale.jpg")//"assets/images/sale.jpg"
     this.cardDetails = [
       {
         "title": "Watches",
-        "image": Common.getImageURI(null, "/images/home-page/watches.jpg"),
+        "image": Common.getImageURI("/images/home-page/watches.jpg"),
         "desc": "Find the best photography deals"
       },
       {
         "title": "Furnitures",
-        "image": Common.getImageURI(null, "/images/home-page/furnitures.jpg"),
+        "image": Common.getImageURI("/images/home-page/furnitures.jpg"),
         "desc": "Best of furnitures in store"
       },
       {
         "title": "Paint",
-        "image": Common.getImageURI(null, "/images/home-page/86-Asian-Paint-full.jpeg"),
+        "image": Common.getImageURI("/images/home-page/86-Asian-Paint-full.jpeg"),
         "desc": "Find the best deals here"
       },
       {
         "title": "Bricks",
-        "image": Common.getImageURI(null, "/images/home-page/bricks.jpeg"),
+        "image": Common.getImageURI("/images/home-page/bricks.jpeg"),
         "desc": "Deals you might be interested in"
       } 
     ]
@@ -95,12 +95,12 @@ export class HomeComponent implements OnInit {
     this.bannerCard = [
       {
         "title": "Wallets",
-        "image": Common.getImageURI(null, "/images/home-page/wallets.jpg"),
+        "image": Common.getImageURI("/images/home-page/wallets.jpg"),
         "desc": "End of sale"
       },
       {
         "title": "Sunglasses",
-        "image": Common.getImageURI(null, "/images/home-page/sunglass.jpg"),
+        "image": Common.getImageURI("/images/home-page/sunglass.jpg"),
         "desc": "Deals to excite you"
       }
     ]
@@ -142,7 +142,7 @@ export class HomeComponent implements OnInit {
       if (data) {
         this.carousel.RecommendedList.data = data.hits.hit.map((v,i)=>{
           v.fields.id = v.id
-          v.fields.image = Common.getImageURI(null, v.fields.images[0])
+          v.fields.image = Common.getImageURI(v.fields.images[0])
           return v.fields
           })
         if (data.error) {
@@ -197,7 +197,7 @@ export class HomeComponent implements OnInit {
       if (data) {
         this.carousel.FrequentlyBoughtByMe.data = data.hits.hit.map((v,i)=>{
           v.fields.id = v.id
-          v.fields.image = Common.getImageURI(null, v.fields.images[0])
+          v.fields.image = Common.getImageURI(v.fields.images[0])
           return v.fields
           })
         if (data.error) {
@@ -237,7 +237,7 @@ export class HomeComponent implements OnInit {
       if (data) {
         this.carousel.FrequentlyBought.data = data.hits.hit.map((v,i)=>{
           v.fields.id = v.id
-          v.fields.image = Common.getImageURI(null, v.fields.images[0])
+          v.fields.image = Common.getImageURI(v.fields.images[0])
           return v.fields
           })
         if (data.error) {
@@ -260,7 +260,7 @@ export class HomeComponent implements OnInit {
       if (data) {
         this.carousel.BrowsingHistory.data = data.hits.hit.map((v,i)=>{
           v.fields.id = v.id
-          v.fields.image = Common.getImageURI(null, v.fields.images[0])
+          v.fields.image = Common.getImageURI(v.fields.images[0])
           return v.fields
           })
         if (data.error) {
@@ -283,8 +283,8 @@ export class HomeComponent implements OnInit {
       if (data) {
         this.carousel.newAddedProductSet.data = data.hits.hit.map((v,i)=>{
           v.fields.id = v.id
-          v.fields.image1 = Common.getImageURI(null, v.fields.images[0])
-          v.fields.image2 = Common.getImageURI(null, v.fields.images[1])
+          v.fields.image1 = Common.getImageURI(v.fields.images[0])
+          v.fields.image2 = Common.getImageURI(v.fields.images[1])
           return v.fields
           })
         if (data.error) {
