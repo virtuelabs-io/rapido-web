@@ -7,7 +7,7 @@ import { Common } from '../../../../../src/app/utils/common';
   styleUrls: ['./image-carousel.component.scss']
 })
 export class ImageCarouselComponent implements OnInit {
-  images = [Common.getImageURI(null, "/images/home-page/image_car4.jpg"),Common.getImageURI(null, "/images/home-page/image_car2.jpg"),Common.getImageURI(null, "/images/home-page/image_car3.jpg")]
+  images = [Common.getImageURI("/images/home-page/image_car4.jpg"),Common.getImageURI("/images/home-page/image_car2.jpg"),Common.getImageURI("/images/home-page/image_car3.jpg")]
   pauseOnHover: any
   constructor() { }
   ngOnInit() {
