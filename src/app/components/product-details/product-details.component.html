@@ -39,13 +39,12 @@
             <div class="price-section h5">
               <span aria-hidden="true" class="text-danger ">
                   Price:
-                  <span class="a-price-symbol">{{itemDetails.currency}}</span>
-                  <span class="a-price-whole">{{itemDetails.price | number:'.2'}}</span>
+                  <span class="a-price-whole">{{itemDetails.price | currency:itemDetails.currency}}</span>
                 </span>
                 <span *ngIf="+itemDetails.offer" aria-hidden="true" class="small ">
                     M.R.P.:
-                  <span class="a-price-symbol">{{itemDetails.currency}}</span>
-                  <s class="a-price-whole">{{Number(mrpPrice).toFixed(2)}}</s>
+                  <!-- <span class="a-price-symbol">{{itemDetails.currency}}</span> -->
+                  <s class="a-price-whole">{{mrpPrice | currency:itemDetails.currency}}</s>
                 </span>
               <span *ngIf="+itemDetails.offer" class="small ">
                 You Save:
@@ -86,7 +85,7 @@
     <div class="order-div col-md-2"> 
       <div class="">
       <div class="thumbnail-inactive p-2">
-        <h4 class="text-danger">{{itemDetails.currency}} {{totalPrice}}</h4>
+        <h4 class="text-danger">{{totalPrice | currency:itemDetails.currency}}</h4>
           <!-- <div class="d-flex ">
             <label class="mr-2">Quantity: </label>
             <select 
