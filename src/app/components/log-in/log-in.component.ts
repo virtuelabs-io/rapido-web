@@ -52,7 +52,6 @@ export class LogInComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loginStateService.loaderDisable()
     this._previousRoute = this.RouteService.getRoute()
     this.userLogInCheck()
   }
@@ -90,14 +89,12 @@ export class LogInComponent implements OnInit {
   }
   
   async handleUserlogin() {
-   // this.loginStateService.loaderEnable()
     await this.fetchGuestCart().
     then( _ => this.login()).
     then(_=> this.postGuestCart())
   }
 
   async postGuestCart() {
-    this.loginStateService.loaderEnable()
     let items = [];
     for(var i = 0; i < this.guestCartItems.length; i++) {
       items.push(this.updateCartItem(this.guestCartItems[i].guestCartItem.product_id, this.guestCartItems[i].guestCartItem.quantity, true))
@@ -105,13 +102,11 @@ export class LogInComponent implements OnInit {
     if(items.length && this._signInResponse) {
       await this._cartService.postCartItemList(items)
       .subscribe( _ => {
-        this.loginStateService.loaderDisable()
         this.handleRouteAfterLogIn()
       })
     }
     else if(this._signInResponse) {
       this.handleRouteAfterLogIn()
-      this.loginStateService.loaderDisable()
     }
   }
 
@@ -132,7 +127,6 @@ export class LogInComponent implements OnInit {
   }
 
   async login() {
-    this.loginStateService.loaderEnable()
     if(this.mobileNumber && this.password && this.mobileNumber.length === 10) {
       this._signInService.signInData = {
         Username: [ this.countryCode,this.mobileNumber ].join(""),
@@ -143,11 +137,7 @@ export class LogInComponent implements OnInit {
         this._signInResponse = true;
         this.loginStateService.changeState(true);
         this.cartStateService.fetchAndUpdateCartCount(true)
-        this.loginStateService.loaderDisable()
-        
-        
       }).catch(error => {
-        this.loginStateService.loaderDisable()
         this._signInResponse = false
         this.alertBox = true;
         this.alertMsg = error.data.message
