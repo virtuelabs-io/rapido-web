@@ -56,6 +56,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-horizontal-stepper-header{
     pointer-events: none !important;
 }
+
+.mat-horizontal-stepper-header-container {
+    margin: 5px;
+}
+
 .bg-primary{
     background: $primary;
 }
