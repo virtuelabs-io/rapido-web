@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material';
+import { MatSidenav } from '@angular/material/sidenav';
 import { TopnavComponent } from '../topnav/topnav.component';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
 import { ProfileService } from '../../services/authentication/profile/profile.service';
