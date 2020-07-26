@@ -10,11 +10,27 @@ import { IconComponent } from './common/icons/icons.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { RoutingComponents } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatProgressBarModule, MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, 
-          MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, 
-          MatSnackBarModule, MatExpansionModule, MatSelectModule, MatPaginatorModule, 
-          MatProgressSpinnerModule, MatDialogModule, MatCardModule,
-          MatFormFieldModule, MatTableModule, MatTreeModule  } from '@angular/material';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSelectModule } from '@angular/material/select';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
+import { MatTreeModule } from '@angular/material/tree';
+
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ProductResultsComponent } from './components/product-results/product-results.component';
 import { FilterControlsDialog } from './components/product-results/product-results.component';
@@ -52,7 +68,6 @@ import { CarouselScrollComponent } from './components/card/carousel-scroll/carou
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { TableComponent } from './components/table/table.component';
 import { PillBadgeComponent } from './components/common/pill-badge/pill-badge.component';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { CareerPageComponent } from './components/career-page/career-page.component';
 import { PressReleaseComponent } from './components/press-release/press-release.component';
 import { CreditsComponent } from './components/credits/credits.component';
@@ -179,7 +194,6 @@ import { ImageCarouselComponent } from './components/card/image-carousel/image-c
     MatTreeModule,
     NgxPageScrollCoreModule,
     NgbModule.forRoot(),
-    AngularFontAwesomeModule,
     MatTreeModule
   ],
   entryComponents: [ FilterControlsDialog, ConfirmationDialogComponent ],
