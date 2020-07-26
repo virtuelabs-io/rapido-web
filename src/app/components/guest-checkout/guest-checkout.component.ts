@@ -9,7 +9,7 @@ import { Constants } from '../../utils/constants';
 import { StripeService, Elements, Element as StripeElement, ElementsOptions } from "ngx-stripe";
 import { GuestChargeService } from '../../services/payment/guest-charge.service';
 import { GuestCharge } from '../../services/payment/guest-charge';
-import {MatSnackBar} from '@angular/material';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import { RouteService } from '../../shared-services/route/route.service';
 import { Router } from '@angular/router';
 import { ProfileService } from '../../services/authentication/profile/profile.service';

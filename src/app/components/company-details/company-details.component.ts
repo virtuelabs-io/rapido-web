@@ -3,12 +3,13 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { CompanyDetails } from '../../services/customer/company-details';
 import { CompanyDetailsService } from '../../services/customer/company-details.service';
 import { Router } from '@angular/router';
-import { MatSnackBar, MatDialog } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Constants } from '../../utils/constants';
 import { RouteService } from '../../shared-services/route/route.service';
 import { SessionService } from '../../services/authentication/session/session.service';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
 import { ConfirmationDialogComponent } from '../../components/confirmation-dialog/confirmation-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({

@@ -11,7 +11,7 @@ import { OrdersService } from '../../services/orders/orders.service';
 import { Order } from '../../services/orders/order';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
 import { ProfileService } from '../../services/authentication/profile/profile.service';
-import {MatSnackBar} from '@angular/material';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @NgModule({
 	imports: [

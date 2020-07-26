@@ -6,7 +6,7 @@ import { ProductsService } from '../../services/products/products.service';
 import { Common } from '../../../../src/app/utils/common';
 import { RouteService } from '../../shared-services/route/route.service';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Constants } from '../../utils/constants';
 import {FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 

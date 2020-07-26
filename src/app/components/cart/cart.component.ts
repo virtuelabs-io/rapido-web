@@ -3,14 +3,14 @@ import { CartService } from '../../services/cart/cart.service';
 import { Constants } from '../../utils/constants';
 import { Common } from '../../utils/common';
 import { CartItem } from '../../services/cart/cart-item';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { CartStateService } from '../../shared-services/cart-state/cart-state.service';
 import { SessionService } from '../../services/authentication/session/session.service';
 import { RouteService } from '../../shared-services/route/route.service';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
 import { GuestCartService } from '../../services/guests/guest-cart.service';
-import { GuestCartItem } from 'src/app/services/guests/guest-cart-item';
+import { GuestCartItem } from '../../services/guests/guest-cart-item';
 
 @Component({
   selector: 'app-cart',
