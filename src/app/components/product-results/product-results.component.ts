@@ -15,7 +15,7 @@ import { Common } from '../../utils/common';
 })
 export class ProductResultsComponent implements OnInit, OnDestroy {
 
-  @ViewChild(MatPaginator) paginator: MatPaginator
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator
   // MatPaginator Inputs
   length = 100;
   pageSize = 15;

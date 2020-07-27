@@ -14,7 +14,7 @@ import { SidenavService } from './nav.service';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
-  @ViewChild('sidenav') public sidenav: MatSidenav;
+  @ViewChild('sidenav', { static: true }) public sidenav: MatSidenav;
   isSignedIn: Boolean = false
   disclaimerReq: Boolean
   name: string
