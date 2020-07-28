@@ -1,7 +1,7 @@
-import { Component, OnInit, NgModule, NgZone } from '@angular/core';
+import { Component, OnInit, NgModule, NgZone, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ChargeService } from '../../services/payment/charge.service';
-import { StripeService, Elements, Element as StripeElement, ElementsOptions } from "ngx-stripe";
+import { StripeService, StripeCardComponent } from "ngx-stripe";
 import { Charge } from '../../services/payment/charge';
 import { Constants } from '../../utils/constants';
 import { Router } from '@angular/router';
@@ -12,6 +12,7 @@ import { Order } from '../../services/orders/order';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
 import { ProfileService } from '../../services/authentication/profile/profile.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { StripeElementsOptions, StripeCardElementOptions } from '@stripe/stripe-js';
 
 @NgModule({
 	imports: [
@@ -27,6 +28,27 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent implements OnInit {
+  @ViewChild(StripeCardComponent) card: StripeCardComponent;
+
+  cardOptions: StripeCardElementOptions = {
+    style: {
+      base: {
+        iconColor: '#666EE8',
+        color: '#31325F',
+        fontWeight: '300',
+        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+        fontSize: '18px',
+        '::placeholder': {
+          color: '#CFD7E0'
+        }
+      }
+    }
+  };
+ 
+  elementsOptions: StripeElementsOptions = {
+    locale: 'es'
+  };
+
   deliveryDateInterval = Constants.DELIVERY_DATE_INTERVAL
   imageUrl: string = Constants.environment.staticAssets
   _orderId: any
@@ -51,11 +73,11 @@ export class CheckoutComponent implements OnInit {
   example:any
   payment: FormGroup;
   // optional parameters
-  elementsOptions: ElementsOptions = {
-    locale: 'en'
-  };
-  elements: Elements;
-  card: StripeElement;
+  // elementsOptions: ElementsOptions = {
+  //   locale: 'en'
+  // };
+  // elements: Elements;
+  // card: StripeElement;
   chargeResult: string;
   _charge: Charge = new Charge()
 
@@ -110,31 +132,31 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.stripeService.elements(this.elementsOptions)
-    .subscribe(elements => {
-      this.elements = elements;
-      // Only mount the element the first time
-      if (!this.card) {
-        this.card = this.elements.create('card', {
-          style: {
-            base: {
-              color: '#32325d',
-              fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-              fontSmoothing: 'antialiased',
-              fontSize: '16px',
-              '::placeholder': {
-                color: '#aab7c4'
-              }
-            },
-            invalid: {
-              color: '#fa755a',
-              iconColor: '#fa755a'
-            }
-          }
-        });
-        this.card.mount('#card-element');
-      }
-    });
+    // this.stripeService.elements(this.elementsOptions)
+    // .subscribe(elements => {
+    //   this.elements = elements;
+    //   // Only mount the element the first time
+    //   if (!this.card) {
+    //     this.card = this.elements.create('card', {
+    //       style: {
+    //         base: {
+    //           color: '#32325d',
+    //           fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+    //           fontSmoothing: 'antialiased',
+    //           fontSize: '16px',
+    //           '::placeholder': {
+    //             color: '#aab7c4'
+    //           }
+    //         },
+    //         invalid: {
+    //           color: '#fa755a',
+    //           iconColor: '#fa755a'
+    //         }
+    //       }
+    //     });
+    //     this.card.mount('#card-element');
+    //   }
+    // });
   }
 
   newAddress() {
@@ -211,7 +233,7 @@ export class CheckoutComponent implements OnInit {
     this._charge.order_id = this._orderId
     const name = this._charge.name
     this.stripeService
-      .createToken(this.card, { name })
+      .createToken(this.card.element, { name })
       .subscribe(result => {
         if (result.token) {
           this._charge.token = result.token.id

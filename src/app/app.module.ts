@@ -194,7 +194,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatSidenavModule,
     MatTreeModule,
     NgxPageScrollCoreModule,
-    NgbModule.forRoot(),
+    NgbModule,
+    // .forRoot(),
     MatTreeModule,
     FontAwesomeModule
   ],

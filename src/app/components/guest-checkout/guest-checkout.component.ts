@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone, NgModule } from '@angular/core';
+import { Component, OnInit, NgZone, NgModule, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { GuestAddressService } from '../../services/guests/guest-address.service';
 import { GuestAddressDetails } from '../../services/guests/guest-address-details';
@@ -6,7 +6,7 @@ import { GuestOrder } from '../../services/guests/guest-order';
 import { GuestOrdersService } from '../../services/guests/guest-orders.service';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
 import { Constants } from '../../utils/constants';
-import { StripeService, Elements, Element as StripeElement, ElementsOptions } from "ngx-stripe";
+import { StripeService, StripeCardComponent } from "ngx-stripe";
 import { GuestChargeService } from '../../services/payment/guest-charge.service';
 import { GuestCharge } from '../../services/payment/guest-charge';
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -14,6 +14,7 @@ import { RouteService } from '../../shared-services/route/route.service';
 import { Router } from '@angular/router';
 import { ProfileService } from '../../services/authentication/profile/profile.service';
 import { CartStateService } from '../../shared-services/cart-state/cart-state.service';
+import { StripeElementsOptions, StripeCardElementOptions } from '@stripe/stripe-js';
 
 @NgModule({
 	imports: [
@@ -29,6 +30,28 @@ import { CartStateService } from '../../shared-services/cart-state/cart-state.se
   styleUrls: ['./guest-checkout.component.scss']
 })
 export class GuestCheckoutComponent implements OnInit {
+  @ViewChild(StripeCardComponent) card: StripeCardComponent;
+
+  cardOptions: StripeCardElementOptions = {
+    style: {
+      base: {
+        iconColor: '#666EE8',
+        color: '#31325F',
+        fontWeight: '300',
+        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+        fontSize: '18px',
+        '::placeholder': {
+          color: '#CFD7E0'
+        }
+      }
+    }
+  };
+ 
+  elementsOptions: StripeElementsOptions = {
+    locale: 'es'
+  };
+
+
   deliveryDateInterval = Constants.DELIVERY_DATE_INTERVAL
   _previousRoute: any = ""
   address_details_id: number
@@ -51,11 +74,11 @@ export class GuestCheckoutComponent implements OnInit {
   _logInName: string
   payment: FormGroup;
   // optional parameters
-  elementsOptions: ElementsOptions = {
-    locale: 'en'
-  };
-  elements: Elements;
-  card: StripeElement;
+  // elementsOptions:  StripeElementsOptions = {
+  //   locale: 'en'
+  // };
+  // elements: Elements;
+  // card: StripeElement;
   chargeResult: string;
   _charge: GuestCharge = new GuestCharge()
   addressFormGroup: FormGroup // UI reactive Form Group variable
@@ -104,31 +127,32 @@ export class GuestCheckoutComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.stripeService.elements(this.elementsOptions)
-    .subscribe(elements => {
-      this.elements = elements;
-      // Only mount the element the first time
-      if (!this.card) {
-        this.card = this.elements.create('card', {
-          style: {
-            base: {
-              color: '#32325d',
-              fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-              fontSmoothing: 'antialiased',
-              fontSize: '16px',
-              '::placeholder': {
-                color: '#aab7c4'
-              }
-            },
-            invalid: {
-              color: '#fa755a',
-              iconColor: '#fa755a'
-            }
-          }
-        });
-        this.card.mount('#card-element');
-      }
-    });
+    
+    // this.stripeService.elements(this.elementsOptions)
+    // .subscribe(elements => {
+    //   this.elements = elements;
+    //   // Only mount the element the first time
+    //   if (!this.card) {
+    //     this.card = this.elements.create('card', {
+    //       style: {
+    //         base: {
+    //           color: '#32325d',
+    //           fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+    //           fontSmoothing: 'antialiased',
+    //           fontSize: '16px',
+    //           '::placeholder': {
+    //             color: '#aab7c4'
+    //           }
+    //         },
+    //         invalid: {
+    //           color: '#fa755a',
+    //           iconColor: '#fa755a'
+    //         }
+    //       }
+    //     });
+    //     this.card.mount('#card-element');
+    //   }
+    // });
   }
 
   async createGuestOrder(formData) {
@@ -215,7 +239,7 @@ export class GuestCheckoutComponent implements OnInit {
     this._charge.order_id = this._orderId
     const name = this._charge.name
     this.stripeService
-      .createToken(this.card, { name })
+      .createToken(this.card.element, { name })
       .subscribe(result => {
         if (result.token) {
           this._charge.token = result.token.id

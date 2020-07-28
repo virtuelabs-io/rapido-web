@@ -12,7 +12,7 @@ import { CartItem } from '../../services/cart/cart-item';
 import { CartService } from '../../services/cart/cart.service';
 import { CartStateService } from '../../shared-services/cart-state/cart-state.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { element } from '@angular/core/src/render3';
+// import { element } from '@angular/core/src/render3';
 
 @NgModule({
 	imports: [
