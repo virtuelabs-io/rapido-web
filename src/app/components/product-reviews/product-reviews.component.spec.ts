@@ -9,7 +9,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { RatingsMockData} from 'src/app/services/ratings/ratings.mock.data';
 import { RatingsMockService} from 'src/app/services/ratings/ratings.mock.service';
 import { RatingsService} from 'src/app/services/ratings/ratings.service';
-import { MatSnackBarModule } from '@angular/material';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditReviewComponent } from '../edit-review/edit-review.component';

@@ -1,5 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatIconModule, MatMenuModule, MatToolbarModule, MatSnackBarModule } from '@angular/material';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TopnavComponent } from './topnav.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';

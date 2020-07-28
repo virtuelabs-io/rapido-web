@@ -16,12 +16,28 @@ import { Constants } from './utils/constants';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
-import { MatStepperModule, MatInputModule, MatCheckboxModule, MatButtonModule, 
-  MatIconModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatListModule, 
-  MatSnackBarModule, MatExpansionModule, MatSelectModule, MatPaginatorModule, 
-  MatProgressSpinnerModule, MatDialogModule, MatFormFieldModule, MatCardModule,
-  MatTableModule, MatTreeModule, 
-  MatProgressBarModule} from '@angular/material';
+  import { MatFormFieldModule } from '@angular/material/form-field';
+  import { MatCardModule } from '@angular/material/card';
+  import { MatTableModule } from '@angular/material/table';
+  import { MatTreeModule } from '@angular/material/tree';
+  import { MatProgressBarModule } from '@angular/material/progress-bar';
+
+  import { MatStepperModule } from '@angular/material/stepper';
+  import { MatInputModule } from '@angular/material/input';
+  import { MatCheckboxModule } from '@angular/material/checkbox';
+  import { MatButtonModule } from '@angular/material/button';
+  import { MatIconModule } from '@angular/material/icon';
+  import { MatToolbarModule } from '@angular/material/toolbar';
+
+  import { MatMenuModule } from '@angular/material/menu';
+  import { MatSidenavModule } from '@angular/material/sidenav';
+  import { MatListModule } from '@angular/material/list';
+  import { MatSnackBarModule } from '@angular/material/snack-bar';
+  import { MatExpansionModule } from '@angular/material/expansion';
+  import { MatSelectModule } from '@angular/material/select';
+  import { MatPaginatorModule } from '@angular/material/paginator';
+  import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+  import { MatDialogModule } from '@angular/material/dialog';
 import { LeftSectionComponent } from './components/leftsection/leftsection.component';
 import { CardComponent } from './components/card/card.component';
 import { RatingComponent } from './components/rating/rating.component';
