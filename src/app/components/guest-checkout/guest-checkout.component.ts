@@ -48,7 +48,7 @@ export class GuestCheckoutComponent implements OnInit {
   };
  
   elementsOptions: StripeElementsOptions = {
-    locale: 'es'
+    locale: 'en'
   };
 
 

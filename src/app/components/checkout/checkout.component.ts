@@ -46,7 +46,7 @@ export class CheckoutComponent implements OnInit {
   };
  
   elementsOptions: StripeElementsOptions = {
-    locale: 'es'
+    locale: 'en'
   };
 
   deliveryDateInterval = Constants.DELIVERY_DATE_INTERVAL
