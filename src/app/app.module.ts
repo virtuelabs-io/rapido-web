@@ -87,6 +87,7 @@ import { FlipCaseComponent } from './components/card/flip-case/flip-case.compone
 import { HomeCardFlipComponent } from './components/card/home-card-flip/home-card-flip.component';
 import { CarouselFlipComponent } from './components/card/carousel-flip/carousel-flip.component';
 import { ImageCarouselComponent } from './components/card/image-carousel/image-carousel.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -194,7 +195,8 @@ import { ImageCarouselComponent } from './components/card/image-carousel/image-c
     MatTreeModule,
     NgxPageScrollCoreModule,
     NgbModule.forRoot(),
-    MatTreeModule
+    MatTreeModule,
+    FontAwesomeModule
   ],
   entryComponents: [ FilterControlsDialog, ConfirmationDialogComponent ],
   providers: [ ],
