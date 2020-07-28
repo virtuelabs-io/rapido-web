@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, Directive } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
@@ -89,6 +89,7 @@ import { CarouselFlipComponent } from './components/card/carousel-flip/carousel-
 import { ImageCarouselComponent } from './components/card/image-carousel/image-carousel.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+@Directive()
 @NgModule({
   declarations: [
     TopnavComponent,
