@@ -7,9 +7,6 @@
       "node"
     ]
   },
-  // "angularCompilerOptions": {
-  //   "enableIvy": false
-  // },
   "files": [
     "test.ts",
     "polyfills.ts"
