@@ -149,5 +149,8 @@
       }
     }
   },
-  "defaultProject": "rapido-web"
+  "defaultProject": "rapido-web",
+  "cli": {
+    "analytics": "8fb51fb4-13f0-4007-b524-157417728e6a"
+  }
 }
