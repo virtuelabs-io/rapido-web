@@ -10,7 +10,7 @@ import { CreditsComponent } from '../credits/credits.component';
 import { TermsConditionsComponent } from '../terms-conditions/terms-conditions.component';
 import { PrivacyPolicyComponent } from '../privacy-policy/privacy-policy.component';
 import { ProfileComponent } from '../my-profile/profile.component';
-import { MatExpansionModule } from '@angular/material';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 describe('FooterComponent', () => {
   let component: FooterComponent;

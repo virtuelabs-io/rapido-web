@@ -6,7 +6,7 @@ import { Router, Routes } from '@angular/router';
 import {Location} from "@angular/common";
 import { CustomerReviewsComponent } from '../customer-reviews/customer-reviews.component';
 import {  HttpClientTestingModule } from '@angular/common/http/testing';
-import { MatSnackBarModule } from '@angular/material';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { LogInComponent } from '../log-in/log-in.component';
 import { RatingsService} from 'src/app/services/ratings/ratings.service';
 import { RatingsMockService} from 'src/app/services/ratings/ratings.mock.service';

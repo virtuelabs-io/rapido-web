@@ -104,7 +104,7 @@ describe('AppComponent', () => {
         MatSelectModule,
         MatTableModule,
         MatProgressBarModule,
-        NgbModule.forRoot(),
+        NgbModule,
         MatTreeModule
       ],
       declarations: [

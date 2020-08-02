@@ -2,7 +2,9 @@ import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core
 import { RouterTestingModule } from '@angular/router/testing';
 import { AddressComponent } from './address.component';
 import { HttpClientModule } from '@angular/common/http';
-import { MatProgressSpinnerModule, MatCardModule, MatFormFieldModule } from '@angular/material';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatCardModule } from '@angular/material/card'
+import { MatFormFieldModule } from '@angular/material/form-field'
 import { LogInComponent } from '../log-in/log-in.component';
 import { Router, Routes } from '@angular/router';
 import { EditAddressComponent } from '../edit-address/edit-address.component';

@@ -4,10 +4,14 @@ import { AddAddressComponent } from './add-address.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
-import { MatProgressSpinnerModule, MatFormFieldModule, MatCardModule, MatInputModule } from '@angular/material';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
 import { AddressDetailsMockData } from 'src/app/services/customer/address-details.mock.data';
 import { AddressDetailsService } from '../../services/customer/address-details.service';
 import { AddressDetailsMockService } from '../../services/customer/address-details.mock.service';
+import { from } from 'rxjs';
 
 describe('AddAddressComponent', () => {
   let addressDetailsMockService: AddressDetailsService = new AddressDetailsMockService()

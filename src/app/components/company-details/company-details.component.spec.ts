@@ -1,7 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { CompanyDetailsComponent } from './company-details.component';
-import { MatDialogRef, MAT_DIALOG_DATA ,MatDialogModule, MatSnackBarModule, MatInputModule, MatCardModule, MatFormFieldModule, MatProgressSpinnerModule } from '@angular/material';
+import { MatDialogRef } from '@angular/material/dialog'
+import { MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { MatDialogModule } from '@angular/material/dialog'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
+import { MatInputModule } from '@angular/material/input'
+import { MatCardModule } from '@angular/material/card'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';

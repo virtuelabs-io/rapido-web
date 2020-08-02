@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, NgModule } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { CompanyDetails } from '../../services/customer/company-details';
 import { CompanyDetailsService } from '../../services/customer/company-details.service';
@@ -10,8 +10,13 @@ import { SessionService } from '../../services/authentication/session/session.se
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
 import { ConfirmationDialogComponent } from '../../components/confirmation-dialog/confirmation-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { MatError } from '@angular/material/form-field';
 
-
+@NgModule({
+  imports: [
+    MatError
+    ]
+}) 
 @Component({
   selector: 'app-company-details',
   templateUrl: './company-details.component.html',
