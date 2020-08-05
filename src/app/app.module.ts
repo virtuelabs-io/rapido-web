@@ -17,7 +17,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatMenuModule } from '@angular/material/menu';
+import { MatMenuModule, MatMenu } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -30,7 +30,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { MatTreeModule } from '@angular/material/tree';
-
+import { CommonModule } from '@angular/common';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ProductResultsComponent } from './components/product-results/product-results.component';
 import { FilterControlsDialog } from './components/product-results/product-results.component';
@@ -152,7 +152,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CarouselFlipComponent,
     ImageCarouselComponent
   ],
+  // exports: [
+  //   MatMenu
+  // ],
   imports: [
+    CommonModule,
     MatProgressBarModule,
     MatSidenavModule,
     BrowserModule,
@@ -180,7 +184,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatTableModule,
     NgxStripeModule.forRoot(Constants.environment.stripePublicKey),
     HttpClientModule,
-    MatMenuModule,
     MatInputModule,
     MatCheckboxModule,
     MatButtonModule,
@@ -189,7 +192,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatListModule,
     MatSnackBarModule,
     MatExpansionModule,
-    MatMenuModule,
     MatProgressSpinnerModule,
     MatSelectModule,
     MatSidenavModule,

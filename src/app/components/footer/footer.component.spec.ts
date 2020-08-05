@@ -84,7 +84,7 @@ describe('FooterComponent', () => {
   it('should navigate to Credits page', () => {
     document.getElementById('FooterComponent-credits').click();
     fixture.whenStable().then(() => {
-      expect(location.path()).toEqual('/press-credits');
+      expect(location.path()).toEqual('/credits');
     });
   });
 

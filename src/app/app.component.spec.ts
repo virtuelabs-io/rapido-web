@@ -29,7 +29,7 @@ import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
   import { MatIconModule } from '@angular/material/icon';
   import { MatToolbarModule } from '@angular/material/toolbar';
 
-  import { MatMenuModule } from '@angular/material/menu';
+  import { MatMenuModule, MatMenu } from '@angular/material/menu';
   import { MatSidenavModule } from '@angular/material/sidenav';
   import { MatListModule } from '@angular/material/list';
   import { MatSnackBarModule } from '@angular/material/snack-bar';
