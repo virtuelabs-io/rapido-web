@@ -4,13 +4,13 @@ import {FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ForgotPasswordService } from '../../services/authentication/forgot-password/forgot-password.service';
 import { Constants } from '../../utils/constants';
 
-@NgModule({
-  imports: [
-    FormBuilder,
-    Validators,
-    FormGroup
-  ]
-})
+// @NgModule({
+//   imports: [
+//     FormBuilder,
+//     Validators,
+//     FormGroup
+//   ]
+// })
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',

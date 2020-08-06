@@ -10,13 +10,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Constants } from '../../utils/constants';
 import {FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
-@NgModule({
-	imports: [
-		FormBuilder,
-		Validators,
-		FormGroup
-	]
-})
+// @NgModule({
+// 	imports: [
+// 		FormBuilder,
+// 		Validators,
+// 		FormGroup
+// 	]
+// })
 
 @Component({
   selector: 'app-edit-review',

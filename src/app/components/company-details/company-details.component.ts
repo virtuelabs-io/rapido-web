@@ -12,11 +12,11 @@ import { ConfirmationDialogComponent } from '../../components/confirmation-dialo
 import { MatDialog } from '@angular/material/dialog';
 import { MatError } from '@angular/material/form-field';
 
-@NgModule({
-  imports: [
-    MatError
-    ]
-}) 
+// @NgModule({
+//   imports: [
+//     MatError
+//     ]
+// }) 
 @Component({
   selector: 'app-company-details',
   templateUrl: './company-details.component.html',

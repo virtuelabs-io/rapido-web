@@ -6,13 +6,13 @@ import { ConfirmRegistrationService } from '../../services/authentication/confir
 import { ResendConfirmationCodeService } from '../../services/authentication/resend-confirmation-code/resend-confirmation-code.service';
 import { Constants } from '../../utils/constants';
 
-@NgModule({
-	imports: [
-		FormBuilder,
-		Validators,
-		FormGroup
-	]
-})
+// @NgModule({
+// 	imports: [
+// 		FormBuilder,
+// 		Validators,
+// 		FormGroup
+// 	]
+// })
 
 @Component({
 	selector: 'app-register',

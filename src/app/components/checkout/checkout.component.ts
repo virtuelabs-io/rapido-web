@@ -14,13 +14,13 @@ import { ProfileService } from '../../services/authentication/profile/profile.se
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { StripeElementsOptions, StripeCardElementOptions } from '@stripe/stripe-js';
 
-@NgModule({
-	imports: [
-		FormBuilder,
-		Validators,
-		FormGroup
-	]
-})
+// @NgModule({
+// 	imports: [
+// 		FormBuilder,
+// 		Validators,
+// 		FormGroup
+// 	]
+// })
 
 @Component({
   selector: 'app-checkout',

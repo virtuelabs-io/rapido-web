@@ -89,7 +89,7 @@ import { CarouselFlipComponent } from './components/card/carousel-flip/carousel-
 import { ImageCarouselComponent } from './components/card/image-carousel/image-carousel.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-@Directive()
+// @Directive()
 @NgModule({
   declarations: [
     TopnavComponent,

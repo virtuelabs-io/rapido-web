@@ -14,14 +14,14 @@ import { CartStateService } from '../../shared-services/cart-state/cart-state.se
 import { MatSnackBar } from '@angular/material/snack-bar';
 // import { element } from '@angular/core/src/render3';
 
-@NgModule({
-	imports: [
-		FormBuilder,
-		Validators,
-    FormGroup,
-    ReactiveFormsModule
-	]
-})
+// @NgModule({
+// 	imports: [
+// 		FormBuilder,
+// 		Validators,
+//     FormGroup,
+//     ReactiveFormsModule
+// 	]
+// })
 
 @Component({
   selector: 'app-orders',

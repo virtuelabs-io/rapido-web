@@ -11,13 +11,13 @@ import { Constants } from '../../../../src/app/utils/constants';
 import { OrdersService } from '../../services/orders/orders.service';
 import {FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
-@NgModule({
-	imports: [
-		FormBuilder,
-		Validators,
-		FormGroup
-	]
-})
+// @NgModule({
+// 	imports: [
+// 		FormBuilder,
+// 		Validators,
+// 		FormGroup
+// 	]
+// })
 
 @Component({
   selector: 'app-create-review',

@@ -16,13 +16,13 @@ import { ProfileService } from '../../services/authentication/profile/profile.se
 import { CartStateService } from '../../shared-services/cart-state/cart-state.service';
 import { StripeElementsOptions, StripeCardElementOptions } from '@stripe/stripe-js';
 
-@NgModule({
-	imports: [
-		FormBuilder,
-		Validators,
-		FormGroup
-	]
-})
+// @NgModule({
+// 	imports: [
+// 		FormBuilder,
+// 		Validators,
+// 		FormGroup
+// 	]
+// })
 
 @Component({
   selector: 'app-guest-checkout',
