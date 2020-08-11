@@ -35,7 +35,7 @@
     "bootstrap": "^4.4.1",
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
-    "jquery": "^1.9.1",
+    "jquery": "^3.5.0",
     "material-icons": "^0.3.0",
     "ngx-page-scroll-core": "^7.0.3",
     "ngx-stripe": "^10.1.1",
