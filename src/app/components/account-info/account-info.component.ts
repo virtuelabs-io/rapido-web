@@ -9,7 +9,7 @@ import { RouteService } from '../../shared-services/route/route.service';
 import { SessionService } from '../../services/authentication/session/session.service';
 import { Router } from '@angular/router';
 import { ConfirmationDialogComponent } from '../../components/confirmation-dialog/confirmation-dialog.component';
-import {  MatDialog } from '@angular/material';
+import {  MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-account-info',

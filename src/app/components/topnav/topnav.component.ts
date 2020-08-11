@@ -14,9 +14,8 @@ import { v4 as uuid } from 'uuid';
 import { Common } from './../../utils/common'
 import { GuestCartService } from '../../services/guests/guest-cart.service';
 import { ProductMenuComponent } from '../product-menu/product-menu.component';
+import { MatMenu } from '@angular/material/menu';
 
-@NgModule({
-})
 @Component({
   selector: 'app-topnav',
   templateUrl: './topnav.component.html',

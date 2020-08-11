@@ -1,11 +1,11 @@
 import { Component, OnInit, Inject, NgModule } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-@NgModule({
-  declarations: [],
-  exports: [],
-  entryComponents: []
-})
+// @NgModule({
+//   declarations: [],
+//   exports: [],
+//   entryComponents: []
+// })
 
 @Component({
   selector: 'app-confirmation-dialog',

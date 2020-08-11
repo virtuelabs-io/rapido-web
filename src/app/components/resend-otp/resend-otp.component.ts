@@ -5,13 +5,13 @@ import { ResendConfirmationCodeService } from '../../services/authentication/res
 import { ConfirmRegistrationService } from '../../services/authentication/confirm-registration/confirm-registration.service';
 import { Constants } from '../../utils/constants';
 
-@NgModule({
-	imports: [
-		FormBuilder,
-		Validators,
-		FormGroup
-	]
-})
+// @NgModule({
+// 	imports: [
+// 		FormBuilder,
+// 		Validators,
+// 		FormGroup
+// 	]
+// })
 
 @Component({
   selector: 'app-resend-otp',

@@ -1,7 +1,8 @@
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ProductMenuMobileComponent } from './product-menu-mobile.component';
-import { MatTreeModule, MatIconModule } from '@angular/material';
+import { MatTreeModule } from '@angular/material/tree';
+import { MatIconModule } from '@angular/material/icon';
 import { Router, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductResultsComponent } from '../product-results/product-results.component';

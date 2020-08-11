@@ -5,7 +5,13 @@ import { Router , Routes} from '@angular/router';
 import {  HttpClientTestingModule } from '@angular/common/http/testing';
 import { Location } from "@angular/common";
 import { RegisterComponent } from '../register/register.component';
-import { MatToolbarModule, MatStepperModule, MatFormFieldModule, MatIconModule, MatCheckboxModule, MatCardModule, MatInputModule } from '@angular/material';
+import { MatToolbarModule } from '@angular/material/toolbar'
+import { MatStepperModule } from '@angular/material/stepper'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatIconModule } from '@angular/material/icon'
+import { MatCheckboxModule } from '@angular/material/checkbox'
+import { MatCardModule } from '@angular/material/card'
+import { MatInputModule } from '@angular/material/input'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TermsConditionsComponent } from '../terms-conditions/terms-conditions.component';
 import { PrivacyPolicyComponent } from '../privacy-policy/privacy-policy.component';

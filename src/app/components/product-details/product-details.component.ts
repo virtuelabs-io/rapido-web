@@ -23,7 +23,7 @@ import { GuestCartItem } from '../../services/guests/guest-cart-item';
 })
 export class ProductDetailsComponent implements OnInit {
 
-	@ViewChild(MatPaginator) paginator: MatPaginator
+	@ViewChild(MatPaginator, { static: false }) paginator: MatPaginator
 	private _productsService: ProductsService
 	private _cartService: CartService
 	itemDetails: any 

@@ -5,7 +5,10 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms';
-import { MatFormFieldModule, MatCardModule, MatInputModule, MatStepperModule } from '@angular/material';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatStepperModule } from '@angular/material/stepper';
 
 describe('ForgotPasswordComponent', () => {
   let component: ForgotPasswordComponent;

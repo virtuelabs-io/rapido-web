@@ -3,8 +3,16 @@ import { FormsModule } from '@angular/forms';
 import { AccountInfoComponent } from './account-info.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
-import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA, MatFormFieldModule, MatCardModule, MatInputModule, MatCheckboxModule, MatIconModule, MatExpansionModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog'
+import { MatDialogRef } from '@angular/material/dialog'
+import { MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatCardModule } from '@angular/material/card'
+import { MatInputModule } from '@angular/material/input'
+import { MatCheckboxModule } from '@angular/material/checkbox'
+import { MatIconModule } from '@angular/material/icon'
+import { MatExpansionModule } from '@angular/material/expansion'
 import { Router, Routes } from '@angular/router';
 import { LogInComponent } from '../log-in/log-in.component';
 import { ConfirmationDialogComponent } from '../../components/confirmation-dialog/confirmation-dialog.component';

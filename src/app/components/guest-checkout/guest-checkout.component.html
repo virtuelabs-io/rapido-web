@@ -142,6 +142,9 @@
               <mat-form-field class="">
                 <input matInput [(ngModel)]="registeredEmail" name="email" placeholder="Invoice sent to">
               </mat-form-field>
+              <ngx-stripe-card
+                  [options]="cardOptions"
+                  [elementsOptions]="elementsOptions"></ngx-stripe-card>
               <div id="card-element" class="field"></div><br>
                 <div class="buy-cart-button">
                   <button class="btn btn-primary buy-button" (click)="buy()">Pay {{ currency }}{{ orderTotal }}</button>

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material';
+import { MatSidenav } from '@angular/material/sidenav';
 import { TopnavComponent } from '../topnav/topnav.component';
 import { LoginStateService } from '../../shared-services/login-state/login-state.service';
 import { ProfileService } from '../../services/authentication/profile/profile.service';
@@ -14,7 +14,7 @@ import { SidenavService } from './nav.service';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
-  @ViewChild('sidenav') public sidenav: MatSidenav;
+  @ViewChild('sidenav', { static: true }) public sidenav: MatSidenav;
   isSignedIn: Boolean = false
   disclaimerReq: Boolean
   name: string
